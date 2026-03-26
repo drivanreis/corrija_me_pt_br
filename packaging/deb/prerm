@@ -1,9 +1,0 @@
-#!/bin/bash
-set -e
-
-if command -v systemctl >/dev/null 2>&1; then
-  systemctl stop corrija-me-pt-br.service || true
-  systemctl disable corrija-me-pt-br.service || true
-fi
-
-exit 0

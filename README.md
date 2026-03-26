@@ -1,122 +1,132 @@
 # Corrija-me PT-BR
 
-Projeto para correcao de texto em portugues do Brasil, com uso local e integracao com uma extensao para Google Chrome.
+Aplicacao de correcao de texto em portugues do Brasil, com backend local e extensao para Google Chrome.
 
-## O que este projeto faz
+## O que a aplicacao faz
 
-- executa um servidor local de correcao em `http://localhost:8081`
-- fornece uma extensao do Chrome para enviar textos ao servidor local
-- permite instalar, testar e empacotar a solucao a partir deste repositorio
+- executa um backend local em `127.0.0.1:8081`
+- analisa textos em pt-BR
+- sugere correcoes diretamente no navegador
+- funciona sem Java
+- gera pacotes portateis para Windows e Linux
 
-## Como instalar a extensao
+## Para quem so quer usar
 
-1. Acesse o repositorio:
-   `https://github.com/drivanreis/corrija_me_pt_br`
+Os pacotes prontos ficam em:
 
-2. Faca o download do projeto.
-   Voce pode baixar o arquivo `.zip` do GitHub ou clonar o repositorio pelo endereco HTTPS.
+- `build/node-app/releases/corrija_me_pt_br_windows_x64.zip`
+- `build/node-app/releases/corrija_me_pt_br_linux_x64.zip`
 
-3. Extraia o arquivo `.zip` ou abra a pasta clonada no seu computador.
+Esses pacotes ja incluem:
 
-4. Siga o passo a passo do seu sistema operacional.
+- o backend local
+- a extensao pronta para carregar
+- instaladores simples
 
-### Linux
+## Instalacao no Windows
 
-1. Abra um terminal na pasta raiz do projeto.
+1. Extraia o arquivo `corrija_me_pt_br_windows_x64.zip`.
+2. Execute `install.bat`.
+3. Aguarde a instalacao.
+4. O Chrome sera aberto em `chrome://extensions`.
+5. Ative o `Modo do desenvolvedor`.
+6. Clique em `Carregar sem compactacao`.
+7. Selecione a pasta:
+   `%LOCALAPPDATA%\corrija_me_pt_br\chrome-extension`
 
-2. Execute:
+Depois disso, o backend local sera iniciado automaticamente quando o usuario entrar no Windows.
+
+## Instalacao no Linux
+
+1. Extraia o arquivo `corrija_me_pt_br_linux_x64.zip`.
+2. Abra um terminal na pasta extraida.
+3. Execute:
 
 ```bash
-./install.sh
+sudo ./install.sh
 ```
 
-3. Aguarde a instalacao e a inicializacao do servidor local.
-   Se faltar Java 17, Maven ou outras dependencias basicas, o instalador tentara resolver isso automaticamente.
-
-4. Quando o Chrome abrir em `chrome://extensions`, ative o `Modo do desenvolvedor`.
-
-5. Clique em `Carregar sem compactacao`.
-
-6. Selecione a pasta da extensao instalada em:
+4. Abra o Chrome em `chrome://extensions`.
+5. Ative o `Modo do desenvolvedor`.
+6. Clique em `Carregar sem compactacao`.
+7. Selecione a pasta:
    `/opt/corrija_me_pt_br/chrome-extension`
 
-7. Abra qualquer pagina com campo de texto para testar a extensao.
-
-### Windows
-
-1. Abra a pasta do projeto baixado.
-
-2. Execute o arquivo:
-
-```bat
-install.bat
-```
-
-3. Aguarde a preparacao do ambiente no Windows.
-
-4. Se necessario, confirme a execucao do PowerShell.
-
-5. O instalador vai copiar os arquivos para a pasta local da aplicacao, iniciar o servidor e abrir a pasta da extensao.
-   Ele tambem configura a inicializacao automatica do servidor no login do Windows.
-   Se faltar Java 17 ou Maven, o instalador tentara localizar ou provisionar essas dependencias automaticamente.
-
-6. Abra o Google Chrome em:
-   `chrome://extensions`
-
-7. Ative o `Modo do desenvolvedor`.
-
-8. Clique em `Carregar sem compactacao`.
-
-9. Selecione a pasta `chrome-extension` do pacote Windows, ou a pasta `extensao_chrome` do projeto quando estiver usando os arquivos diretamente do repositorio.
-
-10. Abra qualquer pagina com campo de texto para testar a extensao.
+Depois disso, o backend local sera iniciado automaticamente com o sistema.
 
 ## Como usar
 
-- Clique no botao `Corrigir` exibido ao lado de um campo de texto.
-- Ou use o atalho `Alt + Shift + C`.
-- A extensao envia o texto para `http://localhost:8081/v2/check` usando `language=pt-BR`.
+- clique no botao `Corrigir` ao lado de um campo de texto
+- ou use o atalho `Alt + Shift + C`
+- a extensao envia o texto para `http://127.0.0.1:8081/v2/check`
 
-## Requisitos
+## Para desenvolvimento
 
-- Java 17
-- Maven
+### Requisitos
+
+- Node.js 22 ou superior
+- npm
 - Google Chrome
+- `zip`
 
-## Comandos uteis
-
-Iniciar o servidor local:
-
-```bash
-./scripts/run-corrija-me-pt-br-server.sh
-```
-
-Executar os testes:
+### Instalar dependencias
 
 ```bash
-mvn -Dmaven.gitcommitid.skip=true test
+npm install
 ```
 
-Gerar os pacotes sem rodar testes:
+### Gerar a aplicacao
 
 ```bash
-mvn -Dmaven.gitcommitid.skip=true -DskipTests package
+npm run build
 ```
 
-Empacotar a extensao do Chrome:
+### Rodar o backend local
 
 ```bash
-./scripts/package-corrija-me-pt-br-extension.sh
+npm run start:backend
 ```
 
-## Observacoes importantes
+### Testar o backend
 
-- A extensao depende do servidor local em execucao.
-- No Windows, os arquivos instalados ficam em `%LOCALAPPDATA%\corrija_me_pt_br`.
-- No Windows, o projeto inclui arquivos auxiliares como `IniciarServidor.bat`, `PararServidor.bat` e `StatusServidor.bat`.
-- No Windows, apos a instalacao, o servidor e iniciado automaticamente quando o usuario entra no sistema.
-- No primeiro build de um repositorio novo, pode ser necessario usar `-Dmaven.gitcommitid.skip=true` ate existir um commit local.
-- A documentacao especifica da extensao esta em `extensao_chrome/README.md`.
+```bash
+npm run test:backend
+```
+
+### Gerar executaveis
+
+```bash
+npm run package:backend
+```
+
+### Gerar pacotes portateis
+
+```bash
+npm run package:portable
+```
+
+## Estrutura do projeto
+
+- `src/core`
+  Motor de correcoes em TypeScript.
+- `src/backend`
+  Backend HTTP local.
+- `src/extension`
+  Codigo da extensao em TypeScript.
+- `data/replacements.json`
+  Base inicial de substituicoes e sugestoes.
+- `build/node-app/extension`
+  Extensao compilada para carregar no Chrome.
+- `build/node-app/pkg`
+  Executaveis gerados.
+- `build/node-app/releases`
+  Pacotes prontos para distribuicao.
+
+## Observacoes
+
+- a extensao depende do backend local em execucao
+- o backend responde em `127.0.0.1:8081`
+- o foco atual do projeto e a base nova em TypeScript
 
 ## Licenca
 

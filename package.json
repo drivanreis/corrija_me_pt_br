@@ -1,0 +1,31 @@
+{
+  "name": "corrija-me-pt-br-ts",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Corretor local em pt-BR com backend Node.js e extensao Chrome em TypeScript.",
+  "type": "module",
+  "bin": {
+    "corrija-me-pt-br-server": "build/node-app/backend/server.cjs"
+  },
+  "scripts": {
+    "clean": "rm -rf build/node-app",
+    "build": "node scripts/build-node-app.mjs",
+    "start:backend": "node build/node-app/backend/server.cjs",
+    "dev": "npm run build && npm run start:backend",
+    "package:backend": "npm run build && pkg . --targets node18-linux-x64,node18-win-x64 --out-path build/node-app/pkg",
+    "package:portable": "npm run package:backend && node scripts/package-node-releases.mjs",
+    "test:backend": "npm run build && node scripts/smoke-test-node-app.mjs"
+  },
+  "pkg": {
+    "assets": [
+      "build/node-app/data/*.json"
+    ],
+    "outputPath": "build/node-app/pkg"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "esbuild": "^0.25.2",
+    "pkg": "^5.8.1",
+    "typescript": "^5.8.3"
+  }
+}

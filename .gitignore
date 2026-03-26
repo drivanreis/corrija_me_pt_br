@@ -8,6 +8,7 @@
 build/
 dist/
 .flattened-pom.xml
+node_modules/
 target/
 target-ide/
 **/target/
