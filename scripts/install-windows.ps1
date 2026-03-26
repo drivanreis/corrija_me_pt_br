@@ -108,14 +108,130 @@ function Get-CommandPath([string]$Name) {
   return $null
 }
 
-function Ensure-WingetPackage([string]$CommandName, [string]$PackageId, [string]$FriendlyName) {
-  if (Get-CommandPath $CommandName) {
-    return (Get-CommandPath $CommandName)
+function Get-JavaFromRegistry {
+  $registryKeys = @(
+    "HKLM:\SOFTWARE\JavaSoft\JDK",
+    "HKLM:\SOFTWARE\JavaSoft\JRE",
+    "HKLM:\SOFTWARE\WOW6432Node\JavaSoft\JDK",
+    "HKLM:\SOFTWARE\WOW6432Node\JavaSoft\JRE",
+    "HKLM:\SOFTWARE\Eclipse Adoptium\JDK",
+    "HKLM:\SOFTWARE\Eclipse Foundation\JDK",
+    "HKLM:\SOFTWARE\Microsoft\JDK",
+    "HKCU:\SOFTWARE\JavaSoft\JDK",
+    "HKCU:\SOFTWARE\JavaSoft\JRE"
+  )
+
+  foreach ($keyPath in $registryKeys) {
+    if (-not (Test-Path $keyPath)) {
+      continue
+    }
+
+    try {
+      $key = Get-ItemProperty -Path $keyPath -ErrorAction Stop
+      $versionCandidates = @()
+      if ($key.CurrentVersion) {
+        $versionCandidates += $key.CurrentVersion
+      }
+      $versionCandidates += @(Get-ChildItem -Path $keyPath -ErrorAction SilentlyContinue | Select-Object -ExpandProperty PSChildName)
+
+      foreach ($version in ($versionCandidates | Select-Object -Unique)) {
+        if (-not $version) {
+          continue
+        }
+        $versionKeyPath = Join-Path $keyPath $version
+        if (-not (Test-Path $versionKeyPath)) {
+          continue
+        }
+
+        $versionKey = Get-ItemProperty -Path $versionKeyPath -ErrorAction SilentlyContinue
+        if (-not $versionKey.JavaHome) {
+          continue
+        }
+
+        $javaExe = Join-Path $versionKey.JavaHome "bin\java.exe"
+        if ((Test-Path $javaExe) -and $version -match '^17([._].*)?$') {
+          return $javaExe
+        }
+      }
+    } catch {
+    }
+  }
+
+  return $null
+}
+
+function Get-JavaFromCommonPaths {
+  $patterns = @(
+    "$env:ProgramFiles\Microsoft\jdk-17*\bin\java.exe",
+    "$env:ProgramFiles\Eclipse Adoptium\jdk-17*\bin\java.exe",
+    "$env:ProgramFiles\Eclipse Foundation\jdk-17*\bin\java.exe",
+    "$env:ProgramFiles\Java\jdk-17*\bin\java.exe",
+    "$env:ProgramFiles\Java\jre-17*\bin\java.exe",
+    "${env:ProgramFiles(x86)}\Java\jdk-17*\bin\java.exe"
+  )
+
+  foreach ($pattern in $patterns) {
+    $match = Get-ChildItem -Path $pattern -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($match) {
+      return $match.FullName
+    }
+  }
+
+  return $null
+}
+
+function Ensure-Java17 {
+  $javaFromPath = Get-CommandPath "java.exe"
+  if ($javaFromPath) {
+    return $javaFromPath
+  }
+
+  $javaFromRegistry = Get-JavaFromRegistry
+  if ($javaFromRegistry) {
+    return $javaFromRegistry
+  }
+
+  $javaFromCommonPaths = Get-JavaFromCommonPaths
+  if ($javaFromCommonPaths) {
+    return $javaFromCommonPaths
   }
 
   $winget = Get-CommandPath "winget.exe"
   if (-not $winget) {
-    throw "$FriendlyName nao encontrado. Instale manualmente e execute install.bat novamente."
+    throw "Java 17 nao encontrado. Instale o Java 17 manualmente, ou ative o winget, e execute install.bat novamente."
+  }
+
+  Write-Host "Instalando Java 17 via winget..."
+  & $winget install --id Microsoft.OpenJDK.17 --accept-package-agreements --accept-source-agreements --silent
+
+  Refresh-Path
+  $javaAfterInstall = Get-CommandPath "java.exe"
+  if ($javaAfterInstall) {
+    return $javaAfterInstall
+  }
+
+  $javaAfterInstall = Get-JavaFromRegistry
+  if ($javaAfterInstall) {
+    return $javaAfterInstall
+  }
+
+  $javaAfterInstall = Get-JavaFromCommonPaths
+  if ($javaAfterInstall) {
+    return $javaAfterInstall
+  }
+
+  throw "Java 17 foi instalado, mas ainda nao foi localizado. Feche e abra o terminal e execute install.bat novamente."
+}
+
+function Ensure-WingetPackage([string]$CommandName, [string]$PackageId, [string]$FriendlyName) {
+  $commandPath = Get-CommandPath $CommandName
+  if ($commandPath) {
+    return $commandPath
+  }
+
+  $winget = Get-CommandPath "winget.exe"
+  if (-not $winget) {
+    throw "$FriendlyName nao encontrado. Instale manualmente, ou ative o winget, e execute install.bat novamente."
   }
 
   Write-Host "Instalando $FriendlyName via winget..."
@@ -132,7 +248,7 @@ function Ensure-WingetPackage([string]$CommandName, [string]$PackageId, [string]
 
 Refresh-Path
 
-$javaCommand = Ensure-WingetPackage "java.exe" "Microsoft.OpenJDK.17" "Java 17"
+$javaCommand = Ensure-Java17
 $mavenCommand = Ensure-WingetPackage "mvn.cmd" "Apache.Maven" "Maven"
 
 if (-not (Test-Path $extensionManifestSource)) {
