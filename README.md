@@ -56,6 +56,7 @@ install.bat
 4. Se necessario, confirme a execucao do PowerShell.
 
 5. O instalador vai copiar os arquivos para a pasta local da aplicacao, iniciar o servidor e abrir a pasta da extensao.
+   Ele tambem configura a inicializacao automatica do servidor no login do Windows.
 
 6. Abra o Google Chrome em:
    `chrome://extensions`
@@ -111,6 +112,7 @@ Empacotar a extensao do Chrome:
 - A extensao depende do servidor local em execucao.
 - No Windows, os arquivos instalados ficam em `%LOCALAPPDATA%\corrija_me_pt_br`.
 - No Windows, o projeto inclui arquivos auxiliares como `IniciarServidor.bat`, `PararServidor.bat` e `StatusServidor.bat`.
+- No Windows, apos a instalacao, o servidor e iniciado automaticamente quando o usuario entra no sistema.
 - No primeiro build de um repositorio novo, pode ser necessario usar `-Dmaven.gitcommitid.skip=true` ate existir um commit local.
 - A documentacao especifica da extensao esta em `extensao_chrome/README.md`.
 

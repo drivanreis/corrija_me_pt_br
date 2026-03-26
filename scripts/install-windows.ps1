@@ -41,6 +41,20 @@ start "" chrome://extensions
   Set-Content -Path $openBothLauncherPath -Value $openBothContent -Encoding ASCII
 }
 
+function Write-WindowsStartupLauncher {
+  $startupFolder = [Environment]::GetFolderPath("Startup")
+  if (-not $startupFolder) {
+    throw "Nao foi possivel localizar a pasta de inicializacao do Windows."
+  }
+
+  $startupLauncherPath = Join-Path $startupFolder "IniciarCorrijaMePtBr.bat"
+  $startupLauncherContent = @"
+@echo off
+start "" /min "$installRoot\IniciarServidor.bat"
+"@
+  Set-Content -Path $startupLauncherPath -Value $startupLauncherContent -Encoding ASCII
+}
+
 function Get-ChromePath {
   $candidates = @(
     (Join-Path $env:ProgramFiles "Google\Chrome\Application\chrome.exe"),
@@ -149,6 +163,7 @@ Copy-Item $configPath (Join-Path $serverRoot "corrija-me-pt-br-local.properties"
 Copy-Item (Join-Path $windowsPackaging "*") $installRoot -Recurse
 Copy-Item (Join-Path $extensionSource "*") $extensionTarget -Recurse
 Write-HelperLauncher
+Write-WindowsStartupLauncher
 
 if (-not (Test-Path $extensionManifestTarget)) {
   throw "Manifesto da extensao nao foi copiado corretamente para $extensionManifestTarget"
@@ -175,6 +190,8 @@ Write-Host ""
 Write-Host "Instalacao concluida."
 Write-Host "No Chrome, clique em 'Carregar sem compactacao' e selecione:"
 Write-Host "  $extensionTarget"
+Write-Host ""
+Write-Host "O servidor sera iniciado automaticamente quando voce entrar no Windows."
 Write-Host ""
 Write-Host "Atalhos criados para facilitar:"
 Write-Host "  $installRoot\AbrirPastaDaExtensao.bat"

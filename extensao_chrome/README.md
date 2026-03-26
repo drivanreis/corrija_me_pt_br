@@ -43,6 +43,7 @@ Esta extensao funciona localmente no Google Chrome e depende do servidor do proj
 ## Observacoes importantes
 
 - A extensao nao funciona sozinha: o servidor local precisa estar ligado.
+- No Windows, depois da instalacao, o servidor passa a iniciar automaticamente no login do usuario.
 - Se o Chrome nao aceitar a extensao, confirme se voce selecionou exatamente a pasta `extensao_chrome`.
 - Se nada acontecer ao corrigir um texto, verifique se o servidor local continua em execucao.
 
