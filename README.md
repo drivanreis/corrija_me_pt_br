@@ -1,150 +1,119 @@
-## LanguageTool
+# Corrija-me PT-BR
 
-**LanguageTool** is open-source proofreading software for English, Spanish, French, German,
-Portuguese, Polish, Dutch, and [more than 20 other languages](https://languagetool.org/languages/).
-It finds many errors that a simple spell checker cannot detect.
+Projeto para correcao de texto em portugues do Brasil, com uso local e integracao com uma extensao para Google Chrome.
 
-* [LanguageTool Forum](https://forum.languagetool.org)
+## O que este projeto faz
 
-* [How to run your own LanguageTool server](https://dev.languagetool.org/http-server)
+- executa um servidor local de correcao em `http://localhost:8081`
+- fornece uma extensao do Chrome para enviar textos ao servidor local
+- permite instalar, testar e empacotar a solucao a partir deste repositorio
 
-* [HTTP API documentation](https://languagetool.org/http-api/swagger-ui/#!/default/post_check)
+## Como instalar a extensao
 
-* [How to use our public server via HTTP](https://dev.languagetool.org/public-http-api)
+1. Acesse o repositorio:
+   `https://github.com/drivanreis/corrija_me_pt_br`
 
-* [How to use LanguageTool from Java](https://dev.languagetool.org/java-api) ([Javadoc](https://languagetool.org/development/api/index.html?org/languagetool/JLanguageTool.html))
+2. Faca o download do projeto.
+   Voce pode baixar o arquivo `.zip` do GitHub ou clonar o repositorio pelo endereco HTTPS.
 
-For more information, please see our homepage, at [`languagetool.org`](https://languagetool.org),
-[this `README`](https://github.com/languagetool-org/languagetool/blob/master/languagetool-standalone/README.md),
-and [`CHANGES`](https://github.com/languagetool-org/languagetool/blob/master/languagetool-standalone/CHANGES.md).
+3. Extraia o arquivo `.zip` ou abra a pasta clonada no seu computador.
 
-The LanguageTool core (this repo) is freely available under the LGPL 2.1 or later.
+4. Siga o passo a passo do seu sistema operacional.
 
-## Docker
+### Linux
 
-Try one of the following projects for a community-contributed Docker file:
+1. Abra um terminal na pasta raiz do projeto.
 
-`github.com`                                                                      | `hub.docker.com/r`
-----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------
-[`meyayl/docker-languagetool`](https://github.com/meyayl/docker-languagetool)     | [`meyay/languagetool`](https://hub.docker.com/r/meyay/languagetool)
-[`Erikvl87/docker-languagetool`](https://github.com/Erikvl87/docker-languagetool) | [`erikvl87/languagetool`](https://hub.docker.com/r/erikvl87/languagetool)
-[`silvio/docker-languagetool`](https://github.com/silvio/docker-languagetool)     | [`silviof/docker-languagetool`](https://hub.docker.com/r/silviof/docker-languagetool)
+2. Execute:
 
-## Contributions
-
-[The development overview](https://dev.languagetool.org/development-overview) describes
-how you can contribute error detection rules.
-
-For more technical details, see [our dev pages](https://dev.languagetool.org).
-
-## Scripted installation and building
-
-To install or build using a script, simply type:
-
-```sh
-#!/usr/bin/env sh
-curl -L https://raw.githubusercontent.com/languagetool-org/languagetool/master/install.sh | sudo bash $options
+```bash
+./install.sh
 ```
 
-If you wish to have more options, download the `install.sh` script. Usage options follow:
+3. Aguarde a instalacao e a inicializacao do servidor local.
 
-<blockquote>
+4. Quando o Chrome abrir em `chrome://extensions`, ative o `Modo do desenvolvedor`.
 
-```HTML
-sudo bash install.sh <options>
+5. Clique em `Carregar sem compactacao`.
 
-Usage: install.sh <option> <package>
-Options:
-   -h --help                   Show help
-   -b --build                  Builds packages from the bleeding edge development copy of LanguageTool
-   -c --command <command>      Specifies post-installation command to run (default gui when screen is detected)
-   -q --quiet                  Shut up LanguageTool installer! Only tell me important stuff!
-   -t --text <file>            Specifies what text to be spellchecked by LanguageTool command line (default spellcheck.txt)
-   -d --depth <value>          Specifies the depth to clone when building LanguageTool yourself (default 1).
-   -p --package <package>      Specifies package to install when building (default all)
-   -o --override <OS>          Override automatic OS detection with <OS>
-   -a --accept                 Accept the oracle license at http://java.com/license. Only run this if you have seen the license and agree to its terms!
-   -r --remove <all/partial>   Removes LanguageTool install. <all> uninstalls the dependencies that were auto-installed. (default partial)
+6. Selecione a pasta da extensao instalada em:
+   `/opt/corrija_me_pt_br/chrome-extension`
 
-Packages(only if -b is specified):
-   standalone                  Installs standalone package
-   wikipedia                   Installs Wikipedia package
-   office-extension            Installs the LibreOffice/OpenOffice extension package
+7. Abra qualquer pagina com campo de texto para testar a extensao.
 
-Commands:
-   GUI                         Runs GUI version of LanguageTool
-   commandline                 Runs command line version of LanguageTool
-   server                      Runs server version of LanguageTool
+### Windows
+
+1. Abra a pasta do projeto baixado.
+
+2. Execute o arquivo:
+
+```bat
+install.bat
 ```
 
-</blockquote>
+3. Aguarde a preparacao do ambiente no Windows.
 
-## Alternate way to build from source
+4. Se necessario, confirme a execucao do PowerShell.
 
-Before start: you will need to clone from GitHub and install Java 17 and Apache Maven.
+5. O instalador vai copiar os arquivos para a pasta local da aplicacao, iniciar o servidor e abrir a pasta da extensao.
 
-Warning: a complete clone requires downloading more than 500 MiB and needs more than 1 500 MiB on disk.
-This can be reduced, if you only need the last few revisions of the master branch
-by creating a shallow clone:
+6. Abra o Google Chrome em:
+   `chrome://extensions`
 
-```sh
-#!/usr/bin/env sh
-git clone --depth 5 https://github.com/languagetool-org/languagetool.git
+7. Ative o `Modo do desenvolvedor`.
+
+8. Clique em `Carregar sem compactacao`.
+
+9. Selecione a pasta `chrome-extension` do pacote Windows, ou a pasta `extensao_chrome` do projeto quando estiver usando os arquivos diretamente do repositorio.
+
+10. Abra qualquer pagina com campo de texto para testar a extensao.
+
+## Como usar
+
+- Clique no botao `Corrigir` exibido ao lado de um campo de texto.
+- Ou use o atalho `Alt + Shift + C`.
+- A extensao envia o texto para `http://localhost:8081/v2/check` usando `language=pt-BR`.
+
+## Requisitos
+
+- Java 17
+- Maven
+- Google Chrome
+
+## Comandos uteis
+
+Iniciar o servidor local:
+
+```bash
+./scripts/run-corrija-me-pt-br-server.sh
 ```
 
-A shallow clone downloads less than 60 MiB, and needs less than 200 MiB on disk.
+Executar os testes:
 
-In the root project folder, run:
-
-```sh
-#!/usr/bin/env sh
-mvn clean test
+```bash
+mvn -Dmaven.gitcommitid.skip=true test
 ```
 
-(Sometimes, you can skip Maven step for repeated builds.)
+Gerar os pacotes sem rodar testes:
 
-```sh
-#!/usr/bin/env sh
-./build.sh languagetool-standalone package -DskipTests
+```bash
+mvn -Dmaven.gitcommitid.skip=true -DskipTests package
 ```
 
-Test the result in `languagetool-standalone/target/`.
+Empacotar a extensao do Chrome:
 
-```sh
-#!/usr/bin/env sh
-./build.sh languagetool-wikipedia package -DskipTests
+```bash
+./scripts/package-corrija-me-pt-br-extension.sh
 ```
 
-Test the result in `languagetool-wikipedia/target`.
+## Observacoes importantes
 
-Now, you can use the bleeding edge development copy of LanguageTool `*.jar` files, be aware that it might contain regressions.
+- A extensao depende do servidor local em execucao.
+- No Windows, os arquivos instalados ficam em `%LOCALAPPDATA%\corrija_me_pt_br`.
+- No Windows, o projeto inclui arquivos auxiliares como `IniciarServidor.bat`, `PararServidor.bat` e `StatusServidor.bat`.
+- No primeiro build de um repositorio novo, pode ser necessario usar `-Dmaven.gitcommitid.skip=true` ate existir um commit local.
+- A documentacao especifica da extensao esta em `extensao_chrome/README.md`.
 
-### How to run under Mac M1 or M2
+## Licenca
 
-1. Install Brew for Rosetta:
-
-   ```sh
-   #!/usr/bin/env sh
-   arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-   ```
-
-1. Install OpenJDK for Rosetta:
-
-   ```sh
-   #!/usr/bin/env sh
-   arch -x86_64 brew install openjdk
-   ```
-
-1. Install Maven for Rosetta:
-
-   ```sh
-   #!/usr/bin/env sh
-   arch -x86_64 brew install maven
-   ```
-
-1. Now, run the build scripts.
-
-### License
-
-Unless otherwise noted, this software – the LanguageTool core – is distributed under the LGPL; see
-[`COPYING.txt`](https://github.com/languagetool-org/languagetool/blob/master/COPYING.txt).
+Salvo indicacao em contrario, este projeto segue a LGPL 2.1 ou superior. Consulte `COPYING.txt`.
