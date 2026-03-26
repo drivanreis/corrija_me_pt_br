@@ -1,0 +1,19 @@
+[Unit]
+Description=corrija_me_pt_br local grammar server
+After=network.target
+
+[Service]
+Type=simple
+User=corrijameptbr
+Group=corrijameptbr
+WorkingDirectory=/opt/corrija_me_pt_br
+ExecStart=/usr/bin/java -jar /opt/corrija_me_pt_br/languagetool-server.jar --config /opt/corrija_me_pt_br/config/corrija-me-pt-br-local.properties --port 8081 --allow-origin
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

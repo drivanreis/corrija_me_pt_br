@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>corrija_me_pt_br</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">corrija_me_pt_br</p>
+        <h1>Servidor local da extensao</h1>
+        <p class="subtitle">Esta extensao trabalha apenas com portugues do Brasil e usa o seu servidor local.</p>
+      </header>
+
+      <section class="panel">
+        <div class="field">
+          <span>Servidor local fixo</span>
+          <input id="serverUrl" type="text" value="http://localhost:8081" readonly>
+        </div>
+
+        <label class="toggle">
+          <input id="autoCheck" type="checkbox">
+          <span>Corrigir automaticamente enquanto digito</span>
+        </label>
+
+        <div class="actions">
+          <button id="saveButton" class="primary" type="button">Salvar</button>
+          <button id="testButton" class="secondary" type="button">Testar conexao</button>
+        </div>
+
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+
+      <section class="tips">
+        <h2>Como usar</h2>
+        <p>Foque em um campo de texto. O botao "Corrigir" aparece ao lado do campo.</p>
+        <p>Atalho: <strong>Alt + Shift + C</strong>.</p>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
