@@ -22,6 +22,40 @@ require_cmd() {
   sudo apt-get install -y "$package_name"
 }
 
+get_java_major_version() {
+  local java_cmd="${1:-java}"
+  local version_line=""
+
+  version_line="$("$java_cmd" -version 2>&1 | head -n 1 || true)"
+  if [[ "$version_line" =~ \"1\.([0-9]+) ]]; then
+    echo "${BASH_REMATCH[1]}"
+    return 0
+  fi
+  if [[ "$version_line" =~ \"([0-9]+) ]]; then
+    echo "${BASH_REMATCH[1]}"
+    return 0
+  fi
+
+  return 1
+}
+
+ensure_java17_jdk() {
+  if command -v java >/dev/null 2>&1; then
+    local major_version=""
+    major_version="$(get_java_major_version java || true)"
+    if [[ -n "$major_version" && "$major_version" -ge 17 ]] && command -v javac >/dev/null 2>&1; then
+      return 0
+    fi
+  fi
+
+  echo "Instalando dependencia: openjdk-17-jdk"
+  if [[ "$APT_UPDATED" -eq 0 ]]; then
+    sudo apt-get update
+    APT_UPDATED=1
+  fi
+  sudo apt-get install -y openjdk-17-jdk
+}
+
 find_browser_cmd() {
   local candidate=""
 
@@ -86,7 +120,7 @@ if ! command -v apt-get >/dev/null 2>&1; then
   exit 1
 fi
 
-require_cmd java openjdk-17-jre
+ensure_java17_jdk
 require_cmd mvn maven
 require_cmd zip zip
 require_cmd curl curl

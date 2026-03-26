@@ -6,8 +6,17 @@ $configPath = Join-Path $root "server\corrija-me-pt-br-local.properties"
 $pidFile = Join-Path $root "server\corrija_me_pt_br.pid"
 $javawPath = Join-Path $env:JAVA_HOME "bin\javaw.exe"
 $javaPath = Join-Path $env:JAVA_HOME "bin\java.exe"
+$bundledJavawPath = Join-Path $root "tools\jdk\bin\javaw.exe"
+$bundledJavaPath = Join-Path $root "tools\jdk\bin\java.exe"
 
 function Get-JavaCommand {
+  if (Test-Path $bundledJavawPath) {
+    return $bundledJavawPath
+  }
+  if (Test-Path $bundledJavaPath) {
+    return $bundledJavaPath
+  }
+
   if ($env:JAVA_HOME -and (Test-Path $javawPath)) {
     return $javawPath
   }

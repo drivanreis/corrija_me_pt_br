@@ -31,6 +31,7 @@ Projeto para correcao de texto em portugues do Brasil, com uso local e integraca
 ```
 
 3. Aguarde a instalacao e a inicializacao do servidor local.
+   Se faltar Java 17, Maven ou outras dependencias basicas, o instalador tentara resolver isso automaticamente.
 
 4. Quando o Chrome abrir em `chrome://extensions`, ative o `Modo do desenvolvedor`.
 
@@ -57,6 +58,7 @@ install.bat
 
 5. O instalador vai copiar os arquivos para a pasta local da aplicacao, iniciar o servidor e abrir a pasta da extensao.
    Ele tambem configura a inicializacao automatica do servidor no login do Windows.
+   Se faltar Java 17 ou Maven, o instalador tentara localizar ou provisionar essas dependencias automaticamente.
 
 6. Abra o Google Chrome em:
    `chrome://extensions`

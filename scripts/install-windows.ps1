@@ -10,6 +10,9 @@ $serverRoot = Join-Path $installRoot "server"
 $extensionTarget = Join-Path $installRoot "chrome-extension"
 $extensionManifestSource = Join-Path $extensionSource "manifest.json"
 $extensionManifestTarget = Join-Path $extensionTarget "manifest.json"
+$toolsRoot = Join-Path $installRoot "tools"
+$bootstrapRoot = Join-Path $env:TEMP "corrija_me_pt_br_bootstrap"
+$script:BootstrapJavaHome = $null
 
 function Refresh-Path {
   $machinePath = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
@@ -108,6 +111,51 @@ function Get-CommandPath([string]$Name) {
   return $null
 }
 
+function Get-JavaMajorVersion([string]$JavaPath) {
+  if (-not $JavaPath -or -not (Test-Path $JavaPath)) {
+    return $null
+  }
+
+  try {
+    $versionOutput = & $JavaPath -version 2>&1 | Select-Object -First 1
+    if (-not $versionOutput) {
+      return $null
+    }
+
+    $versionText = $versionOutput.ToString()
+    if ($versionText -match '"([^"]+)"') {
+      $rawVersion = $matches[1]
+      if ($rawVersion -match '^1\.(\d+)') {
+        return [int]$matches[1]
+      }
+      if ($rawVersion -match '^(\d+)') {
+        return [int]$matches[1]
+      }
+    }
+  } catch {
+  }
+
+  return $null
+}
+
+function Test-Java17OrNewer([string]$JavaPath) {
+  $majorVersion = Get-JavaMajorVersion $JavaPath
+  return ($majorVersion -ne $null -and $majorVersion -ge 17)
+}
+
+function Get-JavaFromJavaHome {
+  if (-not $env:JAVA_HOME) {
+    return $null
+  }
+
+  $candidate = Join-Path $env:JAVA_HOME "bin\java.exe"
+  if ((Test-Path $candidate) -and (Test-Java17OrNewer $candidate)) {
+    return $candidate
+  }
+
+  return $null
+}
+
 function Get-JavaFromRegistry {
   $registryKeys = @(
     "HKLM:\SOFTWARE\JavaSoft\JDK",
@@ -149,7 +197,7 @@ function Get-JavaFromRegistry {
         }
 
         $javaExe = Join-Path $versionKey.JavaHome "bin\java.exe"
-        if ((Test-Path $javaExe) -and $version -match '^17([._].*)?$') {
+        if ((Test-Path $javaExe) -and (Test-Java17OrNewer $javaExe)) {
           return $javaExe
         }
       }
@@ -172,7 +220,7 @@ function Get-JavaFromCommonPaths {
 
   foreach ($pattern in $patterns) {
     $match = Get-ChildItem -Path $pattern -ErrorAction SilentlyContinue | Select-Object -First 1
-    if ($match) {
+    if ($match -and (Test-Java17OrNewer $match.FullName)) {
       return $match.FullName
     }
   }
@@ -180,9 +228,50 @@ function Get-JavaFromCommonPaths {
   return $null
 }
 
+function Expand-ZipArchive([string]$ZipPath, [string]$DestinationPath) {
+  if (Test-Path $DestinationPath) {
+    Remove-Item $DestinationPath -Recurse -Force
+  }
+  Expand-Archive -Path $ZipPath -DestinationPath $DestinationPath -Force
+}
+
+function Get-FirstDirectory([string]$RootPath) {
+  return Get-ChildItem -Path $RootPath -Directory -ErrorAction SilentlyContinue | Select-Object -First 1
+}
+
+function Install-BootstrapJava17 {
+  $javaZipPath = Join-Path $bootstrapRoot "jdk17.zip"
+  $javaExtractRoot = Join-Path $bootstrapRoot "jdk17"
+  $javaDownloadUrl = "https://api.adoptium.net/v3/binary/latest/17/ga/windows/x64/jdk/hotspot/normal/eclipse"
+
+  New-Item -ItemType Directory -Path $bootstrapRoot -Force | Out-Null
+
+  Write-Host "Baixando Java 17 portatil..."
+  Invoke-WebRequest -Uri $javaDownloadUrl -OutFile $javaZipPath
+  Expand-ZipArchive -ZipPath $javaZipPath -DestinationPath $javaExtractRoot
+
+  $javaHomeDir = Get-FirstDirectory $javaExtractRoot
+  if (-not $javaHomeDir) {
+    throw "Nao foi possivel extrair o Java 17 portatil."
+  }
+
+  $javaExe = Join-Path $javaHomeDir.FullName "bin\java.exe"
+  if (-not (Test-Path $javaExe) -or -not (Test-Java17OrNewer $javaExe)) {
+    throw "O Java 17 portatil foi baixado, mas nao foi localizado corretamente."
+  }
+
+  $script:BootstrapJavaHome = $javaHomeDir.FullName
+  return $javaExe
+}
+
 function Ensure-Java17 {
+  $javaFromJavaHome = Get-JavaFromJavaHome
+  if ($javaFromJavaHome) {
+    return $javaFromJavaHome
+  }
+
   $javaFromPath = Get-CommandPath "java.exe"
-  if ($javaFromPath) {
+  if ($javaFromPath -and (Test-Java17OrNewer $javaFromPath)) {
     return $javaFromPath
   }
 
@@ -197,58 +286,153 @@ function Ensure-Java17 {
   }
 
   $winget = Get-CommandPath "winget.exe"
-  if (-not $winget) {
-    throw "Java 17 nao encontrado. Instale o Java 17 manualmente, ou ative o winget, e execute install.bat novamente."
+  if ($winget) {
+    Write-Host "Instalando Java 17 via winget..."
+    & $winget install --id Microsoft.OpenJDK.17 --accept-package-agreements --accept-source-agreements --silent
+
+    Refresh-Path
+    $javaAfterInstall = Get-JavaFromJavaHome
+    if ($javaAfterInstall) {
+      return $javaAfterInstall
+    }
+
+    $javaAfterInstall = Get-CommandPath "java.exe"
+    if ($javaAfterInstall -and (Test-Java17OrNewer $javaAfterInstall)) {
+      return $javaAfterInstall
+    }
+
+    $javaAfterInstall = Get-JavaFromRegistry
+    if ($javaAfterInstall) {
+      return $javaAfterInstall
+    }
+
+    $javaAfterInstall = Get-JavaFromCommonPaths
+    if ($javaAfterInstall) {
+      return $javaAfterInstall
+    }
   }
 
-  Write-Host "Instalando Java 17 via winget..."
-  & $winget install --id Microsoft.OpenJDK.17 --accept-package-agreements --accept-source-agreements --silent
+  return Install-BootstrapJava17
+}
 
-  Refresh-Path
-  $javaAfterInstall = Get-CommandPath "java.exe"
-  if ($javaAfterInstall) {
-    return $javaAfterInstall
+function Get-MavenFromEnvironment {
+  foreach ($homeVar in @($env:MAVEN_HOME, $env:M2_HOME)) {
+    if (-not $homeVar) {
+      continue
+    }
+
+    $candidate = Join-Path $homeVar "bin\mvn.cmd"
+    if (Test-Path $candidate) {
+      return $candidate
+    }
   }
 
-  $javaAfterInstall = Get-JavaFromRegistry
-  if ($javaAfterInstall) {
-    return $javaAfterInstall
+  return $null
+}
+
+function Get-MavenFromCommonPaths {
+  $patterns = @(
+    "$env:ProgramFiles\Apache\maven\bin\mvn.cmd",
+    "$env:ProgramFiles\apache-maven-*\bin\mvn.cmd",
+    "${env:ProgramFiles(x86)}\apache-maven-*\bin\mvn.cmd"
+  )
+
+  foreach ($pattern in $patterns) {
+    $match = Get-ChildItem -Path $pattern -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($match) {
+      return $match.FullName
+    }
   }
 
-  $javaAfterInstall = Get-JavaFromCommonPaths
-  if ($javaAfterInstall) {
-    return $javaAfterInstall
+  return $null
+}
+
+function Install-BootstrapMaven {
+  $mavenVersion = "3.9.9"
+  $mavenZipPath = Join-Path $bootstrapRoot "maven.zip"
+  $mavenExtractRoot = Join-Path $bootstrapRoot "maven"
+  $mavenDownloadUrl = "https://archive.apache.org/dist/maven/maven-3/$mavenVersion/binaries/apache-maven-$mavenVersion-bin.zip"
+
+  New-Item -ItemType Directory -Path $bootstrapRoot -Force | Out-Null
+
+  Write-Host "Baixando Maven portatil..."
+  Invoke-WebRequest -Uri $mavenDownloadUrl -OutFile $mavenZipPath
+  Expand-ZipArchive -ZipPath $mavenZipPath -DestinationPath $mavenExtractRoot
+
+  $mavenHomeDir = Get-FirstDirectory $mavenExtractRoot
+  if (-not $mavenHomeDir) {
+    throw "Nao foi possivel extrair o Maven portatil."
   }
 
-  throw "Java 17 foi instalado, mas ainda nao foi localizado. Feche e abra o terminal e execute install.bat novamente."
+  $mavenCmd = Join-Path $mavenHomeDir.FullName "bin\mvn.cmd"
+  if (-not (Test-Path $mavenCmd)) {
+    throw "O Maven portatil foi baixado, mas nao foi localizado corretamente."
+  }
+
+  return $mavenCmd
 }
 
 function Ensure-WingetPackage([string]$CommandName, [string]$PackageId, [string]$FriendlyName) {
+  $commandFromEnvironment = Get-MavenFromEnvironment
+  if ($CommandName -eq "mvn.cmd" -and $commandFromEnvironment) {
+    return $commandFromEnvironment
+  }
+
   $commandPath = Get-CommandPath $CommandName
   if ($commandPath) {
     return $commandPath
   }
 
+  if ($CommandName -eq "mvn.cmd") {
+    $commandFromCommonPaths = Get-MavenFromCommonPaths
+    if ($commandFromCommonPaths) {
+      return $commandFromCommonPaths
+    }
+  }
+
   $winget = Get-CommandPath "winget.exe"
-  if (-not $winget) {
-    throw "$FriendlyName nao encontrado. Instale manualmente, ou ative o winget, e execute install.bat novamente."
+  if ($winget) {
+    Write-Host "Instalando $FriendlyName via winget..."
+    & $winget install --id $PackageId --accept-package-agreements --accept-source-agreements --silent
+
+    Refresh-Path
+
+    if ($CommandName -eq "mvn.cmd") {
+      $commandPath = Get-MavenFromEnvironment
+      if ($commandPath) {
+        return $commandPath
+      }
+
+      $commandPath = Get-CommandPath $CommandName
+      if ($commandPath) {
+        return $commandPath
+      }
+
+      $commandPath = Get-MavenFromCommonPaths
+      if ($commandPath) {
+        return $commandPath
+      }
+    } else {
+      $commandPath = Get-CommandPath $CommandName
+      if ($commandPath) {
+        return $commandPath
+      }
+    }
   }
 
-  Write-Host "Instalando $FriendlyName via winget..."
-  & $winget install --id $PackageId --accept-package-agreements --accept-source-agreements --silent
-
-  Refresh-Path
-  $commandPath = Get-CommandPath $CommandName
-  if (-not $commandPath) {
-    throw "$FriendlyName foi instalado, mas ainda nao esta disponivel no PATH. Feche e abra o terminal e execute install.bat novamente."
+  if ($CommandName -eq "mvn.cmd") {
+    return Install-BootstrapMaven
   }
 
-  return $commandPath
+  throw "$FriendlyName nao foi localizado."
 }
 
 Refresh-Path
 
 $javaCommand = Ensure-Java17
+$javaHome = Split-Path (Split-Path $javaCommand -Parent) -Parent
+$env:JAVA_HOME = $javaHome
+$env:Path = "$(Join-Path $javaHome 'bin');$env:Path"
 $mavenCommand = Ensure-WingetPackage "mvn.cmd" "Apache.Maven" "Maven"
 
 if (-not (Test-Path $extensionManifestSource)) {
@@ -273,6 +457,11 @@ if (Test-Path $installRoot) {
 
 New-Item -ItemType Directory -Path $serverRoot -Force | Out-Null
 New-Item -ItemType Directory -Path $extensionTarget -Force | Out-Null
+
+if ($script:BootstrapJavaHome) {
+  New-Item -ItemType Directory -Path $toolsRoot -Force | Out-Null
+  Copy-Item $script:BootstrapJavaHome (Join-Path $toolsRoot "jdk") -Recurse -Force
+}
 
 Copy-Item $jarPath (Join-Path $serverRoot "languagetool-server.jar")
 Copy-Item $configPath (Join-Path $serverRoot "corrija-me-pt-br-local.properties")
