@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { normalizeDictionaryWord } from "../core/text.js";
 import type { ReplacementEntry } from "../core/types.js";
@@ -7,6 +7,12 @@ interface CommonMistakeFileEntry {
   from: string;
   replacements: string[];
   description?: string;
+}
+
+interface DictionaryManifest {
+  wordFiles?: string[];
+  customWordsFile?: string;
+  commonMistakesFile?: string;
 }
 
 export interface DictionaryResources {
@@ -36,12 +42,24 @@ function loadWordList(pathname: string): string[] {
     .filter((word) => word && !word.startsWith("#"));
 }
 
+function loadDictionaryManifest(dictionaryDir: string): DictionaryManifest | null {
+  const manifestPath = join(dictionaryDir, "manifest.json");
+  if (!existsSync(manifestPath)) {
+    return null;
+  }
+
+  return JSON.parse(readFileSync(manifestPath, "utf8")) as DictionaryManifest;
+}
+
 export function loadDictionaryResources(dataDir: string): DictionaryResources {
   const replacements = loadReplacementEntries(join(dataDir, "replacements.json"));
   const dictionaryDir = join(dataDir, "dictionary");
-  const dictionaryFiles = readdirSync(dictionaryDir)
-    .filter((name) => /^words_\d+\.txt$/u.test(name))
-    .sort((left, right) => left.localeCompare(right, "pt-BR", { numeric: true }));
+  const manifest = loadDictionaryManifest(dictionaryDir);
+  const dictionaryFiles = manifest?.wordFiles?.length
+    ? [...manifest.wordFiles]
+    : readdirSync(dictionaryDir)
+      .filter((name) => /^words_\d+\.txt$/u.test(name))
+      .sort((left, right) => left.localeCompare(right, "pt-BR", { numeric: true }));
 
   const words = new Set<string>();
   for (const fileName of dictionaryFiles) {
@@ -50,11 +68,13 @@ export function loadDictionaryResources(dataDir: string): DictionaryResources {
     }
   }
 
-  for (const word of loadWordList(join(dictionaryDir, "custom_words.txt"))) {
+  const customWordsFile = manifest?.customWordsFile || "custom_words.txt";
+  for (const word of loadWordList(join(dictionaryDir, customWordsFile))) {
     words.add(word);
   }
 
-  const commonMistakes = loadCommonMistakeEntries(join(dictionaryDir, "common_mistakes.json"));
+  const commonMistakesFile = manifest?.commonMistakesFile || "common_mistakes.json";
+  const commonMistakes = loadCommonMistakeEntries(join(dictionaryDir, commonMistakesFile));
   const dictionaryReady = words.size >= 5_000;
 
   return {

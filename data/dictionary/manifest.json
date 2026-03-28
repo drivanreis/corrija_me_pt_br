@@ -1,0 +1,7 @@
+{
+  "wordFiles": [
+    "words_01.txt"
+  ],
+  "customWordsFile": "custom_words.txt",
+  "commonMistakesFile": "common_mistakes.json"
+}
