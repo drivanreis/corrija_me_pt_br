@@ -17,7 +17,7 @@
 
 body {
   margin: 0;
-  width: 360px;
+  width: 340px;
   font-family: "Noto Sans", "Segoe UI", sans-serif;
   background: radial-gradient(circle at top left, #fff7e8 0%, var(--bg) 58%, #efe8dc 100%);
   color: var(--text);
@@ -65,6 +65,13 @@ h2 {
   font-size: 13px;
 }
 
+.permission-headline {
+  margin: 0 0 10px;
+  line-height: 1.5;
+  font-size: 13px;
+  color: var(--text);
+}
+
 .panel,
 .tips {
   background: rgba(255, 253, 247, 0.88);
@@ -76,6 +83,32 @@ h2 {
 
 .panel {
   margin-bottom: 12px;
+}
+
+.live-tools {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  display: grid;
+  gap: 10px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: #eef6f3;
+  color: var(--accent-strong);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .field,
@@ -90,7 +123,7 @@ h2 {
   font-weight: 600;
 }
 
-.field input[type="url"] {
+.field input {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -111,8 +144,13 @@ h2 {
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 14px;
+}
+
+.actions.compact {
+  margin-top: 0;
 }
 
 button {
@@ -123,6 +161,11 @@ button {
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
+}
+
+button[disabled] {
+  opacity: 0.55;
+  cursor: default;
 }
 
 .primary {
@@ -146,4 +189,52 @@ button {
 
 .status.error {
   color: var(--danger);
+}
+
+.live-status {
+  min-height: 0;
+  margin-top: 0;
+}
+
+.live-results {
+  display: grid;
+  gap: 8px;
+}
+
+.live-card {
+  padding: 10px 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.live-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.live-card-excerpt {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.live-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.live-chip {
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
 }

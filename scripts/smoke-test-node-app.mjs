@@ -1,7 +1,29 @@
 import { spawn } from "node:child_process";
+import { createServer } from "node:net";
 import { setTimeout as delay } from "node:timers/promises";
 
-const port = "18081";
+async function findFreePort(startPort = 18081) {
+  let port = startPort;
+
+  while (true) {
+    const available = await new Promise((resolve) => {
+      const tester = createServer();
+      tester.once("error", () => resolve(false));
+      tester.once("listening", () => {
+        tester.close(() => resolve(true));
+      });
+      tester.listen(port, "127.0.0.1");
+    });
+
+    if (available) {
+      return String(port);
+    }
+
+    port += 1;
+  }
+}
+
+const port = await findFreePort();
 
 const server = spawn("node", ["build/node-app/backend/server.cjs"], {
   env: {

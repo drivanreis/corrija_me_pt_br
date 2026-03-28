@@ -35,7 +35,8 @@ async function buildExtension() {
   await esbuild.build({
     entryPoints: {
       content: path.join(rootDir, "src/extension/content.ts"),
-      popup: path.join(rootDir, "src/extension/popup.ts")
+      popup: path.join(rootDir, "src/extension/popup.ts"),
+      background: path.join(rootDir, "src/extension/background.ts")
     },
     bundle: true,
     platform: "browser",
@@ -50,12 +51,18 @@ async function buildExtension() {
     name: "corrija_me_pt_br",
     description: "Corretor gramatical em portugues do Brasil conectado ao backend local do corriga_me_pt_br.",
     version: "2.0.0",
-    permissions: ["storage"],
+    permissions: ["storage", "tabs", "scripting", "activeTab"],
     host_permissions: [
-      "<all_urls>",
       "http://127.0.0.1/*",
       "http://localhost/*"
     ],
+    optional_host_permissions: [
+      "http://*/*",
+      "https://*/*"
+    ],
+    background: {
+      service_worker: "background.js"
+    },
     action: {
       default_title: "corrija_me_pt_br",
       default_icon: {
@@ -72,12 +79,10 @@ async function buildExtension() {
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    content_scripts: [
+    web_accessible_resources: [
       {
-        matches: ["http://*/*", "https://*/*"],
-        js: ["content.js"],
-        css: ["content.css"],
-        run_at: "document_idle"
+        resources: ["server-config.json"],
+        matches: ["<all_urls>"]
       }
     ]
   };

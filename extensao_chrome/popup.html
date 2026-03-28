@@ -10,15 +10,54 @@
     <main class="app">
       <header class="hero">
         <p class="eyebrow">corrija_me_pt_br</p>
-        <h1>Servidor local da extensao</h1>
-        <p class="subtitle">Esta extensao trabalha apenas com portugues do Brasil e usa o seu servidor local.</p>
+        <h1>Correcoes do site atual</h1>
+        <p class="subtitle">Leve, local e em pt-BR. O controle tecnico continua aqui quando voce precisar.</p>
       </header>
 
       <section class="panel">
         <div class="field">
+          <span>Site atual</span>
+          <input id="currentSite" type="text" value="Detectando..." readonly>
+        </div>
+
+        <div class="field">
+          <span>Acesso ao site</span>
+          <input id="sitePermission" type="text" value="Verificando..." readonly>
+        </div>
+
+        <div class="field">
+          <span>Acesso global</span>
+          <input id="globalPermission" type="text" value="Verificando..." readonly>
+        </div>
+
+        <p id="permissionHeadline" class="permission-headline">
+          Para a extensao <strong>corrija_me_pt_br</strong> ajudar voce, e necessario liberar o acesso.
+        </p>
+
+        <p id="permissionHelp" class="status">
+          Voce pode liberar uma vez para todos os sites, ou apenas para este site.
+        </p>
+
+        <div class="field">
           <span>Servidor local detectado</span>
           <input id="serverUrl" type="text" value="http://localhost:18081" readonly>
         </div>
+
+        <section class="live-tools">
+          <div class="section-head">
+            <h2>Correcao atual</h2>
+            <span id="liveBadge" class="badge">Aguardando foco</span>
+          </div>
+
+          <div class="actions compact">
+            <button id="analyzeNowButton" class="primary" type="button">Analisar agora</button>
+            <button id="applyAllButton" class="secondary" type="button">Aplicar tudo</button>
+            <button id="refreshStateButton" class="secondary" type="button">Atualizar</button>
+          </div>
+
+          <p id="liveStatus" class="status live-status">Foque em um campo de texto para ver as correcoes.</p>
+          <div id="liveResults" class="live-results"></div>
+        </section>
 
         <label class="toggle">
           <input id="autoCheck" type="checkbox">
@@ -26,6 +65,10 @@
         </label>
 
         <div class="actions">
+          <button id="grantAllAccessButton" class="primary" type="button">Liberar em todos os sites</button>
+          <button id="grantAccessButton" class="secondary" type="button">Liberar neste site</button>
+          <button id="retryAccessButton" class="secondary" type="button">Solicitar acesso novamente</button>
+          <button id="activateButton" class="secondary" type="button">Ativar agora</button>
           <button id="saveButton" class="primary" type="button">Salvar</button>
           <button id="testButton" class="secondary" type="button">Testar conexao</button>
         </div>
@@ -35,8 +78,8 @@
 
       <section class="tips">
         <h2>Como usar</h2>
-        <p>Foque em um campo de texto. O botao "Corrigir" aparece ao lado do campo.</p>
-        <p>Atalho: <strong>Alt + Shift + C</strong>.</p>
+        <p>Foque em um campo de texto e aguarde os sublinhados aparecerem.</p>
+        <p>Clique na palavra marcada para abrir as sugestoes de correcao.</p>
       </section>
     </main>
 

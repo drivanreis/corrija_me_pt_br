@@ -1,8 +1,26 @@
 import { getServerUrl, getSettings } from "./server-config.js";
 
+window.__corrijaMePtBrLoaded__ = true;
+
 const MIN_TEXT_LENGTH = 3;
 const CHECK_DEBOUNCE_MS = 1100;
 const TEXT_INPUT_TYPES = new Set(["text", "search", "email", "url", "tel"]);
+const HIGHLIGHT_NAME = "corrija-me-pt-br-issue";
+const supportsCustomHighlights = typeof CSS !== "undefined" && "highlights" in CSS;
+const DOCS_HINT_DISMISSED_KEY = "googleDocsHintDismissed";
+const isGoogleDocsHost = location.hostname === "docs.google.com";
+const isTopWindow = window.top === window;
+const useGoogleDocsFrameBridge = isGoogleDocsHost && !isTopWindow;
+const isGoogleDocsTopWindow = isGoogleDocsHost && isTopWindow;
+const GOOGLE_DOCS_BRIDGE_NAMESPACE = "corrija-me-pt-br-google-docs";
+const docsBridgeFrameId = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+const GOOGLE_DOCS_EDITOR_SELECTORS = [
+  'div[role="textbox"][aria-multiline="true"]',
+  'div[role="textbox"]',
+  'textarea[aria-label]',
+  'textarea',
+  '[contenteditable="true"]'
+];
 
 type CheckReplacement = { value: string };
 type CheckMatch = {
@@ -12,41 +30,29 @@ type CheckMatch = {
   replacements: CheckReplacement[];
 };
 
+type PopupResultItem = {
+  message: string;
+  excerpt: string;
+  replacements: string[];
+};
+
 let activeElement: HTMLElement | HTMLInputElement | HTMLTextAreaElement | null = null;
 let activeRequestId = 0;
 let debounceTimer: number | null = null;
 let latestMatches: CheckMatch[] = [];
 let latestText = "";
+let activeMenuMatchIndex = -1;
+let bridgeSourceWindow: Window | null = null;
+let bridgeFrameId: string | null = null;
+let bridgeModeActive = false;
+let latestStatusMessage = "Foque em um campo de texto para ver as correcoes.";
+let latestStatusTone = "";
 
-const fab = document.createElement("button");
-fab.type = "button";
-fab.className = "corrija-me-pt-br-fab corrija-me-pt-br-hidden";
-fab.textContent = "Corrigir";
-document.documentElement.appendChild(fab);
+const suggestionMenu = document.createElement("section");
+suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
+document.documentElement.appendChild(suggestionMenu);
 
-const panel = document.createElement("section");
-panel.className = "corrija-me-pt-br-panel corrija-me-pt-br-hidden";
-panel.innerHTML = `
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px 12px;background:linear-gradient(135deg,#fff7e3 0%,#ecfeff 100%);border-bottom:1px solid rgba(15,23,42,.08);">
-    <div>
-      <div style="font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0f766e;">corrija_me_pt_br</div>
-      <div style="font-size:18px;font-weight:800;line-height:1.2;margin-top:4px;">Correcoes do campo atual</div>
-    </div>
-    <button type="button" data-close style="border:0;background:transparent;font-size:22px;line-height:1;cursor:pointer;color:#475569;">×</button>
-  </div>
-  <div style="padding:14px 18px 8px;display:grid;gap:10px;">
-    <div id="cmpb-status" style="font-size:13px;line-height:1.45;color:#475569;">Foque em um campo de texto e clique em Corrigir.</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;">
-      <button type="button" data-refresh style="border:0;border-radius:999px;background:#0f766e;color:#fff;padding:10px 14px;font-weight:700;cursor:pointer;">Analisar agora</button>
-      <button type="button" data-apply-all style="border:0;border-radius:999px;background:#d9f3ef;color:#115e59;padding:10px 14px;font-weight:700;cursor:pointer;">Aplicar tudo</button>
-    </div>
-  </div>
-  <div id="cmpb-results" style="padding:0 18px 18px;overflow:auto;max-height:calc(70vh - 140px);display:grid;gap:12px;"></div>
-`;
-document.documentElement.appendChild(panel);
-
-const statusNode = panel.querySelector("#cmpb-status") as HTMLDivElement;
-const resultsNode = panel.querySelector("#cmpb-results") as HTMLDivElement;
+let googleDocsHint: HTMLElement | null = null;
 
 function isSupportedElement(element: Element | null): element is HTMLElement | HTMLInputElement | HTMLTextAreaElement {
   if (!element) {
@@ -58,7 +64,35 @@ function isSupportedElement(element: Element | null): element is HTMLElement | H
   if (element instanceof HTMLInputElement) {
     return !element.disabled && !element.readOnly && TEXT_INPUT_TYPES.has((element.type || "text").toLowerCase());
   }
-  return element instanceof HTMLElement && element.isContentEditable;
+  if (!(element instanceof HTMLElement)) {
+    return false;
+  }
+  return element.isContentEditable || element.getAttribute("role") === "textbox";
+}
+
+function isVisibleElement(element: Element | null): element is HTMLElement {
+  return element instanceof HTMLElement && element.getBoundingClientRect().width > 0 && element.getBoundingClientRect().height > 0;
+}
+
+function findGoogleDocsEditor(): HTMLElement | HTMLTextAreaElement | null {
+  for (const selector of GOOGLE_DOCS_EDITOR_SELECTORS) {
+    const candidates = Array.from(document.querySelectorAll(selector));
+    for (const candidate of candidates) {
+      if (isSupportedElement(candidate) && (isVisibleElement(candidate) || candidate instanceof HTMLTextAreaElement)) {
+        return candidate;
+      }
+    }
+  }
+
+  return null;
+}
+
+function activateElement(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement): void {
+  activeElement = element;
+  activeElement.setAttribute("spellcheck", "false");
+  if (useGoogleDocsFrameBridge) {
+    postGoogleDocsBridgeMessage({ type: "activate" });
+  }
 }
 
 function getText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement | null): string {
@@ -68,7 +102,7 @@ function getText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement |
   if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
     return element.value || "";
   }
-  return (element.innerText || "").replace(/\r\n/g, "\n");
+  return (element.textContent || "").replace(/\u00a0/g, " ");
 }
 
 function setText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement, text: string): void {
@@ -83,7 +117,7 @@ function setText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement, 
     return;
   }
   element.focus();
-  element.innerText = text;
+  element.textContent = text;
   element.dispatchEvent(new Event("input", { bubbles: true }));
   element.dispatchEvent(new Event("change", { bubbles: true }));
 }
@@ -92,37 +126,63 @@ function replaceTextRange(text: string, offset: number, length: number, replacem
   return text.slice(0, offset) + replacement + text.slice(offset + length);
 }
 
-function positionFab(): void {
-  if (!activeElement || fab.classList.contains("corrija-me-pt-br-hidden")) {
-    return;
-  }
-  const rect = activeElement.getBoundingClientRect();
-  const top = Math.max(12, rect.bottom - 46);
-  const left = Math.max(12, Math.min(window.innerWidth - fab.offsetWidth - 12, rect.right - fab.offsetWidth));
-  fab.style.top = `${top}px`;
-  fab.style.left = `${left}px`;
-}
-
-function showFab(): void {
-  fab.classList.remove("corrija-me-pt-br-hidden");
-  positionFab();
-}
-
-function hideFab(): void {
-  fab.classList.add("corrija-me-pt-br-hidden");
-}
-
 function showPanel(): void {
-  panel.classList.remove("corrija-me-pt-br-hidden");
+  return;
 }
 
 function hidePanel(): void {
-  panel.classList.add("corrija-me-pt-br-hidden");
+  return;
+}
+
+function hideSuggestionMenu(): void {
+  activeMenuMatchIndex = -1;
+  suggestionMenu.classList.add("corrija-me-pt-br-hidden");
+  suggestionMenu.innerHTML = "";
+}
+
+async function shouldShowGoogleDocsHint(): Promise<boolean> {
+  if (!isGoogleDocsHost || window.top !== window) {
+    return false;
+  }
+
+  const stored = await chrome.storage.local.get({ [DOCS_HINT_DISMISSED_KEY]: false });
+  return stored[DOCS_HINT_DISMISSED_KEY] !== true;
+}
+
+async function dismissGoogleDocsHint(): Promise<void> {
+  await chrome.storage.local.set({ [DOCS_HINT_DISMISSED_KEY]: true });
+  googleDocsHint?.remove();
+  googleDocsHint = null;
+}
+
+async function maybeShowGoogleDocsHint(): Promise<void> {
+  if (!(await shouldShowGoogleDocsHint()) || googleDocsHint) {
+    return;
+  }
+
+  googleDocsHint = document.createElement("section");
+  googleDocsHint.className = "corrija-me-pt-br-docs-hint";
+  googleDocsHint.innerHTML = `
+    <div class="corrija-me-pt-br-docs-hint-title">Modo Google Docs</div>
+    <div class="corrija-me-pt-br-docs-hint-text">
+      Para uma integracao melhor no Google Docs, ative em Ferramentas > Acessibilidade a opcao de suporte a leitor de tela.
+    </div>
+    <div class="corrija-me-pt-br-docs-hint-text">
+      Depois disso, recarregue a pagina para o Corrija-me PT-BR ler melhor o texto do editor.
+    </div>
+    <div class="corrija-me-pt-br-docs-hint-actions">
+      <button type="button" class="corrija-me-pt-br-docs-hint-button" data-dismiss>Entendi</button>
+    </div>
+  `;
+  googleDocsHint.querySelector("[data-dismiss]")?.addEventListener("click", () => {
+    void dismissGoogleDocsHint();
+  });
+  document.documentElement.appendChild(googleDocsHint);
 }
 
 function setStatus(message: string, tone = ""): void {
-  statusNode.textContent = message;
-  statusNode.style.color = tone === "error" ? "#b42318" : tone === "ok" ? "#115e59" : "#475569";
+  latestStatusMessage = message;
+  latestStatusTone = tone;
 }
 
 function getExcerpt(match: CheckMatch): string {
@@ -131,54 +191,221 @@ function getExcerpt(match: CheckMatch): string {
   return latestText.slice(start, end).replace(/\s+/g, " ").trim();
 }
 
-function renderResults(matches: CheckMatch[]): void {
-  latestMatches = matches;
-  resultsNode.innerHTML = "";
+function getPopupResults(): PopupResultItem[] {
+  return latestMatches.slice(0, 8).map((match) => ({
+    message: match.message || "Possivel ajuste encontrado.",
+    excerpt: getExcerpt(match),
+    replacements: Array.isArray(match.replacements) ? match.replacements.slice(0, 4).map((item) => item.value) : []
+  }));
+}
 
-  if (!matches.length) {
-    const empty = document.createElement("div");
-    empty.style.cssText = "padding:14px;border:1px dashed rgba(15,23,42,.16);border-radius:16px;background:#fffcf6;font-size:13px;color:#115e59;";
-    empty.textContent = "Nenhum problema encontrado nesse texto.";
-    resultsNode.appendChild(empty);
+function getPopupState() {
+  return {
+    status: latestStatusMessage,
+    tone: latestStatusTone,
+    results: getPopupResults(),
+    totalMatches: latestMatches.length,
+    hasActiveElement: Boolean(activeElement),
+    activeElementType: activeElement instanceof HTMLTextAreaElement
+      ? "textarea"
+      : activeElement instanceof HTMLInputElement
+        ? "input"
+        : activeElement instanceof HTMLElement && (activeElement.isContentEditable || activeElement.getAttribute("role") === "textbox")
+          ? "editable"
+          : "none"
+  };
+}
+
+function clearHighlights(): void {
+  if (!supportsCustomHighlights) {
+    return;
+  }
+  CSS.highlights.delete(HIGHLIGHT_NAME);
+}
+
+function isContentEditableLike(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement): element is HTMLElement {
+  return element instanceof HTMLElement && (element.isContentEditable || element.getAttribute("role") === "textbox");
+}
+
+function getEditableTextNodes(root: HTMLElement): Text[] {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      return node.textContent ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+
+  const nodes: Text[] = [];
+  let current = walker.nextNode();
+  while (current) {
+    if (current instanceof Text) {
+      nodes.push(current);
+    }
+    current = walker.nextNode();
+  }
+  return nodes;
+}
+
+function createRangeFromOffsets(root: HTMLElement, offset: number, length: number): Range | null {
+  const textNodes = getEditableTextNodes(root);
+  if (!textNodes.length) {
+    return null;
+  }
+
+  let startNode: Text | null = null;
+  let endNode: Text | null = null;
+  let startOffset = 0;
+  let endOffset = 0;
+  let consumed = 0;
+  const endIndex = offset + Math.max(length, 0);
+
+  for (const textNode of textNodes) {
+    const valueLength = textNode.textContent?.length ?? 0;
+    const nextConsumed = consumed + valueLength;
+
+    if (!startNode && offset <= nextConsumed) {
+      startNode = textNode;
+      startOffset = Math.max(0, offset - consumed);
+    }
+
+    if (!endNode && endIndex <= nextConsumed) {
+      endNode = textNode;
+      endOffset = Math.max(0, endIndex - consumed);
+      break;
+    }
+
+    consumed = nextConsumed;
+  }
+
+  if (!startNode || !endNode) {
+    return null;
+  }
+
+  const range = document.createRange();
+  range.setStart(startNode, Math.min(startOffset, startNode.textContent?.length ?? 0));
+  range.setEnd(endNode, Math.min(endOffset, endNode.textContent?.length ?? 0));
+  return range;
+}
+
+function renderHighlightsForActiveElement(matches: CheckMatch[]): void {
+  clearHighlights();
+
+  if (!supportsCustomHighlights || !activeElement || !isContentEditableLike(activeElement)) {
     return;
   }
 
-  matches.forEach((match, index) => {
-    const card = document.createElement("article");
-    card.style.cssText = "padding:14px;border:1px solid rgba(15,23,42,.1);border-radius:16px;background:#fff;display:grid;gap:10px;";
+  const ranges = matches
+    .map((match) => createRangeFromOffsets(activeElement, match.offset, match.length))
+    .filter((range): range is Range => range !== null);
 
-    const title = document.createElement("div");
-    title.style.cssText = "font-size:13px;font-weight:700;line-height:1.45;";
-    title.textContent = match.message || "Possivel ajuste encontrado.";
-    card.appendChild(title);
+  if (!ranges.length) {
+    return;
+  }
 
-    const excerpt = document.createElement("div");
-    excerpt.style.cssText = "font-size:12px;line-height:1.5;color:#475569;background:#fffaf0;border-radius:12px;padding:10px;";
-    excerpt.textContent = getExcerpt(match);
-    card.appendChild(excerpt);
+  const highlight = new Highlight(...ranges);
+  CSS.highlights.set(HIGHLIGHT_NAME, highlight);
+}
 
-    const suggestions = Array.isArray(match.replacements) ? match.replacements.slice(0, 4) : [];
-    if (!suggestions.length) {
-      const note = document.createElement("div");
-      note.style.cssText = "font-size:12px;color:#64748b;";
-      note.textContent = "Sem substituicao automatica para este item.";
-      card.appendChild(note);
-    } else {
-      const row = document.createElement("div");
-      row.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;";
-      suggestions.forEach((replacement) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.style.cssText = "border:0;border-radius:999px;background:#d9f3ef;color:#115e59;padding:8px 12px;font-size:12px;font-weight:700;cursor:pointer;";
-        button.textContent = replacement.value;
-        button.addEventListener("click", () => applySingleCorrection(index, replacement.value));
-        row.appendChild(button);
+function getLinearOffset(root: HTMLElement, node: Node, offset: number): number | null {
+  if (!root.contains(node)) {
+    return null;
+  }
+
+  const range = document.createRange();
+  range.selectNodeContents(root);
+  try {
+    range.setEnd(node, offset);
+  } catch {
+    return null;
+  }
+  return range.toString().length;
+}
+
+function getMatchIndexAtOffset(offset: number): number {
+  return latestMatches.findIndex((match) => offset >= match.offset && offset <= match.offset + match.length);
+}
+
+function openSuggestionMenu(index: number, x: number, y: number): void {
+  const match = latestMatches[index];
+  if (!match) {
+    hideSuggestionMenu();
+    return;
+  }
+
+  activeMenuMatchIndex = index;
+  suggestionMenu.innerHTML = "";
+
+  const title = document.createElement("div");
+  title.className = "corrija-me-pt-br-menu-title";
+  title.textContent = match.message || "Sugestoes";
+  suggestionMenu.appendChild(title);
+
+  const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 5) : [];
+  if (!replacements.length) {
+    const empty = document.createElement("div");
+    empty.className = "corrija-me-pt-br-menu-empty";
+    empty.textContent = "Sem sugestao automatica.";
+    suggestionMenu.appendChild(empty);
+  } else {
+    for (const replacement of replacements) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "corrija-me-pt-br-menu-item";
+      button.textContent = replacement.value;
+      button.addEventListener("click", () => {
+        applySingleCorrection(index, replacement.value);
+        hideSuggestionMenu();
       });
-      card.appendChild(row);
+      suggestionMenu.appendChild(button);
     }
+  }
 
-    resultsNode.appendChild(card);
+  suggestionMenu.style.left = `${Math.min(window.innerWidth - 240, Math.max(12, x))}px`;
+  suggestionMenu.style.top = `${Math.min(window.innerHeight - 220, Math.max(12, y + 12))}px`;
+  suggestionMenu.classList.remove("corrija-me-pt-br-hidden");
+}
+
+function postGoogleDocsBridgeMessage(payload: Record<string, unknown>): void {
+  if (!useGoogleDocsFrameBridge) {
+    return;
+  }
+
+  window.top?.postMessage({
+    namespace: GOOGLE_DOCS_BRIDGE_NAMESPACE,
+    frameId: docsBridgeFrameId,
+    ...payload
+  }, "*");
+}
+
+function syncGoogleDocsBridgeState(statusMessage: string): void {
+  if (!useGoogleDocsFrameBridge) {
+    return;
+  }
+
+  postGoogleDocsBridgeMessage({
+    type: "state",
+    text: latestText,
+    matches: latestMatches,
+    status: statusMessage,
+    tone: latestStatusTone
   });
+}
+
+function applyReplacementToContentEditable(element: HTMLElement, match: CheckMatch, replacement: string): boolean {
+  const range = createRangeFromOffsets(element, match.offset, match.length);
+  if (!range) {
+    return false;
+  }
+
+  range.deleteContents();
+  range.insertNode(document.createTextNode(replacement));
+  element.dispatchEvent(new Event("input", { bubbles: true }));
+  element.dispatchEvent(new Event("change", { bubbles: true }));
+  return true;
+}
+
+function renderResults(matches: CheckMatch[]): void {
+  latestMatches = matches;
+  renderHighlightsForActiveElement(matches);
 }
 
 async function analyzeActiveElement(manual = false): Promise<void> {
@@ -188,12 +415,14 @@ async function analyzeActiveElement(manual = false): Promise<void> {
 
   const text = getText(activeElement);
   latestText = text;
-  showPanel();
+  hideSuggestionMenu();
 
   if (text.trim().length < MIN_TEXT_LENGTH) {
     latestMatches = [];
+    clearHighlights();
     setStatus("Digite um pouco mais para analisar esse campo.");
     renderResults([]);
+    syncGoogleDocsBridgeState("Digite um pouco mais para analisar esse campo.");
     return;
   }
 
@@ -202,6 +431,7 @@ async function analyzeActiveElement(manual = false): Promise<void> {
   if (!manual && !settings.autoCheck) {
     setStatus("Analise automatica desativada. Use 'Analisar agora'.");
     renderResults([]);
+    syncGoogleDocsBridgeState("Analise automatica desativada. Use 'Analisar agora'.");
     return;
   }
 
@@ -233,11 +463,15 @@ async function analyzeActiveElement(manual = false): Promise<void> {
 
     const matches = Array.isArray(data.matches) ? data.matches : [];
     renderResults(matches);
-    setStatus(matches.length ? `${matches.length} sugestao(oes) encontrada(s).` : "Nenhum problema encontrado.", "ok");
+    const statusMessage = matches.length ? `${matches.length} sugestao(oes) encontrada(s).` : "Nenhum problema encontrado.";
+    setStatus(statusMessage, "ok");
+    syncGoogleDocsBridgeState(statusMessage);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Erro desconhecido";
     setStatus(`Falha ao consultar o backend local: ${message}`, "error");
+    clearHighlights();
     renderResults([]);
+    syncGoogleDocsBridgeState(`Falha ao consultar o backend local: ${message}`);
   }
 }
 
@@ -246,14 +480,36 @@ function applySingleCorrection(index: number, replacement: string): void {
     return;
   }
   const match = latestMatches[index];
-  const updatedText = replaceTextRange(getText(activeElement), match.offset, match.length, replacement);
-  setText(activeElement, updatedText);
-  latestText = updatedText;
+  if (activeElement instanceof HTMLElement && (activeElement.isContentEditable || activeElement.getAttribute("role") === "textbox")) {
+    const applied = applyReplacementToContentEditable(activeElement, match, replacement);
+    if (!applied) {
+      return;
+    }
+    latestText = getText(activeElement);
+  } else {
+    const updatedText = replaceTextRange(getText(activeElement), match.offset, match.length, replacement);
+    setText(activeElement, updatedText);
+    latestText = updatedText;
+  }
   void analyzeActiveElement(true);
 }
 
 function applyAllCorrections(): void {
   if (!activeElement || !latestMatches.length) {
+    return;
+  }
+
+  if (activeElement instanceof HTMLElement && (activeElement.isContentEditable || activeElement.getAttribute("role") === "textbox")) {
+    const sortedMatches = [...latestMatches]
+      .filter((match) => match.replacements?.length)
+      .sort((left, right) => right.offset - left.offset);
+
+    for (const match of sortedMatches) {
+      applyReplacementToContentEditable(activeElement, match, match.replacements[0].value);
+    }
+
+    latestText = getText(activeElement);
+    void analyzeActiveElement(true);
     return;
   }
 
@@ -286,33 +542,161 @@ document.addEventListener("focusin", (event) => {
   if (!isSupportedElement(target instanceof Element ? target : null)) {
     return;
   }
-  activeElement = target;
-  showFab();
+  activateElement(target);
   scheduleAnalysis();
 });
 
 document.addEventListener("input", (event) => {
   if (event.target === activeElement) {
     scheduleAnalysis();
-    positionFab();
   }
 }, true);
 
-window.addEventListener("scroll", positionFab, true);
-window.addEventListener("resize", positionFab);
+document.addEventListener("selectionchange", () => {
+  if (!isGoogleDocsHost) {
+    return;
+  }
 
-fab.addEventListener("click", () => {
-  showPanel();
-  void analyzeActiveElement(true);
+  const editor = findGoogleDocsEditor();
+  if (editor && editor !== activeElement) {
+    activateElement(editor);
+  }
 });
 
-panel.querySelector("[data-close]")?.addEventListener("click", hidePanel);
-panel.querySelector("[data-refresh]")?.addEventListener("click", () => void analyzeActiveElement(true));
-panel.querySelector("[data-apply-all]")?.addEventListener("click", applyAllCorrections);
+if (isGoogleDocsHost) {
+  const observer = new MutationObserver(() => {
+    const editor = findGoogleDocsEditor();
+    if (editor && editor !== activeElement) {
+      activateElement(editor);
+    }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+}
 
 document.addEventListener("keydown", (event) => {
   if (event.altKey && event.shiftKey && event.key.toLowerCase() === "c") {
-    showPanel();
     void analyzeActiveElement(true);
   }
 });
+
+document.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target instanceof Node && suggestionMenu.contains(target)) {
+    return;
+  }
+
+  if (!(activeElement instanceof HTMLElement) || (!activeElement.isContentEditable && activeElement.getAttribute("role") !== "textbox")) {
+    hideSuggestionMenu();
+    return;
+  }
+
+  if (!(target instanceof Node) || !activeElement.contains(target)) {
+    hideSuggestionMenu();
+    return;
+  }
+
+  const mouseEvent = event as MouseEvent;
+  const caretRangeFromPoint = document.caretRangeFromPoint?.bind(document);
+  const caretPositionFromPoint = document.caretPositionFromPoint?.bind(document);
+
+  let offset: number | null = null;
+  if (caretRangeFromPoint) {
+    const range = caretRangeFromPoint(mouseEvent.clientX, mouseEvent.clientY);
+    if (range) {
+      offset = getLinearOffset(activeElement, range.startContainer, range.startOffset);
+    }
+  } else if (caretPositionFromPoint) {
+    const position = caretPositionFromPoint(mouseEvent.clientX, mouseEvent.clientY);
+    if (position) {
+      offset = getLinearOffset(activeElement, position.offsetNode, position.offset);
+    }
+  }
+
+  if (offset === null) {
+    hideSuggestionMenu();
+    return;
+  }
+
+  const matchIndex = getMatchIndexAtOffset(offset);
+  if (matchIndex === -1) {
+    hideSuggestionMenu();
+    return;
+  }
+
+  openSuggestionMenu(matchIndex, mouseEvent.clientX, mouseEvent.clientY);
+}, true);
+
+window.addEventListener("message", (event) => {
+  const payload = event.data;
+  if (!payload || payload.namespace !== GOOGLE_DOCS_BRIDGE_NAMESPACE) {
+    return;
+  }
+
+  if (isGoogleDocsTopWindow && payload.type === "activate") {
+    bridgeSourceWindow = event.source instanceof Window ? event.source : null;
+    bridgeFrameId = typeof payload.frameId === "string" ? payload.frameId : null;
+    bridgeModeActive = true;
+    return;
+  }
+
+  if (isGoogleDocsTopWindow && payload.type === "state") {
+    bridgeSourceWindow = event.source instanceof Window ? event.source : null;
+    bridgeFrameId = typeof payload.frameId === "string" ? payload.frameId : null;
+    bridgeModeActive = true;
+    latestText = typeof payload.text === "string" ? payload.text : "";
+    latestMatches = Array.isArray(payload.matches) ? payload.matches as CheckMatch[] : [];
+    renderResults(latestMatches);
+    setStatus(typeof payload.status === "string" ? payload.status : "Google Docs conectado.", typeof payload.tone === "string" ? payload.tone : latestMatches.length ? "ok" : "");
+    return;
+  }
+
+  if (!useGoogleDocsFrameBridge || payload.frameId !== docsBridgeFrameId) {
+    return;
+  }
+
+  if (payload.type === "analyze-now") {
+    void analyzeActiveElement(true);
+    return;
+  }
+
+  if (payload.type === "apply-all") {
+    applyAllCorrections();
+    return;
+  }
+
+  if (payload.type === "apply-single" && typeof payload.index === "number" && typeof payload.replacement === "string") {
+    applySingleCorrection(payload.index, payload.replacement);
+  }
+});
+
+chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (!message || typeof message !== "object") {
+    return;
+  }
+
+  if (message.type === "corrija-me-pt-br:get-state") {
+    sendResponse({ ok: true, state: getPopupState() });
+    return;
+  }
+
+  if (message.type === "corrija-me-pt-br:analyze-now") {
+    void analyzeActiveElement(true).then(() => {
+      sendResponse({ ok: true, state: getPopupState() });
+    });
+    return true;
+  }
+
+  if (message.type === "corrija-me-pt-br:apply-all") {
+    applyAllCorrections();
+    window.setTimeout(() => sendResponse({ ok: true, state: getPopupState() }), 100);
+    return true;
+  }
+
+  if (message.type === "corrija-me-pt-br:apply-single" && typeof message.index === "number" && typeof message.replacement === "string") {
+    applySingleCorrection(message.index, message.replacement);
+    window.setTimeout(() => sendResponse({ ok: true, state: getPopupState() }), 100);
+    return true;
+  }
+});
+
+void maybeShowGoogleDocsHint();

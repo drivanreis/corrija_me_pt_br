@@ -75,9 +75,10 @@ Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em `chrome
 
 ## Como usar
 
-- clique no botao `Corrigir` ao lado de um campo de texto
-- ou use o atalho `Alt + Shift + C`
-- a verificacao acontece no backend local configurado pelo instalador
+- foque em um campo de texto
+- aguarde os sublinhados aparecerem nas palavras com ajuste sugerido
+- clique na palavra marcada para abrir as sugestoes
+- se quiser ver o resumo tecnico da analise, abra o popup da extensao
 
 ## O que vem no pacote
 
