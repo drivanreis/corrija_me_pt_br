@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>corrija_me_pt_br - Pagina de teste</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f1e8;
+        --panel: #fffdf8;
+        --border: #d9c9b0;
+        --text: #2e2a23;
+        --muted: #756958;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Noto Sans", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top, #fff8ef 0, #f6f1e8 45%, #efe7da 100%);
+        color: var(--text);
+      }
+
+      main {
+        width: min(960px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.1;
+      }
+
+      p.lead {
+        margin: 0 0 24px;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .hint {
+        margin-bottom: 24px;
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .card {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: var(--panel);
+        box-shadow: 0 10px 30px rgba(73, 52, 24, 0.08);
+      }
+
+      .card h2 {
+        margin: 0 0 8px;
+        font-size: 1.15rem;
+      }
+
+      .card p {
+        margin: 0 0 14px;
+        color: var(--muted);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      input,
+      textarea,
+      .editable {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #c8baa4;
+        border-radius: 14px;
+        background: #fff;
+        color: var(--text);
+        font: inherit;
+        line-height: 1.5;
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .editable {
+        min-height: 150px;
+        outline: none;
+        white-space: pre-wrap;
+      }
+
+      .two-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Pagina de teste da extensao</h1>
+      <p class="lead">
+        Use esta pagina para validar o comportamento do <strong>corrija_me_pt_br</strong>
+        antes de testar em Google Docs, WhatsApp Web e outros sites.
+      </p>
+
+      <div class="hint">
+        Abra esta pagina no navegador, foque em um campo de texto e digite ou edite os
+        exemplos abaixo. As frases ja contem alguns erros propositais em pt-BR.
+      </div>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Input simples</h2>
+          <p>Bom para validar frases curtas, titulos e descricoes pequenas.</p>
+          <label for="titulo">Titulo</label>
+          <input
+            id="titulo"
+            type="text"
+            value="Precizamos entragar o relatorio amanha sem atrazos."
+          />
+        </article>
+
+        <article class="card">
+          <h2>Textarea</h2>
+          <p>Ideal para testar paragrafos maiores e varias correcoes em sequencia.</p>
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem">
+Ola equipe, eu fiz uma analize rapida do projeto e percebi algums ponto que precisa de atencao.
+A gente vai precisar alinhar melhor os prazo, revisar os texto e organizar as tarefa com mais clareza.
+Se voce concorda, podemos marca uma reuniao ainda essa semana.</textarea
+          >
+        </article>
+
+        <article class="card">
+          <h2>Campo contenteditable</h2>
+          <p>Esse formato se aproxima mais de varios editores ricos usados na web.</p>
+          <label for="editor">Editor livre</label>
+          <div id="editor" class="editable" contenteditable="true">
+            Hoje eu escrevi este paragrafo para testar se a extensao conseque encontrar
+            erros comuns de portugues brasil. Se ela estiver funcionando bem, as palavra
+            incorreta devem receber sugestoes de correcao.
+          </div>
+        </article>
+
+        <div class="two-columns">
+          <article class="card">
+            <h2>Formulario curto</h2>
+            <p>Campos pequenos ajudam a validar foco e troca entre inputs.</p>
+            <label for="nome">Nome do anuncio</label>
+            <input id="nome" type="text" value="Vendo bicileta semi nova em otimo estado" />
+
+            <label for="cidade" style="margin-top: 14px;">Cidade</label>
+            <input id="cidade" type="text" value="Fortalesa Ceara" />
+          </article>
+
+          <article class="card">
+            <h2>Checklist rapido</h2>
+            <p>Use esta lista para revisar os cenarios mais importantes.</p>
+            <ul>
+              <li>O campo recebe foco corretamente?</li>
+              <li>Os erros aparecem marcados?</li>
+              <li>Clicar na palavra marcada abre sugestoes?</li>
+              <li>A correcao substitui o texto no lugar certo?</li>
+              <li>O popup da extensao mostra o estado atual sem exagero?</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
