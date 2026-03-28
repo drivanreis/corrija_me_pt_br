@@ -17,7 +17,8 @@
     "dev": "npm run build && npm run start:backend",
     "package:backend": "npm run build && pkg . --targets node18-linux-x64,node18-win-x64 --out-path build/node-app/pkg",
     "package:portable": "npm run package:backend && node scripts/package-node-releases.mjs",
-    "test:backend": "npm run build && node scripts/smoke-test-node-app.mjs"
+    "test:backend": "npm run build && node scripts/smoke-test-node-app.mjs",
+    "release": "bash ./release.sh"
   },
   "pkg": {
     "assets": [
