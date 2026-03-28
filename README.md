@@ -2,6 +2,16 @@
 
 Aplicacao de correcao de texto em portugues do Brasil, com backend local e extensao para Google Chrome.
 
+## Baixar agora
+
+- [Windows x64](/home/eu/Documentos/GitHub/corrija_me_pt_br/releases/corrija_me_pt_br_windows_x64.zip)
+- [Linux x64](/home/eu/Documentos/GitHub/corrija_me_pt_br/releases/corrija_me_pt_br_linux_x64.zip)
+
+Depois de baixar:
+
+- Windows: extraia o `.zip` e execute `install.bat`
+- Linux: extraia o `.zip` e execute `sudo ./install.sh`
+
 ## O que a aplicacao faz
 
 - executa um backend local em `127.0.0.1:8081`
@@ -14,8 +24,8 @@ Aplicacao de correcao de texto em portugues do Brasil, com backend local e exten
 
 Os pacotes prontos ficam em:
 
-- `build/node-app/releases/corrija_me_pt_br_windows_x64.zip`
-- `build/node-app/releases/corrija_me_pt_br_linux_x64.zip`
+- [`releases/corrija_me_pt_br_windows_x64.zip`](/home/eu/Documentos/GitHub/corrija_me_pt_br/releases/corrija_me_pt_br_windows_x64.zip)
+- [`releases/corrija_me_pt_br_linux_x64.zip`](/home/eu/Documentos/GitHub/corrija_me_pt_br/releases/corrija_me_pt_br_linux_x64.zip)
 
 Esses pacotes ja incluem:
 
@@ -119,13 +129,15 @@ npm run package:portable
   Extensao compilada para carregar no Chrome.
 - `build/node-app/pkg`
   Executaveis gerados.
-- `build/node-app/releases`
-  Pacotes prontos para distribuicao.
+- `releases`
+  Pacotes finais prontos para distribuicao.
 
 ## Observacoes
 
 - a extensao depende do backend local em execucao
 - o backend responde em `127.0.0.1:8081`
+- os arquivos temporarios de build ficam em `build/`
+- os pacotes finais para distribuir ficam em `releases/`
 - o foco atual do projeto e a base nova em TypeScript
 
 ## Licenca

@@ -10,7 +10,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const buildDir = path.join(rootDir, "build", "node-app");
 const pkgDir = path.join(buildDir, "pkg");
-const releaseDir = path.join(buildDir, "releases");
+const releaseDir = path.join(rootDir, "releases");
+const releaseStagingDir = path.join(buildDir, "release-staging");
 
 async function zipDirectory(sourceDir, outputZip) {
   await execFileAsync("zip", ["-qr", outputZip, path.basename(sourceDir)], {
@@ -215,7 +216,7 @@ exit 1
 }
 
 async function packageLinux() {
-  const linuxRoot = path.join(releaseDir, "corrija_me_pt_br_linux_x64");
+  const linuxRoot = path.join(releaseStagingDir, "corrija_me_pt_br_linux_x64");
   const linuxExecutable = path.join(pkgDir, "corrija-me-pt-br-ts-linux");
   await rm(linuxRoot, { recursive: true, force: true });
   await mkdir(path.join(linuxRoot, "server"), { recursive: true });
@@ -225,7 +226,8 @@ async function packageLinux() {
   await writeFile(path.join(linuxRoot, "install.sh"), linuxInstallScript());
   await chmod(path.join(linuxRoot, "install.sh"), 0o755);
   await writeFile(path.join(linuxRoot, "README.txt"), linuxReadme());
-  await zipDirectory(linuxRoot, `${linuxRoot}.zip`);
+  await rm(path.join(releaseDir, "corrija_me_pt_br_linux_x64.zip"), { force: true });
+  await zipDirectory(linuxRoot, path.join(releaseDir, "corrija_me_pt_br_linux_x64.zip"));
 }
 
 async function writeWindowsHelper(root, fileName, ps1Name) {
@@ -234,7 +236,7 @@ async function writeWindowsHelper(root, fileName, ps1Name) {
 }
 
 async function packageWindows() {
-  const windowsRoot = path.join(releaseDir, "corrija_me_pt_br_windows_x64");
+  const windowsRoot = path.join(releaseStagingDir, "corrija_me_pt_br_windows_x64");
   const windowsExecutable = path.join(pkgDir, "corrija-me-pt-br-ts-win.exe");
   await rm(windowsRoot, { recursive: true, force: true });
   await mkdir(path.join(windowsRoot, "server"), { recursive: true });
@@ -261,7 +263,8 @@ async function packageWindows() {
 
 O backend local sera iniciado automaticamente no login do Windows.
 `);
-  await zipDirectory(windowsRoot, `${windowsRoot}.zip`);
+  await rm(path.join(releaseDir, "corrija_me_pt_br_windows_x64.zip"), { force: true });
+  await zipDirectory(windowsRoot, path.join(releaseDir, "corrija_me_pt_br_windows_x64.zip"));
 }
 
 async function main() {
@@ -269,11 +272,12 @@ async function main() {
     throw new Error("Executaveis empacotados nao encontrados. Rode 'npm run package:backend' primeiro.");
   }
 
-  await rm(releaseDir, { recursive: true, force: true });
   await mkdir(releaseDir, { recursive: true });
+  await rm(releaseStagingDir, { recursive: true, force: true });
+  await mkdir(releaseStagingDir, { recursive: true });
   await packageLinux();
   await packageWindows();
-  console.log("Pacotes portateis criados em build/node-app/releases");
+  console.log(`Pacotes portateis criados em ${releaseDir}`);
 }
 
 main().catch((error) => {
