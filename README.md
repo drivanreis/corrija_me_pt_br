@@ -6,6 +6,7 @@ Corretor de texto em portugues do Brasil, com funcionamento local no computador 
 
 - [Windows x64](https://raw.githubusercontent.com/drivanreis/corrija_me_pt_br/main/releases/corrija_me_pt_br_windows_x64.zip)
 - [Linux x64](https://raw.githubusercontent.com/drivanreis/corrija_me_pt_br/main/releases/corrija_me_pt_br_linux_x64.zip)
+- [Pagina de teste online](https://drivanreis.github.io/corrija_me_pt_br/)
 
 Depois de baixar, faca assim:
 
@@ -79,6 +80,12 @@ Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em `chrome
 - aguarde os sublinhados aparecerem nas palavras com ajuste sugerido
 - clique na palavra marcada para abrir as sugestoes
 - se quiser ver o resumo tecnico da analise, abra o popup da extensao
+
+## Teste rapido
+
+- depois de instalar a extensao, abra a pagina de teste:
+  `https://drivanreis.github.io/corrija_me_pt_br/`
+- nela, voce consegue validar o comportamento da extensao antes de partir para Google Docs, WhatsApp Web e outros sites
 
 ## O que vem no pacote
 

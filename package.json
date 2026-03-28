@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "data:validate": "node scripts/validate-language-data.mjs",
     "start:backend": "node build/node-app/backend/server.cjs",
     "dev": "npm run build && npm run start:backend",
     "package:backend": "npm run build && pkg . --targets node18-linux-x64,node18-win-x64 --out-path build/node-app/pkg",
@@ -24,7 +25,8 @@
     "assets": [
       "build/node-app/data/*.json",
       "build/node-app/data/dictionary/*.json",
-      "build/node-app/data/dictionary/*.txt"
+      "build/node-app/data/dictionary/*.txt",
+      "build/node-app/data/rules/*.json"
     ],
     "outputPath": "build/node-app/pkg"
   },

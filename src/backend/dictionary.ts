@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { normalizeDictionaryWord } from "../core/text.js";
-import type { ReplacementEntry } from "../core/types.js";
+import type { ContextRuleDefinition, ReplacementEntry } from "../core/types.js";
 
 interface CommonMistakeFileEntry {
   from: string;
@@ -20,6 +20,7 @@ export interface DictionaryResources {
   words: Set<string>;
   commonMistakes: ReplacementEntry[];
   dictionaryReady: boolean;
+  contextRules: ContextRuleDefinition[];
 }
 
 function loadReplacementEntries(pathname: string): ReplacementEntry[] {
@@ -42,6 +43,10 @@ function loadWordList(pathname: string): string[] {
     .filter((word) => word && !word.startsWith("#"));
 }
 
+function loadContextRules(pathname: string): ContextRuleDefinition[] {
+  return JSON.parse(readFileSync(pathname, "utf8")) as ContextRuleDefinition[];
+}
+
 function loadDictionaryManifest(dictionaryDir: string): DictionaryManifest | null {
   const manifestPath = join(dictionaryDir, "manifest.json");
   if (!existsSync(manifestPath)) {
@@ -54,6 +59,7 @@ function loadDictionaryManifest(dictionaryDir: string): DictionaryManifest | nul
 export function loadDictionaryResources(dataDir: string): DictionaryResources {
   const replacements = loadReplacementEntries(join(dataDir, "replacements.json"));
   const dictionaryDir = join(dataDir, "dictionary");
+  const rulesDir = join(dataDir, "rules");
   const manifest = loadDictionaryManifest(dictionaryDir);
   const dictionaryFiles = manifest?.wordFiles?.length
     ? [...manifest.wordFiles]
@@ -76,11 +82,13 @@ export function loadDictionaryResources(dataDir: string): DictionaryResources {
   const commonMistakesFile = manifest?.commonMistakesFile || "common_mistakes.json";
   const commonMistakes = loadCommonMistakeEntries(join(dictionaryDir, commonMistakesFile));
   const dictionaryReady = words.size >= 5_000;
+  const contextRules = loadContextRules(join(rulesDir, "context_rules.json"));
 
   return {
     replacements,
     words,
     commonMistakes,
-    dictionaryReady
+    dictionaryReady,
+    contextRules
   };
 }

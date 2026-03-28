@@ -8,6 +8,16 @@ export interface DictionaryData {
   words: Set<string>;
   commonMistakes: ReplacementEntry[];
   dictionaryReady: boolean;
+  contextRules: ContextRuleDefinition[];
+}
+
+export interface ContextRuleDefinition {
+  id: string;
+  pattern: string[];
+  targetIndex: number;
+  replacements: string[];
+  message: string;
+  description: string;
 }
 
 export interface RuleMatchReplacement {

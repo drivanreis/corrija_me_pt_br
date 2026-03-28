@@ -49,7 +49,8 @@ const server = createServer(async (request, response) => {
       dictionary: {
         words: dictionaryResources.words.size,
         commonMistakes: dictionaryResources.commonMistakes.length,
-        ready: dictionaryResources.dictionaryReady
+        ready: dictionaryResources.dictionaryReady,
+        contextRules: dictionaryResources.contextRules.length
       }
     });
     return;
@@ -81,7 +82,8 @@ const server = createServer(async (request, response) => {
     sendJson(response, 200, checkText(text, dictionaryResources.replacements, {
       words: dictionaryResources.words,
       commonMistakes: dictionaryResources.commonMistakes,
-      dictionaryReady: dictionaryResources.dictionaryReady
+      dictionaryReady: dictionaryResources.dictionaryReady,
+      contextRules: dictionaryResources.contextRules
     }));
     return;
   }
