@@ -1,74 +1,87 @@
 # Corrija-me PT-BR
 
-Aplicacao de correcao de texto em portugues do Brasil, com backend local e extensao para Google Chrome.
+Corretor de texto em portugues do Brasil, com funcionamento local no computador e integracao com o Google Chrome.
 
 ## Baixar agora
 
 - [Windows x64](./releases/corrija_me_pt_br_windows_x64.zip)
 - [Linux x64](./releases/corrija_me_pt_br_linux_x64.zip)
 
-Depois de baixar:
+Depois de baixar, faca assim:
 
 - Windows: extraia o `.zip` e execute `install.bat`
-- Linux: extraia o `.zip` e execute `sudo ./install.sh`
+- Linux: extraia o `.zip`, abra o terminal na pasta e execute `sudo ./install.sh`
 
 ## O que a aplicacao faz
 
-- executa um backend local em `127.0.0.1:8081`
-- analisa textos em pt-BR
+- corrige textos em pt-BR
+- funciona localmente no proprio computador
+- envia os textos somente para o backend local em `127.0.0.1:8081`
 - sugere correcoes diretamente no navegador
 - funciona sem Java
-- gera pacotes portateis para Windows e Linux
+- possui pacote portatil para Windows e Linux
 
-## Para quem so quer usar
+## Instalacao rapida
 
-Os pacotes prontos ficam em:
+### Windows
 
-- [`releases/corrija_me_pt_br_windows_x64.zip`](./releases/corrija_me_pt_br_windows_x64.zip)
-- [`releases/corrija_me_pt_br_linux_x64.zip`](./releases/corrija_me_pt_br_linux_x64.zip)
-
-Esses pacotes ja incluem:
-
-- o backend local
-- a extensao pronta para carregar
-- instaladores simples
-
-## Instalacao no Windows
-
-1. Extraia o arquivo `corrija_me_pt_br_windows_x64.zip`.
-2. Execute `install.bat`.
-3. Aguarde a instalacao.
-4. O Chrome sera aberto em `chrome://extensions`.
-5. Ative o `Modo do desenvolvedor`.
-6. Clique em `Carregar sem compactacao`.
-7. Selecione a pasta:
+1. Baixe `corrija_me_pt_br_windows_x64.zip`.
+2. Extraia o arquivo.
+3. Execute `install.bat`.
+4. Aguarde a instalacao.
+5. O Chrome sera aberto em `chrome://extensions`.
+6. Ative o `Modo do desenvolvedor`.
+7. Clique em `Carregar sem compactacao`.
+8. Selecione a pasta:
    `%LOCALAPPDATA%\corrija_me_pt_br\chrome-extension`
 
 Depois disso, o backend local sera iniciado automaticamente quando o usuario entrar no Windows.
 
-## Instalacao no Linux
+Para desinstalar:
 
-1. Extraia o arquivo `corrija_me_pt_br_linux_x64.zip`.
-2. Abra um terminal na pasta extraida.
-3. Execute:
+1. Abra a pasta extraida do pacote.
+2. Execute `uninstall.bat`.
+3. Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em `chrome://extensions`.
+
+### Linux
+
+1. Baixe `corrija_me_pt_br_linux_x64.zip`.
+2. Extraia o arquivo.
+3. Abra um terminal na pasta extraida.
+4. Execute:
 
 ```bash
 sudo ./install.sh
 ```
 
-4. Abra o Chrome em `chrome://extensions`.
-5. Ative o `Modo do desenvolvedor`.
-6. Clique em `Carregar sem compactacao`.
-7. Selecione a pasta:
+5. Abra o Chrome em `chrome://extensions`.
+6. Ative o `Modo do desenvolvedor`.
+7. Clique em `Carregar sem compactacao`.
+8. Selecione a pasta:
    `/opt/corrija_me_pt_br/chrome-extension`
 
 Depois disso, o backend local sera iniciado automaticamente com o sistema.
+
+Para desinstalar:
+
+```bash
+sudo ./uninstall.sh
+```
+
+Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em `chrome://extensions`.
 
 ## Como usar
 
 - clique no botao `Corrigir` ao lado de um campo de texto
 - ou use o atalho `Alt + Shift + C`
-- a extensao envia o texto para `http://127.0.0.1:8081/v2/check`
+- a verificacao acontece no backend local `http://127.0.0.1:8081/v2/check`
+
+## O que vem no pacote
+
+- backend local
+- extensao pronta para carregar no Chrome
+- instalador
+- desinstalador
 
 ## Para desenvolvimento
 
@@ -117,25 +130,20 @@ npm run package:portable
 
 ## Estrutura do projeto
 
-- `src/core`
-  Motor de correcoes em TypeScript.
-- `src/backend`
-  Backend HTTP local.
-- `src/extension`
-  Codigo da extensao em TypeScript.
-- `data/replacements.json`
-  Base inicial de substituicoes e sugestoes.
-- `build/node-app/extension`
-  Extensao compilada para carregar no Chrome.
-- `build/node-app/pkg`
-  Executaveis gerados.
-- `releases`
-  Pacotes finais prontos para distribuicao.
+- `src/core`: motor de correcoes em TypeScript
+- `src/backend`: backend HTTP local
+- `src/extension`: codigo da extensao em TypeScript
+- `data/replacements.json`: base inicial de substituicoes e sugestoes
+- `build/node-app/extension`: extensao compilada para carregar no Chrome
+- `build/node-app/pkg`: executaveis gerados
+- `releases`: pacotes finais prontos para distribuicao
 
 ## Observacoes
 
 - a extensao depende do backend local em execucao
 - o backend responde em `127.0.0.1:8081`
+- a desinstalacao remove o backend local e os arquivos instalados
+- a extensao do Chrome precisa ser removida manualmente em `chrome://extensions`
 - os arquivos temporarios de build ficam em `build/`
 - os pacotes finais para distribuir ficam em `releases/`
 - o foco atual do projeto e a base nova em TypeScript

@@ -67,6 +67,38 @@ echo "  /opt/corrija_me_pt_br/chrome-extension"
 `;
 }
 
+function linuxUninstallScript() {
+  return `#!/usr/bin/env bash
+set -euo pipefail
+
+INSTALL_ROOT="/opt/corrija_me_pt_br"
+SERVICE_PATH="/etc/systemd/system/corrija-me-pt-br-node.service"
+
+if [[ "$(id -u)" -ne 0 ]]; then
+  echo "Execute este desinstalador com sudo."
+  exit 1
+fi
+
+if command -v systemctl >/dev/null 2>&1; then
+  systemctl stop corrija-me-pt-br-node.service || true
+  systemctl disable corrija-me-pt-br-node.service || true
+fi
+
+rm -f "$SERVICE_PATH"
+rm -rf "$INSTALL_ROOT"
+
+if command -v systemctl >/dev/null 2>&1; then
+  systemctl daemon-reload || true
+fi
+
+echo
+echo "Desinstalacao concluida."
+echo "Arquivos removidos de $INSTALL_ROOT"
+echo "Servico local removido."
+echo "Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em chrome://extensions."
+`;
+}
+
 function linuxReadme() {
   return `corrija_me_pt_br - pacote Linux
 =================================
@@ -81,6 +113,9 @@ function linuxReadme() {
    /opt/corrija_me_pt_br/chrome-extension
 
 O backend local inicia automaticamente com o sistema.
+
+Para desinstalar:
+sudo ./uninstall.sh
 `;
 }
 
@@ -91,6 +126,19 @@ powershell -ExecutionPolicy Bypass -File "%~dp0install.ps1"
 if errorlevel 1 (
   echo.
   echo O instalador encontrou um erro. Veja a mensagem acima.
+  pause
+  exit /b %errorlevel%
+)
+`;
+}
+
+function windowsUninstallBat() {
+  return `@echo off
+setlocal
+powershell -ExecutionPolicy Bypass -File "%~dp0uninstall.ps1"
+if errorlevel 1 (
+  echo.
+  echo O desinstalador encontrou um erro. Veja a mensagem acima.
   pause
   exit /b %errorlevel%
 )
@@ -130,6 +178,40 @@ Write-Host "No Chrome, clique em 'Carregar sem compactacao' e selecione:"
 Write-Host "  $installRoot\\chrome-extension"
 Write-Host ""
 Write-Host "O backend local sera iniciado automaticamente ao entrar no Windows."
+`;
+}
+
+function windowsUninstallPs1() {
+  return `$ErrorActionPreference = "Stop"
+
+$installRoot = Join-Path $env:LOCALAPPDATA "corrija_me_pt_br"
+$startupFolder = [Environment]::GetFolderPath("Startup")
+$startupLauncherPath = Join-Path $startupFolder "IniciarCorrijaMePtBr.bat"
+$pidFile = Join-Path $installRoot "server\\corrija_me_pt_br.pid"
+
+if (Test-Path $pidFile) {
+  $savedPid = Get-Content $pidFile -ErrorAction SilentlyContinue
+  if ($savedPid) {
+    $process = Get-Process -Id $savedPid -ErrorAction SilentlyContinue
+    if ($process) {
+      Stop-Process -Id $savedPid -Force
+    }
+  }
+}
+
+if (Test-Path $startupLauncherPath) {
+  Remove-Item $startupLauncherPath -Force -ErrorAction SilentlyContinue
+}
+
+if (Test-Path $installRoot) {
+  Remove-Item $installRoot -Recurse -Force
+}
+
+Write-Host ""
+Write-Host "Desinstalacao concluida."
+Write-Host "Arquivos removidos de $installRoot"
+Write-Host "Inicializacao automatica removida."
+Write-Host "Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em chrome://extensions."
 `;
 }
 
@@ -225,6 +307,8 @@ async function packageLinux() {
   await chmod(path.join(linuxRoot, "server", "corrija-me-pt-br-server"), 0o755);
   await writeFile(path.join(linuxRoot, "install.sh"), linuxInstallScript());
   await chmod(path.join(linuxRoot, "install.sh"), 0o755);
+  await writeFile(path.join(linuxRoot, "uninstall.sh"), linuxUninstallScript());
+  await chmod(path.join(linuxRoot, "uninstall.sh"), 0o755);
   await writeFile(path.join(linuxRoot, "README.txt"), linuxReadme());
   await rm(path.join(releaseDir, "corrija_me_pt_br_linux_x64.zip"), { force: true });
   await zipDirectory(linuxRoot, path.join(releaseDir, "corrija_me_pt_br_linux_x64.zip"));
@@ -244,6 +328,8 @@ async function packageWindows() {
   await copyFile(windowsExecutable, path.join(windowsRoot, "server", "corrija-me-pt-br-server.exe"));
   await writeFile(path.join(windowsRoot, "install.bat"), windowsInstallBat());
   await writeFile(path.join(windowsRoot, "install.ps1"), windowsInstallPs1());
+  await writeFile(path.join(windowsRoot, "uninstall.bat"), windowsUninstallBat());
+  await writeFile(path.join(windowsRoot, "uninstall.ps1"), windowsUninstallPs1());
   await writeFile(path.join(windowsRoot, "IniciarServidor.ps1"), windowsStartPs1());
   await writeFile(path.join(windowsRoot, "PararServidor.ps1"), windowsStopPs1());
   await writeFile(path.join(windowsRoot, "StatusServidor.ps1"), windowsStatusPs1());
@@ -262,6 +348,9 @@ async function packageWindows() {
    %LOCALAPPDATA%\\corrija_me_pt_br\\chrome-extension
 
 O backend local sera iniciado automaticamente no login do Windows.
+
+Para desinstalar:
+execute uninstall.bat
 `);
   await rm(path.join(releaseDir, "corrija_me_pt_br_windows_x64.zip"), { force: true });
   await zipDirectory(windowsRoot, path.join(releaseDir, "corrija_me_pt_br_windows_x64.zip"));
