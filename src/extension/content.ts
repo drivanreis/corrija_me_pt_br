@@ -43,6 +43,8 @@ let latestMatches: CheckMatch[] = [];
 let latestText = "";
 let latestStatusMessage = "Foque em um campo de texto para ver as correcoes.";
 let latestStatusTone = "";
+let inputOverlayHost: HTMLDivElement | null = null;
+let inputOverlayContent: HTMLDivElement | null = null;
 
 const suggestionMenu = document.createElement("section");
 suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
@@ -248,6 +250,114 @@ function clearHighlights(): void {
   (CSS.highlights as unknown as Map<string, Highlight>).delete(HIGHLIGHT_NAME);
 }
 
+function isInputLikeElement(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement): element is HTMLInputElement | HTMLTextAreaElement {
+  return element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement;
+}
+
+function ensureInputOverlay(): void {
+  if (inputOverlayHost && inputOverlayContent) {
+    return;
+  }
+
+  inputOverlayHost = document.createElement("div");
+  inputOverlayHost.className = "corrija-me-pt-br-input-overlay-host corrija-me-pt-br-hidden";
+  inputOverlayContent = document.createElement("div");
+  inputOverlayContent.className = "corrija-me-pt-br-input-overlay-content";
+  inputOverlayHost.appendChild(inputOverlayContent);
+  document.body.appendChild(inputOverlayHost);
+}
+
+function hideInputOverlay(): void {
+  inputOverlayHost?.classList.add("corrija-me-pt-br-hidden");
+  if (inputOverlayContent) {
+    inputOverlayContent.innerHTML = "";
+  }
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function syncInputOverlayPosition(element: HTMLInputElement | HTMLTextAreaElement): void {
+  ensureInputOverlay();
+  if (!inputOverlayHost || !inputOverlayContent) {
+    return;
+  }
+
+  const rect = element.getBoundingClientRect();
+  const styles = window.getComputedStyle(element);
+
+  inputOverlayHost.classList.remove("corrija-me-pt-br-hidden");
+  inputOverlayHost.style.left = `${rect.left}px`;
+  inputOverlayHost.style.top = `${rect.top}px`;
+  inputOverlayHost.style.width = `${rect.width}px`;
+  inputOverlayHost.style.height = `${rect.height}px`;
+  inputOverlayHost.style.borderRadius = styles.borderRadius;
+  inputOverlayHost.style.padding = styles.padding;
+  inputOverlayHost.style.font = styles.font;
+  inputOverlayHost.style.letterSpacing = styles.letterSpacing;
+  inputOverlayHost.style.lineHeight = styles.lineHeight;
+  inputOverlayHost.style.textAlign = styles.textAlign;
+  inputOverlayHost.style.textTransform = styles.textTransform;
+  inputOverlayHost.style.textIndent = styles.textIndent;
+  inputOverlayHost.style.wordSpacing = styles.wordSpacing;
+  inputOverlayHost.style.whiteSpace = element instanceof HTMLTextAreaElement ? "pre-wrap" : "pre";
+
+  inputOverlayContent.style.transform = `translate(${-element.scrollLeft}px, ${-element.scrollTop}px)`;
+}
+
+function renderInputOverlay(matches: CheckMatch[]): void {
+  if (!activeElement || !isInputLikeElement(activeElement)) {
+    hideInputOverlay();
+    return;
+  }
+
+  if (!matches.length || !latestText.length) {
+    hideInputOverlay();
+    return;
+  }
+
+  ensureInputOverlay();
+  if (!inputOverlayContent) {
+    return;
+  }
+
+  syncInputOverlayPosition(activeElement);
+
+  let cursor = 0;
+  const parts: string[] = [];
+  const sortedMatches = matches
+    .map((match, originalIndex) => ({ match, originalIndex }))
+    .sort((left, right) => left.match.offset - right.match.offset);
+
+  for (const entry of sortedMatches) {
+    const { match, originalIndex } = entry;
+    const start = Math.max(0, Math.min(latestText.length, match.offset));
+    const end = Math.max(start, Math.min(latestText.length, match.offset + match.length));
+    if (start > cursor) {
+      parts.push(`<span class="corrija-me-pt-br-overlay-text">${escapeHtml(latestText.slice(cursor, start))}</span>`);
+    }
+
+    const fragment = latestText.slice(start, end) || " ";
+    parts.push(
+      `<button type="button" class="corrija-me-pt-br-overlay-hit" data-match-index="${originalIndex}" aria-label="Abrir sugestoes para ${escapeHtml(fragment)}">` +
+      `${escapeHtml(fragment)}` +
+      "</button>"
+    );
+    cursor = end;
+  }
+
+  if (cursor < latestText.length) {
+    parts.push(`<span class="corrija-me-pt-br-overlay-text">${escapeHtml(latestText.slice(cursor))}</span>`);
+  }
+
+  inputOverlayContent.innerHTML = parts.join("");
+  syncInputOverlayPosition(activeElement);
+}
+
 function isContentEditableLike(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement): element is HTMLElement {
   return element instanceof HTMLElement && (element.isContentEditable || element.getAttribute("role") === "textbox");
 }
@@ -430,6 +540,7 @@ function applyReplacementToContentEditable(element: HTMLElement, match: CheckMat
 function renderResults(matches: CheckMatch[]): void {
   latestMatches = matches;
   renderHighlightsForActiveElement(matches);
+  renderInputOverlay(matches);
 }
 
 async function analyzeActiveElement(manual = false): Promise<void> {
@@ -445,6 +556,7 @@ async function analyzeActiveElement(manual = false): Promise<void> {
   if (text.trim().length < MIN_TEXT_LENGTH) {
     latestMatches = [];
     clearHighlights();
+    hideInputOverlay();
     setStatus("Digite um pouco mais para analisar esse campo.");
     renderResults([]);
     syncGoogleDocsBridgeState("Digite um pouco mais para analisar esse campo.");
@@ -495,6 +607,7 @@ async function analyzeActiveElement(manual = false): Promise<void> {
     const message = error instanceof Error ? error.message : "Erro desconhecido";
     setStatus(`Falha ao consultar o backend local: ${message}`, "error");
     clearHighlights();
+    hideInputOverlay();
     renderResults([]);
     syncGoogleDocsBridgeState(`Falha ao consultar o backend local: ${message}`);
   }
@@ -571,11 +684,36 @@ document.addEventListener("focusin", (event) => {
   scheduleAnalysis();
 });
 
+document.addEventListener("focusout", (event) => {
+  if (event.target === activeElement) {
+    window.setTimeout(() => {
+      ensureActiveElement();
+      if (activeElement && isInputLikeElement(activeElement)) {
+        syncInputOverlayPosition(activeElement);
+      } else if (!document.activeElement || document.activeElement === document.body) {
+        hideInputOverlay();
+      }
+    }, 0);
+  }
+});
+
 document.addEventListener("input", (event) => {
   if (event.target === activeElement) {
     scheduleAnalysis();
   }
 }, true);
+
+document.addEventListener("scroll", () => {
+  if (activeElement && isInputLikeElement(activeElement)) {
+    syncInputOverlayPosition(activeElement);
+  }
+}, true);
+
+window.addEventListener("resize", () => {
+  if (activeElement && isInputLikeElement(activeElement)) {
+    syncInputOverlayPosition(activeElement);
+  }
+});
 
 document.addEventListener("selectionchange", () => {
   if (!isGoogleDocsHost) {
@@ -606,6 +744,17 @@ document.addEventListener("keydown", (event) => {
 
 document.addEventListener("click", (event) => {
   const target = event.target;
+  if (target instanceof HTMLElement && target.classList.contains("corrija-me-pt-br-overlay-hit")) {
+    const index = Number(target.dataset.matchIndex ?? "-1");
+    if (Number.isInteger(index) && index >= 0) {
+      const rect = target.getBoundingClientRect();
+      openSuggestionMenu(index, rect.left, rect.bottom);
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+  }
+
   if (target instanceof Node && suggestionMenu.contains(target)) {
     return;
   }

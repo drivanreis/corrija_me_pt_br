@@ -49,6 +49,47 @@
   color: #115e59;
 }
 
+.corrija-me-pt-br-input-overlay-host {
+  position: fixed;
+  z-index: 2147483645;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
+}
+
+.corrija-me-pt-br-input-overlay-content {
+  min-width: 100%;
+  min-height: 100%;
+  color: transparent;
+  caret-color: transparent;
+  overflow: hidden;
+}
+
+.corrija-me-pt-br-overlay-text {
+  color: transparent;
+}
+
+.corrija-me-pt-br-overlay-hit {
+  display: inline;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  text-decoration: underline wavy #dc2626;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.corrija-me-pt-br-overlay-hit:hover {
+  text-decoration-color: #b91c1c;
+}
+
 ::highlight(corrija-me-pt-br-issue) {
   background-color: rgba(254, 226, 226, 0.55);
   text-decoration: underline wavy #dc2626;
