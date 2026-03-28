@@ -468,16 +468,11 @@ function openSuggestionMenu(index: number, x: number, y: number): void {
 
   suggestionMenu.innerHTML = "";
 
-  const title = document.createElement("div");
-  title.className = "corrija-me-pt-br-menu-title";
-  title.textContent = match.message || "Sugestoes";
-  suggestionMenu.appendChild(title);
-
-  const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 5) : [];
+  const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 2) : [];
   if (!replacements.length) {
     const empty = document.createElement("div");
     empty.className = "corrija-me-pt-br-menu-empty";
-    empty.textContent = "Sem sugestao automatica.";
+    empty.textContent = "Sem sugestao.";
     suggestionMenu.appendChild(empty);
   } else {
     for (const replacement of replacements) {
