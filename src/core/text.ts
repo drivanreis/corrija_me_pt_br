@@ -39,3 +39,11 @@ export function buildContext(text: string, offset: number, length: number): { te
 export function dedupeStrings(values: string[]): string[] {
   return [...new Set(values.filter(Boolean))];
 }
+
+export function normalizeDictionaryWord(value: string): string {
+  return value.trim().toLocaleLowerCase("pt-BR");
+}
+
+export function stripDiacritics(value: string): string {
+  return value.normalize("NFD").replace(/\p{Diacritic}+/gu, "");
+}

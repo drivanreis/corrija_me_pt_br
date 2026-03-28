@@ -14,6 +14,7 @@ const dataDir = path.join(buildDir, "data");
 async function buildReplacementData() {
   await mkdir(dataDir, { recursive: true });
   await copyFile(path.join(rootDir, "data/replacements.json"), path.join(dataDir, "replacements.json"));
+  await cp(path.join(rootDir, "data/dictionary"), path.join(dataDir, "dictionary"), { recursive: true });
 }
 
 async function buildBackend() {
@@ -105,6 +106,7 @@ Build gerado automaticamente.
 
 - Backend local: build/node-app/backend/server.cjs
 - Dados de correcoes: build/node-app/data/replacements.json
+- Dicionario base: build/node-app/data/dictionary
 - Extensao Chrome pronta para carregar: build/node-app/extension
 `;
   await writeFile(path.join(buildDir, "README.txt"), readme);

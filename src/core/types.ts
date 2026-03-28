@@ -4,6 +4,12 @@ export interface ReplacementEntry {
   source: string;
 }
 
+export interface DictionaryData {
+  words: Set<string>;
+  commonMistakes: ReplacementEntry[];
+  dictionaryReady: boolean;
+}
+
 export interface RuleMatchReplacement {
   value: string;
 }

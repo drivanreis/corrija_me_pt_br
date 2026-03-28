@@ -1,13 +1,12 @@
 import { createServer } from "node:http";
 import { join } from "node:path";
-import { readFileSync } from "node:fs";
 import { checkText } from "../core/engine.js";
-import type { ReplacementEntry } from "../core/types.js";
+import { loadDictionaryResources } from "./dictionary.js";
 
 const DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
 const currentDir = __dirname;
-const dataPath = join(currentDir, "../data/replacements.json");
-const replacements = JSON.parse(readFileSync(dataPath, "utf8")) as ReplacementEntry[];
+const dataDir = join(currentDir, "../data");
+const dictionaryResources = loadDictionaryResources(dataDir);
 
 function sendJson(response: import("node:http").ServerResponse, statusCode: number, payload: unknown): void {
   response.writeHead(statusCode, {
@@ -44,7 +43,15 @@ const server = createServer(async (request, response) => {
   }
 
   if (request.method === "GET" && url.pathname === "/health") {
-    sendJson(response, 200, { status: "ok", service: "corrija_me_pt_br_node" });
+    sendJson(response, 200, {
+      status: "ok",
+      service: "corrija_me_pt_br_node",
+      dictionary: {
+        words: dictionaryResources.words.size,
+        commonMistakes: dictionaryResources.commonMistakes.length,
+        ready: dictionaryResources.dictionaryReady
+      }
+    });
     return;
   }
 
@@ -71,7 +78,11 @@ const server = createServer(async (request, response) => {
       return;
     }
 
-    sendJson(response, 200, checkText(text, replacements));
+    sendJson(response, 200, checkText(text, dictionaryResources.replacements, {
+      words: dictionaryResources.words,
+      commonMistakes: dictionaryResources.commonMistakes,
+      dictionaryReady: dictionaryResources.dictionaryReady
+    }));
     return;
   }
 

@@ -21,7 +21,9 @@
   },
   "pkg": {
     "assets": [
-      "build/node-app/data/*.json"
+      "build/node-app/data/*.json",
+      "build/node-app/data/dictionary/*.json",
+      "build/node-app/data/dictionary/*.txt"
     ],
     "outputPath": "build/node-app/pkg"
   },
