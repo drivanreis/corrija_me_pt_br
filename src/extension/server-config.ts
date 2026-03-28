@@ -16,7 +16,19 @@ export const STORAGE_DEFAULTS: ExtensionSettings = {
 
 let cachedServerUrl: string | null = null;
 
+function hasLiveExtensionContext(): boolean {
+  try {
+    return typeof chrome !== "undefined" && Boolean(chrome.runtime?.id);
+  } catch {
+    return false;
+  }
+}
+
 async function readPackagedServerUrl(): Promise<string> {
+  if (!hasLiveExtensionContext()) {
+    return DEFAULT_SERVER_URL;
+  }
+
   try {
     const response = await fetch(chrome.runtime.getURL("server-config.json"), { cache: "no-store" });
     if (!response.ok) {
@@ -38,7 +50,18 @@ export async function getServerUrl(): Promise<string> {
   }
 
   const packagedServerUrl = await readPackagedServerUrl();
-  const stored = await chrome.storage.local.get({ serverUrl: packagedServerUrl });
+  if (!hasLiveExtensionContext()) {
+    cachedServerUrl = packagedServerUrl;
+    return packagedServerUrl;
+  }
+
+  let stored: { serverUrl?: string } = {};
+  try {
+    stored = await chrome.storage.local.get({ serverUrl: packagedServerUrl });
+  } catch {
+    cachedServerUrl = packagedServerUrl;
+    return packagedServerUrl;
+  }
   const serverUrl = typeof stored.serverUrl === "string" && stored.serverUrl.trim()
     ? stored.serverUrl.trim()
     : packagedServerUrl;
@@ -49,7 +72,22 @@ export async function getServerUrl(): Promise<string> {
 
 export async function getSettings(): Promise<ExtensionSettings> {
   const packagedServerUrl = await readPackagedServerUrl();
-  const stored = await chrome.storage.local.get({ ...STORAGE_DEFAULTS, serverUrl: packagedServerUrl });
+  if (!hasLiveExtensionContext()) {
+    return {
+      autoCheck: STORAGE_DEFAULTS.autoCheck,
+      serverUrl: packagedServerUrl
+    };
+  }
+
+  let stored: ExtensionSettings = { ...STORAGE_DEFAULTS, serverUrl: packagedServerUrl };
+  try {
+    stored = await chrome.storage.local.get({ ...STORAGE_DEFAULTS, serverUrl: packagedServerUrl });
+  } catch {
+    return {
+      autoCheck: STORAGE_DEFAULTS.autoCheck,
+      serverUrl: packagedServerUrl
+    };
+  }
 
   return {
     autoCheck: stored.autoCheck !== false,
@@ -62,8 +100,15 @@ export async function getSettings(): Promise<ExtensionSettings> {
 export async function saveSettings(settings: ExtensionSettings): Promise<void> {
   const serverUrl = settings.serverUrl?.trim() || DEFAULT_SERVER_URL;
   cachedServerUrl = serverUrl;
-  await chrome.storage.local.set({
-    autoCheck: settings.autoCheck,
-    serverUrl
-  });
+  if (!hasLiveExtensionContext()) {
+    return;
+  }
+
+  try {
+    await chrome.storage.local.set({
+      autoCheck: settings.autoCheck,
+      serverUrl
+    });
+  } catch {
+  }
 }

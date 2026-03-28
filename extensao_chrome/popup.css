@@ -17,18 +17,18 @@
 
 body {
   margin: 0;
-  width: 340px;
+  width: 320px;
   font-family: "Noto Sans", "Segoe UI", sans-serif;
   background: radial-gradient(circle at top left, #fff7e8 0%, var(--bg) 58%, #efe8dc 100%);
   color: var(--text);
 }
 
 .app {
-  padding: 16px;
+  padding: 14px;
 }
 
 .hero {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .eyebrow {
@@ -46,7 +46,7 @@ h2 {
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.2;
   margin-bottom: 6px;
 }
@@ -127,8 +127,8 @@ h2 {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 10px 12px;
-  font-size: 13px;
+  padding: 9px 11px;
+  font-size: 12px;
   background: #fff;
 }
 
@@ -157,8 +157,8 @@ button {
   appearance: none;
   border: 0;
   border-radius: 999px;
-  padding: 10px 14px;
-  font-size: 13px;
+  padding: 9px 12px;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -202,7 +202,7 @@ button[disabled] {
 }
 
 .live-card {
-  padding: 10px 12px;
+  padding: 9px 11px;
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.78);
@@ -237,4 +237,43 @@ button[disabled] {
   padding: 7px 10px;
   font-size: 12px;
   font-weight: 700;
+}
+
+.fold {
+  margin-top: 12px;
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+}
+
+.fold summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-strong);
+  list-style: none;
+}
+
+.fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.fold summary::after {
+  content: "▾";
+  float: right;
+  color: var(--muted);
+}
+
+.fold[open] summary::after {
+  content: "▴";
+}
+
+.fold-body {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.fold-status {
+  margin-top: 0;
+  min-height: 0;
 }

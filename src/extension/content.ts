@@ -95,6 +95,33 @@ function activateElement(element: HTMLElement | HTMLInputElement | HTMLTextAreaE
   }
 }
 
+function findFallbackEditableElement(): HTMLElement | HTMLInputElement | HTMLTextAreaElement | null {
+  const currentActive = document.activeElement;
+  if (isSupportedElement(currentActive instanceof Element ? currentActive : null)) {
+    return currentActive;
+  }
+
+  const candidates = Array.from(document.querySelectorAll("textarea, input, [contenteditable='true'], [role='textbox']"));
+  for (const candidate of candidates) {
+    if (isSupportedElement(candidate) && isVisibleElement(candidate)) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
+function ensureActiveElement(): void {
+  if (activeElement && isSupportedElement(activeElement)) {
+    return;
+  }
+
+  const fallback = isGoogleDocsHost ? findGoogleDocsEditor() || findFallbackEditableElement() : findFallbackEditableElement();
+  if (fallback) {
+    activateElement(fallback);
+  }
+}
+
 function getText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement | null): string {
   if (!element) {
     return "";
@@ -145,12 +172,19 @@ async function shouldShowGoogleDocsHint(): Promise<boolean> {
     return false;
   }
 
-  const stored = await chrome.storage.local.get({ [DOCS_HINT_DISMISSED_KEY]: false });
-  return stored[DOCS_HINT_DISMISSED_KEY] !== true;
+  try {
+    const stored = await chrome.storage.local.get({ [DOCS_HINT_DISMISSED_KEY]: false });
+    return stored[DOCS_HINT_DISMISSED_KEY] !== true;
+  } catch {
+    return false;
+  }
 }
 
 async function dismissGoogleDocsHint(): Promise<void> {
-  await chrome.storage.local.set({ [DOCS_HINT_DISMISSED_KEY]: true });
+  try {
+    await chrome.storage.local.set({ [DOCS_HINT_DISMISSED_KEY]: true });
+  } catch {
+  }
   googleDocsHint?.remove();
   googleDocsHint = null;
 }
@@ -409,6 +443,7 @@ function renderResults(matches: CheckMatch[]): void {
 }
 
 async function analyzeActiveElement(manual = false): Promise<void> {
+  ensureActiveElement();
   if (!activeElement || !isSupportedElement(activeElement)) {
     return;
   }
@@ -675,6 +710,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   }
 
   if (message.type === "corrija-me-pt-br:get-state") {
+    ensureActiveElement();
     sendResponse({ ok: true, state: getPopupState() });
     return;
   }

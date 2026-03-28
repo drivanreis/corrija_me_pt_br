@@ -58,7 +58,7 @@ function renderLiveState(state: PopupState | null): void {
       liveBadge.textContent = "Sem dados";
     }
     if (liveStatus) {
-      liveStatus.textContent = "Abra um site liberado, foque em um campo e clique em Corrigir.";
+      liveStatus.textContent = "Abra um site liberado e foque em um campo de texto.";
       liveStatus.className = "status live-status";
     }
     return;

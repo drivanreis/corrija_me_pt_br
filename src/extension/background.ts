@@ -1,5 +1,3 @@
-const CONTENT_SCRIPT_ID = "corrija-me-pt-br-runtime";
-
 function getOriginPattern(rawUrl: string): string | null {
   try {
     const url = new URL(rawUrl);
@@ -24,25 +22,33 @@ async function hasOriginPermission(rawUrl: string): Promise<boolean> {
 }
 
 async function injectIntoTab(tabId: number): Promise<void> {
-  const [{ result: shouldInject }] = await chrome.scripting.executeScript({
-    target: {
-      tabId,
-      allFrames: false
-    },
-    func: () => window.__corrijaMePtBrLoaded__ !== true
-  });
+  try {
+    const probeResult = await chrome.scripting.executeScript({
+      target: {
+        tabId,
+        allFrames: false
+      },
+      func: () => window.__corrijaMePtBrLoaded__ === true
+    });
 
-  if (shouldInject === false) {
-    return;
+    if (probeResult[0]?.result === true) {
+      return;
+    }
+  } catch {
+    // If the probe fails, we still try the real injection below.
   }
 
-  await chrome.scripting.insertCSS({
-    target: {
-      tabId,
-      allFrames: true
-    },
-    files: ["content.css"]
-  });
+  try {
+    await chrome.scripting.insertCSS({
+      target: {
+        tabId,
+        allFrames: true
+      },
+      files: ["content.css"]
+    });
+  } catch {
+    // Ignore CSS injection failures and still attempt script injection.
+  }
 
   await chrome.scripting.executeScript({
     target: {
@@ -77,8 +83,4 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     }
     void injectIntoTab(tabId).catch(() => {});
   });
-});
-
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.scripting.unregisterContentScripts({ ids: [CONTENT_SCRIPT_ID] }).catch(() => {});
 });
