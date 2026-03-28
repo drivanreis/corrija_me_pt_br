@@ -4,8 +4,8 @@ Corretor de texto em portugues do Brasil, com funcionamento local no computador 
 
 ## Baixar agora
 
-- [Windows x64](./releases/corrija_me_pt_br_windows_x64.zip)
-- [Linux x64](./releases/corrija_me_pt_br_linux_x64.zip)
+- [Windows x64](https://raw.githubusercontent.com/drivanreis/corrija_me_pt_br/main/releases/corrija_me_pt_br_windows_x64.zip)
+- [Linux x64](https://raw.githubusercontent.com/drivanreis/corrija_me_pt_br/main/releases/corrija_me_pt_br_linux_x64.zip)
 
 Depois de baixar, faca assim:
 
