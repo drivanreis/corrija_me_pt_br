@@ -4,8 +4,8 @@ Aplicacao de correcao de texto em portugues do Brasil, com backend local e exten
 
 ## Baixar agora
 
-- [Windows x64](/home/eu/Documentos/GitHub/corrija_me_pt_br/releases/corrija_me_pt_br_windows_x64.zip)
-- [Linux x64](/home/eu/Documentos/GitHub/corrija_me_pt_br/releases/corrija_me_pt_br_linux_x64.zip)
+- [Windows x64](./releases/corrija_me_pt_br_windows_x64.zip)
+- [Linux x64](./releases/corrija_me_pt_br_linux_x64.zip)
 
 Depois de baixar:
 
@@ -24,8 +24,8 @@ Depois de baixar:
 
 Os pacotes prontos ficam em:
 
-- [`releases/corrija_me_pt_br_windows_x64.zip`](/home/eu/Documentos/GitHub/corrija_me_pt_br/releases/corrija_me_pt_br_windows_x64.zip)
-- [`releases/corrija_me_pt_br_linux_x64.zip`](/home/eu/Documentos/GitHub/corrija_me_pt_br/releases/corrija_me_pt_br_linux_x64.zip)
+- [`releases/corrija_me_pt_br_windows_x64.zip`](./releases/corrija_me_pt_br_windows_x64.zip)
+- [`releases/corrija_me_pt_br_linux_x64.zip`](./releases/corrija_me_pt_br_linux_x64.zip)
 
 Esses pacotes ja incluem:
 
