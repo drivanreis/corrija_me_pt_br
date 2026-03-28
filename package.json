@@ -10,6 +10,9 @@
   "scripts": {
     "clean": "rm -rf build/node-app",
     "build": "node scripts/build-node-app.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "start:backend": "node build/node-app/backend/server.cjs",
     "dev": "npm run build && npm run start:backend",
     "package:backend": "npm run build && pkg . --targets node18-linux-x64,node18-win-x64 --out-path build/node-app/pkg",
@@ -23,9 +26,14 @@
     "outputPath": "build/node-app/pkg"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/chrome": "^0.1.38",
     "@types/node": "^22.15.21",
     "esbuild": "^0.25.2",
+    "eslint": "^10.1.0",
+    "globals": "^17.4.0",
     "pkg": "^5.8.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.57.2"
   }
 }

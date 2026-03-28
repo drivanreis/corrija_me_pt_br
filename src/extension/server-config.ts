@@ -39,6 +39,7 @@ async function readPackagedServerUrl(): Promise<string> {
       return config.serverUrl.trim();
     }
   } catch {
+    // Ignore packaging/runtime lookup failures and fall back to the default URL.
   }
 
   return DEFAULT_SERVER_URL;
@@ -55,19 +56,18 @@ export async function getServerUrl(): Promise<string> {
     return packagedServerUrl;
   }
 
-  let stored: { serverUrl?: string } = {};
   try {
-    stored = await chrome.storage.local.get({ serverUrl: packagedServerUrl });
+    const stored = await chrome.storage.local.get({ serverUrl: packagedServerUrl });
+    const serverUrl = typeof stored.serverUrl === "string" && stored.serverUrl.trim()
+      ? stored.serverUrl.trim()
+      : packagedServerUrl;
+
+    cachedServerUrl = serverUrl;
+    return serverUrl;
   } catch {
     cachedServerUrl = packagedServerUrl;
     return packagedServerUrl;
   }
-  const serverUrl = typeof stored.serverUrl === "string" && stored.serverUrl.trim()
-    ? stored.serverUrl.trim()
-    : packagedServerUrl;
-
-  cachedServerUrl = serverUrl;
-  return serverUrl;
 }
 
 export async function getSettings(): Promise<ExtensionSettings> {
@@ -79,22 +79,20 @@ export async function getSettings(): Promise<ExtensionSettings> {
     };
   }
 
-  let stored: ExtensionSettings = { ...STORAGE_DEFAULTS, serverUrl: packagedServerUrl };
   try {
-    stored = await chrome.storage.local.get({ ...STORAGE_DEFAULTS, serverUrl: packagedServerUrl });
+    const stored = await chrome.storage.local.get({ ...STORAGE_DEFAULTS, serverUrl: packagedServerUrl });
+    return {
+      autoCheck: stored.autoCheck !== false,
+      serverUrl: typeof stored.serverUrl === "string" && stored.serverUrl.trim()
+        ? stored.serverUrl.trim()
+        : packagedServerUrl
+    };
   } catch {
     return {
       autoCheck: STORAGE_DEFAULTS.autoCheck,
       serverUrl: packagedServerUrl
     };
   }
-
-  return {
-    autoCheck: stored.autoCheck !== false,
-    serverUrl: typeof stored.serverUrl === "string" && stored.serverUrl.trim()
-      ? stored.serverUrl.trim()
-      : packagedServerUrl
-  };
 }
 
 export async function saveSettings(settings: ExtensionSettings): Promise<void> {
@@ -110,5 +108,6 @@ export async function saveSettings(settings: ExtensionSettings): Promise<void> {
       serverUrl
     });
   } catch {
+    // Ignore persistence errors if the extension is being reloaded.
   }
 }

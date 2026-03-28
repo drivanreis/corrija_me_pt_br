@@ -41,10 +41,6 @@ let activeRequestId = 0;
 let debounceTimer: number | null = null;
 let latestMatches: CheckMatch[] = [];
 let latestText = "";
-let activeMenuMatchIndex = -1;
-let bridgeSourceWindow: Window | null = null;
-let bridgeFrameId: string | null = null;
-let bridgeModeActive = false;
 let latestStatusMessage = "Foque em um campo de texto para ver as correcoes.";
 let latestStatusTone = "";
 
@@ -78,7 +74,10 @@ function findGoogleDocsEditor(): HTMLElement | HTMLTextAreaElement | null {
   for (const selector of GOOGLE_DOCS_EDITOR_SELECTORS) {
     const candidates = Array.from(document.querySelectorAll(selector));
     for (const candidate of candidates) {
-      if (isSupportedElement(candidate) && (isVisibleElement(candidate) || candidate instanceof HTMLTextAreaElement)) {
+      if (candidate instanceof HTMLTextAreaElement && isSupportedElement(candidate)) {
+        return candidate;
+      }
+      if (isSupportedElement(candidate) && isVisibleElement(candidate)) {
         return candidate;
       }
     }
@@ -98,7 +97,7 @@ function activateElement(element: HTMLElement | HTMLInputElement | HTMLTextAreaE
 function findFallbackEditableElement(): HTMLElement | HTMLInputElement | HTMLTextAreaElement | null {
   const currentActive = document.activeElement;
   if (isSupportedElement(currentActive instanceof Element ? currentActive : null)) {
-    return currentActive;
+    return currentActive as HTMLElement | HTMLInputElement | HTMLTextAreaElement;
   }
 
   const candidates = Array.from(document.querySelectorAll("textarea, input, [contenteditable='true'], [role='textbox']"));
@@ -153,16 +152,7 @@ function replaceTextRange(text: string, offset: number, length: number, replacem
   return text.slice(0, offset) + replacement + text.slice(offset + length);
 }
 
-function showPanel(): void {
-  return;
-}
-
-function hidePanel(): void {
-  return;
-}
-
 function hideSuggestionMenu(): void {
-  activeMenuMatchIndex = -1;
   suggestionMenu.classList.add("corrija-me-pt-br-hidden");
   suggestionMenu.innerHTML = "";
 }
@@ -184,6 +174,7 @@ async function dismissGoogleDocsHint(): Promise<void> {
   try {
     await chrome.storage.local.set({ [DOCS_HINT_DISMISSED_KEY]: true });
   } catch {
+    // Ignore storage failures when the extension context is being reloaded.
   }
   googleDocsHint?.remove();
   googleDocsHint = null;
@@ -254,7 +245,7 @@ function clearHighlights(): void {
   if (!supportsCustomHighlights) {
     return;
   }
-  CSS.highlights.delete(HIGHLIGHT_NAME);
+  (CSS.highlights as unknown as Map<string, Highlight>).delete(HIGHLIGHT_NAME);
 }
 
 function isContentEditableLike(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement): element is HTMLElement {
@@ -328,7 +319,7 @@ function renderHighlightsForActiveElement(matches: CheckMatch[]): void {
   }
 
   const ranges = matches
-    .map((match) => createRangeFromOffsets(activeElement, match.offset, match.length))
+    .map((match) => createRangeFromOffsets(activeElement as HTMLElement, match.offset, match.length))
     .filter((range): range is Range => range !== null);
 
   if (!ranges.length) {
@@ -336,7 +327,7 @@ function renderHighlightsForActiveElement(matches: CheckMatch[]): void {
   }
 
   const highlight = new Highlight(...ranges);
-  CSS.highlights.set(HIGHLIGHT_NAME, highlight);
+  (CSS.highlights as unknown as Map<string, Highlight>).set(HIGHLIGHT_NAME, highlight);
 }
 
 function getLinearOffset(root: HTMLElement, node: Node, offset: number): number | null {
@@ -365,7 +356,6 @@ function openSuggestionMenu(index: number, x: number, y: number): void {
     return;
   }
 
-  activeMenuMatchIndex = index;
   suggestionMenu.innerHTML = "";
 
   const title = document.createElement("div");
@@ -577,7 +567,7 @@ document.addEventListener("focusin", (event) => {
   if (!isSupportedElement(target instanceof Element ? target : null)) {
     return;
   }
-  activateElement(target);
+  activateElement(target as HTMLElement | HTMLInputElement | HTMLTextAreaElement);
   scheduleAnalysis();
 });
 
@@ -668,16 +658,10 @@ window.addEventListener("message", (event) => {
   }
 
   if (isGoogleDocsTopWindow && payload.type === "activate") {
-    bridgeSourceWindow = event.source instanceof Window ? event.source : null;
-    bridgeFrameId = typeof payload.frameId === "string" ? payload.frameId : null;
-    bridgeModeActive = true;
     return;
   }
 
   if (isGoogleDocsTopWindow && payload.type === "state") {
-    bridgeSourceWindow = event.source instanceof Window ? event.source : null;
-    bridgeFrameId = typeof payload.frameId === "string" ? payload.frameId : null;
-    bridgeModeActive = true;
     latestText = typeof payload.text === "string" ? payload.text : "";
     latestMatches = Array.isArray(payload.matches) ? payload.matches as CheckMatch[] : [];
     renderResults(latestMatches);
