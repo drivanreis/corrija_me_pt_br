@@ -16,10 +16,11 @@ Depois de baixar, faca assim:
 
 - corrige textos em pt-BR
 - funciona localmente no proprio computador
-- envia os textos somente para o backend local em `127.0.0.1:8081`
+- envia os textos somente para o backend local em `127.0.0.1`
 - sugere correcoes diretamente no navegador
 - funciona sem Java
 - possui pacote portatil para Windows e Linux
+- escolhe automaticamente uma porta livre a partir de `18081`
 
 ## Instalacao rapida
 
@@ -36,6 +37,7 @@ Depois de baixar, faca assim:
    `%LOCALAPPDATA%\corrija_me_pt_br\chrome-extension`
 
 Depois disso, o backend local sera iniciado automaticamente quando o usuario entrar no Windows.
+O instalador escolhe automaticamente uma porta livre.
 
 Para desinstalar:
 
@@ -61,6 +63,7 @@ sudo ./install.sh
    `/opt/corrija_me_pt_br/chrome-extension`
 
 Depois disso, o backend local sera iniciado automaticamente com o sistema.
+O instalador escolhe automaticamente uma porta livre.
 
 Para desinstalar:
 
@@ -74,7 +77,7 @@ Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em `chrome
 
 - clique no botao `Corrigir` ao lado de um campo de texto
 - ou use o atalho `Alt + Shift + C`
-- a verificacao acontece no backend local `http://127.0.0.1:8081/v2/check`
+- a verificacao acontece no backend local configurado pelo instalador
 
 ## O que vem no pacote
 
@@ -141,7 +144,7 @@ npm run package:portable
 ## Observacoes
 
 - a extensao depende do backend local em execucao
-- o backend responde em `127.0.0.1:8081`
+- o backend usa a primeira porta livre encontrada a partir de `18081`
 - a desinstalacao remove o backend local e os arquivos instalados
 - a extensao do Chrome precisa ser removida manualmente em `chrome://extensions`
 - os arquivos temporarios de build ficam em `build/`

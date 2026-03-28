@@ -1,7 +1,4 @@
-const LOCAL_SERVER_URL = "http://127.0.0.1:8081";
-const defaults = {
-  autoCheck: true
-};
+import { getServerUrl, getSettings, saveSettings } from "./server-config.js";
 
 const autoCheckInput = document.getElementById("autoCheck") as HTMLInputElement | null;
 const saveButton = document.getElementById("saveButton") as HTMLButtonElement | null;
@@ -17,25 +14,20 @@ function setStatus(message: string, tone = ""): void {
   status.className = `status${tone ? ` ${tone}` : ""}`;
 }
 
-async function getSettings(): Promise<{ autoCheck: boolean }> {
-  const stored = await chrome.storage.local.get(defaults);
-  return {
-    autoCheck: stored.autoCheck !== false
-  };
-}
-
-async function saveSettings(): Promise<void> {
+async function persistSettings(): Promise<void> {
   if (!autoCheckInput) {
     return;
   }
-  await chrome.storage.local.set({ autoCheck: autoCheckInput.checked });
+  const currentServerUrl = await getServerUrl();
+  await saveSettings({ autoCheck: autoCheckInput.checked, serverUrl: currentServerUrl });
   setStatus("Preferencias locais salvas.", "ok");
 }
 
 async function testConnection(): Promise<void> {
   setStatus("Testando conexao...");
   try {
-    const response = await fetch(`${LOCAL_SERVER_URL}/v2/languages`);
+    const serverUrl = await getServerUrl();
+    const response = await fetch(`${serverUrl}/v2/languages`);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
@@ -54,12 +46,12 @@ async function testConnection(): Promise<void> {
 async function bootstrap(): Promise<void> {
   const settings = await getSettings();
   if (serverUrlLabel) {
-    serverUrlLabel.textContent = LOCAL_SERVER_URL;
+    serverUrlLabel.textContent = settings.serverUrl ?? await getServerUrl();
   }
   if (autoCheckInput) {
     autoCheckInput.checked = settings.autoCheck;
   }
-  saveButton?.addEventListener("click", () => void saveSettings());
+  saveButton?.addEventListener("click", () => void persistSettings());
   testButton?.addEventListener("click", () => void testConnection());
 }
 

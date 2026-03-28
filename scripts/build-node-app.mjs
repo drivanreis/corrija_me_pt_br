@@ -53,8 +53,8 @@ async function buildExtension() {
     permissions: ["storage"],
     host_permissions: [
       "<all_urls>",
-      "http://127.0.0.1:8081/*",
-      "http://localhost:8081/*"
+      "http://127.0.0.1/*",
+      "http://localhost/*"
     ],
     action: {
       default_title: "corrija_me_pt_br",
@@ -86,6 +86,7 @@ async function buildExtension() {
   await copyFile(path.join(rootDir, "extensao_chrome/popup.html"), path.join(extensionDir, "popup.html"));
   await copyFile(path.join(rootDir, "extensao_chrome/popup.css"), path.join(extensionDir, "popup.css"));
   await copyFile(path.join(rootDir, "extensao_chrome/content.css"), path.join(extensionDir, "content.css"));
+  await copyFile(path.join(rootDir, "extensao_chrome/server-config.json"), path.join(extensionDir, "server-config.json"));
   if (existsSync(path.join(rootDir, "extensao_chrome/PRIVACY.md"))) {
     await copyFile(path.join(rootDir, "extensao_chrome/PRIVACY.md"), path.join(extensionDir, "PRIVACY.md"));
   }

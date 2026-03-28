@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { checkText } from "../core/engine.js";
 import type { ReplacementEntry } from "../core/types.js";
 
-const DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "8081");
+const DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
 const currentDir = __dirname;
 const dataPath = join(currentDir, "../data/replacements.json");
 const replacements = JSON.parse(readFileSync(dataPath, "utf8")) as ReplacementEntry[];

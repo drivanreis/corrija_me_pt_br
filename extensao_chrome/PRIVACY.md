@@ -5,7 +5,7 @@ O `corrija_me_pt_br` foi criado para funcionar de forma local, simples e transpa
 ## Dados processados
 
 - A extensao le o texto digitado no campo ativo quando voce pede uma analise ou quando a verificacao automatica esta ligada.
-- Esse texto e enviado apenas para o seu proprio servidor local em `http://localhost:8081`.
+- Esse texto e enviado apenas para o seu proprio servidor local em `http://localhost`.
 
 ## O que a extensao nao faz
 

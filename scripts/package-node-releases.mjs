@@ -26,10 +26,29 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
 INSTALL_ROOT="/opt/corrija_me_pt_br"
 SERVICE_PATH="/etc/systemd/system/corrija-me-pt-br-node.service"
+PORT_FILE="$INSTALL_ROOT/server-port.txt"
+
+find_free_port() {
+  local port=18081
+  while true; do
+    if ! ss -ltnH "( sport = :$port )" 2>/dev/null | grep -q .; then
+      echo "$port"
+      return 0
+    fi
+    port=$((port + 1))
+  done
+}
 
 if [[ "$(id -u)" -ne 0 ]]; then
   echo "Execute este instalador com sudo."
   exit 1
+fi
+
+SELECTED_PORT="$(find_free_port)"
+SERVER_URL="http://127.0.0.1:$SELECTED_PORT"
+
+if command -v systemctl >/dev/null 2>&1; then
+  systemctl stop corrija-me-pt-br-node.service || true
 fi
 
 rm -rf "$INSTALL_ROOT"
@@ -37,6 +56,17 @@ mkdir -p "$INSTALL_ROOT"
 cp -R "$ROOT_DIR/server" "$INSTALL_ROOT/"
 cp -R "$ROOT_DIR/chrome-extension" "$INSTALL_ROOT/"
 chmod +x "$INSTALL_ROOT/server/corrija-me-pt-br-server"
+printf '%s\n' "$SELECTED_PORT" > "$PORT_FILE"
+cat > "$ROOT_DIR/chrome-extension/server-config.json" <<EOF
+{
+  "serverUrl": "$SERVER_URL"
+}
+EOF
+cat > "$INSTALL_ROOT/chrome-extension/server-config.json" <<EOF
+{
+  "serverUrl": "$SERVER_URL"
+}
+EOF
 
 cat > "$SERVICE_PATH" <<'EOF'
 [Unit]
@@ -46,6 +76,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/opt/corrija_me_pt_br
+Environment=CORRIJA_ME_PORT=__CORRIJA_ME_PORT__
 ExecStart=/opt/corrija_me_pt_br/server/corrija-me-pt-br-server
 Restart=always
 RestartSec=3
@@ -54,13 +85,15 @@ RestartSec=3
 WantedBy=multi-user.target
 EOF
 
+sed -i "s/__CORRIJA_ME_PORT__/$SELECTED_PORT/" "$SERVICE_PATH"
+
 systemctl daemon-reload
 systemctl enable corrija-me-pt-br-node.service
 systemctl restart corrija-me-pt-br-node.service
 
 echo
 echo "Instalacao concluida."
-echo "Servidor local ativo em http://127.0.0.1:8081"
+echo "Servidor local configurado em $SERVER_URL"
 echo "No Chrome, abra chrome://extensions"
 echo "Ative o modo do desenvolvedor e selecione:"
 echo "  /opt/corrija_me_pt_br/chrome-extension"
@@ -113,6 +146,7 @@ function linuxReadme() {
    /opt/corrija_me_pt_br/chrome-extension
 
 O backend local inicia automaticamente com o sistema.
+A porta e escolhida automaticamente a partir de 18081.
 
 Para desinstalar:
 sudo ./uninstall.sh
@@ -152,6 +186,38 @@ $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $installRoot = Join-Path $env:LOCALAPPDATA "corrija_me_pt_br"
 $startupFolder = [Environment]::GetFolderPath("Startup")
 $startupLauncherPath = Join-Path $startupFolder "IniciarCorrijaMePtBr.bat"
+$portFile = Join-Path $installRoot "server-port.txt"
+$rootConfigPath = Join-Path $root "chrome-extension\\server-config.json"
+$configPath = Join-Path $installRoot "chrome-extension\\server-config.json"
+$pidFile = Join-Path $installRoot "server\\corrija_me_pt_br.pid"
+
+function Get-FreePort {
+  $port = 18081
+  while ($true) {
+    $listener = $null
+    try {
+      $listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, $port)
+      $listener.Start()
+      $listener.Stop()
+      return $port
+    } catch {
+      if ($listener) {
+        try { $listener.Stop() } catch {}
+      }
+      $port++
+    }
+  }
+}
+
+if (Test-Path $pidFile) {
+  $savedPid = Get-Content $pidFile -ErrorAction SilentlyContinue
+  if ($savedPid) {
+    $existingProcess = Get-Process -Id $savedPid -ErrorAction SilentlyContinue
+    if ($existingProcess) {
+      Stop-Process -Id $savedPid -Force
+    }
+  }
+}
 
 if (Test-Path $installRoot) {
   Remove-Item $installRoot -Recurse -Force
@@ -159,6 +225,20 @@ if (Test-Path $installRoot) {
 
 New-Item -ItemType Directory -Path $installRoot -Force | Out-Null
 Copy-Item (Join-Path $root "*") $installRoot -Recurse -Force
+
+$selectedPort = Get-FreePort
+$serverUrl = "http://127.0.0.1:$selectedPort"
+$selectedPort | Set-Content -Path $portFile -Encoding ASCII
+@"
+{
+  "serverUrl": "$serverUrl"
+}
+"@ | Set-Content -Path $rootConfigPath -Encoding ASCII
+@"
+{
+  "serverUrl": "$serverUrl"
+}
+"@ | Set-Content -Path $configPath -Encoding ASCII
 
 $startupContent = @"
 @echo off
@@ -174,6 +254,7 @@ Start-Process "cmd.exe" '/c start chrome://extensions' -ErrorAction SilentlyCont
 
 Write-Host ""
 Write-Host "Instalacao concluida."
+Write-Host "Servidor local configurado em $serverUrl"
 Write-Host "No Chrome, clique em 'Carregar sem compactacao' e selecione:"
 Write-Host "  $installRoot\\chrome-extension"
 Write-Host ""
@@ -221,9 +302,19 @@ function windowsStartPs1() {
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $exePath = Join-Path $root "server\\corrija-me-pt-br-server.exe"
 $pidFile = Join-Path $root "server\\corrija_me_pt_br.pid"
+$portFile = Join-Path $root "server-port.txt"
 
 if (-not (Test-Path $exePath)) {
   throw "Executavel do backend nao encontrado em $exePath"
+}
+
+if (-not (Test-Path $portFile)) {
+  throw "Arquivo de porta nao encontrado em $portFile"
+}
+
+$selectedPort = (Get-Content $portFile -ErrorAction Stop | Select-Object -First 1).Trim()
+if (-not $selectedPort) {
+  throw "Nenhuma porta configurada encontrada em $portFile"
 }
 
 if (Test-Path $pidFile) {
@@ -238,14 +329,14 @@ if (Test-Path $pidFile) {
   Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
 }
 
-$process = Start-Process -FilePath $exePath -WorkingDirectory $root -WindowStyle Hidden -PassThru
+$process = Start-Process -FilePath $exePath -WorkingDirectory $root -WindowStyle Hidden -PassThru -Environment @{ CORRIJA_ME_PORT = $selectedPort }
 $process.Id | Set-Content -Path $pidFile -Encoding ASCII
 Start-Sleep -Seconds 2
 
 try {
-  $response = Invoke-WebRequest -Uri "http://127.0.0.1:8081/health" -UseBasicParsing -TimeoutSec 10
+  $response = Invoke-WebRequest -Uri "http://127.0.0.1:$selectedPort/health" -UseBasicParsing -TimeoutSec 10
   if ($response.StatusCode -eq 200) {
-    Write-Host "Backend iniciado com sucesso em http://127.0.0.1:8081"
+    Write-Host "Backend iniciado com sucesso em http://127.0.0.1:$selectedPort"
     exit 0
   }
 } catch {
@@ -282,17 +373,27 @@ Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
 function windowsStatusPs1() {
   return `$ErrorActionPreference = "Stop"
 
+$root = Split-Path -Parent $MyInvocation.MyCommand.Path
+$portFile = Join-Path $root "server-port.txt"
+
+if (-not (Test-Path $portFile)) {
+  Write-Host "Arquivo de porta nao encontrado."
+  exit 1
+}
+
+$selectedPort = (Get-Content $portFile -ErrorAction Stop | Select-Object -First 1).Trim()
+
 try {
-  $response = Invoke-WebRequest -Uri "http://127.0.0.1:8081/health" -UseBasicParsing -TimeoutSec 10
+  $response = Invoke-WebRequest -Uri "http://127.0.0.1:$selectedPort/health" -UseBasicParsing -TimeoutSec 10
   if ($response.StatusCode -eq 200) {
-    Write-Host "Backend online em http://127.0.0.1:8081"
+    Write-Host "Backend online em http://127.0.0.1:$selectedPort"
     Write-Host $response.Content
     exit 0
   }
 } catch {
 }
 
-Write-Host "Backend offline em http://127.0.0.1:8081"
+Write-Host "Backend offline em http://127.0.0.1:$selectedPort"
 exit 1
 `;
 }
@@ -348,6 +449,7 @@ async function packageWindows() {
    %LOCALAPPDATA%\\corrija_me_pt_br\\chrome-extension
 
 O backend local sera iniciado automaticamente no login do Windows.
+A porta e escolhida automaticamente a partir de 18081.
 
 Para desinstalar:
 execute uninstall.bat

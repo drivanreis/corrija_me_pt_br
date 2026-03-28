@@ -1,5 +1,5 @@
-const LOCAL_SERVER_URL = "http://127.0.0.1:8081";
-const STORAGE_DEFAULTS = { autoCheck: true };
+import { getServerUrl, getSettings } from "./server-config.js";
+
 const MIN_TEXT_LENGTH = 3;
 const CHECK_DEBOUNCE_MS = 1100;
 const TEXT_INPUT_TYPES = new Set(["text", "search", "email", "url", "tel"]);
@@ -59,11 +59,6 @@ function isSupportedElement(element: Element | null): element is HTMLElement | H
     return !element.disabled && !element.readOnly && TEXT_INPUT_TYPES.has((element.type || "text").toLowerCase());
   }
   return element instanceof HTMLElement && element.isContentEditable;
-}
-
-async function getSettings(): Promise<{ autoCheck: boolean }> {
-  const stored = await chrome.storage.local.get(STORAGE_DEFAULTS);
-  return { autoCheck: stored.autoCheck !== false };
 }
 
 function getText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement | null): string {
@@ -218,7 +213,8 @@ async function analyzeActiveElement(manual = false): Promise<void> {
       text
     });
 
-    const response = await fetch(`${LOCAL_SERVER_URL}/v2/check`, {
+    const serverUrl = await getServerUrl();
+    const response = await fetch(`${serverUrl}/v2/check`, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
