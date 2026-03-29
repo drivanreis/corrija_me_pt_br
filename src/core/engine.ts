@@ -1,5 +1,5 @@
 import { createContextRuleMatches } from "./context-rules.js";
-import { buildContext, createWholeWordPattern, dedupeStrings, isWordLike, normalizeDictionaryWord, preserveReplacementCase, stripDiacritics } from "./text.js";
+import { buildContext, createWholeWordPattern, createWordTokenPattern, dedupeStrings, isWordLike, normalizeDictionaryWord, preserveReplacementCase, stripDiacritics } from "./text.js";
 import type { CheckResult, DictionaryData, ReplacementEntry, RuleMatch } from "./types.js";
 
 function createMatch(text: string, offset: number, length: number, replacements: string[], ruleId: string, message: string, description: string): RuleMatch {
@@ -153,7 +153,7 @@ function createUnknownWordMatches(text: string, dictionary: DictionaryData): Rul
 
   const matches: RuleMatch[] = [];
   const seenOffsets = new Set<string>();
-  const pattern = /\b[\p{L}][\p{L}\p{M}\p{Pc}\p{Pd}]*\b/gu;
+  const pattern = createWordTokenPattern();
 
   for (const match of text.matchAll(pattern)) {
     if (match.index === undefined) {
@@ -192,7 +192,7 @@ function createUnknownWordMatches(text: string, dictionary: DictionaryData): Rul
 }
 
 function createRepeatedWordMatches(text: string): RuleMatch[] {
-  const pattern = /\b([\p{L}\p{N}]+)\s+(\1)\b/giu;
+  const pattern = /(?<![\p{L}\p{N}\p{M}])([\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*)\s+(\1)(?![\p{L}\p{N}\p{M}])/giu;
   const matches: RuleMatch[] = [];
 
   for (const match of text.matchAll(pattern)) {

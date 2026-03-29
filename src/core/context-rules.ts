@@ -1,4 +1,4 @@
-import { buildContext, dedupeStrings, normalizeDictionaryWord, preserveReplacementCase } from "./text.js";
+import { buildContext, createWordTokenPattern, dedupeStrings, normalizeDictionaryWord, preserveReplacementCase } from "./text.js";
 import type { ContextRuleDefinition, RuleMatch } from "./types.js";
 
 interface TokenMatch {
@@ -10,7 +10,7 @@ interface TokenMatch {
 
 function tokenizeText(text: string): TokenMatch[] {
   const tokens: TokenMatch[] = [];
-  const pattern = /\b[\p{L}][\p{L}\p{M}\p{Pc}\p{Pd}]*\b/gu;
+  const pattern = createWordTokenPattern();
 
   for (const match of text.matchAll(pattern)) {
     if (match.index === undefined) {

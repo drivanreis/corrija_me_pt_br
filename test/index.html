@@ -8,11 +8,31 @@
       :root {
         color-scheme: light;
         --bg: #f6f1e8;
-        --panel: #fffdf8;
+        --bg-top: #fff8ef;
+        --bg-bottom: #efe7da;
+        --panel: rgba(255, 253, 248, 0.9);
+        --panel-strong: #fffdf8;
         --border: #d9c9b0;
         --text: #2e2a23;
         --muted: #756958;
         --accent: #0f766e;
+        --accent-soft: rgba(15, 118, 110, 0.12);
+        --shadow: 0 10px 30px rgba(73, 52, 24, 0.08);
+      }
+
+      body[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #10151d;
+        --bg-top: #1a2431;
+        --bg-bottom: #0c1118;
+        --panel: rgba(16, 21, 29, 0.88);
+        --panel-strong: #151c26;
+        --border: #2c3a4c;
+        --text: #eef3f8;
+        --muted: #9daec1;
+        --accent: #7dd3c7;
+        --accent-soft: rgba(125, 211, 199, 0.16);
+        --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
       }
 
       * {
@@ -23,14 +43,27 @@
         margin: 0;
         font-family: "Noto Sans", "Segoe UI", sans-serif;
         background:
-          radial-gradient(circle at top, #fff8ef 0, #f6f1e8 45%, #efe7da 100%);
+          radial-gradient(circle at top, var(--bg-top) 0, var(--bg) 45%, var(--bg-bottom) 100%);
         color: var(--text);
+        transition: background 180ms ease, color 180ms ease;
       }
 
       main {
         width: min(960px, calc(100% - 32px));
         margin: 0 auto;
         padding: 32px 0 48px;
+      }
+
+      .page-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .page-header-copy {
+        max-width: 720px;
       }
 
       h1 {
@@ -50,7 +83,8 @@
         padding: 14px 16px;
         border: 1px solid var(--border);
         border-radius: 16px;
-        background: rgba(255, 255, 255, 0.7);
+        background: var(--panel);
+        box-shadow: var(--shadow);
       }
 
       .grid {
@@ -63,7 +97,8 @@
         border: 1px solid var(--border);
         border-radius: 20px;
         background: var(--panel);
-        box-shadow: 0 10px 30px rgba(73, 52, 24, 0.08);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
       }
 
       .card h2 {
@@ -87,12 +122,21 @@
       .editable {
         width: 100%;
         padding: 14px 16px;
-        border: 1px solid #c8baa4;
+        border: 1px solid var(--border);
         border-radius: 14px;
-        background: #fff;
+        background: var(--panel-strong);
         color: var(--text);
         font: inherit;
         line-height: 1.5;
+        transition: border-color 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+      }
+
+      input:focus,
+      textarea:focus,
+      .editable:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px var(--accent-soft);
       }
 
       textarea {
@@ -102,7 +146,6 @@
 
       .editable {
         min-height: 150px;
-        outline: none;
         white-space: pre-wrap;
       }
 
@@ -117,15 +160,101 @@
         padding-left: 18px;
         color: var(--muted);
       }
+
+      .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        flex: 0 0 auto;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--panel);
+        color: var(--text);
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      }
+
+      .theme-toggle:hover {
+        transform: translateY(-1px);
+      }
+
+      .theme-toggle:focus-visible {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px var(--accent-soft);
+      }
+
+      .theme-toggle svg {
+        width: 22px;
+        height: 22px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .theme-toggle .icon-moon {
+        display: none;
+      }
+
+      body[data-theme="dark"] .theme-toggle .icon-sun {
+        display: none;
+      }
+
+      body[data-theme="dark"] .theme-toggle .icon-moon {
+        display: block;
+      }
+
+      @media (max-width: 700px) {
+        .page-header {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .theme-toggle {
+          align-self: flex-end;
+        }
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1>Pagina de teste da extensao</h1>
-      <p class="lead">
-        Use esta pagina para validar o comportamento do <strong>corrija_me_pt_br</strong>
-        antes de testar em Google Docs, WhatsApp Web e outros sites.
-      </p>
+      <header class="page-header">
+        <div class="page-header-copy">
+          <h1>Pagina de teste da extensao</h1>
+          <p class="lead">
+            Use esta pagina para validar o comportamento do <strong>corrija_me_pt_br</strong>
+            antes de testar em Google Docs, WhatsApp Web e outros sites.
+          </p>
+        </div>
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Alternar entre tema claro e escuro"
+          title="Alternar tema"
+        >
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2.5"></path>
+            <path d="M12 19.5V22"></path>
+            <path d="M2 12h2.5"></path>
+            <path d="M19.5 12H22"></path>
+            <path d="M4.9 4.9l1.8 1.8"></path>
+            <path d="M17.3 17.3l1.8 1.8"></path>
+            <path d="M17.3 6.7l1.8-1.8"></path>
+            <path d="M4.9 19.1l1.8-1.8"></path>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 15.2A8.5 8.5 0 0 1 8.8 4 9 9 0 1 0 20 15.2z"></path>
+          </svg>
+        </button>
+      </header>
 
       <div class="hint">
         Abra este arquivo no navegador, foque em um campo de texto e digite ou edite os
@@ -193,5 +322,36 @@ Se voce concorda, podemos marca uma reuniao ainda essa semana.</textarea
         </div>
       </section>
     </main>
+
+    <script>
+      const THEME_KEY = "corrija-me-pt-br-test-theme";
+      const toggle = document.getElementById("themeToggle");
+      const root = document.body;
+
+      function applyTheme(theme) {
+        root.dataset.theme = theme;
+        toggle?.setAttribute(
+          "aria-label",
+          theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"
+        );
+        toggle?.setAttribute(
+          "title",
+          theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"
+        );
+      }
+
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+
+      applyTheme(savedTheme || preferredTheme);
+
+      toggle?.addEventListener("click", () => {
+        const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        localStorage.setItem(THEME_KEY, nextTheme);
+      });
+    </script>
   </body>
 </html>

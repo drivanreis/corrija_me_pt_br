@@ -10,6 +10,10 @@ export function createWholeWordPattern(term: string): RegExp {
   return new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegExp(term)}(?![\\p{L}\\p{N}])`, "giu");
 }
 
+export function createWordTokenPattern(): RegExp {
+  return /(?<![\p{L}\p{N}\p{M}])[\p{L}][\p{L}\p{M}\p{Pc}\p{Pd}]*(?![\p{L}\p{N}\p{M}])/gu;
+}
+
 export function preserveReplacementCase(original: string, replacement: string): string {
   if (!replacement) {
     return replacement;
@@ -41,7 +45,7 @@ export function dedupeStrings(values: string[]): string[] {
 }
 
 export function normalizeDictionaryWord(value: string): string {
-  return value.trim().toLocaleLowerCase("pt-BR");
+  return value.normalize("NFC").trim().toLocaleLowerCase("pt-BR");
 }
 
 export function stripDiacritics(value: string): string {
