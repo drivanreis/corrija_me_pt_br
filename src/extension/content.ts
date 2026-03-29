@@ -519,17 +519,69 @@ function syncGoogleDocsBridgeState(statusMessage: string): void {
   });
 }
 
+function dispatchInputLikeEvent(
+  element: HTMLElement,
+  type: "beforeinput" | "input",
+  inputType: string,
+  data: string
+): Event {
+  try {
+    return new InputEvent(type, {
+      bubbles: true,
+      cancelable: type === "beforeinput",
+      inputType,
+      data
+    });
+  } catch {
+    return new Event(type, {
+      bubbles: true,
+      cancelable: type === "beforeinput"
+    });
+  }
+}
+
 function applyReplacementToContentEditable(element: HTMLElement, match: CheckMatch, replacement: string): boolean {
   const range = createRangeFromOffsets(element, match.offset, match.length);
   if (!range) {
     return false;
   }
 
-  range.deleteContents();
-  range.insertNode(document.createTextNode(replacement));
-  element.dispatchEvent(new Event("input", { bubbles: true }));
+  element.focus();
+
+  const selection = window.getSelection();
+  if (selection) {
+    selection.removeAllRanges();
+    selection.addRange(range.cloneRange());
+  }
+
+  element.dispatchEvent(dispatchInputLikeEvent(element, "beforeinput", "insertReplacementText", replacement));
+
+  let applied: boolean;
+  try {
+    applied = document.execCommand("insertText", false, replacement);
+  } catch {
+    applied = false;
+  }
+
+  if (!applied) {
+    range.deleteContents();
+    const textNode = document.createTextNode(replacement);
+    range.insertNode(textNode);
+
+    if (selection) {
+      const caretRange = document.createRange();
+      caretRange.setStart(textNode, replacement.length);
+      caretRange.collapse(true);
+      selection.removeAllRanges();
+      selection.addRange(caretRange);
+    }
+
+    applied = true;
+  }
+
+  element.dispatchEvent(dispatchInputLikeEvent(element, "input", "insertReplacementText", replacement));
   element.dispatchEvent(new Event("change", { bubbles: true }));
-  return true;
+  return applied;
 }
 
 function renderResults(matches: CheckMatch[]): void {
