@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { normalizeDictionaryWord } from "../core/text.js";
-import type { ContextRuleDefinition, ReplacementEntry } from "../core/types.js";
+import type { ContextRuleDefinition, PhraseRuleDefinition, ReplacementEntry } from "../core/types.js";
 
 interface CommonMistakeFileEntry {
   from: string;
@@ -21,6 +21,7 @@ export interface DictionaryResources {
   commonMistakes: ReplacementEntry[];
   dictionaryReady: boolean;
   contextRules: ContextRuleDefinition[];
+  phraseRules: PhraseRuleDefinition[];
 }
 
 function loadReplacementEntries(pathname: string): ReplacementEntry[] {
@@ -45,6 +46,10 @@ function loadWordList(pathname: string): string[] {
 
 function loadContextRules(pathname: string): ContextRuleDefinition[] {
   return JSON.parse(readFileSync(pathname, "utf8")) as ContextRuleDefinition[];
+}
+
+function loadPhraseRules(pathname: string): PhraseRuleDefinition[] {
+  return JSON.parse(readFileSync(pathname, "utf8")) as PhraseRuleDefinition[];
 }
 
 function loadDictionaryManifest(dictionaryDir: string): DictionaryManifest | null {
@@ -83,12 +88,14 @@ export function loadDictionaryResources(dataDir: string): DictionaryResources {
   const commonMistakes = loadCommonMistakeEntries(join(dictionaryDir, commonMistakesFile));
   const dictionaryReady = words.size >= 5_000;
   const contextRules = loadContextRules(join(rulesDir, "context_rules.json"));
+  const phraseRules = loadPhraseRules(join(rulesDir, "phrase_rules.json"));
 
   return {
     replacements,
     words,
     commonMistakes,
     dictionaryReady,
-    contextRules
+    contextRules,
+    phraseRules
   };
 }

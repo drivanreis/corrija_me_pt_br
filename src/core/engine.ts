@@ -1,4 +1,5 @@
 import { createContextRuleMatches } from "./context-rules.js";
+import { createPhraseRuleMatches } from "./phrase-rules.js";
 import { buildContext, createWholeWordPattern, createWordTokenPattern, dedupeStrings, isWordLike, normalizeDictionaryWord, preserveReplacementCase, stripDiacritics } from "./text.js";
 import type { CheckResult, DictionaryData, ReplacementEntry, RuleMatch } from "./types.js";
 
@@ -291,8 +292,9 @@ function createSentenceCaseMatches(text: string): RuleMatch[] {
 export function checkText(text: string, replacements: ReplacementEntry[], dictionary: DictionaryData): CheckResult {
   const replacementMatches = createReplacementMatches(text, replacements);
   const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
+  const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
   const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
-  const protectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...contextRuleMatches];
+  const protectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches];
   const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => (
     !protectedMatches.some((existing) => (
       candidate.offset < existing.offset + existing.length
@@ -303,6 +305,7 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
   const allMatches = [
     ...replacementMatches,
     ...dictionaryMistakeMatches,
+    ...phraseRuleMatches,
     ...contextRuleMatches,
     ...unknownWordMatches,
     ...createRepeatedWordMatches(text),

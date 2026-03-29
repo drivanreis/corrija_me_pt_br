@@ -9,12 +9,21 @@ export interface DictionaryData {
   commonMistakes: ReplacementEntry[];
   dictionaryReady: boolean;
   contextRules: ContextRuleDefinition[];
+  phraseRules: PhraseRuleDefinition[];
 }
 
 export interface ContextRuleDefinition {
   id: string;
   pattern: string[];
   targetIndex: number;
+  replacements: string[];
+  message: string;
+  description: string;
+}
+
+export interface PhraseRuleDefinition {
+  id: string;
+  pattern: string[];
   replacements: string[];
   message: string;
   description: string;

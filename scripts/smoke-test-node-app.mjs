@@ -60,6 +60,26 @@ async function main() {
   if (!Array.isArray(payload.matches) || payload.matches.length === 0) {
     throw new Error("Smoke test falhou: nenhuma sugestao retornada.");
   }
+
+  const phraseResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    },
+    body: new URLSearchParams({
+      language: "pt-BR",
+      text: "Vendo bicileta semi nova em Fortalesa Ceara"
+    })
+  });
+
+  const phrasePayload = await phraseResponse.json();
+  const phraseSuggestions = Array.isArray(phrasePayload.matches)
+    ? phrasePayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
+    : [];
+
+  if (!phraseSuggestions.includes("semi-nova") || !phraseSuggestions.includes("Fortaleza, Ceará")) {
+    throw new Error("Smoke test falhou: regras frasais nao apareceram como esperado.");
+  }
 }
 
 main()

@@ -27,6 +27,7 @@ async function main() {
   const wordsPath = path.join(dictionaryDir, "words_01.txt");
   const customWordsPath = path.join(dictionaryDir, "custom_words.txt");
   const rulesPath = path.join(rulesDir, "context_rules.json");
+  const phraseRulesPath = path.join(rulesDir, "phrase_rules.json");
 
   const words = await readWordsFile(wordsPath);
   const customWords = await readWordsFile(customWordsPath);
@@ -35,6 +36,11 @@ async function main() {
   const rules = JSON.parse(await readFile(rulesPath, "utf8"));
   if (!Array.isArray(rules)) {
     throw new Error("context_rules.json precisa ser um array JSON.");
+  }
+
+  const phraseRules = JSON.parse(await readFile(phraseRulesPath, "utf8"));
+  if (!Array.isArray(phraseRules)) {
+    throw new Error("phrase_rules.json precisa ser um array JSON.");
   }
 
   const errors = [];
@@ -77,10 +83,44 @@ async function main() {
     }
   });
 
+  phraseRules.forEach((rule, index) => {
+    const prefix = `Regra frasal #${index + 1}`;
+
+    if (!rule || typeof rule !== "object") {
+      errors.push(`${prefix}: item invalido.`);
+      return;
+    }
+
+    if (!isNonEmptyString(rule.id)) {
+      errors.push(`${prefix}: campo 'id' invalido.`);
+    } else if (ids.has(rule.id)) {
+      errors.push(`${prefix}: id duplicado '${rule.id}'.`);
+    } else {
+      ids.add(rule.id);
+    }
+
+    if (!Array.isArray(rule.pattern) || !rule.pattern.length || !rule.pattern.every(isNonEmptyString)) {
+      errors.push(`${prefix}: campo 'pattern' invalido.`);
+    }
+
+    if (!Array.isArray(rule.replacements) || !rule.replacements.length || !rule.replacements.every(isNonEmptyString)) {
+      errors.push(`${prefix}: campo 'replacements' invalido.`);
+    }
+
+    if (!isNonEmptyString(rule.message)) {
+      errors.push(`${prefix}: campo 'message' invalido.`);
+    }
+
+    if (!isNonEmptyString(rule.description)) {
+      errors.push(`${prefix}: campo 'description' invalido.`);
+    }
+  });
+
   console.log(`Palavras em words_01.txt: ${words.length}`);
   console.log(`Palavras em custom_words.txt: ${customWords.length}`);
   console.log(`Palavras unicas totais: ${uniqueWords.size}`);
   console.log(`Regras em context_rules.json: ${rules.length}`);
+  console.log(`Regras em phrase_rules.json: ${phraseRules.length}`);
 
   if (errors.length) {
     console.error("");

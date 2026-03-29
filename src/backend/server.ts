@@ -83,7 +83,8 @@ const server = createServer(async (request, response) => {
       words: dictionaryResources.words,
       commonMistakes: dictionaryResources.commonMistakes,
       dictionaryReady: dictionaryResources.dictionaryReady,
-      contextRules: dictionaryResources.contextRules
+      contextRules: dictionaryResources.contextRules,
+      phraseRules: dictionaryResources.phraseRules
     }));
     return;
   }
