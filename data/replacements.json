@@ -38,5 +38,6 @@
   { "from": "telemóvel", "replacements": ["telefone celular"], "source": "core" },
   { "from": "desporto", "replacements": ["esporte"], "source": "core" },
   { "from": "bilhete de identidade", "replacements": ["carteira de identidade", "cédula de identidade"], "source": "core" },
+  { "from": "semi nova", "replacements": ["semi-nova"], "source": "core" },
   { "from": "hifen", "replacements": ["hífen"], "source": "core" }
 ]
