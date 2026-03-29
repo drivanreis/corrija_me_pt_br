@@ -224,7 +224,7 @@ async function refreshSiteAccessUi(): Promise<ActiveTabContext | null> {
   const granted = await chrome.permissions.contains({ origins: [context.originPattern] });
   if (permissionHeadline) {
     permissionHeadline.innerHTML = hasGlobalAccess || granted
-      ? "A extensao <strong>corrija_me_pt_br</strong> ja tem acesso suficiente para ajudar voce nesta pagina."
+      ? "A extensao <strong>corrija_me_pt_br</strong> ja saiu da instalacao com acesso suficiente para ajudar voce nesta pagina."
       : "Para a extensao <strong>corrija_me_pt_br</strong> ajudar voce, e necessario liberar o acesso.";
   }
   if (sitePermissionLabel) {
@@ -232,7 +232,7 @@ async function refreshSiteAccessUi(): Promise<ActiveTabContext | null> {
   }
   if (permissionHelp) {
     permissionHelp.textContent = hasGlobalAccess
-      ? "O Corrija-me PT-BR ja esta liberado para todos os sites. Esse e o modo mais pratico para OLX, WhatsApp Web, Telegram, Instagram e Google Docs."
+      ? "O Corrija-me PT-BR ja esta liberado para todos os sites. Esse acesso passa a ser solicitado logo na instalacao para evitar confusao durante o uso."
       : granted
         ? "Este site ja foi liberado por voce. O acesso vale apenas para este endereco."
         : "Se voce quiser uma experiencia sem interrupcoes, use 'Liberar em todos os sites'. Se preferir mais controle, use 'Liberar neste site'.";

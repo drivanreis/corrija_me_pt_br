@@ -45,6 +45,7 @@ let latestStatusMessage = "Foque em um campo de texto para ver as correcoes.";
 let latestStatusTone = "";
 let inputOverlayHost: HTMLDivElement | null = null;
 let inputOverlayContent: HTMLDivElement | null = null;
+let suppressNextClickHideUntil = 0;
 
 const suggestionMenu = document.createElement("section");
 suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
@@ -157,6 +158,14 @@ function replaceTextRange(text: string, offset: number, length: number, replacem
 function hideSuggestionMenu(): void {
   suggestionMenu.classList.add("corrija-me-pt-br-hidden");
   suggestionMenu.innerHTML = "";
+}
+
+function shouldIgnoreHideAfterPointerGesture(): boolean {
+  return Date.now() < suppressNextClickHideUntil;
+}
+
+function markPointerGestureForSuggestionMenu(): void {
+  suppressNextClickHideUntil = Date.now() + 400;
 }
 
 async function shouldShowGoogleDocsHint(): Promise<boolean> {
@@ -480,7 +489,9 @@ function openSuggestionMenu(index: number, x: number, y: number): void {
       button.type = "button";
       button.className = "corrija-me-pt-br-menu-item";
       button.textContent = replacement.value;
-      button.addEventListener("click", () => {
+      button.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         applySingleCorrection(index, replacement.value);
         hideSuggestionMenu();
       });
@@ -782,12 +793,13 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.addEventListener("click", (event) => {
+document.addEventListener("pointerdown", (event) => {
   const target = event.target;
   if (target instanceof HTMLElement && target.classList.contains("corrija-me-pt-br-overlay-hit")) {
     const index = Number(target.dataset.matchIndex ?? "-1");
     if (Number.isInteger(index) && index >= 0) {
       const rect = target.getBoundingClientRect();
+      markPointerGestureForSuggestionMenu();
       openSuggestionMenu(index, rect.left, rect.bottom);
       event.preventDefault();
       event.stopPropagation();
@@ -837,7 +849,33 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  markPointerGestureForSuggestionMenu();
   openSuggestionMenu(matchIndex, mouseEvent.clientX, mouseEvent.clientY);
+  event.preventDefault();
+  event.stopPropagation();
+}, true);
+
+document.addEventListener("click", (event) => {
+  if (shouldIgnoreHideAfterPointerGesture()) {
+    event.preventDefault();
+    event.stopPropagation();
+    return;
+  }
+
+  const target = event.target;
+  if (target instanceof Node && suggestionMenu.contains(target)) {
+    return;
+  }
+
+  if (target instanceof HTMLElement && target.classList.contains("corrija-me-pt-br-overlay-hit")) {
+    return;
+  }
+
+  if (target instanceof Node && activeElement instanceof HTMLElement && activeElement.contains(target)) {
+    return;
+  }
+
+  hideSuggestionMenu();
 }, true);
 
 window.addEventListener("message", (event) => {

@@ -55,12 +55,10 @@ async function buildExtension() {
     version: "2.0.0",
     permissions: ["storage", "tabs", "scripting", "activeTab"],
     host_permissions: [
+      "http://*/*",
+      "https://*/*",
       "http://127.0.0.1/*",
       "http://localhost/*"
-    ],
-    optional_host_permissions: [
-      "http://*/*",
-      "https://*/*"
     ],
     background: {
       service_worker: "background.js"
