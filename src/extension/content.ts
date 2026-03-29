@@ -519,12 +519,7 @@ function syncGoogleDocsBridgeState(statusMessage: string): void {
   });
 }
 
-function dispatchInputLikeEvent(
-  element: HTMLElement,
-  type: "beforeinput" | "input",
-  inputType: string,
-  data: string
-): Event {
+function dispatchInputLikeEvent(type: "beforeinput" | "input", inputType: string, data: string): Event {
   try {
     return new InputEvent(type, {
       bubbles: true,
@@ -554,8 +549,6 @@ function applyReplacementToContentEditable(element: HTMLElement, match: CheckMat
     selection.addRange(range.cloneRange());
   }
 
-  element.dispatchEvent(dispatchInputLikeEvent(element, "beforeinput", "insertReplacementText", replacement));
-
   let applied: boolean;
   try {
     applied = document.execCommand("insertText", false, replacement);
@@ -577,10 +570,10 @@ function applyReplacementToContentEditable(element: HTMLElement, match: CheckMat
     }
 
     applied = true;
-  }
 
-  element.dispatchEvent(dispatchInputLikeEvent(element, "input", "insertReplacementText", replacement));
-  element.dispatchEvent(new Event("change", { bubbles: true }));
+    element.dispatchEvent(dispatchInputLikeEvent("input", "insertReplacementText", replacement));
+    element.dispatchEvent(new Event("change", { bubbles: true }));
+  }
   return applied;
 }
 
