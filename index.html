@@ -926,7 +926,6 @@
 
     <script>
       const THEME_KEY = "corrija-me-pt-br-test-theme";
-      const PAGE_KEY = "corrija-me-pt-br-test-page";
       const AUDIT_EXPORT_KEY = "corrija-me-pt-br-test-audit-json";
 
       const fallbackPhases = [
@@ -1235,10 +1234,7 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
       let lastPointerSampleAt = 0;
       let lastClickAt = null;
       let lastInputAt = null;
-      let currentPageIndex = Number(localStorage.getItem(PAGE_KEY) || "0");
-      if (!Number.isInteger(currentPageIndex) || currentPageIndex < 0 || currentPageIndex >= totalPages) {
-        currentPageIndex = 0;
-      }
+      let currentPageIndex = 0;
 
       function normalizeForComparison(value) {
         return String(value || "")
@@ -1361,9 +1357,7 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
         phases = buildDynamicPhasesFromCases(mergedCases);
         totalPages = phases.length + 1;
 
-        if (!Number.isInteger(currentPageIndex) || currentPageIndex < 0 || currentPageIndex >= totalPages) {
-          currentPageIndex = 0;
-        }
+        currentPageIndex = 0;
       }
 
       function buildTokenChangeGroups(sourceTokens, targetTokens) {
@@ -1926,7 +1920,6 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
       }
 
       function renderPage() {
-        localStorage.setItem(PAGE_KEY, String(currentPageIndex));
         interactionTelemetry.page_changes.push({
           page: currentPageIndex + 1,
           at: new Date().toISOString()
