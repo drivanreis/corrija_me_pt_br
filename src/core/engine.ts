@@ -145,9 +145,21 @@ function levenshteinDistance(left: string, right: string): number {
   return previous[right.length];
 }
 
+function countDiacriticMarks(value: string): number {
+  return (value.normalize("NFD").match(/\p{Diacritic}/gu) || []).length;
+}
+
+function hasSafePrefixAndSuffixMatch(word: string, candidate: string): boolean {
+  const minPrefix = word.length >= 6 && candidate.length >= 6 ? 2 : 1;
+  const prefixMatches = word.slice(0, minPrefix) === candidate.slice(0, minPrefix);
+  const suffixMatches = word.at(-1) === candidate.at(-1);
+  return prefixMatches && suffixMatches;
+}
+
 function createUnknownWordSuggestions(word: string, dictionaryWords: Set<string>): string[] {
   const normalizedWord = normalizeDictionaryWord(word);
   const plainWord = stripDiacritics(normalizedWord);
+  const originalDiacritics = countDiacriticMarks(normalizedWord);
   const candidates: Array<{ word: string; score: number }> = [];
 
   for (const candidate of dictionaryWords) {
@@ -161,11 +173,36 @@ function createUnknownWordSuggestions(word: string, dictionaryWords: Set<string>
     }
 
     const distance = levenshteinDistance(plainWord, plainCandidate);
+    const normalizedDistance = levenshteinDistance(normalizedWord, candidate);
+    const candidateDiacritics = countDiacriticMarks(candidate);
+    const samePlainWord = plainCandidate === plainWord;
+
+    if (samePlainWord) {
+      if (originalDiacritics > candidateDiacritics) {
+        continue;
+      }
+
+      if (normalizedDistance > 2) {
+        continue;
+      }
+    } else {
+      if (distance > 1) {
+        continue;
+      }
+
+      if (!hasSafePrefixAndSuffixMatch(normalizedWord, candidate)) {
+        continue;
+      }
+    }
+
     if (distance > 2) {
       continue;
     }
 
-    candidates.push({ word: candidate, score: distance });
+    candidates.push({
+      word: candidate,
+      score: samePlainWord ? normalizedDistance : distance + normalizedDistance
+    });
   }
 
   return candidates

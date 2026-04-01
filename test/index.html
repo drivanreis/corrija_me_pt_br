@@ -1345,16 +1345,58 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
         });
       }
 
+      function dedupeTestCases(testCases) {
+        const seen = new Set();
+        return testCases.filter((testCase) => {
+          const wrong = String(testCase?.errado || "").trim();
+          const right = String(testCase?.correto || "").trim();
+          const key = `${wrong}|||${right}`;
+          if (!wrong || !right || seen.has(key)) {
+            return false;
+          }
+          seen.add(key);
+          return true;
+        });
+      }
+
+      function selectBatteryCases(curatedCases, generatedCases) {
+        const requiredCases = fallbackPhases.length * 5;
+        const curatedPool = dedupeTestCases(curatedCases);
+        const generatedPool = dedupeTestCases(generatedCases).filter((candidate) => {
+          const key = `${String(candidate?.errado || "").trim()}|||${String(candidate?.correto || "").trim()}`;
+          return !curatedPool.some((curated) => `${String(curated?.errado || "").trim()}|||${String(curated?.correto || "").trim()}` === key);
+        });
+
+        if (curatedPool.length >= requiredCases) {
+          return {
+            selectedCases: curatedPool,
+            mode: "curated-only"
+          };
+        }
+
+        return {
+          selectedCases: [...curatedPool, ...generatedPool],
+          mode: curatedPool.length ? "curated-priority" : "generated-fallback"
+        };
+      }
+
       async function initializeDynamicBattery() {
         updateLoadingStatus("Lendo casos curados e gerados da base JSON.");
         const [curatedCases, generatedCases] = await Promise.all([
           fetchJsonArray(["./data/test-cases/curated.json", "../data/test-cases/curated.json"]),
           fetchJsonArray(["./data/test-cases/generated.json", "../data/test-cases/generated.json"])
         ]);
-        const mergedCases = [...curatedCases, ...generatedCases];
+        const { selectedCases, mode } = selectBatteryCases(curatedCases, generatedCases);
 
-        updateLoadingStatus("Montando a bateria desta execução.");
-        phases = buildDynamicPhasesFromCases(mergedCases);
+        if (mode === "curated-only") {
+          updateLoadingStatus("Montando a bateria com a base curada.");
+        } else if (mode === "curated-priority") {
+          updateLoadingStatus("Montando a bateria com prioridade para a base curada e complemento gerado.");
+        } else {
+          updateLoadingStatus("Montando a bateria com casos gerados por fallback.");
+        }
+
+        phases = buildDynamicPhasesFromCases(selectedCases);
         totalPages = phases.length + 1;
 
         currentPageIndex = 0;

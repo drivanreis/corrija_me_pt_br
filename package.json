@@ -16,6 +16,8 @@
     "data:validate": "node scripts/validate-language-data.mjs",
     "generate:test-cases": "node scripts/generate-test-cases.mjs",
     "generate:test-cases:batch": "node scripts/generate-test-cases.mjs --categories ortografia,acentuacao,hifen,pontuacao,localizacao,contexto,homofonos,anuncios,texto_tecnico --count-per-category 12 --difficulty 2",
+    "curate:test-cases": "node scripts/curate-test-cases.mjs",
+    "automate:battery": "node scripts/run-automated-battery.mjs",
     "start:backend": "node build/node-app/backend/server.cjs",
     "dev": "npm run build && npm run start:backend",
     "package:backend": "npm run build && pkg . --targets node18-linux-x64,node18-win-x64 --out-path build/node-app/pkg",

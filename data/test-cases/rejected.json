@@ -1,0 +1,2198 @@
+[
+  {
+    "id": "local_03",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "Preciso comprar 2.5 kg de carne.",
+    "correto": "Preciso comprar 2,5 kg de carne.",
+    "error_count": 1,
+    "tags": [
+      "decimal",
+      "medida"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_05",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "Mais de 1,500 pessoas participaram do protesto.",
+    "correto": "Mais de 1.500 pessoas participaram do protesto.",
+    "error_count": 1,
+    "tags": [
+      "milhar",
+      "número"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_09",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "Moro na Rua das Flores 123.",
+    "correto": "Moro na Rua das Flores, 123.",
+    "error_count": 1,
+    "tags": [
+      "endereço",
+      "vírgula"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_10",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "A temperatura hoje chegou a 38.2 graus.",
+    "correto": "A temperatura hoje chegou a 38,2 graus.",
+    "error_count": 1,
+    "tags": [
+      "decimal",
+      "clima"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_12",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "Vou sair ao meio dia e meio para o almoço.",
+    "correto": "Vou sair ao meio-dia e meia para o almoço.",
+    "error_count": 2,
+    "tags": [
+      "horário",
+      "concordância"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_01",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "Nosso escritório fica na 123, Flower Street, São Paulo.",
+    "correto": "Nosso escritório fica na Rua Flower, 123, São Paulo.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "endereço",
+      "formato"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_04",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "A sede da empresa é em Rio de Janeiro.",
+    "correto": "A sede da empresa é no Rio de Janeiro.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "preposição",
+      "cidade"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_06",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "A conferência será em Brasília DF.",
+    "correto": "A conferência será em Brasília, DF.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "cidade",
+      "estado"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_07",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O fuso horário é GMT-3.",
+    "correto": "O fuso horário é UTC-3.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "fuso_horário",
+      "tecnologia"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_08",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O produto foi enviado para o Estado do Paraná.",
+    "correto": "O produto foi enviado para o Paraná.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "estado",
+      "redundância"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_09",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O endereço é Avenida Brasil nº 500.",
+    "correto": "O endereço é Avenida Brasil n.º 500.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "endereço",
+      "abreviação"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_10",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "A temperatura é de 70 Farenheit.",
+    "correto": "A temperatura é de 70 Fahrenheit.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "unidade_medida",
+      "ciência"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_12",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "Visitamos a Portugal no verão passado.",
+    "correto": "Visitamos Portugal no verão passado.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "país",
+      "preposição"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "texto_tecnico_01",
+    "category": "texto técnico",
+    "difficulty": 3,
+    "errado": "A metodologia empregada foi robusta e reproducible.",
+    "correto": "A metodologia empregada foi robusta e reprodutível.",
+    "error_count": 1,
+    "tags": [
+      "texto técnico",
+      "vocabulário",
+      "pesquisa"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_01",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "Vamos fazer um brainstorm para gerar novas ideias para o marketing.",
+    "correto": "Vamos fazer um brainstorming para gerar novas ideias para o marketing.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "brainstorming",
+      "ideias"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_02",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "O novo website da empresa está online e com uma interface muito user-friendly.",
+    "correto": "O novo site da empresa está online e com uma interface muito amigável.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "site",
+      "amigável",
+      "tecnologia"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_03",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "Preciso de um feedback urgente sobre o projeto para dar prosseguimento.",
+    "correto": "Preciso de um retorno urgente sobre o projeto para dar prosseguimento.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "retorno",
+      "feedback"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_04",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "Você pode me linkar o artigo que você mencionou na reunião?",
+    "correto": "Você pode me enviar o link do artigo que você mencionou na reunião?",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "verbo",
+      "anglicismo",
+      "linkar"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_05",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "Estamos em stand by esperando a confirmação do cliente para iniciar o trabalho.",
+    "correto": "Estamos em modo de espera aguardando a confirmação do cliente para iniciar o trabalho.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "modo de espera",
+      "trabalho"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_06",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "O happy hour do escritório foi muito animado, com direito a drinks free.",
+    "correto": "O happy hour do escritório foi muito animado, com direito a drinques grátis.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "happy hour",
+      "drinks",
+      "free"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_07",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "Os deliveries de comida aumentaram significativamente durante a pandemia.",
+    "correto": "As entregas de comida aumentaram significativamente durante a pandemia.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "entregas",
+      "delivery"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_08",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "Essa nova startup promete revolucionar o mercado de tecnologia com seu know-how inovador.",
+    "correto": "Essa nova startup promete revolucionar o mercado de tecnologia com seu conhecimento inovador.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "conhecimento",
+      "startup"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_09",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "Fiz um checklist de todas as tarefas a serem realizadas hoje.",
+    "correto": "Fiz uma lista de verificação de todas as tarefas a serem realizadas hoje.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "lista de verificação",
+      "checklist"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_10",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "A internete tem sido uma ferramenta essencial para o estudo a distância.",
+    "correto": "A internet tem sido uma ferramenta essencial para o estudo a distância.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "ortografia",
+      "internet",
+      "tecnologia"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_11",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "O time de marketing digital vai fazer um kick off para o novo projeto.",
+    "correto": "A equipe de marketing digital vai fazer uma reunião de lançamento para o novo projeto.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "marketing",
+      "kick off"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_12",
+    "category": "localização",
+    "difficulty": 4,
+    "errado": "O staff da empresa participou do workshop de capacitação.",
+    "correto": "A equipe da empresa participou do workshop de capacitação.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "anglicismo",
+      "staff",
+      "equipe"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "con_12",
+    "category": "contexto",
+    "difficulty": 4,
+    "errado": "Ele é um homem de caráter íntegro e conduta inseparável.",
+    "correto": "Ele é um homem de caráter íntegro e conduta irrepreensível.",
+    "error_count": 1,
+    "tags": [
+      "contexto",
+      "vocabulário",
+      "inseparável",
+      "irrepreensível"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "hifen_microondas_antiinflamatorio",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "Comprei um microondas novo e tomei um antiinflamatório para a dor.",
+    "correto": "Comprei um micro-ondas novo e tomei um anti-inflamatório para a dor.",
+    "error_count": 2,
+    "tags": [
+      "reforma",
+      "hífen",
+      "prefixo"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen_autorretrato_antissocial",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "Ele fez um auto-retrato que mostrava seu comportamento anti-social.",
+    "correto": "Ele fez um autorretrato que mostrava seu comportamento antissocial.",
+    "error_count": 2,
+    "tags": [
+      "reforma",
+      "r-s",
+      "prefixo"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen_bemvindo_malmequer",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "Seja bem vindo ao jardim onde cresce o mal-me-quer silvestre.",
+    "correto": "Seja bem-vindo ao jardim onde cresce o malmequer silvestre.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "composto",
+      "botânica"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen_coobrigado_coautor",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "O co-obrigado no contrato também assina como co-autor da obra.",
+    "correto": "O coobrigado no contrato também assina como coautor da obra.",
+    "error_count": 2,
+    "tags": [
+      "reforma",
+      "prefixo-co",
+      "hífen"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen_supraexcitado_semiaberto",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "Ele ficou supra-excitado com a notícia da progressão para o semi-aberto.",
+    "correto": "Ele ficou supraexcitado com a notícia da progressão para o semiaberto.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "prefixo",
+      "vowel-merging"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "loc_data_mes_maiusculo",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "O evento será realizado em 15 de Outubro de 2024, em Brasília.",
+    "correto": "O evento será realizado em 15 de outubro de 2024, em Brasília.",
+    "error_count": 1,
+    "tags": [
+      "capitalização",
+      "meses",
+      "padrão-br"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_moeda_separador",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "O valor do investimento é de R$ 1,500.00 por participante.",
+    "correto": "O valor do investimento é de R$ 1.500,00 por participante.",
+    "error_count": 1,
+    "tags": [
+      "moeda",
+      "separador",
+      "padrão-br"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_unidade_medida_ponto",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "A carga pesa aproximadamente 50 kgs e mede 2 mts de altura.",
+    "correto": "A carga pesa aproximadamente 50 kg e mede 2 m de altura.",
+    "error_count": 2,
+    "tags": [
+      "unidades",
+      "abreviação",
+      "padrão-abnt"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_decimal_ponto",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "O índice de inflação subiu 0.5% no último trimestre do ano.",
+    "correto": "O índice de inflação subiu 0,5% no último trimestre do ano.",
+    "error_count": 1,
+    "tags": [
+      "decimal",
+      "separador",
+      "padrão-br"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_endereco_numero",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "Moro na Rua das Flores, n. 123, apto 45, no centro da cidade.",
+    "correto": "Moro na Rua das Flores, 123, apto. 45, no centro da cidade.",
+    "error_count": 2,
+    "tags": [
+      "endereço",
+      "abreviação",
+      "estilo"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_milhar_espaco",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "Havia mais de 10 000 pessoas no estádio aguardando o início.",
+    "correto": "Havia mais de 10.000 pessoas no estádio aguardando o início.",
+    "error_count": 1,
+    "tags": [
+      "números",
+      "separador",
+      "legibilidade"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_sigla_estado",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "A encomenda foi enviada para Curitiba - Pr no dia útil passado.",
+    "correto": "A encomenda foi enviada para Curitiba - PR no dia útil passado.",
+    "error_count": 1,
+    "tags": [
+      "sigla",
+      "maiusculização",
+      "geografia"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_porcentagem_espaco",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "Apenas 10 % dos inscritos compareceram ao local da prova.",
+    "correto": "Apenas 10% dos inscritos compareceram ao local da prova.",
+    "error_count": 1,
+    "tags": [
+      "espaçamento",
+      "porcentagem",
+      "tipografia"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "tec_protocolo_transferencia",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "O protocolo de transferência de arquivos falhou por time-out do servidor.",
+    "correto": "O protocolo de transferência de arquivos falhou por tempo de espera excedido do servidor.",
+    "error_count": 1,
+    "tags": [
+      "texto técnico",
+      "estrangeirismo",
+      "localização"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "acentuacao_12",
+    "category": "acentuação",
+    "difficulty": 2,
+    "errado": "Nosso escritorio fica no 3º andar do predio.",
+    "correto": "Nosso escritório fica no 3º andar do prédio.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "escritorio",
+      "localização"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_01",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Gosto de ir a praia no verão.",
+    "correto": "Gosto de ir à praia no verão.",
+    "error_count": 1,
+    "tags": [
+      "crase",
+      "substantivo_feminino",
+      "lazer"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_02",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Vão fazer dez anos do nosso casamento.",
+    "correto": "Faz dez anos do nosso casamento.",
+    "error_count": 1,
+    "tags": [
+      "concordancia_verbal",
+      "verbo_fazer",
+      "tempo"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_03",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Onde você vai hoje à tarde?",
+    "correto": "Aonde você vai hoje à tarde?",
+    "error_count": 1,
+    "tags": [
+      "onde_aonde",
+      "verbo_movimento",
+      "pergunta"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_04",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Haviam muitas pessoas na reunião.",
+    "correto": "Havia muitas pessoas na reunião.",
+    "error_count": 1,
+    "tags": [
+      "concordancia_verbal",
+      "verbo_haver",
+      "impessoal"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_05",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Ela ficou meio chateada com a situação.",
+    "correto": "Ela ficou meia chateada com a situação.",
+    "error_count": 1,
+    "tags": [
+      "concordancia_nominal",
+      "adverbio_meio",
+      "sentimento"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_06",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Comprei um vestido e uma saia nova.",
+    "correto": "Comprei um vestido e uma saia novos.",
+    "error_count": 1,
+    "tags": [
+      "concordancia_nominal",
+      "plural",
+      "compras"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_07",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "A anexo seguem os documentos necessários.",
+    "correto": "Em anexo seguem os documentos necessários.",
+    "error_count": 1,
+    "tags": [
+      "locucao_adverbial",
+      "anexo",
+      "documentacao"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_08",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Isso é para mim fazer.",
+    "correto": "Isso é para eu fazer.",
+    "error_count": 1,
+    "tags": [
+      "pronomes",
+      "regencia_verbal",
+      "erro_comum"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_09",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Ele ficou a espera de uma oportunidade.",
+    "correto": "Ele ficou à espera de uma oportunidade.",
+    "error_count": 1,
+    "tags": [
+      "crase",
+      "locucao_adverbial",
+      "expectativa"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_10",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Diz para mim o que aconteceu.",
+    "correto": "Me diz o que aconteceu.",
+    "error_count": 1,
+    "tags": [
+      "colocacao_pronominal",
+      "imperativo",
+      "erro_comum"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_11",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "As informações foram encaminhadas a secretária.",
+    "correto": "As informações foram encaminhadas à secretária.",
+    "error_count": 1,
+    "tags": [
+      "crase",
+      "regencia_nominal",
+      "comunicacao"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_12",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Chegamos em casa cansados.",
+    "correto": "Chegamos a casa cansados.",
+    "error_count": 1,
+    "tags": [
+      "regencia_verbal",
+      "verbo_chegar",
+      "erro_comum"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "contexto_04",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Ele vive de frente ao mar.",
+    "correto": "Ele vive em frente ao mar.",
+    "error_count": 1,
+    "tags": [
+      "preposicao",
+      "locucao_adverbial",
+      "localização"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "contexto_08",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Obrigado pela sua atenção, muito obrigado.",
+    "correto": "Obrigado pela sua atenção.",
+    "error_count": 1,
+    "tags": [
+      "redundancia",
+      "cortesia",
+      "repeticao"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "localizacao_01",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Ele apanhou o autocarro na paragem.",
+    "correto": "Ele pegou o ônibus no ponto.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "pt_br",
+      "transporte"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_02",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Vou levar os miúdos à escola.",
+    "correto": "Vou levar as crianças para a escola.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "vocabulário"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_03",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "A bicha do cinema estava enorme.",
+    "correto": "A fila do cinema estava enorme.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "vocabulário"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_04",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Ele usa uma camisola de lã.",
+    "correto": "Ele usa uma blusa de lã.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "roupa"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_05",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Preciso de um telemóvel novo.",
+    "correto": "Preciso de um celular novo.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "tecnologia"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_06",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "O pequeno almoço é servido às 8h.",
+    "correto": "O café da manhã é servido às 8h.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "alimentacao"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_07",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Vou fazer uma directa na faculdade.",
+    "correto": "Vou virar a noite estudando na faculdade.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "expressao"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_08",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Ele trabalha em regime de full-time.",
+    "correto": "Ele trabalha em regime de tempo integral.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "trabalho"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_09",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Gostaria de um sumo de laranja.",
+    "correto": "Gostaria de um suco de laranja.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "bebidas"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_10",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Vou à casa de banho.",
+    "correto": "Vou ao banheiro.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "vocabulário"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_11",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Estou a pensar no futuro.",
+    "correto": "Estou pensando no futuro.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "gerundio"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_12",
+    "category": "localização",
+    "difficulty": 1,
+    "errado": "Comprou uma sandes de queijo.",
+    "correto": "Comprou um sanduíche de queijo.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "pt_br",
+      "alimentacao"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-milhar",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "O prêmio é de 1,500.00 reais.",
+    "correto": "O prêmio é de 1.500,00 reais.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "numeros",
+      "pontuação"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-unidade-espaco",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Corri 10km em menos de uma hora.",
+    "correto": "Corri 10 km em menos de uma hora.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "unidade",
+      "espaco"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-decimal",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "A taxa de juros subiu 2.5% este mês.",
+    "correto": "A taxa de juros subiu 2,5% este mês.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "numeros",
+      "decimal"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-moeda-espaco",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Paguei R$100 pela camiseta.",
+    "correto": "Paguei R$ 100 pela camiseta.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "moeda",
+      "espaco"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-velocidade",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "A velocidade máxima é 80km/h.",
+    "correto": "A velocidade máxima é 80 km/h.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "unidade",
+      "velocidade"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-temperatura",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Hoje está fazendo 30oC lá fora.",
+    "correto": "Hoje está fazendo 30 °C lá fora.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "unidade",
+      "temperatura"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "tecn-posicionamento",
+    "category": "texto técnico",
+    "difficulty": 2,
+    "errado": "Aguardamos um posicionamento de sua parte.",
+    "correto": "Aguardamos um posicionamento seu.",
+    "error_count": 1,
+    "tags": [
+      "texto técnico",
+      "formal",
+      "estilo"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "localizacao-horario",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "O evento será as 10:00 PM.",
+    "correto": "O evento será às 22:00.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "formatação"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-moeda",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "O produto custa R$ 1.500,00 dolares.",
+    "correto": "O produto custa US$ 1.500,00.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "finanças"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-data",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "O contrato vence em 10/25/2023.",
+    "correto": "O contrato vence em 25/10/2023.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "data"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "contexto-cessao",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "A seção de terras foi concluída ontem.",
+    "correto": "A cessão de terras foi concluída ontem.",
+    "error_count": 1,
+    "tags": [
+      "contexto",
+      "jurídico"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "homofonos-cassado",
+    "category": "homófonos",
+    "difficulty": 2,
+    "errado": "O mandato do político foi caçado.",
+    "correto": "O mandato do político foi cassado.",
+    "error_count": 1,
+    "tags": [
+      "homófonos",
+      "política"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "hifen_07",
+    "category": "hífen",
+    "difficulty": 3,
+    "errado": "O país precisa investir mais em infra-estrutura básica.",
+    "correto": "O país precisa investir mais em infraestrutura básica.",
+    "error_count": 1,
+    "tags": [
+      "hífen",
+      "política"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "hifen_08",
+    "category": "hífen",
+    "difficulty": 3,
+    "errado": "O réu cumprirá a pena em regime semi-aberto.",
+    "correto": "O réu cumprirá a pena em regime semiaberto.",
+    "error_count": 1,
+    "tags": [
+      "hífen",
+      "jurídico"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_01",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O lanche custou apenas $15.",
+    "correto": "O lanche custou apenas R$ 15,00.",
+    "error_count": 2,
+    "tags": [
+      "moeda",
+      "formatação"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_02",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O evento será realizado no dia 12/25/2023.",
+    "correto": "O evento será realizado no dia 25/12/2023.",
+    "error_count": 1,
+    "tags": [
+      "data",
+      "pt-br"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_04",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "A reunião está marcada para as 4 PM.",
+    "correto": "A reunião está marcada para as 16:00.",
+    "error_count": 1,
+    "tags": [
+      "horário",
+      "localização"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_06",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O preço da assinatura é U$ 10 mensais.",
+    "correto": "O preço da assinatura é US$ 10,00 mensais.",
+    "error_count": 2,
+    "tags": [
+      "moeda",
+      "estrangeiro"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_07",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "São Paulo, 15/Março/2024.",
+    "correto": "São Paulo, 15 de março de 2024.",
+    "error_count": 1,
+    "tags": [
+      "data",
+      "formal"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_08",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O meu CEP é 04567890.",
+    "correto": "O meu CEP é 04567-890.",
+    "error_count": 1,
+    "tags": [
+      "endereço",
+      "cep"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "local_11",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "Meu telefone é 11 988887777.",
+    "correto": "Meu telefone é (11) 98888-7777.",
+    "error_count": 2,
+    "tags": [
+      "telefone",
+      "contato"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "homof_09",
+    "category": "homófonos",
+    "difficulty": 3,
+    "errado": "Desejo que vocês façam uma ótima viajem.",
+    "correto": "Desejo que vocês façam uma ótima viagem.",
+    "error_count": 1,
+    "tags": [
+      "homófono",
+      "ortografia"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion"
+    ]
+  },
+  {
+    "id": "homof_12",
+    "category": "homófonos",
+    "difficulty": 3,
+    "errado": "Ele sempre traz as ferramentas na caixa.",
+    "correto": "Ele sempre traz as ferramentas na caixa.",
+    "error_count": 0,
+    "tags": [
+      "homófono",
+      "correto"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "anunc_07",
+    "category": "anúncios",
+    "difficulty": 3,
+    "errado": "Apenas 99 reais por mes.",
+    "correto": "Apenas R$ 99,00 por mês.",
+    "error_count": 3,
+    "tags": [
+      "anúncios",
+      "preço"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion"
+    ]
+  },
+  {
+    "id": "tecnico_11",
+    "category": "texto técnico",
+    "difficulty": 3,
+    "errado": "O fluxo de caixa esta operando no vermelho.",
+    "correto": "O fluxo de caixa está operando no vermelho.",
+    "error_count": 1,
+    "tags": [
+      "texto técnico",
+      "finanças"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_02",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O evento ocorrerá em 08/21/2024.",
+    "correto": "O evento ocorrerá em 21/08/2024.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "data",
+      "formato"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_03",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O preço é $15.99.",
+    "correto": "O preço é R$ 15,99.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "moeda",
+      "formato"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_05",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O CEP da encomenda é 12345.",
+    "correto": "O CEP da encomenda é 12345-678.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "endereço",
+      "cep"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao_11",
+    "category": "localização",
+    "difficulty": 3,
+    "errado": "O horário de atendimento é das 9am às 6pm.",
+    "correto": "O horário de atendimento é das 9h às 18h.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "horário",
+      "formato"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "contexto_06",
+    "category": "contexto",
+    "difficulty": 3,
+    "errado": "As pessoas que votou nele se arrependeu.",
+    "correto": "As pessoas que votaram nele se arrependeram.",
+    "error_count": 2,
+    "tags": [
+      "concordância",
+      "verbo",
+      "plural",
+      "política"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "homofonos_06",
+    "category": "homófonos",
+    "difficulty": 3,
+    "errado": "O governo vai caçar os direitos do cidadão.",
+    "correto": "O governo vai cassar os direitos do cidadão.",
+    "error_count": 1,
+    "tags": [
+      "homófonos",
+      "verbo",
+      "política"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "hif_03",
+    "category": "hífen",
+    "difficulty": 4,
+    "errado": "Foi um anti-inflamatório eficaz para a dor no joelho, mas deu muito mal-estar.",
+    "correto": "Foi um anti-inflamatório eficaz para a dor no joelho, mas deu muito mal-estar.",
+    "error_count": 0,
+    "tags": [
+      "hífen",
+      "prefixo",
+      "anti-inflamatório",
+      "mal-estar"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "hif_05",
+    "category": "hífen",
+    "difficulty": 4,
+    "errado": "Depois de terminar o namoro, ela se tornou uma ex-namorada muito amiga.",
+    "correto": "Depois de terminar o namoro, ela se tornou uma ex-namorada muito amiga.",
+    "error_count": 0,
+    "tags": [
+      "hífen",
+      "prefixo",
+      "ex-namorada",
+      "relacionamento"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "hif_09",
+    "category": "hífen",
+    "difficulty": 4,
+    "errado": "Ele é um super-herói que luta contra o crime na cidade grande.",
+    "correto": "Ele é um super-herói que luta contra o crime na cidade grande.",
+    "error_count": 0,
+    "tags": [
+      "hífen",
+      "prefixo",
+      "super-herói",
+      "ficção"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "hif_11",
+    "category": "hífen",
+    "difficulty": 4,
+    "errado": "Este é um micro-ondas de última geração, com diversas funções inteligentes.",
+    "correto": "Este é um micro-ondas de última geração, com diversas funções inteligentes.",
+    "error_count": 0,
+    "tags": [
+      "hífen",
+      "prefixo",
+      "micro-ondas",
+      "tecnologia"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "hom_05",
+    "category": "homófonos",
+    "difficulty": 4,
+    "errado": "A cessão de direitos autorais foi um processo burocrático.",
+    "correto": "A cessão de direitos autorais foi um processo burocrático.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "cessão",
+      "direitos autorais",
+      "burocracia"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "hom_08",
+    "category": "homófonos",
+    "difficulty": 4,
+    "errado": "O que você quis dizer com isso, afinal? Qual o porquê da sua atitude?",
+    "correto": "O que você quis dizer com isso, afinal? Qual o porquê da sua atitude?",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "porquê",
+      "razão",
+      "pergunta"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "hom_10",
+    "category": "homófonos",
+    "difficulty": 4,
+    "errado": "Houve muita gente na seção eleitoral para votar nas eleições.",
+    "correto": "Houve muita gente na seção eleitoral para votar nas eleições.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "seção",
+      "eleições",
+      "votação"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "anu_02",
+    "category": "anúncios",
+    "difficulty": 4,
+    "errado": "Compre já e ganhe um brinde exclusivo! Não perca essa chance.",
+    "correto": "Compre já e ganhe um brinde exclusivo! Não perca essa chance.",
+    "error_count": 0,
+    "tags": [
+      "anúncios",
+      "imperativo",
+      "brinde",
+      "oportunidade"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "anu_03",
+    "category": "anúncios",
+    "difficulty": 4,
+    "errado": "Preços baixos só aqui! Qualidade garantida você encontra.",
+    "correto": "Preços baixos só aqui! Qualidade garantida você encontra.",
+    "error_count": 0,
+    "tags": [
+      "anúncios",
+      "preço",
+      "qualidade",
+      "exclusividade"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "tec_07",
+    "category": "texto técnico",
+    "difficulty": 4,
+    "errado": "A avaliação de desempenho deve ser realizada com base em critérios objetivos e predefinidos.",
+    "correto": "A avaliação de desempenho deve ser realizada com base em critérios objetivos e predefinidos.",
+    "error_count": 0,
+    "tags": [
+      "texto técnico",
+      "formalidade",
+      "critérios",
+      "desempenho"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "orto_estupro_estupro",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "O réu foi acusado de estupro, mas o advogado alegou estrupo acidental.",
+    "correto": "O réu foi acusado de estupro, mas o advogado alegou estupro acidental.",
+    "error_count": 1,
+    "tags": [
+      "ortografia",
+      "metátese",
+      "jurídico"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_data_formato_eua",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "Favor entregar o relatório até 05/20/2023 sob pena de multa.",
+    "correto": "Favor entregar o relatório até 20/05/2023 sob pena de multa.",
+    "error_count": 1,
+    "tags": [
+      "data",
+      "formato",
+      "internacionalização"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_horario_padrao",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "A palestra começa as 2:30 PM no auditório principal da sede.",
+    "correto": "A palestra começa às 14h30 no auditório principal da sede.",
+    "error_count": 2,
+    "tags": [
+      "horas",
+      "crase",
+      "padrão-br"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_telefone_prefixo",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "Ligue para (011) 98765-4321 para falar com o suporte técnico.",
+    "correto": "Ligue para (11) 98765-4321 para falar com o suporte técnico.",
+    "error_count": 1,
+    "tags": [
+      "telefone",
+      "ddd",
+      "padronização"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc_temperatura_f",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "A febre do paciente está alta, chegando a 102 graus.",
+    "correto": "A febre do paciente está alta, chegando a 38,9 graus Celsius.",
+    "error_count": 1,
+    "tags": [
+      "temperatura",
+      "localização",
+      "conversão"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "cont_preferir_do_que",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Eu prefiro muito mais trabalhar de casa do que ir ao escritório.",
+    "correto": "Eu prefiro trabalhar de casa a ir ao escritório.",
+    "error_count": 2,
+    "tags": [
+      "regência",
+      "verbo-preferir",
+      "pleonasmo"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "cont_implicar_em",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "O atraso no pagamento implicará em multa de dois por cento.",
+    "correto": "O atraso no pagamento implicará multa de dois por cento.",
+    "error_count": 1,
+    "tags": [
+      "regência",
+      "verbo",
+      "jurídico"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "homo_porque_por_que",
+    "category": "homófonos",
+    "difficulty": 5,
+    "errado": "Não entendo o porquê de tanta pressa, por que você não espera?",
+    "correto": "Não entendo o porquê de tanta pressa, por que você não espera?",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "porquês",
+      "uso-correto"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "anun_horario_comercial",
+    "category": "anúncios",
+    "difficulty": 5,
+    "errado": "Atendemos de segunda à sexta em horário comercial das 08:00 às 18:00.",
+    "correto": "Atendemos de segunda a sexta em horário comercial, das 8h às 18h.",
+    "error_count": 3,
+    "tags": [
+      "anúncios",
+      "crase",
+      "horas"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large",
+      "formatting_or_numeric_conversion"
+    ]
+  },
+  {
+    "id": "tec_jurisprudencia_acordao",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "A jurisprudência dominante nos tribunais sugere a reforma do acordão.",
+    "correto": "A jurisprudência dominante nos tribunais sugere a reforma do acórdão.",
+    "error_count": 1,
+    "tags": [
+      "texto técnico",
+      "jurídico",
+      "acentuação"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "tec_laudo_pericial",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "O laudo pericial atesta que a morte ocorreu por asfixia mecânica.",
+    "correto": "O laudo pericial atesta que a morte ocorreu por asfixia mecânica.",
+    "error_count": 0,
+    "tags": [
+      "texto técnico",
+      "médico",
+      "correto"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "tec_peticao_inicial",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "O advogado protocolou a petição inicial sem as custas processuais paga.",
+    "correto": "O advogado protocolou a petição inicial sem as custas processuais pagas.",
+    "error_count": 1,
+    "tags": [
+      "texto técnico",
+      "jurídico",
+      "concordância"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "tec_software_bug",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "O sistema apresenta instabilidades intermitentes na interface do usuário.",
+    "correto": "O sistema apresenta instabilidades intermitentes na interface do usuário.",
+    "error_count": 0,
+    "tags": [
+      "texto técnico",
+      "ti",
+      "correto"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "tec_demonstrativo_financeiro",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "O balancete trimestral aponta um superávit de dez milhões de reais.",
+    "correto": "O balancete trimestral aponta um superávit de dez milhões de reais.",
+    "error_count": 0,
+    "tags": [
+      "texto técnico",
+      "financeiro",
+      "correto"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "tec_posologia_medicamento",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "A posologia recomendada é de dois comprimidos de doze em doze horas.",
+    "correto": "A posologia recomendada é de dois comprimidos de doze em doze horas.",
+    "error_count": 0,
+    "tags": [
+      "texto técnico",
+      "farmacêutico",
+      "correto"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "tec_projeto_arquitetonico",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "O projeto arquitetônico prioriza a iluminação zenital no átrio central.",
+    "correto": "O projeto arquitetônico prioriza a iluminação zenital no átrio central.",
+    "error_count": 0,
+    "tags": [
+      "texto técnico",
+      "arquitetura",
+      "correto"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  },
+  {
+    "id": "contexto_06",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "O homem quebrou a costela superior do corpo.",
+    "correto": "O homem quebrou a costela.",
+    "error_count": 1,
+    "tags": [
+      "redundancia",
+      "anatomia",
+      "corpo_humano"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "pont-data",
+    "category": "pontuação",
+    "difficulty": 2,
+    "errado": "Rio de Janeiro 15 de abril de 2024.",
+    "correto": "Rio de Janeiro, 15 de abril de 2024.",
+    "error_count": 1,
+    "tags": [
+      "pontuação",
+      "data",
+      "virgula"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-moeda",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "O produto custa $ 50.00 na loja oficial.",
+    "correto": "O produto custa R$ 50,00 na loja oficial.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "moeda",
+      "formato"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-data-en",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "A validade é 12/31/2025.",
+    "correto": "A validade é 31/12/2025.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "data",
+      "formato"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-hora-am-pm",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "A reunião será às 2:00 PM.",
+    "correto": "A reunião será às 14:00.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "hora",
+      "formato"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-data-hifen",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "Nascido em 05-20-1990.",
+    "correto": "Nascido em 20/05/1990.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "data",
+      "separador"
+    ],
+    "rejected_reasons": [
+      "too_short",
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-dolar",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "O ingresso custa U$ 20 por pessoa.",
+    "correto": "O ingresso custa US$ 20 por pessoa.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "moeda",
+      "dolar"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-hora-curta",
+    "category": "localização",
+    "difficulty": 2,
+    "errado": "O ônibus passa às 8:30am.",
+    "correto": "O ônibus passa às 08:30.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "hora",
+      "formato"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "homo-cozer",
+    "category": "homófonos",
+    "difficulty": 2,
+    "errado": "Vou cozer os legumes para o jantar.",
+    "correto": "Vou cozer os legumes para o jantar.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "ortografia",
+      "cozinha"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range"
+    ]
+  }
+]

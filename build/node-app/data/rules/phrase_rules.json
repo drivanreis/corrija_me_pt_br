@@ -14,6 +14,27 @@
     "description": "Corrige anúncio com a forma 'semi-novo'."
   },
   {
+    "id": "PT_BR_PHRASE_SEMI_NOVAS",
+    "pattern": ["semi", "novas"],
+    "replacements": ["seminovas"],
+    "message": "Esse composto costuma ser escrito sem espaço.",
+    "description": "Corrige anúncio com a forma 'seminovas'."
+  },
+  {
+    "id": "PT_BR_PHRASE_SEMI_NOVOS",
+    "pattern": ["semi", "novos"],
+    "replacements": ["seminovos"],
+    "message": "Esse composto costuma ser escrito sem espaço.",
+    "description": "Corrige anúncio com a forma 'seminovos'."
+  },
+  {
+    "id": "PT_BR_PHRASE_EMAIL",
+    "pattern": ["email"],
+    "replacements": ["e-mail"],
+    "message": "A forma preferida nesta bateria é 'e-mail'.",
+    "description": "Padroniza a grafia de e-mail."
+  },
+  {
     "id": "PT_BR_PHRASE_FORTALEZA_CEARA",
     "pattern": ["fortaleza", "ceara"],
     "replacements": ["Fortaleza, Ceará", "Fortaleza - Ceará"],
@@ -47,5 +68,537 @@
     "replacements": ["São Paulo, SP", "São Paulo - SP"],
     "message": "Cidade e estado costumam aparecer separados por vírgula.",
     "description": "Prioriza a forma mais natural para cidade e UF."
+  },
+  {
+    "id": "PT_BR_PHRASE_SEMI_ANALFABETA",
+    "pattern": ["semi", "analfabeta"],
+    "replacements": ["semi-analfabeta"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'semi-analfabeta'."
+  },
+  {
+    "id": "PT_BR_PHRASE_AO_INVES_DE",
+    "pattern": ["ao", "invés", "de"],
+    "replacements": ["em vez de"],
+    "message": "Nesta construção, a forma esperada é 'em vez de'.",
+    "description": "Corrige a locução prepositiva."
+  },
+  {
+    "id": "PT_BR_PHRASE_VIER_TRAGA",
+    "pattern": ["vier", "traga"],
+    "replacements": ["vier, traga"],
+    "message": "A oração subordinada costuma vir separada por vírgula.",
+    "description": "Insere vírgula em construção condicional frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_AGUA_ESTA",
+    "pattern": ["agua", "esta"],
+    "replacements": ["água está"],
+    "message": "A forma verbal esperada é 'está'.",
+    "description": "Corrige acentuação em sequência frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_ONIBUS_ESTA",
+    "pattern": ["onibus", "esta"],
+    "replacements": ["ônibus está"],
+    "message": "A forma verbal esperada é 'está'.",
+    "description": "Corrige acentuação em sequência frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_REPUBLICA_ESTA",
+    "pattern": ["republica", "esta"],
+    "replacements": ["República está"],
+    "message": "A forma verbal esperada é 'está'.",
+    "description": "Corrige acentuação em sequência frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VIDEO_EXPLICATIVO_ESTA",
+    "pattern": ["video", "explicativo", "esta"],
+    "replacements": ["vídeo explicativo está"],
+    "message": "A forma verbal esperada é 'está'.",
+    "description": "Corrige acentuação em sequência frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_IDEIA_E_FANTASTICA",
+    "pattern": ["ideia", "e", "fantastica"],
+    "replacements": ["ideia é fantástica"],
+    "message": "A forma verbal esperada é 'é'.",
+    "description": "Corrige acentuação em frase comum."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONTEUDO_E_MUITO_UTIL",
+    "pattern": ["conteudo", "e", "muito", "util"],
+    "replacements": ["conteúdo é muito útil"],
+    "message": "A forma verbal esperada é 'é'.",
+    "description": "Corrige acentuação em frase comum."
+  },
+  {
+    "id": "PT_BR_PHRASE_VENDE_SE",
+    "pattern": ["vende", "se"],
+    "replacements": ["vendem-se"],
+    "message": "Com sujeito plural, o verbo deve concordar.",
+    "description": "Corrige concordância frequente em anúncios."
+  },
+  {
+    "id": "PT_BR_PHRASE_ALUGA_SE",
+    "pattern": ["aluga", "se"],
+    "replacements": ["alugam-se"],
+    "message": "Com sujeito plural, o verbo deve concordar.",
+    "description": "Corrige concordância frequente em anúncios."
+  },
+  {
+    "id": "PT_BR_PHRASE_UMA_JANTA_PRA_NOIS",
+    "pattern": ["uma", "janta", "pra", "nois"],
+    "replacements": ["um jantar para nós"],
+    "message": "A construção esperada nesta bateria é mais formal.",
+    "description": "Corrige expressão informal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VOCE_DE_UMA_OLHADA",
+    "pattern": ["voçê", "de", "uma", "olhada"],
+    "replacements": ["você dê uma olhada"],
+    "message": "A forma verbal esperada é 'dê'.",
+    "description": "Corrige locução frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VOCE_ESTEJE",
+    "pattern": ["voçê", "esteje"],
+    "replacements": ["você esteja"],
+    "message": "A forma verbal esperada é 'esteja'.",
+    "description": "Corrige forma verbal frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PARTIRA_AS",
+    "pattern": ["partira", "as"],
+    "replacements": ["partirá às"],
+    "message": "A forma verbal e a crase precisam ser ajustadas.",
+    "description": "Corrige construção recorrente com horário."
+  },
+  {
+    "id": "PT_BR_PHRASE_AFIM_DE_ALEGRAR",
+    "pattern": ["afim", "de", "alegrar"],
+    "replacements": ["a fim de alegrar"],
+    "message": "A locução correta é 'a fim de'.",
+    "description": "Corrige locução prepositiva recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_ENTREGAMOS_EM_DOMICILIO",
+    "pattern": ["entregamos", "em", "domicilio"],
+    "replacements": ["Entregamos em domicílio"],
+    "message": "A forma correta é 'domicílio'.",
+    "description": "Corrige acentuação sem mudar a flexão verbal."
+  },
+  {
+    "id": "PT_BR_PHRASE_ATRAVES_DESTE_INFORMAMOS",
+    "pattern": ["através", "deste", "informamos"],
+    "replacements": ["Por meio deste informamos"],
+    "message": "A construção esperada nesta bateria é 'por meio deste'.",
+    "description": "Padroniza fórmula recorrente em texto profissional."
+  },
+  {
+    "id": "PT_BR_PHRASE_SOLICITAMOS_VOSSA_SENHORIA",
+    "pattern": ["solicitamos", "vossa", "senhoria"],
+    "replacements": ["Solicitamos a Vossa Senhoria"],
+    "message": "A forma esperada inclui a preposição e a capitalização de tratamento.",
+    "description": "Corrige construção formal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_OS_PARAMETRO_DO_PROJETO",
+    "pattern": ["os", "parametro", "do", "projeto"],
+    "replacements": ["os parâmetros do projeto"],
+    "message": "A forma esperada está no plural e com acento.",
+    "description": "Corrige expressão recorrente em texto técnico."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONCERTO_DO_CARRO",
+    "pattern": ["concerto", "do", "carro"],
+    "replacements": ["conserto do carro"],
+    "message": "A forma esperada é 'conserto'.",
+    "description": "Corrige termo recorrente em contexto mecânico."
+  },
+  {
+    "id": "PT_BR_PHRASE_SECAO_DE_TREINAMENTO",
+    "pattern": ["seção", "de", "treinamento"],
+    "replacements": ["sessão de treinamento"],
+    "message": "A forma esperada é 'sessão'.",
+    "description": "Corrige termo recorrente em contexto profissional."
+  },
+  {
+    "id": "PT_BR_PHRASE_AGENTE_SE",
+    "pattern": ["agente", "se"],
+    "replacements": ["A gente se"],
+    "message": "A expressão esperada é 'a gente'.",
+    "description": "Corrige forma recorrente de oralidade."
+  },
+  {
+    "id": "PT_BR_PHRASE_AGENTE_PRECISA",
+    "pattern": ["agente", "precisa"],
+    "replacements": ["A gente precisa"],
+    "message": "A expressão esperada é 'a gente'.",
+    "description": "Corrige forma recorrente de oralidade."
+  },
+  {
+    "id": "PT_BR_PHRASE_E_UMA_OTIMA",
+    "pattern": ["e", "uma", "otima"],
+    "replacements": ["é uma ótima"],
+    "message": "A forma verbal esperada é 'é'.",
+    "description": "Corrige acentuação em sequência frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_NOS_VAMOS_VIAJAR_AMANHA",
+    "pattern": ["nos", "vamos", "viajar", "amanha"],
+    "replacements": ["Nós vamos viajar amanhã"],
+    "message": "A forma esperada inclui acentuação em 'Nós' e 'amanhã'.",
+    "description": "Corrige frase recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_O_QUE_E_BOM",
+    "pattern": ["o", "que", "e", "bom"],
+    "replacements": ["o que é bom"],
+    "message": "A forma verbal esperada é 'é'.",
+    "description": "Corrige acentuação em sequência frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_EX_FUNCIONARIO",
+    "pattern": ["ex", "funcionário"],
+    "replacements": ["ex-funcionário"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige forma hifenizada frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_ANTI_INFLAMATORIO",
+    "pattern": ["anti", "inflamatório"],
+    "replacements": ["anti-inflamatório"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige forma hifenizada frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PRO_FAMILIA",
+    "pattern": ["pró", "família"],
+    "replacements": ["pró-família"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige forma hifenizada frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SELF_SERVICE",
+    "pattern": ["self", "service"],
+    "replacements": ["self-service"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige forma hifenizada frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MICRO_ONDAS",
+    "pattern": ["micro", "ondas"],
+    "replacements": ["micro-ondas"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige forma hifenizada frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PRE_CADASTRO",
+    "pattern": ["pré", "cadastro"],
+    "replacements": ["pré-cadastro"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige forma hifenizada frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_POS_VENDA",
+    "pattern": ["pós", "venda"],
+    "replacements": ["pós-venda"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige forma hifenizada frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_POR_FAVOR_ME",
+    "pattern": ["por", "favor", "me"],
+    "replacements": ["Por favor, me"],
+    "message": "A locução costuma vir seguida de vírgula.",
+    "description": "Corrige pontuação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VIR_MAS_NAO",
+    "pattern": ["vir", "mas", "não"],
+    "replacements": ["vir, mas não"],
+    "message": "A conjunção adversativa costuma vir precedida por vírgula.",
+    "description": "Corrige pontuação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_CHEGANDO_EM_CASA_ELE",
+    "pattern": ["chegando", "em", "casa", "ele"],
+    "replacements": ["Chegando em casa, ele"],
+    "message": "A oração reduzida costuma vir separada por vírgula.",
+    "description": "Corrige pontuação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_OS_MENINO_JOGOU",
+    "pattern": ["os", "menino", "jogou"],
+    "replacements": ["Os meninos jogaram"],
+    "message": "O verbo e o substantivo precisam concordar.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MEIA_CANSADA",
+    "pattern": ["meia", "cansada"],
+    "replacements": ["meio cansada"],
+    "message": "Como advérbio, a forma esperada é 'meio'.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_FORAM_ANEXO",
+    "pattern": ["foram", "anexo"],
+    "replacements": ["foram anexos"],
+    "message": "A palavra deve concordar com o sujeito plural.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MIM_FAZER",
+    "pattern": ["mim", "fazer"],
+    "replacements": ["eu fazer"],
+    "message": "Antes de verbo no infinitivo, a forma esperada é 'eu'.",
+    "description": "Corrige regência recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VI_A_ELA",
+    "pattern": ["vi", "a", "ela"],
+    "replacements": ["a vi"],
+    "message": "Nesta construção, a forma esperada é pronominal.",
+    "description": "Corrige colocação pronominal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_BASTANTES_FELIZES",
+    "pattern": ["bastantes", "felizes"],
+    "replacements": ["bastante felizes"],
+    "message": "Como advérbio, a forma esperada é invariável.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PROIBIDO_ENTRADA",
+    "pattern": ["proibido", "entrada"],
+    "replacements": ["proibida a entrada"],
+    "message": "A forma esperada concorda com o substantivo expresso.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_UNS_SAPATOS",
+    "pattern": ["umas", "sapatos"],
+    "replacements": ["uns sapatos"],
+    "message": "O artigo deve concordar com o substantivo masculino plural.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PORQUE_NAO_QUIS",
+    "pattern": ["por", "que", "não", "quis"],
+    "replacements": ["porque não quis"],
+    "message": "A forma esperada aqui é 'porque'.",
+    "description": "Corrige uso recorrente de por que/porque."
+  },
+  {
+    "id": "PT_BR_PHRASE_SECAO_DE_FILMES",
+    "pattern": ["seção", "de", "filmes"],
+    "replacements": ["sessão de filmes"],
+    "message": "A forma esperada é 'sessão'.",
+    "description": "Corrige termo recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_EU_CONCERTO_CARROS",
+    "pattern": ["eu", "concerto", "carros"],
+    "replacements": ["Eu conserto carros"],
+    "message": "A forma esperada é 'conserto'.",
+    "description": "Corrige termo recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SENSO_DEMOGRAFICO",
+    "pattern": ["senso", "demográfico"],
+    "replacements": ["censo demográfico"],
+    "message": "A forma esperada é 'censo'.",
+    "description": "Corrige termo recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SECAO_DE_HUMOR",
+    "pattern": ["seção", "de", "humor"],
+    "replacements": ["senso de humor"],
+    "message": "A expressão esperada é 'senso de humor'.",
+    "description": "Corrige expressão recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_A_CERCA_DE",
+    "pattern": ["a", "cerca", "de"],
+    "replacements": ["Há cerca de"],
+    "message": "A forma esperada é 'há cerca de'.",
+    "description": "Corrige locução recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VOU_POR_A_MESA",
+    "pattern": ["vou", "por", "a", "mesa"],
+    "replacements": ["Vou pôr a mesa"],
+    "message": "O verbo esperado é 'pôr'.",
+    "description": "Corrige forma verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PRA_VOCE",
+    "pattern": ["pra", "você"],
+    "replacements": ["para você"],
+    "message": "A forma esperada nesta bateria é 'para'.",
+    "description": "Expande abreviação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_OFERTAS_QUE_CABE",
+    "pattern": ["ofertas", "que", "cabe"],
+    "replacements": ["Ofertas que cabem"],
+    "message": "O verbo deve concordar com o sujeito plural.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_RESPONDEU_A_DEMANDA",
+    "pattern": ["respondeu", "a", "demanda"],
+    "replacements": ["respondeu à demanda"],
+    "message": "A forma esperada pede crase.",
+    "description": "Corrige regência recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_REDE_ESTA",
+    "pattern": ["rede", "esta"],
+    "replacements": ["rede está"],
+    "message": "A forma verbal esperada é 'está'.",
+    "description": "Corrige acentuação em contexto técnico."
+  },
+  {
+    "id": "PT_BR_PHRASE_SERVIDOR_ESTA",
+    "pattern": ["servidor", "esta"],
+    "replacements": ["servidor está"],
+    "message": "A forma verbal esperada é 'está'.",
+    "description": "Corrige acentuação em contexto técnico."
+  },
+  {
+    "id": "PT_BR_PHRASE_SEGUE_OS_ANEXOS",
+    "pattern": ["segue", "os", "anexos"],
+    "replacements": ["seguem os anexos"],
+    "message": "O verbo deve concordar com o sujeito plural.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SEGUE_ANEXO_AS",
+    "pattern": ["segue", "anexo", "as"],
+    "replacements": ["seguem anexas as"],
+    "message": "A forma esperada concorda com o sujeito e com o adjetivo.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAU_CHEGOU",
+    "pattern": ["mau", "chegou"],
+    "replacements": ["mal chegou"],
+    "message": "A forma esperada aqui é 'mal'.",
+    "description": "Corrige uso recorrente de mal/mau."
+  },
+  {
+    "id": "PT_BR_PHRASE_FRUTA_PRA",
+    "pattern": ["fruta", "pra"],
+    "replacements": ["frutas para"],
+    "message": "A forma esperada pede plural e a forma plena de 'para'.",
+    "description": "Corrige construção recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_DEVE_VIM",
+    "pattern": ["deve", "vim"],
+    "replacements": ["deve vir"],
+    "message": "Após 'deve', a forma esperada é o infinitivo 'vir'.",
+    "description": "Corrige forma verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_NOSSAS_OFERTA",
+    "pattern": ["nossas", "oferta"],
+    "replacements": ["nossas ofertas"],
+    "message": "O substantivo deve concordar com o determinante plural.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MARIA_COMPROU",
+    "pattern": ["maria", "comprou"],
+    "replacements": ["Maria comprou"],
+    "message": "Vocativos não devem ser separados por vírgula neste caso.",
+    "description": "Corrige pontuação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAS_NAO",
+    "pattern": ["mas", "não"],
+    "replacements": ["mas não"],
+    "message": "Não há vírgula entre 'mas' e o verbo seguinte nesta construção.",
+    "description": "Corrige pontuação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_NAO_PODE_VIR_A_FESTA",
+    "pattern": ["não", "pode", "vir", "a", "festa"],
+    "replacements": ["não pôde vir à festa"],
+    "message": "A forma esperada é 'pôde' e há crase em 'à festa'.",
+    "description": "Corrige construção recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_NAO_PODE_VIR_ONTEM",
+    "pattern": ["não", "pode", "vir", "ontem"],
+    "replacements": ["não pôde vir ontem"],
+    "message": "A forma esperada é 'pôde'.",
+    "description": "Corrige uso temporal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_EU_ASSENTO_O_DOCUMENTO",
+    "pattern": ["eu", "assento", "o", "documento"],
+    "replacements": ["Eu assino o documento"],
+    "message": "A forma esperada é 'assino'.",
+    "description": "Corrige verbo recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_TACHAR_AS_IMPORTACOES",
+    "pattern": ["tachar", "as", "importações"],
+    "replacements": ["taxar as importações"],
+    "message": "A forma esperada é 'taxar'.",
+    "description": "Corrige termo econômico recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PRISIONEIRO_SELA",
+    "pattern": ["prisioneiro", "foi", "levado", "para", "a", "sela"],
+    "replacements": ["prisioneiro foi levado para a cela"],
+    "message": "A forma esperada é 'cela'.",
+    "description": "Corrige termo recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_ACENTO_CORRETO_NO_ONIBUS",
+    "pattern": ["acento", "correto", "no", "ônibus"],
+    "replacements": ["assento correto no ônibus"],
+    "message": "A forma esperada é 'assento'.",
+    "description": "Corrige homônimo recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_CACAR_O_MANDATO",
+    "pattern": ["caçar", "o", "mandato"],
+    "replacements": ["cassar o mandato"],
+    "message": "A forma esperada é 'cassar'.",
+    "description": "Corrige termo jurídico recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_CENSO_COMUM",
+    "pattern": ["censo", "comum"],
+    "replacements": ["senso comum"],
+    "message": "A expressão esperada é 'senso comum'.",
+    "description": "Corrige expressão recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_EM_CHEQUE",
+    "pattern": ["em", "cheque"],
+    "replacements": ["em xeque"],
+    "message": "A expressão esperada é 'em xeque'.",
+    "description": "Corrige expressão recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_AGENTE_FOMOS",
+    "pattern": ["agente", "fomos"],
+    "replacements": ["A gente foi"],
+    "message": "A expressão esperada é 'a gente foi'.",
+    "description": "Corrige oralidade recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_BEM_VINDO",
+    "pattern": ["bem", "vindo"],
+    "replacements": ["bem-vindo"],
+    "message": "A forma esperada é hifenizada.",
+    "description": "Corrige composto recorrente."
   }
 ]
