@@ -1,0 +1,51 @@
+[
+  {
+    "id": "PT_BR_PHRASE_SEMI_NOVA",
+    "pattern": ["semi", "nova"],
+    "replacements": ["semi-nova"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige anúncio com a forma 'semi-nova'."
+  },
+  {
+    "id": "PT_BR_PHRASE_SEMI_NOVO",
+    "pattern": ["semi", "novo"],
+    "replacements": ["semi-novo"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige anúncio com a forma 'semi-novo'."
+  },
+  {
+    "id": "PT_BR_PHRASE_FORTALEZA_CEARA",
+    "pattern": ["fortaleza", "ceara"],
+    "replacements": ["Fortaleza, Ceará", "Fortaleza - Ceará"],
+    "message": "Cidade e estado costumam aparecer separados por vírgula.",
+    "description": "Prioriza a forma mais natural para cidade e estado."
+  },
+  {
+    "id": "PT_BR_PHRASE_FORTALESA_CEARA",
+    "pattern": ["fortalesa", "ceara"],
+    "replacements": ["Fortaleza, Ceará", "Fortaleza - Ceará"],
+    "message": "Cidade e estado costumam aparecer separados por vírgula.",
+    "description": "Corrige grafia e pontuação em cidade e estado."
+  },
+  {
+    "id": "PT_BR_PHRASE_BELO_HORIZONTE_MG",
+    "pattern": ["belo", "horizonte", "mg"],
+    "replacements": ["Belo Horizonte, MG", "Belo Horizonte - MG"],
+    "message": "Cidade e estado costumam aparecer separados por vírgula.",
+    "description": "Prioriza a forma mais natural para cidade e UF."
+  },
+  {
+    "id": "PT_BR_PHRASE_RIO_DE_JANEIRO_RJ",
+    "pattern": ["rio", "de", "janeiro", "rj"],
+    "replacements": ["Rio de Janeiro, RJ", "Rio de Janeiro - RJ"],
+    "message": "Cidade e estado costumam aparecer separados por vírgula.",
+    "description": "Prioriza a forma mais natural para cidade e UF."
+  },
+  {
+    "id": "PT_BR_PHRASE_SAO_PAULO_SP",
+    "pattern": ["sao", "paulo", "sp"],
+    "replacements": ["São Paulo, SP", "São Paulo - SP"],
+    "message": "Cidade e estado costumam aparecer separados por vírgula.",
+    "description": "Prioriza a forma mais natural para cidade e UF."
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "name": "corrija-me-pt-br-ts",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Corretor local em pt-BR com backend Node.js e extensao Chrome em TypeScript.",
+  "type": "module",
+  "bin": {
+    "corrija-me-pt-br-server": "build/node-app/backend/server.cjs"
+  },
+  "scripts": {
+    "clean": "rm -rf build/node-app",
+    "build": "node scripts/build-node-app.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "data:validate": "node scripts/validate-language-data.mjs",
+    "generate:test-cases": "node scripts/generate-test-cases.mjs",
+    "generate:test-cases:batch": "node scripts/generate-test-cases.mjs --categories ortografia,acentuacao,hifen,pontuacao,localizacao,contexto,homofonos,anuncios,texto_tecnico --count-per-category 12 --difficulty 3",
+    "start:backend": "node build/node-app/backend/server.cjs",
+    "dev": "npm run build && npm run start:backend",
+    "package:backend": "npm run build && pkg . --targets node18-linux-x64,node18-win-x64 --out-path build/node-app/pkg",
+    "package:portable": "npm run package:backend && node scripts/package-node-releases.mjs",
+    "test:backend": "npm run build && node scripts/smoke-test-node-app.mjs",
+    "release": "bash ./release.sh",
+    "publish:update": "bash ./scripts/publish-update.sh"
+  },
+  "pkg": {
+    "assets": [
+      "build/node-app/data/*.json",
+      "build/node-app/data/dictionary/*.json",
+      "build/node-app/data/dictionary/*.txt",
+      "build/node-app/data/rules/*.json"
+    ],
+    "outputPath": "build/node-app/pkg"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/chrome": "^0.1.38",
+    "@types/node": "^22.15.21",
+    "esbuild": "^0.25.2",
+    "eslint": "^10.1.0",
+    "globals": "^17.4.0",
+    "pkg": "^5.8.1",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.57.2"
+  },
+  "dependencies": {
+    "@google/genai": "^1.48.0",
+    "dotenv": "^17.3.1"
+  }
+}

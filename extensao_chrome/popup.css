@@ -1,0 +1,279 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f1e8;
+  --panel: #fffdf7;
+  --text: #1f1b16;
+  --muted: #6b6258;
+  --line: #d8ccb8;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --accent-soft: #d9f3ef;
+  --danger: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 320px;
+  font-family: "Noto Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #fff7e8 0%, var(--bg) 58%, #efe8dc 100%);
+  color: var(--text);
+}
+
+.app {
+  padding: 14px;
+}
+
+.hero {
+  margin-bottom: 10px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+h2 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.subtitle,
+.tips p,
+.status {
+  margin: 0;
+  line-height: 1.45;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.permission-headline {
+  margin: 0 0 10px;
+  line-height: 1.5;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.panel,
+.tips {
+  background: rgba(255, 253, 247, 0.88);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  backdrop-filter: blur(12px);
+}
+
+.panel {
+  margin-bottom: 12px;
+}
+
+.live-tools {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  display: grid;
+  gap: 10px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: #eef6f3;
+  color: var(--accent-strong);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.field,
+.toggle {
+  display: grid;
+  gap: 8px;
+}
+
+.field span,
+.toggle span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 9px 11px;
+  font-size: 12px;
+  background: #fff;
+}
+
+.toggle {
+  grid-template-columns: 18px 1fr;
+  align-items: start;
+  margin-top: 14px;
+}
+
+.toggle input {
+  margin-top: 2px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.actions.compact {
+  margin-top: 0;
+}
+
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button[disabled] {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: #fff;
+}
+
+.secondary {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.status {
+  min-height: 20px;
+  margin-top: 12px;
+}
+
+.status.ok {
+  color: var(--accent-strong);
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.live-status {
+  min-height: 0;
+  margin-top: 0;
+}
+
+.live-results {
+  display: grid;
+  gap: 8px;
+}
+
+.live-card {
+  padding: 9px 11px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.live-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.live-card-excerpt {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.live-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.live-chip {
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fold {
+  margin-top: 12px;
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+}
+
+.fold summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-strong);
+  list-style: none;
+}
+
+.fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.fold summary::after {
+  content: "▾";
+  float: right;
+  color: var(--muted);
+}
+
+.fold[open] summary::after {
+  content: "▴";
+}
+
+.fold-body {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.fold-status {
+  margin-top: 0;
+  min-height: 0;
+}

@@ -1,0 +1,706 @@
+[
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_VAMOS",
+    "pattern": ["a", "gente", "vamos"],
+    "targetIndex": 2,
+    "replacements": ["vai"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_FOMOS",
+    "pattern": ["a", "gente", "fomos"],
+    "targetIndex": 2,
+    "replacements": ["foi"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_ESTAMOS",
+    "pattern": ["a", "gente", "estamos"],
+    "targetIndex": 2,
+    "replacements": ["está"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_ESTAVAMOS",
+    "pattern": ["a", "gente", "estavamos"],
+    "targetIndex": 2,
+    "replacements": ["estava"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_ERAMOS",
+    "pattern": ["a", "gente", "eramos"],
+    "targetIndex": 2,
+    "replacements": ["era"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_FIZEMOS",
+    "pattern": ["a", "gente", "fizemos"],
+    "targetIndex": 2,
+    "replacements": ["fez"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_TINHAMOS",
+    "pattern": ["a", "gente", "tinhamos"],
+    "targetIndex": 2,
+    "replacements": ["tinha"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_QUEREMOS",
+    "pattern": ["a", "gente", "queremos"],
+    "targetIndex": 2,
+    "replacements": ["quer"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_PODEMOS",
+    "pattern": ["a", "gente", "podemos"],
+    "targetIndex": 2,
+    "replacements": ["pode"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_GENTE_IRIAMOS",
+    "pattern": ["a", "gente", "iriamos"],
+    "targetIndex": 2,
+    "replacements": ["iria"],
+    "message": "Com 'a gente', o verbo costuma ficar no singular.",
+    "description": "Corrige concordancia comum com a expressao 'a gente'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_HAVER_EXISTIR_PLURAL",
+    "pattern": ["haviam", "pessoas"],
+    "targetIndex": 0,
+    "replacements": ["havia"],
+    "message": "O verbo 'haver' no sentido de existir é impessoal e fica no singular.",
+    "description": "Corrige concordancia do verbo haver."
+  },
+  {
+    "id": "PT_BR_CONTEXT_HAVER_MUITOS",
+    "pattern": ["haviam", "muitos"],
+    "targetIndex": 0,
+    "replacements": ["havia"],
+    "message": "O verbo 'haver' no sentido de existir é impessoal e fica no singular.",
+    "description": "Corrige concordancia do verbo haver."
+  },
+  {
+    "id": "PT_BR_CONTEXT_HAVER_UM",
+    "pattern": ["haviam", "um"],
+    "targetIndex": 0,
+    "replacements": ["havia"],
+    "message": "O verbo 'haver' no sentido de existir é impessoal e fica no singular.",
+    "description": "Corrige concordancia do verbo haver."
+  },
+  {
+    "id": "PT_BR_CONTEXT_HAVER_PESSOAS_SINGULAR",
+    "pattern": ["haver", "pessoas"],
+    "targetIndex": 0,
+    "replacements": ["há"],
+    "message": "O verbo 'haver' no sentido de existir é impessoal e fica no singular.",
+    "description": "Corrige concordancia do verbo haver."
+  },
+  {
+    "id": "PT_BR_CONTEXT_EXISTIR_PLURAL",
+    "pattern": ["existe", "muitos", "problemas"],
+    "targetIndex": 0,
+    "replacements": ["existem"],
+    "message": "O verbo 'existir' concorda com o sujeito.",
+    "description": "Corrige concordancia do verbo existir."
+  },
+  {
+    "id": "PT_BR_CONTEXT_FAZ_DEZ_ANOS",
+    "pattern": ["fazem", "dez", "anos"],
+    "targetIndex": 0,
+    "replacements": ["faz"],
+    "message": "Para indicar tempo decorrido, o verbo 'fazer' fica no singular.",
+    "description": "Corrige uso de 'fazem' com tempo decorrido."
+  },
+  {
+    "id": "PT_BR_CONTEXT_FAZ_MUITO_TEMPO",
+    "pattern": ["fazem", "muito", "tempo"],
+    "targetIndex": 0,
+    "replacements": ["faz"],
+    "message": "Para indicar tempo decorrido, o verbo 'fazer' fica no singular.",
+    "description": "Corrige uso de 'fazem' com tempo decorrido."
+  },
+  {
+    "id": "PT_BR_CONTEXT_FAZ_DOIS_DIAS",
+    "pattern": ["fazem", "dois", "dias"],
+    "targetIndex": 0,
+    "replacements": ["faz"],
+    "message": "Para indicar tempo decorrido, o verbo 'fazer' fica no singular.",
+    "description": "Corrige uso de 'fazem' com tempo decorrido."
+  },
+  {
+    "id": "PT_BR_CONTEXT_FAZ_ANOS",
+    "pattern": ["fazem", "anos"],
+    "targetIndex": 0,
+    "replacements": ["faz"],
+    "message": "Para indicar tempo decorrido, o verbo 'fazer' fica no singular.",
+    "description": "Corrige uso de 'fazem' com tempo decorrido."
+  },
+  {
+    "id": "PT_BR_CONTEXT_FAZER_IMPESSOAL_FENOMENO",
+    "pattern": ["fazem", "tres", "dias", "que", "chove"],
+    "targetIndex": 0,
+    "replacements": ["faz"],
+    "message": "Em expressoes de tempo, 'fazer' é impessoal.",
+    "description": "Corrige concordancia verbal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAIS_CONJUNCAO",
+    "pattern": ["queria", "mais", "nao", "pude"],
+    "targetIndex": 1,
+    "replacements": ["mas"],
+    "message": "Use 'mas' para indicar oposicao.",
+    "description": "Corrige confusao entre mas/mais."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAS_ADVERBIO",
+    "pattern": ["gosto", "mas", "dele"],
+    "targetIndex": 1,
+    "replacements": ["mais"],
+    "message": "Use 'mais' para indicar quantidade ou intensidade.",
+    "description": "Corrige confusao entre mas/mais."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAIS_OPOSICAO",
+    "pattern": ["estudei", "mais", "reprovei"],
+    "targetIndex": 1,
+    "replacements": ["mas"],
+    "message": "Use 'mas' para indicar oposicao.",
+    "description": "Corrige confusao entre mas/mais."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAIS_ADICAO_SIMPLES",
+    "pattern": ["quero", "mas", "cafe"],
+    "targetIndex": 1,
+    "replacements": ["mais"],
+    "message": "Use 'mais' para indicar adicao.",
+    "description": "Corrige confusao mas/mais."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAIS_OU_MENOS",
+    "pattern": ["mas", "ou", "menos"],
+    "targetIndex": 0,
+    "replacements": ["mais"],
+    "message": "Use 'mais ou menos' para indicar aproximadamente.",
+    "description": "Corrige confusao mas/mais."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAU_CONTRARIO_BOM",
+    "pattern": ["um", "mal", "carater"],
+    "targetIndex": 1,
+    "replacements": ["mau"],
+    "message": "Use 'mau' (oposto de bom) para caracterizar substantivos.",
+    "description": "Corrige confusao entre mal/mau."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAL_CONTRARIO_BEM",
+    "pattern": ["passou", "mau"],
+    "targetIndex": 1,
+    "replacements": ["mal"],
+    "message": "Use 'mal' (oposto de bem) para indicar algo ruim ou adverbio.",
+    "description": "Corrige confusao entre mal/mau."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAU_HUMOR",
+    "pattern": ["mal", "humor"],
+    "targetIndex": 0,
+    "replacements": ["mau"],
+    "message": "Use 'mau humor' (oposto de bom humor).",
+    "description": "Corrige confusao entre mal/mau."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAU_CARATER",
+    "pattern": ["mal", "carater"],
+    "targetIndex": 0,
+    "replacements": ["mau"],
+    "message": "Use 'mau carater' (oposto de bom carater).",
+    "description": "Corrige confusao mal/mau."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAL_ESTAR",
+    "pattern": ["mau", "estar"],
+    "targetIndex": 0,
+    "replacements": ["mal"],
+    "message": "Use 'mal-estar' (substantivo composto).",
+    "description": "Corrige confusao mal/mau."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAU_SUBSTANTIVO",
+    "pattern": ["mal", "cheiro"],
+    "targetIndex": 0,
+    "replacements": ["mau"],
+    "message": "Use 'mau' antes de substantivo.",
+    "description": "Corrige confusao mal/mau."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAU_ATO",
+    "pattern": ["mal", "ato"],
+    "targetIndex": 0,
+    "replacements": ["mau"],
+    "message": "Use 'mau ato' (oposto de bom ato).",
+    "description": "Corrige confusao mal/mau."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAL_FUNCIONAMENTO",
+    "pattern": ["mau", "funcionamento"],
+    "targetIndex": 0,
+    "replacements": ["mal"],
+    "message": "Use 'mal funcionamento' (advérbio + substantivo).",
+    "description": "Corrige confusao mal/mau."
+  },
+  {
+    "id": "PT_BR_CONTEXT_ONDE_MOVIMENTO",
+    "pattern": ["a", "onde", "voce", "vai"],
+    "targetIndex": 1,
+    "replacements": ["aonde"],
+    "message": "Use 'aonde' com verbos que indicam movimento.",
+    "description": "Corrige confusao entre onde/aonde."
+  },
+  {
+    "id": "PT_BR_CONTEXT_AONDE_ESTATICIDADE",
+    "pattern": ["aonde", "esta", "o", "livro"],
+    "targetIndex": 0,
+    "replacements": ["onde"],
+    "message": "Use 'onde' para indicar lugar fixo.",
+    "description": "Corrige confusao entre onde/aonde."
+  },
+  {
+    "id": "PT_BR_CONTEXT_ONDE_MOVIMENTO_VAO",
+    "pattern": ["onde", "eles", "vao"],
+    "targetIndex": 0,
+    "replacements": ["aonde"],
+    "message": "Use 'aonde' com verbos de movimento.",
+    "description": "Corrige confusao entre onde/aonde."
+  },
+  {
+    "id": "PT_BR_CONTEXT_AONDE_VERBO_MOVIMENTO",
+    "pattern": ["vou", "onde", "voce"],
+    "targetIndex": 1,
+    "replacements": ["aonde"],
+    "message": "Use 'aonde' com verbos de movimento.",
+    "description": "Corrige confusao onde/aonde."
+  },
+  {
+    "id": "PT_BR_CONTEXT_ONDE_VERBO_REPOUSO",
+    "pattern": ["estou", "aonde"],
+    "targetIndex": 1,
+    "replacements": ["onde"],
+    "message": "Use 'onde' com verbos que indicam lugar fixo.",
+    "description": "Corrige confusao onde/aonde."
+  },
+  {
+    "id": "PT_BR_CONTEXT_ONDE_VERBO_MOVIMENTO_IR",
+    "pattern": ["onde", "voce", "vai"],
+    "targetIndex": 0,
+    "replacements": ["aonde"],
+    "message": "Use 'aonde' com verbos de movimento.",
+    "description": "Corrige confusao onde/aonde."
+  },
+  {
+    "id": "PT_BR_CONTEXT_TEM_PLURAL",
+    "pattern": ["eles", "tem", "muitos", "livros"],
+    "targetIndex": 1,
+    "replacements": ["têm"],
+    "message": "Use 'têm' (com acento) para a terceira pessoa do plural.",
+    "description": "Corrige uso de tem/tem."
+  },
+  {
+    "id": "PT_BR_CONTEXT_TEM_SINGULAR",
+    "pattern": ["ele", "tem", "dois", "carros"],
+    "targetIndex": 1,
+    "replacements": ["tem"],
+    "message": "Use 'tem' (sem acento) para a terceira pessoa do singular.",
+    "description": "Corrige uso de tem/tem."
+  },
+  {
+    "id": "PT_BR_CONTEXT_VEM_PLURAL",
+    "pattern": ["eles", "vem", "cedo"],
+    "targetIndex": 1,
+    "replacements": ["vêm"],
+    "message": "Use 'vêm' (com acento) para a terceira pessoa do plural.",
+    "description": "Corrige uso de vem/vem."
+  },
+  {
+    "id": "PT_BR_CONTEXT_VEM_SINGULAR",
+    "pattern": ["ele", "vem", "cedo"],
+    "targetIndex": 1,
+    "replacements": ["vem"],
+    "message": "Use 'vem' (sem acento) para a terceira pessoa do singular.",
+    "description": "Corrige uso de vem/vem."
+  },
+  {
+    "id": "PT_BR_CONTEXT_POR_QUE_PERGUNTA",
+    "pattern": ["porque", "voce", "fez", "isso"],
+    "targetIndex": 0,
+    "replacements": ["por que"],
+    "message": "Use 'por que' em perguntas (separado e sem acento).",
+    "description": "Corrige confusao entre por que/porque."
+  },
+  {
+    "id": "PT_BR_CONTEXT_PORQUE_RESPOSTA",
+    "pattern": ["por", "que", "nao", "fui"],
+    "targetIndex": 0,
+    "replacements": ["porque"],
+    "message": "Use 'porque' (junto e sem acento) para respostas ou explicacoes.",
+    "description": "Corrige confusao entre por que/porque."
+  },
+  {
+    "id": "PT_BR_CONTEXT_POR_QUE_INICIO_FRASE",
+    "pattern": ["porque", "voce", "foi"],
+    "targetIndex": 0,
+    "replacements": ["por que"],
+    "message": "Em inicio de pergunta, use 'por que' separado.",
+    "description": "Corrige confusao entre por que/porque."
+  },
+  {
+    "id": "PT_BR_CONTEXT_POR_QUE_MEIO",
+    "pattern": ["porque", "esta", "triste"],
+    "targetIndex": 0,
+    "replacements": ["por que"],
+    "message": "Em perguntas indiretas, use 'por que' separado.",
+    "description": "Corrige confusao entre por que/porque."
+  },
+  {
+    "id": "PT_BR_CONTEXT_PORQUE_EXPLICACAO_MEIO",
+    "pattern": ["nao", "sei", "por", "que", "ele", "foi"],
+    "targetIndex": 2,
+    "replacements": ["porque"],
+    "message": "Use 'porque' (junto) quando for conjuncao explicativa.",
+    "description": "Corrige confusao entre por que/porque."
+  },
+  {
+    "id": "PT_BR_CONTEXT_POR_QUE_FIM_FRASE",
+    "pattern": ["esta", "triste", "porque"],
+    "targetIndex": 2,
+    "replacements": ["por quê"],
+    "message": "No fim de frase, use 'por quê' com acento.",
+    "description": "Corrige confusao com por que/porque/por quê."
+  },
+  {
+    "id": "PT_BR_CONTEXT_POR_QUE_ANTES_PONTO",
+    "pattern": ["nao", "sei", "porque"],
+    "targetIndex": 2,
+    "replacements": ["por quê"],
+    "message": "Antes de ponto final, use 'por quê' com acento.",
+    "description": "Corrige confusao com por que/porque/por quê."
+  },
+  {
+    "id": "PT_BR_CONTEXT_PORQUE_SUBSTANTIVO",
+    "pattern": ["o", "porque", "da", "decisao"],
+    "targetIndex": 1,
+    "replacements": ["porquê"],
+    "message": "Use 'porquê' (substantivo) com artigo.",
+    "description": "Corrige confusao com porquê."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_FEMININO",
+    "pattern": ["vou", "a", "escola"],
+    "targetIndex": 2,
+    "replacements": ["à"],
+    "message": "Use crase na contracao de 'a' com artigo feminino.",
+    "description": "Corrige ausencia de crase."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_HORA",
+    "pattern": ["chegou", "as", "10", "horas"],
+    "targetIndex": 1,
+    "replacements": ["às"],
+    "message": "Use crase na indicacao de horas.",
+    "description": "Corrige ausencia de crase em horarios."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_MODA",
+    "pattern": ["vestido", "a", "moda", "italiana"],
+    "targetIndex": 1,
+    "replacements": ["à"],
+    "message": "Use crase na expressao 'a moda de'.",
+    "description": "Corrige ausencia de crase em locucoes."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_NAMES_FEMININOS",
+    "pattern": ["entreguei", "a", "maria"],
+    "targetIndex": 1,
+    "replacements": ["à"],
+    "message": "Use crase antes de nomes femininos.",
+    "description": "Corrige ausencia de crase."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_TERRA",
+    "pattern": ["chegamos", "a", "terra"],
+    "targetIndex": 1,
+    "replacements": ["à"],
+    "message": "Use crase antes de 'terra' quando significa solo.",
+    "description": "Corrige ausencia de crase."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_CASA_DETERMINADA",
+    "pattern": ["fui", "a", "casa", "da", "mae"],
+    "targetIndex": 1,
+    "replacements": ["à"],
+    "message": "Use crase antes de 'casa' quando determinada.",
+    "description": "Corrige ausencia de crase."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_NAO_ANTES_CASA",
+    "pattern": ["fui", "a", "casa"],
+    "targetIndex": 1,
+    "replacements": [],
+    "message": "Nao use crase antes de 'casa' quando significa lar.",
+    "description": "Evita crase incorreta."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_PALAVRA_MASCULINA",
+    "pattern": ["fomos", "a", "mercado"],
+    "targetIndex": 1,
+    "replacements": [],
+    "message": "Nao use crase antes de palavra masculina.",
+    "description": "Evita crase incorreta."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_PRONOME",
+    "pattern": ["entreguei", "a", "ela"],
+    "targetIndex": 1,
+    "replacements": [],
+    "message": "Nao use crase antes de pronomes pessoais.",
+    "description": "Evita crase incorreta."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_AQUELA",
+    "pattern": ["vou", "a", "aquela", "escola"],
+    "targetIndex": 1,
+    "replacements": ["à"],
+    "message": "Use crase antes de 'aquela'.",
+    "description": "Corrige ausencia de crase."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_ANTES_AQUILO",
+    "pattern": ["refiro", "a", "aquilo"],
+    "targetIndex": 1,
+    "replacements": ["à"],
+    "message": "Use crase antes de 'aquilo'.",
+    "description": "Corrige ausencia de crase."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MEIO_MEIA_ADVERBIO",
+    "pattern": ["ela", "estava", "meio", "triste"],
+    "targetIndex": 2,
+    "replacements": ["meio"],
+    "message": "Use 'meio' (invariável) como advérbio de intensidade.",
+    "description": "Corrige concordancia nominal com 'meio'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MEIO_MEIA_ADJETIVO",
+    "pattern": ["a", "garota", "estava", "meia", "confusa"],
+    "targetIndex": 3,
+    "replacements": ["meio"],
+    "message": "Use 'meio' (invariável) como advérbio.",
+    "description": "Corrige concordancia nominal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MEIA_MEIO_NUMERAL",
+    "pattern": ["comeu", "meia", "pizza"],
+    "targetIndex": 1,
+    "replacements": ["meia"],
+    "message": "Use 'meia' como numeral (metade).",
+    "description": "Corrige concordancia nominal com 'meio'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_BASTANTE_ADJETIVO_PLURAL",
+    "pattern": ["havia", "bastante", "pessoas"],
+    "targetIndex": 1,
+    "replacements": ["bastantes"],
+    "message": "Use 'bastantes' no plural quando modificar substantivo plural.",
+    "description": "Corrige concordancia nominal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_BASTANTE_ADVERBIO_INVARIAVEL",
+    "pattern": ["ela", "estudou", "bastantes"],
+    "targetIndex": 2,
+    "replacements": ["bastante"],
+    "message": "Como advérbio, 'bastante' é invariável.",
+    "description": "Corrige concordancia nominal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MENOS_INVARIABILIDADE",
+    "pattern": ["havia", "menas", "pessoas"],
+    "targetIndex": 1,
+    "replacements": ["menos"],
+    "message": "A palavra 'menos' é invariável.",
+    "description": "Corrige uso incorreto de 'menas'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_ALTO_ALTA",
+    "pattern": ["a", "conta", "deu", "alto"],
+    "targetIndex": 3,
+    "replacements": ["alta"],
+    "message": "Concorde o adjetivo com o substantivo.",
+    "description": "Corrige concordancia nominal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MUITO_MUITAS",
+    "pattern": ["havia", "muito", "pessoas"],
+    "targetIndex": 1,
+    "replacements": ["muitas"],
+    "message": "Concorde 'muito' com o substantivo.",
+    "description": "Corrige concordancia nominal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_POUCO_POUCAS",
+    "pattern": ["havia", "pouco", "pessoas"],
+    "targetIndex": 1,
+    "replacements": ["poucas"],
+    "message": "Concorde 'pouco' com o substantivo.",
+    "description": "Corrige concordancia nominal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAIORIA_SINGULAR",
+    "pattern": ["a", "maioria", "chegaram"],
+    "targetIndex": 2,
+    "replacements": ["chegou"],
+    "message": "Verbo deve concordar com o nucleo do sujeito.",
+    "description": "Corrige concordancia verbal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_VERBO_SUJEITO_COMPOSTO",
+    "pattern": ["joao", "e", "maria", "foi"],
+    "targetIndex": 3,
+    "replacements": ["foram"],
+    "message": "Sujeito composto exige verbo no plural.",
+    "description": "Corrige concordancia verbal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_VERBO_APOS_SUJEITO_COMPOSTO",
+    "pattern": ["joao", "maria", "foi"],
+    "targetIndex": 2,
+    "replacements": ["foram"],
+    "message": "Sujeito composto exige verbo no plural.",
+    "description": "Corrige concordancia verbal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_FIM_DE",
+    "pattern": ["afim", "de", "estudar"],
+    "targetIndex": 0,
+    "replacements": ["a fim"],
+    "message": "Use 'a fim de' para indicar finalidade.",
+    "description": "Corrige confusao entre 'afim' e 'a fim'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_AFIM_VONTADE",
+    "pattern": ["estamos", "afim", "de", "sair"],
+    "targetIndex": 1,
+    "replacements": ["a fim"],
+    "message": "Use 'a fim de' para indicar vontade ou finalidade.",
+    "description": "Corrige confusao entre 'afim' e 'a fim'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_DE_MAIS_DEMAIS",
+    "pattern": ["ele", "falou", "de", "mais"],
+    "targetIndex": 2,
+    "replacements": ["demais"],
+    "message": "Use 'demais' para indicar excesso.",
+    "description": "Corrige confusao entre 'de mais' e 'demais'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_DEMAIS_DE_MAIS",
+    "pattern": ["comprei", "pao", "demais"],
+    "targetIndex": 2,
+    "replacements": ["de mais"],
+    "message": "Use 'de mais' como oposto de 'de menos'.",
+    "description": "Corrige confusao entre 'de mais' e 'demais'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_NADA_VER",
+    "pattern": ["isso", "a", "nada", "ver"],
+    "targetIndex": 1,
+    "replacements": ["não"],
+    "message": "A expressao correta é 'não tem nada a ver'.",
+    "description": "Corrige expressao 'a nada ver'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_EM_VEZ_DE",
+    "pattern": ["ao", "invés", "de", "estudar"],
+    "targetIndex": 0,
+    "replacements": ["em"],
+    "message": "Use 'em vez de' para substituicao. 'Ao invés de' significa oposicao.",
+    "description": "Corrige uso de 'ao invés de'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_AO_INVES_DE_OPOSICAO",
+    "pattern": ["ao", "invés", "de", "subir", "desceu"],
+    "targetIndex": 0,
+    "replacements": ["ao"],
+    "message": "Use 'ao invés de' para indicar oposicao.",
+    "description": "Corrige uso de 'ao invés de'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_ACERCA_DE_ASSUNTO",
+    "pattern": ["a", "cerca", "de", "isso"],
+    "targetIndex": 0,
+    "replacements": ["acerca"],
+    "message": "Use 'acerca de' para indicar assunto.",
+    "description": "Corrige confusao entre acerca, a cerca e há cerca."
+  },
+  {
+    "id": "PT_BR_CONTEXT_HA_CERCA_TEMPO",
+    "pattern": ["a", "cerca", "de", "dez", "anos"],
+    "targetIndex": 0,
+    "replacements": ["há"],
+    "message": "Use 'há cerca de' para tempo aproximado.",
+    "description": "Corrige confusao entre acerca, a cerca e há cerca."
+  },
+  {
+    "id": "PT_BR_CONTEXT_A_CERCA_DISTANCIA",
+    "pattern": ["a", "cerca", "de", "dois", "metros"],
+    "targetIndex": 0,
+    "replacements": ["a"],
+    "message": "Use 'a cerca de' para distancia aproximada.",
+    "description": "Corrige confusao entre acerca, a cerca e há cerca."
+  },
+  {
+    "id": "PT_BR_CONTEXT_ACERCA_DE_SINONIMO",
+    "pattern": ["a", "cerca", "do", "assunto"],
+    "targetIndex": 0,
+    "replacements": ["acerca"],
+    "message": "Use 'acerca de' para indicar assunto.",
+    "description": "Corrige confusao entre acerca, a cerca e há cerca."
+  },
+  {
+    "id": "PT_BR_CONTEXT_HAVER_DEVER",
+    "pattern": ["hei", "de", "estudar"],
+    "targetIndex": 0,
+    "replacements": ["hei"],
+    "message": "Uso correto de 'haver de' indicando obrigacao ou futuro.",
+    "description": "Corrige construcao com haver de."
+  },
+  {
+    "id": "PT_BR_CONTEXT_NAO_HA_DE",
+    "pattern": ["nao", "ha", "de", "ser"],
+    "targetIndex": 1,
+    "replacements": ["há"],
+    "message": "Use 'não há de' como expressão correta.",
+    "description": "Corrige expressao 'não ha de'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_HA_DE_IMPRESSOAL",
+    "pattern": ["ha", "de", "haver"],
+    "targetIndex": 0,
+    "replacements": ["há"],
+    "message": "Use 'há de' como locução verbal impessoal.",
+    "description": "Corrige construcao com haver."
+  }
+]

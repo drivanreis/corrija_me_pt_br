@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>corrija_me_pt_br - Pagina de teste</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --bg-top: #fff9f0;
+        --bg-bottom: #ece4d6;
+        --panel: rgba(255, 253, 248, 0.9);
+        --panel-strong: #fffdf8;
+        --line: #d8ccb8;
+        --line-strong: #c5b69b;
+        --text: #2a241d;
+        --muted: #726556;
+        --accent: #0f766e;
+        --accent-soft: rgba(15, 118, 110, 0.12);
+        --accent-strong: #115e59;
+        --shadow: 0 10px 24px rgba(74, 56, 31, 0.08);
+        --danger: #b42318;
+        --ok: #1d7a46;
+        --warn: #a16b08;
+      }
+
+      body[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #0f141c;
+        --bg-top: #17212e;
+        --bg-bottom: #0c1017;
+        --panel: rgba(16, 22, 31, 0.92);
+        --panel-strong: #151c26;
+        --line: #253244;
+        --line-strong: #314156;
+        --text: #edf2f7;
+        --muted: #a1afc1;
+        --accent: #7dd3c7;
+        --accent-soft: rgba(125, 211, 199, 0.12);
+        --accent-strong: #91e2d7;
+        --shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+        --danger: #ff8e84;
+        --ok: #62d792;
+        --warn: #ffcc6c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        height: 100%;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+      }
+
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar,
+      main::-webkit-scrollbar,
+      .report-json-shell::-webkit-scrollbar,
+      textarea.field-input::-webkit-scrollbar,
+      .field-editor::-webkit-scrollbar,
+      .report-json::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: "Noto Sans", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top, var(--bg-top) 0, var(--bg) 45%, var(--bg-bottom) 100%);
+        color: var(--text);
+        overflow-x: hidden;
+        scrollbar-width: none;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .lab-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        width: 100%;
+        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+        backdrop-filter: blur(12px);
+      }
+
+      .lab-header-inner {
+        width: min(1120px, calc(100% - 24px));
+        height: 52px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .lab-tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 22px;
+        padding: 0 8px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        background: var(--panel);
+        white-space: nowrap;
+      }
+
+      .brand-copy {
+        min-width: 0;
+      }
+
+      .brand-title {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .brand-subtitle {
+        margin: 1px 0 0;
+        font-size: 0.73rem;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .toolbar-group {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 6px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--panel);
+      }
+
+      .nav-button,
+      .icon-button,
+      .timer-button {
+        appearance: none;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .nav-button,
+      .icon-button {
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-button:hover,
+      .icon-button:hover,
+      .timer-button:hover {
+        background: var(--accent-soft);
+        border-color: color-mix(in srgb, var(--accent) 26%, var(--line));
+      }
+
+      .nav-button:disabled {
+        opacity: 0.4;
+        cursor: default;
+      }
+
+      .nav-button:focus-visible,
+      .icon-button:focus-visible,
+      .timer-button:focus-visible,
+      .field-input:focus,
+      .field-editor:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px var(--accent-soft);
+      }
+
+      .phase-indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 4px;
+      }
+
+      .phase-step {
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line-strong);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.62rem;
+        color: var(--muted);
+        background: transparent;
+      }
+
+      .phase-step.active {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent-strong);
+      }
+
+      .phase-step.complete {
+        border-color: color-mix(in srgb, var(--ok) 55%, var(--line-strong));
+        color: var(--ok);
+      }
+
+      .phase-status {
+        min-width: 72px;
+        text-align: center;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+
+      .phase-status strong {
+        display: block;
+        color: var(--text);
+        font-size: 0.82rem;
+      }
+
+      .timer-display {
+        min-width: 68px;
+        text-align: center;
+        font-family: "JetBrains Mono", "Roboto Mono", monospace;
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      .timer-button {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+      }
+
+      .timer-button.running {
+        color: var(--accent-strong);
+        background: var(--accent-soft);
+        border-color: color-mix(in srgb, var(--accent) 32%, var(--line));
+      }
+
+      .icon-button svg {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .icon-button .icon-moon {
+        display: none;
+      }
+
+      body[data-theme="dark"] .icon-button .icon-sun {
+        display: none;
+      }
+
+      body[data-theme="dark"] .icon-button .icon-moon {
+        display: block;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        min-height: calc(100dvh - 52px);
+        padding: 12px 0 18px;
+        overflow-x: hidden;
+      }
+
+      .surface {
+        display: grid;
+        gap: 12px;
+      }
+
+      .hint-card,
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .hint-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        font-size: 0.86rem;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+
+      .hint-link {
+        white-space: nowrap;
+        font-size: 0.78rem;
+      }
+
+      .page-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .card-title {
+        margin: 0 0 4px;
+        font-size: 1rem;
+      }
+
+      .card-description {
+        margin: 0 0 10px;
+        color: var(--muted);
+        line-height: 1.4;
+        font-size: 0.92rem;
+      }
+
+      .field-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+
+      .field-input,
+      .field-editor {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 12px;
+        background: var(--panel-strong);
+        color: var(--text);
+        font: inherit;
+        line-height: 1.45;
+        transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      }
+
+      .field-input {
+        min-height: 52px;
+      }
+
+      textarea.field-input {
+        min-height: 140px;
+        resize: vertical;
+        scrollbar-width: none;
+      }
+
+      .field-editor {
+        min-height: 140px;
+        white-space: pre-wrap;
+        overflow-y: auto;
+        scrollbar-width: none;
+      }
+
+      .two-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 12px;
+      }
+
+      .checklist {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .phase-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .primary-button,
+      .secondary-button {
+        appearance: none;
+        border-radius: 999px;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 10px 14px;
+      }
+
+      .primary-button {
+        border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+        color: #fff;
+      }
+
+      .secondary-button {
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+        color: var(--text);
+      }
+
+      .report-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .report-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+      }
+
+      .metric-card {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--panel-strong);
+      }
+
+      .metric-label {
+        display: block;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .metric-value {
+        display: block;
+        margin-top: 6px;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .report-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+        gap: 12px;
+      }
+
+      .report-hero-copy {
+        display: grid;
+        gap: 10px;
+      }
+
+      .report-title-row,
+      .report-toolbar,
+      .report-pill-row,
+      .report-highlights,
+      .report-split,
+      .report-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .report-kicker,
+      .report-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        padding: 0 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--panel-strong);
+        font-size: 0.74rem;
+        color: var(--muted);
+      }
+
+      .report-headline {
+        margin: 0;
+        font-size: clamp(1.4rem, 2vw, 2rem);
+        line-height: 1.05;
+      }
+
+      .report-lead {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .report-meta-card {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background:
+          linear-gradient(180deg, color-mix(in srgb, var(--panel-strong) 92%, transparent), var(--panel));
+      }
+
+      .report-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .report-meta-item {
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: color-mix(in srgb, var(--accent-soft) 45%, var(--panel-strong));
+        border: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+      }
+
+      .report-meta-item span {
+        display: block;
+      }
+
+      .report-meta-item .metric-label {
+        margin-bottom: 4px;
+      }
+
+      .report-highlights {
+        align-items: stretch;
+      }
+
+      .report-highlight {
+        flex: 1 1 180px;
+        min-width: 0;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--panel-strong);
+      }
+
+      .report-highlight strong,
+      .report-highlight span {
+        display: block;
+      }
+
+      .report-highlight strong {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .report-highlight span {
+        line-height: 1.45;
+      }
+
+      .report-block {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--panel-strong);
+      }
+
+      .report-block-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+
+      .report-block h3 {
+        margin: 0 0 10px;
+        font-size: 0.98rem;
+      }
+
+      .report-block p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .status-ok {
+        color: var(--ok);
+      }
+
+      .status-warn {
+        color: var(--warn);
+      }
+
+      .status-danger {
+        color: var(--danger);
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .loading-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: grid;
+        place-items: center;
+        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        backdrop-filter: blur(10px);
+      }
+
+      .loading-card {
+        width: min(420px, calc(100% - 32px));
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+
+      .loading-spinner {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 14px;
+        border-radius: 999px;
+        border: 3px solid color-mix(in srgb, var(--line) 90%, transparent);
+        border-top-color: var(--accent);
+        animation: spin 900ms linear infinite;
+      }
+
+      .loading-card h2 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+      }
+
+      .loading-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 840px) {
+        .lab-header-inner {
+          height: auto;
+          grid-template-columns: 1fr;
+          padding: 10px 0;
+          gap: 8px;
+        }
+
+        .brand,
+        .page-grid,
+        .phase-actions {
+          width: 100%;
+        }
+
+        .toolbar-group {
+          justify-content: center;
+        }
+
+        .page-grid {
+          gap: 16px;
+        }
+
+        .hint-card,
+        .report-hero {
+          grid-template-columns: 1fr;
+        }
+
+        .report-meta-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .report-block-header {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        main {
+          width: min(100% - 20px, 1120px);
+          padding: 10px 0 14px;
+        }
+
+        .lab-header-inner {
+          width: min(100% - 20px, 1120px);
+        }
+
+        .brand {
+          gap: 8px;
+        }
+
+        .brand-subtitle,
+        .hint-link {
+          display: none;
+        }
+
+        .toolbar-group {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .phase-indicator {
+          min-width: 0;
+          flex: 1 1 auto;
+          justify-content: center;
+        }
+
+        .phase-status {
+          min-width: 56px;
+        }
+
+        .phase-step {
+          width: 16px;
+          height: 16px;
+          font-size: 0.56rem;
+        }
+
+        .card,
+        .report-block,
+        .report-meta-card {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loading-card">
+        <div class="loading-spinner" aria-hidden="true"></div>
+        <h2>Preparando a bateria</h2>
+        <p id="loadingStatus">Carregando casos de teste dinâmicos e montando os cenários desta execução.</p>
+      </div>
+    </div>
+
+    <header class="lab-header">
+      <div class="lab-header-inner">
+        <div class="brand">
+          <span class="lab-tag">LAB-MODE</span>
+          <div class="brand-copy">
+            <p id="brandTitle" class="brand-title">Fase 1: Base</p>
+            <p id="brandSubtitle" class="brand-subtitle">Bateria progressiva do corriga_me_pt_br</p>
+          </div>
+        </div>
+
+        <div class="toolbar-group">
+          <button id="prevPage" class="nav-button" type="button" aria-label="Voltar fase">&#8592;</button>
+          <div class="phase-indicator">
+            <div id="phaseDots"></div>
+            <div class="phase-status">
+              <span id="phaseStatusCaption">Teste</span>
+              <strong id="phaseStatusLabel">1 de 6</strong>
+            </div>
+          </div>
+          <button id="nextPage" class="nav-button" type="button" aria-label="Avancar fase">&#8594;</button>
+        </div>
+
+        <div class="toolbar-group">
+          <div id="timerDisplay" class="timer-display">00:00</div>
+          <button id="startTimerButton" class="timer-button" type="button">Iniciar</button>
+          <button id="themeToggle" class="icon-button" type="button" aria-label="Alternar tema">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2.5"></path>
+              <path d="M12 19.5V22"></path>
+              <path d="M2 12h2.5"></path>
+              <path d="M19.5 12H22"></path>
+              <path d="M4.9 4.9l1.8 1.8"></path>
+              <path d="M17.3 17.3l1.8 1.8"></path>
+              <path d="M17.3 6.7l1.8-1.8"></path>
+              <path d="M4.9 19.1l1.8-1.8"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 15.2A8.5 8.5 0 0 1 8.8 4 9 9 0 1 0 20 15.2z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="surface">
+        <section id="hintCard" class="hint-card">
+          <span id="hintText">Fase 1: base. Erros ortográficos simples, acentuação e trocas pequenas de contexto.</span>
+          <span class="hint-link">Página pública:
+            <a href="https://drivanreis.github.io/corrija_me_pt_br/">drivanreis.github.io/corrija_me_pt_br</a>
+          </span>
+        </section>
+
+        <section id="testPage" class="page-grid">
+          <article class="card">
+            <h2 class="card-title">Input simples</h2>
+            <p id="tituloHelp" class="card-description">Bom para validar frases curtas, títulos e descrições pequenas.</p>
+            <label class="field-label" for="titulo">Titulo</label>
+            <input id="titulo" class="field-input" type="text" />
+          </article>
+
+          <article class="card">
+            <h2 class="card-title">Textarea</h2>
+            <p id="mensagemHelp" class="card-description">Ideal para testar parágrafos maiores e várias correções em sequência.</p>
+            <label class="field-label" for="mensagem">Mensagem</label>
+            <textarea id="mensagem" class="field-input"></textarea>
+          </article>
+
+          <article class="card">
+            <h2 class="card-title">Campo contenteditable</h2>
+            <p id="editorHelp" class="card-description">Esse formato se aproxima mais de vários editores ricos usados na web.</p>
+            <label class="field-label" for="editor">Editor livre</label>
+            <div id="editor" class="field-editor" contenteditable="true"></div>
+          </article>
+
+          <div class="two-columns">
+            <article class="card">
+              <h2 class="card-title">Formulario curto</h2>
+              <p id="formHelp" class="card-description">Campos pequenos ajudam a validar foco e troca entre inputs.</p>
+              <label class="field-label" for="nome">Nome do anuncio</label>
+              <input id="nome" class="field-input" type="text" />
+
+              <label class="field-label" for="cidade" style="margin-top: 14px;">Cidade</label>
+              <input id="cidade" class="field-input" type="text" />
+            </article>
+
+            <article class="card">
+              <h2 class="card-title">Checklist rapido</h2>
+              <p id="checklistHelp" class="card-description">Use esta lista para revisar os cenarios mais importantes desta etapa.</p>
+              <ul id="checklistItems" class="checklist"></ul>
+            </article>
+          </div>
+
+          <div class="phase-actions">
+            <button id="nextPhaseFooterButton" class="secondary-button" type="button">Avançar teste</button>
+            <button id="finishTestsButton" class="primary-button hidden" type="button">Abrir relatório final</button>
+          </div>
+        </section>
+
+        <section id="reportPage" class="page-grid hidden">
+          <article class="card report-hero">
+            <div class="report-hero-copy">
+              <div class="report-title-row">
+                <span class="report-kicker">RELATÓRIO VISUAL</span>
+                <span id="reportBatchStatus" class="report-pill">bateria encerrada</span>
+              </div>
+              <h2 class="report-headline">Relatório de desempenho da extensão</h2>
+              <p class="report-lead">
+                Esta etapa existe para transformar a bateria em evidência visual. Aqui o usuário vê o que a extensão corrigiu, o que
+                corrigiu parcialmente e o que ainda precisa amadurecer na base linguística.
+              </p>
+              <div id="reportHighlights" class="report-highlights"></div>
+            </div>
+            <aside class="report-meta-card">
+              <div class="report-toolbar">
+                <span class="report-pill">modo laboratório</span>
+                <span id="reportRunId" class="report-pill">run: aguardando</span>
+              </div>
+              <div class="report-meta-grid">
+                <div class="report-meta-item">
+                  <span class="metric-label">Execução</span>
+                  <span id="reportGeneratedAt">aguardando bateria</span>
+                </div>
+                <div class="report-meta-item">
+                  <span class="metric-label">Tempo corrido</span>
+                  <span id="reportElapsedMeta">00:00</span>
+                </div>
+                <div class="report-meta-item">
+                  <span class="metric-label">Cobertura</span>
+                  <span id="reportCoverageMeta">0 campos avaliados</span>
+                </div>
+                <div class="report-meta-item">
+                  <span class="metric-label">Exportação</span>
+                  <span>JSON auditável em memória</span>
+                </div>
+              </div>
+              <div class="report-actions">
+                <button id="exportJsonButton" class="secondary-button" type="button">Copiar JSON de auditoria</button>
+              </div>
+            </aside>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Visão consolidada</h3>
+            <p class="card-description">
+              A área abaixo apresenta nota geral, categorias mais fortes, pontos frágeis e sinais suficientes para convencer o usuário de
+              que a extensão está ativa, mensurável e em evolução.
+            </p>
+            <div id="reportSummary" class="report-summary"></div>
+          </article>
+
+          <article class="card report-grid">
+            <div class="report-block">
+              <div class="report-block-header">
+                <div>
+                  <h3>JSON de auditoria</h3>
+                  <p>Saída técnica pronta para inspeção, cópia e revisão manual.</p>
+                </div>
+              </div>
+              <div class="report-actions">
+                <button id="exportJsonButtonFooter" class="secondary-button" type="button">Copiar JSON de auditoria</button>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const THEME_KEY = "corrija-me-pt-br-test-theme";
+      const PAGE_KEY = "corrija-me-pt-br-test-page";
+      const AUDIT_EXPORT_KEY = "corrija-me-pt-br-test-audit-json";
+
+      const fallbackPhases = [
+        {
+          id: 1,
+          name: "Base",
+          hint: "Fase 1: base. Erros ortográficos simples, acentuação e trocas pequenas de contexto.",
+          tituloHelp: "Bom para validar frases curtas, títulos e descrições pequenas.",
+          mensagemHelp: "Ideal para testar parágrafos maiores e várias correções em sequência.",
+          editorHelp: "Esse formato se aproxima mais de vários editores ricos usados na web.",
+          formHelp: "Campos pequenos ajudam a validar foco e troca entre inputs.",
+          titulo: "Precizamos entragar o relatorio amanha sem atrazos.",
+          mensagem:
+`Ola equipe, eu fiz uma analize rapida do projeto e percebi algums ponto que precisa de atencao.
+A gente vai precisar alinhar melhor os prazo, revisar os texto e organizar as tarefa com mais clareza.
+Se voce concorda, podemos marca uma reuniao ainda essa semana.`,
+          editor:
+`Hoje eu escrevi este paragrafo para testar se a extensao conseque encontrar erros comuns de portugues brasil. Se ela estiver funcionando bem, as palavra incorreta devem receber sugestoes de correcao.`,
+          nome: "Vendo bicileta semi nova em otimo estado",
+          cidade: "Fortalesa Ceara",
+          expected: {
+            titulo: "Precisamos entregar o relatório amanhã sem atrasos.",
+            mensagem:
+`Olá equipe, eu fiz uma análise rápida do projeto e percebi alguns pontos que precisam de atenção.
+A gente vai precisar alinhar melhor os prazos, revisar os textos e organizar as tarefas com mais clareza.
+Se você concorda, podemos marcar uma reunião ainda esta semana.`,
+            editor:
+`Hoje eu escrevi este parágrafo para testar se a extensão consegue encontrar erros comuns de português do Brasil. Se ela estiver funcionando bem, as palavras incorretas devem receber sugestões de correção.`,
+            nome: "Vendo bicicleta semi-nova em ótimo estado",
+            cidade: "Fortaleza, Ceará"
+          },
+          issues: {
+            titulo: ["ortografia", "acentuação"],
+            mensagem: ["ortografia", "concordância", "acentuação"],
+            editor: ["ortografia", "acentuação"],
+            nome: ["ortografia", "hífen", "acentuação"],
+            cidade: ["ortografia", "localização", "acentuação"]
+          },
+          checklist: [
+            "O campo recebe foco corretamente?",
+            "Os erros aparecem marcados?",
+            "Clicar na palavra marcada abre sugestões?",
+            "A correção substitui o texto no lugar certo?",
+            "O popup da extensão mostra o estado atual sem exagero?"
+          ]
+        },
+        {
+          id: 2,
+          name: "Anúncios",
+          hint: "Fase 2: anúncios e frases curtas do dia a dia. Hífen, localidade e vocabulário comercial.",
+          tituloHelp: "Aqui o objetivo é testar anúncios curtos e vocábulos muito usados em classificados.",
+          mensagemHelp: "Agora o texto mistura ortografia, localidade e construções de venda.",
+          editorHelp: "Observe se a extensão consegue manter a qualidade dentro de um bloco mais comercial.",
+          formHelp: "Nesta fase o formulário curto vira um mini teste de anúncio real.",
+          titulo: "Notebook semi novo com bateri boa e poco uso",
+          mensagem:
+`Bom dia, estou vendendo um celular semi novo com pelicula trincada mais funcionando normal.
+Retirada em Fortalesa Ceara ou entrega combinada.
+Se tiver enteresse, me chama que respondo denovo ainda hoje.`,
+          editor:
+`Anuncio simples: vendo guarda roupa usado, bem conservado e com pouco uso. Estou em Fortalesa Ceara e posso entregar dependendo do bairro.`,
+          nome: "Vendo fogao bem vindo para casa nova",
+          cidade: "Fortaleza Ceara",
+          expected: {
+            titulo: "Notebook semi-novo com bateria boa e pouco uso",
+            mensagem:
+`Bom dia, estou vendendo um celular semi-novo com película trincada, mas funcionando normalmente.
+Retirada em Fortaleza, Ceará, ou entrega combinada.
+Se tiver interesse, me chama que respondo de novo ainda hoje.`,
+            editor:
+`Anúncio simples: vendo guarda-roupa usado, bem conservado e com pouco uso. Estou em Fortaleza, Ceará, e posso entregar dependendo do bairro.`,
+            nome: "Vendo fogão bem-vindo para casa nova",
+            cidade: "Fortaleza, Ceará"
+          },
+          issues: {
+            titulo: ["hífen", "ortografia", "acentuação"],
+            mensagem: ["ortografia", "acentuação", "localização"],
+            editor: ["hífen", "ortografia", "localização"],
+            nome: ["acentuação", "hífen"],
+            cidade: ["localização", "acentuação"]
+          },
+          checklist: [
+            "Compostos com hífen aparecem como prioridade?",
+            "Cidade e estado recebem vírgula como primeira sugestão?",
+            "Erros muito comuns de anúncio são reconhecidos?",
+            "As sugestões mais prováveis sobem para o topo?",
+            "A leitura continua boa mesmo com frases curtas e quebradas?"
+          ]
+        },
+        {
+          id: 3,
+          name: "Profissional",
+          hint: "Fase 3: texto profissional. Concordância, pronomes e regência em mensagens de trabalho.",
+          tituloHelp: "Teste aqui erros mais típicos de texto corporativo e e-mails curtos.",
+          mensagemHelp: "Essa fase cobra mais da base gramatical do que do dicionário bruto.",
+          editorHelp: "O editor livre vira um ensaio de mensagem formal com erros de uso frequente.",
+          formHelp: "Os campos pequenos agora simulam título e cidade de um cadastro mais formal.",
+          titulo: "Relatorio do setor comercial para analize final",
+          mensagem:
+`Prezados, a gente vamos revisar os contrato ainda hoje.
+Preciso que voce encaminhe para mim fazer a validacao final e depois me retorne com urgencia.
+Entre eu e voce, esse documento ainda precisa de bastante revisão.`,
+          editor:
+`No nosso time, existe muitos ponto de melhoria. Eu prefiro isso do que aquilo, mais entendo que o prazo esta curto e que a equipe precisa de mais clareza.`,
+          nome: "Coordenador comercial com esperiencia em negociação",
+          cidade: "Belo Horizonte MG",
+          expected: {
+            titulo: "Relatório do setor comercial para análise final",
+            mensagem:
+`Prezados, a gente vai revisar os contratos ainda hoje.
+Preciso que você encaminhe para eu fazer a validação final e depois me retorne com urgência.
+Entre mim e você, esse documento ainda precisa de bastante revisão.`,
+            editor:
+`No nosso time, existem muitos pontos de melhoria. Eu prefiro isso àquilo, mas entendo que o prazo está curto e que a equipe precisa de mais clareza.`,
+            nome: "Coordenador comercial com experiência em negociação",
+            cidade: "Belo Horizonte, MG"
+          },
+          issues: {
+            titulo: ["acentuação", "ortografia"],
+            mensagem: ["concordância", "pronomes", "acentuação"],
+            editor: ["concordância", "regência", "acentuação"],
+            nome: ["ortografia", "acentuação"],
+            cidade: ["localização"]
+          },
+          checklist: [
+            "Concordância com 'a gente' funciona bem?",
+            "Pronome em 'para mim fazer' recebe sugestão útil?",
+            "Regência entra sem exagerar nos falsos positivos?",
+            "O ranking continua priorizando a correção mais natural?",
+            "O usuário entende a mensagem explicativa da regra?"
+          ]
+        },
+        {
+          id: 4,
+          name: "Técnico",
+          hint: "Fase 4: texto técnico e prompts. Arquivos, termos de software e português misturado com nomes técnicos.",
+          tituloHelp: "Aqui o corretor precisa diferenciar erro real de vocábulos técnicos legítimos.",
+          mensagemHelp: "Essa fase mede ruído em nomes de arquivo, jargões e instruções para IA.",
+          editorHelp: "Ideal para validar se o texto técnico não gera sublinhados absurdos.",
+          formHelp: "Os campos curtos simulam títulos e localidades em ambiente digital.",
+          titulo: "Prompt para revisar phrase_rules json com menos ruido",
+          mensagem:
+`Estou construindo uma aplicação corretor ortográfico. E quanto mais dados, mais preciso e eficiente a aplicação fica.
+Preciso de sua ajuda para formentar estes dois arquivos, com o maior numero de registros possiveis.
+context_rules.json phrase_rules.json`,
+          editor:
+`Tem só que focar em regras do português(Brasil), sem quebrar nomes como context_rules.json, phrase_rules.json, backend, frontend ou contenteditable.`,
+          nome: "Ajuste do prompt para o Gemini e o DeepSeek",
+          cidade: "São Paulo SP",
+          expected: {
+            titulo: "Prompt para revisar phrase_rules.json com menos ruído",
+            mensagem:
+`Estou construindo uma aplicação de corretor ortográfico. E, quanto mais dados, mais precisa e eficiente a aplicação fica.
+Preciso de sua ajuda para fomentar estes dois arquivos, com o maior número de registros possíveis.
+context_rules.json phrase_rules.json`,
+            editor:
+`Tem só que focar em regras do português(Brasil), sem quebrar nomes como context_rules.json, phrase_rules.json, backend, frontend ou contenteditable.`,
+            nome: "Ajuste do prompt para o Gemini e o DeepSeek",
+            cidade: "São Paulo, SP"
+          },
+          issues: {
+            titulo: ["texto técnico", "acentuação"],
+            mensagem: ["ortografia", "acentuação", "texto técnico"],
+            editor: ["texto técnico"],
+            nome: ["texto técnico"],
+            cidade: ["localização"]
+          },
+          checklist: [
+            "Nomes de arquivo deixam de gerar falso positivo?",
+            "Termos técnicos válidos não são marcados à toa?",
+            "Erros reais como 'formentar' continuam aparecendo?",
+            "O texto misto técnico + português fica legível para o usuário?",
+            "A extensão continua estável em textos mais longos?"
+          ]
+        },
+        {
+          id: 5,
+          name: "Complexo",
+          hint: "Fase 5: casos difíceis. Repetição acidental, palavras parecidas, confusão sonora e contexto enganoso.",
+          tituloHelp: "Aqui o objetivo é medir se o corretor vai além do dicionário e começa a entender ambiguidades reais.",
+          mensagemHelp: "A fase final agora mistura erro ortográfico, repetição, homófonos e frases que parecem corretas à primeira vista.",
+          editorHelp: "Use esta etapa para enxergar onde a extensão ainda troca palavras parecidas sem compreender o sentido da frase.",
+          formHelp: "Os campos curtos também entram em território ambíguo, com trocas sonoras e contexto semântico.",
+          titulo: "Teste avançado de pouco poço e outras confuzões",
+          mensagem:
+`Se eu posso, voco pode?
+E se eu cavar um um poço, você cava outro pouco?
+Quem concerto o texto tambem concerta a logica ou só troca palavra parecida por outra mais famosa?
+As vezes a frase fica quase certa, mais ainda errada no sentido.`,
+          editor:
+`Eu quiz dizer que agente pode rever isso depois, mais nao agora. Se ele trouxe o cesto na sexta, porque no texto aparece sexto? E quando eu falo sessão de teste, a extesão vai sugerir seção, cessão ou vai entender o contexto?`,
+          nome: "Correção de cesto sexto e sessão seção",
+          cidade: "Curitiba PR",
+          expected: {
+            titulo: "Teste avançado de pouco, poço e outras confusões",
+            mensagem:
+`Se eu posso, você pode?
+E se eu cavar um poço, você cava outro poço?
+Quem conserta o texto também conserta a lógica ou só troca palavra parecida por outra mais famosa?
+Às vezes a frase fica quase certa, mas ainda errada no sentido.`,
+            editor:
+`Eu quis dizer que a gente pode rever isso depois, mas não agora. Se ele trouxe o cesto na sexta, por que no texto aparece sexto? E quando eu falo sessão de teste, a extensão vai sugerir seção, cessão ou vai entender o contexto?`,
+            nome: "Correção de cesto, sexto e sessão, seção",
+            cidade: "Curitiba, PR"
+          },
+          issues: {
+            titulo: ["ortografia", "pontuação"],
+            mensagem: ["contexto", "repetição", "ortografia", "acentuação"],
+            editor: ["contexto", "homófonos", "ortografia", "acentuação"],
+            nome: ["homófonos", "pontuação"],
+            cidade: ["localização"]
+          },
+          checklist: [
+            "A extensão remove repetições acidentais como 'um um'?",
+            "Ela distingue quando uma palavra parecida muda totalmente o sentido da frase?",
+            "Homófonos como 'sessão', 'seção' e 'cessão' geram ajuda útil ou ruído?",
+            "O corretor evita trocar só por semelhança sonora?",
+            "Fica claro onde a fundação linguística ainda precisa crescer?"
+          ]
+        }
+      ];
+
+      let phases = fallbackPhases.map((phase) => structuredClone(phase));
+
+      const reportPage = {
+        id: 6,
+        name: "Relatório",
+        hint: "Página 6: relatório visual. Esta página existe para mostrar ao usuário como a extensão se comportou ao longo da bateria."
+      };
+
+      let totalPages = phases.length + 1;
+      const root = document.body;
+      const loadingScreen = document.getElementById("loadingScreen");
+      const loadingStatus = document.getElementById("loadingStatus");
+      const hintText = document.getElementById("hintText");
+      const brandTitle = document.getElementById("brandTitle");
+      const brandSubtitle = document.getElementById("brandSubtitle");
+      const phaseStatusCaption = document.getElementById("phaseStatusCaption");
+      const phaseStatusLabel = document.getElementById("phaseStatusLabel");
+      const phaseDots = document.getElementById("phaseDots");
+      const prevPageButton = document.getElementById("prevPage");
+      const nextPageButton = document.getElementById("nextPage");
+      const timerDisplay = document.getElementById("timerDisplay");
+      const startTimerButton = document.getElementById("startTimerButton");
+      const themeToggle = document.getElementById("themeToggle");
+      const nextPhaseFooterButton = document.getElementById("nextPhaseFooterButton");
+      const finishTestsButton = document.getElementById("finishTestsButton");
+      const testPage = document.getElementById("testPage");
+      const reportPageElement = document.getElementById("reportPage");
+      const reportSummary = document.getElementById("reportSummary");
+      const reportHighlights = document.getElementById("reportHighlights");
+      const reportGeneratedAt = document.getElementById("reportGeneratedAt");
+      const reportElapsedMeta = document.getElementById("reportElapsedMeta");
+      const reportCoverageMeta = document.getElementById("reportCoverageMeta");
+      const reportBatchStatus = document.getElementById("reportBatchStatus");
+      const reportRunId = document.getElementById("reportRunId");
+      const exportJsonButton = document.getElementById("exportJsonButton");
+      const exportJsonButtonFooter = document.getElementById("exportJsonButtonFooter");
+      const titleInput = document.getElementById("titulo");
+      const messageTextarea = document.getElementById("mensagem");
+      const editorField = document.getElementById("editor");
+      const nomeInput = document.getElementById("nome");
+      const cidadeInput = document.getElementById("cidade");
+      const checklistItems = document.getElementById("checklistItems");
+
+      function updateLoadingStatus(message) {
+        loadingStatus.textContent = message;
+      }
+
+      function applyTheme(theme) {
+        root.dataset.theme = theme;
+      }
+
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      applyTheme(savedTheme || preferredTheme);
+
+      themeToggle.addEventListener("click", () => {
+        const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+        localStorage.setItem(THEME_KEY, nextTheme);
+      });
+
+      function createDefaultSession() {
+        return {
+          running: false,
+          startedAt: null,
+          elapsedMs: 0,
+          lastStoppedAt: null,
+          attempts: {}
+        };
+      }
+
+      let testSession = createDefaultSession();
+      let timerIntervalId = null;
+      let firstInteractionTracked = false;
+      const interactionTelemetry = {
+        session_started_at: new Date().toISOString(),
+        pointer_samples: [],
+        clicks: [],
+        field_inputs: [],
+        page_changes: [],
+        app_reactions: [],
+        user_cycles: []
+      };
+      let lastPointerSampleAt = 0;
+      let lastClickAt = null;
+      let lastInputAt = null;
+      let currentPageIndex = Number(localStorage.getItem(PAGE_KEY) || "0");
+      if (!Number.isInteger(currentPageIndex) || currentPageIndex < 0 || currentPageIndex >= totalPages) {
+        currentPageIndex = 0;
+      }
+
+      function normalizeForComparison(value) {
+        return String(value || "")
+          .replace(/\u00a0/g, " ")
+          .replace(/[ \t]+/g, " ")
+          .replace(/\s*\n\s*/g, "\n")
+          .trim();
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;");
+      }
+
+      function tokenizeForAudit(value) {
+        return normalizeForComparison(value).match(/[\p{L}\p{N}]+|[^\s\p{L}\p{N}]/gu) || [];
+      }
+
+      function shuffle(items) {
+        const copy = [...items];
+        for (let index = copy.length - 1; index > 0; index -= 1) {
+          const swapIndex = Math.floor(Math.random() * (index + 1));
+          [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+        }
+        return copy;
+      }
+
+      async function fetchJsonArray(urlCandidates) {
+        for (const candidate of urlCandidates) {
+          try {
+            const response = await fetch(candidate, { cache: "no-store" });
+            if (!response.ok) {
+              continue;
+            }
+            const parsed = await response.json();
+            if (Array.isArray(parsed)) {
+              return parsed;
+            }
+          } catch {}
+        }
+        return [];
+      }
+
+      function buildIssueTags(testCase) {
+        const tags = Array.isArray(testCase.tags)
+          ? testCase.tags.map((entry) => String(entry).trim().toLowerCase()).filter(Boolean)
+          : [];
+        const category = String(testCase.category || "").trim().toLowerCase();
+        return [...new Set([category, ...tags].filter(Boolean))].slice(0, 5);
+      }
+
+      function buildChecklistFromCases(selectedCases) {
+        const categories = [...new Set(selectedCases.flatMap((testCase) => buildIssueTags(testCase)))];
+        const labels = categories.slice(0, 5);
+        if (!labels.length) {
+          return [
+            "Os erros aparecem marcados?",
+            "A correção substitui o texto no lugar certo?",
+            "O resultado final se aproxima do esperado?"
+          ];
+        }
+        return labels.map((label) => `A bateria cobre bem o eixo de ${label}?`);
+      }
+
+      function buildDynamicPhasesFromCases(testCases) {
+        if (!testCases.length) {
+          return fallbackPhases.map((phase) => structuredClone(phase));
+        }
+
+        const pool = shuffle(testCases).map((testCase) => ({
+          ...testCase,
+          errado: String(testCase.errado || "").trim(),
+          correto: String(testCase.correto || "").trim()
+        })).filter((testCase) => testCase.errado && testCase.correto);
+
+        if (!pool.length) {
+          return fallbackPhases.map((phase) => structuredClone(phase));
+        }
+
+        const fields = ["titulo", "mensagem", "editor", "nome", "cidade"];
+        const expandedPool = [];
+        while (expandedPool.length < fallbackPhases.length * fields.length) {
+          expandedPool.push(...shuffle(pool));
+          if (pool.length === 1) {
+            break;
+          }
+        }
+
+        let cursor = 0;
+        return fallbackPhases.map((phaseTemplate) => {
+          const phase = structuredClone(phaseTemplate);
+          const selectedCases = [];
+
+          fields.forEach((field) => {
+            const testCase = expandedPool[cursor] || pool[cursor % pool.length];
+            cursor += 1;
+            selectedCases.push(testCase);
+            phase[field] = testCase.errado;
+            phase.expected[field] = testCase.correto;
+            phase.issues[field] = buildIssueTags(testCase);
+          });
+
+          phase.hint = `${phaseTemplate.hint} Esta execução usa casos sorteados da base JSON.`;
+          phase.checklist = buildChecklistFromCases(selectedCases);
+          return phase;
+        });
+      }
+
+      async function initializeDynamicBattery() {
+        updateLoadingStatus("Lendo casos curados e gerados da base JSON.");
+        const [curatedCases, generatedCases] = await Promise.all([
+          fetchJsonArray(["./data/test-cases/curated.json", "../data/test-cases/curated.json"]),
+          fetchJsonArray(["./data/test-cases/generated.json", "../data/test-cases/generated.json"])
+        ]);
+        const mergedCases = [...curatedCases, ...generatedCases];
+
+        updateLoadingStatus("Montando a bateria desta execução.");
+        phases = buildDynamicPhasesFromCases(mergedCases);
+        totalPages = phases.length + 1;
+
+        if (!Number.isInteger(currentPageIndex) || currentPageIndex < 0 || currentPageIndex >= totalPages) {
+          currentPageIndex = 0;
+        }
+      }
+
+      function buildTokenChangeGroups(sourceTokens, targetTokens) {
+        const rows = sourceTokens.length + 1;
+        const cols = targetTokens.length + 1;
+        const dp = Array.from({ length: rows }, () => new Array(cols).fill(0));
+
+        for (let i = 0; i < rows; i += 1) {
+          dp[i][0] = i;
+        }
+
+        for (let j = 0; j < cols; j += 1) {
+          dp[0][j] = j;
+        }
+
+        for (let i = 1; i < rows; i += 1) {
+          for (let j = 1; j < cols; j += 1) {
+            if (sourceTokens[i - 1] === targetTokens[j - 1]) {
+              dp[i][j] = dp[i - 1][j - 1];
+            } else {
+              dp[i][j] = Math.min(
+                dp[i - 1][j] + 1,
+                dp[i][j - 1] + 1,
+                dp[i - 1][j - 1] + 1
+              );
+            }
+          }
+        }
+
+        const operations = [];
+        let i = sourceTokens.length;
+        let j = targetTokens.length;
+
+        while (i > 0 || j > 0) {
+          if (i > 0 && j > 0 && sourceTokens[i - 1] === targetTokens[j - 1]) {
+            operations.push({ type: "equal", srcIndex: i - 1, tgtIndex: j - 1, token: sourceTokens[i - 1] });
+            i -= 1;
+            j -= 1;
+            continue;
+          }
+
+          const replaceCost = i > 0 && j > 0 ? dp[i - 1][j - 1] : Number.POSITIVE_INFINITY;
+          const deleteCost = i > 0 ? dp[i - 1][j] : Number.POSITIVE_INFINITY;
+          const insertCost = j > 0 ? dp[i][j - 1] : Number.POSITIVE_INFINITY;
+          const currentCost = dp[i][j];
+
+          if (i > 0 && j > 0 && currentCost === replaceCost + 1) {
+            operations.push({
+              type: "replace",
+              srcIndex: i - 1,
+              tgtIndex: j - 1,
+              srcToken: sourceTokens[i - 1],
+              tgtToken: targetTokens[j - 1]
+            });
+            i -= 1;
+            j -= 1;
+          } else if (i > 0 && currentCost === deleteCost + 1) {
+            operations.push({ type: "delete", srcIndex: i - 1, srcToken: sourceTokens[i - 1] });
+            i -= 1;
+          } else {
+            operations.push({ type: "insert", tgtIndex: j - 1, tgtToken: targetTokens[j - 1], srcIndex: i });
+            j -= 1;
+          }
+        }
+
+        operations.reverse();
+
+        const groups = [];
+        let currentGroup = null;
+        let sourceCursor = 0;
+        let targetCursor = 0;
+
+        function closeGroup() {
+          if (!currentGroup) {
+            return;
+          }
+          currentGroup.srcEnd = sourceCursor;
+          currentGroup.tgtEnd = targetCursor;
+          currentGroup.srcText = currentGroup.srcTokens.join(" ");
+          currentGroup.tgtText = currentGroup.tgtTokens.join(" ");
+          groups.push(currentGroup);
+          currentGroup = null;
+        }
+
+        operations.forEach((operation) => {
+          if (operation.type === "equal") {
+            closeGroup();
+            sourceCursor += 1;
+            targetCursor += 1;
+            return;
+          }
+
+          if (!currentGroup) {
+            currentGroup = {
+              srcStart: sourceCursor,
+              srcEnd: sourceCursor,
+              tgtStart: targetCursor,
+              tgtEnd: targetCursor,
+              srcTokens: [],
+              tgtTokens: []
+            };
+          }
+
+          if (operation.type === "replace") {
+            currentGroup.srcTokens.push(operation.srcToken);
+            currentGroup.tgtTokens.push(operation.tgtToken);
+            sourceCursor += 1;
+            targetCursor += 1;
+          } else if (operation.type === "delete") {
+            currentGroup.srcTokens.push(operation.srcToken);
+            sourceCursor += 1;
+          } else if (operation.type === "insert") {
+            currentGroup.tgtTokens.push(operation.tgtToken);
+            targetCursor += 1;
+          }
+        });
+
+        closeGroup();
+        return groups;
+      }
+
+      function groupsOverlap(left, right) {
+        const leftStart = left.srcStart;
+        const leftEnd = left.srcEnd;
+        const rightStart = right.srcStart;
+        const rightEnd = right.srcEnd;
+
+        if (leftStart === leftEnd && rightStart === rightEnd) {
+          return leftStart === rightStart;
+        }
+
+        if (leftStart === leftEnd) {
+          return leftStart >= rightStart && leftStart <= rightEnd;
+        }
+
+        if (rightStart === rightEnd) {
+          return rightStart >= leftStart && rightStart <= leftEnd;
+        }
+
+        return leftStart < rightEnd && rightStart < leftEnd;
+      }
+
+      function analyzeFieldProgress(original, actual, expected) {
+        const originalTokens = tokenizeForAudit(original);
+        const actualTokens = tokenizeForAudit(actual);
+        const expectedTokens = tokenizeForAudit(expected);
+        const expectedGroups = buildTokenChangeGroups(originalTokens, expectedTokens);
+        const actualGroups = buildTokenChangeGroups(originalTokens, actualTokens);
+
+        let corrected = 0;
+        let remained = 0;
+        let correctedWrong = 0;
+
+        expectedGroups.forEach((expectedGroup) => {
+          const exactFinalGroup = actualGroups.find((group) =>
+            group.srcStart === expectedGroup.srcStart &&
+            group.srcEnd === expectedGroup.srcEnd
+          );
+
+          if (exactFinalGroup) {
+            if (exactFinalGroup.tgtText === expectedGroup.tgtText) {
+              corrected += 1;
+            } else {
+              correctedWrong += 1;
+            }
+            return;
+          }
+
+          const hasOverlap = actualGroups.some((group) => groupsOverlap(group, expectedGroup));
+          if (hasOverlap) {
+            correctedWrong += 1;
+          } else {
+            remained += 1;
+          }
+        });
+
+        const newErrors = actualGroups.filter((group) => !expectedGroups.some((expectedGroup) => groupsOverlap(group, expectedGroup))).length;
+        const existingErrors = expectedGroups.length;
+        const accuracy = existingErrors ? Math.round((corrected / existingErrors) * 100) : 100;
+
+        return {
+          existing_errors: existingErrors,
+          corrected_errors: corrected,
+          remaining_errors: remained,
+          corrected_wrong_errors: correctedWrong,
+          new_errors: newErrors,
+          real_accuracy_percentage: accuracy,
+          expected_groups: expectedGroups,
+          actual_groups: actualGroups
+        };
+      }
+
+      function scoreLabel(score) {
+        if (score >= 85) {
+          return { text: "Forte", className: "status-ok" };
+        }
+        if (score >= 50) {
+          return { text: "Parcial", className: "status-warn" };
+        }
+        return { text: "Fraco", className: "status-danger" };
+      }
+
+      function readFields() {
+        return {
+          titulo: titleInput.value,
+          mensagem: messageTextarea.value,
+          editor: editorField.textContent,
+          nome: nomeInput.value,
+          cidade: cidadeInput.value
+        };
+      }
+
+      function persistCurrentAttempt() {
+        if (currentPageIndex >= phases.length) {
+          return;
+        }
+        testSession.attempts[currentPageIndex] = readFields();
+      }
+
+      function recordAppReaction(kind, details = {}) {
+        interactionTelemetry.app_reactions.push({
+          kind,
+          page: currentPageIndex + 1,
+          at: new Date().toISOString(),
+          elapsed_ms: testSession.elapsedMs,
+          ...details
+        });
+      }
+
+      function recordFieldInput(fieldName, sourceEvent) {
+        const now = Date.now();
+        const intervalMs = lastInputAt ? now - lastInputAt : null;
+        interactionTelemetry.field_inputs.push({
+          field: fieldName,
+          page: currentPageIndex + 1,
+          event: sourceEvent,
+          interval_ms: intervalMs,
+          at: new Date(now).toISOString()
+        });
+        if (intervalMs !== null && intervalMs <= 2400) {
+          interactionTelemetry.user_cycles.push({
+            type: "input_cycle",
+            page: currentPageIndex + 1,
+            interval_ms: intervalMs,
+            at: new Date(now).toISOString()
+          });
+        }
+        lastInputAt = now;
+      }
+
+      function storeAuditPayload(payload) {
+        localStorage.setItem(AUDIT_EXPORT_KEY, payload);
+      }
+
+      function buildInteractionTelemetrySummary() {
+        const clickIntervals = interactionTelemetry.clicks
+          .map((item) => item.interval_ms)
+          .filter((value) => typeof value === "number");
+        const avgClickInterval = clickIntervals.length
+          ? Math.round(clickIntervals.reduce((sum, value) => sum + value, 0) / clickIntervals.length)
+          : null;
+
+        return {
+          pointer_sample_count: interactionTelemetry.pointer_samples.length,
+          click_count: interactionTelemetry.clicks.length,
+          field_input_count: interactionTelemetry.field_inputs.length,
+          page_change_count: interactionTelemetry.page_changes.length,
+          app_reaction_count: interactionTelemetry.app_reactions.length,
+          user_cycle_count: interactionTelemetry.user_cycles.length,
+          average_click_interval_ms: avgClickInterval
+        };
+      }
+
+      function ensureSessionStartedByInteraction() {
+        if (firstInteractionTracked || currentPageIndex >= phases.length) {
+          return;
+        }
+        firstInteractionTracked = true;
+        startTimer();
+      }
+
+      function fillChecklist(items) {
+        checklistItems.innerHTML = "";
+        items.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          checklistItems.appendChild(li);
+        });
+      }
+
+      function buildPhaseDots(pageIndex) {
+        phaseDots.innerHTML = "";
+        for (let index = 0; index < totalPages; index += 1) {
+          const dot = document.createElement("span");
+          dot.className = "phase-step";
+          if (index === pageIndex) {
+            dot.classList.add("active");
+          } else if (index < pageIndex) {
+            dot.classList.add("complete");
+          }
+          dot.textContent = String(index + 1);
+          phaseDots.appendChild(dot);
+        }
+      }
+
+      function formatElapsed(ms) {
+        const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+        const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+        const seconds = String(totalSeconds % 60).padStart(2, "0");
+        return `${minutes}:${seconds}`;
+      }
+
+      function updateTimerUi() {
+        const elapsed = testSession.running && testSession.startedAt
+          ? testSession.elapsedMs + (Date.now() - testSession.startedAt)
+          : testSession.elapsedMs;
+
+        timerDisplay.textContent = formatElapsed(elapsed);
+        startTimerButton.textContent = testSession.running ? "Rodando" : "Iniciar";
+        startTimerButton.classList.toggle("running", testSession.running);
+        startTimerButton.disabled = testSession.running;
+      }
+
+      function ensureTimerLoop() {
+        if (testSession.running && timerIntervalId === null) {
+          timerIntervalId = window.setInterval(updateTimerUi, 1000);
+        }
+      }
+
+      function startTimer() {
+        if (testSession.running) {
+          return;
+        }
+        testSession.running = true;
+        testSession.startedAt = Date.now();
+        updateTimerUi();
+        ensureTimerLoop();
+      }
+
+      function stopTimer() {
+        if (testSession.running && testSession.startedAt) {
+          testSession.elapsedMs += Date.now() - testSession.startedAt;
+        }
+        testSession.running = false;
+        testSession.startedAt = null;
+        testSession.lastStoppedAt = new Date().toISOString();
+        if (timerIntervalId !== null) {
+          window.clearInterval(timerIntervalId);
+          timerIntervalId = null;
+        }
+        updateTimerUi();
+      }
+
+      function buildReportData() {
+        const phasesReport = phases.map((phase, index) => {
+          const attempt = testSession.attempts[index] || {};
+          const fields = ["titulo", "mensagem", "editor", "nome", "cidade"];
+          const fieldReports = fields.map((field) => {
+            const original = phase[field];
+            const actual = attempt[field] || phase[field];
+            const expected = phase.expected[field];
+            const analysis = analyzeFieldProgress(original, actual, expected);
+            return {
+              field,
+              categories: phase.issues[field],
+              original,
+              extension_result: actual,
+              expected,
+              ...analysis,
+              status: analysis.corrected_errors === analysis.existing_errors && analysis.corrected_wrong_errors === 0 && analysis.new_errors === 0
+                ? "ok"
+                : analysis.corrected_errors > 0
+                  ? "parcial"
+                  : "falhou"
+            };
+          });
+
+          const phaseTotals = fieldReports.reduce((totals, item) => {
+            totals.existing_errors += item.existing_errors;
+            totals.corrected_errors += item.corrected_errors;
+            totals.remaining_errors += item.remaining_errors;
+            totals.corrected_wrong_errors += item.corrected_wrong_errors;
+            totals.new_errors += item.new_errors;
+            return totals;
+          }, {
+            existing_errors: 0,
+            corrected_errors: 0,
+            remaining_errors: 0,
+            corrected_wrong_errors: 0,
+            new_errors: 0
+          });
+
+          const phaseScore = phaseTotals.existing_errors
+            ? Math.round((phaseTotals.corrected_errors / phaseTotals.existing_errors) * 100)
+            : 100;
+
+          return {
+            phase: phase.id,
+            title: phase.name,
+            phase_score: phaseScore,
+            phase_totals: phaseTotals,
+            items: fieldReports
+          };
+        });
+
+        const totals = phasesReport.reduce((accumulator, phase) => {
+          accumulator.existing_errors += phase.phase_totals.existing_errors;
+          accumulator.corrected_errors += phase.phase_totals.corrected_errors;
+          accumulator.remaining_errors += phase.phase_totals.remaining_errors;
+          accumulator.corrected_wrong_errors += phase.phase_totals.corrected_wrong_errors;
+          accumulator.new_errors += phase.phase_totals.new_errors;
+          return accumulator;
+        }, {
+          existing_errors: 0,
+          corrected_errors: 0,
+          remaining_errors: 0,
+          corrected_wrong_errors: 0,
+          new_errors: 0
+        });
+
+        const globalScore = totals.existing_errors
+          ? Math.round((totals.corrected_errors / totals.existing_errors) * 100)
+          : 100;
+
+        const categories = {};
+        phasesReport.forEach((phase) => {
+          phase.items.forEach((item) => {
+            item.categories.forEach((category) => {
+              if (!categories[category]) {
+                categories[category] = { existing: 0, corrected: 0 };
+              }
+              categories[category].existing += item.existing_errors;
+              categories[category].corrected += item.corrected_errors;
+            });
+          });
+        });
+
+        const categoryScores = Object.entries(categories).map(([category, counts]) => ({
+          category,
+          score: counts.existing ? Math.round((counts.corrected / counts.existing) * 100) : 100
+        })).sort((left, right) => right.score - left.score);
+
+        const topStrength = categoryScores[0];
+        const topGap = [...categoryScores].sort((left, right) => left.score - right.score)[0];
+
+        return {
+          generated_at: new Date().toISOString(),
+          elapsed: formatElapsed(testSession.elapsedMs),
+          global_score: globalScore,
+          telemetry: {
+            summary: buildInteractionTelemetrySummary(),
+            pointer_samples: interactionTelemetry.pointer_samples,
+            clicks: interactionTelemetry.clicks,
+            field_inputs: interactionTelemetry.field_inputs,
+            page_changes: interactionTelemetry.page_changes,
+            app_reactions: interactionTelemetry.app_reactions,
+            user_cycles: interactionTelemetry.user_cycles
+          },
+          totals,
+          top_strength: topStrength || null,
+          top_gap: topGap || null,
+          category_scores: categoryScores,
+          phases: phasesReport
+        };
+      }
+
+      function renderReport() {
+        const report = buildReportData();
+        reportSummary.innerHTML = "";
+        reportHighlights.innerHTML = "";
+        reportGeneratedAt.textContent = new Date(report.generated_at).toLocaleString("pt-BR");
+        reportElapsedMeta.textContent = report.elapsed;
+        reportCoverageMeta.textContent = `${report.totals.existing_errors} erros mapeados`;
+        reportBatchStatus.textContent = report.global_score >= 85 ? "bateria confiável" : "bateria em evolução";
+        reportRunId.textContent = `run: ${new Date(report.generated_at).toISOString().slice(0, 19).replace("T", "-")}`;
+
+        const metrics = [
+          ["Tempo total", report.elapsed],
+          ["Acerto real", `${report.global_score}%`],
+          ["Fases avaliadas", String(phases.length)],
+          ["Erros existentes", String(report.totals.existing_errors)],
+          ["Corrigidos", String(report.totals.corrected_errors)],
+          ["Permaneceram", String(report.totals.remaining_errors)],
+          ["Corrigidos errado", String(report.totals.corrected_wrong_errors)],
+          ["Erros novos", String(report.totals.new_errors)]
+        ];
+
+        metrics.forEach(([label, value]) => {
+          const metric = document.createElement("div");
+          metric.className = "metric-card";
+          metric.innerHTML = `
+            <span class="metric-label">${escapeHtml(label)}</span>
+            <span class="metric-value">${escapeHtml(value)}</span>
+          `;
+          reportSummary.appendChild(metric);
+        });
+
+        report.category_scores.forEach((entry) => {
+          const metric = document.createElement("div");
+          metric.className = "metric-card";
+          metric.innerHTML = `
+            <span class="metric-label">${escapeHtml(entry.category)}</span>
+            <span class="metric-value">${entry.score}%</span>
+          `;
+          reportSummary.appendChild(metric);
+        });
+
+        const highlights = [
+          ["Melhor frente", report.top_strength ? `${report.top_strength.category} em ${report.top_strength.score}%` : "aguardando dados"],
+          ["Maior lacuna", report.top_gap ? `${report.top_gap.category} em ${report.top_gap.score}%` : "aguardando dados"],
+          ["Percepção final", report.global_score >= 90 ? "A extensão corrigiu boa parte dos erros previstos e transmite segurança visual." : report.global_score >= 60 ? "A extensão ajuda, mas ainda deixa muitos erros previstos para trás." : "A extensão ainda está distante de um desempenho realmente confiável nesta bateria."]
+        ];
+
+        highlights.forEach(([title, text]) => {
+          const item = document.createElement("div");
+          item.className = "report-highlight";
+          item.innerHTML = `
+            <strong>${escapeHtml(title)}</strong>
+            <span>${escapeHtml(text)}</span>
+          `;
+          reportHighlights.appendChild(item);
+        });
+        storeAuditPayload(JSON.stringify(report, null, 2));
+      }
+
+      function applyPhase(index) {
+        const phase = phases[index];
+        hintText.textContent = phase.hint;
+        brandTitle.textContent = `Teste ${phase.id}: ${phase.name}`;
+        brandSubtitle.textContent = "Bateria progressiva do corriga_me_pt_br";
+        phaseStatusCaption.textContent = "Teste";
+        phaseStatusLabel.textContent = `${phase.id} de ${totalPages}`;
+        document.getElementById("tituloHelp").textContent = phase.tituloHelp;
+        document.getElementById("mensagemHelp").textContent = phase.mensagemHelp;
+        document.getElementById("editorHelp").textContent = phase.editorHelp;
+        document.getElementById("formHelp").textContent = phase.formHelp;
+        document.getElementById("checklistHelp").textContent = "Use esta lista para revisar os cenarios mais importantes desta etapa.";
+
+        const attempt = testSession.attempts[index];
+        titleInput.value = attempt?.titulo || phase.titulo;
+        messageTextarea.value = attempt?.mensagem || phase.mensagem;
+        editorField.textContent = attempt?.editor || phase.editor;
+        nomeInput.value = attempt?.nome || phase.nome;
+        cidadeInput.value = attempt?.cidade || phase.cidade;
+        fillChecklist(phase.checklist);
+        recordAppReaction("phase_rendered", { phase_id: phase.id, phase_name: phase.name });
+
+        nextPhaseFooterButton.classList.toggle("hidden", index === phases.length - 1);
+        finishTestsButton.classList.toggle("hidden", index !== phases.length - 1);
+      }
+
+      function applyReportPage() {
+        hintText.textContent = reportPage.hint;
+        brandTitle.textContent = "Página 6: Relatório";
+        brandSubtitle.textContent = "Resumo visual do comportamento da extensão";
+        phaseStatusCaption.textContent = "Página";
+        phaseStatusLabel.textContent = `Página 6`;
+        recordAppReaction("report_opened");
+        renderReport();
+      }
+
+      function renderPage() {
+        localStorage.setItem(PAGE_KEY, String(currentPageIndex));
+        interactionTelemetry.page_changes.push({
+          page: currentPageIndex + 1,
+          at: new Date().toISOString()
+        });
+        buildPhaseDots(currentPageIndex);
+        prevPageButton.disabled = currentPageIndex === 0;
+        nextPageButton.disabled = currentPageIndex === totalPages - 1;
+
+        if (currentPageIndex < phases.length) {
+          testPage.classList.remove("hidden");
+          reportPageElement.classList.add("hidden");
+          applyPhase(currentPageIndex);
+        } else {
+          stopTimer();
+          testPage.classList.add("hidden");
+          reportPageElement.classList.remove("hidden");
+          applyReportPage();
+        }
+      }
+
+      prevPageButton.addEventListener("click", () => {
+        persistCurrentAttempt();
+        currentPageIndex = Math.max(0, currentPageIndex - 1);
+        renderPage();
+      });
+
+      nextPageButton.addEventListener("click", () => {
+        persistCurrentAttempt();
+        currentPageIndex = Math.min(totalPages - 1, currentPageIndex + 1);
+        renderPage();
+      });
+
+      nextPhaseFooterButton.addEventListener("click", () => {
+        persistCurrentAttempt();
+        currentPageIndex = Math.min(phases.length - 1, currentPageIndex + 1);
+        renderPage();
+      });
+
+      startTimerButton.addEventListener("click", () => {
+        firstInteractionTracked = true;
+        startTimer();
+      });
+
+      finishTestsButton.addEventListener("click", () => {
+        persistCurrentAttempt();
+        stopTimer();
+        currentPageIndex = phases.length;
+        renderPage();
+      });
+
+      [["titulo", titleInput], ["mensagem", messageTextarea], ["nome", nomeInput], ["cidade", cidadeInput]].forEach(([fieldName, field]) => {
+        ["beforeinput", "input", "paste"].forEach((eventName) => {
+          field.addEventListener(eventName, ensureSessionStartedByInteraction, { passive: true });
+        });
+        field.addEventListener("input", () => {
+          recordFieldInput(fieldName, "input");
+          persistCurrentAttempt();
+        });
+      });
+
+      ["beforeinput", "input", "paste"].forEach((eventName) => {
+        editorField.addEventListener(eventName, ensureSessionStartedByInteraction, { passive: true });
+      });
+
+      editorField.addEventListener("input", () => {
+        recordFieldInput("editor", "input");
+        persistCurrentAttempt();
+      });
+
+      async function exportAuditJson() {
+        const payload = JSON.stringify(buildReportData(), null, 2);
+        storeAuditPayload(payload);
+        try {
+          await navigator.clipboard.writeText(payload);
+          recordAppReaction("audit_json_copied", { target: "clipboard" });
+        } catch {
+          recordAppReaction("audit_json_copy_failed");
+        }
+      }
+
+      exportJsonButton.addEventListener("click", exportAuditJson);
+      exportJsonButtonFooter.addEventListener("click", exportAuditJson);
+
+      document.addEventListener("pointermove", (event) => {
+        const now = Date.now();
+        if (now - lastPointerSampleAt < 350) {
+          return;
+        }
+        lastPointerSampleAt = now;
+        interactionTelemetry.pointer_samples.push({
+          page: currentPageIndex + 1,
+          x: Math.round(event.clientX),
+          y: Math.round(event.clientY),
+          at: new Date(now).toISOString()
+        });
+      }, { passive: true });
+
+      document.addEventListener("click", (event) => {
+        const now = Date.now();
+        const intervalMs = lastClickAt ? now - lastClickAt : null;
+        interactionTelemetry.clicks.push({
+          page: currentPageIndex + 1,
+          x: Math.round(event.clientX),
+          y: Math.round(event.clientY),
+          target: event.target instanceof Element ? (event.target.id || event.target.tagName.toLowerCase()) : "unknown",
+          interval_ms: intervalMs,
+          at: new Date(now).toISOString()
+        });
+        if (intervalMs !== null && intervalMs <= 2500) {
+          interactionTelemetry.user_cycles.push({
+            type: "click_cycle",
+            page: currentPageIndex + 1,
+            interval_ms: intervalMs,
+            at: new Date(now).toISOString()
+          });
+        }
+        lastClickAt = now;
+      }, { passive: true });
+
+      updateTimerUi();
+      ensureTimerLoop();
+      initializeDynamicBattery()
+        .catch(() => {
+          phases = fallbackPhases.map((phase) => structuredClone(phase));
+          totalPages = phases.length + 1;
+        })
+        .finally(() => {
+          loadingScreen.classList.add("hidden");
+          renderPage();
+        });
+    </script>
+  </body>
+</html>

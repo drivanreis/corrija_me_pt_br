@@ -1,0 +1,52 @@
+[
+  {
+    "from": "precizamos",
+    "replacements": ["precisamos"],
+    "description": "Forma correta do verbo precisar na primeira pessoa do plural."
+  },
+  {
+    "from": "atrazo",
+    "replacements": ["atraso"],
+    "description": "Substantivo com s."
+  },
+  {
+    "from": "atrazos",
+    "replacements": ["atrasos"],
+    "description": "Plural de atraso com s."
+  },
+  {
+    "from": "analize",
+    "replacements": ["analise"],
+    "description": "Substantivo com s."
+  },
+  {
+    "from": "algums",
+    "replacements": ["alguns"],
+    "description": "Plural correto de algum."
+  },
+  {
+    "from": "conseque",
+    "replacements": ["consegue"],
+    "description": "Forma correta do verbo conseguir."
+  },
+  {
+    "from": "adcionar",
+    "replacements": ["adicionar"],
+    "description": "Verbo com di."
+  },
+  {
+    "from": "reconhe-se",
+    "replacements": ["reconhece"],
+    "description": "Forma correta do verbo reconhecer."
+  },
+  {
+    "from": "calsado",
+    "replacements": ["causado"],
+    "description": "Forma correta da palavra."
+  },
+  {
+    "from": "impresindivel",
+    "replacements": ["imprescindível"],
+    "description": "Grafia correta com sc."
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "reuniao-corporativa-sessao",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "A seção de treinamento para os novos funcionários começará as 14 horas.",
+    "correto": "A sessão de treinamento para os novos funcionários começará às 14 horas.",
+    "error_count": 2,
+    "tags": [
+      "homônimos",
+      "crase",
+      "profissional"
+    ]
+  },
+  {
+    "id": "venda-produto-concordancia",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Vende-se dois aparelhos de som que estão em exelente estado.",
+    "correto": "Vendem-se dois aparelhos de som que estão em excelente estado.",
+    "error_count": 2,
+    "tags": [
+      "concordância",
+      "ortografia",
+      "anúncio"
+    ]
+  }
+]
