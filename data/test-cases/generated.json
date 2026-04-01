@@ -24,5 +24,577 @@
       "ortografia",
       "anúncio"
     ]
+  },
+  {
+    "id": "anexo-seguem-relatorios",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Por favor, segue os anexos para análise.",
+    "correto": "Por favor, seguem os anexos para análise.",
+    "error_count": 1,
+    "tags": [
+      "concordância verbal",
+      "profissional"
+    ]
+  },
+  {
+    "id": "agente-amanha-reuniao",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Agente se vê amanhã na reunião?",
+    "correto": "A gente se vê amanhã na reunião?",
+    "error_count": 1,
+    "tags": [
+      "homofonia",
+      "mensageria"
+    ]
+  },
+  {
+    "id": "alugo-casa-crase-distancia",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Alugo casa com garagem, á 5 minutos do centro.",
+    "correto": "Alugo casa com garagem, a 5 minutos do centro.",
+    "error_count": 1,
+    "tags": [
+      "crase",
+      "anúncio"
+    ]
+  },
+  {
+    "id": "jantar-nois-informal",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Vou fazer uma janta pra nois.",
+    "correto": "Vou fazer um jantar para nós.",
+    "error_count": 3,
+    "tags": [
+      "informal",
+      "pronome",
+      "léxico"
+    ]
+  },
+  {
+    "id": "voce-de-olhada-relatorio",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Estou enviando o relatório para que voçê de uma olhada.",
+    "correto": "Estou enviando o relatório para que você dê uma olhada.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "ortografia",
+      "profissional"
+    ]
+  },
+  {
+    "id": "fazia-horas-espera",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Onde vc está? Já faziam horas que eu te esperava.",
+    "correto": "Onde você está? Já fazia horas que eu te esperava.",
+    "error_count": 2,
+    "tags": [
+      "concordância",
+      "tempo-decorrido",
+      "abreviação"
+    ]
+  },
+  {
+    "id": "nada-a-ver-atitude",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Nada haver essa sua atitude.",
+    "correto": "Nada a ver essa sua atitude.",
+    "error_count": 1,
+    "tags": [
+      "expressão idiomática",
+      "cotidiano"
+    ]
+  },
+  {
+    "id": "vendem-se-seminovas-anuncio",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Vende-se bicicletas semi novas com garantia.",
+    "correto": "Vendem-se bicicletas seminovas com garantia.",
+    "error_count": 2,
+    "tags": [
+      "concordância",
+      "hifenização",
+      "anúncio"
+    ]
+  },
+  {
+    "id": "porque-colocacao-empresta",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Me empresta 10 reais, por que estou sem nada.",
+    "correto": "Empresta-me 10 reais, porque estou sem nada.",
+    "error_count": 2,
+    "tags": [
+      "colocação pronominal",
+      "conjunção"
+    ]
+  },
+  {
+    "id": "notas-anexas-concordancia",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Conforme conversamos, segue anexo as notas fiscais.",
+    "correto": "Conforme conversamos, seguem anexas as notas fiscais.",
+    "error_count": 2,
+    "tags": [
+      "concordância nominal",
+      "profissional"
+    ]
+  },
+  {
+    "id": "mal-chegou-adv",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Ele mau chegou e já quer sair de novo.",
+    "correto": "Ele mal chegou e já quer sair de novo.",
+    "error_count": 1,
+    "tags": [
+      "ortografia",
+      "cotidiano"
+    ]
+  },
+  {
+    "id": "faco-questao-ortografia",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Eu fasso questão de pagar o café hoje.",
+    "correto": "Eu faço questão de pagar o café hoje.",
+    "error_count": 1,
+    "tags": [
+      "ortografia",
+      "cotidiano"
+    ]
+  },
+  {
+    "id": "a-partir-crase-tv",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "PROMOÇÃO: TVs de 50 pol. à partir de R$ 2.000.",
+    "correto": "PROMOÇÃO: TVs de 50 pol. a partir de R$ 2.000.",
+    "error_count": 1,
+    "tags": [
+      "crase",
+      "anúncio"
+    ]
+  },
+  {
+    "id": "haverao-mudancas-tempo",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Haverão mudanças no cronograma da semana que vem.",
+    "correto": "Haverá mudanças no cronograma da semana que vem.",
+    "error_count": 1,
+    "tags": [
+      "concordância",
+      "profissional",
+      "verbo haver"
+    ]
+  },
+  {
+    "id": "msg-agente-vc-conversa",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Tudo bem com vc? Agente precisa conversar urgente.",
+    "correto": "Tudo bem com você? A gente precisa conversar urgente.",
+    "error_count": 2,
+    "tags": [
+      "mensageria",
+      "abreviação",
+      "homofonia"
+    ]
+  },
+  {
+    "id": "trago-as-frutas-plural",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Pode deixar que eu trago as fruta pra você.",
+    "correto": "Pode deixar que eu trago as frutas para você.",
+    "error_count": 2,
+    "tags": [
+      "concordância nominal",
+      "informal"
+    ]
+  },
+  {
+    "id": "vim-vir-palestra",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "O diretor deve vim para a palestra amanhã.",
+    "correto": "O diretor deve vir para a palestra amanhã.",
+    "error_count": 1,
+    "tags": [
+      "infinitivo",
+      "profissional"
+    ]
+  },
+  {
+    "id": "oferta-plural-fim-ano",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Venha conferir nossas oferta de fim de ano.",
+    "correto": "Venha conferir nossas ofertas de fim de ano.",
+    "error_count": 1,
+    "tags": [
+      "concordância nominal",
+      "anúncio"
+    ]
+  },
+  {
+    "id": "esteje-voce-subjuntivo",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Espero que voçê esteje bem.",
+    "correto": "Espero que você esteja bem.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "conjugação",
+      "mensageria"
+    ]
+  },
+  {
+    "id": "conserto-homofonia-pc",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Solicito que seja feito o concerto do computador.",
+    "correto": "Solicito que seja feito o conserto do computador.",
+    "error_count": 1,
+    "tags": [
+      "homofonia",
+      "profissional",
+      "ortografia"
+    ]
+  },
+  {
+    "id": "ortografia-excecao",
+    "category": "ortografia",
+    "difficulty": 2,
+    "errado": "Vou analisar a excessão no processo.",
+    "correto": "Vou analisar a exceção no processo.",
+    "error_count": 1,
+    "tags": [
+      "ortografia",
+      "corporativo"
+    ]
+  },
+  {
+    "id": "ortografia-rigorosa",
+    "category": "ortografia",
+    "difficulty": 2,
+    "errado": "O projeto presisa de uma revisão rigoroza.",
+    "correto": "O projeto precisa de uma revisão rigorosa.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "acordo-ortografico"
+    ]
+  },
+  {
+    "id": "ortografia-paralisia",
+    "category": "ortografia",
+    "difficulty": 2,
+    "errado": "O setor ficou mudo por causa da paralizia do sistema.",
+    "correto": "O setor ficou mudo por causa da paralisia do sistema.",
+    "error_count": 1,
+    "tags": [
+      "ortografia",
+      "cotidiano"
+    ]
+  },
+  {
+    "id": "acentuacao-video",
+    "category": "acentuacao",
+    "difficulty": 2,
+    "errado": "O video explicativo esta no site.",
+    "correto": "O vídeo explicativo está no site.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "tecnologia"
+    ]
+  },
+  {
+    "id": "acentuacao-republica",
+    "category": "acentuacao",
+    "difficulty": 2,
+    "errado": "A economia da Republica esta em crise.",
+    "correto": "A economia da República está em crise.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "noticiário"
+    ]
+  },
+  {
+    "id": "acentuacao-relatorio",
+    "category": "acentuacao",
+    "difficulty": 2,
+    "errado": "Voce ja enviou o relatorio?",
+    "correto": "Você já enviou o relatório?",
+    "error_count": 3,
+    "tags": [
+      "acentuação",
+      "mensagem"
+    ]
+  },
+  {
+    "id": "hifen-infraestrutura",
+    "category": "hifen",
+    "difficulty": 2,
+    "errado": "A infra-estrutura da empresa é ótima.",
+    "correto": "A infraestrutura da empresa é ótima.",
+    "error_count": 1,
+    "tags": [
+      "hífen",
+      "reforma-ortografica"
+    ]
+  },
+  {
+    "id": "hifen-antissocial",
+    "category": "hifen",
+    "difficulty": 2,
+    "errado": "Ele se tornou um cara muito anti-social.",
+    "correto": "Ele se tornou um cara muito antissocial.",
+    "error_count": 1,
+    "tags": [
+      "hífen",
+      "adjetivo"
+    ]
+  },
+  {
+    "id": "hifen-autoajuda",
+    "category": "hifen",
+    "difficulty": 2,
+    "errado": "Gosto de ler livros de auto-ajuda.",
+    "correto": "Gosto de ler livros de autoajuda.",
+    "error_count": 1,
+    "tags": [
+      "hífen",
+      "literatura"
+    ]
+  },
+  {
+    "id": "pontuacao-sujeito",
+    "category": "pontuacao",
+    "difficulty": 2,
+    "errado": "Maria, comprou o pão hoje?",
+    "correto": "Maria comprou o pão hoje?",
+    "error_count": 1,
+    "tags": [
+      "pontuação",
+      "sintaxe"
+    ]
+  },
+  {
+    "id": "pontuacao-conjuncao",
+    "category": "pontuacao",
+    "difficulty": 2,
+    "errado": "O cliente chegou, mas, não quis falar.",
+    "correto": "O cliente chegou, mas não quis falar.",
+    "error_count": 1,
+    "tags": [
+      "pontuação",
+      "vírgula"
+    ]
+  },
+  {
+    "id": "pontuacao-condicional",
+    "category": "pontuacao",
+    "difficulty": 2,
+    "errado": "Se você vier traga o documento.",
+    "correto": "Se você vier, traga o documento.",
+    "error_count": 1,
+    "tags": [
+      "pontuação",
+      "cláusula"
+    ]
+  },
+  {
+    "id": "localizacao-horario",
+    "category": "localizacao",
+    "difficulty": 2,
+    "errado": "O evento será as 10:00 PM.",
+    "correto": "O evento será às 22:00.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "formatação"
+    ]
+  },
+  {
+    "id": "localizacao-moeda",
+    "category": "localizacao",
+    "difficulty": 2,
+    "errado": "O produto custa R$ 1.500,00 dolares.",
+    "correto": "O produto custa US$ 1.500,00.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "finanças"
+    ]
+  },
+  {
+    "id": "localizacao-data",
+    "category": "localizacao",
+    "difficulty": 2,
+    "errado": "O contrato vence em 10/25/2023.",
+    "correto": "O contrato vence em 25/10/2023.",
+    "error_count": 1,
+    "tags": [
+      "localização",
+      "data"
+    ]
+  },
+  {
+    "id": "contexto-assino",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Eu assento o documento agora mesmo.",
+    "correto": "Eu assino o documento agora mesmo.",
+    "error_count": 1,
+    "tags": [
+      "contexto",
+      "verbo"
+    ]
+  },
+  {
+    "id": "contexto-cessao",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "A seção de terras foi concluída ontem.",
+    "correto": "A cessão de terras foi concluída ontem.",
+    "error_count": 1,
+    "tags": [
+      "contexto",
+      "jurídico"
+    ]
+  },
+  {
+    "id": "contexto-age",
+    "category": "contexto",
+    "difficulty": 2,
+    "errado": "Ele sempre agi com muita cautela.",
+    "correto": "Ele sempre age com muita cautela.",
+    "error_count": 1,
+    "tags": [
+      "contexto",
+      "conjugação"
+    ]
+  },
+  {
+    "id": "homofonos-mal",
+    "category": "homofonos",
+    "difficulty": 2,
+    "errado": "Ele passou mau ontem a noite.",
+    "correto": "Ele passou mal ontem à noite.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "acentuação"
+    ]
+  },
+  {
+    "id": "homofonos-conserto",
+    "category": "homofonos",
+    "difficulty": 2,
+    "errado": "O concerto do carro ficou muito caro.",
+    "correto": "O conserto do carro ficou muito caro.",
+    "error_count": 1,
+    "tags": [
+      "homófonos",
+      "semântica"
+    ]
+  },
+  {
+    "id": "homofonos-cassado",
+    "category": "homofonos",
+    "difficulty": 2,
+    "errado": "O mandato do político foi caçado.",
+    "correto": "O mandato do político foi cassado.",
+    "error_count": 1,
+    "tags": [
+      "homófonos",
+      "política"
+    ]
+  },
+  {
+    "id": "anuncios-vende-se",
+    "category": "anuncios",
+    "difficulty": 2,
+    "errado": "Vende-se casas em otimo estado.",
+    "correto": "Vendem-se casas em ótimo estado.",
+    "error_count": 2,
+    "tags": [
+      "anúncio",
+      "concordância"
+    ]
+  },
+  {
+    "id": "anuncios-promo",
+    "category": "anuncios",
+    "difficulty": 2,
+    "errado": "Promoção imperdivel: de R$ 50 por apenas 30.",
+    "correto": "Promoção imperdível: de R$ 50 por apenas R$ 30.",
+    "error_count": 2,
+    "tags": [
+      "anúncio",
+      "vendas"
+    ]
+  },
+  {
+    "id": "anuncios-aluga-se",
+    "category": "anuncios",
+    "difficulty": 2,
+    "errado": "Aluga-se apartamentos mobiliados no centro.",
+    "correto": "Alugam-se apartamentos mobiliados no centro.",
+    "error_count": 1,
+    "tags": [
+      "anúncio",
+      "imóveis"
+    ]
+  },
+  {
+    "id": "tecnico-inconsistencia",
+    "category": "texto_tecnico",
+    "difficulty": 2,
+    "errado": "O banco de dados apresentou uma inconsistencia de leitura.",
+    "correto": "O banco de dados apresentou uma inconsistência de leitura.",
+    "error_count": 1,
+    "tags": [
+      "técnico",
+      "TI"
+    ]
+  },
+  {
+    "id": "tecnico-usuario",
+    "category": "texto_tecnico",
+    "difficulty": 2,
+    "errado": "A interface do usário é muito intuitiva.",
+    "correto": "A interface do usuário é muito intuitiva.",
+    "error_count": 1,
+    "tags": [
+      "técnico",
+      "UX"
+    ]
+  },
+  {
+    "id": "tecnico-hardware",
+    "category": "texto_tecnico",
+    "difficulty": 2,
+    "errado": "Verifique se o hardware esta conectado.",
+    "correto": "Verifique se o hardware está conectado.",
+    "error_count": 1,
+    "tags": [
+      "técnico",
+      "suporte"
+    ]
   }
 ]
