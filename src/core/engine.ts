@@ -18,6 +18,13 @@ interface UnknownWordSuggestion {
   confidence: MatchConfidence;
 }
 
+interface TokenSlice {
+  value: string;
+  normalized: string;
+  offset: number;
+  length: number;
+}
+
 function createConfidence(level: MatchConfidence["level"], score: number, reason?: string): MatchConfidence {
   return {
     level,
@@ -394,6 +401,211 @@ function createDoubleSpaceMatches(text: string): RuleMatch[] {
   return matches;
 }
 
+function tokenizeSlices(text: string): TokenSlice[] {
+  const tokens: TokenSlice[] = [];
+  const pattern = createWordTokenPattern();
+
+  for (const match of text.matchAll(pattern)) {
+    if (match.index === undefined) {
+      continue;
+    }
+
+    tokens.push({
+      value: match[0],
+      normalized: normalizeDictionaryWord(match[0]),
+      offset: match.index,
+      length: match[0].length
+    });
+  }
+
+  return tokens;
+}
+
+function createStructuredMatch(
+  text: string,
+  offset: number,
+  length: number,
+  replacement: string,
+  ruleId: string,
+  message: string,
+  description: string,
+  issueType: "misspelling" | "grammar" | "style",
+  confidence: MatchConfidence
+): RuleMatch {
+  return {
+    message,
+    shortMessage: message,
+    offset,
+    length,
+    replacements: [{ value: replacement }],
+    confidence,
+    rule: {
+      id: ruleId,
+      description,
+      issueType
+    },
+    context: buildContext(text, offset, length)
+  };
+}
+
+function createCraseHeuristicMatches(text: string): RuleMatch[] {
+  const matches: RuleMatch[] = [];
+
+  for (const match of text.matchAll(/\b([Oo]nde\s+você\s+estava|[Ee]le\s+passou\s+mal\s+ontem|[Oo]ntem|[Hh]oje)\s+a\s+noite\b/gu)) {
+    if (match.index === undefined) {
+      continue;
+    }
+
+    const whole = match[0];
+    const replacement = whole.replace(/\sa\s+noite$/u, " à noite");
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      match.index,
+      whole.length,
+      replacement,
+      "PT_BR_CRASE_TEMPORAL_LOCUTION",
+      "Use crase na locução temporal 'à noite'.",
+      "Corrige ausência de crase em locução temporal recorrente.",
+      "grammar",
+      createConfidence("high", 0.9, "locucao temporal recorrente")
+    ));
+  }
+
+  for (const match of text.matchAll(/(^|[^\p{L}\p{N}])(á)(?=\s+\d+\s+(?:minuto|minutos|hora|horas)\b)/gu)) {
+    if (match.index === undefined) {
+      continue;
+    }
+
+    const accentOffset = match.index + match[1].length;
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      accentOffset,
+      match[2].length,
+      preserveReplacementCase(match[2], "a"),
+      "PT_BR_CRASE_DISTANCE",
+      "Não use acento nessa indicação de distância ou tempo.",
+      "Corrige uso indevido de acento em 'a 5 minutos', 'a 2 horas' e construções semelhantes.",
+      "grammar",
+      createConfidence("high", 0.92, "indicacao de distancia ou tempo")
+    ));
+  }
+
+  return matches;
+}
+
+function createLocalizationDateMatches(text: string): RuleMatch[] {
+  const matches: RuleMatch[] = [];
+  const pattern = /\b(0?[1-9]|1[0-2])\/(1[3-9]|2[0-9]|3[0-1])\/(\d{4})\b/g;
+
+  for (const match of text.matchAll(pattern)) {
+    if (match.index === undefined) {
+      continue;
+    }
+
+    const [, month, day, year] = match;
+    const replacement = `${day.padStart(2, "0")}/${month.padStart(2, "0")}/${year}`;
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      match.index,
+      match[0].length,
+      replacement,
+      "PT_BR_LOCALIZATION_DATE",
+      "Formato de data possivelmente fora do padrão pt-BR.",
+      "Converte data claramente no padrão mes/dia/ano para dia/mes/ano.",
+      "style",
+      createConfidence("high", 0.91, "data em formato US claramente identificavel")
+    ));
+  }
+
+  return matches;
+}
+
+function isPluralAnnouncementLead(tokens: TokenSlice[], index: number): boolean {
+  const next = tokens[index + 1];
+  const nextNext = tokens[index + 2];
+  const pluralIndicators = new Set([
+    "dois",
+    "duas",
+    "tres",
+    "três",
+    "quatro",
+    "cinco",
+    "seis",
+    "sete",
+    "oito",
+    "nove",
+    "dez",
+    "alguns",
+    "algumas",
+    "muitos",
+    "muitas",
+    "vários",
+    "varios",
+    "várias",
+    "varias"
+  ]);
+
+  if (!next) {
+    return false;
+  }
+
+  if (pluralIndicators.has(next.normalized)) {
+    return true;
+  }
+
+  if (/s$/u.test(next.normalized) && next.normalized.length > 3) {
+    return true;
+  }
+
+  if (nextNext && /s$/u.test(nextNext.normalized) && nextNext.normalized.length > 3) {
+    return true;
+  }
+
+  return false;
+}
+
+function createAnnouncementAgreementMatches(text: string): RuleMatch[] {
+  const tokens = tokenizeSlices(text);
+  const matches: RuleMatch[] = [];
+
+  for (let index = 0; index < tokens.length; index += 1) {
+    const token = tokens[index];
+    if (!token) {
+      continue;
+    }
+
+    if (token.normalized === "vende-se" && isPluralAnnouncementLead(tokens, index)) {
+      addIfNoOverlap(matches, createStructuredMatch(
+        text,
+        token.offset,
+        token.length,
+        preserveReplacementCase(token.value, "vendem-se"),
+        "PT_BR_ANNOUNCEMENT_VENDEM_SE",
+        "Com sujeito plural, o verbo deve concordar.",
+        "Corrige concordância verbal frequente em anúncios com 'vende-se'.",
+        "grammar",
+        createConfidence("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
+      ));
+    }
+
+    if (token.normalized === "aluga-se" && isPluralAnnouncementLead(tokens, index)) {
+      addIfNoOverlap(matches, createStructuredMatch(
+        text,
+        token.offset,
+        token.length,
+        preserveReplacementCase(token.value, "alugam-se"),
+        "PT_BR_ANNOUNCEMENT_ALUGAM_SE",
+        "Com sujeito plural, o verbo deve concordar.",
+        "Corrige concordância verbal frequente em anúncios com 'aluga-se'.",
+        "grammar",
+        createConfidence("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
+      ));
+    }
+  }
+
+  return matches;
+}
+
 function createSpaceBeforePunctuationMatches(text: string): RuleMatch[] {
   const matches: RuleMatch[] = [];
   const pattern = / ([,.;:!?])/g;
@@ -543,6 +755,17 @@ function deriveMatchConfidence(match: RuleMatch, text: string, dictionary: Dicti
     return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
   }
 
+  if (match.rule.id.startsWith("PT_BR_PHRASE_")) {
+    let score = 0.93;
+    if (hasMultipleSuggestions) {
+      score -= 0.04;
+    }
+    if (match.length <= 4) {
+      score -= 0.06;
+    }
+    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra frasal explicita");
+  }
+
   if (match.rule.issueType === "style") {
     let score = 0.76;
     if (hasMultipleSuggestions) {
@@ -588,15 +811,53 @@ function shouldExposeMatch(match: RuleMatch): boolean {
   return true;
 }
 
+function collapseOverlappingMatches(matches: RuleMatch[]): RuleMatch[] {
+  const selected: RuleMatch[] = [];
+  const ranked = [...matches].sort((left, right) => (
+    (right.confidence?.score || 0) - (left.confidence?.score || 0)
+    || right.length - left.length
+    || left.offset - right.offset
+  ));
+
+  for (const candidate of ranked) {
+    const start = candidate.offset;
+    const end = candidate.offset + candidate.length;
+    const overlaps = selected.some((existing) => (
+      start < existing.offset + existing.length
+      && existing.offset < end
+    ));
+
+    if (!overlaps) {
+      selected.push(candidate);
+    }
+  }
+
+  return selected.sort((left, right) => left.offset - right.offset || left.length - right.length);
+}
+
 export function checkText(text: string, replacements: ReplacementEntry[], dictionary: DictionaryData): CheckResult {
   const replacementMatches = createReplacementMatches(text, replacements);
   const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
   const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
   const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
+  const craseHeuristicMatches = createCraseHeuristicMatches(text);
+  const localizationDateMatches = createLocalizationDateMatches(text);
+  const announcementAgreementMatches = createAnnouncementAgreementMatches(text);
   const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary);
   const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary);
   const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
-  const baseProtectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches, ...verbalAgreementMatches, ...nominalAgreementMatches, ...syntaxPatternMatches];
+  const baseProtectedMatches = [
+    ...replacementMatches,
+    ...dictionaryMistakeMatches,
+    ...phraseRuleMatches,
+    ...contextRuleMatches,
+    ...craseHeuristicMatches,
+    ...localizationDateMatches,
+    ...announcementAgreementMatches,
+    ...verbalAgreementMatches,
+    ...nominalAgreementMatches,
+    ...syntaxPatternMatches
+  ];
   const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text).filter((candidate) => (
     !baseProtectedMatches.some((existing) => (
       candidate.offset < existing.offset + existing.length
@@ -616,6 +877,9 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
     ...dictionaryMistakeMatches,
     ...phraseRuleMatches,
     ...contextRuleMatches,
+    ...craseHeuristicMatches,
+    ...localizationDateMatches,
+    ...announcementAgreementMatches,
     ...verbalAgreementMatches,
     ...nominalAgreementMatches,
     ...syntaxPatternMatches,
@@ -631,7 +895,9 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
       confidence: deriveMatchConfidence(match, text, dictionary)
     }))
     .filter((match) => shouldExposeMatch(match))
-    .sort((left, right) => left.offset - right.offset || left.length - right.length);
+    ;
+
+  const visibleMatches = collapseOverlappingMatches(allMatches);
 
   return {
     language: {
@@ -643,6 +909,6 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
         confidence: 0.99
       }
     },
-    matches: allMatches
+    matches: visibleMatches
   };
 }

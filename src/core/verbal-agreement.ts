@@ -97,6 +97,41 @@ function getVerbExpectedForm(entry: LexicalEntry | undefined, dictionary: Dictio
   return createRegularExpectedForm(lemma, entry.grupo, dictionary, pessoa, numero);
 }
 
+function getPresentTenseForms(entry: LexicalEntry | undefined, dictionary: DictionaryData): string[] {
+  if (!entry?.lemma) {
+    return [];
+  }
+
+  const normalizedLemma = normalizeDictionaryWord(entry.lemma);
+
+  if (entry.irregular) {
+    return (dictionary.linguisticData.irregularVerbs[normalizedLemma]?.presente || [])
+      .map((value) => normalizeDictionaryWord(value));
+  }
+
+  if (!entry.grupo) {
+    return [];
+  }
+
+  const forms: string[] = [];
+  for (let pessoa = 1; pessoa <= 3; pessoa += 1) {
+    const singular = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary, pessoa, "singular");
+    const plural = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary, pessoa, "plural");
+    if (singular) {
+      forms.push(normalizeDictionaryWord(singular));
+    }
+    if (plural) {
+      forms.push(normalizeDictionaryWord(plural));
+    }
+  }
+
+  return forms;
+}
+
+function isLikelyPresentTenseForm(token: TokenMatch, entry: LexicalEntry | undefined, dictionary: DictionaryData): boolean {
+  return getPresentTenseForms(entry, dictionary).includes(token.normalized);
+}
+
 function createAgreementMatch(text: string, token: TokenMatch, replacement: string, subject: string): RuleMatch {
   const replacements = dedupeStrings([preserveReplacementCase(token.value, replacement)]);
 
@@ -258,6 +293,10 @@ export function createSimpleVerbalAgreementMatches(text: string, dictionary: Dic
 
     const verbEntry = dictionary.linguisticData.lexicalEntries.get(verbToken.normalized);
     if (!isSimpleVerbCandidate(verbToken, verbEntry)) {
+      continue;
+    }
+
+    if (!isLikelyPresentTenseForm(verbToken, verbEntry, dictionary)) {
       continue;
     }
 

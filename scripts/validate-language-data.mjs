@@ -29,6 +29,7 @@ async function main() {
   const customWordsPath = path.join(dictionaryDir, "custom_words.txt");
   const rulesPath = path.join(rulesDir, "context_rules.json");
   const phraseRulesPath = path.join(rulesDir, "phrase_rules.json");
+  const phraseRulesContinuousPath = path.join(rulesDir, "phrase_rules_continuous.json");
   const linguisticManifestPath = path.join(linguisticDir, "manifest.json");
 
   const words = await readWordsFile(wordsPath);
@@ -43,6 +44,18 @@ async function main() {
   const phraseRules = JSON.parse(await readFile(phraseRulesPath, "utf8"));
   if (!Array.isArray(phraseRules)) {
     throw new Error("phrase_rules.json precisa ser um array JSON.");
+  }
+
+  let phraseRulesContinuous = [];
+  try {
+    phraseRulesContinuous = JSON.parse(await readFile(phraseRulesContinuousPath, "utf8"));
+    if (!Array.isArray(phraseRulesContinuous)) {
+      throw new Error("phrase_rules_continuous.json precisa ser um array JSON.");
+    }
+  } catch (error) {
+    if (!(error && typeof error === "object" && "code" in error && error.code === "ENOENT")) {
+      throw error;
+    }
   }
 
   const linguisticManifest = JSON.parse(await readFile(linguisticManifestPath, "utf8"));
@@ -93,6 +106,39 @@ async function main() {
 
   phraseRules.forEach((rule, index) => {
     const prefix = `Regra frasal #${index + 1}`;
+
+    if (!rule || typeof rule !== "object") {
+      errors.push(`${prefix}: item invalido.`);
+      return;
+    }
+
+    if (!isNonEmptyString(rule.id)) {
+      errors.push(`${prefix}: campo 'id' invalido.`);
+    } else if (ids.has(rule.id)) {
+      errors.push(`${prefix}: id duplicado '${rule.id}'.`);
+    } else {
+      ids.add(rule.id);
+    }
+
+    if (!Array.isArray(rule.pattern) || !rule.pattern.length || !rule.pattern.every(isNonEmptyString)) {
+      errors.push(`${prefix}: campo 'pattern' invalido.`);
+    }
+
+    if (!Array.isArray(rule.replacements) || !rule.replacements.length || !rule.replacements.every(isNonEmptyString)) {
+      errors.push(`${prefix}: campo 'replacements' invalido.`);
+    }
+
+    if (!isNonEmptyString(rule.message)) {
+      errors.push(`${prefix}: campo 'message' invalido.`);
+    }
+
+    if (!isNonEmptyString(rule.description)) {
+      errors.push(`${prefix}: campo 'description' invalido.`);
+    }
+  });
+
+  phraseRulesContinuous.forEach((rule, index) => {
+    const prefix = `Regra frasal contínua #${index + 1}`;
 
     if (!rule || typeof rule !== "object") {
       errors.push(`${prefix}: item invalido.`);
@@ -181,6 +227,7 @@ async function main() {
   console.log(`Palavras unicas totais: ${uniqueWords.size}`);
   console.log(`Regras em context_rules.json: ${rules.length}`);
   console.log(`Regras em phrase_rules.json: ${phraseRules.length}`);
+  console.log(`Regras em phrase_rules_continuous.json: ${phraseRulesContinuous.length}`);
   console.log(`Arquivos lexicais estruturados: ${lexicalFiles.length}`);
 
   if (errors.length) {

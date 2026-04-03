@@ -180,8 +180,11 @@ async function main() {
   const nominalExpandedSuggestions = Array.isArray(nominalExpandedPayload.matches)
     ? nominalExpandedPayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
     : [];
+  const hasExpandedOfferSuggestion = nominalExpandedSuggestions.some((value) => (
+    value === "ofertas" || value === "nossas ofertas"
+  ));
 
-  if (!nominalExpandedSuggestions.includes("ofertas") || !nominalExpandedSuggestions.includes("maduras")) {
+  if (!hasExpandedOfferSuggestion || !nominalExpandedSuggestions.includes("maduras")) {
     throw new Error("Smoke test falhou: expansao da concordancia nominal nao apareceu como esperado.");
   }
 

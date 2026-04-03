@@ -60,6 +60,14 @@ function loadPhraseRules(pathname: string): PhraseRuleDefinition[] {
   return JSON.parse(readFileSync(pathname, "utf8")) as PhraseRuleDefinition[];
 }
 
+function loadOptionalPhraseRules(pathname: string): PhraseRuleDefinition[] {
+  if (!existsSync(pathname)) {
+    return [];
+  }
+
+  return loadPhraseRules(pathname);
+}
+
 function loadDictionaryManifest(dictionaryDir: string): DictionaryManifest | null {
   const manifestPath = join(dictionaryDir, "manifest.json");
   if (!existsSync(manifestPath)) {
@@ -118,7 +126,10 @@ export function loadDictionaryResources(dataDir: string): DictionaryResources {
     : [];
   const dictionaryReady = words.size >= 5_000;
   const contextRules = loadContextRules(join(rulesDir, "context_rules.json"));
-  const phraseRules = loadPhraseRules(join(rulesDir, "phrase_rules.json"));
+  const phraseRules = [
+    ...loadPhraseRules(join(rulesDir, "phrase_rules.json")),
+    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_continuous.json"))
+  ];
 
   return {
     replacements,

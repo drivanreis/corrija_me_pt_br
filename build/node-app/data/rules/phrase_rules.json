@@ -140,6 +140,13 @@
     "description": "Corrige concordância frequente em anúncios."
   },
   {
+    "id": "PT_BR_PHRASE_ME_EMPRESTA",
+    "pattern": ["me", "empresta"],
+    "replacements": ["Empresta-me"],
+    "message": "Nesta construção, a forma esperada é enclítica.",
+    "description": "Corrige colocação pronominal recorrente no início da frase."
+  },
+  {
     "id": "PT_BR_PHRASE_ALUGA_SE",
     "pattern": ["aluga", "se"],
     "replacements": ["alugam-se"],
@@ -182,11 +189,46 @@
     "description": "Corrige locução prepositiva recorrente."
   },
   {
+    "id": "PT_BR_PHRASE_A_VISTA",
+    "pattern": ["a", "vista"],
+    "replacements": ["à vista"],
+    "message": "A locução adverbial consagrada pede crase.",
+    "description": "Corrige locução recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_A_DOIS_ANOS",
+    "pattern": ["a", "dois", "anos"],
+    "replacements": ["há dois anos"],
+    "message": "Em tempo decorrido, a forma esperada é 'há'.",
+    "description": "Corrige locução temporal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_OU_MAS",
+    "pattern": ["ou", "mas"],
+    "replacements": ["ou mais"],
+    "message": "Nesse contexto comparativo, a forma esperada é 'mais'.",
+    "description": "Corrige troca recorrente entre mas/mais."
+  },
+  {
     "id": "PT_BR_PHRASE_ENTREGAMOS_EM_DOMICILIO",
     "pattern": ["entregamos", "em", "domicilio"],
     "replacements": ["Entregamos em domicílio"],
     "message": "A forma correta é 'domicílio'.",
     "description": "Corrige acentuação sem mudar a flexão verbal."
+  },
+  {
+    "id": "PT_BR_PHRASE_IDEIA_E_FANTASTICA_COMPLETA",
+    "pattern": ["ideia", "e", "fantastica"],
+    "replacements": ["ideia é fantástica"],
+    "message": "A forma verbal esperada é 'é'.",
+    "description": "Corrige construção recorrente com cópula."
+  },
+  {
+    "id": "PT_BR_PHRASE_ONIBUS_ESTA_ATRASADO",
+    "pattern": ["onibus", "esta", "atrasado"],
+    "replacements": ["ônibus está atrasado"],
+    "message": "A forma verbal esperada é 'está'.",
+    "description": "Corrige construção recorrente com 'estar'."
   },
   {
     "id": "PT_BR_PHRASE_ATRAVES_DESTE_INFORMAMOS",
@@ -392,6 +434,34 @@
     "description": "Corrige uso recorrente de por que/porque."
   },
   {
+    "id": "PT_BR_PHRASE_PORQUE_ESTOU",
+    "pattern": ["por", "que", "estou"],
+    "replacements": ["porque estou"],
+    "message": "A forma esperada aqui é 'porque'.",
+    "description": "Corrige uso recorrente de por que/porque."
+  },
+  {
+    "id": "PT_BR_PHRASE_PORQUE_VOCE_NAO_VEIO",
+    "pattern": ["porque", "você", "não", "veio"],
+    "replacements": ["por que você não veio"],
+    "message": "Em pergunta direta, a forma esperada é 'por que'.",
+    "description": "Corrige pergunta direta recorrente com 'por que'."
+  },
+  {
+    "id": "PT_BR_PHRASE_NADA_PORQUE_NAO_QUIS",
+    "pattern": ["nada", "por", "que", "não", "quis"],
+    "replacements": ["nada porque não quis"],
+    "message": "A forma esperada aqui é 'porque', sem vírgula antes da explicação.",
+    "description": "Corrige sequência recorrente com explicação causal."
+  },
+  {
+    "id": "PT_BR_PHRASE_O_POR_QUE",
+    "pattern": ["o", "por", "que"],
+    "replacements": ["o porquê"],
+    "message": "Com artigo, a forma esperada é 'porquê'.",
+    "description": "Corrige o uso substantivo de 'porquê'."
+  },
+  {
     "id": "PT_BR_PHRASE_SECAO_DE_FILMES",
     "pattern": ["seção", "de", "filmes"],
     "replacements": ["sessão de filmes"],
@@ -483,6 +553,55 @@
     "description": "Corrige concordância recorrente."
   },
   {
+    "id": "PT_BR_PHRASE_VOCE_DE_UMA_OLHADA_SEM_CEDILHA",
+    "pattern": ["você", "de", "uma", "olhada"],
+    "replacements": ["você dê uma olhada"],
+    "message": "A forma verbal esperada é 'dê'.",
+    "description": "Corrige locução frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VOCE_ESTEJE_SEM_CEDILHA",
+    "pattern": ["você", "esteje"],
+    "replacements": ["você esteja"],
+    "message": "A forma verbal esperada é 'esteja'.",
+    "description": "Corrige forma verbal frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_UMA_JANTA_PRA_NOS",
+    "pattern": ["uma", "janta", "pra", "nós"],
+    "replacements": ["um jantar para nós"],
+    "message": "A construção esperada nesta bateria é mais formal.",
+    "description": "Corrige expressão informal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_ERA_DIFICIL_POREM_TODOS",
+    "pattern": ["era", "difícil", "porem", "todos"],
+    "replacements": ["era difícil, porém todos"],
+    "message": "A forma esperada inclui vírgula e acento em 'porém'.",
+    "description": "Corrige construção recorrente com adversativa."
+  },
+  {
+    "id": "PT_BR_PHRASE_ESTUDEI_BASTANTE_PORTANTO",
+    "pattern": ["bastante", "portanto", "espero"],
+    "replacements": ["bastante, portanto, espero"],
+    "message": "Nesse contexto, 'portanto' fica entre vírgulas.",
+    "description": "Corrige construção recorrente com conclusiva."
+  },
+  {
+    "id": "PT_BR_PHRASE_ESTAVA_CHOVENDO_PORTANTO",
+    "pattern": ["chovendo", "portanto", "pegamos"],
+    "replacements": ["chovendo; portanto, pegamos"],
+    "message": "Nesse contexto, a pausa mais forte pede ponto e vírgula.",
+    "description": "Corrige construção recorrente com conclusiva."
+  },
+  {
+    "id": "PT_BR_PHRASE_OS_PARAMETRO",
+    "pattern": ["os", "parametro"],
+    "replacements": ["os parâmetros"],
+    "message": "O substantivo deve ir ao plural e receber acento.",
+    "description": "Corrige expressão recorrente."
+  },
+  {
     "id": "PT_BR_PHRASE_MAU_CHEGOU",
     "pattern": ["mau", "chegou"],
     "replacements": ["mal chegou"],
@@ -509,6 +628,90 @@
     "replacements": ["nossas ofertas"],
     "message": "O substantivo deve concordar com o determinante plural.",
     "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_BELO_SINTO",
+    "pattern": ["belo", "sinto"],
+    "replacements": ["belo cinto"],
+    "message": "A forma esperada nesse contexto é 'cinto'.",
+    "description": "Corrige homófono em contexto de vestuário."
+  },
+  {
+    "id": "PT_BR_PHRASE_POR_HORA_ORA",
+    "pattern": ["por", "hora"],
+    "replacements": ["por ora"],
+    "message": "A locução esperada nesse contexto é 'por ora'.",
+    "description": "Corrige locução adverbial recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_POR_TRAZ",
+    "pattern": ["por", "traz"],
+    "replacements": ["por trás"],
+    "message": "A forma esperada nesse contexto é 'por trás'.",
+    "description": "Corrige locução recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAL_PROFISSIONAL",
+    "pattern": ["mal", "profissional"],
+    "replacements": ["mau profissional"],
+    "message": "Como adjetivo, a forma esperada é 'mau'.",
+    "description": "Corrige uso recorrente de mal/mau."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAL_CAMINHO",
+    "pattern": ["mal", "caminho"],
+    "replacements": ["mau caminho"],
+    "message": "Como adjetivo, a forma esperada é 'mau'.",
+    "description": "Corrige uso recorrente de mal/mau."
+  },
+  {
+    "id": "PT_BR_PHRASE_ASSISTIU_O",
+    "pattern": ["assistiu", "o"],
+    "replacements": ["assistiu ao"],
+    "message": "Com sentido de ver, o verbo 'assistir' pede 'ao'.",
+    "description": "Corrige regência verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_DE_MAIS_QUANTIDADE",
+    "pattern": ["de", "mais", "do", "que"],
+    "replacements": ["demais do que"],
+    "message": "Nesse contexto de quantidade, a forma esperada é 'demais'.",
+    "description": "Corrige uso recorrente de demais/de mais."
+  },
+  {
+    "id": "PT_BR_PHRASE_EM_ANEXO_SEGUE",
+    "pattern": ["em", "anexo", "segue"],
+    "replacements": ["em anexo seguem"],
+    "message": "A forma verbal deve concordar com o núcleo plural seguinte.",
+    "description": "Corrige construção recorrente em texto técnico."
+  },
+  {
+    "id": "PT_BR_PHRASE_HAJA_VISTO",
+    "pattern": ["haja", "visto"],
+    "replacements": ["haja vista"],
+    "message": "A locução consagrada é 'haja vista'.",
+    "description": "Corrige locução recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_A_NIVEL_DE",
+    "pattern": ["a", "nível", "de"],
+    "replacements": ["em nível de"],
+    "message": "A construção esperada aqui é 'em nível de'.",
+    "description": "Corrige locução recorrente em texto técnico."
+  },
+  {
+    "id": "PT_BR_PHRASE_FAZEM_MUITOS_ANOS",
+    "pattern": ["fazem", "muitos", "anos"],
+    "replacements": ["faz muitos anos"],
+    "message": "Com sentido de tempo decorrido, a forma esperada é impessoal.",
+    "description": "Corrige uso impessoal do verbo fazer."
+  },
+  {
+    "id": "PT_BR_PHRASE_FAZIAM_HORAS",
+    "pattern": ["faziam", "horas"],
+    "replacements": ["fazia horas"],
+    "message": "Com sentido de tempo decorrido, a forma esperada é impessoal.",
+    "description": "Corrige uso impessoal do verbo fazer."
   },
   {
     "id": "PT_BR_PHRASE_MARIA_COMPROU",

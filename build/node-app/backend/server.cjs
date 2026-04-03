@@ -561,7 +561,7 @@ function createPunctuationHeuristicMatches(text) {
   );
   createMiddleMatch(
     text,
-    /(?<![,;])\s+(mas)\s+(?![,;])/giu,
+    /(?<![,;])(?<!\bou)\s+(mas)\s+(?![,;])/giu,
     (conjunction) => `, ${conjunction} `,
     "PT_BR_PUNCTUATION_MAS",
     "A conjun\xE7\xE3o adversativa costuma vir precedida por v\xEDrgula.",
@@ -865,6 +865,33 @@ function getVerbExpectedForm(entry, dictionary, pessoa, numero) {
   }
   return createRegularExpectedForm(lemma, entry.grupo, dictionary, pessoa, numero);
 }
+function getPresentTenseForms(entry, dictionary) {
+  if (!entry?.lemma) {
+    return [];
+  }
+  const normalizedLemma = normalizeDictionaryWord(entry.lemma);
+  if (entry.irregular) {
+    return (dictionary.linguisticData.irregularVerbs[normalizedLemma]?.presente || []).map((value) => normalizeDictionaryWord(value));
+  }
+  if (!entry.grupo) {
+    return [];
+  }
+  const forms = [];
+  for (let pessoa = 1; pessoa <= 3; pessoa += 1) {
+    const singular = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary, pessoa, "singular");
+    const plural = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary, pessoa, "plural");
+    if (singular) {
+      forms.push(normalizeDictionaryWord(singular));
+    }
+    if (plural) {
+      forms.push(normalizeDictionaryWord(plural));
+    }
+  }
+  return forms;
+}
+function isLikelyPresentTenseForm(token, entry, dictionary) {
+  return getPresentTenseForms(entry, dictionary).includes(token.normalized);
+}
 function createAgreementMatch2(text, token, replacement, subject) {
   const replacements = dedupeStrings([preserveReplacementCase(token.value, replacement)]);
   return {
@@ -993,6 +1020,9 @@ function createSimpleVerbalAgreementMatches(text, dictionary) {
     }
     const verbEntry = dictionary.linguisticData.lexicalEntries.get(verbToken.normalized);
     if (!isSimpleVerbCandidate(verbToken, verbEntry)) {
+      continue;
+    }
+    if (!isLikelyPresentTenseForm(verbToken, verbEntry, dictionary)) {
       continue;
     }
     if (shouldSkipInfinitiveLikeContext(tokens, index, verbToken, verbEntry, dictionary)) {
@@ -1300,6 +1330,175 @@ function createDoubleSpaceMatches(text) {
   }
   return matches;
 }
+function tokenizeSlices(text) {
+  const tokens = [];
+  const pattern = createWordTokenPattern();
+  for (const match of text.matchAll(pattern)) {
+    if (match.index === void 0) {
+      continue;
+    }
+    tokens.push({
+      value: match[0],
+      normalized: normalizeDictionaryWord(match[0]),
+      offset: match.index,
+      length: match[0].length
+    });
+  }
+  return tokens;
+}
+function createStructuredMatch(text, offset, length, replacement, ruleId, message, description, issueType, confidence) {
+  return {
+    message,
+    shortMessage: message,
+    offset,
+    length,
+    replacements: [{ value: replacement }],
+    confidence,
+    rule: {
+      id: ruleId,
+      description,
+      issueType
+    },
+    context: buildContext(text, offset, length)
+  };
+}
+function createCraseHeuristicMatches(text) {
+  const matches = [];
+  for (const match of text.matchAll(/\b([Oo]nde\s+você\s+estava|[Ee]le\s+passou\s+mal\s+ontem|[Oo]ntem|[Hh]oje)\s+a\s+noite\b/gu)) {
+    if (match.index === void 0) {
+      continue;
+    }
+    const whole = match[0];
+    const replacement = whole.replace(/\sa\s+noite$/u, " \xE0 noite");
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      match.index,
+      whole.length,
+      replacement,
+      "PT_BR_CRASE_TEMPORAL_LOCUTION",
+      "Use crase na locu\xE7\xE3o temporal '\xE0 noite'.",
+      "Corrige aus\xEAncia de crase em locu\xE7\xE3o temporal recorrente.",
+      "grammar",
+      createConfidence("high", 0.9, "locucao temporal recorrente")
+    ));
+  }
+  for (const match of text.matchAll(/(^|[^\p{L}\p{N}])(á)(?=\s+\d+\s+(?:minuto|minutos|hora|horas)\b)/gu)) {
+    if (match.index === void 0) {
+      continue;
+    }
+    const accentOffset = match.index + match[1].length;
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      accentOffset,
+      match[2].length,
+      preserveReplacementCase(match[2], "a"),
+      "PT_BR_CRASE_DISTANCE",
+      "N\xE3o use acento nessa indica\xE7\xE3o de dist\xE2ncia ou tempo.",
+      "Corrige uso indevido de acento em 'a 5 minutos', 'a 2 horas' e constru\xE7\xF5es semelhantes.",
+      "grammar",
+      createConfidence("high", 0.92, "indicacao de distancia ou tempo")
+    ));
+  }
+  return matches;
+}
+function createLocalizationDateMatches(text) {
+  const matches = [];
+  const pattern = /\b(0?[1-9]|1[0-2])\/(1[3-9]|2[0-9]|3[0-1])\/(\d{4})\b/g;
+  for (const match of text.matchAll(pattern)) {
+    if (match.index === void 0) {
+      continue;
+    }
+    const [, month, day, year] = match;
+    const replacement = `${day.padStart(2, "0")}/${month.padStart(2, "0")}/${year}`;
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      match.index,
+      match[0].length,
+      replacement,
+      "PT_BR_LOCALIZATION_DATE",
+      "Formato de data possivelmente fora do padr\xE3o pt-BR.",
+      "Converte data claramente no padr\xE3o mes/dia/ano para dia/mes/ano.",
+      "style",
+      createConfidence("high", 0.91, "data em formato US claramente identificavel")
+    ));
+  }
+  return matches;
+}
+function isPluralAnnouncementLead(tokens, index) {
+  const next = tokens[index + 1];
+  const nextNext = tokens[index + 2];
+  const pluralIndicators = /* @__PURE__ */ new Set([
+    "dois",
+    "duas",
+    "tres",
+    "tr\xEAs",
+    "quatro",
+    "cinco",
+    "seis",
+    "sete",
+    "oito",
+    "nove",
+    "dez",
+    "alguns",
+    "algumas",
+    "muitos",
+    "muitas",
+    "v\xE1rios",
+    "varios",
+    "v\xE1rias",
+    "varias"
+  ]);
+  if (!next) {
+    return false;
+  }
+  if (pluralIndicators.has(next.normalized)) {
+    return true;
+  }
+  if (/s$/u.test(next.normalized) && next.normalized.length > 3) {
+    return true;
+  }
+  if (nextNext && /s$/u.test(nextNext.normalized) && nextNext.normalized.length > 3) {
+    return true;
+  }
+  return false;
+}
+function createAnnouncementAgreementMatches(text) {
+  const tokens = tokenizeSlices(text);
+  const matches = [];
+  for (let index = 0; index < tokens.length; index += 1) {
+    const token = tokens[index];
+    if (!token) {
+      continue;
+    }
+    if (token.normalized === "vende-se" && isPluralAnnouncementLead(tokens, index)) {
+      addIfNoOverlap(matches, createStructuredMatch(
+        text,
+        token.offset,
+        token.length,
+        preserveReplacementCase(token.value, "vendem-se"),
+        "PT_BR_ANNOUNCEMENT_VENDEM_SE",
+        "Com sujeito plural, o verbo deve concordar.",
+        "Corrige concord\xE2ncia verbal frequente em an\xFAncios com 'vende-se'.",
+        "grammar",
+        createConfidence("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
+      ));
+    }
+    if (token.normalized === "aluga-se" && isPluralAnnouncementLead(tokens, index)) {
+      addIfNoOverlap(matches, createStructuredMatch(
+        text,
+        token.offset,
+        token.length,
+        preserveReplacementCase(token.value, "alugam-se"),
+        "PT_BR_ANNOUNCEMENT_ALUGAM_SE",
+        "Com sujeito plural, o verbo deve concordar.",
+        "Corrige concord\xE2ncia verbal frequente em an\xFAncios com 'aluga-se'.",
+        "grammar",
+        createConfidence("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
+      ));
+    }
+  }
+  return matches;
+}
 function createSpaceBeforePunctuationMatches(text) {
   const matches = [];
   const pattern = / ([,.;:!?])/g;
@@ -1422,6 +1621,16 @@ function deriveMatchConfidence(match, text, dictionary) {
     }
     return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
   }
+  if (match.rule.id.startsWith("PT_BR_PHRASE_")) {
+    let score = 0.93;
+    if (hasMultipleSuggestions) {
+      score -= 0.04;
+    }
+    if (match.length <= 4) {
+      score -= 0.06;
+    }
+    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra frasal explicita");
+  }
   if (match.rule.issueType === "style") {
     let score = 0.76;
     if (hasMultipleSuggestions) {
@@ -1460,15 +1669,42 @@ function shouldExposeMatch(match) {
   }
   return true;
 }
+function collapseOverlappingMatches(matches) {
+  const selected = [];
+  const ranked = [...matches].sort((left, right) => (right.confidence?.score || 0) - (left.confidence?.score || 0) || right.length - left.length || left.offset - right.offset);
+  for (const candidate of ranked) {
+    const start = candidate.offset;
+    const end = candidate.offset + candidate.length;
+    const overlaps = selected.some((existing) => start < existing.offset + existing.length && existing.offset < end);
+    if (!overlaps) {
+      selected.push(candidate);
+    }
+  }
+  return selected.sort((left, right) => left.offset - right.offset || left.length - right.length);
+}
 function checkText(text, replacements, dictionary) {
   const replacementMatches = createReplacementMatches(text, replacements);
   const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
   const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
   const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
+  const craseHeuristicMatches = createCraseHeuristicMatches(text);
+  const localizationDateMatches = createLocalizationDateMatches(text);
+  const announcementAgreementMatches = createAnnouncementAgreementMatches(text);
   const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary);
   const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary);
   const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
-  const baseProtectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches, ...verbalAgreementMatches, ...nominalAgreementMatches, ...syntaxPatternMatches];
+  const baseProtectedMatches = [
+    ...replacementMatches,
+    ...dictionaryMistakeMatches,
+    ...phraseRuleMatches,
+    ...contextRuleMatches,
+    ...craseHeuristicMatches,
+    ...localizationDateMatches,
+    ...announcementAgreementMatches,
+    ...verbalAgreementMatches,
+    ...nominalAgreementMatches,
+    ...syntaxPatternMatches
+  ];
   const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text).filter((candidate) => !baseProtectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
   const protectedMatches = [...baseProtectedMatches, ...punctuationHeuristicMatches];
   const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => !protectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
@@ -1477,6 +1713,9 @@ function checkText(text, replacements, dictionary) {
     ...dictionaryMistakeMatches,
     ...phraseRuleMatches,
     ...contextRuleMatches,
+    ...craseHeuristicMatches,
+    ...localizationDateMatches,
+    ...announcementAgreementMatches,
     ...verbalAgreementMatches,
     ...nominalAgreementMatches,
     ...syntaxPatternMatches,
@@ -1489,7 +1728,8 @@ function checkText(text, replacements, dictionary) {
   ].map((match) => ({
     ...match,
     confidence: deriveMatchConfidence(match, text, dictionary)
-  })).filter((match) => shouldExposeMatch(match)).sort((left, right) => left.offset - right.offset || left.length - right.length);
+  })).filter((match) => shouldExposeMatch(match));
+  const visibleMatches = collapseOverlappingMatches(allMatches);
   return {
     language: {
       name: "Portuguese (Brazil)",
@@ -1500,7 +1740,7 @@ function checkText(text, replacements, dictionary) {
         confidence: 0.99
       }
     },
-    matches: allMatches
+    matches: visibleMatches
   };
 }
 
@@ -1676,6 +1916,12 @@ function loadContextRules(pathname) {
 function loadPhraseRules(pathname) {
   return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
 }
+function loadOptionalPhraseRules(pathname) {
+  if (!(0, import_node_fs2.existsSync)(pathname)) {
+    return [];
+  }
+  return loadPhraseRules(pathname);
+}
 function loadDictionaryManifest(dictionaryDir) {
   const manifestPath = (0, import_node_path2.join)(dictionaryDir, "manifest.json");
   if (!(0, import_node_fs2.existsSync)(manifestPath)) {
@@ -1721,7 +1967,10 @@ function loadDictionaryResources(dataDir2) {
   const commonMistakes = useLegacyCommonMistakes ? loadCommonMistakeEntries((0, import_node_path2.join)(dictionaryDir, commonMistakesFile), replacements) : [];
   const dictionaryReady = words.size >= 5e3;
   const contextRules = loadContextRules((0, import_node_path2.join)(rulesDir, "context_rules.json"));
-  const phraseRules = loadPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules.json"));
+  const phraseRules = [
+    ...loadPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules.json")),
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_continuous.json"))
+  ];
   return {
     replacements,
     words,

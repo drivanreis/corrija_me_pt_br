@@ -101,7 +101,7 @@ export function createPunctuationHeuristicMatches(text: string): RuleMatch[] {
 
   createMiddleMatch(
     text,
-    /(?<![,;])\s+(mas)\s+(?![,;])/giu,
+    /(?<![,;])(?<!\bou)\s+(mas)\s+(?![,;])/giu,
     (conjunction) => `, ${conjunction} `,
     "PT_BR_PUNCTUATION_MAS",
     "A conjunção adversativa costuma vir precedida por vírgula.",
