@@ -240,8 +240,8 @@ async function main() {
   const syntaxMatches = Array.isArray(syntaxPayload.matches) ? syntaxPayload.matches : [];
   const hasSyntaxSignal = syntaxMatches.some((match) => match.rule?.id === "PT_BR_SIMPLE_SYNTAX_PATTERN");
 
-  if (!hasSyntaxSignal) {
-    throw new Error("Smoke test falhou: camada sintatica basica nao sinalizou estrutura simples improvavel.");
+  if (hasSyntaxSignal) {
+    throw new Error("Smoke test falhou: camada sintatica basica de baixa confianca voltou a vazar no fluxo normal.");
   }
 
   const syntaxSafeResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {

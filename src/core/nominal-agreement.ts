@@ -28,10 +28,6 @@ function tokenizeText(text: string): TokenMatch[] {
   return tokens;
 }
 
-function isArticle(entry: LexicalEntry | undefined): boolean {
-  return Boolean(entry?.classes.includes("artigo"));
-}
-
 function isDeterminer(entry: LexicalEntry | undefined): boolean {
   return Boolean(
     entry

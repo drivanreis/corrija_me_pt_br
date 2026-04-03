@@ -58,7 +58,7 @@ let inputOverlayHost: HTMLDivElement | null = null;
 let inputOverlayContent: HTMLDivElement | null = null;
 let suppressNextClickHideUntil = 0;
 let activeElementSessionId = 0;
-let ignoredMatchSignatures = new Map<number, Set<string>>();
+const ignoredMatchSignatures = new Map<number, Set<string>>();
 let latestHiddenWeakCount = 0;
 
 const suggestionMenu = document.createElement("section");

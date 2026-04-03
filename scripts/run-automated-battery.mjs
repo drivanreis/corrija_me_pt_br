@@ -159,7 +159,6 @@ function buildTokenChangeGroups(sourceTokens, targetTokens) {
 
     const replaceCost = i > 0 && j > 0 ? dp[i - 1][j - 1] : Number.POSITIVE_INFINITY;
     const deleteCost = i > 0 ? dp[i - 1][j] : Number.POSITIVE_INFINITY;
-    const insertCost = j > 0 ? dp[i][j - 1] : Number.POSITIVE_INFINITY;
     const currentCost = dp[i][j];
 
     if (i > 0 && j > 0 && currentCost === replaceCost + 1) {
