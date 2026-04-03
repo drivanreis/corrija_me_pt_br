@@ -1,5 +1,8 @@
 import { createContextRuleMatches } from "./context-rules.js";
+import { createSimpleNominalAgreementMatches } from "./nominal-agreement.js";
 import { createPhraseRuleMatches } from "./phrase-rules.js";
+import { createSimpleSyntaxPatternMatches } from "./syntax-patterns.js";
+import { createSimpleVerbalAgreementMatches } from "./verbal-agreement.js";
 import { buildContext, createWholeWordPattern, createWordTokenPattern, dedupeStrings, isWordLike, normalizeDictionaryWord, preserveReplacementCase, stripDiacritics } from "./text.js";
 import type { CheckResult, DictionaryData, ReplacementEntry, RuleMatch } from "./types.js";
 
@@ -156,13 +159,22 @@ function hasSafePrefixAndSuffixMatch(word: string, candidate: string): boolean {
   return prefixMatches && suffixMatches;
 }
 
-function createUnknownWordSuggestions(word: string, dictionaryWords: Set<string>): string[] {
+function createUnknownWordSuggestions(word: string, dictionary: DictionaryData): string[] {
   const normalizedWord = normalizeDictionaryWord(word);
   const plainWord = stripDiacritics(normalizedWord);
   const originalDiacritics = countDiacriticMarks(normalizedWord);
   const candidates: Array<{ word: string; score: number }> = [];
 
-  for (const candidate of dictionaryWords) {
+  for (const candidate of dictionary.words) {
+    const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(candidate);
+    if (lexicalEntry?.autoCorrect === "blocked" || lexicalEntry?.autoCorrect === "review") {
+      continue;
+    }
+
+    if (dictionary.linguisticData.blockedAutoCorrections.has(candidate)) {
+      continue;
+    }
+
     if (Math.abs(candidate.length - normalizedWord.length) > 2) {
       continue;
     }
@@ -228,7 +240,14 @@ function createUnknownWordMatches(text: string, dictionary: DictionaryData): Rul
 
     const original = match[0];
     const normalized = normalizeDictionaryWord(original);
-    if (!normalized || isIgnorableToken(original) || dictionary.words.has(normalized) || overlapsTechnicalSpan(match.index, original.length, technicalSpans)) {
+    if (
+      !normalized
+      || isIgnorableToken(original)
+      || dictionary.words.has(normalized)
+      || dictionary.linguisticData.allowedUnknownWords.has(normalized)
+      || dictionary.linguisticData.blockedAutoCorrections.has(normalized)
+      || overlapsTechnicalSpan(match.index, original.length, technicalSpans)
+    ) {
       continue;
     }
 
@@ -237,7 +256,7 @@ function createUnknownWordMatches(text: string, dictionary: DictionaryData): Rul
       continue;
     }
 
-    const replacements = createUnknownWordSuggestions(original, dictionary.words);
+    const replacements = createUnknownWordSuggestions(original, dictionary);
     if (!replacements.length) {
       continue;
     }
@@ -363,7 +382,10 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
   const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
   const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
   const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
-  const protectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches];
+  const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary);
+  const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary);
+  const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
+  const protectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches, ...verbalAgreementMatches, ...nominalAgreementMatches, ...syntaxPatternMatches];
   const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => (
     !protectedMatches.some((existing) => (
       candidate.offset < existing.offset + existing.length
@@ -376,6 +398,9 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
     ...dictionaryMistakeMatches,
     ...phraseRuleMatches,
     ...contextRuleMatches,
+    ...verbalAgreementMatches,
+    ...nominalAgreementMatches,
+    ...syntaxPatternMatches,
     ...unknownWordMatches,
     ...createRepeatedWordMatches(text),
     ...createDoubleSpaceMatches(text),

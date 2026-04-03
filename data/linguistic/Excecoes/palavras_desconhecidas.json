@@ -1,0 +1,10 @@
+{
+  "cache": {
+    "status": "permitido",
+    "tags": ["tecnico"]
+  },
+  "api": {
+    "status": "permitido",
+    "tags": ["tecnico"]
+  }
+}

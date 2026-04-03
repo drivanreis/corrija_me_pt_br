@@ -1,0 +1,7 @@
+{
+  "plural": [
+    { "terminacao": "a", "resultado": "as" },
+    { "terminacao": "o", "resultado": "os" },
+    { "terminacao": "m", "resultado": "ns" }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "lexical": [
+    "verbos.json",
+    "substantivos.json",
+    "pronomes.json",
+    "artigos.json",
+    "substantivos_uso_recorrente.json",
+    "adjetivos_uso_recorrente.json",
+    "termos_tecnicos.json",
+    "preposicoes.json",
+    "conjuncoes.json",
+    "adverbios.json",
+    "interjeicoes.json",
+    "adjetivos.json",
+    "palavras_multiclasse.json"
+  ],
+  "rules": [
+    "conjugacao_verbal.json",
+    "flexao_nominal.json",
+    "derivacao.json"
+  ],
+  "agreement": [
+    "verbal.json"
+  ],
+  "irregularities": [
+    "verbos_irregulares.json",
+    "plurais_irregulares.json"
+  ],
+  "syntax": [
+    "padroes_basicos.json"
+  ],
+  "exceptions": [
+    "locucoes.json",
+    "palavras_desconhecidas.json"
+  ]
+}

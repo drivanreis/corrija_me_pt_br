@@ -1,0 +1,12 @@
+[
+  {
+    "source": "data/dictionary/common_mistakes.json",
+    "from": "calsado",
+    "replacements": [
+      "causado"
+    ],
+    "description": "Forma correta da palavra.",
+    "suggested_lemma": "causado",
+    "confidence": "media"
+  }
+]

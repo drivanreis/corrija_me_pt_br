@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Verbos",
+  "allOf": [
+    { "$ref": "./lexical-entry.schema.json" }
+  ],
+  "description": "Entradas lexicais verbais com grupo, irregularidade e formas opcionais."
+}

@@ -1,0 +1,14 @@
+{
+  "casa": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["casa", "casas"]
+  },
+  "homem": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["homem", "homens"]
+  }
+}

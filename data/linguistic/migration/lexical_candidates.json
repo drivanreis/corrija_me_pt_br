@@ -1,0 +1,18 @@
+[
+  {
+    "source": "data/dictionary/custom_words.txt",
+    "word": "contrarregra",
+    "confidence": "baixa",
+    "target_file": "Lexico/substantivos_uso_recorrente.json",
+    "entry": {
+      "classes": [
+        "substantivo"
+      ],
+      "autoCorrect": "review",
+      "tags": [
+        "migrado_do_legado",
+        "revisar"
+      ]
+    }
+  }
+]

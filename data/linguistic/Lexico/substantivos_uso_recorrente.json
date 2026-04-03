@@ -1,0 +1,239 @@
+{
+  "projeto": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["projeto", "projetos"]
+  },
+  "empresa": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["empresa", "empresas"]
+  },
+  "dado": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["dado", "dados"]
+  },
+  "reuniao": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["reunião", "reuniao", "reuniões", "reunioes"]
+  },
+  "relatorio": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["relatório", "relatorio", "relatórios", "relatorios"]
+  },
+  "analise": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["análise", "analise", "análises", "analises"]
+  },
+  "resultado": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["resultado", "resultados"]
+  },
+  "entrega": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["entrega", "entregas"]
+  },
+  "prazo": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["prazo", "prazos"]
+  },
+  "sistema": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["sistema", "sistemas"]
+  },
+  "processo": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["processo", "processos"]
+  },
+  "problema": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["problema", "problemas"]
+  },
+  "gerente": {
+    "classes": ["substantivo"],
+    "numero": "singular",
+    "forms": ["gerente", "gerentes"]
+  },
+  "diretor": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["diretor", "diretores", "diretora", "diretoras"]
+  },
+  "funcionario": {
+    "classes": ["substantivo"],
+    "numero": "singular",
+    "forms": ["funcionário", "funcionario", "funcionários", "funcionarios", "funcionária", "funcionaria", "funcionárias", "funcionarias"]
+  },
+  "pagamento": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["pagamento", "pagamentos"]
+  },
+  "oferta": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["oferta", "ofertas"]
+  },
+  "promocao": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["promoção", "promocao", "promoções", "promocoes"]
+  },
+  "desconto": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["desconto", "descontos"]
+  },
+  "loja": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["loja", "lojas"]
+  },
+  "fruta": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["fruta", "frutas"]
+  },
+  "nota": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["nota", "notas"]
+  },
+  "anexo": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["anexo", "anexos"]
+  },
+  "bicicleta": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["bicicleta", "bicicletas"]
+  },
+  "carro": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["carro", "carros"]
+  },
+  "cafe": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["café", "cafe", "cafés", "cafes"]
+  },
+  "questao": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["questão", "questao", "questões", "questoes"]
+  },
+  "documento": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["documento", "documentos"]
+  },
+  "cidade": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["cidade", "cidades"]
+  },
+  "semana": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["semana", "semanas"]
+  },
+  "tempo": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["tempo", "tempos"]
+  },
+  "site": {
+    "classes": ["substantivo", "termo_tecnico"],
+    "genero": "masculino",
+    "numero": "singular",
+    "autoCorrect": "blocked",
+    "tags": ["internet", "produto"],
+    "forms": ["site", "sites"]
+  },
+  "email": {
+    "classes": ["substantivo", "termo_tecnico"],
+    "genero": "masculino",
+    "numero": "singular",
+    "autoCorrect": "review",
+    "tags": ["internet", "comunicacao"],
+    "forms": ["email", "e-mail", "emails", "e-mails"]
+  },
+  "voo": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["voo", "voos"]
+  },
+  "domicilio": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["domicílio", "domicilio", "domicílios", "domicilios"]
+  },
+  "cheque": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "autoCorrect": "review",
+    "tags": ["migrado_do_legado"],
+    "forms": ["cheque", "cheques"],
+    "notes": ["manter em revisao por confusao recorrente com 'xeque'"]
+  },
+  "xeque": {
+    "classes": ["substantivo"],
+    "genero": "masculino",
+    "numero": "singular",
+    "autoCorrect": "review",
+    "tags": ["migrado_do_legado"],
+    "forms": ["xeque", "xeques"],
+    "notes": ["manter em revisao por confusao recorrente com 'cheque' e por depender de locucao frequente"]
+  },
+  "senhoria": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "tags": ["tratamento_formal"],
+    "forms": ["senhoria", "senhorias"]
+  }
+}

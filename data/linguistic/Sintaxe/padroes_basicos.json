@@ -1,0 +1,104 @@
+{
+  "patterns": [
+    {
+      "id": "estrutura_simples_1",
+      "pattern": ["pronome", "verbo"],
+      "description": "Sujeito pronominal seguido de verbo."
+    },
+    {
+      "id": "estrutura_simples_2",
+      "pattern": ["substantivo", "verbo"],
+      "description": "Sujeito nominal seguido de verbo."
+    },
+    {
+      "id": "estrutura_simples_2b",
+      "pattern": ["substantivo", "preposicao"],
+      "description": "Substantivo seguido de preposicao curta em complemento nominal simples."
+    },
+    {
+      "id": "estrutura_simples_2c",
+      "pattern": ["preposicao", "substantivo"],
+      "description": "Grupo preposicionado curto com preposicao e substantivo."
+    },
+    {
+      "id": "estrutura_simples_2d",
+      "pattern": ["artigo", "substantivo", "preposicao"],
+      "description": "Grupo nominal curto seguido de preposicao."
+    },
+    {
+      "id": "estrutura_simples_2e",
+      "pattern": ["artigo", "substantivo", "preposicao", "substantivo"],
+      "description": "Grupo nominal curto com complemento preposicionado simples."
+    },
+    {
+      "id": "estrutura_simples_4",
+      "pattern": ["artigo", "substantivo"],
+      "description": "Grupo nominal minimo com artigo e substantivo."
+    },
+    {
+      "id": "estrutura_simples_6",
+      "pattern": ["pronome", "adverbio", "verbo"],
+      "description": "Sujeito pronominal com adverbio curto seguido de verbo."
+    },
+    {
+      "id": "estrutura_simples_7",
+      "pattern": ["pronome", "verbo", "adverbio"],
+      "description": "Sujeito pronominal com verbo seguido de adverbio."
+    },
+    {
+      "id": "estrutura_simples_8",
+      "pattern": ["artigo", "substantivo", "verbo"],
+      "description": "Grupo nominal seguido de verbo."
+    },
+    {
+      "id": "estrutura_simples_9",
+      "pattern": ["pronome", "verbo", "artigo", "substantivo"],
+      "description": "Sujeito pronominal com verbo e objeto nominal simples."
+    },
+    {
+      "id": "estrutura_simples_13",
+      "pattern": ["pronome", "verbo", "adjetivo"],
+      "description": "Sujeito pronominal com verbo de ligacao e predicativo simples."
+    },
+    {
+      "id": "estrutura_simples_14",
+      "pattern": ["verbo", "artigo", "substantivo"],
+      "description": "Verbo inicial com objeto nominal simples."
+    },
+    {
+      "id": "estrutura_simples_15",
+      "pattern": ["verbo", "artigo", "substantivo", "adverbio"],
+      "description": "Verbo inicial com objeto nominal simples e adverbio."
+    },
+    {
+      "id": "estrutura_simples_18",
+      "pattern": ["pronome", "verbo", "preposicao", "substantivo"],
+      "description": "Sujeito pronominal com verbo e complemento preposicionado curto."
+    },
+    {
+      "id": "estrutura_simples_19",
+      "pattern": ["verbo", "preposicao", "artigo", "substantivo"],
+      "description": "Verbo seguido de complemento preposicionado com artigo."
+    },
+    {
+      "id": "estrutura_simples_20",
+      "pattern": ["pronome", "verbo", "preposicao", "artigo", "substantivo"],
+      "description": "Sujeito pronominal com verbo e complemento preposicionado com artigo."
+    },
+    {
+      "id": "estrutura_simples_21",
+      "pattern": ["artigo", "substantivo", "verbo", "preposicao", "substantivo"],
+      "description": "Grupo nominal com verbo e complemento preposicionado curto."
+    },
+    {
+      "id": "estrutura_simples_22",
+      "pattern": ["artigo", "substantivo", "verbo", "preposicao", "artigo", "substantivo"],
+      "description": "Grupo nominal com verbo e complemento preposicionado com artigo."
+    },
+    {
+      "id": "estrutura_simples_23",
+      "pattern": ["verbo", "artigo", "substantivo", "preposicao", "substantivo"],
+      "description": "Verbo inicial com objeto nominal e complemento preposicionado curto."
+    }
+  ]
+}

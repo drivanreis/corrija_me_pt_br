@@ -1,0 +1,12 @@
+{
+  "canto": {
+    "classes": ["verbo", "substantivo"],
+    "autoCorrect": "review",
+    "notes": ["entrada ambigua; evitar autocorrecao agressiva sem contexto"]
+  },
+  "como": {
+    "classes": ["verbo", "conjuncao", "adverbio"],
+    "autoCorrect": "blocked",
+    "notes": ["entrada fortemente dependente de contexto"]
+  }
+}

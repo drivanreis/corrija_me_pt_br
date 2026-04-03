@@ -1,0 +1,41 @@
+{
+  "não": {
+    "classes": ["adverbio"],
+    "tags": ["negacao"],
+    "forms": ["não", "nao"]
+  },
+  "já": {
+    "classes": ["adverbio"],
+    "tags": ["tempo"],
+    "forms": ["já", "ja"]
+  },
+  "sempre": {
+    "classes": ["adverbio"],
+    "tags": ["frequencia"]
+  },
+  "realmente": {
+    "classes": ["adverbio"],
+    "tags": ["modo"]
+  },
+  "urgentemente": {
+    "classes": ["adverbio"],
+    "tags": ["modo"]
+  },
+  "ontem": {
+    "classes": ["adverbio"],
+    "tags": ["tempo"]
+  },
+  "aqui": {
+    "classes": ["adverbio"],
+    "tags": ["lugar"]
+  },
+  "bem": {
+    "classes": ["adverbio"],
+    "tags": ["modo"]
+  },
+  "através": {
+    "classes": ["adverbio"],
+    "tags": ["meio", "lugar"],
+    "forms": ["através", "atraves"]
+  }
+}

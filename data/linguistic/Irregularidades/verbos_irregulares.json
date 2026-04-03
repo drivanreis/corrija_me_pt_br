@@ -1,0 +1,28 @@
+{
+  "ser": {
+    "presente": ["sou", "és", "é", "somos", "sois", "são"]
+  },
+  "ir": {
+    "presente": ["vou", "vais", "vai", "vamos", "ides", "vão"]
+  },
+  "estar": {
+    "presente": ["estou", "estás", "está", "estamos", "estais", "estão"],
+    "presente_subjuntivo": ["esteja", "estejas", "esteja", "estejamos", "estejais", "estejam"]
+  },
+  "ter": {
+    "presente": ["tenho", "tens", "tem", "temos", "tendes", "têm"]
+  },
+  "poder": {
+    "presente": ["posso", "podes", "pode", "podemos", "podeis", "podem"]
+  },
+  "sentir": {
+    "presente": ["sinto", "sentes", "sente", "sentimos", "sentis", "sentem"]
+  },
+  "vir": {
+    "presente": ["venho", "vens", "vem", "vimos", "vindes", "vêm"]
+  },
+  "haver": {
+    "presente": ["hei", "hás", "há", "havemos", "haveis", "hão"],
+    "futuro": ["haverei", "haverás", "haverá", "haveremos", "havereis", "haverão"]
+  }
+}

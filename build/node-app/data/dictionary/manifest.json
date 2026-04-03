@@ -1,7 +1,10 @@
 {
+  "useLegacyWordFiles": false,
+  "useLegacyCustomWords": false,
+  "useLegacyCommonMistakes": false,
   "wordFiles": [
     "words_01.txt"
   ],
   "customWordsFile": "custom_words.txt",
-  "commonMistakesFile": "common_mistakes.json"
+  "commonMistakesFile": "common_mistakes_residual.json"
 }

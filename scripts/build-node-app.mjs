@@ -16,6 +16,7 @@ async function buildReplacementData() {
   await copyFile(path.join(rootDir, "data/replacements.json"), path.join(dataDir, "replacements.json"));
   await cp(path.join(rootDir, "data/dictionary"), path.join(dataDir, "dictionary"), { recursive: true });
   await cp(path.join(rootDir, "data/rules"), path.join(dataDir, "rules"), { recursive: true });
+  await cp(path.join(rootDir, "data/linguistic"), path.join(dataDir, "linguistic"), { recursive: true });
 }
 
 async function buildBackend() {
@@ -107,6 +108,7 @@ Build gerado automaticamente.
 - Dados de correcoes: build/node-app/data/replacements.json
 - Dicionario base: build/node-app/data/dictionary
 - Regras de contexto: build/node-app/data/rules
+- Base linguistica estruturada: build/node-app/data/linguistic
 - Extensao Chrome pronta para carregar: build/node-app/extension
 `;
   await writeFile(path.join(buildDir, "README.txt"), readme);

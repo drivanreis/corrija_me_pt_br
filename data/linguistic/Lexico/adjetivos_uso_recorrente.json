@@ -1,0 +1,78 @@
+{
+  "novo": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["novo", "nova", "novos", "novas"]
+  },
+  "muito": {
+    "classes": ["adjetivo", "adverbio"],
+    "variavel": true,
+    "autoCorrect": "review",
+    "forms": ["muito", "muita", "muitos", "muitas"]
+  },
+  "necessario": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["necessário", "necessario", "necessária", "necessaria", "necessários", "necessarios", "necessárias", "necessarias"]
+  },
+  "atrasado": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["atrasado", "atrasada", "atrasados", "atrasadas"]
+  },
+  "anexo": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["anexo", "anexa", "anexos", "anexas"]
+  },
+  "fiscal": {
+    "classes": ["adjetivo"],
+    "variavel": false,
+    "forms": ["fiscal", "fiscais"]
+  },
+  "maduro": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["maduro", "madura", "maduros", "maduras"]
+  },
+  "ótima": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["ótima", "otima", "ótimo", "otimo", "ótimos", "otimos", "ótimas", "otimas"]
+  },
+  "excelente": {
+    "classes": ["adjetivo"],
+    "variavel": false,
+    "forms": ["excelente", "excelentes"]
+  },
+  "essencial": {
+    "classes": ["adjetivo"],
+    "variavel": false,
+    "forms": ["essencial", "essenciais"]
+  },
+  "corporativo": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["corporativo", "corporativa", "corporativos", "corporativas"]
+  },
+  "tecnico": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["técnico", "tecnico", "técnica", "tecnica", "técnicos", "tecnicos", "técnicas", "tecnicas"]
+  },
+  "profissional": {
+    "classes": ["adjetivo"],
+    "variavel": false,
+    "forms": ["profissional", "profissionais"]
+  },
+  "urgente": {
+    "classes": ["adjetivo"],
+    "variavel": false,
+    "forms": ["urgente", "urgentes"]
+  },
+  "seminovo": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["seminovo", "seminova", "seminovos", "seminovas"]
+  }
+}

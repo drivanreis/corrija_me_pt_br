@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pronomes",
+  "allOf": [
+    { "$ref": "./lexical-entry.schema.json" }
+  ],
+  "description": "Entradas pronominais com pessoa e numero para concordancia verbal."
+}

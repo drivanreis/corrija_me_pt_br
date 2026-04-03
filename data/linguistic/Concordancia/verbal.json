@@ -1,0 +1,14 @@
+{
+  "eu": { "pessoa": 1, "numero": "singular" },
+  "ele": { "pessoa": 3, "numero": "singular" },
+  "ela": { "pessoa": 3, "numero": "singular" },
+  "a gente": { "pessoa": 3, "numero": "singular" },
+  "voce": { "pessoa": 3, "numero": "singular" },
+  "você": { "pessoa": 3, "numero": "singular" },
+  "nos": { "pessoa": 1, "numero": "plural" },
+  "nós": { "pessoa": 1, "numero": "plural" },
+  "voces": { "pessoa": 3, "numero": "plural" },
+  "vocês": { "pessoa": 3, "numero": "plural" },
+  "eles": { "pessoa": 3, "numero": "plural" },
+  "elas": { "pessoa": 3, "numero": "plural" }
+}

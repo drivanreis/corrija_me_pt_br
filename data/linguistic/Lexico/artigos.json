@@ -1,0 +1,42 @@
+{
+  "o": {
+    "classes": ["artigo"],
+    "genero": "masculino",
+    "numero": "singular"
+  },
+  "a": {
+    "classes": ["artigo"],
+    "genero": "feminino",
+    "numero": "singular"
+  },
+  "os": {
+    "classes": ["artigo"],
+    "genero": "masculino",
+    "numero": "plural"
+  },
+  "as": {
+    "classes": ["artigo"],
+    "genero": "feminino",
+    "numero": "plural"
+  },
+  "um": {
+    "classes": ["artigo"],
+    "genero": "masculino",
+    "numero": "singular"
+  },
+  "uma": {
+    "classes": ["artigo"],
+    "genero": "feminino",
+    "numero": "singular"
+  },
+  "uns": {
+    "classes": ["artigo"],
+    "genero": "masculino",
+    "numero": "plural"
+  },
+  "umas": {
+    "classes": ["artigo"],
+    "genero": "feminino",
+    "numero": "plural"
+  }
+}

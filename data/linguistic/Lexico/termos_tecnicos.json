@@ -1,0 +1,92 @@
+{
+  "corrija_me_pt_br": {
+    "classes": ["nome_proprio", "termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["produto", "interno"]
+  },
+  "whatsapp": {
+    "classes": ["nome_proprio", "termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["marca", "mensageria"]
+  },
+  "chatgpt": {
+    "classes": ["nome_proprio", "termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["produto", "ia"]
+  },
+  "gemini": {
+    "classes": ["nome_proprio", "termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["produto", "ia"]
+  },
+  "grok": {
+    "classes": ["nome_proprio", "termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["produto", "ia"]
+  },
+  "deepseek": {
+    "classes": ["nome_proprio", "termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["produto", "ia"]
+  },
+  "github": {
+    "classes": ["nome_proprio", "termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["plataforma", "codigo"]
+  },
+  "anotepad": {
+    "classes": ["nome_proprio", "termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["produto", "editor"]
+  },
+  "backend": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "review",
+    "tags": ["desenvolvimento"]
+  },
+  "frontend": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "review",
+    "tags": ["desenvolvimento"]
+  },
+  "typescript": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["linguagem", "desenvolvimento"]
+  },
+  "javascript": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["linguagem", "desenvolvimento"]
+  },
+  "json": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["formato", "dados"]
+  },
+  "markdown": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["formato", "texto"]
+  },
+  "iframe": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["html", "web"]
+  },
+  "contenteditable": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["html", "web"]
+  },
+  "textarea": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "blocked",
+    "tags": ["html", "web"]
+  },
+  "prompt": {
+    "classes": ["termo_tecnico"],
+    "autoCorrect": "review",
+    "tags": ["ia", "texto"]
+  }
+}

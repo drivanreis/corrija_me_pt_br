@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LexicalEntryMap",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["classes"],
+    "properties": {
+      "classes": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "genero": { "type": ["string", "null"] },
+      "numero": { "type": ["string", "null"] },
+      "pessoa": { "type": ["integer", "null"], "minimum": 1, "maximum": 3 },
+      "grupo": { "type": ["string", "null"] },
+      "irregular": { "type": "boolean" },
+      "variavel": { "type": "boolean" },
+      "autoCorrect": {
+        "type": "string",
+        "enum": ["allow", "blocked", "review"]
+      },
+      "tags": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "forms": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "notes": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

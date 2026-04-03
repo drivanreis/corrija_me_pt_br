@@ -1,0 +1,12 @@
+{
+  "bonito": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["bonito", "bonita", "bonitos", "bonitas"]
+  },
+  "feliz": {
+    "classes": ["adjetivo"],
+    "variavel": true,
+    "forms": ["feliz", "felizes"]
+  }
+}

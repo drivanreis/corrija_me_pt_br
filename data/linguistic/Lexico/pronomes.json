@@ -1,0 +1,106 @@
+{
+  "eu": {
+    "classes": ["pronome"],
+    "pessoa": 1,
+    "numero": "singular"
+  },
+  "me": {
+    "classes": ["pronome"],
+    "tags": ["clitico"]
+  },
+  "te": {
+    "classes": ["pronome"],
+    "tags": ["clitico"]
+  },
+  "se": {
+    "classes": ["pronome"],
+    "tags": ["clitico"]
+  },
+  "tu": {
+    "classes": ["pronome"],
+    "pessoa": 2,
+    "numero": "singular"
+  },
+  "ele": {
+    "classes": ["pronome"],
+    "pessoa": 3,
+    "numero": "singular"
+  },
+  "ela": {
+    "classes": ["pronome"],
+    "pessoa": 3,
+    "numero": "singular"
+  },
+  "você": {
+    "classes": ["pronome"],
+    "pessoa": 3,
+    "numero": "singular",
+    "forms": ["você", "voce"]
+  },
+  "nosso": {
+    "classes": ["pronome"],
+    "genero": "masculino",
+    "numero": "singular",
+    "forms": ["nosso", "nossa", "nossos", "nossas"]
+  },
+  "nossa": {
+    "classes": ["pronome"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["nossa", "nosso", "nossas", "nossos"]
+  },
+  "nossos": {
+    "classes": ["pronome"],
+    "genero": "masculino",
+    "numero": "plural",
+    "forms": ["nossos", "nosso", "nossas", "nossa"]
+  },
+  "nossas": {
+    "classes": ["pronome"],
+    "genero": "feminino",
+    "numero": "plural",
+    "forms": ["nossas", "nossa", "nossos", "nosso"]
+  },
+  "nos": {
+    "classes": ["pronome"],
+    "pessoa": 1,
+    "numero": "plural",
+    "forms": ["nos", "nós"],
+    "tags": ["clitico", "sujeito"]
+  },
+  "conosco": {
+    "classes": ["pronome"],
+    "numero": "plural",
+    "forms": ["conosco"],
+    "tags": ["obliquo_tonico"]
+  },
+  "voces": {
+    "classes": ["pronome"],
+    "pessoa": 3,
+    "numero": "plural",
+    "forms": ["voces", "vocês"]
+  },
+  "eles": {
+    "classes": ["pronome"],
+    "pessoa": 3,
+    "numero": "plural"
+  },
+  "elas": {
+    "classes": ["pronome"],
+    "pessoa": 3,
+    "numero": "plural"
+  },
+  "vocês": {
+    "classes": ["pronome"],
+    "pessoa": 3,
+    "numero": "plural",
+    "forms": ["vocês", "voces"]
+  },
+  "vossa": {
+    "classes": ["pronome"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["vossa"],
+    "tags": ["possessivo_tratamento"]
+  }
+}

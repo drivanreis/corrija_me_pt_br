@@ -1,0 +1,44 @@
+{
+  "de": {
+    "classes": ["preposicao"]
+  },
+  "do": {
+    "classes": ["preposicao"]
+  },
+  "da": {
+    "classes": ["preposicao"]
+  },
+  "em": {
+    "classes": ["preposicao"]
+  },
+  "no": {
+    "classes": ["preposicao"]
+  },
+  "na": {
+    "classes": ["preposicao"]
+  },
+  "para": {
+    "classes": ["preposicao"]
+  },
+  "por": {
+    "classes": ["preposicao"]
+  },
+  "ao": {
+    "classes": ["preposicao"]
+  },
+  "aos": {
+    "classes": ["preposicao"]
+  },
+  "à": {
+    "classes": ["preposicao"]
+  },
+  "às": {
+    "classes": ["preposicao"]
+  },
+  "sem": {
+    "classes": ["preposicao"]
+  },
+  "com": {
+    "classes": ["preposicao"]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "AR": {
+    "tempos": {
+      "presente": ["o", "as", "a", "amos", "ais", "am"],
+      "preterito_perfeito": ["ei", "aste", "ou", "amos", "astes", "aram"]
+    }
+  },
+  "ER": {
+    "tempos": {
+      "presente": ["o", "es", "e", "emos", "eis", "em"]
+    }
+  },
+  "IR": {
+    "tempos": {
+      "presente": ["o", "es", "e", "imos", "is", "em"]
+    }
+  }
+}

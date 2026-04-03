@@ -14,6 +14,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "data:validate": "node scripts/validate-language-data.mjs",
+    "migrate:legacy-language": "node scripts/migrate-legacy-language-data.mjs",
     "generate:test-cases": "node scripts/generate-test-cases.mjs",
     "generate:test-cases:batch": "node scripts/generate-test-cases.mjs --categories ortografia,acentuacao,hifen,pontuacao,localizacao,contexto,homofonos,anuncios,texto_tecnico --count-per-category 12 --difficulty 2",
     "curate:test-cases": "node scripts/curate-test-cases.mjs",
@@ -31,7 +32,10 @@
       "build/node-app/data/*.json",
       "build/node-app/data/dictionary/*.json",
       "build/node-app/data/dictionary/*.txt",
-      "build/node-app/data/rules/*.json"
+      "build/node-app/data/rules/*.json",
+      "build/node-app/data/linguistic/*.json",
+      "build/node-app/data/linguistic/**/*.json",
+      "build/node-app/data/linguistic/**/*.md"
     ],
     "outputPath": "build/node-app/pkg"
   },

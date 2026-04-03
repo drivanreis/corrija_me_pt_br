@@ -95,5 +95,14 @@
   { "from": "extra-oficial", "replacements": ["extraoficial"], "source": "core" },
   { "from": "antihigienico", "replacements": ["anti-higiênico"], "source": "core" },
   { "from": "subreitor", "replacements": ["sub-reitor"], "source": "core" },
-  { "from": "perca", "replacements": ["perda"], "source": "core" }
+  { "from": "perca", "replacements": ["perda"], "source": "core" },
+  { "from": "precizamos", "replacements": ["precisamos"], "source": "migrado_etapa_6" },
+  { "from": "atrazo", "replacements": ["atraso"], "source": "migrado_etapa_6" },
+  { "from": "atrazos", "replacements": ["atrasos"], "source": "migrado_etapa_6" },
+  { "from": "analize", "replacements": ["analise"], "source": "migrado_etapa_6" },
+  { "from": "algums", "replacements": ["alguns"], "source": "migrado_etapa_6" },
+  { "from": "conseque", "replacements": ["consegue"], "source": "migrado_etapa_6" },
+  { "from": "adcionar", "replacements": ["adicionar"], "source": "migrado_etapa_6" },
+  { "from": "impresindivel", "replacements": ["imprescindível"], "source": "migrado_etapa_6" },
+  { "from": "reconhe-se", "replacements": ["reconhece"], "source": "migrado_etapa_7" }
 ]

@@ -2,11 +2,20 @@ import { createServer } from "node:http";
 import { join } from "node:path";
 import { checkText } from "../core/engine.js";
 import { loadDictionaryResources } from "./dictionary.js";
+import { existsSync, readFileSync } from "node:fs";
 
 const DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
 const currentDir = __dirname;
 const dataDir = join(currentDir, "../data");
 const dictionaryResources = loadDictionaryResources(dataDir);
+const dictionaryManifestPath = join(dataDir, "dictionary", "manifest.json");
+const dictionaryManifest = existsSync(dictionaryManifestPath)
+  ? JSON.parse(readFileSync(dictionaryManifestPath, "utf8")) as {
+    useLegacyWordFiles?: boolean;
+    useLegacyCustomWords?: boolean;
+    useLegacyCommonMistakes?: boolean;
+  }
+  : null;
 
 function sendJson(response: import("node:http").ServerResponse, statusCode: number, payload: unknown): void {
   response.writeHead(statusCode, {
@@ -50,7 +59,15 @@ const server = createServer(async (request, response) => {
         words: dictionaryResources.words.size,
         commonMistakes: dictionaryResources.commonMistakes.length,
         ready: dictionaryResources.dictionaryReady,
-        contextRules: dictionaryResources.contextRules.length
+        contextRules: dictionaryResources.contextRules.length,
+        phraseRules: dictionaryResources.phraseRules.length,
+        lexicalEntries: dictionaryResources.linguisticData.lexicalEntries.size,
+        syntaxPatterns: dictionaryResources.linguisticData.syntaxPatterns.length,
+        legacySources: {
+          wordFiles: dictionaryManifest?.useLegacyWordFiles ?? true,
+          customWords: dictionaryManifest?.useLegacyCustomWords ?? true,
+          commonMistakes: dictionaryManifest?.useLegacyCommonMistakes ?? true
+        }
       }
     });
     return;
@@ -84,7 +101,8 @@ const server = createServer(async (request, response) => {
       commonMistakes: dictionaryResources.commonMistakes,
       dictionaryReady: dictionaryResources.dictionaryReady,
       contextRules: dictionaryResources.contextRules,
-      phraseRules: dictionaryResources.phraseRules
+      phraseRules: dictionaryResources.phraseRules,
+      linguisticData: dictionaryResources.linguisticData
     }));
     return;
   }

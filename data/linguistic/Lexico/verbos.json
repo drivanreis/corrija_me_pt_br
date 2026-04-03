@@ -1,0 +1,144 @@
+{
+  "falar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "forms": ["falo", "fala", "falamos", "falam"]
+  },
+  "sentir": {
+    "classes": ["verbo"],
+    "grupo": "IR",
+    "irregular": true,
+    "forms": ["sinto", "sente", "sentimos", "sentem"]
+  },
+  "precisar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "forms": ["preciso", "precisa", "precisamos", "precisam"]
+  },
+  "estar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": true,
+    "forms": ["estou", "está", "esta", "estamos", "estão", "estao", "esteja"]
+  },
+  "conseguir": {
+    "classes": ["verbo"],
+    "grupo": "IR",
+    "irregular": false,
+    "forms": ["consigo", "consegue", "conseguimos", "conseguem"]
+  },
+  "poder": {
+    "classes": ["verbo"],
+    "grupo": "ER",
+    "irregular": true,
+    "forms": ["posso", "pode", "podemos", "podem"]
+  },
+  "dever": {
+    "classes": ["verbo"],
+    "grupo": "ER",
+    "irregular": false,
+    "forms": ["devo", "deve", "devemos", "devem"]
+  },
+  "ter": {
+    "classes": ["verbo"],
+    "grupo": "ER",
+    "irregular": true,
+    "forms": ["tenho", "tem", "temos", "têm", "tem"]
+  },
+  "ir": {
+    "classes": ["verbo"],
+    "grupo": "IR",
+    "irregular": true,
+    "forms": ["vou", "vai", "vamos", "vão", "vao"]
+  },
+  "adicionar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "forms": ["adiciono", "adiciona", "adicionamos", "adicionam"]
+  },
+  "reconhecer": {
+    "classes": ["verbo"],
+    "grupo": "ER",
+    "irregular": false,
+    "forms": ["reconheco", "reconhece", "reconhecemos", "reconhecem"]
+  },
+  "seguir": {
+    "classes": ["verbo"],
+    "grupo": "IR",
+    "irregular": false,
+    "forms": ["sigo", "segue", "seguem", "seguimos"]
+  },
+  "chegar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "forms": ["chego", "chega", "chegam", "chegamos"]
+  },
+  "vir": {
+    "classes": ["verbo"],
+    "grupo": "IR",
+    "irregular": true,
+    "forms": ["vir", "vem", "veio", "vieram"]
+  },
+  "haver": {
+    "classes": ["verbo"],
+    "grupo": "ER",
+    "irregular": true,
+    "forms": ["há", "ha", "havia", "havera", "haverá"]
+  },
+  "vender": {
+    "classes": ["verbo"],
+    "grupo": "ER",
+    "irregular": false,
+    "forms": ["vendo", "vende", "vendem", "vendemos", "vende-se", "vendem-se"]
+  },
+  "informar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "forms": ["informo", "informa", "informamos", "informam", "informamos"]
+  },
+  "solicitar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "forms": ["solicito", "solicita", "solicitamos", "solicitam"]
+  },
+  "focar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "forms": ["foco", "foca", "focamos", "focam", "foque"]
+  },
+  "taxar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "forms": ["taxo", "taxa", "taxamos", "taxam"]
+  },
+  "tachar": {
+    "classes": ["verbo"],
+    "grupo": "AR",
+    "irregular": false,
+    "autoCorrect": "review",
+    "tags": ["migrado_do_legado"],
+    "forms": ["tacho", "tacha", "tachamos", "tacham"],
+    "notes": ["manter em revisao por confusao semantica recorrente com 'taxar'"]
+  },
+  "cozer": {
+    "classes": ["verbo"],
+    "grupo": "ER",
+    "irregular": false,
+    "forms": ["cozo", "coze", "cozemos", "cozem"]
+  },
+  "ser": {
+    "classes": ["verbo"],
+    "grupo": "IR",
+    "irregular": true,
+    "forms": ["sou", "e", "somos", "sao"],
+    "notes": ["consultar verbos_irregulares.json para flexao completa"]
+  }
+}
