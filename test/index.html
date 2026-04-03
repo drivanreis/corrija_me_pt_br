@@ -926,7 +926,6 @@
 
     <script>
       const THEME_KEY = "corrija-me-pt-br-test-theme";
-      const PAGE_KEY = "corrija-me-pt-br-test-page";
       const AUDIT_EXPORT_KEY = "corrija-me-pt-br-test-audit-json";
 
       const fallbackPhases = [
@@ -1235,10 +1234,7 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
       let lastPointerSampleAt = 0;
       let lastClickAt = null;
       let lastInputAt = null;
-      let currentPageIndex = Number(localStorage.getItem(PAGE_KEY) || "0");
-      if (!Number.isInteger(currentPageIndex) || currentPageIndex < 0 || currentPageIndex >= totalPages) {
-        currentPageIndex = 0;
-      }
+      let currentPageIndex = 0;
 
       function normalizeForComparison(value) {
         return String(value || "")
@@ -1349,21 +1345,61 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
         });
       }
 
+      function dedupeTestCases(testCases) {
+        const seen = new Set();
+        return testCases.filter((testCase) => {
+          const wrong = String(testCase?.errado || "").trim();
+          const right = String(testCase?.correto || "").trim();
+          const key = `${wrong}|||${right}`;
+          if (!wrong || !right || seen.has(key)) {
+            return false;
+          }
+          seen.add(key);
+          return true;
+        });
+      }
+
+      function selectBatteryCases(curatedCases, generatedCases) {
+        const requiredCases = fallbackPhases.length * 5;
+        const curatedPool = dedupeTestCases(curatedCases);
+        const generatedPool = dedupeTestCases(generatedCases).filter((candidate) => {
+          const key = `${String(candidate?.errado || "").trim()}|||${String(candidate?.correto || "").trim()}`;
+          return !curatedPool.some((curated) => `${String(curated?.errado || "").trim()}|||${String(curated?.correto || "").trim()}` === key);
+        });
+
+        if (curatedPool.length >= requiredCases) {
+          return {
+            selectedCases: curatedPool,
+            mode: "curated-only"
+          };
+        }
+
+        return {
+          selectedCases: [...curatedPool, ...generatedPool],
+          mode: curatedPool.length ? "curated-priority" : "generated-fallback"
+        };
+      }
+
       async function initializeDynamicBattery() {
         updateLoadingStatus("Lendo casos curados e gerados da base JSON.");
         const [curatedCases, generatedCases] = await Promise.all([
           fetchJsonArray(["./data/test-cases/curated.json", "../data/test-cases/curated.json"]),
           fetchJsonArray(["./data/test-cases/generated.json", "../data/test-cases/generated.json"])
         ]);
-        const mergedCases = [...curatedCases, ...generatedCases];
+        const { selectedCases, mode } = selectBatteryCases(curatedCases, generatedCases);
 
-        updateLoadingStatus("Montando a bateria desta execução.");
-        phases = buildDynamicPhasesFromCases(mergedCases);
+        if (mode === "curated-only") {
+          updateLoadingStatus("Montando a bateria com a base curada.");
+        } else if (mode === "curated-priority") {
+          updateLoadingStatus("Montando a bateria com prioridade para a base curada e complemento gerado.");
+        } else {
+          updateLoadingStatus("Montando a bateria com casos gerados por fallback.");
+        }
+
+        phases = buildDynamicPhasesFromCases(selectedCases);
         totalPages = phases.length + 1;
 
-        if (!Number.isInteger(currentPageIndex) || currentPageIndex < 0 || currentPageIndex >= totalPages) {
-          currentPageIndex = 0;
-        }
+        currentPageIndex = 0;
       }
 
       function buildTokenChangeGroups(sourceTokens, targetTokens) {
@@ -1926,7 +1962,6 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
       }
 
       function renderPage() {
-        localStorage.setItem(PAGE_KEY, String(currentPageIndex));
         interactionTelemetry.page_changes.push({
           page: currentPageIndex + 1,
           at: new Date().toISOString()
