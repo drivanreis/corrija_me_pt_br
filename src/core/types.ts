@@ -34,12 +34,19 @@ export interface RuleMatchReplacement {
   value: string;
 }
 
+export interface MatchConfidence {
+  level: "high" | "medium" | "low";
+  score: number;
+  reason?: string;
+}
+
 export interface RuleMatch {
   message: string;
   shortMessage: string;
   offset: number;
   length: number;
   replacements: RuleMatchReplacement[];
+  confidence?: MatchConfidence;
   rule: {
     id: string;
     description: string;

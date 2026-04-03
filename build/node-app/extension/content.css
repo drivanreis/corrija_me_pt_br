@@ -24,6 +24,59 @@
   color: #64748b;
 }
 
+.corrija-me-pt-br-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 2px 8px;
+}
+
+.corrija-me-pt-br-menu-confidence {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border-radius: 999px;
+  padding: 0 10px;
+  font: 700 11px/1 "Noto Sans", "Segoe UI", sans-serif;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.corrija-me-pt-br-menu-confidence-high {
+  background: #d9f99d;
+  color: #365314;
+}
+
+.corrija-me-pt-br-menu-confidence-medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.corrija-me-pt-br-menu-confidence-low,
+.corrija-me-pt-br-menu-confidence-default {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.corrija-me-pt-br-menu-ignore {
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 999px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  background: rgba(148, 163, 184, 0.16);
+  color: #334155;
+  font: 800 12px/1 "Noto Sans", "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.corrija-me-pt-br-menu-ignore:hover {
+  background: rgba(148, 163, 184, 0.28);
+  color: #0f172a;
+}
+
 .corrija-me-pt-br-menu-item {
   display: block;
   width: max-content;

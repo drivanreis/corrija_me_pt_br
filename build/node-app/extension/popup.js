@@ -129,7 +129,7 @@
       return;
     }
     if (liveBadge) {
-      liveBadge.textContent = state.hasActiveElement ? state.totalMatches > 0 ? `${state.totalMatches} ajuste(s)` : "Sem ajustes" : "Sem foco";
+      liveBadge.textContent = state.hasActiveElement ? state.totalMatches > 0 ? state.hiddenWeakMatches ? `${state.totalMatches} ajuste(s), ${state.hiddenWeakMatches} oculto(s)` : `${state.totalMatches} ajuste(s)` : state.hiddenWeakMatches ? `0 ajuste, ${state.hiddenWeakMatches} oculto(s)` : "Sem ajustes" : "Sem foco";
     }
     if (liveStatus) {
       liveStatus.textContent = state.status;

@@ -21,13 +21,24 @@ const GOOGLE_DOCS_EDITOR_SELECTORS = [
   'textarea',
   '[contenteditable="true"]'
 ];
+const MIN_VISIBLE_CONFIDENCE_SCORE = 0.68;
 
 type CheckReplacement = { value: string };
+type CheckConfidence = {
+  level?: "high" | "medium" | "low";
+  score?: number;
+  reason?: string;
+};
+
 type CheckMatch = {
   message: string;
   offset: number;
   length: number;
   replacements: CheckReplacement[];
+  confidence?: CheckConfidence;
+  rule?: {
+    id?: string;
+  };
 };
 
 type PopupResultItem = {
@@ -46,6 +57,9 @@ let latestStatusTone = "";
 let inputOverlayHost: HTMLDivElement | null = null;
 let inputOverlayContent: HTMLDivElement | null = null;
 let suppressNextClickHideUntil = 0;
+let activeElementSessionId = 0;
+let ignoredMatchSignatures = new Map<number, Set<string>>();
+let latestHiddenWeakCount = 0;
 
 const suggestionMenu = document.createElement("section");
 suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
@@ -90,6 +104,9 @@ function findGoogleDocsEditor(): HTMLElement | HTMLTextAreaElement | null {
 }
 
 function activateElement(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement): void {
+  if (activeElement !== element) {
+    activeElementSessionId += 1;
+  }
   activeElement = element;
   activeElement.setAttribute("spellcheck", "false");
   if (useGoogleDocsFrameBridge) {
@@ -241,6 +258,7 @@ function getPopupState() {
     tone: latestStatusTone,
     results: getPopupResults(),
     totalMatches: latestMatches.length,
+    hiddenWeakMatches: latestHiddenWeakCount,
     hasActiveElement: Boolean(activeElement),
     activeElementType: activeElement instanceof HTMLTextAreaElement
       ? "textarea"
@@ -468,6 +486,116 @@ function getMatchIndexAtOffset(offset: number): number {
   return latestMatches.findIndex((match) => offset >= match.offset && offset <= match.offset + match.length);
 }
 
+function getMatchConfidenceScore(match: CheckMatch): number {
+  if (typeof match.confidence?.score === "number") {
+    return match.confidence.score;
+  }
+
+  switch (match.confidence?.level) {
+    case "high":
+      return 0.95;
+    case "medium":
+      return 0.76;
+    case "low":
+      return 0.45;
+    default:
+      return 0.9;
+  }
+}
+
+function shouldHideWeakMatch(match: CheckMatch): boolean {
+  return match.confidence?.level === "low" || getMatchConfidenceScore(match) < MIN_VISIBLE_CONFIDENCE_SCORE;
+}
+
+function compareMatchesByUiPriority(left: CheckMatch, right: CheckMatch): number {
+  return getMatchConfidenceScore(right) - getMatchConfidenceScore(left)
+    || left.offset - right.offset
+    || left.length - right.length;
+}
+
+function normalizeMatchSignaturePart(value: string): string {
+  return value
+    .normalize("NFC")
+    .toLocaleLowerCase("pt-BR")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getMatchText(match: CheckMatch, text: string): string {
+  const start = Math.max(0, Math.min(text.length, match.offset));
+  const end = Math.max(start, Math.min(text.length, match.offset + match.length));
+  return text.slice(start, end);
+}
+
+function createMatchSignature(match: CheckMatch, text: string): string {
+  const snippet = getMatchText(match, text);
+  const contextStart = Math.max(0, match.offset - 12);
+  const contextEnd = Math.min(text.length, match.offset + match.length + 12);
+  const localContext = text.slice(contextStart, contextEnd);
+  const firstReplacement = Array.isArray(match.replacements) && match.replacements[0]
+    ? match.replacements[0].value
+    : "";
+
+  return [
+    normalizeMatchSignaturePart(match.rule?.id || "sem-regra"),
+    normalizeMatchSignaturePart(snippet),
+    normalizeMatchSignaturePart(firstReplacement),
+    normalizeMatchSignaturePart(localContext)
+  ].join("::");
+}
+
+function getIgnoredMatchSet(sessionId: number): Set<string> {
+  let ignored = ignoredMatchSignatures.get(sessionId);
+  if (!ignored) {
+    ignored = new Set<string>();
+    ignoredMatchSignatures.set(sessionId, ignored);
+  }
+  return ignored;
+}
+
+function filterIgnoredMatches(matches: CheckMatch[], text: string, sessionId: number): CheckMatch[] {
+  const ignored = ignoredMatchSignatures.get(sessionId);
+  if (!ignored?.size) {
+    return matches;
+  }
+
+  return matches.filter((match) => !ignored.has(createMatchSignature(match, text)));
+}
+
+function prepareVisibleMatches(matches: CheckMatch[]): CheckMatch[] {
+  const visible = matches.filter((match) => !shouldHideWeakMatch(match));
+  latestHiddenWeakCount = matches.length - visible.length;
+  return visible.sort(compareMatchesByUiPriority);
+}
+
+function getConfidenceLabel(match: CheckMatch): string {
+  switch (match.confidence?.level) {
+    case "high":
+      return "Confianca alta";
+    case "medium":
+      return "Confianca media";
+    case "low":
+      return "Confianca baixa";
+    default:
+      return "Confianca padrao";
+  }
+}
+
+function ignoreMatch(index: number): void {
+  const match = latestMatches[index];
+  if (!match) {
+    return;
+  }
+
+  getIgnoredMatchSet(activeElementSessionId).add(createMatchSignature(match, latestText));
+  latestMatches = latestMatches.filter((_, matchIndex) => matchIndex !== index);
+  hideSuggestionMenu();
+  renderResults(latestMatches);
+  const statusMessage = latestMatches.length ? `${latestMatches.length} sugestao(oes) restante(s).` : "Sugestao ignorada nesta analise.";
+  setStatus(statusMessage, latestMatches.length ? "ok" : "");
+  syncGoogleDocsBridgeState(statusMessage);
+}
+
 function openSuggestionMenu(index: number, x: number, y: number): void {
   const match = latestMatches[index];
   if (!match) {
@@ -476,6 +604,32 @@ function openSuggestionMenu(index: number, x: number, y: number): void {
   }
 
   suggestionMenu.innerHTML = "";
+
+  const header = document.createElement("div");
+  header.className = "corrija-me-pt-br-menu-header";
+
+  const confidenceBadge = document.createElement("div");
+  confidenceBadge.className = `corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
+  confidenceBadge.textContent = getConfidenceLabel(match);
+  if (match.confidence?.reason) {
+    confidenceBadge.title = match.confidence.reason;
+  }
+  header.appendChild(confidenceBadge);
+
+  const ignoreButton = document.createElement("button");
+  ignoreButton.type = "button";
+  ignoreButton.className = "corrija-me-pt-br-menu-ignore";
+  ignoreButton.textContent = "(i)";
+  ignoreButton.title = "Iguinora";
+  ignoreButton.setAttribute("aria-label", "Iguinora");
+  ignoreButton.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    ignoreMatch(index);
+  });
+  header.appendChild(ignoreButton);
+
+  suggestionMenu.appendChild(header);
 
   const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 2) : [];
   if (!replacements.length) {
@@ -606,6 +760,7 @@ async function analyzeActiveElement(manual = false): Promise<void> {
 
   if (text.trim().length < MIN_TEXT_LENGTH) {
     latestMatches = [];
+    latestHiddenWeakCount = 0;
     clearHighlights();
     hideInputOverlay();
     setStatus("Digite um pouco mais para analisar esse campo.");
@@ -615,6 +770,7 @@ async function analyzeActiveElement(manual = false): Promise<void> {
   }
 
   const requestId = ++activeRequestId;
+  const sessionId = activeElementSessionId;
   const settings = await getSettings();
   if (!manual && !settings.autoCheck) {
     setStatus("Analise automatica desativada. Use 'Analisar agora'.");
@@ -649,9 +805,16 @@ async function analyzeActiveElement(manual = false): Promise<void> {
       return;
     }
 
-    const matches = Array.isArray(data.matches) ? data.matches : [];
+    const filteredMatches = filterIgnoredMatches(Array.isArray(data.matches) ? data.matches : [], text, sessionId);
+    const matches = prepareVisibleMatches(filteredMatches);
     renderResults(matches);
-    const statusMessage = matches.length ? `${matches.length} sugestao(oes) encontrada(s).` : "Nenhum problema encontrado.";
+    const statusMessage = matches.length
+      ? latestHiddenWeakCount
+        ? `${matches.length} sugestao(oes) visivel(is). ${latestHiddenWeakCount} fraca(s) oculta(s).`
+        : `${matches.length} sugestao(oes) encontrada(s).`
+      : latestHiddenWeakCount
+        ? `Nenhuma sugestao visivel. ${latestHiddenWeakCount} fraca(s) oculta(s).`
+        : "Nenhum problema encontrado.";
     setStatus(statusMessage, "ok");
     syncGoogleDocsBridgeState(statusMessage);
   } catch (error) {
@@ -659,6 +822,7 @@ async function analyzeActiveElement(manual = false): Promise<void> {
     setStatus(`Falha ao consultar o backend local: ${message}`, "error");
     clearHighlights();
     hideInputOverlay();
+    latestHiddenWeakCount = 0;
     renderResults([]);
     syncGoogleDocsBridgeState(`Falha ao consultar o backend local: ${message}`);
   }

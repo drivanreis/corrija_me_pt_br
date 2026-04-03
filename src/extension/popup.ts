@@ -36,6 +36,7 @@ type PopupState = {
     replacements: string[];
   }>;
   totalMatches: number;
+  hiddenWeakMatches?: number;
   hasActiveElement: boolean;
   activeElementType: string;
 };
@@ -66,7 +67,13 @@ function renderLiveState(state: PopupState | null): void {
 
   if (liveBadge) {
     liveBadge.textContent = state.hasActiveElement
-      ? state.totalMatches > 0 ? `${state.totalMatches} ajuste(s)` : "Sem ajustes"
+      ? state.totalMatches > 0
+        ? state.hiddenWeakMatches
+          ? `${state.totalMatches} ajuste(s), ${state.hiddenWeakMatches} oculto(s)`
+          : `${state.totalMatches} ajuste(s)`
+        : state.hiddenWeakMatches
+          ? `0 ajuste, ${state.hiddenWeakMatches} oculto(s)`
+          : "Sem ajustes"
       : "Sem foco";
   }
 

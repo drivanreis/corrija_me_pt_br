@@ -8,6 +8,7 @@ import { setTimeout as delay } from "node:timers/promises";
 const CATEGORY_LIST = "ortografia,acentuacao,hifen,pontuacao,localizacao,contexto,homofonos,anuncios,texto_tecnico";
 const DEFAULT_COUNT_PER_CATEGORY = 12;
 const DEFAULT_AUDIT_OUTPUT = "data/test-cases/latest-audit.json";
+const MIN_VISIBLE_CONFIDENCE_SCORE = 0.68;
 
 function parseArgs(argv) {
   const args = {
@@ -305,6 +306,33 @@ function analyzeFieldProgress(original, actual, expected) {
   };
 }
 
+function getMatchConfidenceScore(match) {
+  if (typeof match?.confidence?.score === "number") {
+    return match.confidence.score;
+  }
+
+  switch (match?.confidence?.level) {
+    case "high":
+      return 0.95;
+    case "medium":
+      return 0.76;
+    case "low":
+      return 0.45;
+    default:
+      return 0.9;
+  }
+}
+
+function shouldHideWeakMatch(match) {
+  return match?.confidence?.level === "low" || getMatchConfidenceScore(match) < MIN_VISIBLE_CONFIDENCE_SCORE;
+}
+
+function selectVisibleMatchesForUi(matches) {
+  return [...matches]
+    .filter((match) => !shouldHideWeakMatch(match))
+    .sort((left, right) => getMatchConfidenceScore(right) - getMatchConfidenceScore(left) || left.offset - right.offset || left.length - right.length);
+}
+
 function applyTopSuggestions(text, matches) {
   const ordered = [...matches]
     .filter((match) => typeof match.offset === "number" && typeof match.length === "number" && Array.isArray(match.replacements) && match.replacements[0]?.value)
@@ -336,11 +364,15 @@ async function checkCase(port, testCase) {
 
   const payload = await response.json();
   const matches = Array.isArray(payload.matches) ? payload.matches : [];
-  const extensionResult = applyTopSuggestions(testCase.errado, matches);
+  const visibleMatches = selectVisibleMatchesForUi(matches);
+  const extensionResult = applyTopSuggestions(testCase.errado, visibleMatches);
+  const baselineResult = applyTopSuggestions(testCase.errado, matches);
   return {
     matches,
+    visibleMatches,
     extensionResult,
-    analysis: analyzeFieldProgress(testCase.errado, extensionResult, testCase.correto)
+    analysis: analyzeFieldProgress(testCase.errado, extensionResult, testCase.correto),
+    baselineAnalysis: analyzeFieldProgress(testCase.errado, baselineResult, testCase.correto)
   };
 }
 
@@ -462,6 +494,15 @@ async function main() {
         original: testCase.errado,
         extension_result: result.extensionResult,
         expected: testCase.correto,
+        total_matches: result.matches.length,
+        visible_matches: result.visibleMatches.length,
+        hidden_weak_matches: Math.max(0, result.matches.length - result.visibleMatches.length),
+        baseline_existing_errors: result.baselineAnalysis.existing_errors,
+        baseline_corrected_errors: result.baselineAnalysis.corrected_errors,
+        baseline_remaining_errors: result.baselineAnalysis.remaining_errors,
+        baseline_corrected_wrong_errors: result.baselineAnalysis.corrected_wrong_errors,
+        baseline_new_errors: result.baselineAnalysis.new_errors,
+        baseline_real_accuracy_percentage: result.baselineAnalysis.real_accuracy_percentage,
         ...result.analysis,
         status: result.analysis.corrected_errors === result.analysis.existing_errors && result.analysis.corrected_wrong_errors === 0 && result.analysis.new_errors === 0
           ? "ok"
@@ -487,6 +528,31 @@ async function main() {
     const totals = accumulateTotals(itemReports);
     const globalScore = totals.existing_errors ? Math.round((totals.corrected_errors / totals.existing_errors) * 100) : 100;
     const categoryScores = summarizeCategories(itemReports);
+    const visibilityTotals = itemReports.reduce((accumulator, item) => {
+      accumulator.total_matches += item.total_matches;
+      accumulator.visible_matches += item.visible_matches;
+      accumulator.hidden_weak_matches += item.hidden_weak_matches;
+      return accumulator;
+    }, {
+      total_matches: 0,
+      visible_matches: 0,
+      hidden_weak_matches: 0
+    });
+    const baselineTotals = itemReports.reduce((accumulator, item) => {
+      accumulator.existing_errors += item.baseline_existing_errors;
+      accumulator.corrected_errors += item.baseline_corrected_errors;
+      accumulator.remaining_errors += item.baseline_remaining_errors;
+      accumulator.corrected_wrong_errors += item.baseline_corrected_wrong_errors;
+      accumulator.new_errors += item.baseline_new_errors;
+      return accumulator;
+    }, {
+      existing_errors: 0,
+      corrected_errors: 0,
+      remaining_errors: 0,
+      corrected_wrong_errors: 0,
+      new_errors: 0
+    });
+    const baselineGlobalScore = baselineTotals.existing_errors ? Math.round((baselineTotals.corrected_errors / baselineTotals.existing_errors) * 100) : 100;
 
     const report = {
       generated_at: new Date().toISOString(),
@@ -494,9 +560,16 @@ async function main() {
       rounds: args.rounds,
       count_per_category: args.countPerCategory,
       categories: CATEGORY_LIST.split(","),
+      confidence_policy: {
+        min_visible_confidence_score: MIN_VISIBLE_CONFIDENCE_SCORE,
+        hidden_levels: ["low"]
+      },
       elapsed: `${Math.round((Date.now() - startedAt) / 1000)}s`,
       global_score: globalScore,
+      baseline_global_score_without_visibility_filter: baselineGlobalScore,
       totals,
+      baseline_totals_without_visibility_filter: baselineTotals,
+      visibility_totals: visibilityTotals,
       top_strength: categoryScores[0] || null,
       top_gap: categoryScores[categoryScores.length - 1] || null,
       category_scores: categoryScores,

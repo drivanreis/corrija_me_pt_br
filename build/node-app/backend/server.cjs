@@ -479,6 +479,169 @@ function createPhraseRuleMatches(text, rules) {
   return matches;
 }
 
+// src/core/punctuation-rules.ts
+function createPunctuationMatch(text, offset, length, replacement, ruleId, message, description) {
+  return {
+    message,
+    shortMessage: message,
+    offset,
+    length,
+    replacements: replacement ? [{ value: replacement }] : [],
+    rule: {
+      id: ruleId,
+      description,
+      issueType: "punctuation"
+    },
+    context: buildContext(text, offset, length)
+  };
+}
+function addMatch(matches, candidate) {
+  const start = candidate.offset;
+  const end = candidate.offset + candidate.length;
+  const overlaps = matches.some((existing) => start < existing.offset + existing.length && existing.offset < end);
+  if (!overlaps) {
+    matches.push(candidate);
+  }
+}
+function createPrefixMatch(text, pattern, replacementFactory, ruleId, message, description, matches) {
+  const match = pattern.exec(text);
+  if (!match || match.index === void 0) {
+    return;
+  }
+  const replacement = replacementFactory(...match.slice(1));
+  addMatch(matches, createPunctuationMatch(text, match.index, match[0].length, replacement, ruleId, message, description));
+}
+function createMiddleMatch(text, pattern, replacementFactory, ruleId, message, description, matches) {
+  for (const match of text.matchAll(pattern)) {
+    if (match.index === void 0) {
+      continue;
+    }
+    const replacement = replacementFactory(...match.slice(1));
+    addMatch(matches, createPunctuationMatch(text, match.index, match[0].length, replacement, ruleId, message, description));
+  }
+}
+function createTerminalMatch(text, pattern, punctuation, ruleId, message, description, matches) {
+  const match = pattern.exec(text);
+  if (!match || match.index === void 0) {
+    return;
+  }
+  addMatch(matches, createPunctuationMatch(
+    text,
+    match.index,
+    match[0].length,
+    `${match[0]}${punctuation}`,
+    ruleId,
+    message,
+    description
+  ));
+}
+function createPunctuationHeuristicMatches(text) {
+  const matches = [];
+  const trimmed = text.trim();
+  if (!trimmed) {
+    return matches;
+  }
+  createPrefixMatch(
+    text,
+    /^((?:Oi|Olá|Ola)) ([A-ZÀ-Ý][\p{L}\p{M}]*)/u,
+    (greeting, name) => `${greeting}, ${name},`,
+    "PT_BR_PUNCTUATION_GREETING_NAME",
+    "Sauda\xE7\xE3o inicial costuma vir separada por v\xEDrgulas.",
+    "Insere v\xEDrgulas em sauda\xE7\xE3o seguida de chamamento.",
+    matches
+  );
+  createPrefixMatch(
+    text,
+    /^((?:Oi|Olá|Ola|Por favor|Infelizmente|Atenciosamente|Senhoras e senhores))(?!,)\b/u,
+    (marker) => `${marker},`,
+    "PT_BR_PUNCTUATION_INITIAL_MARKER",
+    "Express\xE3o inicial costuma vir seguida de v\xEDrgula.",
+    "Insere v\xEDrgula ap\xF3s marcador inicial frequente.",
+    matches
+  );
+  createMiddleMatch(
+    text,
+    /(?<![,;])\s+(mas)\s+(?![,;])/giu,
+    (conjunction) => `, ${conjunction} `,
+    "PT_BR_PUNCTUATION_MAS",
+    "A conjun\xE7\xE3o adversativa costuma vir precedida por v\xEDrgula.",
+    "Insere v\xEDrgula antes de 'mas'.",
+    matches
+  );
+  createMiddleMatch(
+    text,
+    /(?<![,;])\s+((?:porém|porem))\s+(?![,;])/giu,
+    (conjunction) => `, ${conjunction} `,
+    "PT_BR_PUNCTUATION_POREM",
+    "A conjun\xE7\xE3o adversativa costuma vir isolada por pontua\xE7\xE3o.",
+    "Insere v\xEDrgula antes de 'por\xE9m'.",
+    matches
+  );
+  createMiddleMatch(
+    text,
+    /(?<![,;])\s+(portanto)\s+(?![,;])/giu,
+    (conjunction) => `, ${conjunction}, `,
+    "PT_BR_PUNCTUATION_PORTANTO",
+    "A conjun\xE7\xE3o conclusiva costuma vir isolada por v\xEDrgulas.",
+    "Insere v\xEDrgulas em torno de 'portanto'.",
+    matches
+  );
+  createMiddleMatch(
+    text,
+    /(?<![,;])\s+(contudo)\s+(?![,;])/giu,
+    (conjunction) => `, ${conjunction}, `,
+    "PT_BR_PUNCTUATION_CONTUDO",
+    "O adv\xE9rbio intercalado costuma vir isolado por v\xEDrgulas.",
+    "Insere v\xEDrgulas em torno de 'contudo'.",
+    matches
+  );
+  createMiddleMatch(
+    text,
+    /(?<![,;])\s+(no entanto)\s+(?![,;])/giu,
+    (expression) => `; ${expression}, `,
+    "PT_BR_PUNCTUATION_NO_ENTANTO",
+    "A locu\xE7\xE3o conjuntiva costuma vir destacada por pontua\xE7\xE3o.",
+    "Insere ponto e v\xEDrgula e v\xEDrgula em 'no entanto'.",
+    matches
+  );
+  createMiddleMatch(
+    text,
+    /([.!?]\s*)(Então)(?!,)\b/gu,
+    (prefix, term) => `${prefix}${term},`,
+    "PT_BR_PUNCTUATION_ENTAO",
+    "A retomada com 'Ent\xE3o' costuma vir seguida de v\xEDrgula.",
+    "Insere v\xEDrgula ap\xF3s 'Ent\xE3o' em retomada de frase.",
+    matches
+  );
+  if (!/[?!.]\s*$/u.test(trimmed)) {
+    const lower = trimmed.toLocaleLowerCase("pt-BR");
+    const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que", "voc\xEA"];
+    const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
+    if (questionStarts.some((prefix) => lower.startsWith(prefix))) {
+      createTerminalMatch(
+        text,
+        /([\p{L}\p{M}\d]+)\s*$/u,
+        "?",
+        "PT_BR_PUNCTUATION_FINAL_QUESTION",
+        "A frase parece pedir ponto de interroga\xE7\xE3o.",
+        "Adiciona ponto de interroga\xE7\xE3o ao final da frase.",
+        matches
+      );
+    } else if (exclamationStarts.some((prefix) => lower.startsWith(prefix))) {
+      createTerminalMatch(
+        text,
+        /([\p{L}\p{M}\d]+)\s*$/u,
+        "!",
+        "PT_BR_PUNCTUATION_FINAL_EXCLAMATION",
+        "A frase parece pedir ponto de exclama\xE7\xE3o.",
+        "Adiciona ponto de exclama\xE7\xE3o ao final da frase.",
+        matches
+      );
+    }
+  }
+  return matches;
+}
+
 // src/core/syntax-patterns.ts
 function tokenizeText4(text) {
   const tokens = [];
@@ -849,13 +1012,21 @@ function createSimpleVerbalAgreementMatches(text, dictionary) {
 }
 
 // src/core/engine.ts
-function createMatch(text, offset, length, replacements, ruleId, message, description) {
+function createConfidence(level, score, reason) {
+  return {
+    level,
+    score: Number(score.toFixed(2)),
+    reason
+  };
+}
+function createMatch(text, offset, length, replacements, ruleId, message, description, confidence = createConfidence("high", 0.95, "regra explicita")) {
   return {
     message,
     shortMessage: message,
     offset,
     length,
     replacements: replacements.map((value) => ({ value })),
+    confidence,
     rule: {
       id: ruleId,
       description,
@@ -1008,12 +1179,41 @@ function createUnknownWordSuggestions(word, dictionary) {
     if (distance > 2) {
       continue;
     }
+    let confidenceScore = samePlainWord ? 0.96 : 0.82;
+    confidenceScore -= distance * 0.18;
+    confidenceScore -= normalizedDistance * 0.08;
+    if (lexicalEntry?.classes.length && lexicalEntry.classes.length > 1) {
+      confidenceScore -= 0.18;
+    }
+    if (lexicalEntry?.irregular) {
+      confidenceScore -= 0.06;
+    }
+    if (lexicalEntry?.tags?.some((tag) => ["tecnico", "produto", "marca", "plataforma", "interno", "ia", "desenvolvimento"].includes(tag))) {
+      confidenceScore -= 0.14;
+    }
+    if (!samePlainWord && normalizedWord.length <= 4) {
+      confidenceScore -= 0.08;
+    }
+    if (distance === 1 && normalizedDistance > 1) {
+      confidenceScore -= 0.05;
+    }
+    if (confidenceScore < 0.45) {
+      continue;
+    }
     candidates.push({
       word: candidate,
-      score: samePlainWord ? normalizedDistance : distance + normalizedDistance
+      score: samePlainWord ? normalizedDistance : distance + normalizedDistance,
+      confidence: createConfidence(
+        confidenceScore >= 0.85 ? "high" : confidenceScore >= 0.68 ? "medium" : "low",
+        Math.max(0.01, Math.min(confidenceScore, 0.99)),
+        samePlainWord ? "forma conhecida com diferenca principalmente de acentuacao" : "aproximacao ortografica com filtros conservadores"
+      )
     });
   }
-  return candidates.sort((left, right) => left.score - right.score || left.word.localeCompare(right.word, "pt-BR")).slice(0, 5).map((entry) => preserveReplacementCase(word, entry.word));
+  return candidates.sort((left, right) => right.confidence.score - left.confidence.score || left.score - right.score || left.word.localeCompare(right.word, "pt-BR")).slice(0, 5).map((entry) => ({
+    ...entry,
+    word: preserveReplacementCase(word, entry.word)
+  }));
 }
 function createUnknownWordMatches(text, dictionary) {
   if (!dictionary.dictionaryReady || !dictionary.words.size) {
@@ -1040,15 +1240,22 @@ function createUnknownWordMatches(text, dictionary) {
     if (!replacements.length) {
       continue;
     }
+    const [bestSuggestion, secondSuggestion] = replacements;
+    const hasStrongBestSuggestion = bestSuggestion.confidence.score >= 0.78;
+    const hasClearLead = !secondSuggestion || bestSuggestion.confidence.score - secondSuggestion.confidence.score >= 0.12;
+    if (!hasStrongBestSuggestion || !hasClearLead) {
+      continue;
+    }
     seenOffsets.add(key);
     addIfNoOverlap(matches, createMatch(
       text,
       match.index,
       original.length,
-      replacements,
+      replacements.map((entry) => entry.word),
       "PT_BR_UNKNOWN_WORD",
       "Palavra possivelmente incorreta para pt-BR.",
-      "Sugestao baseada no dicionario local."
+      "Sugestao baseada no dicionario local.",
+      bestSuggestion.confidence
     ));
   }
   return matches;
@@ -1138,6 +1345,121 @@ function createSentenceCaseMatches(text) {
   }
   return matches;
 }
+function clampConfidenceScore(score) {
+  return Math.max(0.01, Math.min(score, 0.99));
+}
+function lexicalRiskPenalty(replacement, dictionary) {
+  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(normalizeDictionaryWord(replacement));
+  if (!lexicalEntry) {
+    return 0;
+  }
+  let penalty = 0;
+  if (lexicalEntry.autoCorrect === "review") {
+    penalty += 0.14;
+  }
+  if ((lexicalEntry.classes?.length || 0) > 1) {
+    penalty += 0.12;
+  }
+  if (lexicalEntry.irregular) {
+    penalty += 0.05;
+  }
+  if (lexicalEntry.tags?.some((tag) => ["tecnico", "produto", "marca", "plataforma", "interno", "ia", "desenvolvimento"].includes(tag))) {
+    penalty += 0.12;
+  }
+  return penalty;
+}
+function deriveMatchConfidence(match, text, dictionary) {
+  if (match.confidence) {
+    return match.confidence;
+  }
+  const original = text.slice(match.offset, match.offset + match.length);
+  const primaryReplacement = match.replacements[0]?.value || "";
+  const replacementPenalty = lexicalRiskPenalty(primaryReplacement, dictionary);
+  const hasMultipleSuggestions = match.replacements.length > 1;
+  if (match.rule.id === "PT_BR_REPEATED_WORD") {
+    return createConfidence("high", 0.98, "repeticao literal detectada");
+  }
+  if (match.rule.id === "PT_BR_DOUBLE_SPACE") {
+    return createConfidence("high", 0.99, "padrao mecanico de espaco duplicado");
+  }
+  if (match.rule.id === "PT_BR_SPACE_BEFORE_PUNCTUATION") {
+    return createConfidence("high", 0.98, "padrao mecanico de pontuacao");
+  }
+  if (match.rule.id === "PT_BR_SENTENCE_CASE") {
+    return createConfidence("high", 0.94, "regra ortografica simples de inicio de frase");
+  }
+  if (match.rule.id.startsWith("PT_BR_PUNCTUATION_")) {
+    let score = 0.88;
+    if (match.rule.id.includes("FINAL_")) {
+      score = 0.7;
+    }
+    if (match.rule.id.includes("GREETING_NAME") || match.rule.id.includes("INITIAL_MARKER")) {
+      score = 0.9;
+    }
+    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "heuristica de pontuacao recorrente");
+  }
+  if (match.rule.id === "PT_BR_SIMPLE_SYNTAX_PATTERN") {
+    return createConfidence("low", 0.42, "padrao sintatico heuristico e sensivel a contexto");
+  }
+  if (match.rule.id === "PT_BR_SIMPLE_VERBAL_AGREEMENT") {
+    let score = 0.78;
+    if (match.length <= 3) {
+      score -= 0.08;
+    }
+    return createConfidence(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia verbal por heuristica local");
+  }
+  if (match.rule.id === "PT_BR_SIMPLE_NOMINAL_AGREEMENT") {
+    let score = 0.74;
+    if (match.length <= 3) {
+      score -= 0.08;
+    }
+    return createConfidence(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia nominal por heuristica local");
+  }
+  if (match.rule.id.startsWith("PT_BR_CONTEXT_") || match.rule.id.includes("CONTEXT")) {
+    let score = 0.88;
+    if (hasMultipleSuggestions) {
+      score -= 0.08;
+    }
+    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
+  }
+  if (match.rule.issueType === "style") {
+    let score = 0.76;
+    if (hasMultipleSuggestions) {
+      score -= 0.06;
+    }
+    if (match.length >= 12) {
+      score -= 0.04;
+    }
+    return createConfidence(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "ajuste de frase ou estilo");
+  }
+  if (match.rule.id === "PT_BR_SIMPLE_REPLACE") {
+    let score = 0.9;
+    if (hasMultipleSuggestions) {
+      score -= 0.1;
+    }
+    if (original.length <= 3) {
+      score -= 0.12;
+    }
+    if (Math.abs(primaryReplacement.length - original.length) >= 3) {
+      score -= 0.08;
+    }
+    score -= replacementPenalty;
+    return createConfidence(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "substituicao lexical direta");
+  }
+  if (match.rule.issueType === "grammar") {
+    return createConfidence("medium", 0.72, "heuristica gramatical");
+  }
+  return createConfidence("high", 0.9, "confianca padrao");
+}
+function shouldExposeMatch(match) {
+  if (match.replacements.length) {
+    return true;
+  }
+  if (match.confidence?.level === "low") {
+    return false;
+  }
+  return true;
+}
 function checkText(text, replacements, dictionary) {
   const replacementMatches = createReplacementMatches(text, replacements);
   const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
@@ -1146,7 +1468,9 @@ function checkText(text, replacements, dictionary) {
   const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary);
   const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary);
   const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
-  const protectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches, ...verbalAgreementMatches, ...nominalAgreementMatches, ...syntaxPatternMatches];
+  const baseProtectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches, ...verbalAgreementMatches, ...nominalAgreementMatches, ...syntaxPatternMatches];
+  const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text).filter((candidate) => !baseProtectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
+  const protectedMatches = [...baseProtectedMatches, ...punctuationHeuristicMatches];
   const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => !protectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
   const allMatches = [
     ...replacementMatches,
@@ -1156,12 +1480,16 @@ function checkText(text, replacements, dictionary) {
     ...verbalAgreementMatches,
     ...nominalAgreementMatches,
     ...syntaxPatternMatches,
+    ...punctuationHeuristicMatches,
     ...unknownWordMatches,
     ...createRepeatedWordMatches(text),
     ...createDoubleSpaceMatches(text),
     ...createSpaceBeforePunctuationMatches(text),
     ...createSentenceCaseMatches(text)
-  ].sort((left, right) => left.offset - right.offset || left.length - right.length);
+  ].map((match) => ({
+    ...match,
+    confidence: deriveMatchConfidence(match, text, dictionary)
+  })).filter((match) => shouldExposeMatch(match)).sort((left, right) => left.offset - right.offset || left.length - right.length);
   return {
     language: {
       name: "Portuguese (Brazil)",

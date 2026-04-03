@@ -1,23 +1,48 @@
 import { createContextRuleMatches } from "./context-rules.js";
 import { createSimpleNominalAgreementMatches } from "./nominal-agreement.js";
 import { createPhraseRuleMatches } from "./phrase-rules.js";
+import { createPunctuationHeuristicMatches } from "./punctuation-rules.js";
 import { createSimpleSyntaxPatternMatches } from "./syntax-patterns.js";
 import { createSimpleVerbalAgreementMatches } from "./verbal-agreement.js";
 import { buildContext, createWholeWordPattern, createWordTokenPattern, dedupeStrings, isWordLike, normalizeDictionaryWord, preserveReplacementCase, stripDiacritics } from "./text.js";
-import type { CheckResult, DictionaryData, ReplacementEntry, RuleMatch } from "./types.js";
+import type { CheckResult, DictionaryData, MatchConfidence, ReplacementEntry, RuleMatch } from "./types.js";
 
 interface TextSpan {
   offset: number;
   length: number;
 }
 
-function createMatch(text: string, offset: number, length: number, replacements: string[], ruleId: string, message: string, description: string): RuleMatch {
+interface UnknownWordSuggestion {
+  word: string;
+  score: number;
+  confidence: MatchConfidence;
+}
+
+function createConfidence(level: MatchConfidence["level"], score: number, reason?: string): MatchConfidence {
+  return {
+    level,
+    score: Number(score.toFixed(2)),
+    reason
+  };
+}
+
+function createMatch(
+  text: string,
+  offset: number,
+  length: number,
+  replacements: string[],
+  ruleId: string,
+  message: string,
+  description: string,
+  confidence: MatchConfidence = createConfidence("high", 0.95, "regra explicita")
+): RuleMatch {
   return {
     message,
     shortMessage: message,
     offset,
     length,
     replacements: replacements.map((value) => ({ value })),
+    confidence,
     rule: {
       id: ruleId,
       description,
@@ -159,11 +184,11 @@ function hasSafePrefixAndSuffixMatch(word: string, candidate: string): boolean {
   return prefixMatches && suffixMatches;
 }
 
-function createUnknownWordSuggestions(word: string, dictionary: DictionaryData): string[] {
+function createUnknownWordSuggestions(word: string, dictionary: DictionaryData): UnknownWordSuggestion[] {
   const normalizedWord = normalizeDictionaryWord(word);
   const plainWord = stripDiacritics(normalizedWord);
   const originalDiacritics = countDiacriticMarks(normalizedWord);
-  const candidates: Array<{ word: string; score: number }> = [];
+  const candidates: UnknownWordSuggestion[] = [];
 
   for (const candidate of dictionary.words) {
     const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(candidate);
@@ -211,16 +236,52 @@ function createUnknownWordSuggestions(word: string, dictionary: DictionaryData):
       continue;
     }
 
+    let confidenceScore = samePlainWord ? 0.96 : 0.82;
+    confidenceScore -= distance * 0.18;
+    confidenceScore -= normalizedDistance * 0.08;
+
+    if (lexicalEntry?.classes.length && lexicalEntry.classes.length > 1) {
+      confidenceScore -= 0.18;
+    }
+
+    if (lexicalEntry?.irregular) {
+      confidenceScore -= 0.06;
+    }
+
+    if (lexicalEntry?.tags?.some((tag) => ["tecnico", "produto", "marca", "plataforma", "interno", "ia", "desenvolvimento"].includes(tag))) {
+      confidenceScore -= 0.14;
+    }
+
+    if (!samePlainWord && normalizedWord.length <= 4) {
+      confidenceScore -= 0.08;
+    }
+
+    if (distance === 1 && normalizedDistance > 1) {
+      confidenceScore -= 0.05;
+    }
+
+    if (confidenceScore < 0.45) {
+      continue;
+    }
+
     candidates.push({
       word: candidate,
-      score: samePlainWord ? normalizedDistance : distance + normalizedDistance
+      score: samePlainWord ? normalizedDistance : distance + normalizedDistance,
+      confidence: createConfidence(
+        confidenceScore >= 0.85 ? "high" : confidenceScore >= 0.68 ? "medium" : "low",
+        Math.max(0.01, Math.min(confidenceScore, 0.99)),
+        samePlainWord ? "forma conhecida com diferenca principalmente de acentuacao" : "aproximacao ortografica com filtros conservadores"
+      )
     });
   }
 
   return candidates
-    .sort((left, right) => left.score - right.score || left.word.localeCompare(right.word, "pt-BR"))
+    .sort((left, right) => right.confidence.score - left.confidence.score || left.score - right.score || left.word.localeCompare(right.word, "pt-BR"))
     .slice(0, 5)
-    .map((entry) => preserveReplacementCase(word, entry.word));
+    .map((entry) => ({
+      ...entry,
+      word: preserveReplacementCase(word, entry.word)
+    }));
 }
 
 function createUnknownWordMatches(text: string, dictionary: DictionaryData): RuleMatch[] {
@@ -261,15 +322,24 @@ function createUnknownWordMatches(text: string, dictionary: DictionaryData): Rul
       continue;
     }
 
+    const [bestSuggestion, secondSuggestion] = replacements;
+    const hasStrongBestSuggestion = bestSuggestion.confidence.score >= 0.78;
+    const hasClearLead = !secondSuggestion || bestSuggestion.confidence.score - secondSuggestion.confidence.score >= 0.12;
+
+    if (!hasStrongBestSuggestion || !hasClearLead) {
+      continue;
+    }
+
     seenOffsets.add(key);
     addIfNoOverlap(matches, createMatch(
       text,
       match.index,
       original.length,
-      replacements,
+      replacements.map((entry) => entry.word),
       "PT_BR_UNKNOWN_WORD",
       "Palavra possivelmente incorreta para pt-BR.",
-      "Sugestao baseada no dicionario local."
+      "Sugestao baseada no dicionario local.",
+      bestSuggestion.confidence
     ));
   }
 
@@ -377,6 +447,147 @@ function createSentenceCaseMatches(text: string): RuleMatch[] {
   return matches;
 }
 
+function clampConfidenceScore(score: number): number {
+  return Math.max(0.01, Math.min(score, 0.99));
+}
+
+function lexicalRiskPenalty(replacement: string, dictionary: DictionaryData): number {
+  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(normalizeDictionaryWord(replacement));
+  if (!lexicalEntry) {
+    return 0;
+  }
+
+  let penalty = 0;
+
+  if (lexicalEntry.autoCorrect === "review") {
+    penalty += 0.14;
+  }
+
+  if ((lexicalEntry.classes?.length || 0) > 1) {
+    penalty += 0.12;
+  }
+
+  if (lexicalEntry.irregular) {
+    penalty += 0.05;
+  }
+
+  if (lexicalEntry.tags?.some((tag) => ["tecnico", "produto", "marca", "plataforma", "interno", "ia", "desenvolvimento"].includes(tag))) {
+    penalty += 0.12;
+  }
+
+  return penalty;
+}
+
+function deriveMatchConfidence(match: RuleMatch, text: string, dictionary: DictionaryData): MatchConfidence {
+  if (match.confidence) {
+    return match.confidence;
+  }
+
+  const original = text.slice(match.offset, match.offset + match.length);
+  const primaryReplacement = match.replacements[0]?.value || "";
+  const replacementPenalty = lexicalRiskPenalty(primaryReplacement, dictionary);
+  const hasMultipleSuggestions = match.replacements.length > 1;
+
+  if (match.rule.id === "PT_BR_REPEATED_WORD") {
+    return createConfidence("high", 0.98, "repeticao literal detectada");
+  }
+
+  if (match.rule.id === "PT_BR_DOUBLE_SPACE") {
+    return createConfidence("high", 0.99, "padrao mecanico de espaco duplicado");
+  }
+
+  if (match.rule.id === "PT_BR_SPACE_BEFORE_PUNCTUATION") {
+    return createConfidence("high", 0.98, "padrao mecanico de pontuacao");
+  }
+
+  if (match.rule.id === "PT_BR_SENTENCE_CASE") {
+    return createConfidence("high", 0.94, "regra ortografica simples de inicio de frase");
+  }
+
+  if (match.rule.id.startsWith("PT_BR_PUNCTUATION_")) {
+    let score = 0.88;
+    if (match.rule.id.includes("FINAL_")) {
+      score = 0.7;
+    }
+    if (match.rule.id.includes("GREETING_NAME") || match.rule.id.includes("INITIAL_MARKER")) {
+      score = 0.9;
+    }
+    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "heuristica de pontuacao recorrente");
+  }
+
+  if (match.rule.id === "PT_BR_SIMPLE_SYNTAX_PATTERN") {
+    return createConfidence("low", 0.42, "padrao sintatico heuristico e sensivel a contexto");
+  }
+
+  if (match.rule.id === "PT_BR_SIMPLE_VERBAL_AGREEMENT") {
+    let score = 0.78;
+    if (match.length <= 3) {
+      score -= 0.08;
+    }
+    return createConfidence(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia verbal por heuristica local");
+  }
+
+  if (match.rule.id === "PT_BR_SIMPLE_NOMINAL_AGREEMENT") {
+    let score = 0.74;
+    if (match.length <= 3) {
+      score -= 0.08;
+    }
+    return createConfidence(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia nominal por heuristica local");
+  }
+
+  if (match.rule.id.startsWith("PT_BR_CONTEXT_") || match.rule.id.includes("CONTEXT")) {
+    let score = 0.88;
+    if (hasMultipleSuggestions) {
+      score -= 0.08;
+    }
+    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
+  }
+
+  if (match.rule.issueType === "style") {
+    let score = 0.76;
+    if (hasMultipleSuggestions) {
+      score -= 0.06;
+    }
+    if (match.length >= 12) {
+      score -= 0.04;
+    }
+    return createConfidence(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "ajuste de frase ou estilo");
+  }
+
+  if (match.rule.id === "PT_BR_SIMPLE_REPLACE") {
+    let score = 0.9;
+    if (hasMultipleSuggestions) {
+      score -= 0.1;
+    }
+    if (original.length <= 3) {
+      score -= 0.12;
+    }
+    if (Math.abs(primaryReplacement.length - original.length) >= 3) {
+      score -= 0.08;
+    }
+    score -= replacementPenalty;
+    return createConfidence(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "substituicao lexical direta");
+  }
+
+  if (match.rule.issueType === "grammar") {
+    return createConfidence("medium", 0.72, "heuristica gramatical");
+  }
+
+  return createConfidence("high", 0.9, "confianca padrao");
+}
+
+function shouldExposeMatch(match: RuleMatch): boolean {
+  if (match.replacements.length) {
+    return true;
+  }
+
+  if (match.confidence?.level === "low") {
+    return false;
+  }
+
+  return true;
+}
+
 export function checkText(text: string, replacements: ReplacementEntry[], dictionary: DictionaryData): CheckResult {
   const replacementMatches = createReplacementMatches(text, replacements);
   const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
@@ -385,7 +596,14 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
   const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary);
   const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary);
   const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
-  const protectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches, ...verbalAgreementMatches, ...nominalAgreementMatches, ...syntaxPatternMatches];
+  const baseProtectedMatches = [...replacementMatches, ...dictionaryMistakeMatches, ...phraseRuleMatches, ...contextRuleMatches, ...verbalAgreementMatches, ...nominalAgreementMatches, ...syntaxPatternMatches];
+  const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text).filter((candidate) => (
+    !baseProtectedMatches.some((existing) => (
+      candidate.offset < existing.offset + existing.length
+      && existing.offset < candidate.offset + candidate.length
+    ))
+  ));
+  const protectedMatches = [...baseProtectedMatches, ...punctuationHeuristicMatches];
   const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => (
     !protectedMatches.some((existing) => (
       candidate.offset < existing.offset + existing.length
@@ -401,12 +619,19 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
     ...verbalAgreementMatches,
     ...nominalAgreementMatches,
     ...syntaxPatternMatches,
+    ...punctuationHeuristicMatches,
     ...unknownWordMatches,
     ...createRepeatedWordMatches(text),
     ...createDoubleSpaceMatches(text),
     ...createSpaceBeforePunctuationMatches(text),
     ...createSentenceCaseMatches(text)
-  ].sort((left, right) => left.offset - right.offset || left.length - right.length);
+  ]
+    .map((match) => ({
+      ...match,
+      confidence: deriveMatchConfidence(match, text, dictionary)
+    }))
+    .filter((match) => shouldExposeMatch(match))
+    .sort((left, right) => left.offset - right.offset || left.length - right.length);
 
   return {
     language: {
