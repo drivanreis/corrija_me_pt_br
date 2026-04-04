@@ -1071,6 +1071,8 @@ function createSimpleVerbalAgreementMatches(text, dictionary) {
 
 // src/core/engine.ts
 var preparedReplacementIndexCache = /* @__PURE__ */ new WeakMap();
+var checkResultCache = /* @__PURE__ */ new Map();
+var MAX_CHECK_RESULT_CACHE_SIZE = 512;
 function createConfidence(level, score, reason) {
   return {
     level,
@@ -1762,8 +1764,49 @@ function collapseOverlappingMatches(matches) {
   }
   return selected.sort((left, right) => left.offset - right.offset || left.length - right.length);
 }
+function finalizeMatches(text, matches, dictionary) {
+  const visibleMatches = collapseOverlappingMatches(matches.map((match) => ({
+    ...match,
+    confidence: deriveMatchConfidence(match, text, dictionary)
+  })).filter((match) => shouldExposeMatch(match)));
+  return {
+    language: {
+      name: "Portuguese (Brazil)",
+      code: "pt-BR",
+      detectedLanguage: {
+        name: "Portuguese (Brazil)",
+        code: "pt-BR",
+        confidence: 0.99
+      }
+    },
+    matches: visibleMatches
+  };
+}
+function storeCheckResultInCache(text, result) {
+  if (checkResultCache.has(text)) {
+    checkResultCache.delete(text);
+  }
+  checkResultCache.set(text, result);
+  if (checkResultCache.size <= MAX_CHECK_RESULT_CACHE_SIZE) {
+    return;
+  }
+  const oldestKey = checkResultCache.keys().next().value;
+  if (typeof oldestKey === "string") {
+    checkResultCache.delete(oldestKey);
+  }
+}
 function checkText(text, replacements, dictionary) {
+  const cached = checkResultCache.get(text);
+  if (cached) {
+    return cached;
+  }
   const replacementMatches = createReplacementMatches(text, replacements);
+  const exactWholeTextReplacementMatches = replacementMatches.filter((match) => match.offset === 0 && match.length === text.length);
+  if (exactWholeTextReplacementMatches.length) {
+    const exactResult = finalizeMatches(text, exactWholeTextReplacementMatches, dictionary);
+    storeCheckResultInCache(text, exactResult);
+    return exactResult;
+  }
   const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
   const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
   const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
@@ -1809,19 +1852,9 @@ function checkText(text, replacements, dictionary) {
     ...match,
     confidence: deriveMatchConfidence(match, text, dictionary)
   })).filter((match) => shouldExposeMatch(match));
-  const visibleMatches = collapseOverlappingMatches(allMatches);
-  return {
-    language: {
-      name: "Portuguese (Brazil)",
-      code: "pt-BR",
-      detectedLanguage: {
-        name: "Portuguese (Brazil)",
-        code: "pt-BR",
-        confidence: 0.99
-      }
-    },
-    matches: visibleMatches
-  };
+  const result = finalizeMatches(text, allMatches, dictionary);
+  storeCheckResultInCache(text, result);
+  return result;
 }
 
 // src/backend/dictionary.ts
