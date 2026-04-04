@@ -328,6 +328,10 @@
         gap: 12px;
       }
 
+      .page-grid.single-paste-mode {
+        grid-template-columns: 1fr;
+      }
+
       .card {
         padding: 16px;
       }
@@ -371,6 +375,10 @@
         min-height: 140px;
         resize: vertical;
         scrollbar-width: none;
+      }
+
+      .page-grid.single-paste-mode textarea.field-input.large-paste-input {
+        min-height: clamp(560px, 74vh, 1080px);
       }
 
       .field-editor {
@@ -810,29 +818,29 @@
         </section>
 
         <section id="testPage" class="page-grid">
-          <article class="card">
+          <article id="titleCard" class="card">
             <h2 class="card-title">Input simples</h2>
             <p id="tituloHelp" class="card-description">Bom para validar frases curtas, títulos e descrições pequenas.</p>
             <label class="field-label" for="titulo">Titulo</label>
             <input id="titulo" class="field-input" type="text" />
           </article>
 
-          <article class="card">
-            <h2 class="card-title">Textarea</h2>
+          <article id="messageCard" class="card">
+            <h2 id="mensagemCardTitle" class="card-title">Textarea</h2>
             <p id="mensagemHelp" class="card-description">Ideal para testar parágrafos maiores e várias correções em sequência.</p>
-            <label class="field-label" for="mensagem">Mensagem</label>
+            <label id="mensagemLabel" class="field-label" for="mensagem">Mensagem</label>
             <textarea id="mensagem" class="field-input"></textarea>
           </article>
 
-          <article class="card">
+          <article id="editorCard" class="card">
             <h2 class="card-title">Campo contenteditable</h2>
             <p id="editorHelp" class="card-description">Esse formato se aproxima mais de vários editores ricos usados na web.</p>
             <label class="field-label" for="editor">Editor livre</label>
             <div id="editor" class="field-editor" contenteditable="true"></div>
           </article>
 
-          <div class="two-columns">
-            <article class="card">
+          <div id="secondaryCards" class="two-columns">
+            <article id="formCard" class="card">
               <h2 class="card-title">Formulario curto</h2>
               <p id="formHelp" class="card-description">Campos pequenos ajudam a validar foco e troca entre inputs.</p>
               <label class="field-label" for="nome">Nome do anuncio</label>
@@ -842,7 +850,7 @@
               <input id="cidade" class="field-input" type="text" />
             </article>
 
-            <article class="card">
+            <article id="checklistCard" class="card">
               <h2 class="card-title">Checklist rapido</h2>
               <p id="checklistHelp" class="card-description">Use esta lista para revisar os cenarios mais importantes desta etapa.</p>
               <ul id="checklistItems" class="checklist"></ul>
@@ -1103,47 +1111,51 @@ context_rules.json phrase_rules.json`,
         },
         {
           id: 5,
-          name: "Complexo",
-          hint: "Fase 5: casos difíceis. Repetição acidental, palavras parecidas, confusão sonora e contexto enganoso.",
-          tituloHelp: "Aqui o objetivo é medir se o corretor vai além do dicionário e começa a entender ambiguidades reais.",
-          mensagemHelp: "A fase final agora mistura erro ortográfico, repetição, homófonos e frases que parecem corretas à primeira vista.",
-          editorHelp: "Use esta etapa para enxergar onde a extensão ainda troca palavras parecidas sem compreender o sentido da frase.",
-          formHelp: "Os campos curtos também entram em território ambíguo, com trocas sonoras e contexto semântico.",
-          titulo: "Teste avançado de pouco poço e outras confuzões",
+          name: "Texto longo",
+          layout: "single_paste",
+          activeFields: ["mensagem"],
+          hint: "Fase 5: texto longo. Cole um bloco inteiro, com densidade real de erros, e veja a extensão trabalhar em uma massa grande de texto.",
+          tituloHelp: "Nesta etapa os campos curtos saem de cena para abrir espaço ao texto corrido.",
+          mensagemTitle: "Colar texto completo",
+          mensagemLabel: "Texto grande para colagem",
+          mensagemHelp: "Use este campo para colar um texto bem longo, do tamanho de duas páginas A4 carregadas. A etapa final foi feita para esse teste integral.",
+          editorHelp: "Nesta etapa o editor livre fica oculto para concentrar o teste em um texto único.",
+          formHelp: "Nesta etapa o formulário curto fica oculto para liberar espaço ao bloco principal.",
+          titulo: "",
           mensagem:
-`Se eu posso, voco pode?
-E se eu cavar um um poço, você cava outro pouco?
-Quem concerto o texto tambem concerta a logica ou só troca palavra parecida por outra mais famosa?
-As vezes a frase fica quase certa, mais ainda errada no sentido.`,
-          editor:
-`Eu quiz dizer que agente pode rever isso depois, mais nao agora. Se ele trouxe o cesto na sexta, porque no texto aparece sexto? E quando eu falo sessão de teste, a extesão vai sugerir seção, cessão ou vai entender o contexto?`,
-          nome: "Correção de cesto sexto e sessão seção",
-          cidade: "Curitiba PR",
+`Prezados clientes, estamo preparando uma apresentação completa do nosso serviço de revisão textual para empresas que precisan publicar conteudo com rapidez e confiança. A proposta foi pensada para times que escrevem muito, revisam pouco e acabam publicando textos com erro de ortografia, acentuaçao, concordancia e pontuaçao em paginas institucionais, anuncios, comunicados e materiais interno.
+
+Nos ultimos mêses, percebemos que varias equipes produzem textos longos em editores diferentes, copiam trechos de documentos antigos, colam tudo em um unico campo e seguem adiante sem uma revisão final adequada. Isso gera retrabalho, passa uma impressão amadora e, em alguns casos, compromete até a compreensão da mensagem.
+
+Se o corretor estiver funcionando bem, ele deve conseguir lidar com esse tipo de bloco extenso sem travar, sem perder o contexto entre uma linha e outra e sem transformar termos validos em falsas correções. A ideia aqui e simular um uso real, com muito texto, varios tipos de erro e pouca paciencia do usuario para revisar tudo manualmente.`,
+          editor: "",
+          nome: "",
+          cidade: "",
           expected: {
-            titulo: "Teste avançado de pouco, poço e outras confusões",
+            titulo: "",
             mensagem:
-`Se eu posso, você pode?
-E se eu cavar um poço, você cava outro poço?
-Quem conserta o texto também conserta a lógica ou só troca palavra parecida por outra mais famosa?
-Às vezes a frase fica quase certa, mas ainda errada no sentido.`,
-            editor:
-`Eu quis dizer que a gente pode rever isso depois, mas não agora. Se ele trouxe o cesto na sexta, por que no texto aparece sexto? E quando eu falo sessão de teste, a extensão vai sugerir seção, cessão ou vai entender o contexto?`,
-            nome: "Correção de cesto, sexto e sessão, seção",
-            cidade: "Curitiba, PR"
+`Prezados clientes, estamos preparando uma apresentação completa do nosso serviço de revisão textual para empresas que precisam publicar conteúdo com rapidez e confiança. A proposta foi pensada para times que escrevem muito, revisam pouco e acabam publicando textos com erros de ortografia, acentuação, concordância e pontuação em páginas institucionais, anúncios, comunicados e materiais internos.
+
+Nos últimos meses, percebemos que várias equipes produzem textos longos em editores diferentes, copiam trechos de documentos antigos, colam tudo em um único campo e seguem adiante sem uma revisão final adequada. Isso gera retrabalho, passa uma impressão amadora e, em alguns casos, compromete até a compreensão da mensagem.
+
+Se o corretor estiver funcionando bem, ele deve conseguir lidar com esse tipo de bloco extenso sem travar, sem perder o contexto entre uma linha e outra e sem transformar termos válidos em falsas correções. A ideia aqui é simular um uso real, com muito texto, vários tipos de erro e pouca paciência do usuário para revisar tudo manualmente.`,
+            editor: "",
+            nome: "",
+            cidade: ""
           },
           issues: {
-            titulo: ["ortografia", "pontuação"],
-            mensagem: ["contexto", "repetição", "ortografia", "acentuação"],
-            editor: ["contexto", "homófonos", "ortografia", "acentuação"],
-            nome: ["homófonos", "pontuação"],
-            cidade: ["localização"]
+            titulo: [],
+            mensagem: ["contexto", "ortografia", "acentuação", "concordância", "pontuação"],
+            editor: [],
+            nome: [],
+            cidade: []
           },
           checklist: [
-            "A extensão remove repetições acidentais como 'um um'?",
-            "Ela distingue quando uma palavra parecida muda totalmente o sentido da frase?",
-            "Homófonos como 'sessão', 'seção' e 'cessão' geram ajuda útil ou ruído?",
-            "O corretor evita trocar só por semelhança sonora?",
-            "Fica claro onde a fundação linguística ainda precisa crescer?"
+            "O texto longo permanece estável enquanto você cola um bloco grande?",
+            "A extensão continua sugerindo correções sem perder desempenho?",
+            "Os erros aparecem distribuídos pelo texto, e não só no começo?",
+            "O corretor preserva estrutura, parágrafos e termos válidos?",
+            "A leitura final transmite confiança para um uso real?"
           ]
         }
       ];
@@ -1184,6 +1196,12 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
       const reportRunId = document.getElementById("reportRunId");
       const exportJsonButton = document.getElementById("exportJsonButton");
       const exportJsonButtonFooter = document.getElementById("exportJsonButtonFooter");
+      const titleCard = document.getElementById("titleCard");
+      const messageCard = document.getElementById("messageCard");
+      const messageCardTitle = document.getElementById("mensagemCardTitle");
+      const messageLabel = document.getElementById("mensagemLabel");
+      const editorCard = document.getElementById("editorCard");
+      const secondaryCards = document.getElementById("secondaryCards");
       const titleInput = document.getElementById("titulo");
       const messageTextarea = document.getElementById("mensagem");
       const editorField = document.getElementById("editor");
@@ -1345,16 +1363,58 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
         });
       }
 
+      function dedupeTestCases(testCases) {
+        const seen = new Set();
+        return testCases.filter((testCase) => {
+          const wrong = String(testCase?.errado || "").trim();
+          const right = String(testCase?.correto || "").trim();
+          const key = `${wrong}|||${right}`;
+          if (!wrong || !right || seen.has(key)) {
+            return false;
+          }
+          seen.add(key);
+          return true;
+        });
+      }
+
+      function selectBatteryCases(curatedCases, generatedCases) {
+        const requiredCases = fallbackPhases.length * 5;
+        const curatedPool = dedupeTestCases(curatedCases);
+        const generatedPool = dedupeTestCases(generatedCases).filter((candidate) => {
+          const key = `${String(candidate?.errado || "").trim()}|||${String(candidate?.correto || "").trim()}`;
+          return !curatedPool.some((curated) => `${String(curated?.errado || "").trim()}|||${String(curated?.correto || "").trim()}` === key);
+        });
+
+        if (curatedPool.length >= requiredCases) {
+          return {
+            selectedCases: curatedPool,
+            mode: "curated-only"
+          };
+        }
+
+        return {
+          selectedCases: [...curatedPool, ...generatedPool],
+          mode: curatedPool.length ? "curated-priority" : "generated-fallback"
+        };
+      }
+
       async function initializeDynamicBattery() {
         updateLoadingStatus("Lendo casos curados e gerados da base JSON.");
         const [curatedCases, generatedCases] = await Promise.all([
           fetchJsonArray(["./data/test-cases/curated.json", "../data/test-cases/curated.json"]),
           fetchJsonArray(["./data/test-cases/generated.json", "../data/test-cases/generated.json"])
         ]);
-        const mergedCases = [...curatedCases, ...generatedCases];
+        const { selectedCases, mode } = selectBatteryCases(curatedCases, generatedCases);
 
-        updateLoadingStatus("Montando a bateria desta execução.");
-        phases = buildDynamicPhasesFromCases(mergedCases);
+        if (mode === "curated-only") {
+          updateLoadingStatus("Montando a bateria com a base curada.");
+        } else if (mode === "curated-priority") {
+          updateLoadingStatus("Montando a bateria com prioridade para a base curada e complemento gerado.");
+        } else {
+          updateLoadingStatus("Montando a bateria com casos gerados por fallback.");
+        }
+
+        phases = buildDynamicPhasesFromCases(selectedCases);
         totalPages = phases.length + 1;
 
         currentPageIndex = 0;
@@ -1648,6 +1708,12 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
         });
       }
 
+      function getPhaseActiveFields(phase) {
+        return Array.isArray(phase.activeFields) && phase.activeFields.length
+          ? phase.activeFields
+          : ["titulo", "mensagem", "editor", "nome", "cidade"];
+      }
+
       function buildPhaseDots(pageIndex) {
         phaseDots.innerHTML = "";
         for (let index = 0; index < totalPages; index += 1) {
@@ -1714,7 +1780,7 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
       function buildReportData() {
         const phasesReport = phases.map((phase, index) => {
           const attempt = testSession.attempts[index] || {};
-          const fields = ["titulo", "mensagem", "editor", "nome", "cidade"];
+          const fields = getPhaseActiveFields(phase);
           const fieldReports = fields.map((field) => {
             const original = phase[field];
             const actual = attempt[field] || phase[field];
@@ -1885,12 +1951,16 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
 
       function applyPhase(index) {
         const phase = phases[index];
+        const activeFields = getPhaseActiveFields(phase);
+        const singlePasteMode = phase.layout === "single_paste";
         hintText.textContent = phase.hint;
         brandTitle.textContent = `Teste ${phase.id}: ${phase.name}`;
         brandSubtitle.textContent = "Bateria progressiva do corriga_me_pt_br";
         phaseStatusCaption.textContent = "Teste";
         phaseStatusLabel.textContent = `${phase.id} de ${totalPages}`;
         document.getElementById("tituloHelp").textContent = phase.tituloHelp;
+        messageCardTitle.textContent = phase.mensagemTitle || "Textarea";
+        messageLabel.textContent = phase.mensagemLabel || "Mensagem";
         document.getElementById("mensagemHelp").textContent = phase.mensagemHelp;
         document.getElementById("editorHelp").textContent = phase.editorHelp;
         document.getElementById("formHelp").textContent = phase.formHelp;
@@ -1903,6 +1973,12 @@ Quem conserta o texto também conserta a lógica ou só troca palavra parecida p
         nomeInput.value = attempt?.nome || phase.nome;
         cidadeInput.value = attempt?.cidade || phase.cidade;
         fillChecklist(phase.checklist);
+        testPage.classList.toggle("single-paste-mode", singlePasteMode);
+        messageTextarea.classList.toggle("large-paste-input", singlePasteMode);
+        titleCard.classList.toggle("hidden", !activeFields.includes("titulo"));
+        messageCard.classList.toggle("hidden", !activeFields.includes("mensagem"));
+        editorCard.classList.toggle("hidden", !activeFields.includes("editor"));
+        secondaryCards.classList.toggle("hidden", !activeFields.includes("nome") && !activeFields.includes("cidade"));
         recordAppReaction("phase_rendered", { phase_id: phase.id, phase_name: phase.name });
 
         nextPhaseFooterButton.classList.toggle("hidden", index === phases.length - 1);
