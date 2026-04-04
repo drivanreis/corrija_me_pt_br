@@ -74,4 +74,19 @@
       });
     });
   });
+  chrome.tabs.onActivated.addListener(({ tabId }) => {
+    void chrome.tabs.get(tabId).then((tab) => {
+      if (!tab.url) {
+        return;
+      }
+      return hasOriginPermission(tab.url).then((allowed) => {
+        if (!allowed) {
+          return;
+        }
+        return injectIntoTab(tabId).catch(() => {
+        });
+      });
+    }).catch(() => {
+    });
+  });
 })();

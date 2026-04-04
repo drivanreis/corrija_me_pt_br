@@ -77,7 +77,6 @@ const ignoredMatchSignatures = new Map<number, Set<string>>();
 let latestHiddenWeakCount = 0;
 let highlightedSuggestionIndex = -1;
 let suggestionAnchorIndex = -1;
-let retainedClientMatches: CheckMatch[] = [];
 
 const suggestionMenu = document.createElement("section");
 suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
@@ -128,7 +127,6 @@ function activateElement(element: HTMLElement | HTMLInputElement | HTMLTextAreaE
     latestMatches = [];
     latestHiddenWeakCount = 0;
     latestText = getText(element);
-    retainedClientMatches = [];
     highlightedSuggestionIndex = -1;
     suggestionAnchorIndex = -1;
     hideSuggestionMenu();
@@ -847,7 +845,7 @@ function expandCompositeMatches(matches: CheckMatch[], text: string): CheckMatch
     const primaryReplacement = Array.isArray(match.replacements) ? match.replacements[0]?.value : "";
     const sourceText = getMatchText(match, text);
 
-    if (!primaryReplacement || match.length < 16 || !/\s/.test(sourceText) || !/\s/.test(primaryReplacement)) {
+    if (!primaryReplacement || !/\s/.test(sourceText) || !/\s/.test(primaryReplacement)) {
       expanded.push(match);
       return;
     }
@@ -878,17 +876,6 @@ function expandCompositeMatches(matches: CheckMatch[], text: string): CheckMatch
   return expanded;
 }
 
-function isMatchStillApplicable(match: CheckMatch, text: string): boolean {
-  const sourceText = getMatchText(match, text);
-  if (!sourceText) {
-    return false;
-  }
-
-  const start = Math.max(0, Math.min(text.length, match.offset));
-  const end = Math.max(start, Math.min(text.length, match.offset + match.length));
-  return text.slice(start, end) === sourceText;
-}
-
 function dedupeMatches(matches: CheckMatch[], text: string): CheckMatch[] {
   const seen = new Set<string>();
   const deduped: CheckMatch[] = [];
@@ -907,11 +894,7 @@ function dedupeMatches(matches: CheckMatch[], text: string): CheckMatch[] {
 
 function prepareVisibleMatches(matches: CheckMatch[]): CheckMatch[] {
   const expanded = expandCompositeMatches(matches, latestText);
-  retainedClientMatches = dedupeMatches(
-    retainedClientMatches.filter((match) => isMatchStillApplicable(match, latestText)),
-    latestText
-  );
-  const merged = dedupeMatches([...expanded, ...retainedClientMatches], latestText);
+  const merged = dedupeMatches(expanded, latestText);
   const visible = merged.filter((match) => !shouldHideWeakMatch(match));
   latestHiddenWeakCount = Math.max(0, merged.length - visible.length);
   return visible.sort(compareMatchesByUiPriority);
@@ -1305,17 +1288,6 @@ function applySingleCorrection(index: number, replacement: string): void {
     return;
   }
   const match = latestMatches[index];
-  if (match.compositeGroupId) {
-    const delta = replacement.length - match.length;
-    const siblingMatches = latestMatches
-      .filter((candidate, candidateIndex) => candidateIndex !== index && candidate.compositeGroupId === match.compositeGroupId)
-      .map((candidate) => ({
-        ...candidate,
-        offset: candidate.offset > match.offset ? candidate.offset + delta : candidate.offset
-      }))
-      .filter((candidate) => isMatchStillApplicable(candidate, replaceTextRange(getText(activeElement), match.offset, match.length, replacement)));
-    retainedClientMatches = dedupeMatches([...retainedClientMatches, ...siblingMatches], replaceTextRange(getText(activeElement), match.offset, match.length, replacement));
-  }
   if (activeElement instanceof HTMLElement && (activeElement.isContentEditable || activeElement.getAttribute("role") === "textbox")) {
     const applied = applyReplacementToContentEditable(activeElement, match, replacement);
     if (!applied) {

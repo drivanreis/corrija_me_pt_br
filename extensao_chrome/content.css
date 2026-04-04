@@ -63,13 +63,15 @@
 
 .corrija-me-pt-br-menu-control {
   flex: 0 0 auto;
-  border: 1px solid rgba(15, 23, 42, 0.14);
+  border: 1px solid #2882E8;
   border-radius: 999px;
   min-width: 28px;
   height: 28px;
   padding: 0 7px;
   cursor: pointer;
   font: 800 11px/1 "Noto Sans", "Segoe UI", sans-serif;
+  background: #2882E8;
+  color: #fff;
 }
 
 .corrija-me-pt-br-menu-confidence {
@@ -80,32 +82,8 @@
   white-space: nowrap;
 }
 
-.corrija-me-pt-br-menu-confidence-high {
-  background: #d9f99d;
-  color: #365314;
-}
-
-.corrija-me-pt-br-menu-confidence-medium {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.corrija-me-pt-br-menu-confidence-low,
-.corrija-me-pt-br-menu-confidence-default {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-.corrija-me-pt-br-menu-control-dismiss,
-.corrija-me-pt-br-menu-control-info {
-  background: rgba(148, 163, 184, 0.16);
-  color: #334155;
-}
-
-.corrija-me-pt-br-menu-control-dismiss:hover,
-.corrija-me-pt-br-menu-control-info:hover {
-  background: rgba(148, 163, 184, 0.28);
-  color: #0f172a;
+.corrija-me-pt-br-menu-control:hover:not(:disabled) {
+  filter: brightness(1.06);
 }
 
 .corrija-me-pt-br-menu-control:disabled {

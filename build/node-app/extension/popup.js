@@ -218,8 +218,32 @@
       return null;
     }
   }
+  async function ensureContentScriptActive() {
+    const context = await getActiveTabContext();
+    if (!context?.id || !context.originPattern) {
+      return false;
+    }
+    const hasGlobalAccess = await chrome.permissions.contains({
+      origins: ["http://*/*", "https://*/*"]
+    });
+    const granted = hasGlobalAccess || await chrome.permissions.contains({ origins: [context.originPattern] });
+    if (!granted) {
+      return false;
+    }
+    const response = await chrome.runtime.sendMessage({
+      type: "corrija-me-pt-br:inject-tab",
+      tabId: context.id
+    });
+    return response?.ok === true;
+  }
   async function refreshLiveState() {
-    const response = await sendToActiveTab({ type: "corrija-me-pt-br:get-state" });
+    let response = await sendToActiveTab({ type: "corrija-me-pt-br:get-state" });
+    if (!response) {
+      const reinjected = await ensureContentScriptActive();
+      if (reinjected) {
+        response = await sendToActiveTab({ type: "corrija-me-pt-br:get-state" });
+      }
+    }
     renderLiveState(response?.state ?? null);
   }
   async function refreshSiteAccessUi() {
@@ -369,7 +393,9 @@
     setStatus("Testando conexao...");
     try {
       const serverUrl = await getServerUrl();
-      const response = await fetch(`${serverUrl}/v2/languages`);
+      const response = await fetch(`${serverUrl}/v2/languages`, {
+        signal: AbortSignal.timeout(5e3)
+      });
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }

@@ -179,8 +179,36 @@ async function sendToActiveTab(message: Record<string, unknown>): Promise<{ ok?:
   }
 }
 
+async function ensureContentScriptActive(): Promise<boolean> {
+  const context = await getActiveTabContext();
+  if (!context?.id || !context.originPattern) {
+    return false;
+  }
+
+  const hasGlobalAccess = await chrome.permissions.contains({
+    origins: ["http://*/*", "https://*/*"]
+  });
+  const granted = hasGlobalAccess || await chrome.permissions.contains({ origins: [context.originPattern] });
+  if (!granted) {
+    return false;
+  }
+
+  const response = await chrome.runtime.sendMessage({
+    type: "corrija-me-pt-br:inject-tab",
+    tabId: context.id
+  }) as { ok?: boolean; error?: string } | undefined;
+
+  return response?.ok === true;
+}
+
 async function refreshLiveState(): Promise<void> {
-  const response = await sendToActiveTab({ type: "corrija-me-pt-br:get-state" });
+  let response = await sendToActiveTab({ type: "corrija-me-pt-br:get-state" });
+  if (!response) {
+    const reinjected = await ensureContentScriptActive();
+    if (reinjected) {
+      response = await sendToActiveTab({ type: "corrija-me-pt-br:get-state" });
+    }
+  }
   renderLiveState(response?.state ?? null);
 }
 
@@ -362,7 +390,9 @@ async function testConnection(): Promise<void> {
   setStatus("Testando conexao...");
   try {
     const serverUrl = await getServerUrl();
-    const response = await fetch(`${serverUrl}/v2/languages`);
+    const response = await fetch(`${serverUrl}/v2/languages`, {
+      signal: AbortSignal.timeout(5000)
+    });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
