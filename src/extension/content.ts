@@ -3,7 +3,8 @@ import { getServerUrl, getSettings } from "./server-config.js";
 window.__corrijaMePtBrLoaded__ = true;
 
 const MIN_TEXT_LENGTH = 3;
-const CHECK_DEBOUNCE_MS = 1100;
+const CHECK_DEBOUNCE_MS = 300;
+const CHECK_REQUEST_TIMEOUT_MS = 4000;
 const TEXT_INPUT_TYPES = new Set(["text", "search", "email", "url", "tel"]);
 const HIGHLIGHT_NAME = "corrija-me-pt-br-issue";
 const supportsCustomHighlights = typeof CSS !== "undefined" && "highlights" in CSS;
@@ -853,7 +854,7 @@ function expandCompositeMatches(matches: CheckMatch[], text: string): CheckMatch
     const validGroups = buildTokenDiffGroups(tokenizeWithOffsets(sourceText), tokenizeWithOffsets(primaryReplacement))
       .slice(0, 6);
 
-    if (validGroups.length < 2) {
+    if (validGroups.length < 1) {
       expanded.push(match);
       return;
     }
@@ -1199,7 +1200,9 @@ async function analyzeActiveElement(manual = false): Promise<void> {
 
   const text = getText(activeElement);
   latestText = text;
-  hideSuggestionMenu();
+  if (!manual) {
+    hideSuggestionMenu();
+  }
 
   if (text.trim().length < MIN_TEXT_LENGTH) {
     latestMatches = [];
@@ -1248,7 +1251,8 @@ async function analyzeActiveElement(manual = false): Promise<void> {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
-      body: payload.toString()
+      body: payload.toString(),
+      signal: AbortSignal.timeout(CHECK_REQUEST_TIMEOUT_MS)
     });
 
     if (!response.ok) {
@@ -1288,6 +1292,10 @@ function applySingleCorrection(index: number, replacement: string): void {
     return;
   }
   const match = latestMatches[index];
+  const previousText = getText(activeElement);
+  const delta = replacement.length - match.length;
+  const updatedText = replaceTextRange(previousText, match.offset, match.length, replacement);
+
   if (activeElement instanceof HTMLElement && (activeElement.isContentEditable || activeElement.getAttribute("role") === "textbox")) {
     const applied = applyReplacementToContentEditable(activeElement, match, replacement);
     if (!applied) {
@@ -1295,10 +1303,27 @@ function applySingleCorrection(index: number, replacement: string): void {
     }
     latestText = getText(activeElement);
   } else {
-    const updatedText = replaceTextRange(getText(activeElement), match.offset, match.length, replacement);
     setText(activeElement, updatedText);
     latestText = updatedText;
   }
+
+  const optimisticMatches = latestMatches
+    .filter((_, matchIndex) => matchIndex !== index)
+    .map((candidate) => {
+      const sourceText = candidate.sourceText || getMatchText(candidate, previousText);
+      const nextOffset = candidate.offset > match.offset ? candidate.offset + delta : candidate.offset;
+      return {
+        ...candidate,
+        offset: nextOffset,
+        sourceText
+      };
+    })
+    .filter((candidate) => {
+      const expectedSource = candidate.sourceText || "";
+      return expectedSource && getMatchText(candidate, latestText) === expectedSource;
+    });
+
+  renderResults(optimisticMatches);
   void analyzeActiveElement(true);
 }
 

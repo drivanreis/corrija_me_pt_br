@@ -75,7 +75,8 @@
   // src/extension/content.ts
   window.__corrijaMePtBrLoaded__ = true;
   var MIN_TEXT_LENGTH = 3;
-  var CHECK_DEBOUNCE_MS = 1100;
+  var CHECK_DEBOUNCE_MS = 300;
+  var CHECK_REQUEST_TIMEOUT_MS = 4e3;
   var TEXT_INPUT_TYPES = /* @__PURE__ */ new Set(["text", "search", "email", "url", "tel"]);
   var HIGHLIGHT_NAME = "corrija-me-pt-br-issue";
   var supportsCustomHighlights = typeof CSS !== "undefined" && "highlights" in CSS;
@@ -728,7 +729,7 @@
         return;
       }
       const validGroups = buildTokenDiffGroups(tokenizeWithOffsets(sourceText), tokenizeWithOffsets(primaryReplacement)).slice(0, 6);
-      if (validGroups.length < 2) {
+      if (validGroups.length < 1) {
         expanded.push(match);
         return;
       }
@@ -1023,7 +1024,9 @@
     }
     const text = getText(activeElement);
     latestText = text;
-    hideSuggestionMenu();
+    if (!manual) {
+      hideSuggestionMenu();
+    }
     if (text.trim().length < MIN_TEXT_LENGTH) {
       latestMatches = [];
       latestHiddenWeakCount = 0;
@@ -1066,7 +1069,8 @@
         headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
         },
-        body: payload.toString()
+        body: payload.toString(),
+        signal: AbortSignal.timeout(CHECK_REQUEST_TIMEOUT_MS)
       });
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
@@ -1096,6 +1100,9 @@
       return;
     }
     const match = latestMatches[index];
+    const previousText = getText(activeElement);
+    const delta = replacement.length - match.length;
+    const updatedText = replaceTextRange(previousText, match.offset, match.length, replacement);
     if (activeElement instanceof HTMLElement && (activeElement.isContentEditable || activeElement.getAttribute("role") === "textbox")) {
       const applied = applyReplacementToContentEditable(activeElement, match, replacement);
       if (!applied) {
@@ -1103,10 +1110,22 @@
       }
       latestText = getText(activeElement);
     } else {
-      const updatedText = replaceTextRange(getText(activeElement), match.offset, match.length, replacement);
       setText(activeElement, updatedText);
       latestText = updatedText;
     }
+    const optimisticMatches = latestMatches.filter((_, matchIndex) => matchIndex !== index).map((candidate) => {
+      const sourceText = candidate.sourceText || getMatchText(candidate, previousText);
+      const nextOffset = candidate.offset > match.offset ? candidate.offset + delta : candidate.offset;
+      return {
+        ...candidate,
+        offset: nextOffset,
+        sourceText
+      };
+    }).filter((candidate) => {
+      const expectedSource = candidate.sourceText || "";
+      return expectedSource && getMatchText(candidate, latestText) === expectedSource;
+    });
+    renderResults(optimisticMatches);
     void analyzeActiveElement(true);
   }
   function applyAllCorrections() {
