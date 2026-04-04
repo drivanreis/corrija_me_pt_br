@@ -8,7 +8,7 @@ const grantAccessButton = document.getElementById("grantAccessButton") as HTMLBu
 const retryAccessButton = document.getElementById("retryAccessButton") as HTMLButtonElement | null;
 const activateButton = document.getElementById("activateButton") as HTMLButtonElement | null;
 const status = document.getElementById("status") as HTMLDivElement | null;
-const serverUrlLabel = document.getElementById("serverUrl") as HTMLSpanElement | null;
+const serverUrlLabel = document.getElementById("serverUrl") as HTMLInputElement | null;
 const currentSiteLabel = document.getElementById("currentSite") as HTMLInputElement | null;
 const sitePermissionLabel = document.getElementById("sitePermission") as HTMLInputElement | null;
 const globalPermissionLabel = document.getElementById("globalPermission") as HTMLInputElement | null;
@@ -411,7 +411,7 @@ async function testConnection(): Promise<void> {
 async function bootstrap(): Promise<void> {
   const settings = await getSettings();
   if (serverUrlLabel) {
-    serverUrlLabel.textContent = settings.serverUrl ?? await getServerUrl();
+    serverUrlLabel.value = settings.serverUrl ?? await getServerUrl();
   }
   if (autoCheckInput) {
     autoCheckInput.checked = settings.autoCheck;

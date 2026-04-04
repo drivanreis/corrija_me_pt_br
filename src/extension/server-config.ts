@@ -45,29 +45,31 @@ async function readPackagedServerUrl(): Promise<string> {
   return DEFAULT_SERVER_URL;
 }
 
+async function syncStoredServerUrl(serverUrl: string): Promise<void> {
+  if (!hasLiveExtensionContext()) {
+    return;
+  }
+
+  try {
+    await chrome.storage.local.set({ serverUrl });
+  } catch {
+    // Ignore persistence errors if the extension is being reloaded.
+  }
+}
+
 export async function getServerUrl(): Promise<string> {
   if (cachedServerUrl) {
     return cachedServerUrl;
   }
 
   const packagedServerUrl = await readPackagedServerUrl();
+  cachedServerUrl = packagedServerUrl;
   if (!hasLiveExtensionContext()) {
-    cachedServerUrl = packagedServerUrl;
     return packagedServerUrl;
   }
 
-  try {
-    const stored = await chrome.storage.local.get({ serverUrl: packagedServerUrl });
-    const serverUrl = typeof stored.serverUrl === "string" && stored.serverUrl.trim()
-      ? stored.serverUrl.trim()
-      : packagedServerUrl;
-
-    cachedServerUrl = serverUrl;
-    return serverUrl;
-  } catch {
-    cachedServerUrl = packagedServerUrl;
-    return packagedServerUrl;
-  }
+  await syncStoredServerUrl(packagedServerUrl);
+  return packagedServerUrl;
 }
 
 export async function getSettings(): Promise<ExtensionSettings> {
@@ -80,12 +82,11 @@ export async function getSettings(): Promise<ExtensionSettings> {
   }
 
   try {
-    const stored = await chrome.storage.local.get({ ...STORAGE_DEFAULTS, serverUrl: packagedServerUrl });
+    const stored = await chrome.storage.local.get({ autoCheck: STORAGE_DEFAULTS.autoCheck });
+    await syncStoredServerUrl(packagedServerUrl);
     return {
       autoCheck: stored.autoCheck !== false,
-      serverUrl: typeof stored.serverUrl === "string" && stored.serverUrl.trim()
-        ? stored.serverUrl.trim()
-        : packagedServerUrl
+      serverUrl: packagedServerUrl
     };
   } catch {
     return {
@@ -96,7 +97,7 @@ export async function getSettings(): Promise<ExtensionSettings> {
 }
 
 export async function saveSettings(settings: ExtensionSettings): Promise<void> {
-  const serverUrl = settings.serverUrl?.trim() || DEFAULT_SERVER_URL;
+  const serverUrl = settings.serverUrl?.trim() || await readPackagedServerUrl();
   cachedServerUrl = serverUrl;
   if (!hasLiveExtensionContext()) {
     return;

@@ -31,24 +31,26 @@
     }
     return DEFAULT_SERVER_URL;
   }
+  async function syncStoredServerUrl(serverUrl) {
+    if (!hasLiveExtensionContext()) {
+      return;
+    }
+    try {
+      await chrome.storage.local.set({ serverUrl });
+    } catch {
+    }
+  }
   async function getServerUrl() {
     if (cachedServerUrl) {
       return cachedServerUrl;
     }
     const packagedServerUrl = await readPackagedServerUrl();
+    cachedServerUrl = packagedServerUrl;
     if (!hasLiveExtensionContext()) {
-      cachedServerUrl = packagedServerUrl;
       return packagedServerUrl;
     }
-    try {
-      const stored = await chrome.storage.local.get({ serverUrl: packagedServerUrl });
-      const serverUrl = typeof stored.serverUrl === "string" && stored.serverUrl.trim() ? stored.serverUrl.trim() : packagedServerUrl;
-      cachedServerUrl = serverUrl;
-      return serverUrl;
-    } catch {
-      cachedServerUrl = packagedServerUrl;
-      return packagedServerUrl;
-    }
+    await syncStoredServerUrl(packagedServerUrl);
+    return packagedServerUrl;
   }
   async function getSettings() {
     const packagedServerUrl = await readPackagedServerUrl();
@@ -59,10 +61,11 @@
       };
     }
     try {
-      const stored = await chrome.storage.local.get({ ...STORAGE_DEFAULTS, serverUrl: packagedServerUrl });
+      const stored = await chrome.storage.local.get({ autoCheck: STORAGE_DEFAULTS.autoCheck });
+      await syncStoredServerUrl(packagedServerUrl);
       return {
         autoCheck: stored.autoCheck !== false,
-        serverUrl: typeof stored.serverUrl === "string" && stored.serverUrl.trim() ? stored.serverUrl.trim() : packagedServerUrl
+        serverUrl: packagedServerUrl
       };
     } catch {
       return {
