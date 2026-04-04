@@ -535,6 +535,21 @@ function createTerminalMatch(text, pattern, punctuation, ruleId, message, descri
     description
   ));
 }
+function createTerminalReplacementMatch(text, pattern, replacement, ruleId, message, description, matches) {
+  const match = pattern.exec(text);
+  if (!match || match.index === void 0) {
+    return;
+  }
+  addMatch(matches, createPunctuationMatch(
+    text,
+    match.index,
+    match[0].length,
+    replacement,
+    ruleId,
+    message,
+    description
+  ));
+}
 function createPunctuationHeuristicMatches(text) {
   const matches = [];
   const trimmed = text.trim();
@@ -613,11 +628,13 @@ function createPunctuationHeuristicMatches(text) {
     "Insere v\xEDrgula ap\xF3s 'Ent\xE3o' em retomada de frase.",
     matches
   );
+  const lower = trimmed.toLocaleLowerCase("pt-BR");
+  const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que", "voc\xEA"];
+  const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
+  const looksLikeQuestion = questionStarts.some((prefix) => lower.startsWith(prefix));
+  const looksLikeExclamation = exclamationStarts.some((prefix) => lower.startsWith(prefix));
   if (!/[?!.]\s*$/u.test(trimmed)) {
-    const lower = trimmed.toLocaleLowerCase("pt-BR");
-    const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que", "voc\xEA"];
-    const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
-    if (questionStarts.some((prefix) => lower.startsWith(prefix))) {
+    if (looksLikeQuestion) {
       createTerminalMatch(
         text,
         /([\p{L}\p{M}\d]+)\s*$/u,
@@ -627,7 +644,7 @@ function createPunctuationHeuristicMatches(text) {
         "Adiciona ponto de interroga\xE7\xE3o ao final da frase.",
         matches
       );
-    } else if (exclamationStarts.some((prefix) => lower.startsWith(prefix))) {
+    } else if (looksLikeExclamation) {
       createTerminalMatch(
         text,
         /([\p{L}\p{M}\d]+)\s*$/u,
@@ -638,6 +655,16 @@ function createPunctuationHeuristicMatches(text) {
         matches
       );
     }
+  } else if (looksLikeQuestion && /\.\s*$/u.test(trimmed)) {
+    createTerminalReplacementMatch(
+      text,
+      /\.\s*$/u,
+      "?",
+      "PT_BR_PUNCTUATION_FINAL_QUESTION",
+      "A frase parece pedir ponto de interroga\xE7\xE3o.",
+      "Substitui ponto final por ponto de interroga\xE7\xE3o ao final da frase.",
+      matches
+    );
   }
   return matches;
 }
@@ -1096,7 +1123,8 @@ function overlapsTechnicalSpan(offset, length, spans) {
 }
 function createReplacementMatches(text, entries) {
   const matches = [];
-  for (const entry of entries) {
+  const prioritizedEntries = [...entries].sort((left, right) => right.from.length - left.from.length || right.replacements.join("|").length - left.replacements.join("|").length);
+  for (const entry of prioritizedEntries) {
     const pattern = isWordLike(entry.from) ? createWholeWordPattern(entry.from) : new RegExp(entry.from, "giu");
     const textMatches = text.matchAll(pattern);
     for (const match of textMatches) {
@@ -1589,8 +1617,11 @@ function deriveMatchConfidence(match, text, dictionary) {
   }
   if (match.rule.id.startsWith("PT_BR_PUNCTUATION_")) {
     let score = 0.88;
+    if (match.rule.id === "PT_BR_PUNCTUATION_POREM") {
+      score = 0.94;
+    }
     if (match.rule.id.includes("FINAL_")) {
-      score = 0.7;
+      score = 0.84;
     }
     if (match.rule.id.includes("GREETING_NAME") || match.rule.id.includes("INITIAL_MARKER")) {
       score = 0.9;

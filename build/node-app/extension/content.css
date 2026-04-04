@@ -5,31 +5,90 @@
 .corrija-me-pt-br-menu {
   position: fixed;
   z-index: 2147483646;
-  width: max-content;
-  min-width: 0;
-  max-width: min(220px, calc(100vw - 24px));
-  padding: 6px;
-  border-radius: 14px;
+  width: min(360px, calc(100vw - 24px));
+  max-height: min(72vh, 760px);
+  overflow: auto;
+  padding: 10px;
+  border-radius: 18px;
   border: 1px solid rgba(15, 23, 42, 0.12);
   background: rgba(255, 252, 246, 0.98);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.18);
   backdrop-filter: blur(14px);
   font-family: "Noto Sans", "Segoe UI", sans-serif;
   color: #1f2937;
+}
+
+.corrija-me-pt-br-menu-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.corrija-me-pt-br-menu-panel-title {
+  font: 800 15px/1.2 "Noto Sans", "Segoe UI", sans-serif;
+  color: #0f172a;
+}
+
+.corrija-me-pt-br-menu-panel-meta {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: rgba(15, 118, 110, 0.12);
+  color: #115e59;
+  font: 700 11px/1 "Noto Sans", "Segoe UI", sans-serif;
+}
+
+.corrija-me-pt-br-menu-panel-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.corrija-me-pt-br-menu-bulk-button {
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0f766e 0%, #155e75 100%);
+  color: #fff;
+  padding: 9px 12px;
+  font: 800 12px/1 "Noto Sans", "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.corrija-me-pt-br-menu-bulk-button:hover {
+  filter: brightness(1.04);
+}
+
+.corrija-me-pt-br-menu-list {
+  display: grid;
+  gap: 10px;
+}
+
+.corrija-me-pt-br-menu-card {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 10px;
+}
+
+.corrija-me-pt-br-menu-card-active {
+  border-color: rgba(15, 118, 110, 0.44);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+}
+
+.corrija-me-pt-br-menu-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .corrija-me-pt-br-menu-empty {
   padding: 8px 10px;
   font-size: 12px;
   color: #64748b;
-}
-
-.corrija-me-pt-br-menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 2px 2px 8px;
 }
 
 .corrija-me-pt-br-menu-confidence {
@@ -79,8 +138,7 @@
 
 .corrija-me-pt-br-menu-item {
   display: block;
-  width: max-content;
-  min-width: 100%;
+  width: 100%;
   border: 0;
   border-radius: 10px;
   background: #fff;
@@ -90,7 +148,8 @@
   margin-top: 0;
   font: 700 12px/1.2 "Noto Sans", "Segoe UI", sans-serif;
   cursor: pointer;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .corrija-me-pt-br-menu-item + .corrija-me-pt-br-menu-item {
@@ -100,6 +159,23 @@
 .corrija-me-pt-br-menu-item:hover {
   background: #d9f3ef;
   color: #115e59;
+}
+
+.corrija-me-pt-br-menu-excerpt {
+  font: 700 12px/1.45 "Noto Sans", "Segoe UI", sans-serif;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.corrija-me-pt-br-menu-message {
+  font: 500 12px/1.45 "Noto Sans", "Segoe UI", sans-serif;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.corrija-me-pt-br-menu-replacements {
+  display: grid;
+  gap: 4px;
 }
 
 .corrija-me-pt-br-input-overlay-host {
@@ -195,4 +271,11 @@
   padding: 10px 14px;
   font: 700 13px/1 "Noto Sans", "Segoe UI", sans-serif;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .corrija-me-pt-br-menu {
+    width: min(100vw - 24px, 520px);
+    max-height: min(44vh, 380px);
+  }
 }

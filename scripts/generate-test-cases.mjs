@@ -24,6 +24,7 @@ const VALID_CATEGORIES = [
   "texto_tecnico",
   "misto"
 ];
+const MAX_DIFFICULTY = 6;
 
 function parseArgs(argv) {
   const args = {
@@ -79,8 +80,8 @@ function parseArgs(argv) {
     throw new Error("O parâmetro --count-per-category deve ser um inteiro entre 1 e 50.");
   }
 
-  if (!Number.isInteger(args.difficulty) || args.difficulty < 1 || args.difficulty > 5) {
-    throw new Error("O parâmetro --difficulty deve ser um inteiro entre 1 e 5.");
+  if (!Number.isInteger(args.difficulty) || args.difficulty < 1 || args.difficulty > MAX_DIFFICULTY) {
+    throw new Error(`O parâmetro --difficulty deve ser um inteiro entre 1 e ${MAX_DIFFICULTY}.`);
   }
 
   return args;
@@ -89,6 +90,7 @@ function parseArgs(argv) {
 function buildPrompt({ category, categories, count, countPerCategory, difficulty }) {
   const activeCategories = categories.length ? categories : [category];
   const perCategoryCount = countPerCategory ?? count;
+  const minErrorCount = difficulty >= 3 ? 2 : 1;
   const categoryInstructions = activeCategories.length === 1
     ? `- Categoria principal: ${activeCategories[0]}`
     : `- Distribua os itens igualmente entre estas categorias: ${activeCategories.join(", ")}
@@ -100,13 +102,15 @@ Gere exatamente ${activeCategories.length * perCategoryCount} itens em JSON puro
 
 Regras:
 ${categoryInstructions}
-- Dificuldade alvo: ${difficulty} numa escala de 1 a 5
+- Dificuldade alvo: ${difficulty} numa escala de 1 a ${MAX_DIFFICULTY}
 - Produza frases úteis para testes reais de correção textual em pt-BR.
 - Misture contextos de mensagens, anúncios, textos profissionais e uso cotidiano quando fizer sentido.
 - Cada item deve ter erro(s) reais e plausíveis.
 - O campo "errado" deve conter o texto com erro.
 - O campo "correto" deve conter a forma revisada esperada.
 - O campo "error_count" deve estimar quantos erros conhecidos existem no texto errado.
+- Para dificuldade ${difficulty}, cada item deve ter no mínimo ${minErrorCount} erro(s) real(is).
+- Para dificuldade 3 ou maior, prefira frases com múltiplos erros combinados na mesma frase.
 - O campo "tags" deve ser um array curto com 2 a 5 tags relevantes.
 - Evite repetir ideias.
 - Evite frases artificiais demais.
@@ -119,7 +123,7 @@ Formato obrigatório de cada item:
   "difficulty": ${difficulty},
   "errado": "texto com erro",
   "correto": "texto corrigido",
-  "error_count": 3,
+  "error_count": ${Math.max(2, minErrorCount)},
   "tags": ["tag1", "tag2"]
 }
 
@@ -130,7 +134,50 @@ function extractJson(text) {
   const trimmed = text.trim();
   const fenced = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/i);
   const candidate = fenced ? fenced[1].trim() : trimmed;
-  return JSON.parse(candidate);
+
+  try {
+    return JSON.parse(candidate);
+  } catch {
+    const start = candidate.indexOf("[");
+    if (start === -1) {
+      throw new Error("Não foi possível localizar o início de um array JSON na resposta do Gemini.");
+    }
+
+    let depth = 0;
+    let inString = false;
+    let escaped = false;
+
+    for (let index = start; index < candidate.length; index += 1) {
+      const char = candidate[index];
+
+      if (inString) {
+        if (escaped) {
+          escaped = false;
+        } else if (char === "\\") {
+          escaped = true;
+        } else if (char === "\"") {
+          inString = false;
+        }
+        continue;
+      }
+
+      if (char === "\"") {
+        inString = true;
+        continue;
+      }
+
+      if (char === "[") {
+        depth += 1;
+      } else if (char === "]") {
+        depth -= 1;
+        if (depth === 0) {
+          return JSON.parse(candidate.slice(start, index + 1));
+        }
+      }
+    }
+
+    throw new Error("Não foi possível isolar um array JSON válido na resposta do Gemini.");
+  }
 }
 
 function normalizeItem(item, fallbackCategory, fallbackDifficulty) {
@@ -155,7 +202,7 @@ function normalizeItem(item, fallbackCategory, fallbackDifficulty) {
     difficulty: Number.isInteger(item.difficulty) ? item.difficulty : fallbackDifficulty,
     errado,
     correto,
-    error_count: Number.isInteger(item.error_count) ? item.error_count : 1,
+    error_count: Number.isInteger(item.error_count) ? item.error_count : fallbackDifficulty >= 3 ? 2 : 1,
     tags
   };
 }

@@ -122,11 +122,11 @@ function classifyCase(testCase) {
     reasons.push("same_text");
   }
 
-  if (normalized.error_count < 1 || normalized.error_count > 5) {
+  if (normalized.error_count < 1 || normalized.error_count > 6) {
     reasons.push("error_count_out_of_range");
   }
 
-  if (normalized.difficulty < 1 || normalized.difficulty > 5) {
+  if (normalized.difficulty < 1 || normalized.difficulty > 6) {
     reasons.push("difficulty_out_of_range");
   }
 
@@ -179,11 +179,12 @@ async function main() {
     readJsonArray(curatedPath)
   ]);
 
-  const sourceItems = uniqueBy([...curatedItems, ...generatedItems].map(normalizeCase), dedupePairKey);
-  const accepted = [];
+  const preservedCurated = uniqueBy(curatedItems.map(normalizeCase), dedupePairKey);
+  const generatedSourceItems = uniqueBy(generatedItems.map(normalizeCase), dedupePairKey);
+  const accepted = [...preservedCurated];
   const rejected = [];
 
-  for (const item of sourceItems) {
+  for (const item of generatedSourceItems) {
     const result = classifyCase(item);
     if (result.accepted) {
       accepted.push(result.normalized);
@@ -199,7 +200,9 @@ async function main() {
   await fs.writeFile(curatedPath, `${JSON.stringify(nextCurated, null, 2)}\n`, "utf8");
   await fs.writeFile(rejectedPath, `${JSON.stringify(rejected, null, 2)}\n`, "utf8");
 
-  console.log(`Itens fonte avaliados: ${sourceItems.length}`);
+  console.log(`Curated preservado: ${preservedCurated.length}`);
+  console.log(`Generated avaliado: ${generatedSourceItems.length}`);
+  console.log(`Itens fonte avaliados: ${preservedCurated.length + generatedSourceItems.length}`);
   console.log(`Curated total: ${nextCurated.length}`);
   console.log(`Rejeitados nesta execução: ${rejected.length}`);
   console.log(`Arquivo curated: ${curatedPath}`);

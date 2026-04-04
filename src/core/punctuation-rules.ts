@@ -72,6 +72,23 @@ function createTerminalMatch(text: string, pattern: RegExp, punctuation: string,
   ));
 }
 
+function createTerminalReplacementMatch(text: string, pattern: RegExp, replacement: string, ruleId: string, message: string, description: string, matches: RuleMatch[]): void {
+  const match = pattern.exec(text);
+  if (!match || match.index === undefined) {
+    return;
+  }
+
+  addMatch(matches, createPunctuationMatch(
+    text,
+    match.index,
+    match[0].length,
+    replacement,
+    ruleId,
+    message,
+    description
+  ));
+}
+
 export function createPunctuationHeuristicMatches(text: string): RuleMatch[] {
   const matches: RuleMatch[] = [];
   const trimmed = text.trim();
@@ -159,12 +176,14 @@ export function createPunctuationHeuristicMatches(text: string): RuleMatch[] {
     matches
   );
 
-  if (!/[?!.]\s*$/u.test(trimmed)) {
-    const lower = trimmed.toLocaleLowerCase("pt-BR");
-    const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que", "você"];
-    const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
+  const lower = trimmed.toLocaleLowerCase("pt-BR");
+  const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que", "você"];
+  const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
+  const looksLikeQuestion = questionStarts.some((prefix) => lower.startsWith(prefix));
+  const looksLikeExclamation = exclamationStarts.some((prefix) => lower.startsWith(prefix));
 
-    if (questionStarts.some((prefix) => lower.startsWith(prefix))) {
+  if (!/[?!.]\s*$/u.test(trimmed)) {
+    if (looksLikeQuestion) {
       createTerminalMatch(
         text,
         /([\p{L}\p{M}\d]+)\s*$/u,
@@ -174,7 +193,7 @@ export function createPunctuationHeuristicMatches(text: string): RuleMatch[] {
         "Adiciona ponto de interrogação ao final da frase.",
         matches
       );
-    } else if (exclamationStarts.some((prefix) => lower.startsWith(prefix))) {
+    } else if (looksLikeExclamation) {
       createTerminalMatch(
         text,
         /([\p{L}\p{M}\d]+)\s*$/u,
@@ -185,6 +204,16 @@ export function createPunctuationHeuristicMatches(text: string): RuleMatch[] {
         matches
       );
     }
+  } else if (looksLikeQuestion && /\.\s*$/u.test(trimmed)) {
+    createTerminalReplacementMatch(
+      text,
+      /\.\s*$/u,
+      "?",
+      "PT_BR_PUNCTUATION_FINAL_QUESTION",
+      "A frase parece pedir ponto de interrogação.",
+      "Substitui ponto final por ponto de interrogação ao final da frase.",
+      matches
+    );
   }
 
   return matches;

@@ -42,8 +42,8 @@ function parseArgs(argv) {
     }
   }
 
-  if (!Number.isInteger(args.rounds) || args.rounds < 1 || args.rounds > 5) {
-    throw new Error("Use --rounds com um inteiro entre 1 e 5.");
+  if (!Number.isInteger(args.rounds) || args.rounds < 1 || args.rounds > 6) {
+    throw new Error("Use --rounds com um inteiro entre 1 e 6.");
   }
 
   if (!Number.isInteger(args.countPerCategory) || args.countPerCategory < 1 || args.countPerCategory > 50) {

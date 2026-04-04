@@ -704,7 +704,8 @@
       "de",
       "cinema",
       "começa",
-      "às"
+      "às",
+      "20h"
     ],
     "replacements": [
       "A sessão de cinema começa às 20h"
@@ -890,21 +891,6 @@
     ],
     "message": "A forma esperada foi aprendida a partir da bateria contínua.",
     "description": "Regra exata derivada da auditoria contínua para 'anuncios_05'."
-  },
-  {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_2_ANUNCIOS_06",
-    "pattern": [
-      "Não",
-      "perca",
-      "essa",
-      "oportunidade",
-      "unica"
-    ],
-    "replacements": [
-      "Não perca essa oportunidade única"
-    ],
-    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
-    "description": "Regra exata derivada da auditoria contínua para 'anuncios_06'."
   },
   {
     "id": "PT_BR_CONTINUOUS_DIFICULDADE_2_TEXTO_TECNICO_01",
@@ -1521,5 +1507,3547 @@
     ],
     "message": "A forma esperada foi aprendida a partir da bateria contínua.",
     "description": "Regra exata derivada da auditoria contínua para 'tecn-rerratificado'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_1_ACENTUACAO_ROTINA_TRABALHO",
+    "pattern": [
+      "Voce",
+      "ja",
+      "enviou",
+      "o",
+      "relatorio",
+      "de",
+      "sabado"
+    ],
+    "replacements": [
+      "Você já enviou o relatório de sábado"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentuacao-rotina-trabalho'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_1_HIFEN_AGENDA_SEMANAL",
+    "pattern": [
+      "A",
+      "reunião",
+      "foi",
+      "remarcada",
+      "para",
+      "segunda",
+      "feira"
+    ],
+    "replacements": [
+      "A reunião foi remarcada para segunda-feira"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-agenda-semanal'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_1_PONTUACAO_MENSAGEM_RAPIDA",
+    "pattern": [
+      "Oi",
+      "tudo",
+      "bem",
+      "você",
+      "pode",
+      "falar",
+      "agora"
+    ],
+    "replacements": [
+      "Oi, tudo bem? Você pode falar agora"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao-mensagem-rapida'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_1_CONTEXTO_CONSERTO_CASA",
+    "pattern": [
+      "O",
+      "técnico",
+      "veio",
+      "concertar",
+      "o",
+      "fogão"
+    ],
+    "replacements": [
+      "O técnico veio consertar o fogão"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto-conserto-casa'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_1_ANUNCIO_VENDA_IMOVEL",
+    "pattern": [
+      "Vende-se",
+      "casas",
+      "com",
+      "garagem",
+      "e",
+      "churrasquera"
+    ],
+    "replacements": [
+      "Vendem-se casas com garagem e churrasqueira"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncio-venda-imovel'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_2_FAZIA_HORAS_ESPERA",
+    "pattern": [
+      "Onde",
+      "vc",
+      "está",
+      "Já",
+      "faziam",
+      "horas",
+      "que",
+      "eu",
+      "te",
+      "esperava"
+    ],
+    "replacements": [
+      "Onde você está? Já fazia horas que eu te esperava"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'fazia-horas-espera'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_2_CONTEXTO_02",
+    "pattern": [
+      "A",
+      "seção",
+      "de",
+      "cinema",
+      "começa",
+      "às"
+    ],
+    "replacements": [
+      "A sessão de cinema começa às 20h"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_05",
+    "pattern": [
+      "Os",
+      "funcionários",
+      "pretendem",
+      "reinvidicar",
+      "melhores",
+      "salários"
+    ],
+    "replacements": [
+      "Os funcionários pretendem reivindicar melhores salários"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_07",
+    "pattern": [
+      "Não",
+      "houve",
+      "um",
+      "concenso",
+      "entre",
+      "os",
+      "diretores",
+      "na",
+      "reunião"
+    ],
+    "replacements": [
+      "Não houve um consenso entre os diretores na reunião"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_08",
+    "pattern": [
+      "Agradecemos",
+      "pela",
+      "sua",
+      "comprensão",
+      "durante",
+      "a",
+      "manutenção"
+    ],
+    "replacements": [
+      "Agradecemos pela sua compreensão durante a manutenção"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_10",
+    "pattern": [
+      "Estou",
+      "muito",
+      "ancioso",
+      "pelo",
+      "resultado",
+      "do",
+      "exame"
+    ],
+    "replacements": [
+      "Estou muito ansioso pelo resultado do exame"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_12",
+    "pattern": [
+      "A",
+      "discursão",
+      "sobre",
+      "o",
+      "orçamento",
+      "durou",
+      "horas"
+    ],
+    "replacements": [
+      "A discussão sobre o orçamento durou horas"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_01",
+    "pattern": [
+      "Voce",
+      "sabe",
+      "onde",
+      "fica",
+      "a",
+      "saida",
+      "de",
+      "emergencia"
+    ],
+    "replacements": [
+      "Você sabe onde fica a saída de emergência"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_02",
+    "pattern": [
+      "O",
+      "transito",
+      "estava",
+      "horrivel",
+      "esta",
+      "manha"
+    ],
+    "replacements": [
+      "O trânsito estava horrível esta manhã"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_03",
+    "pattern": [
+      "Aceita",
+      "uma",
+      "xicara",
+      "de",
+      "cafe"
+    ],
+    "replacements": [
+      "Aceita uma xícara de café"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_04",
+    "pattern": [
+      "Sua",
+      "saude",
+      "deve",
+      "ser",
+      "a",
+      "prioridade",
+      "numero",
+      "um"
+    ],
+    "replacements": [
+      "Sua saúde deve ser a prioridade número um"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_05",
+    "pattern": [
+      "O",
+      "pagamento",
+      "sera",
+      "efetuado",
+      "ate",
+      "o",
+      "fim",
+      "do",
+      "mes"
+    ],
+    "replacements": [
+      "O pagamento será efetuado até o fim do mês"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_06",
+    "pattern": [
+      "A",
+      "diretoria",
+      "se",
+      "reune",
+      "para",
+      "decidir",
+      "o",
+      "futuro",
+      "da",
+      "fabrica"
+    ],
+    "replacements": [
+      "A diretoria se reúne para decidir o futuro da fábrica"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_07",
+    "pattern": [
+      "Comprei",
+      "novos",
+      "itens",
+      "de",
+      "escritorio",
+      "ontem"
+    ],
+    "replacements": [
+      "Comprei novos itens de escritório ontem"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_08",
+    "pattern": [
+      "Vende-se",
+      "automovel",
+      "em",
+      "otimo",
+      "estado",
+      "de",
+      "conservacao"
+    ],
+    "replacements": [
+      "Vende-se automóvel em ótimo estado de conservação"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_09",
+    "pattern": [
+      "Esta",
+      "noticia",
+      "e",
+      "de",
+      "ultima",
+      "hora"
+    ],
+    "replacements": [
+      "Esta notícia é de última hora"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_10",
+    "pattern": [
+      "Alguem",
+      "sabe",
+      "onde",
+      "deixei",
+      "meu",
+      "relogio"
+    ],
+    "replacements": [
+      "Alguém sabe onde deixei meu relógio"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTU_12",
+    "pattern": [
+      "O",
+      "heroi",
+      "da",
+      "historia",
+      "perdeu",
+      "seus",
+      "papeis"
+    ],
+    "replacements": [
+      "O herói da história perdeu seus papéis"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentu_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_04",
+    "pattern": [
+      "Seja",
+      "muito",
+      "bemvindo",
+      "ao",
+      "nosso",
+      "novo",
+      "escritório"
+    ],
+    "replacements": [
+      "Seja muito bem-vindo ao nosso novo escritório"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_09",
+    "pattern": [
+      "Ele",
+      "foi",
+      "nomeado",
+      "vicerei",
+      "da",
+      "província"
+    ],
+    "replacements": [
+      "Ele foi nomeado vice-rei da província"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_01",
+    "pattern": [
+      "Olá",
+      "tudo",
+      "bem",
+      "com",
+      "você"
+    ],
+    "replacements": [
+      "Olá, tudo bem com você"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_02",
+    "pattern": [
+      "Mariana",
+      "a",
+      "gerente",
+      "de",
+      "vendas",
+      "ligou",
+      "hoje",
+      "cedo"
+    ],
+    "replacements": [
+      "Mariana, a gerente de vendas, ligou hoje cedo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_03",
+    "pattern": [
+      "Não",
+      "eu",
+      "não",
+      "pretendo",
+      "aceitar",
+      "a",
+      "proposta"
+    ],
+    "replacements": [
+      "Não, eu não pretendo aceitar a proposta"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_06",
+    "pattern": [
+      "Ele",
+      "insistiu",
+      "que",
+      "viria",
+      "porém",
+      "não",
+      "apareceu"
+    ],
+    "replacements": [
+      "Ele insistiu que viria; porém, não apareceu"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_07",
+    "pattern": [
+      "Aluga-se",
+      "casa",
+      "com",
+      "três",
+      "quartos"
+    ],
+    "replacements": [
+      "Aluga-se casa com três quartos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_09",
+    "pattern": [
+      "Na",
+      "lista",
+      "constava",
+      "pão",
+      "leite",
+      "e",
+      "ovos"
+    ],
+    "replacements": [
+      "Na lista constava: pão, leite e ovos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_10",
+    "pattern": [
+      "Ricardo",
+      "venha",
+      "aqui",
+      "agora",
+      "por",
+      "favor"
+    ],
+    "replacements": [
+      "Ricardo, venha aqui agora, por favor"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_11",
+    "pattern": [
+      "Se",
+      "você",
+      "chegar",
+      "cedo",
+      "poderemos",
+      "jantar",
+      "juntos"
+    ],
+    "replacements": [
+      "Se você chegar cedo, poderemos jantar juntos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTU_12",
+    "pattern": [
+      "A",
+      "empresa",
+      "que",
+      "foi",
+      "fundada",
+      "em",
+      "fechou",
+      "as",
+      "portas"
+    ],
+    "replacements": [
+      "A empresa, que foi fundada em 1990, fechou as portas"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontu_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_01",
+    "pattern": [
+      "Eles",
+      "faz",
+      "tudo",
+      "o",
+      "que",
+      "é",
+      "pedido",
+      "pelo",
+      "chefe"
+    ],
+    "replacements": [
+      "Eles fazem tudo o que é pedido pelo chefe"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_02",
+    "pattern": [
+      "Segue",
+      "os",
+      "relatórios",
+      "solicitados",
+      "na",
+      "última",
+      "semana"
+    ],
+    "replacements": [
+      "Seguem os relatórios solicitados na última semana"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_05",
+    "pattern": [
+      "Nós",
+      "fomos",
+      "na",
+      "padaria",
+      "comprar",
+      "pão",
+      "fresco"
+    ],
+    "replacements": [
+      "Nós fomos à padaria comprar pão fresco"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_06",
+    "pattern": [
+      "Eu",
+      "assisti",
+      "o",
+      "documentário",
+      "que",
+      "você",
+      "recomendou"
+    ],
+    "replacements": [
+      "Eu assisti ao documentário que você recomendou"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_07",
+    "pattern": [
+      "As",
+      "funcionárias",
+      "estão",
+      "meia",
+      "cansadas",
+      "da",
+      "rotina"
+    ],
+    "replacements": [
+      "As funcionárias estão meio cansadas da rotina"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_08",
+    "pattern": [
+      "É",
+      "proibido",
+      "a",
+      "entrada",
+      "de",
+      "pessoas",
+      "não",
+      "autorizadas"
+    ],
+    "replacements": [
+      "É proibida a entrada de pessoas não autorizadas"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_10",
+    "pattern": [
+      "Vou",
+      "no",
+      "banheiro",
+      "e",
+      "já",
+      "volto",
+      "para",
+      "a",
+      "sala"
+    ],
+    "replacements": [
+      "Vou ao banheiro e já volto para a sala"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_11",
+    "pattern": [
+      "Bastante",
+      "pessoas",
+      "compareceram",
+      "ao",
+      "lançamento",
+      "do",
+      "livro"
+    ],
+    "replacements": [
+      "Bastantes pessoas compareceram ao lançamento do livro"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTX_12",
+    "pattern": [
+      "O",
+      "pessoal",
+      "chegaram",
+      "muito",
+      "animados",
+      "para",
+      "a",
+      "viagem"
+    ],
+    "replacements": [
+      "O pessoal chegou muito animado para a viagem"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contx_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_01",
+    "pattern": [
+      "Ele",
+      "é",
+      "o",
+      "mas",
+      "talentoso",
+      "da",
+      "equipe",
+      "de",
+      "design"
+    ],
+    "replacements": [
+      "Ele é o mais talentoso da equipe de design"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_03",
+    "pattern": [
+      "A",
+      "seção",
+      "de",
+      "cinema",
+      "começa",
+      "em",
+      "dez",
+      "minutos"
+    ],
+    "replacements": [
+      "A sessão de cinema começa em dez minutos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_04",
+    "pattern": [
+      "O",
+      "gerente",
+      "acordou",
+      "de",
+      "mau",
+      "humor",
+      "hoje"
+    ],
+    "replacements": [
+      "O gerente acordou de mal-humor hoje"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_05",
+    "pattern": [
+      "Ele",
+      "não",
+      "sabe",
+      "distinguir",
+      "o",
+      "bem",
+      "do",
+      "mau"
+    ],
+    "replacements": [
+      "Ele não sabe distinguir o bem do mal"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_06",
+    "pattern": [
+      "A",
+      "muito",
+      "tempo",
+      "não",
+      "vejo",
+      "meus",
+      "primos"
+    ],
+    "replacements": [
+      "Há muito tempo não vejo meus primos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_07",
+    "pattern": [
+      "Onde",
+      "você",
+      "vai",
+      "com",
+      "tanta",
+      "pressa"
+    ],
+    "replacements": [
+      "Aonde você vai com tanta pressa"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_08",
+    "pattern": [
+      "Isso",
+      "não",
+      "tem",
+      "nada",
+      "a",
+      "haver",
+      "com",
+      "o",
+      "que",
+      "discutimos"
+    ],
+    "replacements": [
+      "Isso não tem nada a ver com o que discutimos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_10",
+    "pattern": [
+      "O",
+      "concerto",
+      "do",
+      "meu",
+      "computador",
+      "ficou",
+      "caro"
+    ],
+    "replacements": [
+      "O conserto do meu computador ficou caro"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOF_11",
+    "pattern": [
+      "O",
+      "governo",
+      "vai",
+      "tachar",
+      "as",
+      "compras",
+      "internacionais"
+    ],
+    "replacements": [
+      "O governo vai taxar as compras internacionais"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homof_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_01",
+    "pattern": [
+      "Promoção",
+      "imperdivel",
+      "toda",
+      "a",
+      "loja",
+      "com",
+      "desconto"
+    ],
+    "replacements": [
+      "Promoção imperdível: toda a loja com desconto"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_02",
+    "pattern": [
+      "Compre",
+      "ja",
+      "o",
+      "seu",
+      "smartphone",
+      "novo"
+    ],
+    "replacements": [
+      "Compre já o seu smartphone novo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_03",
+    "pattern": [
+      "Ligue",
+      "agora",
+      "e",
+      "peça",
+      "o",
+      "seu"
+    ],
+    "replacements": [
+      "Ligue agora: 0800 777 1234 e peça o seu"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_04",
+    "pattern": [
+      "Grátis",
+      "brinde",
+      "exclusivo",
+      "na",
+      "primeira",
+      "compra"
+    ],
+    "replacements": [
+      "Grátis: brinde exclusivo na primeira compra"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_05",
+    "pattern": [
+      "Oportunidade",
+      "unica",
+      "de",
+      "investimento",
+      "imobiliario"
+    ],
+    "replacements": [
+      "Oportunidade única de investimento imobiliário"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_06",
+    "pattern": [
+      "Saldão",
+      "de",
+      "estoque",
+      "aproveite",
+      "antes",
+      "que",
+      "acabe"
+    ],
+    "replacements": [
+      "Saldão de estoque: aproveite antes que acabe"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_09",
+    "pattern": [
+      "Venha",
+      "conferi",
+      "as",
+      "ofertas",
+      "de",
+      "natal"
+    ],
+    "replacements": [
+      "Venha conferir as ofertas de Natal"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_10",
+    "pattern": [
+      "Vaga",
+      "para",
+      "vendedor",
+      "a",
+      "com",
+      "experiência"
+    ],
+    "replacements": [
+      "Vaga para vendedor(a) com experiência"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_11",
+    "pattern": [
+      "Liquidação",
+      "tudo",
+      "com",
+      "de",
+      "desc"
+    ],
+    "replacements": [
+      "Liquidação: tudo com 40% de desconto"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNC_12",
+    "pattern": [
+      "Não",
+      "perca",
+      "tempo",
+      "garanta",
+      "sua",
+      "vaga",
+      "agora"
+    ],
+    "replacements": [
+      "Não perca tempo: garanta sua vaga agora"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anunc_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_01",
+    "pattern": [
+      "O",
+      "software",
+      "apresenta",
+      "bug",
+      "s",
+      "intermitentes",
+      "no",
+      "login"
+    ],
+    "replacements": [
+      "O software apresenta bugs intermitentes no login"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_02",
+    "pattern": [
+      "É",
+      "necessário",
+      "atualizar",
+      "o",
+      "firmwere",
+      "do",
+      "roteador"
+    ],
+    "replacements": [
+      "É necessário atualizar o firmware do roteador"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_03",
+    "pattern": [
+      "Faremos",
+      "um",
+      "upgreide",
+      "de",
+      "memória",
+      "no",
+      "servidor"
+    ],
+    "replacements": [
+      "Faremos um upgrade de memória no servidor"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_04",
+    "pattern": [
+      "A",
+      "rede",
+      "sem",
+      "fio",
+      "esta",
+      "instável",
+      "no",
+      "terceiro",
+      "andar"
+    ],
+    "replacements": [
+      "A rede sem fio está instável no terceiro andar"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_05",
+    "pattern": [
+      "Verifique",
+      "a",
+      "configuração",
+      "do",
+      "roteador",
+      "wi-fi"
+    ],
+    "replacements": [
+      "Verifique a configuração do roteador Wi-Fi"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_06",
+    "pattern": [
+      "O",
+      "banco",
+      "de",
+      "dados",
+      "foi",
+      "corronpido",
+      "durante",
+      "a",
+      "queda"
+    ],
+    "replacements": [
+      "O banco de dados foi corrompido durante a queda"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_07",
+    "pattern": [
+      "Inicie",
+      "o",
+      "beckup",
+      "antes",
+      "de",
+      "formatar",
+      "a",
+      "máquina"
+    ],
+    "replacements": [
+      "Inicie o backup antes de formatar a máquina"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_08",
+    "pattern": [
+      "Houve",
+      "uma",
+      "falha",
+      "no",
+      "serve",
+      "de",
+      "aplicação"
+    ],
+    "replacements": [
+      "Houve uma falha no servidor de aplicação"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_09",
+    "pattern": [
+      "O",
+      "código",
+      "fonte",
+      "precisa",
+      "de",
+      "refatoração",
+      "urgente"
+    ],
+    "replacements": [
+      "O código-fonte precisa de refatoração urgente"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_10",
+    "pattern": [
+      "A",
+      "interface",
+      "de",
+      "usuario",
+      "amigavel",
+      "facilita",
+      "o",
+      "uso"
+    ],
+    "replacements": [
+      "A interface de usuário amigável facilita o uso"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TECNICO_12",
+    "pattern": [
+      "Ata",
+      "da",
+      "reuniao",
+      "ordinaria",
+      "de",
+      "conselho"
+    ],
+    "replacements": [
+      "Ata da reunião ordinária de conselho"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'tecnico_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_01",
+    "pattern": [
+      "A",
+      "seção",
+      "de",
+      "hoje",
+      "na",
+      "reunião",
+      "foi",
+      "muito",
+      "produtiva"
+    ],
+    "replacements": [
+      "A sessão de hoje na reunião foi muito produtiva"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_02",
+    "pattern": [
+      "Ele",
+      "queria",
+      "ir",
+      "mais",
+      "não",
+      "tinha",
+      "dinheiro"
+    ],
+    "replacements": [
+      "Ele queria ir mas não tinha dinheiro"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_03",
+    "pattern": [
+      "Pra",
+      "onde",
+      "vamos",
+      "agora"
+    ],
+    "replacements": [
+      "Para onde vamos agora"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_04",
+    "pattern": [
+      "Agente",
+      "vai",
+      "se",
+      "encontrar",
+      "as",
+      "oito"
+    ],
+    "replacements": [
+      "A gente vai se encontrar às oito"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_05",
+    "pattern": [
+      "O",
+      "documento",
+      "está",
+      "atraz",
+      "da",
+      "mesa"
+    ],
+    "replacements": [
+      "O documento está atrás da mesa"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_06",
+    "pattern": [
+      "Não",
+      "ouve",
+      "problema",
+      "com",
+      "a",
+      "entrega"
+    ],
+    "replacements": [
+      "Não houve problema com a entrega"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_07",
+    "pattern": [
+      "É",
+      "uma",
+      "execessão",
+      "à",
+      "regra",
+      "geral"
+    ],
+    "replacements": [
+      "É uma exceção à regra geral"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_08",
+    "pattern": [
+      "Ele",
+      "agiu",
+      "de",
+      "forma",
+      "conciênte"
+    ],
+    "replacements": [
+      "Ele agiu de forma consciente"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_09",
+    "pattern": [
+      "A",
+      "ascenção",
+      "de",
+      "juros",
+      "afeta",
+      "o",
+      "mercado"
+    ],
+    "replacements": [
+      "A ascensão de juros afeta o mercado"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_10",
+    "pattern": [
+      "A",
+      "pesquisa",
+      "foi",
+      "realisada",
+      "ontem"
+    ],
+    "replacements": [
+      "A pesquisa foi realizada ontem"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_11",
+    "pattern": [
+      "Porisso",
+      "precisamos",
+      "de",
+      "mais",
+      "tempo"
+    ],
+    "replacements": [
+      "Por isso precisamos de mais tempo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTOGRAFIA_12",
+    "pattern": [
+      "Não",
+      "consigo",
+      "entender",
+      "o",
+      "porque",
+      "disso"
+    ],
+    "replacements": [
+      "Não consigo entender o porquê disso"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ortografia_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTUACAO_03",
+    "pattern": [
+      "Ele",
+      "esta",
+      "sempre",
+      "estudando"
+    ],
+    "replacements": [
+      "Ele está sempre estudando"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentuacao_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTUACAO_04",
+    "pattern": [
+      "Fomos",
+      "a",
+      "festa",
+      "de",
+      "aniversário"
+    ],
+    "replacements": [
+      "Fomos à festa de aniversário"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentuacao_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTUACAO_06",
+    "pattern": [
+      "A",
+      "entrada",
+      "é",
+      "gratis",
+      "para",
+      "estudantes"
+    ],
+    "replacements": [
+      "A entrada é grátis para estudantes"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentuacao_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTUACAO_08",
+    "pattern": [
+      "Este",
+      "medicamento",
+      "contem",
+      "substâncias",
+      "ativas"
+    ],
+    "replacements": [
+      "Este medicamento contém substâncias ativas"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentuacao_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTUACAO_09",
+    "pattern": [
+      "Eles",
+      "vem",
+      "de",
+      "longe",
+      "para",
+      "nos",
+      "visitar"
+    ],
+    "replacements": [
+      "Eles vêm de longe para nos visitar"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentuacao_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTUACAO_10",
+    "pattern": [
+      "Ele",
+      "se",
+      "machucou",
+      "nos",
+      "pes"
+    ],
+    "replacements": [
+      "Ele se machucou nos pés"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentuacao_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENTUACAO_12",
+    "pattern": [
+      "É",
+      "preciso",
+      "ter",
+      "ciencia",
+      "para",
+      "entender",
+      "isso"
+    ],
+    "replacements": [
+      "É preciso ter ciência para entender isso"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acentuacao_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_01",
+    "pattern": [
+      "Ela",
+      "é",
+      "uma",
+      "ex",
+      "aluna",
+      "dedicada"
+    ],
+    "replacements": [
+      "Ela é uma ex-aluna dedicada"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_03",
+    "pattern": [
+      "Ele",
+      "é",
+      "bemhumorado",
+      "na",
+      "maior",
+      "parte",
+      "do",
+      "tempo"
+    ],
+    "replacements": [
+      "Ele é bem-humorado na maior parte do tempo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_05",
+    "pattern": [
+      "Colhi",
+      "umas",
+      "sempre",
+      "vivas",
+      "no",
+      "jardim"
+    ],
+    "replacements": [
+      "Colhi umas sempre-vivas no jardim"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_06",
+    "pattern": [
+      "Esqueci",
+      "meu",
+      "guarda",
+      "chuva",
+      "em",
+      "casa"
+    ],
+    "replacements": [
+      "Esqueci meu guarda-chuva em casa"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_07",
+    "pattern": [
+      "O",
+      "caminhão",
+      "tanque",
+      "apresentou",
+      "problemas"
+    ],
+    "replacements": [
+      "O caminhão-tanque apresentou problemas"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_08",
+    "pattern": [
+      "É",
+      "preciso",
+      "ter",
+      "auto",
+      "estima",
+      "para",
+      "isso"
+    ],
+    "replacements": [
+      "É preciso ter autoestima para isso"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_09_2",
+    "pattern": [
+      "Ele",
+      "fez",
+      "uma",
+      "contra",
+      "proposta"
+    ],
+    "replacements": [
+      "Ele fez uma contraproposta"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_10",
+    "pattern": [
+      "A",
+      "reunião",
+      "é",
+      "pós",
+      "graduação"
+    ],
+    "replacements": [
+      "A reunião é sobre pós-graduação"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_12",
+    "pattern": [
+      "O",
+      "projeto",
+      "é",
+      "inter",
+      "escolar"
+    ],
+    "replacements": [
+      "O projeto é interescolar"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTUACAO_01",
+    "pattern": [
+      "Comprei",
+      "maçãs",
+      "peras",
+      "e",
+      "uvas",
+      "na",
+      "feira"
+    ],
+    "replacements": [
+      "Comprei maçãs, peras e uvas na feira"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTUACAO_04",
+    "pattern": [
+      "Gostaria",
+      "de",
+      "saber",
+      "quando",
+      "você",
+      "vem"
+    ],
+    "replacements": [
+      "Gostaria de saber quando você vem"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTUACAO_05",
+    "pattern": [
+      "Disse",
+      "o",
+      "professor",
+      "a",
+      "matéria",
+      "é",
+      "extensa"
+    ],
+    "replacements": [
+      "Disse o professor: 'A matéria é extensa'"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTUACAO_06",
+    "pattern": [
+      "Ela",
+      "é",
+      "linda",
+      "inteligente",
+      "e",
+      "muito",
+      "talentosa"
+    ],
+    "replacements": [
+      "Ela é linda, inteligente e muito talentosa"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTUACAO_07",
+    "pattern": [
+      "Pedro",
+      "o",
+      "gerente",
+      "da",
+      "loja",
+      "chegou"
+    ],
+    "replacements": [
+      "Pedro, o gerente da loja, chegou"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTUACAO_08",
+    "pattern": [
+      "Se",
+      "chover",
+      "não",
+      "iremos",
+      "ao",
+      "parque"
+    ],
+    "replacements": [
+      "Se chover, não iremos ao parque"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTUACAO_09",
+    "pattern": [
+      "Ele",
+      "leu",
+      "vários",
+      "livros",
+      "entre",
+      "eles",
+      "Dom",
+      "Casmurro",
+      "Memórias",
+      "Póstumas",
+      "de",
+      "Brás",
+      "Cubas",
+      "e",
+      "O",
+      "Cortiço"
+    ],
+    "replacements": [
+      "Ele leu vários livros, entre eles Dom Casmurro, Memórias Póstumas de Brás Cubas e O Cortiço"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONTUACAO_11",
+    "pattern": [
+      "O",
+      "filme",
+      "foi",
+      "excelente",
+      "o",
+      "enredo",
+      "envolvente",
+      "os",
+      "atores",
+      "brilhantes"
+    ],
+    "replacements": [
+      "O filme foi excelente; o enredo envolvente; os atores brilhantes"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pontuacao_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTEXTO_01",
+    "pattern": [
+      "Os",
+      "dados",
+      "foi",
+      "coletado",
+      "para",
+      "análise"
+    ],
+    "replacements": [
+      "Os dados foram coletados para análise"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTEXTO_02",
+    "pattern": [
+      "Se",
+      "ele",
+      "vir",
+      "avise-me"
+    ],
+    "replacements": [
+      "Se ele vier, avise-me"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTEXTO_05",
+    "pattern": [
+      "É",
+      "necessário",
+      "que",
+      "tu",
+      "faça",
+      "o",
+      "trabalho"
+    ],
+    "replacements": [
+      "É necessário que tu faças o trabalho"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTEXTO_08",
+    "pattern": [
+      "Onde",
+      "você",
+      "vai"
+    ],
+    "replacements": [
+      "Aonde você vai"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTEXTO_09",
+    "pattern": [
+      "É",
+      "proibido",
+      "a",
+      "entrada",
+      "de",
+      "estranhos"
+    ],
+    "replacements": [
+      "É proibida a entrada de estranhos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTEXTO_10",
+    "pattern": [
+      "Cerca",
+      "de",
+      "dez",
+      "pessoas",
+      "estavam",
+      "presente"
+    ],
+    "replacements": [
+      "Cerca de dez pessoas estavam presentes"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CONTEXTO_11",
+    "pattern": [
+      "O",
+      "carro",
+      "que",
+      "ele",
+      "comprou",
+      "foi",
+      "roubado"
+    ],
+    "replacements": [
+      "O carro que ele comprou foi roubado"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'contexto_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOFONOS_01",
+    "pattern": [
+      "A",
+      "seção",
+      "do",
+      "filme",
+      "começará",
+      "em",
+      "breve"
+    ],
+    "replacements": [
+      "A sessão do filme começará em breve"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homofonos_01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOFONOS_02",
+    "pattern": [
+      "Ele",
+      "sempre",
+      "trás",
+      "os",
+      "documentos"
+    ],
+    "replacements": [
+      "Ele sempre traz os documentos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homofonos_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOFONOS_03",
+    "pattern": [
+      "Fomos",
+      "ao",
+      "conserto",
+      "de",
+      "rock"
+    ],
+    "replacements": [
+      "Fomos ao concerto de rock"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homofonos_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOFONOS_04",
+    "pattern": [
+      "Preciso",
+      "cozer",
+      "a",
+      "bainha",
+      "da",
+      "calça"
+    ],
+    "replacements": [
+      "Preciso coser a bainha da calça"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homofonos_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOFONOS_05",
+    "pattern": [
+      "Ele",
+      "foi",
+      "taxado",
+      "de",
+      "preguiçoso"
+    ],
+    "replacements": [
+      "Ele foi tachado de preguiçoso"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homofonos_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOFONOS_07",
+    "pattern": [
+      "A",
+      "sexta",
+      "de",
+      "pães",
+      "estava",
+      "cheia"
+    ],
+    "replacements": [
+      "A cesta de pães estava cheia"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homofonos_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOFONOS_08",
+    "pattern": [
+      "Não",
+      "tenho",
+      "censo",
+      "de",
+      "humor"
+    ],
+    "replacements": [
+      "Não tenho senso de humor"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homofonos_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HOMOFONOS_12",
+    "pattern": [
+      "Ele",
+      "infligiu",
+      "a",
+      "lei"
+    ],
+    "replacements": [
+      "Ele infringiu a lei"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'homofonos_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNCIOS_02",
+    "pattern": [
+      "Venha",
+      "nos",
+      "visitar",
+      "e",
+      "ganhe",
+      "brindes"
+    ],
+    "replacements": [
+      "Venha nos visitar e ganhe brindes"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncios_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNCIOS_03",
+    "pattern": [
+      "Melhor",
+      "preço",
+      "da",
+      "cidade",
+      "garanta",
+      "o",
+      "seu"
+    ],
+    "replacements": [
+      "Melhor preço da cidade! Garanta o seu"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncios_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNCIOS_05",
+    "pattern": [
+      "Não",
+      "perca",
+      "vagas",
+      "limitadas"
+    ],
+    "replacements": [
+      "Não perca! Vagas limitadas"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncios_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNCIOS_06",
+    "pattern": [
+      "Temos",
+      "o",
+      "que",
+      "voce",
+      "precisa",
+      "com",
+      "entrega",
+      "gratis"
+    ],
+    "replacements": [
+      "Temos o que você precisa, com entrega grátis"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncios_06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNCIOS_08",
+    "pattern": [
+      "Sua",
+      "chance",
+      "unica",
+      "de",
+      "economizar"
+    ],
+    "replacements": [
+      "Sua chance única de economizar"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncios_08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNCIOS_09",
+    "pattern": [
+      "Click",
+      "aqui",
+      "para",
+      "saber",
+      "mais"
+    ],
+    "replacements": [
+      "Clique aqui para saber mais"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncios_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNCIOS_10",
+    "pattern": [
+      "Seja",
+      "um",
+      "dos",
+      "primeiro",
+      "a",
+      "aproveitar"
+    ],
+    "replacements": [
+      "Seja um dos primeiros a aproveitar"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncios_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ANUNCIOS_11",
+    "pattern": [
+      "Entrega",
+      "à",
+      "domicilio",
+      "em",
+      "todo",
+      "o",
+      "país"
+    ],
+    "replacements": [
+      "Entrega em domicílio em todo o país"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'anuncios_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_02",
+    "pattern": [
+      "Os",
+      "resultados",
+      "obtidos",
+      "corroboram",
+      "com",
+      "a",
+      "hipótese",
+      "inicial"
+    ],
+    "replacements": [
+      "Os resultados obtidos corroboram a hipótese inicial"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_03",
+    "pattern": [
+      "A",
+      "análise",
+      "foi",
+      "feita",
+      "em",
+      "carater",
+      "experimental"
+    ],
+    "replacements": [
+      "A análise foi feita em caráter experimental"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_04",
+    "pattern": [
+      "A",
+      "implementação",
+      "do",
+      "sistema",
+      "exige",
+      "recursos",
+      "financeiros",
+      "e",
+      "humanos",
+      "ademais",
+      "de",
+      "tempo"
+    ],
+    "replacements": [
+      "A implementação do sistema exige recursos financeiros e humanos, além de tempo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_05",
+    "pattern": [
+      "Os",
+      "dados",
+      "coletados",
+      "foram",
+      "cruciais",
+      "na",
+      "tomada",
+      "de",
+      "decisão"
+    ],
+    "replacements": [
+      "Os dados coletados foram cruciais para a tomada de decisão"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_07",
+    "pattern": [
+      "O",
+      "relatório",
+      "final",
+      "deve",
+      "ser",
+      "entregue",
+      "em",
+      "prazo",
+      "hábil"
+    ],
+    "replacements": [
+      "O relatório final deve ser entregue em tempo hábil"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_09",
+    "pattern": [
+      "Os",
+      "riscos",
+      "associados",
+      "ao",
+      "projeto",
+      "devem",
+      "ser",
+      "minimizado"
+    ],
+    "replacements": [
+      "Os riscos associados ao projeto devem ser minimizados"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_10",
+    "pattern": [
+      "Esta",
+      "tecnologia",
+      "oferece",
+      "um",
+      "diferencial",
+      "competitivo",
+      "que",
+      "o",
+      "mercado",
+      "anseia"
+    ],
+    "replacements": [
+      "Esta tecnologia oferece um diferencial competitivo pelo qual o mercado anseia"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_11",
+    "pattern": [
+      "A",
+      "equipe",
+      "multidisciplinar",
+      "desenvolveu",
+      "uma",
+      "solução",
+      "eficaz"
+    ],
+    "replacements": [
+      "A equipe multidisciplinar desenvolveu uma solução eficaz"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_TEXTO_TECNICO_12",
+    "pattern": [
+      "É",
+      "evidente",
+      "que",
+      "a",
+      "sustentabilidade",
+      "é",
+      "um",
+      "fator",
+      "chave",
+      "para",
+      "o",
+      "futuro",
+      "da",
+      "indústria"
+    ],
+    "replacements": [
+      "É evidente que a sustentabilidade é um fator chave para o futuro da indústria"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'texto_tecnico_12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_03",
+    "pattern": [
+      "O",
+      "evento",
+      "beneficience",
+      "será",
+      "realizado",
+      "no",
+      "próximo",
+      "domingo"
+    ],
+    "replacements": [
+      "O evento beneficente será realizado no próximo domingo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_05",
+    "pattern": [
+      "A",
+      "compainha",
+      "aérea",
+      "cancelou",
+      "todos",
+      "os",
+      "vôos",
+      "da",
+      "manhã"
+    ],
+    "replacements": [
+      "A companhia aérea cancelou todos os voos da manhã"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_07",
+    "pattern": [
+      "Os",
+      "funcionários",
+      "pretendem",
+      "reinvindicar",
+      "melhores",
+      "salários"
+    ],
+    "replacements": [
+      "Os funcionários pretendem reivindicar melhores salários"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_08",
+    "pattern": [
+      "É",
+      "muito",
+      "prazeiroso",
+      "caminhar",
+      "na",
+      "praia",
+      "ao",
+      "entardecer"
+    ],
+    "replacements": [
+      "É muito prazeroso caminhar na praia ao entardecer"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_10",
+    "pattern": [
+      "Não",
+      "houve",
+      "um",
+      "concenso",
+      "entre",
+      "os",
+      "diretores",
+      "da",
+      "empresa"
+    ],
+    "replacements": [
+      "Não houve um consenso entre os diretores da empresa"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_11",
+    "pattern": [
+      "A",
+      "discursão",
+      "sobre",
+      "o",
+      "novo",
+      "projeto",
+      "durou",
+      "horas"
+    ],
+    "replacements": [
+      "A discussão sobre o novo projeto durou horas"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_12",
+    "pattern": [
+      "Precisamos",
+      "vizualizar",
+      "o",
+      "gráfico",
+      "antes",
+      "de",
+      "decidir"
+    ],
+    "replacements": [
+      "Precisamos visualizar o gráfico antes de decidir"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_13",
+    "pattern": [
+      "Ele",
+      "se",
+      "sente",
+      "previlegiado",
+      "por",
+      "trabalhar",
+      "em",
+      "casa"
+    ],
+    "replacements": [
+      "Ele se sente privilegiado por trabalhar em casa"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-13'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_14",
+    "pattern": [
+      "Dê",
+      "um",
+      "geito",
+      "de",
+      "resolver",
+      "isso",
+      "até",
+      "amanhã",
+      "cedo"
+    ],
+    "replacements": [
+      "Dê um jeito de resolver isso até amanhã cedo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-14'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_16",
+    "pattern": [
+      "O",
+      "filme",
+      "que",
+      "assistimos",
+      "ontem",
+      "foi",
+      "facinante"
+    ],
+    "replacements": [
+      "O filme que assistimos ontem foi fascinante"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-16'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_17",
+    "pattern": [
+      "Perdi",
+      "a",
+      "conciência",
+      "por",
+      "alguns",
+      "segundos",
+      "após",
+      "o",
+      "susto"
+    ],
+    "replacements": [
+      "Perdi a consciência por alguns segundos após o susto"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-17'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_18",
+    "pattern": [
+      "O",
+      "suceço",
+      "da",
+      "campanha",
+      "depende",
+      "da",
+      "nossa",
+      "união"
+    ],
+    "replacements": [
+      "O sucesso da campanha depende da nossa união"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-18'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_21",
+    "pattern": [
+      "O",
+      "advogado",
+      "apresentou",
+      "uma",
+      "petição",
+      "com",
+      "muias",
+      "rasuras"
+    ],
+    "replacements": [
+      "O advogado apresentou uma petição com muitas rasuras"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'orto-21'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_01",
+    "pattern": [
+      "Eu",
+      "nao",
+      "tive",
+      "a",
+      "ideia",
+      "de",
+      "fazer",
+      "o",
+      "curso",
+      "de",
+      "ingles"
+    ],
+    "replacements": [
+      "Eu não tive a ideia de fazer o curso de inglês"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_02",
+    "pattern": [
+      "O",
+      "nivel",
+      "de",
+      "agua",
+      "do",
+      "reservatorio",
+      "esta",
+      "baixo"
+    ],
+    "replacements": [
+      "O nível de água do reservatório está baixo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_04",
+    "pattern": [
+      "Ele",
+      "é",
+      "um",
+      "heroi",
+      "para",
+      "toda",
+      "a",
+      "nacao",
+      "brasileira"
+    ],
+    "replacements": [
+      "Ele é um herói para toda a nação brasileira"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_05",
+    "pattern": [
+      "O",
+      "proximo",
+      "onibus",
+      "passara",
+      "em",
+      "dez",
+      "minutos"
+    ],
+    "replacements": [
+      "O próximo ônibus passará em dez minutos"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_06",
+    "pattern": [
+      "Esta",
+      "tudo",
+      "pronto",
+      "para",
+      "a",
+      "assembleia",
+      "de",
+      "hoje"
+    ],
+    "replacements": [
+      "Está tudo pronto para a assembleia de hoje"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-06'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_07",
+    "pattern": [
+      "O",
+      "juiz",
+      "deu",
+      "o",
+      "veredito",
+      "final",
+      "sobre",
+      "o",
+      "reu"
+    ],
+    "replacements": [
+      "O juiz deu o veredito final sobre o réu"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-07'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_08",
+    "pattern": [
+      "Aquela",
+      "maquina",
+      "de",
+      "cafe",
+      "sempre",
+      "quebra",
+      "no",
+      "sabado"
+    ],
+    "replacements": [
+      "Aquela máquina de café sempre quebra no sábado"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_09",
+    "pattern": [
+      "Eles",
+      "creem",
+      "que",
+      "o",
+      "resultado",
+      "saira",
+      "amanha"
+    ],
+    "replacements": [
+      "Eles creem que o resultado sairá amanhã"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_10",
+    "pattern": [
+      "O",
+      "transito",
+      "na",
+      "regiao",
+      "central",
+      "e",
+      "caotico"
+    ],
+    "replacements": [
+      "O trânsito na região central é caótico"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_11",
+    "pattern": [
+      "Nos",
+      "fomos",
+      "ao",
+      "cinema",
+      "assistir",
+      "um",
+      "filme",
+      "de",
+      "acao"
+    ],
+    "replacements": [
+      "Nós fomos ao cinema assistir um filme de ação"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_12",
+    "pattern": [
+      "O",
+      "cafe",
+      "estava",
+      "muito",
+      "quente",
+      "e",
+      "sem",
+      "acucar"
+    ],
+    "replacements": [
+      "O café estava muito quente e sem açúcar"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_13",
+    "pattern": [
+      "A",
+      "historia",
+      "daquele",
+      "pais",
+      "e",
+      "muito",
+      "complexa"
+    ],
+    "replacements": [
+      "A história daquele país é muito complexa"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-13'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_14",
+    "pattern": [
+      "Ele",
+      "tem",
+      "muita",
+      "influencia",
+      "no",
+      "cenario",
+      "politico"
+    ],
+    "replacements": [
+      "Ele tem muita influência no cenário político"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-14'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_15",
+    "pattern": [
+      "O",
+      "medico",
+      "receitou",
+      "um",
+      "remedio",
+      "para",
+      "o",
+      "estomago"
+    ],
+    "replacements": [
+      "O médico receitou um remédio para o estômago"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-15'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_16",
+    "pattern": [
+      "Ninguem",
+      "sabe",
+      "o",
+      "porquê",
+      "de",
+      "tanta",
+      "confusao"
+    ],
+    "replacements": [
+      "Ninguém sabe o porquê de tanta confusão"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-16'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_17",
+    "pattern": [
+      "Os",
+      "paises",
+      "do",
+      "Mercosul",
+      "buscam",
+      "um",
+      "acordo",
+      "unico"
+    ],
+    "replacements": [
+      "Os países do Mercosul buscam um acordo único"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-17'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_18",
+    "pattern": [
+      "O",
+      "tunel",
+      "foi",
+      "interditado",
+      "apos",
+      "o",
+      "acidente"
+    ],
+    "replacements": [
+      "O túnel foi interditado após o acidente"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-18'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_19",
+    "pattern": [
+      "Tire",
+      "suas",
+      "duvidas",
+      "antes",
+      "de",
+      "assinar",
+      "o",
+      "papel"
+    ],
+    "replacements": [
+      "Tire suas dúvidas antes de assinar o papel"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-19'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_20",
+    "pattern": [
+      "Aquela",
+      "noticia",
+      "saiu",
+      "na",
+      "pagina",
+      "principal",
+      "do",
+      "jornal"
+    ],
+    "replacements": [
+      "Aquela notícia saiu na página principal do jornal"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-20'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ACENT_21",
+    "pattern": [
+      "O",
+      "carater",
+      "do",
+      "homem",
+      "se",
+      "ve",
+      "em",
+      "suas",
+      "acoes"
+    ],
+    "replacements": [
+      "O caráter do homem se vê em suas ações"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'acent-21'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_02",
+    "pattern": [
+      "Fiz",
+      "a",
+      "inscrição",
+      "na",
+      "auto-escola",
+      "ontem",
+      "à",
+      "tarde"
+    ],
+    "replacements": [
+      "Fiz a inscrição na autoescola ontem à tarde"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_08",
+    "pattern": [
+      "O",
+      "movimento",
+      "anti-racista",
+      "ganhou",
+      "força",
+      "no",
+      "país"
+    ],
+    "replacements": [
+      "O movimento antirracista ganhou força no país"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_10",
+    "pattern": [
+      "Aquela",
+      "substância",
+      "possui",
+      "contra-indicação",
+      "severa"
+    ],
+    "replacements": [
+      "Aquela substância possui contraindicação severa"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_12",
+    "pattern": [
+      "O",
+      "regime",
+      "semi-aberto",
+      "permite",
+      "trabalhar",
+      "fora"
+    ],
+    "replacements": [
+      "O regime semiaberto permite trabalhar fora"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_13",
+    "pattern": [
+      "O",
+      "ex",
+      "presidente",
+      "concedeu",
+      "uma",
+      "entrevista",
+      "exclusiva"
+    ],
+    "replacements": [
+      "O ex-presidente concedeu uma entrevista exclusiva"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-13'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_14",
+    "pattern": [
+      "O",
+      "vice",
+      "prefeito",
+      "assumiu",
+      "o",
+      "cargo",
+      "interinamente"
+    ],
+    "replacements": [
+      "O vice-prefeito assumiu o cargo interinamente"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-14'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_15",
+    "pattern": [
+      "Vimos",
+      "um",
+      "lindo",
+      "arcos",
+      "íris",
+      "depois",
+      "da",
+      "chuva",
+      "forte"
+    ],
+    "replacements": [
+      "Vimos um lindo arco-íris depois da chuva forte"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-15'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_16",
+    "pattern": [
+      "Esqueci",
+      "meu",
+      "guarda",
+      "chuva",
+      "no",
+      "escritório",
+      "ontem"
+    ],
+    "replacements": [
+      "Esqueci meu guarda-chuva no escritório ontem"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-16'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_17",
+    "pattern": [
+      "A",
+      "próxima",
+      "segunda",
+      "feira",
+      "será",
+      "feriado",
+      "nacional"
+    ],
+    "replacements": [
+      "A próxima segunda-feira será feriado nacional"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-17'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_18",
+    "pattern": [
+      "É",
+      "necessário",
+      "re-utilizar",
+      "as",
+      "embalagens",
+      "plásticas"
+    ],
+    "replacements": [
+      "É necessário reutilizar as embalagens plásticas"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-18'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_20",
+    "pattern": [
+      "O",
+      "neo-liberalismo",
+      "é",
+      "um",
+      "tema",
+      "muito",
+      "debatido"
+    ],
+    "replacements": [
+      "O neoliberalismo é um tema muito debatido"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'hifen-20'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_01",
+    "pattern": [
+      "O",
+      "gerente",
+      "da",
+      "loja",
+      "disse",
+      "que",
+      "o",
+      "desconto",
+      "acabou"
+    ],
+    "replacements": [
+      "O gerente da loja disse que o desconto acabou"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_03",
+    "pattern": [
+      "Eu",
+      "comprei",
+      "pão",
+      "leite",
+      "ovos",
+      "e",
+      "café"
+    ],
+    "replacements": [
+      "Eu comprei pão, leite, ovos e café"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-03'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_04",
+    "pattern": [
+      "Quando",
+      "chegar",
+      "em",
+      "casa",
+      "me",
+      "ligue"
+    ],
+    "replacements": [
+      "Quando chegar em casa, me ligue"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-04'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_05",
+    "pattern": [
+      "João",
+      "o",
+      "vizinho",
+      "do",
+      "lado",
+      "é",
+      "muito",
+      "simpático"
+    ],
+    "replacements": [
+      "João, o vizinho do lado, é muito simpático"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_08",
+    "pattern": [
+      "Vou",
+      "viajar",
+      "amanhã",
+      "cedo",
+      "não",
+      "sei",
+      "quando",
+      "volto"
+    ],
+    "replacements": [
+      "Vou viajar amanhã cedo; não sei quando volto"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-08'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_09",
+    "pattern": [
+      "O",
+      "Brasil",
+      "é",
+      "um",
+      "país",
+      "tropical"
+    ],
+    "replacements": [
+      "O Brasil é um país tropical"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-09'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_10",
+    "pattern": [
+      "Sempre",
+      "que",
+      "ele",
+      "viaja",
+      "traz",
+      "presentes"
+    ],
+    "replacements": [
+      "Sempre que ele viaja, traz presentes"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-10'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_11",
+    "pattern": [
+      "Brasília",
+      "de",
+      "março",
+      "de"
+    ],
+    "replacements": [
+      "Brasília, 15 de março de 2024"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-11'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_12",
+    "pattern": [
+      "O",
+      "professor",
+      "explicou",
+      "que",
+      "a",
+      "prova",
+      "será",
+      "difícil"
+    ],
+    "replacements": [
+      "O professor explicou que a prova será difícil"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-12'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_14",
+    "pattern": [
+      "Queremos",
+      "saber",
+      "onde",
+      "você",
+      "guardou",
+      "a",
+      "chave"
+    ],
+    "replacements": [
+      "Queremos saber onde você guardou a chave"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-14'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_15",
+    "pattern": [
+      "Minha",
+      "irmã",
+      "que",
+      "mora",
+      "em",
+      "Paris",
+      "vem",
+      "nos",
+      "visitar"
+    ],
+    "replacements": [
+      "Minha irmã, que mora em Paris, vem nos visitar"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-15'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_16",
+    "pattern": [
+      "Talvez",
+      "seja",
+      "melhor",
+      "esperar",
+      "um",
+      "pouco",
+      "mais"
+    ],
+    "replacements": [
+      "Talvez seja melhor esperar um pouco mais"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-16'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_17",
+    "pattern": [
+      "Eles",
+      "trouxeram",
+      "comida",
+      "bebida",
+      "e",
+      "música"
+    ],
+    "replacements": [
+      "Eles trouxeram comida, bebida e música"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-17'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_18",
+    "pattern": [
+      "Boa",
+      "tarde",
+      "pessoal",
+      "tudo",
+      "bem",
+      "com",
+      "vocês"
+    ],
+    "replacements": [
+      "Boa tarde, pessoal, tudo bem com vocês"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-18'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_19",
+    "pattern": [
+      "A",
+      "conclusão",
+      "do",
+      "trabalho",
+      "segundo",
+      "o",
+      "autor",
+      "foi",
+      "positiva"
+    ],
+    "replacements": [
+      "A conclusão do trabalho, segundo o autor, foi positiva"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-19'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_PONT_21",
+    "pattern": [
+      "Com",
+      "esforço",
+      "e",
+      "dedicação",
+      "os",
+      "objetivos",
+      "são",
+      "alcançados"
+    ],
+    "replacements": [
+      "Com esforço e dedicação, os objetivos são alcançados"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'pont-21'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CTX_01",
+    "pattern": [
+      "Houveram",
+      "muitos",
+      "problemas",
+      "na",
+      "execução",
+      "do",
+      "projeto"
+    ],
+    "replacements": [
+      "Houve muitos problemas na execução do projeto"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ctx-01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CTX_02",
+    "pattern": [
+      "Faziam",
+      "cinco",
+      "anos",
+      "que",
+      "eu",
+      "não",
+      "via",
+      "meu",
+      "primo"
+    ],
+    "replacements": [
+      "Fazia cinco anos que eu não via meu primo"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ctx-02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_CTX_05",
+    "pattern": [
+      "Ela",
+      "mesmo",
+      "resolveu",
+      "o",
+      "problema",
+      "da",
+      "impressora"
+    ],
+    "replacements": [
+      "Ela mesma resolveu o problema da impressora"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ctx-05'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_4_CTX_01",
+    "pattern": [
+      "Fazem",
+      "cinco",
+      "anos",
+      "que",
+      "não",
+      "visito",
+      "minha",
+      "cidade",
+      "natal",
+      "no",
+      "interior"
+    ],
+    "replacements": [
+      "Faz cinco anos que não visito minha cidade natal no interior"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ctx-01'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_4_CTX_02",
+    "pattern": [
+      "Houveram",
+      "muitos",
+      "problemas",
+      "durante",
+      "a",
+      "migração",
+      "do",
+      "banco",
+      "de",
+      "dados"
+    ],
+    "replacements": [
+      "Houve muitos problemas durante a migração do banco de dados"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ctx-02'."
+  },
+  {
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_4_CTX_05",
+    "pattern": [
+      "A",
+      "maior",
+      "parte",
+      "dos",
+      "candidatos",
+      "desistiram",
+      "da",
+      "prova",
+      "no",
+      "meio",
+      "do",
+      "dia"
+    ],
+    "replacements": [
+      "A maior parte dos candidatos desistiu da prova no meio do dia"
+    ],
+    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
+    "description": "Regra exata derivada da auditoria contínua para 'ctx-05'."
   }
 ]

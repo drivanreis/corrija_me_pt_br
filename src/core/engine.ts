@@ -97,8 +97,12 @@ function overlapsTechnicalSpan(offset: number, length: number, spans: TextSpan[]
 
 function createReplacementMatches(text: string, entries: ReplacementEntry[]): RuleMatch[] {
   const matches: RuleMatch[] = [];
+  const prioritizedEntries = [...entries].sort((left, right) => (
+    right.from.length - left.from.length
+    || right.replacements.join("|").length - left.replacements.join("|").length
+  ));
 
-  for (const entry of entries) {
+  for (const entry of prioritizedEntries) {
     const pattern = isWordLike(entry.from) ? createWholeWordPattern(entry.from) : new RegExp(entry.from, "giu");
     const textMatches = text.matchAll(pattern);
 
@@ -718,8 +722,11 @@ function deriveMatchConfidence(match: RuleMatch, text: string, dictionary: Dicti
 
   if (match.rule.id.startsWith("PT_BR_PUNCTUATION_")) {
     let score = 0.88;
+    if (match.rule.id === "PT_BR_PUNCTUATION_POREM") {
+      score = 0.94;
+    }
     if (match.rule.id.includes("FINAL_")) {
-      score = 0.7;
+      score = 0.84;
     }
     if (match.rule.id.includes("GREETING_NAME") || match.rule.id.includes("INITIAL_MARKER")) {
       score = 0.9;

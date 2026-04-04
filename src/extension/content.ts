@@ -60,6 +60,7 @@ let suppressNextClickHideUntil = 0;
 let activeElementSessionId = 0;
 const ignoredMatchSignatures = new Map<number, Set<string>>();
 let latestHiddenWeakCount = 0;
+let highlightedSuggestionIndex = -1;
 
 const suggestionMenu = document.createElement("section");
 suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
@@ -151,6 +152,93 @@ function getText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement |
   return (element.textContent || "").replace(/\u00a0/g, " ");
 }
 
+function countRegexMatches(text: string, pattern: RegExp): number {
+  const matches = text.match(pattern);
+  return matches ? matches.length : 0;
+}
+
+function looksLikeUrlOnly(text: string): boolean {
+  return /^(https?:\/\/|www\.)\S+$/i.test(text);
+}
+
+function looksLikeEmailOnly(text: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text);
+}
+
+function looksLikeJwt(text: string): boolean {
+  return /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(text);
+}
+
+function looksLikeUuid(text: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(text);
+}
+
+function looksLikeHashOrApiKey(text: string): boolean {
+  return /^[A-Za-z0-9+/_=-]{24,}$/.test(text)
+    && !/[ .,!?:;()[\]{}]/.test(text)
+    && !/[aeiouáéíóúàâêôãõ]/i.test(text);
+}
+
+function looksLikeEndpointOrPath(text: string): boolean {
+  return /^[/A-Za-z0-9._~!$&'()*+,;=:@%-]+(?:\?[^ ]*)?$/.test(text)
+    && /[/?=&_-]/.test(text)
+    && !/\s/.test(text);
+}
+
+function looksLikePixOrDocumentKey(text: string): boolean {
+  const compact = text.replace(/\s+/g, "");
+  return /^\+?\d{10,16}$/.test(compact)
+    || /^\d{11}$/.test(compact)
+    || /^\d{14}$/.test(compact)
+    || /^[0-9a-f]{32}$/i.test(compact);
+}
+
+function classifyNonLinguisticText(text: string): string | null {
+  const trimmed = text.trim();
+  if (!trimmed) {
+    return "Campo vazio.";
+  }
+
+  if (looksLikeUrlOnly(trimmed)) {
+    return "Conteúdo parece ser apenas um link.";
+  }
+
+  if (looksLikeEmailOnly(trimmed)) {
+    return "Conteúdo parece ser apenas um e-mail.";
+  }
+
+  if (looksLikeJwt(trimmed) || looksLikeUuid(trimmed) || looksLikeHashOrApiKey(trimmed)) {
+    return "Conteúdo parece ser uma chave, token ou identificador.";
+  }
+
+  if (looksLikePixOrDocumentKey(trimmed)) {
+    return "Conteúdo parece ser uma chave numérica ou identificador de pagamento.";
+  }
+
+  if (looksLikeEndpointOrPath(trimmed)) {
+    return "Conteúdo parece ser um endpoint, caminho ou string técnica.";
+  }
+
+  const letters = countRegexMatches(trimmed, /\p{L}/gu);
+  const digits = countRegexMatches(trimmed, /\d/g);
+  const whitespace = countRegexMatches(trimmed, /\s/g);
+  const punctuation = countRegexMatches(trimmed, /[.,!?;:]/g);
+  const technicalChars = countRegexMatches(trimmed, /[_/=&#:%@[\]{}<>\\|$+-]/g);
+  const words = trimmed.split(/\s+/).filter(Boolean);
+  const hasSentenceShape = punctuation > 0 || words.length >= 3;
+  const letterRatio = trimmed.length ? letters / trimmed.length : 0;
+
+  if (!hasSentenceShape && digits >= letters && technicalChars >= 2) {
+    return "Conteúdo parece técnico demais para revisão gramatical.";
+  }
+
+  if (!hasSentenceShape && letterRatio < 0.45 && (digits >= 4 || technicalChars >= 3 || whitespace === 0)) {
+    return "Conteúdo não parece uma frase em português.";
+  }
+
+  return null;
+}
+
 function setText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement, text: string): void {
   if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
     const start = element.selectionStart ?? text.length;
@@ -175,6 +263,7 @@ function replaceTextRange(text: string, offset: number, length: number, replacem
 function hideSuggestionMenu(): void {
   suggestionMenu.classList.add("corrija-me-pt-br-hidden");
   suggestionMenu.innerHTML = "";
+  highlightedSuggestionIndex = -1;
 }
 
 function shouldIgnoreHideAfterPointerGesture(): boolean {
@@ -581,6 +670,157 @@ function getConfidenceLabel(match: CheckMatch): string {
   }
 }
 
+function syncSuggestionMenuPosition(): void {
+  if (!activeElement || !isVisibleElement(activeElement)) {
+    suggestionMenu.classList.add("corrija-me-pt-br-hidden");
+    return;
+  }
+
+  const rect = activeElement.getBoundingClientRect();
+  const panelWidth = Math.min(360, Math.max(280, window.innerWidth - 24));
+  const preferRight = rect.right + 14 + panelWidth <= window.innerWidth - 12;
+  const left = preferRight
+    ? rect.right + 14
+    : Math.max(12, Math.min(window.innerWidth - panelWidth - 12, rect.left));
+  const top = preferRight
+    ? Math.max(12, rect.top)
+    : Math.min(window.innerHeight - 220, rect.bottom + 12);
+
+  suggestionMenu.style.width = `${panelWidth}px`;
+  suggestionMenu.style.maxWidth = `${panelWidth}px`;
+  suggestionMenu.style.left = `${left}px`;
+  suggestionMenu.style.top = `${Math.max(12, top)}px`;
+}
+
+function focusSuggestionCard(index: number): void {
+  const card = suggestionMenu.querySelector<HTMLElement>(`[data-suggestion-card="${index}"]`);
+  if (!card) {
+    return;
+  }
+  card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
+function renderSuggestionPanel(focusIndex = highlightedSuggestionIndex): void {
+  if (!latestMatches.length || !activeElement) {
+    hideSuggestionMenu();
+    return;
+  }
+
+  highlightedSuggestionIndex = focusIndex >= 0 ? focusIndex : -1;
+  suggestionMenu.innerHTML = "";
+
+  const header = document.createElement("div");
+  header.className = "corrija-me-pt-br-menu-panel-header";
+  header.innerHTML = `
+    <div class="corrija-me-pt-br-menu-panel-title">Sugestões do campo</div>
+    <div class="corrija-me-pt-br-menu-panel-meta">${latestMatches.length} ajuste(s)</div>
+  `;
+  suggestionMenu.appendChild(header);
+
+  if (latestMatches.length > 1) {
+    const actions = document.createElement("div");
+    actions.className = "corrija-me-pt-br-menu-panel-actions";
+
+    const applyAllButton = document.createElement("button");
+    applyAllButton.type = "button";
+    applyAllButton.className = "corrija-me-pt-br-menu-bulk-button";
+    applyAllButton.textContent = "Corrigir visíveis";
+    applyAllButton.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      applyAllCorrections();
+    });
+    actions.appendChild(applyAllButton);
+
+    suggestionMenu.appendChild(actions);
+  }
+
+  const list = document.createElement("div");
+  list.className = "corrija-me-pt-br-menu-list";
+
+  latestMatches.forEach((match, index) => {
+    const card = document.createElement("article");
+    card.className = "corrija-me-pt-br-menu-card";
+    if (index === highlightedSuggestionIndex) {
+      card.classList.add("corrija-me-pt-br-menu-card-active");
+    }
+    card.dataset.suggestionCard = String(index);
+
+    const excerpt = getExcerpt(match) || getMatchText(match, latestText) || "Trecho sem contexto.";
+    const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 2) : [];
+
+    const topRow = document.createElement("div");
+    topRow.className = "corrija-me-pt-br-menu-card-top";
+
+    const confidenceBadge = document.createElement("div");
+    confidenceBadge.className = `corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
+    confidenceBadge.textContent = getConfidenceLabel(match);
+    if (match.confidence?.reason) {
+      confidenceBadge.title = match.confidence.reason;
+    }
+    topRow.appendChild(confidenceBadge);
+
+    const ignoreButton = document.createElement("button");
+    ignoreButton.type = "button";
+    ignoreButton.className = "corrija-me-pt-br-menu-ignore";
+    ignoreButton.textContent = "(i)";
+    ignoreButton.title = "Ignorar nesta análise";
+    ignoreButton.setAttribute("aria-label", "Ignorar nesta análise");
+    ignoreButton.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      ignoreMatch(index);
+    });
+    topRow.appendChild(ignoreButton);
+
+    card.appendChild(topRow);
+
+    const excerptNode = document.createElement("div");
+    excerptNode.className = "corrija-me-pt-br-menu-excerpt";
+    excerptNode.textContent = excerpt;
+    card.appendChild(excerptNode);
+
+    const messageNode = document.createElement("div");
+    messageNode.className = "corrija-me-pt-br-menu-message";
+    messageNode.textContent = match.message || "Possível ajuste encontrado.";
+    card.appendChild(messageNode);
+
+    const replacementsWrap = document.createElement("div");
+    replacementsWrap.className = "corrija-me-pt-br-menu-replacements";
+
+    if (!replacements.length) {
+      const empty = document.createElement("div");
+      empty.className = "corrija-me-pt-br-menu-empty";
+      empty.textContent = "Sem sugestão pronta.";
+      replacementsWrap.appendChild(empty);
+    } else {
+      replacements.forEach((replacement) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "corrija-me-pt-br-menu-item";
+        button.textContent = replacement.value;
+        button.addEventListener("pointerdown", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          applySingleCorrection(index, replacement.value);
+        });
+        replacementsWrap.appendChild(button);
+      });
+    }
+
+    card.appendChild(replacementsWrap);
+    list.appendChild(card);
+  });
+
+  suggestionMenu.appendChild(list);
+  syncSuggestionMenuPosition();
+  suggestionMenu.classList.remove("corrija-me-pt-br-hidden");
+
+  if (highlightedSuggestionIndex >= 0) {
+    focusSuggestionCard(highlightedSuggestionIndex);
+  }
+}
+
 function ignoreMatch(index: number): void {
   const match = latestMatches[index];
   if (!match) {
@@ -589,7 +829,6 @@ function ignoreMatch(index: number): void {
 
   getIgnoredMatchSet(activeElementSessionId).add(createMatchSignature(match, latestText));
   latestMatches = latestMatches.filter((_, matchIndex) => matchIndex !== index);
-  hideSuggestionMenu();
   renderResults(latestMatches);
   const statusMessage = latestMatches.length ? `${latestMatches.length} sugestao(oes) restante(s).` : "Sugestao ignorada nesta analise.";
   setStatus(statusMessage, latestMatches.length ? "ok" : "");
@@ -597,65 +836,13 @@ function ignoreMatch(index: number): void {
 }
 
 function openSuggestionMenu(index: number, x: number, y: number): void {
-  const match = latestMatches[index];
-  if (!match) {
+  if (!latestMatches[index]) {
     hideSuggestionMenu();
     return;
   }
-
-  suggestionMenu.innerHTML = "";
-
-  const header = document.createElement("div");
-  header.className = "corrija-me-pt-br-menu-header";
-
-  const confidenceBadge = document.createElement("div");
-  confidenceBadge.className = `corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
-  confidenceBadge.textContent = getConfidenceLabel(match);
-  if (match.confidence?.reason) {
-    confidenceBadge.title = match.confidence.reason;
-  }
-  header.appendChild(confidenceBadge);
-
-  const ignoreButton = document.createElement("button");
-  ignoreButton.type = "button";
-  ignoreButton.className = "corrija-me-pt-br-menu-ignore";
-  ignoreButton.textContent = "(i)";
-  ignoreButton.title = "Iguinora";
-  ignoreButton.setAttribute("aria-label", "Iguinora");
-  ignoreButton.addEventListener("pointerdown", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    ignoreMatch(index);
-  });
-  header.appendChild(ignoreButton);
-
-  suggestionMenu.appendChild(header);
-
-  const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 2) : [];
-  if (!replacements.length) {
-    const empty = document.createElement("div");
-    empty.className = "corrija-me-pt-br-menu-empty";
-    empty.textContent = "Sem sugestao.";
-    suggestionMenu.appendChild(empty);
-  } else {
-    for (const replacement of replacements) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "corrija-me-pt-br-menu-item";
-      button.textContent = replacement.value;
-      button.addEventListener("pointerdown", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        applySingleCorrection(index, replacement.value);
-        hideSuggestionMenu();
-      });
-      suggestionMenu.appendChild(button);
-    }
-  }
-
-  suggestionMenu.style.left = `${Math.min(window.innerWidth - 240, Math.max(12, x))}px`;
-  suggestionMenu.style.top = `${Math.min(window.innerHeight - 220, Math.max(12, y + 12))}px`;
-  suggestionMenu.classList.remove("corrija-me-pt-br-hidden");
+  void x;
+  void y;
+  renderSuggestionPanel(index);
 }
 
 function postGoogleDocsBridgeMessage(payload: Record<string, unknown>): void {
@@ -746,6 +933,7 @@ function renderResults(matches: CheckMatch[]): void {
   latestMatches = matches;
   renderHighlightsForActiveElement(matches);
   renderInputOverlay(matches);
+  renderSuggestionPanel();
 }
 
 async function analyzeActiveElement(manual = false): Promise<void> {
@@ -766,6 +954,18 @@ async function analyzeActiveElement(manual = false): Promise<void> {
     setStatus("Digite um pouco mais para analisar esse campo.");
     renderResults([]);
     syncGoogleDocsBridgeState("Digite um pouco mais para analisar esse campo.");
+    return;
+  }
+
+  const nonLinguisticReason = classifyNonLinguisticText(text);
+  if (nonLinguisticReason) {
+    latestMatches = [];
+    latestHiddenWeakCount = 0;
+    clearHighlights();
+    hideInputOverlay();
+    setStatus(`${nonLinguisticReason} A analise gramatical foi ignorada.`);
+    renderResults([]);
+    syncGoogleDocsBridgeState(`${nonLinguisticReason} A analise gramatical foi ignorada.`);
     return;
   }
 
@@ -922,11 +1122,17 @@ document.addEventListener("scroll", () => {
   if (activeElement && isInputLikeElement(activeElement)) {
     syncInputOverlayPosition(activeElement);
   }
+  if (!suggestionMenu.classList.contains("corrija-me-pt-br-hidden")) {
+    syncSuggestionMenuPosition();
+  }
 }, true);
 
 window.addEventListener("resize", () => {
   if (activeElement && isInputLikeElement(activeElement)) {
     syncInputOverlayPosition(activeElement);
+  }
+  if (!suggestionMenu.classList.contains("corrija-me-pt-br-hidden")) {
+    syncSuggestionMenuPosition();
   }
 });
 
@@ -962,9 +1168,8 @@ document.addEventListener("pointerdown", (event) => {
   if (target instanceof HTMLElement && target.classList.contains("corrija-me-pt-br-overlay-hit")) {
     const index = Number(target.dataset.matchIndex ?? "-1");
     if (Number.isInteger(index) && index >= 0) {
-      const rect = target.getBoundingClientRect();
       markPointerGestureForSuggestionMenu();
-      openSuggestionMenu(index, rect.left, rect.bottom);
+      openSuggestionMenu(index, 0, 0);
       event.preventDefault();
       event.stopPropagation();
       return;
@@ -1039,7 +1244,9 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  hideSuggestionMenu();
+  if (!(target instanceof Node) || !suggestionMenu.contains(target)) {
+    hideSuggestionMenu();
+  }
 }, true);
 
 window.addEventListener("message", (event) => {

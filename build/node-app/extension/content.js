@@ -107,6 +107,7 @@
   var activeElementSessionId = 0;
   var ignoredMatchSignatures = /* @__PURE__ */ new Map();
   var latestHiddenWeakCount = 0;
+  var highlightedSuggestionIndex = -1;
   var suggestionMenu = document.createElement("section");
   suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
   document.documentElement.appendChild(suggestionMenu);
@@ -184,6 +185,68 @@
     }
     return (element.textContent || "").replace(/\u00a0/g, " ");
   }
+  function countRegexMatches(text, pattern) {
+    const matches = text.match(pattern);
+    return matches ? matches.length : 0;
+  }
+  function looksLikeUrlOnly(text) {
+    return /^(https?:\/\/|www\.)\S+$/i.test(text);
+  }
+  function looksLikeEmailOnly(text) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text);
+  }
+  function looksLikeJwt(text) {
+    return /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(text);
+  }
+  function looksLikeUuid(text) {
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(text);
+  }
+  function looksLikeHashOrApiKey(text) {
+    return /^[A-Za-z0-9+/_=-]{24,}$/.test(text) && !/[ .,!?:;()[\]{}]/.test(text) && !/[aeiouáéíóúàâêôãõ]/i.test(text);
+  }
+  function looksLikeEndpointOrPath(text) {
+    return /^[/A-Za-z0-9._~!$&'()*+,;=:@%-]+(?:\?[^ ]*)?$/.test(text) && /[/?=&_-]/.test(text) && !/\s/.test(text);
+  }
+  function looksLikePixOrDocumentKey(text) {
+    const compact = text.replace(/\s+/g, "");
+    return /^\+?\d{10,16}$/.test(compact) || /^\d{11}$/.test(compact) || /^\d{14}$/.test(compact) || /^[0-9a-f]{32}$/i.test(compact);
+  }
+  function classifyNonLinguisticText(text) {
+    const trimmed = text.trim();
+    if (!trimmed) {
+      return "Campo vazio.";
+    }
+    if (looksLikeUrlOnly(trimmed)) {
+      return "Conte\xFAdo parece ser apenas um link.";
+    }
+    if (looksLikeEmailOnly(trimmed)) {
+      return "Conte\xFAdo parece ser apenas um e-mail.";
+    }
+    if (looksLikeJwt(trimmed) || looksLikeUuid(trimmed) || looksLikeHashOrApiKey(trimmed)) {
+      return "Conte\xFAdo parece ser uma chave, token ou identificador.";
+    }
+    if (looksLikePixOrDocumentKey(trimmed)) {
+      return "Conte\xFAdo parece ser uma chave num\xE9rica ou identificador de pagamento.";
+    }
+    if (looksLikeEndpointOrPath(trimmed)) {
+      return "Conte\xFAdo parece ser um endpoint, caminho ou string t\xE9cnica.";
+    }
+    const letters = countRegexMatches(trimmed, new RegExp("\\p{L}", "gu"));
+    const digits = countRegexMatches(trimmed, /\d/g);
+    const whitespace = countRegexMatches(trimmed, /\s/g);
+    const punctuation = countRegexMatches(trimmed, /[.,!?;:]/g);
+    const technicalChars = countRegexMatches(trimmed, /[_/=&#:%@[\]{}<>\\|$+-]/g);
+    const words = trimmed.split(/\s+/).filter(Boolean);
+    const hasSentenceShape = punctuation > 0 || words.length >= 3;
+    const letterRatio = trimmed.length ? letters / trimmed.length : 0;
+    if (!hasSentenceShape && digits >= letters && technicalChars >= 2) {
+      return "Conte\xFAdo parece t\xE9cnico demais para revis\xE3o gramatical.";
+    }
+    if (!hasSentenceShape && letterRatio < 0.45 && (digits >= 4 || technicalChars >= 3 || whitespace === 0)) {
+      return "Conte\xFAdo n\xE3o parece uma frase em portugu\xEAs.";
+    }
+    return null;
+  }
   function setText(element, text) {
     if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
       const start = element.selectionStart ?? text.length;
@@ -206,6 +269,7 @@
   function hideSuggestionMenu() {
     suggestionMenu.classList.add("corrija-me-pt-br-hidden");
     suggestionMenu.innerHTML = "";
+    highlightedSuggestionIndex = -1;
   }
   function shouldIgnoreHideAfterPointerGesture() {
     return Date.now() < suppressNextClickHideUntil;
@@ -525,6 +589,129 @@
         return "Confianca padrao";
     }
   }
+  function syncSuggestionMenuPosition() {
+    if (!activeElement || !isVisibleElement(activeElement)) {
+      suggestionMenu.classList.add("corrija-me-pt-br-hidden");
+      return;
+    }
+    const rect = activeElement.getBoundingClientRect();
+    const panelWidth = Math.min(360, Math.max(280, window.innerWidth - 24));
+    const preferRight = rect.right + 14 + panelWidth <= window.innerWidth - 12;
+    const left = preferRight ? rect.right + 14 : Math.max(12, Math.min(window.innerWidth - panelWidth - 12, rect.left));
+    const top = preferRight ? Math.max(12, rect.top) : Math.min(window.innerHeight - 220, rect.bottom + 12);
+    suggestionMenu.style.width = `${panelWidth}px`;
+    suggestionMenu.style.maxWidth = `${panelWidth}px`;
+    suggestionMenu.style.left = `${left}px`;
+    suggestionMenu.style.top = `${Math.max(12, top)}px`;
+  }
+  function focusSuggestionCard(index) {
+    const card = suggestionMenu.querySelector(`[data-suggestion-card="${index}"]`);
+    if (!card) {
+      return;
+    }
+    card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+  function renderSuggestionPanel(focusIndex = highlightedSuggestionIndex) {
+    if (!latestMatches.length || !activeElement) {
+      hideSuggestionMenu();
+      return;
+    }
+    highlightedSuggestionIndex = focusIndex >= 0 ? focusIndex : -1;
+    suggestionMenu.innerHTML = "";
+    const header = document.createElement("div");
+    header.className = "corrija-me-pt-br-menu-panel-header";
+    header.innerHTML = `
+    <div class="corrija-me-pt-br-menu-panel-title">Sugest\xF5es do campo</div>
+    <div class="corrija-me-pt-br-menu-panel-meta">${latestMatches.length} ajuste(s)</div>
+  `;
+    suggestionMenu.appendChild(header);
+    if (latestMatches.length > 1) {
+      const actions = document.createElement("div");
+      actions.className = "corrija-me-pt-br-menu-panel-actions";
+      const applyAllButton = document.createElement("button");
+      applyAllButton.type = "button";
+      applyAllButton.className = "corrija-me-pt-br-menu-bulk-button";
+      applyAllButton.textContent = "Corrigir vis\xEDveis";
+      applyAllButton.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        applyAllCorrections();
+      });
+      actions.appendChild(applyAllButton);
+      suggestionMenu.appendChild(actions);
+    }
+    const list = document.createElement("div");
+    list.className = "corrija-me-pt-br-menu-list";
+    latestMatches.forEach((match, index) => {
+      const card = document.createElement("article");
+      card.className = "corrija-me-pt-br-menu-card";
+      if (index === highlightedSuggestionIndex) {
+        card.classList.add("corrija-me-pt-br-menu-card-active");
+      }
+      card.dataset.suggestionCard = String(index);
+      const excerpt = getExcerpt(match) || getMatchText(match, latestText) || "Trecho sem contexto.";
+      const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 2) : [];
+      const topRow = document.createElement("div");
+      topRow.className = "corrija-me-pt-br-menu-card-top";
+      const confidenceBadge = document.createElement("div");
+      confidenceBadge.className = `corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
+      confidenceBadge.textContent = getConfidenceLabel(match);
+      if (match.confidence?.reason) {
+        confidenceBadge.title = match.confidence.reason;
+      }
+      topRow.appendChild(confidenceBadge);
+      const ignoreButton = document.createElement("button");
+      ignoreButton.type = "button";
+      ignoreButton.className = "corrija-me-pt-br-menu-ignore";
+      ignoreButton.textContent = "(i)";
+      ignoreButton.title = "Ignorar nesta an\xE1lise";
+      ignoreButton.setAttribute("aria-label", "Ignorar nesta an\xE1lise");
+      ignoreButton.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        ignoreMatch(index);
+      });
+      topRow.appendChild(ignoreButton);
+      card.appendChild(topRow);
+      const excerptNode = document.createElement("div");
+      excerptNode.className = "corrija-me-pt-br-menu-excerpt";
+      excerptNode.textContent = excerpt;
+      card.appendChild(excerptNode);
+      const messageNode = document.createElement("div");
+      messageNode.className = "corrija-me-pt-br-menu-message";
+      messageNode.textContent = match.message || "Poss\xEDvel ajuste encontrado.";
+      card.appendChild(messageNode);
+      const replacementsWrap = document.createElement("div");
+      replacementsWrap.className = "corrija-me-pt-br-menu-replacements";
+      if (!replacements.length) {
+        const empty = document.createElement("div");
+        empty.className = "corrija-me-pt-br-menu-empty";
+        empty.textContent = "Sem sugest\xE3o pronta.";
+        replacementsWrap.appendChild(empty);
+      } else {
+        replacements.forEach((replacement) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "corrija-me-pt-br-menu-item";
+          button.textContent = replacement.value;
+          button.addEventListener("pointerdown", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            applySingleCorrection(index, replacement.value);
+          });
+          replacementsWrap.appendChild(button);
+        });
+      }
+      card.appendChild(replacementsWrap);
+      list.appendChild(card);
+    });
+    suggestionMenu.appendChild(list);
+    syncSuggestionMenuPosition();
+    suggestionMenu.classList.remove("corrija-me-pt-br-hidden");
+    if (highlightedSuggestionIndex >= 0) {
+      focusSuggestionCard(highlightedSuggestionIndex);
+    }
+  }
   function ignoreMatch(index) {
     const match = latestMatches[index];
     if (!match) {
@@ -532,65 +719,19 @@
     }
     getIgnoredMatchSet(activeElementSessionId).add(createMatchSignature(match, latestText));
     latestMatches = latestMatches.filter((_, matchIndex) => matchIndex !== index);
-    hideSuggestionMenu();
     renderResults(latestMatches);
     const statusMessage = latestMatches.length ? `${latestMatches.length} sugestao(oes) restante(s).` : "Sugestao ignorada nesta analise.";
     setStatus(statusMessage, latestMatches.length ? "ok" : "");
     syncGoogleDocsBridgeState(statusMessage);
   }
   function openSuggestionMenu(index, x, y) {
-    const match = latestMatches[index];
-    if (!match) {
+    if (!latestMatches[index]) {
       hideSuggestionMenu();
       return;
     }
-    suggestionMenu.innerHTML = "";
-    const header = document.createElement("div");
-    header.className = "corrija-me-pt-br-menu-header";
-    const confidenceBadge = document.createElement("div");
-    confidenceBadge.className = `corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
-    confidenceBadge.textContent = getConfidenceLabel(match);
-    if (match.confidence?.reason) {
-      confidenceBadge.title = match.confidence.reason;
-    }
-    header.appendChild(confidenceBadge);
-    const ignoreButton = document.createElement("button");
-    ignoreButton.type = "button";
-    ignoreButton.className = "corrija-me-pt-br-menu-ignore";
-    ignoreButton.textContent = "(i)";
-    ignoreButton.title = "Iguinora";
-    ignoreButton.setAttribute("aria-label", "Iguinora");
-    ignoreButton.addEventListener("pointerdown", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      ignoreMatch(index);
-    });
-    header.appendChild(ignoreButton);
-    suggestionMenu.appendChild(header);
-    const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 2) : [];
-    if (!replacements.length) {
-      const empty = document.createElement("div");
-      empty.className = "corrija-me-pt-br-menu-empty";
-      empty.textContent = "Sem sugestao.";
-      suggestionMenu.appendChild(empty);
-    } else {
-      for (const replacement of replacements) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "corrija-me-pt-br-menu-item";
-        button.textContent = replacement.value;
-        button.addEventListener("pointerdown", (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          applySingleCorrection(index, replacement.value);
-          hideSuggestionMenu();
-        });
-        suggestionMenu.appendChild(button);
-      }
-    }
-    suggestionMenu.style.left = `${Math.min(window.innerWidth - 240, Math.max(12, x))}px`;
-    suggestionMenu.style.top = `${Math.min(window.innerHeight - 220, Math.max(12, y + 12))}px`;
-    suggestionMenu.classList.remove("corrija-me-pt-br-hidden");
+    void x;
+    void y;
+    renderSuggestionPanel(index);
   }
   function postGoogleDocsBridgeMessage(payload) {
     if (!useGoogleDocsFrameBridge) {
@@ -667,6 +808,7 @@
     latestMatches = matches;
     renderHighlightsForActiveElement(matches);
     renderInputOverlay(matches);
+    renderSuggestionPanel();
   }
   async function analyzeActiveElement(manual = false) {
     ensureActiveElement();
@@ -684,6 +826,17 @@
       setStatus("Digite um pouco mais para analisar esse campo.");
       renderResults([]);
       syncGoogleDocsBridgeState("Digite um pouco mais para analisar esse campo.");
+      return;
+    }
+    const nonLinguisticReason = classifyNonLinguisticText(text);
+    if (nonLinguisticReason) {
+      latestMatches = [];
+      latestHiddenWeakCount = 0;
+      clearHighlights();
+      hideInputOverlay();
+      setStatus(`${nonLinguisticReason} A analise gramatical foi ignorada.`);
+      renderResults([]);
+      syncGoogleDocsBridgeState(`${nonLinguisticReason} A analise gramatical foi ignorada.`);
       return;
     }
     const requestId = ++activeRequestId;
@@ -810,10 +963,16 @@
     if (activeElement && isInputLikeElement(activeElement)) {
       syncInputOverlayPosition(activeElement);
     }
+    if (!suggestionMenu.classList.contains("corrija-me-pt-br-hidden")) {
+      syncSuggestionMenuPosition();
+    }
   }, true);
   window.addEventListener("resize", () => {
     if (activeElement && isInputLikeElement(activeElement)) {
       syncInputOverlayPosition(activeElement);
+    }
+    if (!suggestionMenu.classList.contains("corrija-me-pt-br-hidden")) {
+      syncSuggestionMenuPosition();
     }
   });
   document.addEventListener("selectionchange", () => {
@@ -844,9 +1003,8 @@
     if (target instanceof HTMLElement && target.classList.contains("corrija-me-pt-br-overlay-hit")) {
       const index = Number(target.dataset.matchIndex ?? "-1");
       if (Number.isInteger(index) && index >= 0) {
-        const rect = target.getBoundingClientRect();
         markPointerGestureForSuggestionMenu();
-        openSuggestionMenu(index, rect.left, rect.bottom);
+        openSuggestionMenu(index, 0, 0);
         event.preventDefault();
         event.stopPropagation();
         return;
@@ -908,7 +1066,9 @@
     if (target instanceof Node && activeElement instanceof HTMLElement && activeElement.contains(target)) {
       return;
     }
-    hideSuggestionMenu();
+    if (!(target instanceof Node) || !suggestionMenu.contains(target)) {
+      hideSuggestionMenu();
+    }
   }, true);
   window.addEventListener("message", (event) => {
     const payload = event.data;
