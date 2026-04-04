@@ -1070,6 +1070,7 @@ function createSimpleVerbalAgreementMatches(text, dictionary) {
 }
 
 // src/core/engine.ts
+var preparedReplacementIndexCache = /* @__PURE__ */ new WeakMap();
 function createConfidence(level, score, reason) {
   return {
     level,
@@ -1122,18 +1123,65 @@ function getTechnicalSpans(text) {
 function overlapsTechnicalSpan(offset, length, spans) {
   return spans.some((span) => offset < span.offset + span.length && span.offset < offset + length);
 }
+function prepareReplacementIndex(entries) {
+  const cached = preparedReplacementIndexCache.get(entries);
+  if (cached) {
+    return cached;
+  }
+  const prioritizedEntries = [...entries].sort((left, right) => right.from.length - left.from.length || right.replacements.join("|").length - left.replacements.join("|").length).map((entry) => ({
+    entry,
+    pattern: isWordLike(entry.from) ? createWholeWordPattern(entry.from) : new RegExp(entry.from, "giu"),
+    normalizedFrom: normalizeDictionaryWord(entry.from)
+  }));
+  const exactEntriesByText = /* @__PURE__ */ new Map();
+  for (const preparedEntry of prioritizedEntries) {
+    const bucket = exactEntriesByText.get(preparedEntry.normalizedFrom);
+    if (bucket) {
+      bucket.push(preparedEntry);
+      continue;
+    }
+    exactEntriesByText.set(preparedEntry.normalizedFrom, [preparedEntry]);
+  }
+  const preparedIndex = {
+    prioritizedEntries,
+    exactEntriesByText
+  };
+  preparedReplacementIndexCache.set(entries, preparedIndex);
+  return preparedIndex;
+}
 function createReplacementMatches(text, entries) {
   const matches = [];
-  const prioritizedEntries = [...entries].sort((left, right) => right.from.length - left.from.length || right.replacements.join("|").length - left.replacements.join("|").length);
-  for (const entry of prioritizedEntries) {
-    const pattern = isWordLike(entry.from) ? createWholeWordPattern(entry.from) : new RegExp(entry.from, "giu");
-    const textMatches = text.matchAll(pattern);
+  const preparedIndex = prepareReplacementIndex(entries);
+  const normalizedText = normalizeDictionaryWord(text);
+  const exactEntries = preparedIndex.exactEntriesByText.get(normalizedText);
+  if (exactEntries?.length) {
+    for (const preparedEntry of exactEntries) {
+      const replacements = dedupeStrings(preparedEntry.entry.replacements.map((value) => preserveReplacementCase(text, value)));
+      if (!replacements.length) {
+        continue;
+      }
+      addIfNoOverlap(matches, createMatch(
+        text,
+        0,
+        text.length,
+        replacements,
+        "PT_BR_SIMPLE_REPLACE",
+        "Possivel substituicao sugerida para pt-BR.",
+        `Substituicao sugerida a partir de ${preparedEntry.entry.source}`
+      ));
+    }
+    if (matches.length) {
+      return matches;
+    }
+  }
+  for (const preparedEntry of preparedIndex.prioritizedEntries) {
+    const textMatches = text.matchAll(preparedEntry.pattern);
     for (const match of textMatches) {
       if (match.index === void 0) {
         continue;
       }
       const original = match[0];
-      const replacements = dedupeStrings(entry.replacements.map((value) => preserveReplacementCase(original, value)));
+      const replacements = dedupeStrings(preparedEntry.entry.replacements.map((value) => preserveReplacementCase(original, value)));
       if (!replacements.length) {
         continue;
       }
@@ -1144,7 +1192,7 @@ function createReplacementMatches(text, entries) {
         replacements,
         "PT_BR_SIMPLE_REPLACE",
         "Possivel substituicao sugerida para pt-BR.",
-        `Substituicao sugerida a partir de ${entry.source}`
+        `Substituicao sugerida a partir de ${preparedEntry.entry.source}`
       ));
     }
   }
