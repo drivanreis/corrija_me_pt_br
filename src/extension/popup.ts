@@ -37,6 +37,7 @@ type PopupState = {
   }>;
   totalMatches: number;
   hiddenWeakMatches?: number;
+  isAnalyzing?: boolean;
   hasActiveElement: boolean;
   activeElementType: string;
 };
@@ -67,7 +68,9 @@ function renderLiveState(state: PopupState | null): void {
 
   if (liveBadge) {
     liveBadge.textContent = state.hasActiveElement
-      ? state.totalMatches > 0
+      ? state.isAnalyzing
+        ? "Analisando"
+        : state.totalMatches > 0
         ? state.hiddenWeakMatches
           ? `${state.totalMatches} ajuste(s), ${state.hiddenWeakMatches} oculto(s)`
           : `${state.totalMatches} ajuste(s)`
@@ -390,16 +393,15 @@ async function testConnection(): Promise<void> {
   setStatus("Testando conexao...");
   try {
     const serverUrl = await getServerUrl();
-    const response = await fetch(`${serverUrl}/v2/languages`, {
-      signal: AbortSignal.timeout(5000)
+    const response = await fetch(`${serverUrl}/health`, {
+      signal: AbortSignal.timeout(3000)
     });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
-    const languages = await response.json() as Array<{ longCode?: string }>;
-    const hasPtBr = languages.some((item) => item.longCode === "pt-BR");
-    if (!hasPtBr) {
-      throw new Error("Servidor respondeu sem pt-BR.");
+    const health = await response.json() as { status?: string; service?: string };
+    if (health.status !== "ok") {
+      throw new Error("Backend respondeu sem status ok.");
     }
     setStatus("Conexao ok. Backend local encontrado.", "ok");
   } catch (error) {

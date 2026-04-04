@@ -132,7 +132,7 @@
       return;
     }
     if (liveBadge) {
-      liveBadge.textContent = state.hasActiveElement ? state.totalMatches > 0 ? state.hiddenWeakMatches ? `${state.totalMatches} ajuste(s), ${state.hiddenWeakMatches} oculto(s)` : `${state.totalMatches} ajuste(s)` : state.hiddenWeakMatches ? `0 ajuste, ${state.hiddenWeakMatches} oculto(s)` : "Sem ajustes" : "Sem foco";
+      liveBadge.textContent = state.hasActiveElement ? state.isAnalyzing ? "Analisando" : state.totalMatches > 0 ? state.hiddenWeakMatches ? `${state.totalMatches} ajuste(s), ${state.hiddenWeakMatches} oculto(s)` : `${state.totalMatches} ajuste(s)` : state.hiddenWeakMatches ? `0 ajuste, ${state.hiddenWeakMatches} oculto(s)` : "Sem ajustes" : "Sem foco";
     }
     if (liveStatus) {
       liveStatus.textContent = state.status;
@@ -396,16 +396,15 @@
     setStatus("Testando conexao...");
     try {
       const serverUrl = await getServerUrl();
-      const response = await fetch(`${serverUrl}/v2/languages`, {
-        signal: AbortSignal.timeout(5e3)
+      const response = await fetch(`${serverUrl}/health`, {
+        signal: AbortSignal.timeout(3e3)
       });
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
-      const languages = await response.json();
-      const hasPtBr = languages.some((item) => item.longCode === "pt-BR");
-      if (!hasPtBr) {
-        throw new Error("Servidor respondeu sem pt-BR.");
+      const health = await response.json();
+      if (health.status !== "ok") {
+        throw new Error("Backend respondeu sem status ok.");
       }
       setStatus("Conexao ok. Backend local encontrado.", "ok");
     } catch (error) {

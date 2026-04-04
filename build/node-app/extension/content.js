@@ -79,7 +79,7 @@
   window.__corrijaMePtBrLoaded__ = true;
   var MIN_TEXT_LENGTH = 3;
   var CHECK_DEBOUNCE_MS = 300;
-  var CHECK_REQUEST_TIMEOUT_MS = 4e3;
+  var CHECK_REQUEST_TIMEOUT_MS = 8e3;
   var TEXT_INPUT_TYPES = /* @__PURE__ */ new Set(["text", "search", "email", "url", "tel"]);
   var HIGHLIGHT_NAME = "corrija-me-pt-br-issue";
   var supportsCustomHighlights = typeof CSS !== "undefined" && "highlights" in CSS;
@@ -105,6 +105,7 @@
   var latestText = "";
   var latestStatusMessage = "Foque em um campo de texto para ver as correcoes.";
   var latestStatusTone = "";
+  var isAnalyzing = false;
   var inputOverlayHost = null;
   var inputOverlayContent = null;
   var suppressNextClickHideUntil = 0;
@@ -113,6 +114,8 @@
   var latestHiddenWeakCount = 0;
   var highlightedSuggestionIndex = -1;
   var suggestionAnchorIndex = -1;
+  var activeCheckAbortController = null;
+  var pendingAnalysisMode = null;
   var suggestionMenu = document.createElement("section");
   suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
   document.documentElement.appendChild(suggestionMenu);
@@ -153,6 +156,10 @@
     if (activeElement !== element) {
       activeElementSessionId += 1;
       activeRequestId += 1;
+      activeCheckAbortController?.abort();
+      activeCheckAbortController = null;
+      isAnalyzing = false;
+      pendingAnalysisMode = null;
       latestMatches = [];
       latestHiddenWeakCount = 0;
       latestText = getText(element);
@@ -469,6 +476,7 @@
       results: getPopupResults(),
       totalMatches: latestMatches.length,
       hiddenWeakMatches: latestHiddenWeakCount,
+      isAnalyzing,
       hasActiveElement: Boolean(activeElement),
       activeElementType: activeElement instanceof HTMLTextAreaElement ? "textarea" : activeElement instanceof HTMLInputElement ? "input" : activeElement instanceof HTMLElement && (activeElement.isContentEditable || activeElement.getAttribute("role") === "textbox") ? "editable" : "none"
     };
@@ -1025,6 +1033,10 @@
     if (!activeElement || !isSupportedElement(activeElement)) {
       return;
     }
+    if (isAnalyzing) {
+      pendingAnalysisMode = manual ? "manual" : pendingAnalysisMode ?? "auto";
+      return;
+    }
     const text = getText(activeElement);
     latestText = text;
     if (!manual) {
@@ -1060,6 +1072,10 @@
       syncGoogleDocsBridgeState("Analise automatica desativada. Use 'Analisar agora'.");
       return;
     }
+    activeCheckAbortController?.abort();
+    const abortController = new AbortController();
+    activeCheckAbortController = abortController;
+    isAnalyzing = true;
     setStatus("Analisando texto em pt-BR...");
     try {
       const payload = new URLSearchParams({
@@ -1073,7 +1089,10 @@
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
         },
         body: payload.toString(),
-        signal: AbortSignal.timeout(CHECK_REQUEST_TIMEOUT_MS)
+        signal: AbortSignal.any([
+          abortController.signal,
+          AbortSignal.timeout(CHECK_REQUEST_TIMEOUT_MS)
+        ])
       });
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
@@ -1089,6 +1108,9 @@
       setStatus(statusMessage, "ok");
       syncGoogleDocsBridgeState(statusMessage);
     } catch (error) {
+      if (abortController.signal.aborted) {
+        return;
+      }
       const message = error instanceof Error ? error.message : "Erro desconhecido";
       setStatus(`Falha ao consultar o backend local: ${message}`, "error");
       clearHighlights();
@@ -1096,6 +1118,20 @@
       latestHiddenWeakCount = 0;
       renderResults([]);
       syncGoogleDocsBridgeState(`Falha ao consultar o backend local: ${message}`);
+    } finally {
+      if (activeCheckAbortController === abortController) {
+        activeCheckAbortController = null;
+      }
+      if (requestId === activeRequestId) {
+        isAnalyzing = false;
+        const nextMode = pendingAnalysisMode;
+        pendingAnalysisMode = null;
+        if (nextMode) {
+          window.setTimeout(() => {
+            void analyzeActiveElement(nextMode === "manual");
+          }, 0);
+        }
+      }
     }
   }
   function applySingleCorrection(index, replacement) {

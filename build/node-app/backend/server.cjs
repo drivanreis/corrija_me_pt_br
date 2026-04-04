@@ -3,6 +3,7 @@
 
 // src/backend/server.ts
 var import_node_http = require("node:http");
+var import_node_child_process = require("node:child_process");
 var import_node_path3 = require("node:path");
 
 // src/core/text.ts
@@ -2016,11 +2017,12 @@ function loadDictionaryResources(dataDir2) {
 // src/backend/server.ts
 var import_node_fs3 = require("node:fs");
 var DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
+var isCheckWorkerProcess = process.env.CORRIJA_ME_CHILD_MODE === "check-worker";
 var currentDir = __dirname;
 var dataDir = (0, import_node_path3.join)(currentDir, "../data");
-var dictionaryResources = loadDictionaryResources(dataDir);
+var dictionaryResources = isCheckWorkerProcess ? null : loadDictionaryResources(dataDir);
 var dictionaryManifestPath = (0, import_node_path3.join)(dataDir, "dictionary", "manifest.json");
-var dictionaryManifest = (0, import_node_fs3.existsSync)(dictionaryManifestPath) ? JSON.parse((0, import_node_fs3.readFileSync)(dictionaryManifestPath, "utf8")) : null;
+var dictionaryManifest = !isCheckWorkerProcess && (0, import_node_fs3.existsSync)(dictionaryManifestPath) ? JSON.parse((0, import_node_fs3.readFileSync)(dictionaryManifestPath, "utf8")) : null;
 function sendJson(response, statusCode, payload) {
   response.writeHead(statusCode, {
     "Content-Type": "application/json; charset=utf-8",
@@ -2044,65 +2046,145 @@ function parseBody(body, contentType) {
     language: params.get("language") ?? "pt-BR"
   };
 }
-var server = (0, import_node_http.createServer)(async (request, response) => {
-  const url = new URL(request.url ?? "/", `http://${request.headers.host ?? "127.0.0.1"}`);
-  if (request.method === "OPTIONS") {
-    sendJson(response, 200, {});
-    return;
+var workerSequence = 0;
+var checkWorkerProcess = null;
+var pendingWorkerJobs = /* @__PURE__ */ new Map();
+function rejectPendingWorkerJobs(reason) {
+  for (const pending of pendingWorkerJobs.values()) {
+    pending.reject(reason);
   }
-  if (request.method === "GET" && url.pathname === "/health") {
-    sendJson(response, 200, {
-      status: "ok",
-      service: "corrija_me_pt_br_node",
-      dictionary: {
-        words: dictionaryResources.words.size,
-        commonMistakes: dictionaryResources.commonMistakes.length,
-        ready: dictionaryResources.dictionaryReady,
-        contextRules: dictionaryResources.contextRules.length,
-        phraseRules: dictionaryResources.phraseRules.length,
-        lexicalEntries: dictionaryResources.linguisticData.lexicalEntries.size,
-        syntaxPatterns: dictionaryResources.linguisticData.syntaxPatterns.length,
-        legacySources: {
-          wordFiles: dictionaryManifest?.useLegacyWordFiles ?? true,
-          customWords: dictionaryManifest?.useLegacyCustomWords ?? true,
-          commonMistakes: dictionaryManifest?.useLegacyCommonMistakes ?? true
-        }
-      }
-    });
-    return;
+  pendingWorkerJobs.clear();
+}
+function ensureCheckWorker() {
+  if (checkWorkerProcess && !checkWorkerProcess.killed) {
+    return checkWorkerProcess;
   }
-  if (request.method === "GET" && url.pathname === "/v2/languages") {
-    sendJson(response, 200, [
-      {
-        name: "Portuguese (Brazil)",
-        code: "pt",
-        longCode: "pt-BR"
-      }
-    ]);
-    return;
-  }
-  if (request.method === "POST" && url.pathname === "/v2/check") {
-    const bodyChunks = [];
-    for await (const chunk of request) {
-      bodyChunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
-    }
-    const { text, language } = parseBody(Buffer.concat(bodyChunks).toString("utf8"), request.headers["content-type"]);
-    if ((language || "pt-BR") !== "pt-BR") {
-      sendJson(response, 400, { error: "Somente pt-BR esta disponivel nesta versao." });
+  const childArgs = typeof process.pkg !== "undefined" ? [] : [__filename];
+  const child = (0, import_node_child_process.spawn)(process.execPath, childArgs, {
+    env: {
+      ...process.env,
+      CORRIJA_ME_CHILD_MODE: "check-worker"
+    },
+    stdio: ["ignore", "ignore", "ignore", "ipc"]
+  });
+  child.on("message", (message) => {
+    const jobId = message.id ?? -1;
+    const pending = pendingWorkerJobs.get(jobId);
+    if (!pending) {
       return;
     }
-    sendJson(response, 200, checkText(text, dictionaryResources.replacements, {
-      words: dictionaryResources.words,
-      commonMistakes: dictionaryResources.commonMistakes,
-      dictionaryReady: dictionaryResources.dictionaryReady,
-      contextRules: dictionaryResources.contextRules,
-      phraseRules: dictionaryResources.phraseRules,
-      linguisticData: dictionaryResources.linguisticData
-    }));
-    return;
-  }
-  sendJson(response, 404, { error: "Rota nao encontrada." });
-});
-server.listen(DEFAULT_PORT, "127.0.0.1", () => {
-  console.log(`corrija_me_pt_br backend local ativo em http://127.0.0.1:${DEFAULT_PORT}`);
-});
+    pendingWorkerJobs.delete(jobId);
+    if (message.ok) {
+      pending.resolve(message.result ?? {});
+      return;
+    }
+    pending.reject(new Error(message.error || "Falha ao processar analise."));
+  });
+  child.once("error", (error) => {
+    checkWorkerProcess = null;
+    rejectPendingWorkerJobs(error);
+  });
+  child.once("exit", (code) => {
+    checkWorkerProcess = null;
+    if (code !== 0 && pendingWorkerJobs.size) {
+      rejectPendingWorkerJobs(new Error(`Worker finalizado com codigo ${code}.`));
+    }
+  });
+  checkWorkerProcess = child;
+  return child;
+}
+function runCheckInWorker(text) {
+  return new Promise((resolve, reject) => {
+    const jobId = ++workerSequence;
+    pendingWorkerJobs.set(jobId, { resolve, reject });
+    const child = ensureCheckWorker();
+    child.send({ id: jobId, text });
+  });
+}
+if (isCheckWorkerProcess) {
+  const workerResources = loadDictionaryResources(dataDir);
+  process.on("message", (message) => {
+    const jobId = message.id;
+    if (!jobId || typeof message.text !== "string") {
+      process.send?.({ id: jobId, ok: false, error: "Payload invalido para analise." });
+      return;
+    }
+    try {
+      const result = checkText(message.text, workerResources.replacements, {
+        words: workerResources.words,
+        commonMistakes: workerResources.commonMistakes,
+        dictionaryReady: workerResources.dictionaryReady,
+        contextRules: workerResources.contextRules,
+        phraseRules: workerResources.phraseRules,
+        linguisticData: workerResources.linguisticData
+      });
+      process.send?.({ id: jobId, ok: true, result });
+    } catch (error) {
+      const workerError = error instanceof Error ? error.message : "Erro desconhecido";
+      process.send?.({ id: jobId, ok: false, error: workerError });
+    }
+  });
+} else {
+  const server = (0, import_node_http.createServer)(async (request, response) => {
+    const url = new URL(request.url ?? "/", `http://${request.headers.host ?? "127.0.0.1"}`);
+    if (request.method === "OPTIONS") {
+      sendJson(response, 200, {});
+      return;
+    }
+    if (request.method === "GET" && url.pathname === "/health") {
+      sendJson(response, 200, {
+        status: "ok",
+        service: "corrija_me_pt_br_node",
+        dictionary: {
+          words: dictionaryResources?.words.size ?? 0,
+          commonMistakes: dictionaryResources?.commonMistakes.length ?? 0,
+          ready: dictionaryResources?.dictionaryReady ?? false,
+          contextRules: dictionaryResources?.contextRules.length ?? 0,
+          phraseRules: dictionaryResources?.phraseRules.length ?? 0,
+          lexicalEntries: dictionaryResources?.linguisticData.lexicalEntries.size ?? 0,
+          syntaxPatterns: dictionaryResources?.linguisticData.syntaxPatterns.length ?? 0,
+          legacySources: {
+            wordFiles: dictionaryManifest?.useLegacyWordFiles ?? true,
+            customWords: dictionaryManifest?.useLegacyCustomWords ?? true,
+            commonMistakes: dictionaryManifest?.useLegacyCommonMistakes ?? true
+          }
+        }
+      });
+      return;
+    }
+    if (request.method === "GET" && url.pathname === "/v2/languages") {
+      sendJson(response, 200, [
+        {
+          name: "Portuguese (Brazil)",
+          code: "pt",
+          longCode: "pt-BR"
+        }
+      ]);
+      return;
+    }
+    if (request.method === "POST" && url.pathname === "/v2/check") {
+      const bodyChunks = [];
+      for await (const chunk of request) {
+        bodyChunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+      }
+      const { text, language } = parseBody(Buffer.concat(bodyChunks).toString("utf8"), request.headers["content-type"]);
+      if ((language || "pt-BR") !== "pt-BR") {
+        sendJson(response, 400, { error: "Somente pt-BR esta disponivel nesta versao." });
+        return;
+      }
+      try {
+        const result = await runCheckInWorker(text);
+        sendJson(response, 200, result);
+        return;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Falha ao processar analise.";
+        sendJson(response, 500, { error: message });
+        return;
+      }
+    }
+    sendJson(response, 404, { error: "Rota nao encontrada." });
+  });
+  server.listen(DEFAULT_PORT, "127.0.0.1", () => {
+    console.log(`corrija_me_pt_br backend local ativo em http://127.0.0.1:${DEFAULT_PORT}`);
+  });
+}

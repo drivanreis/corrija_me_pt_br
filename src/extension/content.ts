@@ -4,7 +4,7 @@ window.__corrijaMePtBrLoaded__ = true;
 
 const MIN_TEXT_LENGTH = 3;
 const CHECK_DEBOUNCE_MS = 300;
-const CHECK_REQUEST_TIMEOUT_MS = 4000;
+const CHECK_REQUEST_TIMEOUT_MS = 8000;
 const TEXT_INPUT_TYPES = new Set(["text", "search", "email", "url", "tel"]);
 const HIGHLIGHT_NAME = "corrija-me-pt-br-issue";
 const supportsCustomHighlights = typeof CSS !== "undefined" && "highlights" in CSS;
@@ -70,6 +70,7 @@ let latestMatches: CheckMatch[] = [];
 let latestText = "";
 let latestStatusMessage = "Foque em um campo de texto para ver as correcoes.";
 let latestStatusTone = "";
+let isAnalyzing = false;
 let inputOverlayHost: HTMLDivElement | null = null;
 let inputOverlayContent: HTMLDivElement | null = null;
 let suppressNextClickHideUntil = 0;
@@ -78,6 +79,8 @@ const ignoredMatchSignatures = new Map<number, Set<string>>();
 let latestHiddenWeakCount = 0;
 let highlightedSuggestionIndex = -1;
 let suggestionAnchorIndex = -1;
+let activeCheckAbortController: AbortController | null = null;
+let pendingAnalysisMode: "manual" | "auto" | null = null;
 
 const suggestionMenu = document.createElement("section");
 suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
@@ -125,6 +128,10 @@ function activateElement(element: HTMLElement | HTMLInputElement | HTMLTextAreaE
   if (activeElement !== element) {
     activeElementSessionId += 1;
     activeRequestId += 1;
+    activeCheckAbortController?.abort();
+    activeCheckAbortController = null;
+    isAnalyzing = false;
+    pendingAnalysisMode = null;
     latestMatches = [];
     latestHiddenWeakCount = 0;
     latestText = getText(element);
@@ -507,6 +514,7 @@ function getPopupState() {
     results: getPopupResults(),
     totalMatches: latestMatches.length,
     hiddenWeakMatches: latestHiddenWeakCount,
+    isAnalyzing,
     hasActiveElement: Boolean(activeElement),
     activeElementType: activeElement instanceof HTMLTextAreaElement
       ? "textarea"
@@ -1198,6 +1206,11 @@ async function analyzeActiveElement(manual = false): Promise<void> {
     return;
   }
 
+  if (isAnalyzing) {
+    pendingAnalysisMode = manual ? "manual" : pendingAnalysisMode ?? "auto";
+    return;
+  }
+
   const text = getText(activeElement);
   latestText = text;
   if (!manual) {
@@ -1237,6 +1250,10 @@ async function analyzeActiveElement(manual = false): Promise<void> {
     return;
   }
 
+  activeCheckAbortController?.abort();
+  const abortController = new AbortController();
+  activeCheckAbortController = abortController;
+  isAnalyzing = true;
   setStatus("Analisando texto em pt-BR...");
 
   try {
@@ -1252,7 +1269,10 @@ async function analyzeActiveElement(manual = false): Promise<void> {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
       body: payload.toString(),
-      signal: AbortSignal.timeout(CHECK_REQUEST_TIMEOUT_MS)
+      signal: AbortSignal.any([
+        abortController.signal,
+        AbortSignal.timeout(CHECK_REQUEST_TIMEOUT_MS)
+      ])
     });
 
     if (!response.ok) {
@@ -1277,6 +1297,9 @@ async function analyzeActiveElement(manual = false): Promise<void> {
     setStatus(statusMessage, "ok");
     syncGoogleDocsBridgeState(statusMessage);
   } catch (error) {
+    if (abortController.signal.aborted) {
+      return;
+    }
     const message = error instanceof Error ? error.message : "Erro desconhecido";
     setStatus(`Falha ao consultar o backend local: ${message}`, "error");
     clearHighlights();
@@ -1284,6 +1307,20 @@ async function analyzeActiveElement(manual = false): Promise<void> {
     latestHiddenWeakCount = 0;
     renderResults([]);
     syncGoogleDocsBridgeState(`Falha ao consultar o backend local: ${message}`);
+  } finally {
+    if (activeCheckAbortController === abortController) {
+      activeCheckAbortController = null;
+    }
+    if (requestId === activeRequestId) {
+      isAnalyzing = false;
+      const nextMode = pendingAnalysisMode;
+      pendingAnalysisMode = null;
+      if (nextMode) {
+        window.setTimeout(() => {
+          void analyzeActiveElement(nextMode === "manual");
+        }, 0);
+      }
+    }
   }
 }
 
