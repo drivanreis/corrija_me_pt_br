@@ -8,10 +8,11 @@ import { GoogleGenAI } from "@google/genai";
 
 const DEFAULT_OUTPUT = "data/test-cases/generated.json";
 const MODEL_CANDIDATES = [
-  "gemini-3-flash-preview",
   "gemini-2.5-flash",
-  "gemini-2.0-flash"
+  "gemini-2.0-flash",
+  "gemini-3-flash-preview"
 ];
+const GENERATION_TIMEOUT_MS = 90000;
 const VALID_CATEGORIES = [
   "ortografia",
   "acentuacao",
@@ -90,7 +91,7 @@ function parseArgs(argv) {
 function buildPrompt({ category, categories, count, countPerCategory, difficulty }) {
   const activeCategories = categories.length ? categories : [category];
   const perCategoryCount = countPerCategory ?? count;
-  const minErrorCount = difficulty >= 3 ? 2 : 1;
+  const minErrorCount = difficulty >= 2 ? 2 : 1;
   const categoryInstructions = activeCategories.length === 1
     ? `- Categoria principal: ${activeCategories[0]}`
     : `- Distribua os itens igualmente entre estas categorias: ${activeCategories.join(", ")}
@@ -110,7 +111,7 @@ ${categoryInstructions}
 - O campo "correto" deve conter a forma revisada esperada.
 - O campo "error_count" deve estimar quantos erros conhecidos existem no texto errado.
 - Para dificuldade ${difficulty}, cada item deve ter no mínimo ${minErrorCount} erro(s) real(is).
-- Para dificuldade 3 ou maior, prefira frases com múltiplos erros combinados na mesma frase.
+- Para dificuldade 2 ou maior, prefira frases com múltiplos erros combinados na mesma frase.
 - O campo "tags" deve ser um array curto com 2 a 5 tags relevantes.
 - Evite repetir ideias.
 - Evite frases artificiais demais.
@@ -202,7 +203,7 @@ function normalizeItem(item, fallbackCategory, fallbackDifficulty) {
     difficulty: Number.isInteger(item.difficulty) ? item.difficulty : fallbackDifficulty,
     errado,
     correto,
-    error_count: Number.isInteger(item.error_count) ? item.error_count : fallbackDifficulty >= 3 ? 2 : 1,
+    error_count: Number.isInteger(item.error_count) ? item.error_count : fallbackDifficulty >= 2 ? 2 : 1,
     tags
   };
 }
@@ -272,10 +273,17 @@ async function main() {
 
   for (const model of MODEL_CANDIDATES) {
     try {
-      response = await ai.models.generateContent({
-        model,
-        contents: prompt
-      });
+      response = await Promise.race([
+        ai.models.generateContent({
+          model,
+          contents: prompt
+        }),
+        new Promise((_, reject) => {
+          setTimeout(() => {
+            reject(new Error(`Timeout ao gerar conteúdo com ${model} após ${GENERATION_TIMEOUT_MS}ms.`));
+          }, GENERATION_TIMEOUT_MS);
+        })
+      ]);
       console.log(`Modelo usado: ${model}`);
       break;
     } catch (error) {

@@ -126,6 +126,10 @@ function classifyCase(testCase) {
     reasons.push("error_count_out_of_range");
   }
 
+  if (normalized.difficulty >= 2 && normalized.error_count < 2) {
+    reasons.push("difficulty_requires_multiple_errors");
+  }
+
   if (normalized.difficulty < 1 || normalized.difficulty > 6) {
     reasons.push("difficulty_out_of_range");
   }

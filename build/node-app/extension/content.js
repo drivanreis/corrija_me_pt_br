@@ -108,6 +108,8 @@
   var ignoredMatchSignatures = /* @__PURE__ */ new Map();
   var latestHiddenWeakCount = 0;
   var highlightedSuggestionIndex = -1;
+  var suggestionAnchorIndex = -1;
+  var retainedClientMatches = [];
   var suggestionMenu = document.createElement("section");
   suggestionMenu.className = "corrija-me-pt-br-menu corrija-me-pt-br-hidden";
   document.documentElement.appendChild(suggestionMenu);
@@ -268,6 +270,9 @@
         sourceCursor += 1;
         return;
       }
+      if (operation.type === "replace") {
+        closeGroup();
+      }
       if (!current) {
         current = {
           srcStartToken: sourceCursor,
@@ -280,6 +285,9 @@
         current.srcTexts.push(sourceTokens[operation.srcIndex ?? 0]?.text || "");
         current.tgtTexts.push(targetTokens[operation.tgtIndex ?? 0]?.text || "");
         sourceCursor += 1;
+        current.srcEndToken = sourceCursor;
+        closeGroup();
+        return;
       } else if (operation.type === "delete") {
         current.srcTexts.push(sourceTokens[operation.srcIndex ?? 0]?.text || "");
         sourceCursor += 1;
@@ -376,6 +384,7 @@
     suggestionMenu.classList.add("corrija-me-pt-br-hidden");
     suggestionMenu.innerHTML = "";
     highlightedSuggestionIndex = -1;
+    suggestionAnchorIndex = -1;
   }
   function shouldIgnoreHideAfterPointerGesture() {
     return Date.now() < suppressNextClickHideUntil;
@@ -646,6 +655,9 @@
     return value.normalize("NFC").toLocaleLowerCase("pt-BR").replace(/\s+/g, " ").trim();
   }
   function getMatchText(match, text) {
+    if (typeof match.sourceText === "string" && match.sourceText.length > 0) {
+      return match.sourceText;
+    }
     const start = Math.max(0, Math.min(text.length, match.offset));
     const end = Math.max(start, Math.min(text.length, match.offset + match.length));
     return text.slice(start, end);
@@ -689,6 +701,15 @@
     }
     return fallbackMessage || "Poss\xEDvel ajuste encontrado.";
   }
+  function createCompositeGroupId(match, text, primaryReplacement) {
+    return [
+      normalizeMatchSignaturePart(match.rule?.id || "sem-regra"),
+      String(match.offset),
+      String(match.length),
+      normalizeMatchSignaturePart(getMatchText(match, text)),
+      normalizeMatchSignaturePart(primaryReplacement)
+    ].join("::");
+  }
   function expandCompositeMatches(matches, text) {
     const expanded = [];
     matches.forEach((match) => {
@@ -703,11 +724,14 @@
         expanded.push(match);
         return;
       }
+      const compositeGroupId = createCompositeGroupId(match, text, primaryReplacement);
       validGroups.forEach((group) => {
         expanded.push({
           ...match,
           offset: match.offset + group.srcCharStart,
           length: group.srcCharEnd - group.srcCharStart,
+          sourceText: group.srcText,
+          compositeGroupId,
           message: getExpandedMatchMessage(group.srcText, group.tgtText, match.message),
           replacements: [{ value: group.tgtText }]
         });
@@ -715,10 +739,37 @@
     });
     return expanded;
   }
+  function isMatchStillApplicable(match, text) {
+    const sourceText = getMatchText(match, text);
+    if (!sourceText) {
+      return false;
+    }
+    const start = Math.max(0, Math.min(text.length, match.offset));
+    const end = Math.max(start, Math.min(text.length, match.offset + match.length));
+    return text.slice(start, end) === sourceText;
+  }
+  function dedupeMatches(matches, text) {
+    const seen = /* @__PURE__ */ new Set();
+    const deduped = [];
+    matches.forEach((match) => {
+      const signature = createMatchSignature(match, text);
+      if (seen.has(signature)) {
+        return;
+      }
+      seen.add(signature);
+      deduped.push(match);
+    });
+    return deduped;
+  }
   function prepareVisibleMatches(matches) {
     const expanded = expandCompositeMatches(matches, latestText);
-    const visible = expanded.filter((match) => !shouldHideWeakMatch(match));
-    latestHiddenWeakCount = Math.max(0, expanded.length - visible.length);
+    retainedClientMatches = dedupeMatches(
+      retainedClientMatches.filter((match) => isMatchStillApplicable(match, latestText)),
+      latestText
+    );
+    const merged = dedupeMatches([...expanded, ...retainedClientMatches], latestText);
+    const visible = merged.filter((match) => !shouldHideWeakMatch(match));
+    latestHiddenWeakCount = Math.max(0, merged.length - visible.length);
     return visible.sort(compareMatchesByUiPriority);
   }
   function getConfidenceLabel(match) {
@@ -733,20 +784,53 @@
         return "Confianca padrao";
     }
   }
+  function getSuggestionAnchorRect() {
+    if (suggestionAnchorIndex < 0) {
+      return null;
+    }
+    const overlayHit = inputOverlayContent?.querySelector(`[data-match-index="${suggestionAnchorIndex}"]`);
+    if (overlayHit) {
+      const rect = overlayHit.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        return rect;
+      }
+    }
+    if (activeElement && isContentEditableLike(activeElement)) {
+      const match = latestMatches[suggestionAnchorIndex];
+      if (!match) {
+        return null;
+      }
+      const range = createRangeFromOffsets(activeElement, match.offset, match.length);
+      const rect = range?.getBoundingClientRect() ?? null;
+      if (rect && rect.width >= 0 && rect.height > 0) {
+        return rect;
+      }
+    }
+    return null;
+  }
   function syncSuggestionMenuPosition() {
     if (!activeElement || !isVisibleElement(activeElement)) {
       suggestionMenu.classList.add("corrija-me-pt-br-hidden");
       return;
     }
     const rect = activeElement.getBoundingClientRect();
-    const panelWidth = Math.min(360, Math.max(280, window.innerWidth - 24));
-    const preferRight = rect.right + 14 + panelWidth <= window.innerWidth - 12;
-    const left = preferRight ? rect.right + 14 : Math.max(12, Math.min(window.innerWidth - panelWidth - 12, rect.left));
-    const top = preferRight ? Math.max(12, rect.top) : Math.min(window.innerHeight - 220, rect.bottom + 12);
+    const styles = window.getComputedStyle(activeElement);
+    const lineHeight = Number.parseFloat(styles.lineHeight) || 22;
+    const paddingTop = Number.parseFloat(styles.paddingTop) || 8;
+    const paddingLeft = Number.parseFloat(styles.paddingLeft) || 8;
+    const fieldWidth = Math.max(180, rect.width - Math.max(12, paddingLeft * 2));
+    const panelWidth = Math.min(fieldWidth, 340, window.innerWidth - 24);
+    const anchorRect = getSuggestionAnchorRect();
+    const fallbackInsideTop = rect.top + paddingTop + lineHeight + 8;
+    const anchorLeft = anchorRect ? anchorRect.left : rect.left + paddingLeft;
+    const anchorBottom = anchorRect ? anchorRect.bottom : fallbackInsideTop;
+    const left = Math.max(12, Math.min(window.innerWidth - panelWidth - 12, anchorLeft));
+    const preferredTop = anchorBottom + 8 <= rect.bottom ? anchorBottom + 8 : rect.bottom + 8;
+    const top = Math.max(12, Math.min(window.innerHeight - 80, preferredTop));
     suggestionMenu.style.width = `${panelWidth}px`;
     suggestionMenu.style.maxWidth = `${panelWidth}px`;
     suggestionMenu.style.left = `${left}px`;
-    suggestionMenu.style.top = `${Math.max(12, top)}px`;
+    suggestionMenu.style.top = `${top}px`;
   }
   function focusSuggestionCard(index) {
     const card = suggestionMenu.querySelector(`[data-suggestion-card="${index}"]`);
@@ -761,6 +845,11 @@
       return;
     }
     highlightedSuggestionIndex = focusIndex >= 0 ? focusIndex : -1;
+    if (focusIndex >= 0) {
+      suggestionAnchorIndex = focusIndex;
+    } else if (suggestionAnchorIndex >= latestMatches.length) {
+      suggestionAnchorIndex = -1;
+    }
     suggestionMenu.innerHTML = "";
     const list = document.createElement("div");
     list.className = "corrija-me-pt-br-menu-list";
@@ -848,6 +937,7 @@
     }
     void x;
     void y;
+    suggestionAnchorIndex = index;
     renderSuggestionPanel(index);
   }
   function postGoogleDocsBridgeMessage(payload) {
@@ -1007,6 +1097,14 @@
       return;
     }
     const match = latestMatches[index];
+    if (match.compositeGroupId) {
+      const delta = replacement.length - match.length;
+      const siblingMatches = latestMatches.filter((candidate, candidateIndex) => candidateIndex !== index && candidate.compositeGroupId === match.compositeGroupId).map((candidate) => ({
+        ...candidate,
+        offset: candidate.offset > match.offset ? candidate.offset + delta : candidate.offset
+      })).filter((candidate) => isMatchStillApplicable(candidate, replaceTextRange(getText(activeElement), match.offset, match.length, replacement)));
+      retainedClientMatches = dedupeMatches([...retainedClientMatches, ...siblingMatches], replaceTextRange(getText(activeElement), match.offset, match.length, replacement));
+    }
     if (activeElement instanceof HTMLElement && (activeElement.isContentEditable || activeElement.getAttribute("role") === "textbox")) {
       const applied = applyReplacementToContentEditable(activeElement, match, replacement);
       if (!applied) {
