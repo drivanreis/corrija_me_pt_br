@@ -185,6 +185,112 @@
     }
     return (element.textContent || "").replace(/\u00a0/g, " ");
   }
+  function tokenizeWithOffsets(text) {
+    const tokens = [];
+    const pattern = /[\p{L}\p{N}]+|[^\s\p{L}\p{N}]/gu;
+    for (const match of text.matchAll(pattern)) {
+      const token = match[0];
+      const start = match.index ?? 0;
+      tokens.push({ text: token, start, end: start + token.length });
+    }
+    return tokens;
+  }
+  function buildTokenDiffGroups(sourceTokens, targetTokens) {
+    const rows = sourceTokens.length + 1;
+    const cols = targetTokens.length + 1;
+    const dp = Array.from({ length: rows }, () => new Array(cols).fill(0));
+    for (let row2 = 0; row2 < rows; row2 += 1) {
+      dp[row2][0] = row2;
+    }
+    for (let col2 = 0; col2 < cols; col2 += 1) {
+      dp[0][col2] = col2;
+    }
+    for (let row2 = 1; row2 < rows; row2 += 1) {
+      for (let col2 = 1; col2 < cols; col2 += 1) {
+        if (sourceTokens[row2 - 1]?.text === targetTokens[col2 - 1]?.text) {
+          dp[row2][col2] = dp[row2 - 1][col2 - 1];
+        } else {
+          dp[row2][col2] = Math.min(
+            dp[row2 - 1][col2] + 1,
+            dp[row2][col2 - 1] + 1,
+            dp[row2 - 1][col2 - 1] + 1
+          );
+        }
+      }
+    }
+    const operations = [];
+    let row = sourceTokens.length;
+    let col = targetTokens.length;
+    while (row > 0 || col > 0) {
+      if (row > 0 && col > 0 && sourceTokens[row - 1]?.text === targetTokens[col - 1]?.text) {
+        operations.push({ type: "equal", srcIndex: row - 1, tgtIndex: col - 1 });
+        row -= 1;
+        col -= 1;
+        continue;
+      }
+      const replaceCost = row > 0 && col > 0 ? dp[row - 1][col - 1] : Number.POSITIVE_INFINITY;
+      const deleteCost = row > 0 ? dp[row - 1][col] : Number.POSITIVE_INFINITY;
+      const currentCost = dp[row][col];
+      if (row > 0 && col > 0 && currentCost === replaceCost + 1) {
+        operations.push({ type: "replace", srcIndex: row - 1, tgtIndex: col - 1 });
+        row -= 1;
+        col -= 1;
+      } else if (row > 0 && currentCost === deleteCost + 1) {
+        operations.push({ type: "delete", srcIndex: row - 1 });
+        row -= 1;
+      } else {
+        operations.push({ type: "insert", tgtIndex: col - 1 });
+        col -= 1;
+      }
+    }
+    operations.reverse();
+    const groups = [];
+    let current = null;
+    let sourceCursor = 0;
+    function closeGroup() {
+      if (!current) {
+        return;
+      }
+      const slice = sourceTokens.slice(current.srcStartToken, current.srcEndToken);
+      const srcCharStart = slice[0]?.start ?? 0;
+      const srcCharEnd = slice[slice.length - 1]?.end ?? srcCharStart;
+      groups.push({
+        srcText: current.srcTexts.join(" ").trim(),
+        tgtText: current.tgtTexts.join(" ").trim(),
+        srcCharStart,
+        srcCharEnd
+      });
+      current = null;
+    }
+    operations.forEach((operation) => {
+      if (operation.type === "equal") {
+        closeGroup();
+        sourceCursor += 1;
+        return;
+      }
+      if (!current) {
+        current = {
+          srcStartToken: sourceCursor,
+          srcEndToken: sourceCursor,
+          srcTexts: [],
+          tgtTexts: []
+        };
+      }
+      if (operation.type === "replace") {
+        current.srcTexts.push(sourceTokens[operation.srcIndex ?? 0]?.text || "");
+        current.tgtTexts.push(targetTokens[operation.tgtIndex ?? 0]?.text || "");
+        sourceCursor += 1;
+      } else if (operation.type === "delete") {
+        current.srcTexts.push(sourceTokens[operation.srcIndex ?? 0]?.text || "");
+        sourceCursor += 1;
+      } else {
+        current.tgtTexts.push(targetTokens[operation.tgtIndex ?? 0]?.text || "");
+      }
+      current.srcEndToken = sourceCursor;
+    });
+    closeGroup();
+    return groups.filter((group) => group.srcText && group.tgtText && group.srcCharEnd > group.srcCharStart);
+  }
   function countRegexMatches(text, pattern) {
     const matches = text.match(pattern);
     return matches ? matches.length : 0;
@@ -572,9 +678,47 @@
     }
     return matches.filter((match) => !ignored.has(createMatchSignature(match, text)));
   }
+  function isLikelyPluralAdjustment(sourceText, targetText) {
+    const source = normalizeMatchSignaturePart(sourceText);
+    const target = normalizeMatchSignaturePart(targetText);
+    return target.endsWith("s") && !source.endsWith("s") || target.endsWith("m") && !source.endsWith("m") || target.endsWith("as") && !source.endsWith("as") || target.endsWith("os") && !source.endsWith("os");
+  }
+  function getExpandedMatchMessage(sourceText, targetText, fallbackMessage) {
+    if (isLikelyPluralAdjustment(sourceText, targetText)) {
+      return "Tem que estar no plural.";
+    }
+    return fallbackMessage || "Poss\xEDvel ajuste encontrado.";
+  }
+  function expandCompositeMatches(matches, text) {
+    const expanded = [];
+    matches.forEach((match) => {
+      const primaryReplacement = Array.isArray(match.replacements) ? match.replacements[0]?.value : "";
+      const sourceText = getMatchText(match, text);
+      if (!primaryReplacement || match.length < 16 || !/\s/.test(sourceText) || !/\s/.test(primaryReplacement)) {
+        expanded.push(match);
+        return;
+      }
+      const validGroups = buildTokenDiffGroups(tokenizeWithOffsets(sourceText), tokenizeWithOffsets(primaryReplacement)).slice(0, 6);
+      if (validGroups.length < 2) {
+        expanded.push(match);
+        return;
+      }
+      validGroups.forEach((group) => {
+        expanded.push({
+          ...match,
+          offset: match.offset + group.srcCharStart,
+          length: group.srcCharEnd - group.srcCharStart,
+          message: getExpandedMatchMessage(group.srcText, group.tgtText, match.message),
+          replacements: [{ value: group.tgtText }]
+        });
+      });
+    });
+    return expanded;
+  }
   function prepareVisibleMatches(matches) {
-    const visible = matches.filter((match) => !shouldHideWeakMatch(match));
-    latestHiddenWeakCount = matches.length - visible.length;
+    const expanded = expandCompositeMatches(matches, latestText);
+    const visible = expanded.filter((match) => !shouldHideWeakMatch(match));
+    latestHiddenWeakCount = Math.max(0, expanded.length - visible.length);
     return visible.sort(compareMatchesByUiPriority);
   }
   function getConfidenceLabel(match) {
@@ -618,28 +762,6 @@
     }
     highlightedSuggestionIndex = focusIndex >= 0 ? focusIndex : -1;
     suggestionMenu.innerHTML = "";
-    const header = document.createElement("div");
-    header.className = "corrija-me-pt-br-menu-panel-header";
-    header.innerHTML = `
-    <div class="corrija-me-pt-br-menu-panel-title">Sugest\xF5es do campo</div>
-    <div class="corrija-me-pt-br-menu-panel-meta">${latestMatches.length} ajuste(s)</div>
-  `;
-    suggestionMenu.appendChild(header);
-    if (latestMatches.length > 1) {
-      const actions = document.createElement("div");
-      actions.className = "corrija-me-pt-br-menu-panel-actions";
-      const applyAllButton = document.createElement("button");
-      applyAllButton.type = "button";
-      applyAllButton.className = "corrija-me-pt-br-menu-bulk-button";
-      applyAllButton.textContent = "Corrigir vis\xEDveis";
-      applyAllButton.addEventListener("pointerdown", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        applyAllCorrections();
-      });
-      actions.appendChild(applyAllButton);
-      suggestionMenu.appendChild(actions);
-    }
     const list = document.createElement("div");
     list.className = "corrija-me-pt-br-menu-list";
     latestMatches.forEach((match, index) => {
@@ -649,60 +771,55 @@
         card.classList.add("corrija-me-pt-br-menu-card-active");
       }
       card.dataset.suggestionCard = String(index);
-      const excerpt = getExcerpt(match) || getMatchText(match, latestText) || "Trecho sem contexto.";
-      const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 2) : [];
+      const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 1) : [];
       const topRow = document.createElement("div");
       topRow.className = "corrija-me-pt-br-menu-card-top";
-      const confidenceBadge = document.createElement("div");
-      confidenceBadge.className = `corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
-      confidenceBadge.textContent = getConfidenceLabel(match);
-      if (match.confidence?.reason) {
-        confidenceBadge.title = match.confidence.reason;
+      const suggestionButton = document.createElement("button");
+      suggestionButton.type = "button";
+      suggestionButton.className = "corrija-me-pt-br-menu-suggestion";
+      suggestionButton.textContent = replacements[0]?.value || "Sem sugest\xE3o";
+      if (replacements[0]?.value) {
+        suggestionButton.addEventListener("pointerdown", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          applySingleCorrection(index, replacements[0].value);
+        });
+      } else {
+        suggestionButton.disabled = true;
       }
-      topRow.appendChild(confidenceBadge);
-      const ignoreButton = document.createElement("button");
-      ignoreButton.type = "button";
-      ignoreButton.className = "corrija-me-pt-br-menu-ignore";
-      ignoreButton.textContent = "(i)";
-      ignoreButton.title = "Ignorar nesta an\xE1lise";
-      ignoreButton.setAttribute("aria-label", "Ignorar nesta an\xE1lise");
-      ignoreButton.addEventListener("pointerdown", (event) => {
+      topRow.appendChild(suggestionButton);
+      const controls = document.createElement("div");
+      controls.className = "corrija-me-pt-br-menu-controls";
+      const dismissButton = document.createElement("button");
+      dismissButton.type = "button";
+      dismissButton.className = "corrija-me-pt-br-menu-control corrija-me-pt-br-menu-control-dismiss";
+      dismissButton.textContent = "(x)";
+      dismissButton.title = "Ignorar sugest\xE3o";
+      dismissButton.setAttribute("aria-label", "Ignorar sugest\xE3o");
+      dismissButton.addEventListener("pointerdown", (event) => {
         event.preventDefault();
         event.stopPropagation();
         ignoreMatch(index);
       });
-      topRow.appendChild(ignoreButton);
+      controls.appendChild(dismissButton);
+      const confidenceButton = document.createElement("button");
+      confidenceButton.type = "button";
+      confidenceButton.className = `corrija-me-pt-br-menu-control corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
+      confidenceButton.textContent = "(c)";
+      confidenceButton.title = getConfidenceLabel(match);
+      confidenceButton.setAttribute("aria-label", getConfidenceLabel(match));
+      confidenceButton.disabled = true;
+      controls.appendChild(confidenceButton);
+      const infoButton = document.createElement("button");
+      infoButton.type = "button";
+      infoButton.className = "corrija-me-pt-br-menu-control corrija-me-pt-br-menu-control-info";
+      infoButton.textContent = "(i)";
+      infoButton.title = match.message || "Poss\xEDvel ajuste encontrado.";
+      infoButton.setAttribute("aria-label", match.message || "Poss\xEDvel ajuste encontrado.");
+      infoButton.disabled = true;
+      controls.appendChild(infoButton);
+      topRow.appendChild(controls);
       card.appendChild(topRow);
-      const excerptNode = document.createElement("div");
-      excerptNode.className = "corrija-me-pt-br-menu-excerpt";
-      excerptNode.textContent = excerpt;
-      card.appendChild(excerptNode);
-      const messageNode = document.createElement("div");
-      messageNode.className = "corrija-me-pt-br-menu-message";
-      messageNode.textContent = match.message || "Poss\xEDvel ajuste encontrado.";
-      card.appendChild(messageNode);
-      const replacementsWrap = document.createElement("div");
-      replacementsWrap.className = "corrija-me-pt-br-menu-replacements";
-      if (!replacements.length) {
-        const empty = document.createElement("div");
-        empty.className = "corrija-me-pt-br-menu-empty";
-        empty.textContent = "Sem sugest\xE3o pronta.";
-        replacementsWrap.appendChild(empty);
-      } else {
-        replacements.forEach((replacement) => {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = "corrija-me-pt-br-menu-item";
-          button.textContent = replacement.value;
-          button.addEventListener("pointerdown", (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            applySingleCorrection(index, replacement.value);
-          });
-          replacementsWrap.appendChild(button);
-        });
-      }
-      card.appendChild(replacementsWrap);
       list.appendChild(card);
     });
     suggestionMenu.appendChild(list);

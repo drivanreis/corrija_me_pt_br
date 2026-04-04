@@ -47,6 +47,19 @@ type PopupResultItem = {
   replacements: string[];
 };
 
+type DiffToken = {
+  text: string;
+  start: number;
+  end: number;
+};
+
+type DiffGroup = {
+  srcText: string;
+  tgtText: string;
+  srcCharStart: number;
+  srcCharEnd: number;
+};
+
 let activeElement: HTMLElement | HTMLInputElement | HTMLTextAreaElement | null = null;
 let activeRequestId = 0;
 let debounceTimer: number | null = null;
@@ -150,6 +163,131 @@ function getText(element: HTMLElement | HTMLInputElement | HTMLTextAreaElement |
     return element.value || "";
   }
   return (element.textContent || "").replace(/\u00a0/g, " ");
+}
+
+function tokenizeWithOffsets(text: string): DiffToken[] {
+  const tokens: DiffToken[] = [];
+  const pattern = /[\p{L}\p{N}]+|[^\s\p{L}\p{N}]/gu;
+  for (const match of text.matchAll(pattern)) {
+    const token = match[0];
+    const start = match.index ?? 0;
+    tokens.push({ text: token, start, end: start + token.length });
+  }
+  return tokens;
+}
+
+function buildTokenDiffGroups(sourceTokens: DiffToken[], targetTokens: DiffToken[]): DiffGroup[] {
+  const rows = sourceTokens.length + 1;
+  const cols = targetTokens.length + 1;
+  const dp = Array.from({ length: rows }, () => new Array(cols).fill(0));
+
+  for (let row = 0; row < rows; row += 1) {
+    dp[row][0] = row;
+  }
+
+  for (let col = 0; col < cols; col += 1) {
+    dp[0][col] = col;
+  }
+
+  for (let row = 1; row < rows; row += 1) {
+    for (let col = 1; col < cols; col += 1) {
+      if (sourceTokens[row - 1]?.text === targetTokens[col - 1]?.text) {
+        dp[row][col] = dp[row - 1][col - 1];
+      } else {
+        dp[row][col] = Math.min(
+          dp[row - 1][col] + 1,
+          dp[row][col - 1] + 1,
+          dp[row - 1][col - 1] + 1
+        );
+      }
+    }
+  }
+
+  const operations: Array<{ type: "equal" | "replace" | "delete" | "insert"; srcIndex?: number; tgtIndex?: number }> = [];
+  let row = sourceTokens.length;
+  let col = targetTokens.length;
+
+  while (row > 0 || col > 0) {
+    if (row > 0 && col > 0 && sourceTokens[row - 1]?.text === targetTokens[col - 1]?.text) {
+      operations.push({ type: "equal", srcIndex: row - 1, tgtIndex: col - 1 });
+      row -= 1;
+      col -= 1;
+      continue;
+    }
+
+    const replaceCost = row > 0 && col > 0 ? dp[row - 1][col - 1] : Number.POSITIVE_INFINITY;
+    const deleteCost = row > 0 ? dp[row - 1][col] : Number.POSITIVE_INFINITY;
+    const currentCost = dp[row][col];
+
+    if (row > 0 && col > 0 && currentCost === replaceCost + 1) {
+      operations.push({ type: "replace", srcIndex: row - 1, tgtIndex: col - 1 });
+      row -= 1;
+      col -= 1;
+    } else if (row > 0 && currentCost === deleteCost + 1) {
+      operations.push({ type: "delete", srcIndex: row - 1 });
+      row -= 1;
+    } else {
+      operations.push({ type: "insert", tgtIndex: col - 1 });
+      col -= 1;
+    }
+  }
+
+  operations.reverse();
+
+  const groups: DiffGroup[] = [];
+  let current:
+    | { srcStartToken: number; srcEndToken: number; srcTexts: string[]; tgtTexts: string[] }
+    | null = null;
+  let sourceCursor = 0;
+
+  function closeGroup() {
+    if (!current) {
+      return;
+    }
+    const slice = sourceTokens.slice(current.srcStartToken, current.srcEndToken);
+    const srcCharStart = slice[0]?.start ?? 0;
+    const srcCharEnd = slice[slice.length - 1]?.end ?? srcCharStart;
+    groups.push({
+      srcText: current.srcTexts.join(" ").trim(),
+      tgtText: current.tgtTexts.join(" ").trim(),
+      srcCharStart,
+      srcCharEnd
+    });
+    current = null;
+  }
+
+  operations.forEach((operation) => {
+    if (operation.type === "equal") {
+      closeGroup();
+      sourceCursor += 1;
+      return;
+    }
+
+    if (!current) {
+      current = {
+        srcStartToken: sourceCursor,
+        srcEndToken: sourceCursor,
+        srcTexts: [],
+        tgtTexts: []
+      };
+    }
+
+    if (operation.type === "replace") {
+      current.srcTexts.push(sourceTokens[operation.srcIndex ?? 0]?.text || "");
+      current.tgtTexts.push(targetTokens[operation.tgtIndex ?? 0]?.text || "");
+      sourceCursor += 1;
+    } else if (operation.type === "delete") {
+      current.srcTexts.push(sourceTokens[operation.srcIndex ?? 0]?.text || "");
+      sourceCursor += 1;
+    } else {
+      current.tgtTexts.push(targetTokens[operation.tgtIndex ?? 0]?.text || "");
+    }
+
+    current.srcEndToken = sourceCursor;
+  });
+
+  closeGroup();
+  return groups.filter((group) => group.srcText && group.tgtText && group.srcCharEnd > group.srcCharStart);
 }
 
 function countRegexMatches(text: string, pattern: RegExp): number {
@@ -651,9 +789,60 @@ function filterIgnoredMatches(matches: CheckMatch[], text: string, sessionId: nu
   return matches.filter((match) => !ignored.has(createMatchSignature(match, text)));
 }
 
+function isLikelyPluralAdjustment(sourceText: string, targetText: string): boolean {
+  const source = normalizeMatchSignaturePart(sourceText);
+  const target = normalizeMatchSignaturePart(targetText);
+  return (target.endsWith("s") && !source.endsWith("s"))
+    || (target.endsWith("m") && !source.endsWith("m"))
+    || (target.endsWith("as") && !source.endsWith("as"))
+    || (target.endsWith("os") && !source.endsWith("os"));
+}
+
+function getExpandedMatchMessage(sourceText: string, targetText: string, fallbackMessage: string): string {
+  if (isLikelyPluralAdjustment(sourceText, targetText)) {
+    return "Tem que estar no plural.";
+  }
+  return fallbackMessage || "Possível ajuste encontrado.";
+}
+
+function expandCompositeMatches(matches: CheckMatch[], text: string): CheckMatch[] {
+  const expanded: CheckMatch[] = [];
+
+  matches.forEach((match) => {
+    const primaryReplacement = Array.isArray(match.replacements) ? match.replacements[0]?.value : "";
+    const sourceText = getMatchText(match, text);
+
+    if (!primaryReplacement || match.length < 16 || !/\s/.test(sourceText) || !/\s/.test(primaryReplacement)) {
+      expanded.push(match);
+      return;
+    }
+
+    const validGroups = buildTokenDiffGroups(tokenizeWithOffsets(sourceText), tokenizeWithOffsets(primaryReplacement))
+      .slice(0, 6);
+
+    if (validGroups.length < 2) {
+      expanded.push(match);
+      return;
+    }
+
+    validGroups.forEach((group) => {
+      expanded.push({
+        ...match,
+        offset: match.offset + group.srcCharStart,
+        length: group.srcCharEnd - group.srcCharStart,
+        message: getExpandedMatchMessage(group.srcText, group.tgtText, match.message),
+        replacements: [{ value: group.tgtText }]
+      });
+    });
+  });
+
+  return expanded;
+}
+
 function prepareVisibleMatches(matches: CheckMatch[]): CheckMatch[] {
-  const visible = matches.filter((match) => !shouldHideWeakMatch(match));
-  latestHiddenWeakCount = matches.length - visible.length;
+  const expanded = expandCompositeMatches(matches, latestText);
+  const visible = expanded.filter((match) => !shouldHideWeakMatch(match));
+  latestHiddenWeakCount = Math.max(0, expanded.length - visible.length);
   return visible.sort(compareMatchesByUiPriority);
 }
 
@@ -709,32 +898,6 @@ function renderSuggestionPanel(focusIndex = highlightedSuggestionIndex): void {
   highlightedSuggestionIndex = focusIndex >= 0 ? focusIndex : -1;
   suggestionMenu.innerHTML = "";
 
-  const header = document.createElement("div");
-  header.className = "corrija-me-pt-br-menu-panel-header";
-  header.innerHTML = `
-    <div class="corrija-me-pt-br-menu-panel-title">Sugestões do campo</div>
-    <div class="corrija-me-pt-br-menu-panel-meta">${latestMatches.length} ajuste(s)</div>
-  `;
-  suggestionMenu.appendChild(header);
-
-  if (latestMatches.length > 1) {
-    const actions = document.createElement("div");
-    actions.className = "corrija-me-pt-br-menu-panel-actions";
-
-    const applyAllButton = document.createElement("button");
-    applyAllButton.type = "button";
-    applyAllButton.className = "corrija-me-pt-br-menu-bulk-button";
-    applyAllButton.textContent = "Corrigir visíveis";
-    applyAllButton.addEventListener("pointerdown", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      applyAllCorrections();
-    });
-    actions.appendChild(applyAllButton);
-
-    suggestionMenu.appendChild(actions);
-  }
-
   const list = document.createElement("div");
   list.className = "corrija-me-pt-br-menu-list";
 
@@ -746,69 +909,62 @@ function renderSuggestionPanel(focusIndex = highlightedSuggestionIndex): void {
     }
     card.dataset.suggestionCard = String(index);
 
-    const excerpt = getExcerpt(match) || getMatchText(match, latestText) || "Trecho sem contexto.";
-    const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 2) : [];
-
+    const replacements = Array.isArray(match.replacements) ? match.replacements.slice(0, 1) : [];
     const topRow = document.createElement("div");
     topRow.className = "corrija-me-pt-br-menu-card-top";
 
-    const confidenceBadge = document.createElement("div");
-    confidenceBadge.className = `corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
-    confidenceBadge.textContent = getConfidenceLabel(match);
-    if (match.confidence?.reason) {
-      confidenceBadge.title = match.confidence.reason;
+    const suggestionButton = document.createElement("button");
+    suggestionButton.type = "button";
+    suggestionButton.className = "corrija-me-pt-br-menu-suggestion";
+    suggestionButton.textContent = replacements[0]?.value || "Sem sugestão";
+    if (replacements[0]?.value) {
+      suggestionButton.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        applySingleCorrection(index, replacements[0].value);
+      });
+    } else {
+      suggestionButton.disabled = true;
     }
-    topRow.appendChild(confidenceBadge);
+    topRow.appendChild(suggestionButton);
 
-    const ignoreButton = document.createElement("button");
-    ignoreButton.type = "button";
-    ignoreButton.className = "corrija-me-pt-br-menu-ignore";
-    ignoreButton.textContent = "(i)";
-    ignoreButton.title = "Ignorar nesta análise";
-    ignoreButton.setAttribute("aria-label", "Ignorar nesta análise");
-    ignoreButton.addEventListener("pointerdown", (event) => {
+    const controls = document.createElement("div");
+    controls.className = "corrija-me-pt-br-menu-controls";
+
+    const dismissButton = document.createElement("button");
+    dismissButton.type = "button";
+    dismissButton.className = "corrija-me-pt-br-menu-control corrija-me-pt-br-menu-control-dismiss";
+    dismissButton.textContent = "(x)";
+    dismissButton.title = "Ignorar sugestão";
+    dismissButton.setAttribute("aria-label", "Ignorar sugestão");
+    dismissButton.addEventListener("pointerdown", (event) => {
       event.preventDefault();
       event.stopPropagation();
       ignoreMatch(index);
     });
-    topRow.appendChild(ignoreButton);
+    controls.appendChild(dismissButton);
+
+    const confidenceButton = document.createElement("button");
+    confidenceButton.type = "button";
+    confidenceButton.className = `corrija-me-pt-br-menu-control corrija-me-pt-br-menu-confidence corrija-me-pt-br-menu-confidence-${match.confidence?.level || "default"}`;
+    confidenceButton.textContent = "(c)";
+    confidenceButton.title = getConfidenceLabel(match);
+    confidenceButton.setAttribute("aria-label", getConfidenceLabel(match));
+    confidenceButton.disabled = true;
+    controls.appendChild(confidenceButton);
+
+    const infoButton = document.createElement("button");
+    infoButton.type = "button";
+    infoButton.className = "corrija-me-pt-br-menu-control corrija-me-pt-br-menu-control-info";
+    infoButton.textContent = "(i)";
+    infoButton.title = match.message || "Possível ajuste encontrado.";
+    infoButton.setAttribute("aria-label", match.message || "Possível ajuste encontrado.");
+    infoButton.disabled = true;
+    controls.appendChild(infoButton);
+
+    topRow.appendChild(controls);
 
     card.appendChild(topRow);
-
-    const excerptNode = document.createElement("div");
-    excerptNode.className = "corrija-me-pt-br-menu-excerpt";
-    excerptNode.textContent = excerpt;
-    card.appendChild(excerptNode);
-
-    const messageNode = document.createElement("div");
-    messageNode.className = "corrija-me-pt-br-menu-message";
-    messageNode.textContent = match.message || "Possível ajuste encontrado.";
-    card.appendChild(messageNode);
-
-    const replacementsWrap = document.createElement("div");
-    replacementsWrap.className = "corrija-me-pt-br-menu-replacements";
-
-    if (!replacements.length) {
-      const empty = document.createElement("div");
-      empty.className = "corrija-me-pt-br-menu-empty";
-      empty.textContent = "Sem sugestão pronta.";
-      replacementsWrap.appendChild(empty);
-    } else {
-      replacements.forEach((replacement) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "corrija-me-pt-br-menu-item";
-        button.textContent = replacement.value;
-        button.addEventListener("pointerdown", (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          applySingleCorrection(index, replacement.value);
-        });
-        replacementsWrap.appendChild(button);
-      });
-    }
-
-    card.appendChild(replacementsWrap);
     list.appendChild(card);
   });
 
