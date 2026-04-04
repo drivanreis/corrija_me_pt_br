@@ -6,6 +6,7 @@ import { loadDictionaryResources } from "./dictionary.js";
 import { existsSync, readFileSync } from "node:fs";
 
 const DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
+const isPackagedBinary = typeof (process as NodeJS.Process & { pkg?: unknown }).pkg !== "undefined";
 const isCheckWorkerProcess = process.env.CORRIJA_ME_CHILD_MODE === "check-worker";
 const currentDir = __dirname;
 const dataDir = join(currentDir, "../data");
@@ -112,6 +113,21 @@ function runCheckInWorker(text: string): Promise<unknown> {
   });
 }
 
+function runCheckInProcess(text: string): unknown {
+  if (!dictionaryResources) {
+    throw new Error("Recursos do dicionario indisponiveis.");
+  }
+
+  return checkText(text, dictionaryResources.replacements, {
+    words: dictionaryResources.words,
+    commonMistakes: dictionaryResources.commonMistakes,
+    dictionaryReady: dictionaryResources.dictionaryReady,
+    contextRules: dictionaryResources.contextRules,
+    phraseRules: dictionaryResources.phraseRules,
+    linguisticData: dictionaryResources.linguisticData
+  });
+}
+
 if (isCheckWorkerProcess) {
   const workerResources = loadDictionaryResources(dataDir);
 
@@ -192,7 +208,7 @@ if (isCheckWorkerProcess) {
       }
 
       try {
-        const result = await runCheckInWorker(text);
+        const result = isPackagedBinary ? runCheckInProcess(text) : await runCheckInWorker(text);
         sendJson(response, 200, result);
         return;
       } catch (error) {
