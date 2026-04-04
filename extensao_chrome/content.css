@@ -5,7 +5,7 @@
 .corrija-me-pt-br-menu {
   position: fixed;
   z-index: 2147483646;
-  width: min(320px, calc(100vw - 24px));
+  width: auto;
   max-height: min(40vh, 260px);
   overflow: auto;
   padding: 0;
@@ -18,11 +18,17 @@
 }
 
 .corrija-me-pt-br-menu-list {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 4px;
+  align-items: flex-start;
 }
 
 .corrija-me-pt-br-menu-card {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: fit-content;
+  max-width: min(100%, 280px);
   border: 1px solid rgba(15, 23, 42, 0.16);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.98);
@@ -42,10 +48,17 @@
   gap: 8px;
 }
 
+.corrija-me-pt-br-menu-card-compact .corrija-me-pt-br-menu-card-top {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
 .corrija-me-pt-br-menu-controls {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  flex-wrap: nowrap;
 }
 
 .corrija-me-pt-br-menu-control {
@@ -101,7 +114,7 @@
 }
 
 .corrija-me-pt-br-menu-suggestion {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
   border: 0;
   background: transparent;
@@ -111,8 +124,8 @@
   font: 700 13px/1.25 "Noto Sans", "Segoe UI", sans-serif;
   cursor: pointer;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
 }
 
 .corrija-me-pt-br-menu-suggestion:hover {
@@ -122,6 +135,10 @@
 .corrija-me-pt-br-menu-suggestion:disabled {
   cursor: default;
   color: #64748b;
+}
+
+.corrija-me-pt-br-menu-card-compact .corrija-me-pt-br-menu-suggestion {
+  width: 100%;
 }
 
 .corrija-me-pt-br-input-overlay-host {

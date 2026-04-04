@@ -149,6 +149,16 @@
   function activateElement(element) {
     if (activeElement !== element) {
       activeElementSessionId += 1;
+      activeRequestId += 1;
+      latestMatches = [];
+      latestHiddenWeakCount = 0;
+      latestText = getText(element);
+      retainedClientMatches = [];
+      highlightedSuggestionIndex = -1;
+      suggestionAnchorIndex = -1;
+      hideSuggestionMenu();
+      clearHighlights();
+      hideInputOverlay();
     }
     activeElement = element;
     activeElement.setAttribute("spellcheck", "false");
@@ -818,8 +828,8 @@
     const lineHeight = Number.parseFloat(styles.lineHeight) || 22;
     const paddingTop = Number.parseFloat(styles.paddingTop) || 8;
     const paddingLeft = Number.parseFloat(styles.paddingLeft) || 8;
-    const fieldWidth = Math.max(180, rect.width - Math.max(12, paddingLeft * 2));
-    const panelWidth = Math.min(fieldWidth, 340, window.innerWidth - 24);
+    const fieldWidth = Math.max(140, rect.width - Math.max(12, paddingLeft * 2));
+    const panelWidth = Math.min(fieldWidth, window.innerWidth - 24);
     const anchorRect = getSuggestionAnchorRect();
     const fallbackInsideTop = rect.top + paddingTop + lineHeight + 8;
     const anchorLeft = anchorRect ? anchorRect.left : rect.left + paddingLeft;
@@ -827,8 +837,9 @@
     const left = Math.max(12, Math.min(window.innerWidth - panelWidth - 12, anchorLeft));
     const preferredTop = anchorBottom + 8 <= rect.bottom ? anchorBottom + 8 : rect.bottom + 8;
     const top = Math.max(12, Math.min(window.innerHeight - 80, preferredTop));
-    suggestionMenu.style.width = `${panelWidth}px`;
+    suggestionMenu.style.width = "auto";
     suggestionMenu.style.maxWidth = `${panelWidth}px`;
+    suggestionMenu.style.minWidth = "0";
     suggestionMenu.style.left = `${left}px`;
     suggestionMenu.style.top = `${top}px`;
   }
@@ -867,6 +878,9 @@
       suggestionButton.type = "button";
       suggestionButton.className = "corrija-me-pt-br-menu-suggestion";
       suggestionButton.textContent = replacements[0]?.value || "Sem sugest\xE3o";
+      if ((replacements[0]?.value || "").length <= 5) {
+        card.classList.add("corrija-me-pt-br-menu-card-compact");
+      }
       if (replacements[0]?.value) {
         suggestionButton.addEventListener("pointerdown", (event) => {
           event.preventDefault();
