@@ -1377,42 +1377,28 @@ Se o corretor estiver funcionando bem, ele deve conseguir lidar com esse tipo de
         });
       }
 
-      function selectBatteryCases(curatedCases, generatedCases) {
+      function selectBatteryCases(proofCases) {
         const requiredCases = fallbackPhases.length * 5;
-        const curatedPool = dedupeTestCases(curatedCases);
-        const generatedPool = dedupeTestCases(generatedCases).filter((candidate) => {
-          const key = `${String(candidate?.errado || "").trim()}|||${String(candidate?.correto || "").trim()}`;
-          return !curatedPool.some((curated) => `${String(curated?.errado || "").trim()}|||${String(curated?.correto || "").trim()}` === key);
-        });
+        const proofPool = dedupeTestCases(proofCases);
 
-        if (curatedPool.length >= requiredCases) {
+        if (proofPool.length >= requiredCases) {
           return {
-            selectedCases: curatedPool,
-            mode: "curated-only"
+            selectedCases: proofPool,
+            mode: "proof-pardau"
           };
         }
 
-        return {
-          selectedCases: [...curatedPool, ...generatedPool],
-          mode: curatedPool.length ? "curated-priority" : "generated-fallback"
-        };
+        throw new Error(`Base de prova insuficiente: ${proofPool.length} caso(s) disponíveis, ${requiredCases} necessário(s). Complete o curated-proof antes de aplicar a bateria.`);
       }
 
       async function initializeDynamicBattery() {
-        updateLoadingStatus("Lendo casos curados e gerados da base JSON.");
-        const [curatedCases, generatedCases] = await Promise.all([
-          fetchJsonArray(["./data/test-cases/curated.json", "../data/test-cases/curated.json"]),
-          fetchJsonArray(["./data/test-cases/generated.json", "../data/test-cases/generated.json"])
+        updateLoadingStatus("Lendo a base de prova sob fiscalizacao proof-pardau.");
+        const proofCases = await fetchJsonArray([
+          "./data/test-cases/curated-proof.json",
+          "../data/test-cases/curated-proof.json"
         ]);
-        const { selectedCases, mode } = selectBatteryCases(curatedCases, generatedCases);
-
-        if (mode === "curated-only") {
-          updateLoadingStatus("Montando a bateria com a base curada.");
-        } else if (mode === "curated-priority") {
-          updateLoadingStatus("Montando a bateria com prioridade para a base curada e complemento gerado.");
-        } else {
-          updateLoadingStatus("Montando a bateria com casos gerados por fallback.");
-        }
+        const { selectedCases } = selectBatteryCases(proofCases);
+        updateLoadingStatus("Montando a bateria somente com a base de prova em modo proof-pardau.");
 
         phases = buildDynamicPhasesFromCases(selectedCases);
         totalPages = phases.length + 1;

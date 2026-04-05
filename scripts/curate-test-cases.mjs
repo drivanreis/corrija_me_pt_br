@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { spawn } from "node:child_process";
 
 const GENERATED_PATH = "data/test-cases/generated.json";
 const CURATED_PATH = "data/test-cases/curated.json";
@@ -173,6 +174,25 @@ function dedupePairKey(testCase) {
   return `${testCase.errado}|||${testCase.correto}`;
 }
 
+function runCommand(command, args, label = `${command} ${args.join(" ")}`) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, args, {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      env: process.env
+    });
+
+    child.once("error", reject);
+    child.once("close", (code) => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(new Error(`Falha ao executar: ${label} (exit ${code ?? "null"})`));
+      }
+    });
+  });
+}
+
 async function main() {
   const generatedPath = path.resolve(process.cwd(), GENERATED_PATH);
   const curatedPath = path.resolve(process.cwd(), CURATED_PATH);
@@ -211,6 +231,9 @@ async function main() {
   console.log(`Rejeitados nesta execução: ${rejected.length}`);
   console.log(`Arquivo curated: ${curatedPath}`);
   console.log(`Arquivo rejected: ${rejectedPath}`);
+
+  await runCommand("node", ["scripts/build-curated-partitions.mjs"], "build curated partitions");
+  await runCommand("node", ["scripts/generate-know-learned-rules.mjs"], "generate know learned rules");
 }
 
 main().catch((error) => {

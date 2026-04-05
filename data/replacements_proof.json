@@ -1,0 +1,58 @@
+[
+  {
+    "from": "contra-tempo",
+    "replacements": [
+      "contratempo"
+    ],
+    "source": "proof_fallback:orto-33"
+  },
+  {
+    "from": "excessão",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "proof_fallback:orto-02"
+  },
+  {
+    "from": "discusão",
+    "replacements": [
+      "discussão"
+    ],
+    "source": "proof_fallback:orto-02"
+  },
+  {
+    "from": "excesão",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "proof_fallback:orto-03"
+  },
+  {
+    "from": "aquêles",
+    "replacements": [
+      "aqueles"
+    ],
+    "source": "proof_fallback:orto-03"
+  },
+  {
+    "from": "podesem",
+    "replacements": [
+      "pudessem"
+    ],
+    "source": "proof_fallback:orto-03"
+  },
+  {
+    "from": "lugár",
+    "replacements": [
+      "lugar"
+    ],
+    "source": "proof_fallback:ortografia_06"
+  },
+  {
+    "from": "incrivelmete",
+    "replacements": [
+      "incrivelmente"
+    ],
+    "source": "proof_fallback:ortografia_06"
+  }
+]

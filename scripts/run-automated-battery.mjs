@@ -451,13 +451,18 @@ async function main() {
     await runCommand("npm", ["run", "build"], "npm run build");
   }
 
-  const curatedPath = path.resolve(process.cwd(), "data/test-cases/curated.json");
-  const curatedItems = JSON.parse(await fs.readFile(curatedPath, "utf8"));
+  const curatedProofPath = path.resolve(process.cwd(), "data/test-cases/curated-proof.json");
+  try {
+    await fs.access(curatedProofPath);
+  } catch {
+    throw new Error("Base de prova ausente: data/test-cases/curated-proof.json. O proof-pardau nao permite fallback.");
+  }
+
+  const curatedItems = JSON.parse(await fs.readFile(curatedProofPath, "utf8"));
   let selectedCases = curatedItems.filter((item) => Number(item.difficulty) <= args.rounds);
 
   if (!selectedCases.length) {
-    selectedCases = curatedItems;
-    console.warn("Nenhum caso curado encontrado dentro da faixa de rodadas pedida. Usando toda a base curada como fallback.");
+    throw new Error(`Base de prova insuficiente para --rounds ${args.rounds}. O proof-pardau exige casos elegiveis em curated-proof.`);
   }
 
   if (!selectedCases.length) {
@@ -582,6 +587,9 @@ async function main() {
       const publishTargets = [
         "data/test-cases/generated.json",
         "data/test-cases/curated.json",
+        "data/test-cases/curated-know.json",
+        "data/test-cases/curated-proof.json",
+        "data/test-cases/curated-partitions-report.json",
         "data/test-cases/rejected.json",
         args.auditOutput
       ];

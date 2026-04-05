@@ -12,7 +12,6 @@ texts=(
   'Voce ja enviou o relatorio de sabado?'
   'O nivel de agua do reservatorio esta baixo.'
   'Vendo notebook usado com 8gb de ram e ssd 240gb.'
-  'Nois vai a praia todo segunda feira'
 )
 
 responses=()

@@ -14,6 +14,12 @@ const dataDir = path.join(buildDir, "data");
 async function buildReplacementData() {
   await mkdir(dataDir, { recursive: true });
   await copyFile(path.join(rootDir, "data/replacements.json"), path.join(dataDir, "replacements.json"));
+  if (existsSync(path.join(rootDir, "data/replacements_learned.json"))) {
+    await copyFile(path.join(rootDir, "data/replacements_learned.json"), path.join(dataDir, "replacements_learned.json"));
+  }
+  if (existsSync(path.join(rootDir, "data/replacements_proof.json"))) {
+    await copyFile(path.join(rootDir, "data/replacements_proof.json"), path.join(dataDir, "replacements_proof.json"));
+  }
   await cp(path.join(rootDir, "data/dictionary"), path.join(dataDir, "dictionary"), { recursive: true });
   await cp(path.join(rootDir, "data/rules"), path.join(dataDir, "rules"), { recursive: true });
   await cp(path.join(rootDir, "data/linguistic"), path.join(dataDir, "linguistic"), { recursive: true });
@@ -106,6 +112,8 @@ Build gerado automaticamente.
 
 - Backend local: build/node-app/backend/server.cjs
 - Dados de correcoes: build/node-app/data/replacements.json
+- Dados aprendidos: build/node-app/data/replacements_learned.json
+- Dados aprendidos via proof: build/node-app/data/replacements_proof.json
 - Dicionario base: build/node-app/data/dictionary
 - Regras de contexto: build/node-app/data/rules
 - Base linguistica estruturada: build/node-app/data/linguistic

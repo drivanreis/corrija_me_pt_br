@@ -1,0 +1,14 @@
+[
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_03_O_PORQUE",
+    "pattern": [
+      "o",
+      "porque"
+    ],
+    "replacements": [
+      "o porquê"
+    ],
+    "message": "Com artigo, a forma esperada é 'porquê'.",
+    "description": "Regra curta derivada de falha observada no proof (homo_03)."
+  }
+]

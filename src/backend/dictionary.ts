@@ -33,6 +33,14 @@ function loadReplacementEntries(pathname: string): ReplacementEntry[] {
   return JSON.parse(readFileSync(pathname, "utf8")) as ReplacementEntry[];
 }
 
+function loadOptionalReplacementEntries(pathname: string): ReplacementEntry[] {
+  if (!existsSync(pathname)) {
+    return [];
+  }
+
+  return loadReplacementEntries(pathname);
+}
+
 function loadCommonMistakeEntries(pathname: string, existingReplacementEntries: ReplacementEntry[]): ReplacementEntry[] {
   const existingFrom = new Set(existingReplacementEntries.map((entry) => normalizeDictionaryWord(entry.from)));
   const entries = JSON.parse(readFileSync(pathname, "utf8")) as CommonMistakeFileEntry[];
@@ -68,6 +76,14 @@ function loadOptionalPhraseRules(pathname: string): PhraseRuleDefinition[] {
   return loadPhraseRules(pathname);
 }
 
+function loadOptionalContextRules(pathname: string): ContextRuleDefinition[] {
+  if (!existsSync(pathname)) {
+    return [];
+  }
+
+  return loadContextRules(pathname);
+}
+
 function loadDictionaryManifest(dictionaryDir: string): DictionaryManifest | null {
   const manifestPath = join(dictionaryDir, "manifest.json");
   if (!existsSync(manifestPath)) {
@@ -78,7 +94,11 @@ function loadDictionaryManifest(dictionaryDir: string): DictionaryManifest | nul
 }
 
 export function loadDictionaryResources(dataDir: string): DictionaryResources {
-  const replacements = loadReplacementEntries(join(dataDir, "replacements.json"));
+  const replacements = [
+    ...loadReplacementEntries(join(dataDir, "replacements.json")),
+    ...loadOptionalReplacementEntries(join(dataDir, "replacements_learned.json")),
+    ...loadOptionalReplacementEntries(join(dataDir, "replacements_proof.json"))
+  ];
   const dictionaryDir = join(dataDir, "dictionary");
   const rulesDir = join(dataDir, "rules");
   const linguisticData = loadLinguisticData(dataDir);
@@ -125,10 +145,17 @@ export function loadDictionaryResources(dataDir: string): DictionaryResources {
     ? loadCommonMistakeEntries(join(dictionaryDir, commonMistakesFile), replacements)
     : [];
   const dictionaryReady = words.size >= 5_000;
-  const contextRules = loadContextRules(join(rulesDir, "context_rules.json"));
+  const contextRules = [
+    ...loadContextRules(join(rulesDir, "context_rules.json")),
+    ...loadOptionalContextRules(join(rulesDir, "context_rules_learned.json")),
+    ...loadOptionalContextRules(join(rulesDir, "context_rules_proof.json"))
+  ];
   const phraseRules = [
     ...loadPhraseRules(join(rulesDir, "phrase_rules.json")),
-    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_continuous.json"))
+    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_seeded.json")),
+    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_continuous.json")),
+    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_learned.json")),
+    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_proof.json"))
   ];
 
   return {

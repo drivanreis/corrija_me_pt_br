@@ -1,0 +1,121 @@
+[
+  {
+    "id": "PT_BR_SEEDED_PORISSO",
+    "pattern": ["porisso"],
+    "replacements": ["por isso"],
+    "message": "Essa locução costuma ser escrita separada.",
+    "description": "Corrige o composto colado 'porisso'."
+  },
+  {
+    "id": "PT_BR_SEEDED_BEM_ESTAR",
+    "pattern": ["bem", "estar"],
+    "replacements": ["bem-estar"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'bem-estar'."
+  },
+  {
+    "id": "PT_BR_SEEDED_SEGUNDA_FEIRA",
+    "pattern": ["segunda", "feira"],
+    "replacements": ["segunda-feira"],
+    "message": "O dia da semana costuma ser escrito com hífen nesta base.",
+    "description": "Corrige a forma 'segunda-feira'."
+  },
+  {
+    "id": "PT_BR_SEEDED_SEXTA_FEIRA",
+    "pattern": ["sexta", "feira"],
+    "replacements": ["sexta-feira"],
+    "message": "O dia da semana costuma ser escrito com hífen nesta base.",
+    "description": "Corrige a forma 'sexta-feira'."
+  },
+  {
+    "id": "PT_BR_SEEDED_A_MEDIDA_EM",
+    "pattern": ["a", "medida", "em"],
+    "replacements": ["à medida"],
+    "message": "Nesta locução, a forma esperada é 'à medida que'.",
+    "description": "Corrige a expressão 'à medida que'."
+  },
+  {
+    "id": "PT_BR_SEEDED_A_NIVEL_DE",
+    "pattern": ["a", "nível", "de"],
+    "replacements": ["em nível de"],
+    "message": "A formulação mais natural costuma ser 'em nível de'.",
+    "description": "Corrige a locução 'a nível de'."
+  },
+  {
+    "id": "PT_BR_SEEDED_A_NIVEL",
+    "pattern": ["a", "nível"],
+    "replacements": ["em nível"],
+    "message": "A formulação mais natural costuma ser 'em nível'.",
+    "description": "Corrige a locução 'a nível'."
+  },
+  {
+    "id": "PT_BR_SEEDED_NAO_HA",
+    "pattern": ["não", "ha"],
+    "replacements": ["não há"],
+    "message": "Nessa construção, a forma esperada é 'não há'.",
+    "description": "Corrige a ausência de acento em 'há'."
+  },
+  {
+    "id": "PT_BR_SEEDED_O_PORQUE",
+    "pattern": ["o", "porque"],
+    "replacements": ["o porquê"],
+    "message": "Com artigo, a forma esperada é 'porquê'.",
+    "description": "Corrige o uso substantivo de 'porquê'."
+  },
+  {
+    "id": "PT_BR_SEEDED_DE_ENCONTRO_AO",
+    "pattern": ["de", "encontro", "ao"],
+    "replacements": ["ao encontro do"],
+    "message": "Nesta construção, a forma esperada é 'ao encontro de'.",
+    "description": "Corrige a expressão 'de encontro ao'."
+  },
+  {
+    "id": "PT_BR_SEEDED_DE_ENCONTRO_AOS",
+    "pattern": ["de", "encontro", "aos"],
+    "replacements": ["ao encontro dos"],
+    "message": "Nesta construção, a forma esperada é 'ao encontro de'.",
+    "description": "Corrige a expressão 'de encontro aos'."
+  },
+  {
+    "id": "PT_BR_SEEDED_DE_ENCONTRO_A",
+    "pattern": ["de", "encontro", "a"],
+    "replacements": ["ao encontro da"],
+    "message": "Nesta construção, a forma esperada é 'ao encontro de'.",
+    "description": "Corrige a expressão 'de encontro a'."
+  },
+  {
+    "id": "PT_BR_SEEDED_DE_ENCONTRO_AS",
+    "pattern": ["de", "encontro", "as"],
+    "replacements": ["ao encontro das"],
+    "message": "Nesta construção, a forma esperada é 'ao encontro de'.",
+    "description": "Corrige a expressão 'de encontro as'."
+  },
+  {
+    "id": "PT_BR_SEEDED_TAO_POUCO",
+    "pattern": ["tão", "pouco"],
+    "replacements": ["tampouco"],
+    "message": "Nesta construção, a forma esperada é 'tampouco'.",
+    "description": "Corrige a locução 'tão pouco' quando usada com valor aditivo."
+  },
+  {
+    "id": "PT_BR_SEEDED_AGENTE_VAI",
+    "pattern": ["agente", "vai"],
+    "replacements": ["a gente vai"],
+    "message": "Neste contexto, a forma esperada é 'a gente'.",
+    "description": "Corrige uso coloquial frequente de 'agente'."
+  },
+  {
+    "id": "PT_BR_SEEDED_AGENTE_NAO",
+    "pattern": ["agente", "não"],
+    "replacements": ["a gente não"],
+    "message": "Neste contexto, a forma esperada é 'a gente'.",
+    "description": "Corrige uso coloquial frequente de 'agente'."
+  },
+  {
+    "id": "PT_BR_SEEDED_AGENTE_CONSIGA",
+    "pattern": ["agente", "consiga"],
+    "replacements": ["a gente consiga"],
+    "message": "Neste contexto, a forma esperada é 'a gente'.",
+    "description": "Corrige uso coloquial frequente de 'agente'."
+  }
+]

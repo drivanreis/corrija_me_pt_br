@@ -1,0 +1,522 @@
+{
+  "generated_at": "2026-04-05T00:57:09.787Z",
+  "moved_total": 197,
+  "before": {
+    "know": {
+      "total": 4700,
+      "by_difficulty": {
+        "1": 74,
+        "2": 1018,
+        "3": 1073,
+        "4": 1354,
+        "5": 1181
+      },
+      "by_error_count": {
+        "1": 2843,
+        "2": 1348,
+        "3": 403,
+        "4": 87,
+        "5": 18,
+        "6": 1
+      },
+      "by_category": {
+        "acentuacao": 771,
+        "anuncios": 600,
+        "contexto": 383,
+        "hifen": 610,
+        "homofonos": 276,
+        "ortografia": 759,
+        "pontuacao": 794,
+        "texto tecnico": 507
+      }
+    },
+    "proof": {
+      "total": 820,
+      "by_difficulty": {
+        "1": 29,
+        "2": 263,
+        "3": 134,
+        "4": 251,
+        "5": 143
+      },
+      "by_error_count": {
+        "1": 357,
+        "2": 341,
+        "3": 96,
+        "4": 23,
+        "5": 2,
+        "6": 1
+      },
+      "by_category": {
+        "acentuacao": 4,
+        "anuncios": 30,
+        "contexto": 383,
+        "hifen": 21,
+        "homofonos": 289,
+        "ortografia": 33,
+        "pontuacao": 14,
+        "texto tecnico": 46
+      }
+    }
+  },
+  "after": {
+    "know": {
+      "total": 3840,
+      "by_difficulty": {
+        "1": 19,
+        "2": 685,
+        "3": 954,
+        "4": 1102,
+        "5": 1080
+      },
+      "by_error_count": {
+        "1": 2666,
+        "2": 983,
+        "3": 169,
+        "4": 20,
+        "5": 1,
+        "6": 1
+      },
+      "by_category": {
+        "acentuacao": 620,
+        "anuncios": 461,
+        "contexto": 383,
+        "hifen": 475,
+        "homofonos": 276,
+        "ortografia": 623,
+        "pontuacao": 621,
+        "texto tecnico": 381
+      }
+    },
+    "proof": {
+      "total": 1017,
+      "by_difficulty": {
+        "1": 60,
+        "2": 301,
+        "3": 180,
+        "4": 285,
+        "5": 191
+      },
+      "by_error_count": {
+        "1": 371,
+        "2": 386,
+        "3": 185,
+        "4": 62,
+        "5": 12,
+        "6": 1
+      },
+      "by_category": {
+        "acentuacao": 40,
+        "anuncios": 60,
+        "contexto": 383,
+        "hifen": 45,
+        "homofonos": 289,
+        "ortografia": 70,
+        "pontuacao": 50,
+        "texto tecnico": 80
+      }
+    }
+  },
+  "moved_samples": [
+    {
+      "id": "ort-51",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 3,
+      "errado": "Ele quiz viajar, mas a viajem foi cancelada por preça.",
+      "correto": "Ele quis viajar, mas a viagem foi cancelada por pressa."
+    },
+    {
+      "id": "ort-17",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 3,
+      "errado": "Ele feis o dever de casa com muita preça e erro tudo.",
+      "correto": "Ele fez o dever de casa com muita pressa e errou tudo."
+    },
+    {
+      "id": "ortografia_04",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "Agente vai se encontrar as oito.",
+      "correto": "A gente vai se encontrar às oito."
+    },
+    {
+      "id": "orto-05",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "A compainha aérea cancelou todos os vôos da manhã.",
+      "correto": "A companhia aérea cancelou todos os voos da manhã."
+    },
+    {
+      "id": "ort-4",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "Não pretendo extrover o valor da taxa de inçerção.",
+      "correto": "Não pretendo extroverter o valor da taxa de inserção."
+    },
+    {
+      "id": "ort-9",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "Vou analizar o projeto e trazer o resumo da seção.",
+      "correto": "Vou analisar o projeto e trazer o resumo da sessão."
+    },
+    {
+      "id": "ort-15",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "O cansaço excessivo me impediu de concerta o relógio.",
+      "correto": "O cansaço excessivo me impediu de consertar o relógio."
+    },
+    {
+      "id": "ort-18",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "A canjica estava uma delíçia, mas faltou açucar.",
+      "correto": "A canjica estava uma delícia, mas faltou açúcar."
+    },
+    {
+      "id": "ort-27",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "O geito dele é um pouco estranho, mas ele é jentil.",
+      "correto": "O jeito dele é um pouco estranho, mas ele é gentil."
+    },
+    {
+      "id": "ortografia_001",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 5,
+      "errado": "A espectativa de sucesso era grande, mas a equipe precisa de um beneficiente treinamento para conssertar os erros criticos.",
+      "correto": "A expectativa de sucesso era grande, mas a equipe precisa de um beneficente treinamento para consertar os erros críticos."
+    },
+    {
+      "id": "orto-01",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "Eles quizeram analizar os documentos ontem.",
+      "correto": "Eles quiseram analisar os documentos ontem."
+    },
+    {
+      "id": "ortografia_03",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "A paralização dos transportes público causou um grande transtorno a população que dependia deles para o trabalho.",
+      "correto": "A paralisação dos transportes públicos causou um grande transtorno à população que dependia deles para o trabalho."
+    },
+    {
+      "id": "orto-04",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "Fasso o trabalho com muita conceteza.",
+      "correto": "Faço o trabalho com muita com certeza."
+    },
+    {
+      "id": "ortografia_004",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "Não houve concequências imediatas, mas a espectativa é que haja represálias severas pelos atos de insubordinassão.",
+      "correto": "Não houve consequências imediatas, mas a expectativa é que haja represálias severas pelos atos de insubordinação."
+    },
+    {
+      "id": "orto-08",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "Ele é munto estravagante na escolha.",
+      "correto": "Ele é muito extravagante na escolha."
+    },
+    {
+      "id": "ortografia_006",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "A pesquiza revelou dados essenciais, mas é precizo rever a metodologia para evitar prejúisos futuros na analise.",
+      "correto": "A pesquisa revelou dados essenciais, mas é preciso rever a metodologia para evitar prejuízos futuros na análise."
+    },
+    {
+      "id": "orto-10",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "O privilégio de vizualizar o projeto sumiu.",
+      "correto": "O privilégio de visualizar o projeto sumiu."
+    },
+    {
+      "id": "ortografia_007",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "A seção de perguntas é crucial para dezmistificar qualqer dúvida que surja durante a apresentassão do projeto.",
+      "correto": "A seção de perguntas é crucial para desmistificar qualquer dúvida que surja durante a apresentação do projeto."
+    },
+    {
+      "id": "orto-15",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "Vou pesquizar o preço do açucar agora.",
+      "correto": "Vou pesquisar o preço do açúcar agora."
+    },
+    {
+      "id": "ortografia_008",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "É inpresindível que o chefe de secão faça uma avaliassão minuciosa de todos os relatórios antes da submissão.",
+      "correto": "É imprescindível que o chefe de seção faça uma avaliação minuciosa de todos os relatórios antes da submissão."
+    },
+    {
+      "id": "orto-39",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "A quizeram comprar o carro vizinho.",
+      "correto": "Eles quiseram comprar o carro vizinho."
+    },
+    {
+      "id": "ortografia_011",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "Para adiquirir seu passaporte é nescessário apresentar a certidão de nacimento e um comprovante de residençia.",
+      "correto": "Para adquirir seu passaporte é necessário apresentar a certidão de nascimento e um comprovante de residência."
+    },
+    {
+      "id": "ort-1",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "Apezar do cansaço, ele quiz continuar o trabalho.",
+      "correto": "Apesar do cansaço, ele quis continuar o trabalho."
+    },
+    {
+      "id": "ortografia_012",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "Mantenha o silençio, pois o ruidos do lado de fora podem atrapalhar a conscentração dos alunos duranto o exame.",
+      "correto": "Mantenha o silêncio, pois os ruídos do lado de fora podem atrapalhar a concentração dos alunos durante o exame."
+    },
+    {
+      "id": "ortografia_02",
+      "category": "ortografia",
+      "difficulty": 1,
+      "error_count": 1,
+      "errado": "Ele não conhesse o caminho.",
+      "correto": "Ele não conhece o caminho."
+    },
+    {
+      "id": "ort-2",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "O previlégio de ser mestre exige muita paciençia.",
+      "correto": "O privilégio de ser mestre exige muita paciência."
+    },
+    {
+      "id": "ortografia_014",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "Não houve desensão quanto a proposta; a maioria acedeu as novas condiçoes, que foram bem recebidas.",
+      "correto": "Não houve dissenção quanto à proposta; a maioria acedeu às novas condições, que foram bem recebidas."
+    },
+    {
+      "id": "ortografia_05",
+      "category": "ortografia",
+      "difficulty": 1,
+      "error_count": 1,
+      "errado": "Este é um projeto anbicioso.",
+      "correto": "Este é um projeto ambicioso."
+    },
+    {
+      "id": "ort-3",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "A excessão da regra gerou uma paralisia na analize.",
+      "correto": "A exceção da regra gerou uma paralisia na análise."
+    },
+    {
+      "id": "ortografia_018",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "O palestrante fez uma apresentaçao excencialmente confusa, com muitos slides e pouca claresa na exposiçao.",
+      "correto": "O palestrante fez uma apresentação essencialmente confusa, com muitos slides e pouca clareza na exposição."
+    },
+    {
+      "id": "ortografia_07",
+      "category": "ortografia",
+      "difficulty": 1,
+      "error_count": 1,
+      "errado": "Ele é um exelente profissional.",
+      "correto": "Ele é um excelente profissional."
+    },
+    {
+      "id": "ort-5",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "O meitro da obra preçisa de mais argamaça.",
+      "correto": "O mestre da obra precisa de mais argamassa."
+    },
+    {
+      "id": "ortografia_1",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 3,
+      "errado": "A espectativa de crescimento da firma foi frustada por uma série de fatores exógenos e falhas de planejamento interino.",
+      "correto": "A expectativa de crescimento da firma foi frustrada por uma série de fatores exógenos e falhas de planejamento interno."
+    },
+    {
+      "id": "ortografia_09",
+      "category": "ortografia",
+      "difficulty": 1,
+      "error_count": 1,
+      "errado": "A empresa ofereçe um bom benefício.",
+      "correto": "A empresa oferece um bom benefício."
+    },
+    {
+      "id": "ort-10",
+      "category": "ortografia",
+      "difficulty": 3,
+      "error_count": 2,
+      "errado": "A xícara de porçelana quebrou durante a faxina na coçinha.",
+      "correto": "A xícara de porcelana quebrou durante a faxina na cozinha."
+    },
+    {
+      "id": "ortografia_002",
+      "category": "ortografia",
+      "difficulty": 5,
+      "error_count": 3,
+      "errado": "Previlégio é ter acesso a um material de exseção como este, que desmistifica a essência do projecto.",
+      "correto": "Privilégio é ter acesso a um material de exceção como este, que desmistifica a essência do projeto."
+    },
+    {
+      "id": "ortografia_10",
+      "category": "ortografia",
+      "difficulty": 1,
+      "error_count": 1,
+      "errado": "Não posso prever o futoro.",
+      "correto": "Não posso prever o futuro."
+    },
+    {
+      "id": "acentuacao-rotina-trabalho",
+      "category": "acentuação",
+      "difficulty": 1,
+      "error_count": 4,
+      "errado": "Voce ja enviou o relatorio de sabado?",
+      "correto": "Você já enviou o relatório de sábado?"
+    },
+    {
+      "id": "acent-02",
+      "category": "acentuação",
+      "difficulty": 3,
+      "error_count": 4,
+      "errado": "O nivel de agua do reservatorio esta baixo.",
+      "correto": "O nível de água do reservatório está baixo."
+    },
+    {
+      "id": "acentuacao_07",
+      "category": "acentuação",
+      "difficulty": 5,
+      "error_count": 5,
+      "errado": "O juiz sentenciou o réu a prisão perpetua, uma pena polemica e de dificil aceitação social.",
+      "correto": "O juiz sentenciou o réu à prisão perpétua, uma pena polêmica e de difícil aceitação social."
+    },
+    {
+      "id": "acent-21",
+      "category": "acentuação",
+      "difficulty": 3,
+      "error_count": 3,
+      "errado": "O carater do homem se ve em suas acoes.",
+      "correto": "O caráter do homem se vê em suas ações."
+    },
+    {
+      "id": "acentuacao_01",
+      "category": "acentuação",
+      "difficulty": 1,
+      "error_count": 3,
+      "errado": "Voce ja foi ao medico?",
+      "correto": "Você já foi ao médico?"
+    },
+    {
+      "id": "acentuacao_002",
+      "category": "acentuação",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "Sua atitude côrroborou com a ideia de que a empresa não à disposta à fazer concessões à seus funcionários.",
+      "correto": "Sua atitude corroborou com a ideia de que a empresa não está disposta a fazer concessões a seus funcionários."
+    },
+    {
+      "id": "acentuacao_09",
+      "category": "acentuação",
+      "difficulty": 1,
+      "error_count": 3,
+      "errado": "Ele e um heroi da nacao.",
+      "correto": "Ele é um herói da nação."
+    },
+    {
+      "id": "acent-01",
+      "category": "acentuação",
+      "difficulty": 3,
+      "error_count": 3,
+      "errado": "Eu nao tive a ideia de fazer o curso de ingles.",
+      "correto": "Eu não tive a ideia de fazer o curso de inglês."
+    },
+    {
+      "id": "acentuacao_003",
+      "category": "acentuação",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "Eles têem um sério problema de comunicação e, se não resolvem logo, o prejuízo sera enorme à todos.",
+      "correto": "Eles têm um sério problema de comunicação e, se não resolverem logo, o prejuízo será enorme a todos."
+    },
+    {
+      "id": "acent-13",
+      "category": "acentuação",
+      "difficulty": 3,
+      "error_count": 3,
+      "errado": "A historia daquele pais e muito complexa.",
+      "correto": "A história daquele país é muito complexa."
+    },
+    {
+      "id": "acentuacao_03",
+      "category": "acentuação",
+      "difficulty": 1,
+      "error_count": 2,
+      "errado": "Ela e uma otima pessoa.",
+      "correto": "Ela é uma ótima pessoa."
+    },
+    {
+      "id": "acentuacao_02",
+      "category": "acentuação",
+      "difficulty": 5,
+      "error_count": 4,
+      "errado": "Alem do mais, a ideia é de dificil execucao e não teremos nenhum benefício pratico no futuro.",
+      "correto": "Além do mais, a ideia é de difícil execução e não teremos nenhum benefício prático no futuro."
+    },
+    {
+      "id": "acentu_08",
+      "category": "acentuação",
+      "difficulty": 3,
+      "error_count": 3,
+      "errado": "Vende-se automovel em otimo estado de conservacao.",
+      "correto": "Vende-se automóvel em ótimo estado de conservação."
+    }
+  ]
+}

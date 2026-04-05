@@ -2011,6 +2011,12 @@ function loadLinguisticData(dataDir2) {
 function loadReplacementEntries(pathname) {
   return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
 }
+function loadOptionalReplacementEntries(pathname) {
+  if (!(0, import_node_fs2.existsSync)(pathname)) {
+    return [];
+  }
+  return loadReplacementEntries(pathname);
+}
 function loadCommonMistakeEntries(pathname, existingReplacementEntries) {
   const existingFrom = new Set(existingReplacementEntries.map((entry) => normalizeDictionaryWord(entry.from)));
   const entries = JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
@@ -2035,6 +2041,12 @@ function loadOptionalPhraseRules(pathname) {
   }
   return loadPhraseRules(pathname);
 }
+function loadOptionalContextRules(pathname) {
+  if (!(0, import_node_fs2.existsSync)(pathname)) {
+    return [];
+  }
+  return loadContextRules(pathname);
+}
 function loadDictionaryManifest(dictionaryDir) {
   const manifestPath = (0, import_node_path2.join)(dictionaryDir, "manifest.json");
   if (!(0, import_node_fs2.existsSync)(manifestPath)) {
@@ -2043,7 +2055,11 @@ function loadDictionaryManifest(dictionaryDir) {
   return JSON.parse((0, import_node_fs2.readFileSync)(manifestPath, "utf8"));
 }
 function loadDictionaryResources(dataDir2) {
-  const replacements = loadReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements.json"));
+  const replacements = [
+    ...loadReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements.json")),
+    ...loadOptionalReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements_learned.json")),
+    ...loadOptionalReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements_proof.json"))
+  ];
   const dictionaryDir = (0, import_node_path2.join)(dataDir2, "dictionary");
   const rulesDir = (0, import_node_path2.join)(dataDir2, "rules");
   const linguisticData = loadLinguisticData(dataDir2);
@@ -2079,10 +2095,17 @@ function loadDictionaryResources(dataDir2) {
   const commonMistakesFile = manifest?.commonMistakesFile || "common_mistakes.json";
   const commonMistakes = useLegacyCommonMistakes ? loadCommonMistakeEntries((0, import_node_path2.join)(dictionaryDir, commonMistakesFile), replacements) : [];
   const dictionaryReady = words.size >= 5e3;
-  const contextRules = loadContextRules((0, import_node_path2.join)(rulesDir, "context_rules.json"));
+  const contextRules = [
+    ...loadContextRules((0, import_node_path2.join)(rulesDir, "context_rules.json")),
+    ...loadOptionalContextRules((0, import_node_path2.join)(rulesDir, "context_rules_learned.json")),
+    ...loadOptionalContextRules((0, import_node_path2.join)(rulesDir, "context_rules_proof.json"))
+  ];
   const phraseRules = [
     ...loadPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules.json")),
-    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_continuous.json"))
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_seeded.json")),
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_continuous.json")),
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_learned.json")),
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_proof.json"))
   ];
   return {
     replacements,

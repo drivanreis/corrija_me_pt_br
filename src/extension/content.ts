@@ -196,6 +196,84 @@ function tokenizeWithOffsets(text: string): DiffToken[] {
   return tokens;
 }
 
+function normalizeCompositeToken(text: string): string {
+  return text.normalize("NFC").trim().toLocaleLowerCase("pt-BR");
+}
+
+function buildSpecialCompositeGroups(sourceText: string, targetText: string): DiffGroup[] | null {
+  const sourceTokens = tokenizeWithOffsets(sourceText);
+  const targetTokens = tokenizeWithOffsets(targetText);
+
+  if (
+    sourceTokens.length < 2
+    || targetTokens.length < 3
+    || targetTokens[1]?.text !== "-"
+  ) {
+    return null;
+  }
+
+  const sourcePronoun = normalizeCompositeToken(sourceTokens[0]?.text || "");
+  const sourceVerb = normalizeCompositeToken(sourceTokens[1]?.text || "");
+  const targetVerb = normalizeCompositeToken(targetTokens[0]?.text || "");
+  const targetPronoun = normalizeCompositeToken(targetTokens[2]?.text || "");
+
+  if (!sourcePronoun || !sourceVerb || sourcePronoun !== targetPronoun || sourceVerb !== targetVerb) {
+    return null;
+  }
+
+  const leadingGroup: DiffGroup = {
+    srcText: sourceText.slice(sourceTokens[0].start, sourceTokens[1].end),
+    tgtText: targetText.slice(targetTokens[0].start, targetTokens[2].end),
+    srcCharStart: sourceTokens[0].start,
+    srcCharEnd: sourceTokens[1].end
+  };
+
+  const sourceTailStart = sourceTokens[1].end;
+  const targetTailStart = targetTokens[2].end;
+  const tailGroups = buildTokenDiffGroups(
+    tokenizeWithOffsets(sourceText.slice(sourceTailStart)),
+    tokenizeWithOffsets(targetText.slice(targetTailStart))
+  ).map((group) => ({
+    ...group,
+    srcCharStart: group.srcCharStart + sourceTailStart,
+    srcCharEnd: group.srcCharEnd + sourceTailStart
+  }));
+
+  return [leadingGroup, ...tailGroups];
+}
+
+function mergeAdjacentDiffGroups(groups: DiffGroup[], sourceText: string): DiffGroup[] {
+  if (groups.length < 2) {
+    return groups;
+  }
+
+  const merged: DiffGroup[] = [];
+
+  for (const group of groups) {
+    const previous = merged.at(-1);
+    if (!previous) {
+      merged.push(group);
+      continue;
+    }
+
+    const betweenText = sourceText.slice(previous.srcCharEnd, group.srcCharStart);
+    const isWhitespaceOnly = betweenText.length > 0 && /^\s+$/u.test(betweenText);
+    const previousTargetHasNoWhitespace = !/\s/u.test(previous.tgtText);
+    const currentTargetHasNoWhitespace = !/\s/u.test(group.tgtText);
+
+    if (!isWhitespaceOnly || !previousTargetHasNoWhitespace || !currentTargetHasNoWhitespace) {
+      merged.push(group);
+      continue;
+    }
+
+    previous.srcText = `${previous.srcText}${betweenText}${group.srcText}`;
+    previous.tgtText = `${previous.tgtText}${group.tgtText}`;
+    previous.srcCharEnd = group.srcCharEnd;
+  }
+
+  return merged;
+}
+
 function buildTokenDiffGroups(sourceTokens: DiffToken[], targetTokens: DiffToken[]): DiffGroup[] {
   const rows = sourceTokens.length + 1;
   const cols = targetTokens.length + 1;
@@ -859,7 +937,11 @@ function expandCompositeMatches(matches: CheckMatch[], text: string): CheckMatch
       return;
     }
 
-    const validGroups = buildTokenDiffGroups(tokenizeWithOffsets(sourceText), tokenizeWithOffsets(primaryReplacement))
+    const validGroups = mergeAdjacentDiffGroups(
+      (buildSpecialCompositeGroups(sourceText, primaryReplacement)
+        || buildTokenDiffGroups(tokenizeWithOffsets(sourceText), tokenizeWithOffsets(primaryReplacement))),
+      sourceText
+    )
       .slice(0, 6);
 
     if (validGroups.length < 1) {

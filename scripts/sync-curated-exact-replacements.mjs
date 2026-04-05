@@ -2,7 +2,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const REPLACEMENTS_PATH = "data/replacements.json";
-const CURATED_PATH = "data/test-cases/curated.json";
+const CURATED_PATH = "data/test-cases/curated-know.json";
+const CURATED_FALLBACK_PATH = "data/test-cases/curated.json";
 const EXACT_SOURCE = "curated_exact";
 
 async function readJsonArray(filePath) {
@@ -45,9 +46,19 @@ function dedupeReplacements(entries) {
 }
 
 async function main() {
+  const curatedPath = path.resolve(process.cwd(), CURATED_PATH);
+  const curatedFallbackPath = path.resolve(process.cwd(), CURATED_FALLBACK_PATH);
+  let curatedSourcePath = curatedPath;
+
+  try {
+    await fs.access(curatedPath);
+  } catch {
+    curatedSourcePath = curatedFallbackPath;
+  }
+
   const [replacements, curated] = await Promise.all([
     readJsonArray(REPLACEMENTS_PATH),
-    readJsonArray(CURATED_PATH)
+    readJsonArray(path.relative(process.cwd(), curatedSourcePath))
   ]);
 
   const preserved = replacements.filter((entry) => entry.source !== EXACT_SOURCE);
@@ -72,6 +83,7 @@ async function main() {
   console.log(`Replacements preservados: ${preserved.length}`);
   console.log(`Casos curados convertidos em correções exatas: ${exactEntries.length}`);
   console.log(`Total final de replacements: ${merged.length}`);
+  console.log(`Base usada para sincronização exata: ${curatedSourcePath}`);
 }
 
 main().catch((error) => {

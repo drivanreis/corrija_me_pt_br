@@ -1,0 +1,6421 @@
+[
+  {
+    "from": "-entrega super",
+    "replacements": [
+      "entrega super-"
+    ],
+    "source": "learned_surface:hifen-01"
+  },
+  {
+    "from": "-rosas",
+    "replacements": [
+      "s-rosa"
+    ],
+    "source": "learned_surface:hif_mangas_rosa_01"
+  },
+  {
+    "from": "acao",
+    "replacements": [
+      "ação"
+    ],
+    "source": "learned_know:acent-11"
+  },
+  {
+    "from": "acensão",
+    "replacements": [
+      "ascensão"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "acessiveis",
+    "replacements": [
+      "acessíveis"
+    ],
+    "source": "learned_know:hifen_13"
+  },
+  {
+    "from": "acessivel",
+    "replacements": [
+      "acessível"
+    ],
+    "source": "learned_know:acentuacao_10"
+  },
+  {
+    "from": "acessorou",
+    "replacements": [
+      "assessorou"
+    ],
+    "source": "learned_know:ort-17"
+  },
+  {
+    "from": "acoes",
+    "replacements": [
+      "ações"
+    ],
+    "source": "learned_know:acent-21"
+  },
+  {
+    "from": "acões",
+    "replacements": [
+      "ações"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "acucar",
+    "replacements": [
+      "açúcar"
+    ],
+    "source": "learned_know:acent-12"
+  },
+  {
+    "from": "açucar",
+    "replacements": [
+      "açúcar"
+    ],
+    "source": "learned_know:ace_15"
+  },
+  {
+    "from": "adiquirir",
+    "replacements": [
+      "adquirir"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "admissivel",
+    "replacements": [
+      "admissível"
+    ],
+    "source": "learned_know:acentuacao_10"
+  },
+  {
+    "from": "adolecente",
+    "replacements": [
+      "adolescente"
+    ],
+    "source": "learned_know:ort_13"
+  },
+  {
+    "from": "advinhar",
+    "replacements": [
+      "adivinhar"
+    ],
+    "source": "learned_know:ort-09"
+  },
+  {
+    "from": "aereas",
+    "replacements": [
+      "aéreas"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "agil",
+    "replacements": [
+      "ágil"
+    ],
+    "source": "learned_know:acent_01"
+  },
+  {
+    "from": "agriculcura",
+    "replacements": [
+      "agricultura"
+    ],
+    "source": "learned_know:acentuacao_1"
+  },
+  {
+    "from": "agua",
+    "replacements": [
+      "água"
+    ],
+    "source": "learned_know:acen-49"
+  },
+  {
+    "from": "album",
+    "replacements": [
+      "álbum"
+    ],
+    "source": "learned_know:acen-17"
+  },
+  {
+    "from": "albuns",
+    "replacements": [
+      "álbuns"
+    ],
+    "source": "learned_know:ace_16"
+  },
+  {
+    "from": "Alguem",
+    "replacements": [
+      "Alguém"
+    ],
+    "source": "learned_know:acentu_10"
+  },
+  {
+    "from": "alibi",
+    "replacements": [
+      "álibi"
+    ],
+    "source": "learned_know:ace-12-alibi"
+  },
+  {
+    "from": "alternatívas",
+    "replacements": [
+      "alternativas"
+    ],
+    "source": "learned_know:ortografia_17"
+  },
+  {
+    "from": "altissima",
+    "replacements": [
+      "altíssima"
+    ],
+    "source": "learned_know:hifen-01"
+  },
+  {
+    "from": "ambientáis",
+    "replacements": [
+      "ambientais"
+    ],
+    "source": "learned_know:ortografia_18"
+  },
+  {
+    "from": "amigavel",
+    "replacements": [
+      "amigável"
+    ],
+    "source": "learned_know:ace-26-amigavel"
+  },
+  {
+    "from": "analise",
+    "replacements": [
+      "análise"
+    ],
+    "source": "learned_know:ace_04"
+  },
+  {
+    "from": "anâlise",
+    "replacements": [
+      "análise"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "analizada",
+    "replacements": [
+      "analisada"
+    ],
+    "source": "learned_know:ort_06"
+  },
+  {
+    "from": "analizar",
+    "replacements": [
+      "analisar"
+    ],
+    "source": "learned_know:orto_analisar_paralizar"
+  },
+  {
+    "from": "analize",
+    "replacements": [
+      "análise"
+    ],
+    "source": "learned_know:orto-analize"
+  },
+  {
+    "from": "análize",
+    "replacements": [
+      "análise"
+    ],
+    "source": "learned_know:acentuacao_12"
+  },
+  {
+    "from": "anbicioso",
+    "replacements": [
+      "ambicioso"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "ância",
+    "replacements": [
+      "ânsia"
+    ],
+    "source": "learned_know:acent_ancia_baia"
+  },
+  {
+    "from": "anciedade",
+    "replacements": [
+      "ansiedade"
+    ],
+    "source": "learned_know:orto-anciedade"
+  },
+  {
+    "from": "anciosa",
+    "replacements": [
+      "ansiosa"
+    ],
+    "source": "learned_know:ort-16"
+  },
+  {
+    "from": "ancioso",
+    "replacements": [
+      "ansioso"
+    ],
+    "source": "learned_know:orto_10"
+  },
+  {
+    "from": "anciosso",
+    "replacements": [
+      "ansioso"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "anciozo",
+    "replacements": [
+      "ansioso"
+    ],
+    "source": "learned_know:orto_obcecado_ansioso"
+  },
+  {
+    "from": "aniversario",
+    "replacements": [
+      "aniversário"
+    ],
+    "source": "learned_know:acent-aniversario"
+  },
+  {
+    "from": "aniverssário",
+    "replacements": [
+      "aniversário"
+    ],
+    "source": "learned_know:orto-5"
+  },
+  {
+    "from": "anomalo",
+    "replacements": [
+      "anômalo"
+    ],
+    "source": "learned_know:ortografia_16"
+  },
+  {
+    "from": "anuncios",
+    "replacements": [
+      "anúncios"
+    ],
+    "source": "learned_know:acen-anuncios"
+  },
+  {
+    "from": "aplicacão",
+    "replacements": [
+      "aplicação"
+    ],
+    "source": "learned_know:acentuacao_03"
+  },
+  {
+    "from": "apóio",
+    "replacements": [
+      "apoio"
+    ],
+    "source": "learned_know:ace_apoio_01"
+  },
+  {
+    "from": "apos",
+    "replacements": [
+      "após"
+    ],
+    "source": "learned_know:acent-18"
+  },
+  {
+    "from": "apresentassão",
+    "replacements": [
+      "apresentação"
+    ],
+    "source": "learned_know:ortografia_007"
+  },
+  {
+    "from": "aprováram",
+    "replacements": [
+      "aprovaram"
+    ],
+    "source": "learned_know:hifen_09"
+  },
+  {
+    "from": "aquelê",
+    "replacements": [
+      "aquele"
+    ],
+    "source": "learned_know:ortografia_07"
+  },
+  {
+    "from": "Aquêle",
+    "replacements": [
+      "Aquele"
+    ],
+    "source": "learned_know:acentuacao_17"
+  },
+  {
+    "from": "arco",
+    "replacements": [
+      "arcos"
+    ],
+    "source": "learned_know:hif_arcos_iris_01"
+  },
+  {
+    "from": "arcos",
+    "replacements": [
+      "arco"
+    ],
+    "source": "learned_know:hifen-15"
+  },
+  {
+    "from": "area",
+    "replacements": [
+      "área"
+    ],
+    "source": "learned_know:acentuacao_17"
+  },
+  {
+    "from": "argamaça",
+    "replacements": [
+      "argamassa"
+    ],
+    "source": "learned_know:ort-5"
+  },
+  {
+    "from": "argúem",
+    "replacements": [
+      "arguem"
+    ],
+    "source": "learned_know:ace-31"
+  },
+  {
+    "from": "argui",
+    "replacements": [
+      "arguí"
+    ],
+    "source": "learned_know:ace_21"
+  },
+  {
+    "from": "argúi",
+    "replacements": [
+      "argui"
+    ],
+    "source": "learned_know:acent_argui_averigue"
+  },
+  {
+    "from": "argüição",
+    "replacements": [
+      "arguição"
+    ],
+    "source": "learned_know:ace-arguicão"
+  },
+  {
+    "from": "arguímos",
+    "replacements": [
+      "arguimos"
+    ],
+    "source": "learned_know:acen-arguimos-tese"
+  },
+  {
+    "from": "argúimos",
+    "replacements": [
+      "arguimos"
+    ],
+    "source": "learned_know:ace-010"
+  },
+  {
+    "from": "armario",
+    "replacements": [
+      "armário"
+    ],
+    "source": "learned_know:ace_23"
+  },
+  {
+    "from": "arque",
+    "replacements": [
+      "arqui"
+    ],
+    "source": "learned_know:hif_15"
+  },
+  {
+    "from": "arvore",
+    "replacements": [
+      "árvore"
+    ],
+    "source": "learned_know:ace-18"
+  },
+  {
+    "from": "ascenção",
+    "replacements": [
+      "ascensão"
+    ],
+    "source": "learned_know:ort_01"
+  },
+  {
+    "from": "ascendeu",
+    "replacements": [
+      "acendeu"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "asenção",
+    "replacements": [
+      "ascensão"
+    ],
+    "source": "learned_know:orto-34"
+  },
+  {
+    "from": "aserto",
+    "replacements": [
+      "acerto"
+    ],
+    "source": "learned_know:orto_06"
+  },
+  {
+    "from": "aspeito",
+    "replacements": [
+      "aspecto"
+    ],
+    "source": "learned_know:orto-01"
+  },
+  {
+    "from": "assembéia",
+    "replacements": [
+      "assembleia"
+    ],
+    "source": "learned_know:orto_privilegio_assembleia"
+  },
+  {
+    "from": "assembléia",
+    "replacements": [
+      "assembleia"
+    ],
+    "source": "learned_know:ace-01-assembleia"
+  },
+  {
+    "from": "assenção",
+    "replacements": [
+      "ascensão"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "assessório",
+    "replacements": [
+      "acessório"
+    ],
+    "source": "learned_know:ortografia_3"
+  },
+  {
+    "from": "assumção",
+    "replacements": [
+      "assunção"
+    ],
+    "source": "learned_know:ort-21-assunçao"
+  },
+  {
+    "from": "asterístico",
+    "replacements": [
+      "asterisco"
+    ],
+    "source": "learned_know:orto-12"
+  },
+  {
+    "from": "atencao",
+    "replacements": [
+      "atenção"
+    ],
+    "source": "learned_know:acentuacao_05"
+  },
+  {
+    "from": "atrai",
+    "replacements": [
+      "atraí"
+    ],
+    "source": "learned_know:acen-atrai-lo-ca"
+  },
+  {
+    "from": "atrassada",
+    "replacements": [
+      "atrasada"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "Atraves",
+    "replacements": [
+      "Através"
+    ],
+    "source": "learned_know:ace_10"
+  },
+  {
+    "from": "atravez",
+    "replacements": [
+      "através"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "atraz",
+    "replacements": [
+      "atrás"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "atrazado",
+    "replacements": [
+      "atrasado"
+    ],
+    "source": "learned_know:orto-atrazado"
+  },
+  {
+    "from": "aumênto",
+    "replacements": [
+      "aumento"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "auto",
+    "replacements": [
+      "alto"
+    ],
+    "source": "learned_know:hife-31"
+  },
+  {
+    "from": "automovel",
+    "replacements": [
+      "automóvel"
+    ],
+    "source": "learned_know:acen-37"
+  },
+  {
+    "from": "autoretrato",
+    "replacements": [
+      "autorretrato"
+    ],
+    "source": "learned_know:hif-26-auto-retrato"
+  },
+  {
+    "from": "auxilio",
+    "replacements": [
+      "auxílio"
+    ],
+    "source": "learned_know:hifen_04"
+  },
+  {
+    "from": "avaliassão",
+    "replacements": [
+      "avaliação"
+    ],
+    "source": "learned_know:ortografia_008"
+  },
+  {
+    "from": "averia",
+    "replacements": [
+      "haveria"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "averigüar",
+    "replacements": [
+      "averiguar"
+    ],
+    "source": "learned_know:acent-contem-ridiculo"
+  },
+  {
+    "from": "averigúe",
+    "replacements": [
+      "averigue"
+    ],
+    "source": "learned_know:acent_argui_averigue"
+  },
+  {
+    "from": "avia",
+    "replacements": [
+      "havia"
+    ],
+    "source": "learned_know:orto_05"
+  },
+  {
+    "from": "avisa",
+    "replacements": [
+      "avise"
+    ],
+    "source": "learned_know:ortografia_15"
+  },
+  {
+    "from": "bagajen",
+    "replacements": [
+      "bagagem"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "baiúca",
+    "replacements": [
+      "baiuca"
+    ],
+    "source": "learned_know:acen-baiuca-velha"
+  },
+  {
+    "from": "bandeija",
+    "replacements": [
+      "bandeja"
+    ],
+    "source": "learned_know:ort-07"
+  },
+  {
+    "from": "banhero",
+    "replacements": [
+      "banheiro"
+    ],
+    "source": "learned_know:ort-22"
+  },
+  {
+    "from": "benção",
+    "replacements": [
+      "bênção"
+    ],
+    "source": "learned_know:ace-24-bençao"
+  },
+  {
+    "from": "beneficience",
+    "replacements": [
+      "beneficente"
+    ],
+    "source": "learned_know:ort-06"
+  },
+  {
+    "from": "beneficiência",
+    "replacements": [
+      "beneficência"
+    ],
+    "source": "learned_know:ort_14"
+  },
+  {
+    "from": "beneficíente",
+    "replacements": [
+      "beneficente"
+    ],
+    "source": "learned_know:orto_06"
+  },
+  {
+    "from": "beneficio",
+    "replacements": [
+      "benefício"
+    ],
+    "source": "learned_know:hifen_09"
+  },
+  {
+    "from": "beneficios",
+    "replacements": [
+      "benefícios"
+    ],
+    "source": "learned_know:acentuacao_4"
+  },
+  {
+    "from": "benefissios",
+    "replacements": [
+      "benefícios"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "beringela",
+    "replacements": [
+      "berinjela"
+    ],
+    "source": "learned_know:orto-04"
+  },
+  {
+    "from": "berinjela",
+    "replacements": [
+      "beringela"
+    ],
+    "source": "learned_know:ort_19"
+  },
+  {
+    "from": "bicep",
+    "replacements": [
+      "bíceps"
+    ],
+    "source": "learned_know:acen-21"
+  },
+  {
+    "from": "biquini",
+    "replacements": [
+      "biquíni"
+    ],
+    "source": "learned_know:ace_16"
+  },
+  {
+    "from": "boeiro",
+    "replacements": [
+      "bueiro"
+    ],
+    "source": "learned_know:ort_07"
+  },
+  {
+    "from": "bóiia",
+    "replacements": [
+      "boia"
+    ],
+    "source": "learned_know:ace_9"
+  },
+  {
+    "from": "bônu",
+    "replacements": [
+      "bônus"
+    ],
+    "source": "learned_know:ace-20"
+  },
+  {
+    "from": "buéiro",
+    "replacements": [
+      "bueiro"
+    ],
+    "source": "learned_know:orto-40"
+  },
+  {
+    "from": "buêro",
+    "replacements": [
+      "bueiro"
+    ],
+    "source": "learned_know:ort-12"
+  },
+  {
+    "from": "burocrácia",
+    "replacements": [
+      "burocracia"
+    ],
+    "source": "learned_know:orto_02"
+  },
+  {
+    "from": "cabelereiro",
+    "replacements": [
+      "cabeleireiro"
+    ],
+    "source": "learned_know:ort_04"
+  },
+  {
+    "from": "cafe",
+    "replacements": [
+      "café"
+    ],
+    "source": "learned_know:acentuacao_01"
+  },
+  {
+    "from": "cafeina",
+    "replacements": [
+      "cafeína"
+    ],
+    "source": "learned_know:acen_06"
+  },
+  {
+    "from": "calculo",
+    "replacements": [
+      "cálculo"
+    ],
+    "source": "learned_know:hifen_11"
+  },
+  {
+    "from": "camera",
+    "replacements": [
+      "câmera"
+    ],
+    "source": "learned_know:ace-26"
+  },
+  {
+    "from": "caminhao",
+    "replacements": [
+      "caminhão"
+    ],
+    "source": "learned_know:acent-caminhao"
+  },
+  {
+    "from": "cançado",
+    "replacements": [
+      "cansado"
+    ],
+    "source": "learned_know:orto-37"
+  },
+  {
+    "from": "cançativo",
+    "replacements": [
+      "cansativo"
+    ],
+    "source": "learned_know:ort-40"
+  },
+  {
+    "from": "cansasso",
+    "replacements": [
+      "cansaço"
+    ],
+    "source": "learned_know:orto-14"
+  },
+  {
+    "from": "capas",
+    "replacements": [
+      "capaz"
+    ],
+    "source": "learned_know:orto-04"
+  },
+  {
+    "from": "capasidades",
+    "replacements": [
+      "capacidades"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "capitulo",
+    "replacements": [
+      "capítulo"
+    ],
+    "source": "learned_know:acen-26"
+  },
+  {
+    "from": "caprichozo",
+    "replacements": [
+      "caprichoso"
+    ],
+    "source": "learned_know:ort-20"
+  },
+  {
+    "from": "caractéres",
+    "replacements": [
+      "caracteres"
+    ],
+    "source": "learned_know:ace-14-caracteres"
+  },
+  {
+    "from": "carangueijo",
+    "replacements": [
+      "caranguejo"
+    ],
+    "source": "learned_know:ort-07"
+  },
+  {
+    "from": "carater",
+    "replacements": [
+      "caráter"
+    ],
+    "source": "learned_know:acent-21"
+  },
+  {
+    "from": "caraterística",
+    "replacements": [
+      "característica"
+    ],
+    "source": "learned_know:acentuacao_10"
+  },
+  {
+    "from": "catastroficos",
+    "replacements": [
+      "catastróficos"
+    ],
+    "source": "learned_know:acentuacao_017"
+  },
+  {
+    "from": "cauça",
+    "replacements": [
+      "causa"
+    ],
+    "source": "learned_know:orto-09"
+  },
+  {
+    "from": "cauzas",
+    "replacements": [
+      "causas"
+    ],
+    "source": "learned_know:ort_2"
+  },
+  {
+    "from": "ceda",
+    "replacements": [
+      "seda"
+    ],
+    "source": "learned_know:ort_18"
+  },
+  {
+    "from": "cenario",
+    "replacements": [
+      "cenário"
+    ],
+    "source": "learned_know:acen-20"
+  },
+  {
+    "from": "cerimonia",
+    "replacements": [
+      "cerimônia"
+    ],
+    "source": "learned_know:acentuacao_07"
+  },
+  {
+    "from": "cessão",
+    "replacements": [
+      "sessão"
+    ],
+    "source": "learned_know:ort-17"
+  },
+  {
+    "from": "chapeu",
+    "replacements": [
+      "chapéu"
+    ],
+    "source": "learned_know:ace-29"
+  },
+  {
+    "from": "cheffs",
+    "replacements": [
+      "chefs"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "chegado",
+    "replacements": [
+      "chegada"
+    ],
+    "source": "learned_know:hifen_06"
+  },
+  {
+    "from": "chego",
+    "replacements": [
+      "chegou"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "chícara",
+    "replacements": [
+      "xícara"
+    ],
+    "source": "learned_know:orto-29"
+  },
+  {
+    "from": "chingar",
+    "replacements": [
+      "xingar"
+    ],
+    "source": "learned_know:ort-15"
+  },
+  {
+    "from": "chuchu",
+    "replacements": [
+      "xuxu"
+    ],
+    "source": "learned_know:ort_29"
+  },
+  {
+    "from": "cibernetico",
+    "replacements": [
+      "cibernético"
+    ],
+    "source": "learned_know:hifen_20"
+  },
+  {
+    "from": "cídade",
+    "replacements": [
+      "cidade"
+    ],
+    "source": "learned_know:ortografia_15"
+  },
+  {
+    "from": "ciencia",
+    "replacements": [
+      "ciência"
+    ],
+    "source": "learned_know:acentuacao_12"
+  },
+  {
+    "from": "cientifica",
+    "replacements": [
+      "científica"
+    ],
+    "source": "learned_know:acentuacao_13"
+  },
+  {
+    "from": "cíquenta",
+    "replacements": [
+      "cinquenta"
+    ],
+    "source": "learned_know:orto_cinquenta_questão"
+  },
+  {
+    "from": "clausulas",
+    "replacements": [
+      "cláusulas"
+    ],
+    "source": "learned_know:ortografia_005"
+  },
+  {
+    "from": "climaticos",
+    "replacements": [
+      "climáticos"
+    ],
+    "source": "learned_know:acentuacao_1"
+  },
+  {
+    "from": "clinícos",
+    "replacements": [
+      "clínicos"
+    ],
+    "source": "learned_know:acentuacao_15"
+  },
+  {
+    "from": "cocha",
+    "replacements": [
+      "coxa"
+    ],
+    "source": "learned_know:orto-coxa-frango"
+  },
+  {
+    "from": "coçinha",
+    "replacements": [
+      "cozinha"
+    ],
+    "source": "learned_know:ort-10"
+  },
+  {
+    "from": "colaborêm",
+    "replacements": [
+      "colaborem"
+    ],
+    "source": "learned_know:ortografia_17"
+  },
+  {
+    "from": "colera",
+    "replacements": [
+      "cólera"
+    ],
+    "source": "learned_know:acen-40"
+  },
+  {
+    "from": "colezivo",
+    "replacements": [
+      "coletivo"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "cômitê",
+    "replacements": [
+      "comitê"
+    ],
+    "source": "learned_know:acentuacao_07"
+  },
+  {
+    "from": "compainha",
+    "replacements": [
+      "companhia"
+    ],
+    "source": "learned_know:orto-05"
+  },
+  {
+    "from": "compania",
+    "replacements": [
+      "companhia"
+    ],
+    "source": "learned_know:orto-15"
+  },
+  {
+    "from": "comparecem",
+    "replacements": [
+      "comparecerem"
+    ],
+    "source": "learned_know:orto-06"
+  },
+  {
+    "from": "complejidad",
+    "replacements": [
+      "complexidade"
+    ],
+    "source": "learned_know:ortografia_19"
+  },
+  {
+    "from": "comportamente",
+    "replacements": [
+      "comportamento"
+    ],
+    "source": "learned_know:ortografia_2"
+  },
+  {
+    "from": "comportameto",
+    "replacements": [
+      "comportamento"
+    ],
+    "source": "learned_know:ortografia_6"
+  },
+  {
+    "from": "compreenção",
+    "replacements": [
+      "compreensão"
+    ],
+    "source": "learned_know:ort_08"
+  },
+  {
+    "from": "comprensão",
+    "replacements": [
+      "compreensão"
+    ],
+    "source": "learned_know:orto_08"
+  },
+  {
+    "from": "comprimiço",
+    "replacements": [
+      "compromisso"
+    ],
+    "source": "learned_know:ortografia_19"
+  },
+  {
+    "from": "conceção",
+    "replacements": [
+      "concessão"
+    ],
+    "source": "learned_know:orto-concessao-licenca"
+  },
+  {
+    "from": "concelho",
+    "replacements": [
+      "conselho"
+    ],
+    "source": "learned_know:ort-02-reinvindicar"
+  },
+  {
+    "from": "concenção",
+    "replacements": [
+      "concessão"
+    ],
+    "source": "learned_know:ort_07"
+  },
+  {
+    "from": "concenso",
+    "replacements": [
+      "consenso"
+    ],
+    "source": "learned_know:ort-09-analizar"
+  },
+  {
+    "from": "concenssão",
+    "replacements": [
+      "concessão"
+    ],
+    "source": "learned_know:ort-16-concessao"
+  },
+  {
+    "from": "concensuada",
+    "replacements": [
+      "consensual"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "concequências",
+    "replacements": [
+      "consequências"
+    ],
+    "source": "learned_know:ortografia_004"
+  },
+  {
+    "from": "concerta",
+    "replacements": [
+      "consertar"
+    ],
+    "source": "learned_know:ort-15"
+  },
+  {
+    "from": "concertar",
+    "replacements": [
+      "consertar"
+    ],
+    "source": "learned_know:orto-07"
+  },
+  {
+    "from": "concerto",
+    "replacements": [
+      "conserto"
+    ],
+    "source": "learned_know:ort_14"
+  },
+  {
+    "from": "concervação",
+    "replacements": [
+      "conservação"
+    ],
+    "source": "learned_know:hif-08-semi-novo"
+  },
+  {
+    "from": "concetração",
+    "replacements": [
+      "concentração"
+    ],
+    "source": "learned_know:ort_30"
+  },
+  {
+    "from": "concidência",
+    "replacements": [
+      "coincidência"
+    ],
+    "source": "learned_know:orto-23"
+  },
+  {
+    "from": "conciderável",
+    "replacements": [
+      "considerável"
+    ],
+    "source": "learned_know:ort-03-pretençao"
+  },
+  {
+    "from": "conciência",
+    "replacements": [
+      "consciência"
+    ],
+    "source": "learned_know:orto-17"
+  },
+  {
+    "from": "conciencioso",
+    "replacements": [
+      "consciencioso"
+    ],
+    "source": "learned_know:ort-043"
+  },
+  {
+    "from": "conciente",
+    "replacements": [
+      "consciente"
+    ],
+    "source": "learned_know:ort_04"
+  },
+  {
+    "from": "conciênte",
+    "replacements": [
+      "consciente"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "concientes",
+    "replacements": [
+      "conscientes"
+    ],
+    "source": "learned_know:acentuacao_17"
+  },
+  {
+    "from": "concientização",
+    "replacements": [
+      "conscientização"
+    ],
+    "source": "learned_know:ort_03"
+  },
+  {
+    "from": "concientizar",
+    "replacements": [
+      "conscientizar"
+    ],
+    "source": "learned_know:ort-conscientizar"
+  },
+  {
+    "from": "conclução",
+    "replacements": [
+      "conclusão"
+    ],
+    "source": "learned_know:orto_05"
+  },
+  {
+    "from": "concluido",
+    "replacements": [
+      "concluído"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "concorrencia",
+    "replacements": [
+      "concorrência"
+    ],
+    "source": "learned_know:hifen_03"
+  },
+  {
+    "from": "conferencia",
+    "replacements": [
+      "conferência"
+    ],
+    "source": "learned_know:hifen_06"
+  },
+  {
+    "from": "confisão",
+    "replacements": [
+      "confissão"
+    ],
+    "source": "learned_know:ort-confissao"
+  },
+  {
+    "from": "confusao",
+    "replacements": [
+      "confusão"
+    ],
+    "source": "learned_know:acent-16"
+  },
+  {
+    "from": "conhecimenttos",
+    "replacements": [
+      "conhecimentos"
+    ],
+    "source": "learned_know:ortografia_11"
+  },
+  {
+    "from": "conhesse",
+    "replacements": [
+      "conhece"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "conjúnto",
+    "replacements": [
+      "conjunto"
+    ],
+    "source": "learned_know:acentuacao_09"
+  },
+  {
+    "from": "conraditórias",
+    "replacements": [
+      "contraditórias"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "conscentração",
+    "replacements": [
+      "concentração"
+    ],
+    "source": "learned_know:ortografia_012"
+  },
+  {
+    "from": "consciencia",
+    "replacements": [
+      "consciência"
+    ],
+    "source": "learned_know:ace_19"
+  },
+  {
+    "from": "conseção",
+    "replacements": [
+      "concessão"
+    ],
+    "source": "learned_know:orto_vicissitude_concessao"
+  },
+  {
+    "from": "conseguio",
+    "replacements": [
+      "conseguiu"
+    ],
+    "source": "learned_know:acentuacao_20"
+  },
+  {
+    "from": "conserto",
+    "replacements": [
+      "concerto"
+    ],
+    "source": "learned_know:ort_14"
+  },
+  {
+    "from": "conservacao",
+    "replacements": [
+      "conservação"
+    ],
+    "source": "learned_know:acentu_08"
+  },
+  {
+    "from": "considederávelmente",
+    "replacements": [
+      "consideravelmente"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "consideravel",
+    "replacements": [
+      "considerável"
+    ],
+    "source": "learned_know:acentuacao_20"
+  },
+  {
+    "from": "conssenso",
+    "replacements": [
+      "consenso"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "conssentração",
+    "replacements": [
+      "concentração"
+    ],
+    "source": "learned_know:ort-42"
+  },
+  {
+    "from": "conssertar",
+    "replacements": [
+      "consertar"
+    ],
+    "source": "learned_know:ortografia_001"
+  },
+  {
+    "from": "construi",
+    "replacements": [
+      "construí"
+    ],
+    "source": "learned_know:acen-construi-lo"
+  },
+  {
+    "from": "conteudo",
+    "replacements": [
+      "conteúdo"
+    ],
+    "source": "learned_know:ace_01"
+  },
+  {
+    "from": "contorna",
+    "replacements": [
+      "contorná"
+    ],
+    "source": "learned_know:ortografia_13"
+  },
+  {
+    "from": "contribuirem",
+    "replacements": [
+      "contribuírem"
+    ],
+    "source": "learned_know:acentuacao_19"
+  },
+  {
+    "from": "controversias",
+    "replacements": [
+      "controvérsias"
+    ],
+    "source": "learned_know:ort_23"
+  },
+  {
+    "from": "contrução",
+    "replacements": [
+      "construção"
+    ],
+    "source": "learned_know:ortografia_18"
+  },
+  {
+    "from": "convem",
+    "replacements": [
+      "convém"
+    ],
+    "source": "learned_know:acen-12"
+  },
+  {
+    "from": "convém",
+    "replacements": [
+      "convêm"
+    ],
+    "source": "learned_know:ace-convem"
+  },
+  {
+    "from": "conveniencia",
+    "replacements": [
+      "conveniência"
+    ],
+    "source": "learned_know:hifen_9"
+  },
+  {
+    "from": "Coréia",
+    "replacements": [
+      "Coreia"
+    ],
+    "source": "learned_know:acen-coreia"
+  },
+  {
+    "from": "corôa",
+    "replacements": [
+      "coroa"
+    ],
+    "source": "learned_know:acen-coroa-ouro"
+  },
+  {
+    "from": "côrroborou",
+    "replacements": [
+      "corroborou"
+    ],
+    "source": "learned_know:acentuacao_002"
+  },
+  {
+    "from": "crêem",
+    "replacements": [
+      "creem"
+    ],
+    "source": "learned_know:acen-creem-vontade"
+  },
+  {
+    "from": "crêm",
+    "replacements": [
+      "creem"
+    ],
+    "source": "learned_know:acen_veem_creem"
+  },
+  {
+    "from": "criancas",
+    "replacements": [
+      "crianças"
+    ],
+    "source": "learned_know:acent-04"
+  },
+  {
+    "from": "criminozo",
+    "replacements": [
+      "criminoso"
+    ],
+    "source": "learned_know:ort-22-meticuloso"
+  },
+  {
+    "from": "criterio",
+    "replacements": [
+      "critério"
+    ],
+    "source": "learned_know:acent-02"
+  },
+  {
+    "from": "criterios",
+    "replacements": [
+      "critérios"
+    ],
+    "source": "learned_know:acento-3"
+  },
+  {
+    "from": "critica",
+    "replacements": [
+      "crítica"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "crítíca",
+    "replacements": [
+      "crítica"
+    ],
+    "source": "learned_know:acentuacao_9"
+  },
+  {
+    "from": "critico",
+    "replacements": [
+      "crítico"
+    ],
+    "source": "learned_know:acen_01"
+  },
+  {
+    "from": "criticos",
+    "replacements": [
+      "críticos"
+    ],
+    "source": "learned_know:ortografia_001"
+  },
+  {
+    "from": "decada",
+    "replacements": [
+      "década"
+    ],
+    "source": "learned_know:acen_02"
+  },
+  {
+    "from": "decadas",
+    "replacements": [
+      "décadas"
+    ],
+    "source": "learned_know:ortografia_14"
+  },
+  {
+    "from": "deçisão",
+    "replacements": [
+      "decisão"
+    ],
+    "source": "learned_know:ort-23"
+  },
+  {
+    "from": "dedicacao",
+    "replacements": [
+      "dedicação"
+    ],
+    "source": "learned_know:acentuacao_19"
+  },
+  {
+    "from": "dêem",
+    "replacements": [
+      "deem"
+    ],
+    "source": "learned_know:acen-deem-05"
+  },
+  {
+    "from": "degladiar",
+    "replacements": [
+      "digladiar"
+    ],
+    "source": "learned_know:ort-digladiar"
+  },
+  {
+    "from": "delíçia",
+    "replacements": [
+      "delícia"
+    ],
+    "source": "learned_know:ort-18"
+  },
+  {
+    "from": "demas",
+    "replacements": [
+      "demais"
+    ],
+    "source": "learned_know:orto-01"
+  },
+  {
+    "from": "descanço",
+    "replacements": [
+      "descanso"
+    ],
+    "source": "learned_know:orto-05"
+  },
+  {
+    "from": "descrecionário",
+    "replacements": [
+      "discrecionário"
+    ],
+    "source": "learned_know:ort-discrecionário"
+  },
+  {
+    "from": "descrição",
+    "replacements": [
+      "discrição"
+    ],
+    "source": "learned_know:ort-020"
+  },
+  {
+    "from": "descriminação",
+    "replacements": [
+      "discriminação"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "descriminar",
+    "replacements": [
+      "descriminalizar"
+    ],
+    "source": "learned_know:ort-16"
+  },
+  {
+    "from": "descrisção",
+    "replacements": [
+      "discrição"
+    ],
+    "source": "learned_know:orto-discrecao-total"
+  },
+  {
+    "from": "descupas",
+    "replacements": [
+      "desculpas"
+    ],
+    "source": "learned_know:ortografia_09"
+  },
+  {
+    "from": "desenvolvinento",
+    "replacements": [
+      "desenvolvimento"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "desenvovimento",
+    "replacements": [
+      "desenvolvimento"
+    ],
+    "source": "learned_know:ortografia_2"
+  },
+  {
+    "from": "desestímulando",
+    "replacements": [
+      "desestimulando"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "desintendimento",
+    "replacements": [
+      "desentendimento"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "desleicho",
+    "replacements": [
+      "desleixo"
+    ],
+    "source": "learned_know:orto-desleixo-trabalho"
+  },
+  {
+    "from": "deslisar",
+    "replacements": [
+      "deslizar"
+    ],
+    "source": "learned_know:ort-14"
+  },
+  {
+    "from": "deslise",
+    "replacements": [
+      "deslize"
+    ],
+    "source": "learned_know:ort-21"
+  },
+  {
+    "from": "despendioso",
+    "replacements": [
+      "dispendioso"
+    ],
+    "source": "learned_know:orto_03"
+  },
+  {
+    "from": "destinguir",
+    "replacements": [
+      "distinguir"
+    ],
+    "source": "learned_know:orto-06"
+  },
+  {
+    "from": "detem",
+    "replacements": [
+      "detêm"
+    ],
+    "source": "learned_know:acentuacao_008"
+  },
+  {
+    "from": "detém",
+    "replacements": [
+      "detêm"
+    ],
+    "source": "learned_know:ace-detem"
+  },
+  {
+    "from": "dezenho",
+    "replacements": [
+      "desenho"
+    ],
+    "source": "learned_know:ort_21"
+  },
+  {
+    "from": "dezentupidor",
+    "replacements": [
+      "desentupidor"
+    ],
+    "source": "learned_know:ort-22"
+  },
+  {
+    "from": "diciplina",
+    "replacements": [
+      "disciplina"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "didatico",
+    "replacements": [
+      "didático"
+    ],
+    "source": "learned_know:acentuacao_07"
+  },
+  {
+    "from": "dificeis",
+    "replacements": [
+      "difíceis"
+    ],
+    "source": "learned_know:hifen_02"
+  },
+  {
+    "from": "diposto",
+    "replacements": [
+      "disposto"
+    ],
+    "source": "learned_know:hifen_15"
+  },
+  {
+    "from": "direitor",
+    "replacements": [
+      "diretor"
+    ],
+    "source": "learned_know:acent-05"
+  },
+  {
+    "from": "discenção",
+    "replacements": [
+      "dissensão"
+    ],
+    "source": "learned_know:ort-32"
+  },
+  {
+    "from": "discinto",
+    "replacements": [
+      "distinto"
+    ],
+    "source": "learned_know:ort-011"
+  },
+  {
+    "from": "disconforto",
+    "replacements": [
+      "desconforto"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "discrepancia",
+    "replacements": [
+      "discrepância"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "discrição",
+    "replacements": [
+      "descrição"
+    ],
+    "source": "learned_know:ortografia_07"
+  },
+  {
+    "from": "discução",
+    "replacements": [
+      "discussão"
+    ],
+    "source": "learned_know:ort_23"
+  },
+  {
+    "from": "discultida",
+    "replacements": [
+      "discutida"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "discursão",
+    "replacements": [
+      "discussão"
+    ],
+    "source": "learned_know:orto_12"
+  },
+  {
+    "from": "discussao",
+    "replacements": [
+      "discussão"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "disgreção",
+    "replacements": [
+      "discrição"
+    ],
+    "source": "learned_know:orto-discrição"
+  },
+  {
+    "from": "disperdiçar",
+    "replacements": [
+      "desperdiçar"
+    ],
+    "source": "learned_know:orto-desperdiçar-08"
+  },
+  {
+    "from": "disperdício",
+    "replacements": [
+      "desperdício"
+    ],
+    "source": "learned_know:orto-01"
+  },
+  {
+    "from": "disponivel",
+    "replacements": [
+      "disponível"
+    ],
+    "source": "learned_know:acent-02"
+  },
+  {
+    "from": "dispuas",
+    "replacements": [
+      "disputas"
+    ],
+    "source": "learned_know:orto_06"
+  },
+  {
+    "from": "dissenção",
+    "replacements": [
+      "dissensão"
+    ],
+    "source": "learned_know:ort-24"
+  },
+  {
+    "from": "dissenço",
+    "replacements": [
+      "dissenso"
+    ],
+    "source": "learned_know:ort-035"
+  },
+  {
+    "from": "distenção",
+    "replacements": [
+      "distensão"
+    ],
+    "source": "learned_know:ort-distensao"
+  },
+  {
+    "from": "divougação",
+    "replacements": [
+      "divulgação"
+    ],
+    "source": "learned_know:ortografia_20"
+  },
+  {
+    "from": "documentassão",
+    "replacements": [
+      "documentação"
+    ],
+    "source": "learned_know:ortografia_1"
+  },
+  {
+    "from": "ducumentos",
+    "replacements": [
+      "documentos"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "duranto",
+    "replacements": [
+      "durante"
+    ],
+    "source": "learned_know:ortografia_012"
+  },
+  {
+    "from": "duvida",
+    "replacements": [
+      "dúvida"
+    ],
+    "source": "learned_know:ace_02"
+  },
+  {
+    "from": "duvidas",
+    "replacements": [
+      "dúvidas"
+    ],
+    "source": "learned_know:acent-19"
+  },
+  {
+    "from": "ecessivo",
+    "replacements": [
+      "excessivo"
+    ],
+    "source": "learned_know:ort_13"
+  },
+  {
+    "from": "econômia",
+    "replacements": [
+      "economia"
+    ],
+    "source": "learned_know:acentuacao_10"
+  },
+  {
+    "from": "economica",
+    "replacements": [
+      "econômica"
+    ],
+    "source": "learned_know:acentuacao_7"
+  },
+  {
+    "from": "econômíca",
+    "replacements": [
+      "econômica"
+    ],
+    "source": "learned_know:acentuacao_11"
+  },
+  {
+    "from": "ecônomica",
+    "replacements": [
+      "econômica"
+    ],
+    "source": "learned_know:ace-014"
+  },
+  {
+    "from": "educacão",
+    "replacements": [
+      "educação"
+    ],
+    "source": "learned_know:acentuacao_6"
+  },
+  {
+    "from": "eficaaz",
+    "replacements": [
+      "eficaz"
+    ],
+    "source": "learned_know:ortografia_5"
+  },
+  {
+    "from": "eficiênçia",
+    "replacements": [
+      "eficiência"
+    ],
+    "source": "learned_know:ortografia_20"
+  },
+  {
+    "from": "eficiênte",
+    "replacements": [
+      "eficiente"
+    ],
+    "source": "learned_know:orto_05"
+  },
+  {
+    "from": "egoismo",
+    "replacements": [
+      "egoísmo"
+    ],
+    "source": "learned_know:ace-egoismo"
+  },
+  {
+    "from": "egoista",
+    "replacements": [
+      "egoísta"
+    ],
+    "source": "learned_know:acen-egoista"
+  },
+  {
+    "from": "eletrecidade",
+    "replacements": [
+      "eletricidade"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "eletrica",
+    "replacements": [
+      "elétrica"
+    ],
+    "source": "learned_know:ace-44"
+  },
+  {
+    "from": "eletronica",
+    "replacements": [
+      "eletrônica"
+    ],
+    "source": "learned_know:acentuacao_11"
+  },
+  {
+    "from": "eminente",
+    "replacements": [
+      "iminente"
+    ],
+    "source": "learned_know:ortografia_11"
+  },
+  {
+    "from": "emprenho",
+    "replacements": [
+      "empenho"
+    ],
+    "source": "learned_know:orto_06"
+  },
+  {
+    "from": "emprêsa",
+    "replacements": [
+      "empresa"
+    ],
+    "source": "learned_know:ortografia_5"
+  },
+  {
+    "from": "emprevisto",
+    "replacements": [
+      "imprevisto"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "encaminhara",
+    "replacements": [
+      "encaminhará"
+    ],
+    "source": "learned_know:hifen_11"
+  },
+  {
+    "from": "enchada",
+    "replacements": [
+      "enxada"
+    ],
+    "source": "learned_know:orto-44"
+  },
+  {
+    "from": "enchergar",
+    "replacements": [
+      "enxergar"
+    ],
+    "source": "learned_know:orto_enxugar_encher"
+  },
+  {
+    "from": "encherido",
+    "replacements": [
+      "xereta"
+    ],
+    "source": "learned_know:ort-22"
+  },
+  {
+    "from": "enchete",
+    "replacements": [
+      "enchente"
+    ],
+    "source": "learned_know:ort_15"
+  },
+  {
+    "from": "enchorrada",
+    "replacements": [
+      "enxurrada"
+    ],
+    "source": "learned_know:ort-18"
+  },
+  {
+    "from": "enchugar",
+    "replacements": [
+      "enxugar"
+    ],
+    "source": "learned_know:orto_enxugar_encher"
+  },
+  {
+    "from": "encomodada",
+    "replacements": [
+      "incomodada"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "encomodando",
+    "replacements": [
+      "incomodando"
+    ],
+    "source": "learned_know:orto-35"
+  },
+  {
+    "from": "encrontrará",
+    "replacements": [
+      "encontrará"
+    ],
+    "source": "learned_know:orto-04"
+  },
+  {
+    "from": "enfase",
+    "replacements": [
+      "ênfase"
+    ],
+    "source": "learned_know:acent_03"
+  },
+  {
+    "from": "enjôo",
+    "replacements": [
+      "enjoo"
+    ],
+    "source": "learned_know:acent_voo_enjoo"
+  },
+  {
+    "from": "enjôou",
+    "replacements": [
+      "enjoou"
+    ],
+    "source": "learned_know:ace-07-enjoou"
+  },
+  {
+    "from": "enterrupções",
+    "replacements": [
+      "interrupções"
+    ],
+    "source": "learned_know:orto-08"
+  },
+  {
+    "from": "entertenimento",
+    "replacements": [
+      "entretenimento"
+    ],
+    "source": "learned_know:orto-11"
+  },
+  {
+    "from": "enterteunimento",
+    "replacements": [
+      "entretenimento"
+    ],
+    "source": "learned_know:ort-04-entretenimento"
+  },
+  {
+    "from": "entitular",
+    "replacements": [
+      "intitular"
+    ],
+    "source": "learned_know:ort-18"
+  },
+  {
+    "from": "entreterimento",
+    "replacements": [
+      "entretenimento"
+    ],
+    "source": "learned_know:ort-06"
+  },
+  {
+    "from": "entretesse",
+    "replacements": [
+      "entretivesse"
+    ],
+    "source": "learned_know:ort-entretivesse"
+  },
+  {
+    "from": "entretimento",
+    "replacements": [
+      "entretenimento"
+    ],
+    "source": "learned_know:orto_beneficente_entretenimento"
+  },
+  {
+    "from": "enxáime",
+    "replacements": [
+      "enxame"
+    ],
+    "source": "learned_know:orto-44"
+  },
+  {
+    "from": "enxer",
+    "replacements": [
+      "encher"
+    ],
+    "source": "learned_know:orto-encher-balde"
+  },
+  {
+    "from": "equipamenttos",
+    "replacements": [
+      "equipamentos"
+    ],
+    "source": "learned_know:ortografia_14"
+  },
+  {
+    "from": "equivocos",
+    "replacements": [
+      "equívocos"
+    ],
+    "source": "learned_know:ortografia_4"
+  },
+  {
+    "from": "escarsês",
+    "replacements": [
+      "escassez"
+    ],
+    "source": "learned_know:ort-26"
+  },
+  {
+    "from": "esceção",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "esceções",
+    "replacements": [
+      "exceções"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "escenção",
+    "replacements": [
+      "ascensão"
+    ],
+    "source": "learned_know:ort_19"
+  },
+  {
+    "from": "escessões",
+    "replacements": [
+      "exceções"
+    ],
+    "source": "learned_know:ortografia_010"
+  },
+  {
+    "from": "escreve",
+    "replacements": [
+      "escrever"
+    ],
+    "source": "learned_know:hifen_8"
+  },
+  {
+    "from": "escritorio",
+    "replacements": [
+      "escritório"
+    ],
+    "source": "learned_know:acentu_07"
+  },
+  {
+    "from": "espasso",
+    "replacements": [
+      "espaço"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "especificacoes",
+    "replacements": [
+      "especificações"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "espectativa",
+    "replacements": [
+      "expectativa"
+    ],
+    "source": "learned_know:ort_01"
+  },
+  {
+    "from": "espectativas",
+    "replacements": [
+      "expectativas"
+    ],
+    "source": "learned_know:orto-06"
+  },
+  {
+    "from": "esperaddo",
+    "replacements": [
+      "esperado"
+    ],
+    "source": "learned_know:ortografia_3"
+  },
+  {
+    "from": "espetaculo",
+    "replacements": [
+      "espetáculo"
+    ],
+    "source": "learned_know:ace_18"
+  },
+  {
+    "from": "espontaniedade",
+    "replacements": [
+      "espontaneidade"
+    ],
+    "source": "learned_know:ort-08-err"
+  },
+  {
+    "from": "essecencial",
+    "replacements": [
+      "essencial"
+    ],
+    "source": "learned_know:orto-21"
+  },
+  {
+    "from": "estatisticas",
+    "replacements": [
+      "estatísticas"
+    ],
+    "source": "learned_know:acentuacao_05"
+  },
+  {
+    "from": "estatisticos",
+    "replacements": [
+      "estatísticos"
+    ],
+    "source": "learned_know:acentuacao_01"
+  },
+  {
+    "from": "estenção",
+    "replacements": [
+      "extensão"
+    ],
+    "source": "learned_know:ort-019"
+  },
+  {
+    "from": "estomago",
+    "replacements": [
+      "estômago"
+    ],
+    "source": "learned_know:acent-15"
+  },
+  {
+    "from": "estoria",
+    "replacements": [
+      "história"
+    ],
+    "source": "learned_know:acen-19"
+  },
+  {
+    "from": "estrategia",
+    "replacements": [
+      "estratégia"
+    ],
+    "source": "learned_know:acen-estrategia"
+  },
+  {
+    "from": "estrategico",
+    "replacements": [
+      "estratégico"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "estrategio",
+    "replacements": [
+      "estratégico"
+    ],
+    "source": "learned_know:ortografia_5"
+  },
+  {
+    "from": "estravagante",
+    "replacements": [
+      "extravagante"
+    ],
+    "source": "learned_know:ort-8"
+  },
+  {
+    "from": "estravio",
+    "replacements": [
+      "extravio"
+    ],
+    "source": "learned_know:orto-31"
+  },
+  {
+    "from": "estréia",
+    "replacements": [
+      "estreia"
+    ],
+    "source": "learned_know:ort_17"
+  },
+  {
+    "from": "estrior",
+    "replacements": [
+      "exterior"
+    ],
+    "source": "learned_know:orto-22"
+  },
+  {
+    "from": "esvasiar",
+    "replacements": [
+      "esvaziar"
+    ],
+    "source": "learned_know:orto-esvaziar-caixa"
+  },
+  {
+    "from": "eticos",
+    "replacements": [
+      "éticos"
+    ],
+    "source": "learned_know:hifen_18"
+  },
+  {
+    "from": "exajerado",
+    "replacements": [
+      "exagerado"
+    ],
+    "source": "learned_know:ort_9"
+  },
+  {
+    "from": "excessão",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "learned_know:ortografia-excecao"
+  },
+  {
+    "from": "excessões",
+    "replacements": [
+      "exceções"
+    ],
+    "source": "learned_know:ort_09"
+  },
+  {
+    "from": "execeção",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "learned_know:orto-excecao"
+  },
+  {
+    "from": "execessão",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "learned_know:ortografia_07"
+  },
+  {
+    "from": "execivo",
+    "replacements": [
+      "excessivo"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "execussão",
+    "replacements": [
+      "execução"
+    ],
+    "source": "learned_know:acentuacao_09"
+  },
+  {
+    "from": "exelência",
+    "replacements": [
+      "excelência"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "exelente",
+    "replacements": [
+      "excelente"
+    ],
+    "source": "learned_know:ortografia_04"
+  },
+  {
+    "from": "exercicio",
+    "replacements": [
+      "exercício"
+    ],
+    "source": "learned_know:ace_09"
+  },
+  {
+    "from": "exercíçio",
+    "replacements": [
+      "exercício"
+    ],
+    "source": "learned_know:acentuacao_4"
+  },
+  {
+    "from": "exercito",
+    "replacements": [
+      "exército"
+    ],
+    "source": "learned_know:acen-24"
+  },
+  {
+    "from": "exesperar",
+    "replacements": [
+      "exasperar"
+    ],
+    "source": "learned_know:ort-25-exasperar"
+  },
+  {
+    "from": "exessão",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "learned_know:orto-01"
+  },
+  {
+    "from": "exessiva",
+    "replacements": [
+      "excessiva"
+    ],
+    "source": "learned_know:ortografia_15"
+  },
+  {
+    "from": "exessivo",
+    "replacements": [
+      "excessivo"
+    ],
+    "source": "learned_know:ort-excessivo"
+  },
+  {
+    "from": "exito",
+    "replacements": [
+      "êxito"
+    ],
+    "source": "learned_know:acentuacao_10"
+  },
+  {
+    "from": "éxito",
+    "replacements": [
+      "êxito"
+    ],
+    "source": "learned_know:acentuacao_05"
+  },
+  {
+    "from": "exorbintantes",
+    "replacements": [
+      "exorbitantes"
+    ],
+    "source": "learned_know:ort_11"
+  },
+  {
+    "from": "expancivo",
+    "replacements": [
+      "expansivo"
+    ],
+    "source": "learned_know:orto_expansivo_fazer"
+  },
+  {
+    "from": "expecial",
+    "replacements": [
+      "especial"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "expectativcas",
+    "replacements": [
+      "expectativas"
+    ],
+    "source": "learned_know:acentuacao_01"
+  },
+  {
+    "from": "expeculação",
+    "replacements": [
+      "especulação"
+    ],
+    "source": "learned_know:orto-1"
+  },
+  {
+    "from": "experiencia",
+    "replacements": [
+      "experiência"
+    ],
+    "source": "learned_know:acen-experiencia"
+  },
+  {
+    "from": "experiençia",
+    "replacements": [
+      "experiência"
+    ],
+    "source": "learned_know:ortografia_15"
+  },
+  {
+    "from": "explozão",
+    "replacements": [
+      "explosão"
+    ],
+    "source": "learned_know:ort_15"
+  },
+  {
+    "from": "expontânea",
+    "replacements": [
+      "espontânea"
+    ],
+    "source": "learned_know:ortografia_11"
+  },
+  {
+    "from": "expontâneo",
+    "replacements": [
+      "espontâneo"
+    ],
+    "source": "learned_know:ort-17-expontaneo"
+  },
+  {
+    "from": "expulção",
+    "replacements": [
+      "expulsão"
+    ],
+    "source": "learned_know:ort_07"
+  },
+  {
+    "from": "exseção",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "learned_know:ortografia_002"
+  },
+  {
+    "from": "extenção",
+    "replacements": [
+      "extensão"
+    ],
+    "source": "learned_know:ort_08"
+  },
+  {
+    "from": "extender",
+    "replacements": [
+      "estender"
+    ],
+    "source": "learned_know:orto-estender"
+  },
+  {
+    "from": "extendido",
+    "replacements": [
+      "estendido"
+    ],
+    "source": "learned_know:ort-01"
+  },
+  {
+    "from": "extravante",
+    "replacements": [
+      "extravagante"
+    ],
+    "source": "learned_know:ort_18"
+  },
+  {
+    "from": "extravazar",
+    "replacements": [
+      "extravasar"
+    ],
+    "source": "learned_know:ort-18-extravazar"
+  },
+  {
+    "from": "extrenho",
+    "replacements": [
+      "estranho"
+    ],
+    "source": "learned_know:orto-20"
+  },
+  {
+    "from": "extringente",
+    "replacements": [
+      "adstringente"
+    ],
+    "source": "learned_know:ort_8"
+  },
+  {
+    "from": "extrover",
+    "replacements": [
+      "extroverter"
+    ],
+    "source": "learned_know:ort-4"
+  },
+  {
+    "from": "ezibir",
+    "replacements": [
+      "exibir"
+    ],
+    "source": "learned_know:ort_11"
+  },
+  {
+    "from": "fabrica",
+    "replacements": [
+      "fábrica"
+    ],
+    "source": "learned_know:acentu_06"
+  },
+  {
+    "from": "fábricia",
+    "replacements": [
+      "fábrica"
+    ],
+    "source": "learned_know:ortografia_11"
+  },
+  {
+    "from": "fachina",
+    "replacements": [
+      "faxina"
+    ],
+    "source": "learned_know:orto-faxina-casa"
+  },
+  {
+    "from": "facil",
+    "replacements": [
+      "fácil"
+    ],
+    "source": "learned_know:ace-27-facil"
+  },
+  {
+    "from": "facinante",
+    "replacements": [
+      "fascinante"
+    ],
+    "source": "learned_know:orto-16"
+  },
+  {
+    "from": "familha",
+    "replacements": [
+      "família"
+    ],
+    "source": "learned_know:orto-22"
+  },
+  {
+    "from": "familia",
+    "replacements": [
+      "família"
+    ],
+    "source": "learned_know:acen-27"
+  },
+  {
+    "from": "fantastica",
+    "replacements": [
+      "fantástica"
+    ],
+    "source": "learned_know:acentuacao_02"
+  },
+  {
+    "from": "faser",
+    "replacements": [
+      "fazer"
+    ],
+    "source": "learned_know:orto_expansivo_fazer"
+  },
+  {
+    "from": "feiúra",
+    "replacements": [
+      "feiura"
+    ],
+    "source": "learned_know:ace-11-err"
+  },
+  {
+    "from": "fenomeno",
+    "replacements": [
+      "fenômeno"
+    ],
+    "source": "learned_know:ace-50"
+  },
+  {
+    "from": "féria",
+    "replacements": [
+      "férias"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "filântropo",
+    "replacements": [
+      "filantropo"
+    ],
+    "source": "learned_know:ace_filantropo_01"
+  },
+  {
+    "from": "fiseram",
+    "replacements": [
+      "fizeram"
+    ],
+    "source": "learned_know:ort_1"
+  },
+  {
+    "from": "fisica",
+    "replacements": [
+      "física"
+    ],
+    "source": "learned_know:ace_02"
+  },
+  {
+    "from": "flandidez",
+    "replacements": [
+      "flacidez"
+    ],
+    "source": "learned_know:ort_27"
+  },
+  {
+    "from": "flêcha",
+    "replacements": [
+      "flecha"
+    ],
+    "source": "learned_know:orto-26"
+  },
+  {
+    "from": "fluído",
+    "replacements": [
+      "fluido"
+    ],
+    "source": "learned_know:ace_fluido_01"
+  },
+  {
+    "from": "fônomo",
+    "replacements": [
+      "fonema"
+    ],
+    "source": "learned_know:ace_42"
+  },
+  {
+    "from": "framboeza",
+    "replacements": [
+      "framboesa"
+    ],
+    "source": "learned_know:ort-30"
+  },
+  {
+    "from": "Franca",
+    "replacements": [
+      "França"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "frenetico",
+    "replacements": [
+      "frenético"
+    ],
+    "source": "learned_know:ace_5"
+  },
+  {
+    "from": "frequencia",
+    "replacements": [
+      "frequência"
+    ],
+    "source": "learned_know:ace_20"
+  },
+  {
+    "from": "frustação",
+    "replacements": [
+      "frustração"
+    ],
+    "source": "learned_know:ort-frustracao"
+  },
+  {
+    "from": "frustada",
+    "replacements": [
+      "frustrada"
+    ],
+    "source": "learned_know:ortografia_1"
+  },
+  {
+    "from": "frustado",
+    "replacements": [
+      "frustrado"
+    ],
+    "source": "learned_know:orto-13"
+  },
+  {
+    "from": "frustar",
+    "replacements": [
+      "frustrar"
+    ],
+    "source": "learned_know:orto_frustrar_subsistência"
+  },
+  {
+    "from": "fuba",
+    "replacements": [
+      "fubá"
+    ],
+    "source": "learned_know:acen-50"
+  },
+  {
+    "from": "fudamental",
+    "replacements": [
+      "fundamental"
+    ],
+    "source": "learned_know:hifen_15"
+  },
+  {
+    "from": "funcionario",
+    "replacements": [
+      "funcionário"
+    ],
+    "source": "learned_know:hifen_06"
+  },
+  {
+    "from": "funcionarios",
+    "replacements": [
+      "funcionários"
+    ],
+    "source": "learned_know:acentuacao_02"
+  },
+  {
+    "from": "futoro",
+    "replacements": [
+      "futuro"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "geito",
+    "replacements": [
+      "jeito"
+    ],
+    "source": "learned_know:orto-53"
+  },
+  {
+    "from": "geléia",
+    "replacements": [
+      "geleia"
+    ],
+    "source": "learned_know:ace_2"
+  },
+  {
+    "from": "genetica",
+    "replacements": [
+      "genética"
+    ],
+    "source": "learned_know:acentuacao_16"
+  },
+  {
+    "from": "genio",
+    "replacements": [
+      "gênio"
+    ],
+    "source": "learned_know:acen-46"
+  },
+  {
+    "from": "graçasa",
+    "replacements": [
+      "graças"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "gratis",
+    "replacements": [
+      "grátis"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "gratuíto",
+    "replacements": [
+      "gratuito"
+    ],
+    "source": "learned_know:ace-06"
+  },
+  {
+    "from": "gráu",
+    "replacements": [
+      "grau"
+    ],
+    "source": "learned_know:ace-10-grau"
+  },
+  {
+    "from": "habito",
+    "replacements": [
+      "hábito"
+    ],
+    "source": "learned_know:orto_05"
+  },
+  {
+    "from": "hegetonia",
+    "replacements": [
+      "hegemonia"
+    ],
+    "source": "learned_know:ort-31"
+  },
+  {
+    "from": "heroi",
+    "replacements": [
+      "herói"
+    ],
+    "source": "learned_know:acentuacao_11"
+  },
+  {
+    "from": "heróica",
+    "replacements": [
+      "heroica"
+    ],
+    "source": "learned_know:ace-1"
+  },
+  {
+    "from": "heróico",
+    "replacements": [
+      "heroico"
+    ],
+    "source": "learned_know:acent_ideia_heroico"
+  },
+  {
+    "from": "herois",
+    "replacements": [
+      "heróis"
+    ],
+    "source": "learned_know:acen-07"
+  },
+  {
+    "from": "hifen",
+    "replacements": [
+      "hífen"
+    ],
+    "source": "learned_know:ace_15"
+  },
+  {
+    "from": "hiféns",
+    "replacements": [
+      "hifens"
+    ],
+    "source": "learned_know:acen-hifen-plural"
+  },
+  {
+    "from": "hífens",
+    "replacements": [
+      "hifens"
+    ],
+    "source": "learned_know:ace-04-itens-hifens"
+  },
+  {
+    "from": "higienico",
+    "replacements": [
+      "higiênico"
+    ],
+    "source": "learned_know:hifen-03"
+  },
+  {
+    "from": "historia",
+    "replacements": [
+      "história"
+    ],
+    "source": "learned_know:ace_01"
+  },
+  {
+    "from": "historico",
+    "replacements": [
+      "histórico"
+    ],
+    "source": "learned_know:acen_06"
+  },
+  {
+    "from": "homen",
+    "replacements": [
+      "homem"
+    ],
+    "source": "learned_know:ort-15-vicissitudes"
+  },
+  {
+    "from": "horario",
+    "replacements": [
+      "horário"
+    ],
+    "source": "learned_know:hifen_02"
+  },
+  {
+    "from": "hortifruiti",
+    "replacements": [
+      "hortifrúti"
+    ],
+    "source": "learned_know:ort_24"
+  },
+  {
+    "from": "humidade",
+    "replacements": [
+      "umidade"
+    ],
+    "source": "learned_know:ort_26"
+  },
+  {
+    "from": "ibéro",
+    "replacements": [
+      "ibero"
+    ],
+    "source": "learned_know:ace_ibero_01"
+  },
+  {
+    "from": "idéais",
+    "replacements": [
+      "ideais"
+    ],
+    "source": "learned_know:acentuacao_008"
+  },
+  {
+    "from": "ideentidade",
+    "replacements": [
+      "identidade"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "idéia",
+    "replacements": [
+      "ideia"
+    ],
+    "source": "learned_know:acent_ideia_heroico"
+  },
+  {
+    "from": "imenço",
+    "replacements": [
+      "imenso"
+    ],
+    "source": "learned_know:orto-24"
+  },
+  {
+    "from": "impácto",
+    "replacements": [
+      "impacto"
+    ],
+    "source": "learned_know:ort_04"
+  },
+  {
+    "from": "impactôs",
+    "replacements": [
+      "impactos"
+    ],
+    "source": "learned_know:acentuacao_14"
+  },
+  {
+    "from": "impecavél",
+    "replacements": [
+      "impecável"
+    ],
+    "source": "learned_know:ortografia_01"
+  },
+  {
+    "from": "impecilho",
+    "replacements": [
+      "empecilho"
+    ],
+    "source": "learned_know:ort_24"
+  },
+  {
+    "from": "impecílio",
+    "replacements": [
+      "empecilho"
+    ],
+    "source": "learned_know:orto-26"
+  },
+  {
+    "from": "implementassão",
+    "replacements": [
+      "implementação"
+    ],
+    "source": "learned_know:ortografia_13"
+  },
+  {
+    "from": "importançia",
+    "replacements": [
+      "importância"
+    ],
+    "source": "learned_know:acentuacao_014"
+  },
+  {
+    "from": "importãncia",
+    "replacements": [
+      "importância"
+    ],
+    "source": "learned_know:ortografia_20"
+  },
+  {
+    "from": "impôrtante",
+    "replacements": [
+      "importante"
+    ],
+    "source": "learned_know:acentuacao_08"
+  },
+  {
+    "from": "impossivel",
+    "replacements": [
+      "impossível"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "imprecindível",
+    "replacements": [
+      "imprescindível"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "impreensa",
+    "replacements": [
+      "imprensa"
+    ],
+    "source": "learned_know:ortografia_01"
+  },
+  {
+    "from": "imprescindivel",
+    "replacements": [
+      "imprescindível"
+    ],
+    "source": "learned_know:acentuacao_10"
+  },
+  {
+    "from": "imprescíndivel",
+    "replacements": [
+      "imprescindível"
+    ],
+    "source": "learned_know:ort_03"
+  },
+  {
+    "from": "imprevistos",
+    "replacements": [
+      "imprevisto"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "impricindivel",
+    "replacements": [
+      "imprescindível"
+    ],
+    "source": "learned_know:orto_03"
+  },
+  {
+    "from": "improsedentes",
+    "replacements": [
+      "improcedentes"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "imprudênte",
+    "replacements": [
+      "imprudente"
+    ],
+    "source": "learned_know:acentuacao_019"
+  },
+  {
+    "from": "incendio",
+    "replacements": [
+      "incêndio"
+    ],
+    "source": "learned_know:ace_08"
+  },
+  {
+    "from": "inçerção",
+    "replacements": [
+      "inserção"
+    ],
+    "source": "learned_know:ort-4"
+  },
+  {
+    "from": "inclue",
+    "replacements": [
+      "inclui"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "incluido",
+    "replacements": [
+      "incluindo"
+    ],
+    "source": "learned_know:acentuacao_02"
+  },
+  {
+    "from": "incoveniente",
+    "replacements": [
+      "inconveniente"
+    ],
+    "source": "learned_know:ortografia_09"
+  },
+  {
+    "from": "increvel",
+    "replacements": [
+      "incrível"
+    ],
+    "source": "learned_know:orto-23"
+  },
+  {
+    "from": "incriveis",
+    "replacements": [
+      "incríveis"
+    ],
+    "source": "learned_know:ace-11"
+  },
+  {
+    "from": "incrivel",
+    "replacements": [
+      "incrível"
+    ],
+    "source": "learned_know:ace_07"
+  },
+  {
+    "from": "indentidade",
+    "replacements": [
+      "identidade"
+    ],
+    "source": "learned_know:orto-identidade"
+  },
+  {
+    "from": "indispensavel",
+    "replacements": [
+      "indispensável"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "indispênsável",
+    "replacements": [
+      "indispensável"
+    ],
+    "source": "learned_know:acentuacao_2"
+  },
+  {
+    "from": "industria",
+    "replacements": [
+      "indústria"
+    ],
+    "source": "learned_know:acen-35"
+  },
+  {
+    "from": "ineficiêcia",
+    "replacements": [
+      "ineficiência"
+    ],
+    "source": "learned_know:orto-3"
+  },
+  {
+    "from": "ineseriveis",
+    "replacements": [
+      "inservíveis"
+    ],
+    "source": "learned_know:ortografia_09"
+  },
+  {
+    "from": "inesplicáveis",
+    "replacements": [
+      "inexplicáveis"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "inessecário",
+    "replacements": [
+      "desnecessário"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "influênciado",
+    "replacements": [
+      "influenciado"
+    ],
+    "source": "learned_know:ortografia_6"
+  },
+  {
+    "from": "influí",
+    "replacements": [
+      "influi"
+    ],
+    "source": "learned_know:acen-influi-10"
+  },
+  {
+    "from": "informacao",
+    "replacements": [
+      "informação"
+    ],
+    "source": "learned_know:acentuacao_04"
+  },
+  {
+    "from": "informatica",
+    "replacements": [
+      "informática"
+    ],
+    "source": "learned_know:acent-informatica"
+  },
+  {
+    "from": "infrasol",
+    "replacements": [
+      "infração"
+    ],
+    "source": "learned_know:ort_03"
+  },
+  {
+    "from": "infrestrutura",
+    "replacements": [
+      "infraestrutura"
+    ],
+    "source": "learned_know:ortografia_18"
+  },
+  {
+    "from": "ingles",
+    "replacements": [
+      "inglês"
+    ],
+    "source": "learned_know:acent-01"
+  },
+  {
+    "from": "inicativa",
+    "replacements": [
+      "iniciativa"
+    ],
+    "source": "learned_know:ortografia_17"
+  },
+  {
+    "from": "inovacão",
+    "replacements": [
+      "inovação"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "inprecindivel",
+    "replacements": [
+      "imprescindível"
+    ],
+    "source": "learned_know:ortografia_20"
+  },
+  {
+    "from": "inprescindível",
+    "replacements": [
+      "imprescindível"
+    ],
+    "source": "learned_know:ortografia_016"
+  },
+  {
+    "from": "inpresindível",
+    "replacements": [
+      "imprescindível"
+    ],
+    "source": "learned_know:ortografia_008"
+  },
+  {
+    "from": "inprevísta",
+    "replacements": [
+      "imprevista"
+    ],
+    "source": "learned_know:ortografia_013"
+  },
+  {
+    "from": "insatisfassão",
+    "replacements": [
+      "insatisfação"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "instalacao",
+    "replacements": [
+      "instalação"
+    ],
+    "source": "learned_know:acentuacao_11"
+  },
+  {
+    "from": "instalacão",
+    "replacements": [
+      "instalação"
+    ],
+    "source": "learned_know:hifen_10"
+  },
+  {
+    "from": "instruçoes",
+    "replacements": [
+      "instruções"
+    ],
+    "source": "learned_know:acen_03"
+  },
+  {
+    "from": "insubordinassão",
+    "replacements": [
+      "insubordinação"
+    ],
+    "source": "learned_know:ortografia_004"
+  },
+  {
+    "from": "insuportavel",
+    "replacements": [
+      "insuportável"
+    ],
+    "source": "learned_know:ace_25"
+  },
+  {
+    "from": "integro",
+    "replacements": [
+      "íntegro"
+    ],
+    "source": "learned_know:acentuacao_04"
+  },
+  {
+    "from": "intercional",
+    "replacements": [
+      "internacional"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "interim",
+    "replacements": [
+      "ínterim"
+    ],
+    "source": "learned_know:ace-15-interim"
+  },
+  {
+    "from": "interino",
+    "replacements": [
+      "interno"
+    ],
+    "source": "learned_know:ortografia_1"
+  },
+  {
+    "from": "intertedido",
+    "replacements": [
+      "entretido"
+    ],
+    "source": "learned_know:ort-09"
+  },
+  {
+    "from": "intertido",
+    "replacements": [
+      "entretido"
+    ],
+    "source": "learned_know:ort-entretido"
+  },
+  {
+    "from": "intervençao",
+    "replacements": [
+      "intervenção"
+    ],
+    "source": "learned_know:orto_06"
+  },
+  {
+    "from": "interviu",
+    "replacements": [
+      "interveio"
+    ],
+    "source": "learned_know:acent_interviu_manteve"
+  },
+  {
+    "from": "intrega",
+    "replacements": [
+      "entrega"
+    ],
+    "source": "learned_know:ortografia_3"
+  },
+  {
+    "from": "inumeros",
+    "replacements": [
+      "inúmeros"
+    ],
+    "source": "learned_know:ortografia_17"
+  },
+  {
+    "from": "invero",
+    "replacements": [
+      "inverno"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "iorgute",
+    "replacements": [
+      "iogurte"
+    ],
+    "source": "learned_know:orto-16"
+  },
+  {
+    "from": "iris",
+    "replacements": [
+      "íris"
+    ],
+    "source": "learned_know:hife-26"
+  },
+  {
+    "from": "Itau",
+    "replacements": [
+      "Itaú"
+    ],
+    "source": "learned_know:acen-itau-banco"
+  },
+  {
+    "from": "itém",
+    "replacements": [
+      "item"
+    ],
+    "source": "learned_know:ace_item_01"
+  },
+  {
+    "from": "ítem",
+    "replacements": [
+      "item"
+    ],
+    "source": "learned_know:acent_item_polem"
+  },
+  {
+    "from": "ítens",
+    "replacements": [
+      "itens"
+    ],
+    "source": "learned_know:ace-04-itens-hifens"
+  },
+  {
+    "from": "jacare",
+    "replacements": [
+      "jacaré"
+    ],
+    "source": "learned_know:ace-38"
+  },
+  {
+    "from": "jentil",
+    "replacements": [
+      "gentil"
+    ],
+    "source": "learned_know:ort-27"
+  },
+  {
+    "from": "jóia",
+    "replacements": [
+      "joia"
+    ],
+    "source": "learned_know:ace-13"
+  },
+  {
+    "from": "juíz",
+    "replacements": [
+      "juiz"
+    ],
+    "source": "learned_know:acent_juiz_juizes"
+  },
+  {
+    "from": "juiza",
+    "replacements": [
+      "juíza"
+    ],
+    "source": "learned_know:ace-18"
+  },
+  {
+    "from": "juizes",
+    "replacements": [
+      "juízes"
+    ],
+    "source": "learned_know:acent_juiz_juizes"
+  },
+  {
+    "from": "juizo",
+    "replacements": [
+      "juízo"
+    ],
+    "source": "learned_know:ace_3"
+  },
+  {
+    "from": "juizs",
+    "replacements": [
+      "juízes"
+    ],
+    "source": "learned_know:acen-juizes-08"
+  },
+  {
+    "from": "juri",
+    "replacements": [
+      "júri"
+    ],
+    "source": "learned_know:ace-049"
+  },
+  {
+    "from": "laboratorio",
+    "replacements": [
+      "laboratório"
+    ],
+    "source": "learned_know:hifen_16"
+  },
+  {
+    "from": "lamentavel",
+    "replacements": [
+      "lamentável"
+    ],
+    "source": "learned_know:orto-31"
+  },
+  {
+    "from": "lampada",
+    "replacements": [
+      "lâmpada"
+    ],
+    "source": "learned_know:acen-43"
+  },
+  {
+    "from": "lapis",
+    "replacements": [
+      "lápis"
+    ],
+    "source": "learned_know:ace_27"
+  },
+  {
+    "from": "largatixa",
+    "replacements": [
+      "lagartixa"
+    ],
+    "source": "learned_know:orto-14"
+  },
+  {
+    "from": "lêem",
+    "replacements": [
+      "leem"
+    ],
+    "source": "learned_know:acent_veem_leem"
+  },
+  {
+    "from": "lider",
+    "replacements": [
+      "líder"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "maça",
+    "replacements": [
+      "maçã"
+    ],
+    "source": "learned_know:ace-41"
+  },
+  {
+    "from": "magnetude",
+    "replacements": [
+      "magnitude"
+    ],
+    "source": "learned_know:ort-024"
+  },
+  {
+    "from": "magnifico",
+    "replacements": [
+      "magnífico"
+    ],
+    "source": "learned_know:acen_05"
+  },
+  {
+    "from": "manha",
+    "replacements": [
+      "manhã"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "manteigueira",
+    "replacements": [
+      "manteigaia"
+    ],
+    "source": "learned_know:ort_16"
+  },
+  {
+    "from": "mantêm",
+    "replacements": [
+      "mantenham"
+    ],
+    "source": "learned_know:ace-23"
+  },
+  {
+    "from": "mantêve",
+    "replacements": [
+      "manteve"
+    ],
+    "source": "learned_know:acent_interviu_manteve"
+  },
+  {
+    "from": "manutençao",
+    "replacements": [
+      "manutenção"
+    ],
+    "source": "learned_know:ortografia_016"
+  },
+  {
+    "from": "manutensão",
+    "replacements": [
+      "manutenção"
+    ],
+    "source": "learned_know:ort-manutençao"
+  },
+  {
+    "from": "maquina",
+    "replacements": [
+      "máquina"
+    ],
+    "source": "learned_know:acen-45"
+  },
+  {
+    "from": "materia",
+    "replacements": [
+      "matéria"
+    ],
+    "source": "learned_know:acen_04"
+  },
+  {
+    "from": "maximo",
+    "replacements": [
+      "máximo"
+    ],
+    "source": "learned_know:ace_12"
+  },
+  {
+    "from": "mecher",
+    "replacements": [
+      "mexer"
+    ],
+    "source": "learned_know:orto-07"
+  },
+  {
+    "from": "mecheram",
+    "replacements": [
+      "mexeram"
+    ],
+    "source": "learned_know:ort-11"
+  },
+  {
+    "from": "mechericos",
+    "replacements": [
+      "mexericos"
+    ],
+    "source": "learned_know:ort_mexerico_01"
+  },
+  {
+    "from": "medico",
+    "replacements": [
+      "médico"
+    ],
+    "source": "learned_know:acentuacao_01"
+  },
+  {
+    "from": "meitro",
+    "replacements": [
+      "mestre"
+    ],
+    "source": "learned_know:ort-5"
+  },
+  {
+    "from": "memoravel",
+    "replacements": [
+      "memorável"
+    ],
+    "source": "learned_know:acentuacao_17"
+  },
+  {
+    "from": "méndigo",
+    "replacements": [
+      "mendigo"
+    ],
+    "source": "learned_know:ort_10"
+  },
+  {
+    "from": "mendinga",
+    "replacements": [
+      "mendiga"
+    ],
+    "source": "learned_know:ort-05"
+  },
+  {
+    "from": "mendingagem",
+    "replacements": [
+      "mendicância"
+    ],
+    "source": "learned_know:orto-36"
+  },
+  {
+    "from": "mendingo",
+    "replacements": [
+      "mendigo"
+    ],
+    "source": "learned_know:orto-mendingo"
+  },
+  {
+    "from": "menis",
+    "replacements": [
+      "menino"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "menssagem",
+    "replacements": [
+      "mensagem"
+    ],
+    "source": "learned_know:orto_03"
+  },
+  {
+    "from": "mepreendedor",
+    "replacements": [
+      "empreendedor"
+    ],
+    "source": "learned_know:orto-06"
+  },
+  {
+    "from": "mepreendimento",
+    "replacements": [
+      "empreendimento"
+    ],
+    "source": "learned_know:orto-29"
+  },
+  {
+    "from": "mêses",
+    "replacements": [
+      "meses"
+    ],
+    "source": "learned_know:acen-meses"
+  },
+  {
+    "from": "metalicas",
+    "replacements": [
+      "metálicas"
+    ],
+    "source": "learned_know:hifen_13"
+  },
+  {
+    "from": "metereologia",
+    "replacements": [
+      "meteorologia"
+    ],
+    "source": "learned_know:orto-metereologia"
+  },
+  {
+    "from": "metodo",
+    "replacements": [
+      "método"
+    ],
+    "source": "learned_know:ace-49"
+  },
+  {
+    "from": "metropoles",
+    "replacements": [
+      "metrópoles"
+    ],
+    "source": "learned_know:acentuacao_5"
+  },
+  {
+    "from": "meza",
+    "replacements": [
+      "mesa"
+    ],
+    "source": "learned_know:ort-20"
+  },
+  {
+    "from": "micro",
+    "replacements": [
+      "mico"
+    ],
+    "source": "learned_know:hif-037"
+  },
+  {
+    "from": "minunciosa",
+    "replacements": [
+      "minuciosa"
+    ],
+    "source": "learned_know:acentuacao_04"
+  },
+  {
+    "from": "misterio",
+    "replacements": [
+      "mistério"
+    ],
+    "source": "learned_know:acen-19"
+  },
+  {
+    "from": "moido",
+    "replacements": [
+      "moído"
+    ],
+    "source": "learned_know:ace-20-moido"
+  },
+  {
+    "from": "mortandela",
+    "replacements": [
+      "mortadela"
+    ],
+    "source": "learned_know:orto-mortadela"
+  },
+  {
+    "from": "moveis",
+    "replacements": [
+      "móveis"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "movel",
+    "replacements": [
+      "móvel"
+    ],
+    "source": "learned_know:ace_24"
+  },
+  {
+    "from": "muias",
+    "replacements": [
+      "muitas"
+    ],
+    "source": "learned_know:orto-21"
+  },
+  {
+    "from": "multidisplinares",
+    "replacements": [
+      "multidisciplinares"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "musica",
+    "replacements": [
+      "música"
+    ],
+    "source": "learned_know:acen-27"
+  },
+  {
+    "from": "nacao",
+    "replacements": [
+      "nação"
+    ],
+    "source": "learned_know:acent-04"
+  },
+  {
+    "from": "nacimento",
+    "replacements": [
+      "nascimento"
+    ],
+    "source": "learned_know:ortografia_011"
+  },
+  {
+    "from": "necesario",
+    "replacements": [
+      "necessário"
+    ],
+    "source": "learned_know:orto-04"
+  },
+  {
+    "from": "necessario",
+    "replacements": [
+      "necessário"
+    ],
+    "source": "learned_know:acentuacao_02"
+  },
+  {
+    "from": "necéssarios",
+    "replacements": [
+      "necessários"
+    ],
+    "source": "learned_know:orto-6"
+  },
+  {
+    "from": "negossios",
+    "replacements": [
+      "negócios"
+    ],
+    "source": "learned_know:ortografia_15"
+  },
+  {
+    "from": "nescessário",
+    "replacements": [
+      "necessário"
+    ],
+    "source": "learned_know:ortografia_17"
+  },
+  {
+    "from": "nescessidade",
+    "replacements": [
+      "necessidade"
+    ],
+    "source": "learned_know:orto-excecao-privilegio"
+  },
+  {
+    "from": "niguém",
+    "replacements": [
+      "ninguém"
+    ],
+    "source": "learned_know:ortografia_01"
+  },
+  {
+    "from": "niveis",
+    "replacements": [
+      "níveis"
+    ],
+    "source": "learned_know:ace_05"
+  },
+  {
+    "from": "nivel",
+    "replacements": [
+      "nível"
+    ],
+    "source": "learned_know:hifen_7"
+  },
+  {
+    "from": "Nósso",
+    "replacements": [
+      "Nossa"
+    ],
+    "source": "learned_know:hifen_02"
+  },
+  {
+    "from": "noticia",
+    "replacements": [
+      "notícia"
+    ],
+    "source": "learned_know:acent-20"
+  },
+  {
+    "from": "numero",
+    "replacements": [
+      "número"
+    ],
+    "source": "learned_know:acentu_04"
+  },
+  {
+    "from": "nunhum",
+    "replacements": [
+      "nenhum"
+    ],
+    "source": "learned_know:orto-01"
+  },
+  {
+    "from": "obcessão",
+    "replacements": [
+      "obsessão"
+    ],
+    "source": "learned_know:orto-23"
+  },
+  {
+    "from": "objétivos",
+    "replacements": [
+      "objetivos"
+    ],
+    "source": "learned_know:acentuacao_04"
+  },
+  {
+    "from": "Obrigada",
+    "replacements": [
+      "Obrigado"
+    ],
+    "source": "learned_know:orto-06"
+  },
+  {
+    "from": "obsceção",
+    "replacements": [
+      "obsessão"
+    ],
+    "source": "learned_know:ort_09"
+  },
+  {
+    "from": "obsecado",
+    "replacements": [
+      "obcecado"
+    ],
+    "source": "learned_know:orto_obcecado_ansioso"
+  },
+  {
+    "from": "obsidiar",
+    "replacements": [
+      "subsidiar"
+    ],
+    "source": "learned_know:ort-27"
+  },
+  {
+    "from": "obstacúlos",
+    "replacements": [
+      "obstáculos"
+    ],
+    "source": "learned_know:ortografia_18"
+  },
+  {
+    "from": "oculos",
+    "replacements": [
+      "óculos"
+    ],
+    "source": "learned_know:acentuacao_01"
+  },
+  {
+    "from": "ofereçe",
+    "replacements": [
+      "oferece"
+    ],
+    "source": "learned_know:ortografia_09"
+  },
+  {
+    "from": "oferesse",
+    "replacements": [
+      "oferece"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "ogeriza",
+    "replacements": [
+      "ojeriza"
+    ],
+    "source": "learned_know:ort-17"
+  },
+  {
+    "from": "olha",
+    "replacements": [
+      "olhar"
+    ],
+    "source": "learned_know:hifen_03"
+  },
+  {
+    "from": "olimpico",
+    "replacements": [
+      "olímpico"
+    ],
+    "source": "learned_know:hifen_05"
+  },
+  {
+    "from": "onibus",
+    "replacements": [
+      "ônibus"
+    ],
+    "source": "learned_know:ace_03"
+  },
+  {
+    "from": "operacionáis",
+    "replacements": [
+      "operacionais"
+    ],
+    "source": "learned_know:acentuacao_18"
+  },
+  {
+    "from": "operarios",
+    "replacements": [
+      "operários"
+    ],
+    "source": "learned_know:orto_06"
+  },
+  {
+    "from": "operasionais",
+    "replacements": [
+      "operacionais"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "opurtunidade",
+    "replacements": [
+      "oportunidade"
+    ],
+    "source": "learned_know:hifen_02"
+  },
+  {
+    "from": "orfã",
+    "replacements": [
+      "órfã"
+    ],
+    "source": "learned_know:ace_17"
+  },
+  {
+    "from": "orfão",
+    "replacements": [
+      "órfão"
+    ],
+    "source": "learned_know:acen-19"
+  },
+  {
+    "from": "orgao",
+    "replacements": [
+      "órgão"
+    ],
+    "source": "learned_know:acen-18"
+  },
+  {
+    "from": "ortografica",
+    "replacements": [
+      "ortográfica"
+    ],
+    "source": "learned_know:hifen_8"
+  },
+  {
+    "from": "otima",
+    "replacements": [
+      "ótima"
+    ],
+    "source": "learned_know:ace_04"
+  },
+  {
+    "from": "otimo",
+    "replacements": [
+      "ótimo"
+    ],
+    "source": "learned_know:ace-043"
+  },
+  {
+    "from": "paciencia",
+    "replacements": [
+      "paciência"
+    ],
+    "source": "learned_know:ace_3"
+  },
+  {
+    "from": "paciençia",
+    "replacements": [
+      "paciência"
+    ],
+    "source": "learned_know:ort-2"
+  },
+  {
+    "from": "pacifico",
+    "replacements": [
+      "Pacífico"
+    ],
+    "source": "learned_know:ace_9"
+  },
+  {
+    "from": "pagé",
+    "replacements": [
+      "pajé"
+    ],
+    "source": "learned_know:ort_pajé_01"
+  },
+  {
+    "from": "pagina",
+    "replacements": [
+      "página"
+    ],
+    "source": "learned_know:acent-20"
+  },
+  {
+    "from": "pais",
+    "replacements": [
+      "país"
+    ],
+    "source": "learned_know:acent-08"
+  },
+  {
+    "from": "páis",
+    "replacements": [
+      "pais"
+    ],
+    "source": "learned_know:acentuacao_013"
+  },
+  {
+    "from": "paises",
+    "replacements": [
+      "países"
+    ],
+    "source": "learned_know:acent-17"
+  },
+  {
+    "from": "papeis",
+    "replacements": [
+      "papéis"
+    ],
+    "source": "learned_know:acentu_12"
+  },
+  {
+    "from": "Parabens",
+    "replacements": [
+      "Parabéns"
+    ],
+    "source": "learned_know:acent-parabens"
+  },
+  {
+    "from": "parabola",
+    "replacements": [
+      "parábola"
+    ],
+    "source": "learned_know:ace_30"
+  },
+  {
+    "from": "paralização",
+    "replacements": [
+      "paralisação"
+    ],
+    "source": "learned_know:orto-05"
+  },
+  {
+    "from": "paralizador",
+    "replacements": [
+      "paralisador"
+    ],
+    "source": "learned_know:orto_05"
+  },
+  {
+    "from": "paralizar",
+    "replacements": [
+      "paralisar"
+    ],
+    "source": "learned_know:orto_analisar_paralizar"
+  },
+  {
+    "from": "paralizia",
+    "replacements": [
+      "paralisia"
+    ],
+    "source": "learned_know:ortografia-paralisia"
+  },
+  {
+    "from": "paranóia",
+    "replacements": [
+      "paranoia"
+    ],
+    "source": "learned_know:ace-25"
+  },
+  {
+    "from": "páraquedismo",
+    "replacements": [
+      "paraquedismo"
+    ],
+    "source": "learned_know:hifen_08"
+  },
+  {
+    "from": "particúlares",
+    "replacements": [
+      "particulares"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "Pascoa",
+    "replacements": [
+      "Páscoa"
+    ],
+    "source": "learned_know:ort-14-prazeroso"
+  },
+  {
+    "from": "passaro",
+    "replacements": [
+      "pássaro"
+    ],
+    "source": "learned_know:ace-47"
+  },
+  {
+    "from": "patio",
+    "replacements": [
+      "pátio"
+    ],
+    "source": "learned_know:ace_05"
+  },
+  {
+    "from": "pêra",
+    "replacements": [
+      "pera"
+    ],
+    "source": "learned_know:acen-pera-fruta"
+  },
+  {
+    "from": "périodicamente",
+    "replacements": [
+      "periodicamente"
+    ],
+    "source": "learned_know:ace-12"
+  },
+  {
+    "from": "periodo",
+    "replacements": [
+      "período"
+    ],
+    "source": "learned_know:ace_periodo_01"
+  },
+  {
+    "from": "persistencia",
+    "replacements": [
+      "persistência"
+    ],
+    "source": "learned_know:acentuacao_11"
+  },
+  {
+    "from": "perspecção",
+    "replacements": [
+      "percepção"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "perspicás",
+    "replacements": [
+      "perspicaz"
+    ],
+    "source": "learned_know:ort_24"
+  },
+  {
+    "from": "perssistência",
+    "replacements": [
+      "persistência"
+    ],
+    "source": "learned_know:ortografia_18"
+  },
+  {
+    "from": "pertubação",
+    "replacements": [
+      "perturbação"
+    ],
+    "source": "learned_know:ort-08"
+  },
+  {
+    "from": "pertubar",
+    "replacements": [
+      "perturbar"
+    ],
+    "source": "learned_know:orto-perturbar"
+  },
+  {
+    "from": "pesquiza",
+    "replacements": [
+      "pesquisa"
+    ],
+    "source": "learned_know:orto-38"
+  },
+  {
+    "from": "pesquizar",
+    "replacements": [
+      "pesquisar"
+    ],
+    "source": "learned_know:orto-15"
+  },
+  {
+    "from": "pessaol",
+    "replacements": [
+      "pessoal"
+    ],
+    "source": "learned_know:ort-21"
+  },
+  {
+    "from": "pessima",
+    "replacements": [
+      "péssima"
+    ],
+    "source": "learned_know:acen-03"
+  },
+  {
+    "from": "pixação",
+    "replacements": [
+      "pichação"
+    ],
+    "source": "learned_know:ort-22"
+  },
+  {
+    "from": "pixar",
+    "replacements": [
+      "pichar"
+    ],
+    "source": "learned_know:orto_reivindicar_pichar"
+  },
+  {
+    "from": "plastico",
+    "replacements": [
+      "plástico"
+    ],
+    "source": "learned_know:ace-23"
+  },
+  {
+    "from": "platéia",
+    "replacements": [
+      "plateia"
+    ],
+    "source": "learned_know:ace-02"
+  },
+  {
+    "from": "pobulação",
+    "replacements": [
+      "população"
+    ],
+    "source": "learned_know:orto-5"
+  },
+  {
+    "from": "pocos",
+    "replacements": [
+      "poucos"
+    ],
+    "source": "learned_know:ortografia_19"
+  },
+  {
+    "from": "polemica",
+    "replacements": [
+      "polêmica"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "polen",
+    "replacements": [
+      "pólen"
+    ],
+    "source": "learned_know:ace-25-polen"
+  },
+  {
+    "from": "pólo",
+    "replacements": [
+      "polo"
+    ],
+    "source": "learned_know:ace-14"
+  },
+  {
+    "from": "porçelana",
+    "replacements": [
+      "porcelana"
+    ],
+    "source": "learned_know:ort-10"
+  },
+  {
+    "from": "porem",
+    "replacements": [
+      "porém"
+    ],
+    "source": "learned_know:ace_03"
+  },
+  {
+    "from": "portfolio",
+    "replacements": [
+      "portfólio"
+    ],
+    "source": "learned_know:acentuacao_16"
+  },
+  {
+    "from": "portugues",
+    "replacements": [
+      "português"
+    ],
+    "source": "learned_know:acentuacao_20"
+  },
+  {
+    "from": "possivel",
+    "replacements": [
+      "possível"
+    ],
+    "source": "learned_know:ace_03"
+  },
+  {
+    "from": "pouquissimo",
+    "replacements": [
+      "pouquíssimo"
+    ],
+    "source": "learned_know:acent_06"
+  },
+  {
+    "from": "praseroso",
+    "replacements": [
+      "prazeroso"
+    ],
+    "source": "learned_know:orto_prazeroso_traz"
+  },
+  {
+    "from": "pratico",
+    "replacements": [
+      "prático"
+    ],
+    "source": "learned_know:acentuacao_02"
+  },
+  {
+    "from": "prazeirosa",
+    "replacements": [
+      "prazerosa"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "prazeiroso",
+    "replacements": [
+      "prazeroso"
+    ],
+    "source": "learned_know:ort-14-prazeroso"
+  },
+  {
+    "from": "prazerosamente",
+    "replacements": [
+      "prazerosa"
+    ],
+    "source": "learned_know:ort-11"
+  },
+  {
+    "from": "preça",
+    "replacements": [
+      "pressa"
+    ],
+    "source": "learned_know:ort-51"
+  },
+  {
+    "from": "precaria",
+    "replacements": [
+      "precária"
+    ],
+    "source": "learned_know:ortografia_18"
+  },
+  {
+    "from": "precípitadas",
+    "replacements": [
+      "precipitadas"
+    ],
+    "source": "learned_know:ortografia_015"
+  },
+  {
+    "from": "preçisa",
+    "replacements": [
+      "precisa"
+    ],
+    "source": "learned_know:ort-5"
+  },
+  {
+    "from": "preçiso",
+    "replacements": [
+      "preciso"
+    ],
+    "source": "learned_know:ortografia_12"
+  },
+  {
+    "from": "precizo",
+    "replacements": [
+      "preciso"
+    ],
+    "source": "learned_know:ortografia_006"
+  },
+  {
+    "from": "preco",
+    "replacements": [
+      "preço"
+    ],
+    "source": "learned_know:orto-01"
+  },
+  {
+    "from": "prejúisos",
+    "replacements": [
+      "prejuízos"
+    ],
+    "source": "learned_know:ortografia_006"
+  },
+  {
+    "from": "prejuizo",
+    "replacements": [
+      "prejuízo"
+    ],
+    "source": "learned_know:acentuacao_10"
+  },
+  {
+    "from": "preservacao",
+    "replacements": [
+      "preservação"
+    ],
+    "source": "learned_know:acentuacao_17"
+  },
+  {
+    "from": "presisa",
+    "replacements": [
+      "precisa"
+    ],
+    "source": "learned_know:ortografia-rigorosa"
+  },
+  {
+    "from": "presisar",
+    "replacements": [
+      "precisar"
+    ],
+    "source": "learned_know:orto-05"
+  },
+  {
+    "from": "presiso",
+    "replacements": [
+      "preciso"
+    ],
+    "source": "learned_know:ortografia_01"
+  },
+  {
+    "from": "presiza",
+    "replacements": [
+      "precisa"
+    ],
+    "source": "learned_know:orto-01"
+  },
+  {
+    "from": "presizamos",
+    "replacements": [
+      "precisamos"
+    ],
+    "source": "learned_know:ortografia_01"
+  },
+  {
+    "from": "presizo",
+    "replacements": [
+      "preciso"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "preste",
+    "replacements": [
+      "prestes"
+    ],
+    "source": "learned_know:ortografia_01"
+  },
+  {
+    "from": "pretenção",
+    "replacements": [
+      "pretensão"
+    ],
+    "source": "learned_know:orto_pretensao_ascensao"
+  },
+  {
+    "from": "pretenciosa",
+    "replacements": [
+      "pretensiosa"
+    ],
+    "source": "learned_know:ort-14"
+  },
+  {
+    "from": "pretencioso",
+    "replacements": [
+      "pretensioso"
+    ],
+    "source": "learned_know:orto-22"
+  },
+  {
+    "from": "pretesto",
+    "replacements": [
+      "pretexto"
+    ],
+    "source": "learned_know:ort-14"
+  },
+  {
+    "from": "preucupados",
+    "replacements": [
+      "preocupados"
+    ],
+    "source": "learned_know:ortografia_4"
+  },
+  {
+    "from": "preucupantes",
+    "replacements": [
+      "preocupantes"
+    ],
+    "source": "learned_know:orto-4"
+  },
+  {
+    "from": "prevelegio",
+    "replacements": [
+      "privilégio"
+    ],
+    "source": "learned_know:ortografia_005"
+  },
+  {
+    "from": "preventiba",
+    "replacements": [
+      "preventiva"
+    ],
+    "source": "learned_know:ort-08-paralizar"
+  },
+  {
+    "from": "préver",
+    "replacements": [
+      "prever"
+    ],
+    "source": "learned_know:acento-6"
+  },
+  {
+    "from": "previa",
+    "replacements": [
+      "prévia"
+    ],
+    "source": "learned_know:acentuacao_05"
+  },
+  {
+    "from": "previlegia",
+    "replacements": [
+      "privilegia"
+    ],
+    "source": "learned_know:ortografia_009"
+  },
+  {
+    "from": "previlegiada",
+    "replacements": [
+      "privilegiada"
+    ],
+    "source": "learned_know:ort_03"
+  },
+  {
+    "from": "previlegiado",
+    "replacements": [
+      "privilegiado"
+    ],
+    "source": "learned_know:orto-51"
+  },
+  {
+    "from": "previlégios",
+    "replacements": [
+      "privilégios"
+    ],
+    "source": "learned_know:ort_5"
+  },
+  {
+    "from": "previsao",
+    "replacements": [
+      "previsão"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "privelegio",
+    "replacements": [
+      "privilégio"
+    ],
+    "source": "learned_know:orto-privilegio-acesso"
+  },
+  {
+    "from": "probléma",
+    "replacements": [
+      "problema"
+    ],
+    "source": "learned_know:acentuacao_04"
+  },
+  {
+    "from": "proçedência",
+    "replacements": [
+      "procedência"
+    ],
+    "source": "learned_know:ort-19-procedencia"
+  },
+  {
+    "from": "proçedimentos",
+    "replacements": [
+      "procedimentos"
+    ],
+    "source": "learned_know:orto-06"
+  },
+  {
+    "from": "proficionais",
+    "replacements": [
+      "profissionais"
+    ],
+    "source": "learned_know:ortografia_3"
+  },
+  {
+    "from": "progama",
+    "replacements": [
+      "programa"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "progeto",
+    "replacements": [
+      "projeto"
+    ],
+    "source": "learned_know:orto-25"
+  },
+  {
+    "from": "proíbio",
+    "replacements": [
+      "proibiu"
+    ],
+    "source": "learned_know:ace-proibio"
+  },
+  {
+    "from": "projecto",
+    "replacements": [
+      "projeto"
+    ],
+    "source": "learned_know:ortografia_002"
+  },
+  {
+    "from": "projéto",
+    "replacements": [
+      "projeto"
+    ],
+    "source": "learned_know:acent_02"
+  },
+  {
+    "from": "propiámente",
+    "replacements": [
+      "propriamente"
+    ],
+    "source": "learned_know:orto_02"
+  },
+  {
+    "from": "propitício",
+    "replacements": [
+      "propício"
+    ],
+    "source": "learned_know:orto-propicio"
+  },
+  {
+    "from": "proplemas",
+    "replacements": [
+      "problemas"
+    ],
+    "source": "learned_know:ortografia_14"
+  },
+  {
+    "from": "propôem",
+    "replacements": [
+      "propõem"
+    ],
+    "source": "learned_know:acentuacao_18"
+  },
+  {
+    "from": "propos",
+    "replacements": [
+      "propôs"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "próposta",
+    "replacements": [
+      "proposta"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "propria",
+    "replacements": [
+      "própria"
+    ],
+    "source": "learned_know:acen-propria"
+  },
+  {
+    "from": "proprio",
+    "replacements": [
+      "próprio"
+    ],
+    "source": "learned_know:ace_06"
+  },
+  {
+    "from": "pros",
+    "replacements": [
+      "prós"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "proteina",
+    "replacements": [
+      "proteína"
+    ],
+    "source": "learned_know:ace-18-proteina"
+  },
+  {
+    "from": "providênciar",
+    "replacements": [
+      "providenciar"
+    ],
+    "source": "learned_know:orto_06"
+  },
+  {
+    "from": "provisoria",
+    "replacements": [
+      "provisória"
+    ],
+    "source": "learned_know:acento-6"
+  },
+  {
+    "from": "proxima",
+    "replacements": [
+      "próxima"
+    ],
+    "source": "learned_know:ace-15"
+  },
+  {
+    "from": "proximo",
+    "replacements": [
+      "próximo"
+    ],
+    "source": "learned_know:acentuacao_09"
+  },
+  {
+    "from": "proximos",
+    "replacements": [
+      "próximos"
+    ],
+    "source": "learned_know:ace_09"
+  },
+  {
+    "from": "prudencia",
+    "replacements": [
+      "prudência"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "publica",
+    "replacements": [
+      "pública"
+    ],
+    "source": "learned_know:acentuacao_19"
+  },
+  {
+    "from": "publico",
+    "replacements": [
+      "público"
+    ],
+    "source": "learned_know:acen-28"
+  },
+  {
+    "from": "público",
+    "replacements": [
+      "públicos"
+    ],
+    "source": "learned_know:ortografia_03"
+  },
+  {
+    "from": "puchas",
+    "replacements": [
+      "puxar"
+    ],
+    "source": "learned_know:orto-puxar-porta"
+  },
+  {
+    "from": "pudésse",
+    "replacements": [
+      "pudesse"
+    ],
+    "source": "learned_know:ace-podesse"
+  },
+  {
+    "from": "puzerem",
+    "replacements": [
+      "puseram"
+    ],
+    "source": "learned_know:ort_27"
+  },
+  {
+    "from": "quaze",
+    "replacements": [
+      "quase"
+    ],
+    "source": "learned_know:ort-25"
+  },
+  {
+    "from": "questao",
+    "replacements": [
+      "questão"
+    ],
+    "source": "learned_know:acentuacao_11"
+  },
+  {
+    "from": "quetão",
+    "replacements": [
+      "questão"
+    ],
+    "source": "learned_know:orto_cinquenta_questão"
+  },
+  {
+    "from": "queto",
+    "replacements": [
+      "quieto"
+    ],
+    "source": "learned_know:ort-43"
+  },
+  {
+    "from": "quiz",
+    "replacements": [
+      "quis"
+    ],
+    "source": "learned_know:orto-quis-pretensao"
+  },
+  {
+    "from": "quizeram",
+    "replacements": [
+      "quiseram"
+    ],
+    "source": "learned_know:ort-25"
+  },
+  {
+    "from": "quizesse",
+    "replacements": [
+      "quisesse"
+    ],
+    "source": "learned_know:ort_quisesse_01"
+  },
+  {
+    "from": "raíz",
+    "replacements": [
+      "raiz"
+    ],
+    "source": "learned_know:acent_raiz_raizes"
+  },
+  {
+    "from": "raizes",
+    "replacements": [
+      "raízes"
+    ],
+    "source": "learned_know:acen-raizes"
+  },
+  {
+    "from": "rapida",
+    "replacements": [
+      "rápida"
+    ],
+    "source": "learned_know:ortografia_13"
+  },
+  {
+    "from": "rapídas",
+    "replacements": [
+      "rápidas"
+    ],
+    "source": "learned_know:acent-06"
+  },
+  {
+    "from": "rapido",
+    "replacements": [
+      "rápido"
+    ],
+    "source": "learned_know:acen-22"
+  },
+  {
+    "from": "rastro",
+    "replacements": [
+      "rosto"
+    ],
+    "source": "learned_know:orto-14"
+  },
+  {
+    "from": "realisada",
+    "replacements": [
+      "realizada"
+    ],
+    "source": "learned_know:ortografia_10"
+  },
+  {
+    "from": "recem",
+    "replacements": [
+      "recém"
+    ],
+    "source": "learned_know:hifen_recem_nascido_pos_graduacao"
+  },
+  {
+    "from": "reclamição",
+    "replacements": [
+      "reclamação"
+    ],
+    "source": "learned_know:orto_01"
+  },
+  {
+    "from": "récords",
+    "replacements": [
+      "recorde"
+    ],
+    "source": "learned_know:ace_recorde_01"
+  },
+  {
+    "from": "reeestruturação",
+    "replacements": [
+      "reestruturação"
+    ],
+    "source": "learned_know:ortografia_4"
+  },
+  {
+    "from": "regua",
+    "replacements": [
+      "régua"
+    ],
+    "source": "learned_know:acen-17"
+  },
+  {
+    "from": "reindivicar",
+    "replacements": [
+      "reivindicar"
+    ],
+    "source": "learned_know:orto-17"
+  },
+  {
+    "from": "reinvidica",
+    "replacements": [
+      "reivindica"
+    ],
+    "source": "learned_know:ort-009"
+  },
+  {
+    "from": "reinvidicação",
+    "replacements": [
+      "reivindicação"
+    ],
+    "source": "learned_know:ort_12"
+  },
+  {
+    "from": "reinvidicar",
+    "replacements": [
+      "reivindicar"
+    ],
+    "source": "learned_know:orto_05"
+  },
+  {
+    "from": "reinvindicar",
+    "replacements": [
+      "reivindicar"
+    ],
+    "source": "learned_know:ort-02-reinvindicar"
+  },
+  {
+    "from": "relatóreo",
+    "replacements": [
+      "relatório"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "relatorio",
+    "replacements": [
+      "relatório"
+    ],
+    "source": "learned_know:acentuacao-relatorio"
+  },
+  {
+    "from": "relátorio",
+    "replacements": [
+      "relatório"
+    ],
+    "source": "learned_know:ort-01-excessao"
+  },
+  {
+    "from": "relevou",
+    "replacements": [
+      "revelou"
+    ],
+    "source": "learned_know:ortografia_16"
+  },
+  {
+    "from": "relogio",
+    "replacements": [
+      "relógio"
+    ],
+    "source": "learned_know:acentu_10"
+  },
+  {
+    "from": "remedio",
+    "replacements": [
+      "remédio"
+    ],
+    "source": "learned_know:acent-15"
+  },
+  {
+    "from": "renovavel",
+    "replacements": [
+      "renovável"
+    ],
+    "source": "learned_know:acentuacao_07"
+  },
+  {
+    "from": "repercuções",
+    "replacements": [
+      "repercussões"
+    ],
+    "source": "learned_know:ortografia_16"
+  },
+  {
+    "from": "reporter",
+    "replacements": [
+      "repórter"
+    ],
+    "source": "learned_know:acen_04"
+  },
+  {
+    "from": "rescursos",
+    "replacements": [
+      "recursos"
+    ],
+    "source": "learned_know:ortografia_013"
+  },
+  {
+    "from": "resibo",
+    "replacements": [
+      "recibo"
+    ],
+    "source": "learned_know:ortografia_17"
+  },
+  {
+    "from": "residençia",
+    "replacements": [
+      "residência"
+    ],
+    "source": "learned_know:ortografia_011"
+  },
+  {
+    "from": "resiliênsia",
+    "replacements": [
+      "resiliência"
+    ],
+    "source": "learned_know:ort-10-ascensao"
+  },
+  {
+    "from": "resolvem",
+    "replacements": [
+      "resolverem"
+    ],
+    "source": "learned_know:acentuacao_003"
+  },
+  {
+    "from": "responsavel",
+    "replacements": [
+      "responsável"
+    ],
+    "source": "learned_know:ace_06"
+  },
+  {
+    "from": "ressesso",
+    "replacements": [
+      "recesso"
+    ],
+    "source": "learned_know:orto-recesso-escolar"
+  },
+  {
+    "from": "ressureição",
+    "replacements": [
+      "ressurreição"
+    ],
+    "source": "learned_know:ort_39"
+  },
+  {
+    "from": "restruturação",
+    "replacements": [
+      "reestruturação"
+    ],
+    "source": "learned_know:ortografia_01"
+  },
+  {
+    "from": "reuna",
+    "replacements": [
+      "reúna"
+    ],
+    "source": "learned_know:ace-reuna"
+  },
+  {
+    "from": "reune",
+    "replacements": [
+      "reúne"
+    ],
+    "source": "learned_know:acentu_06"
+  },
+  {
+    "from": "reunem",
+    "replacements": [
+      "reúnem"
+    ],
+    "source": "learned_know:acentuacao_19"
+  },
+  {
+    "from": "reuniao",
+    "replacements": [
+      "reunião"
+    ],
+    "source": "learned_know:acentuacao_11"
+  },
+  {
+    "from": "reunir",
+    "replacements": [
+      "reuni"
+    ],
+    "source": "learned_know:ace-23-reunir-lo"
+  },
+  {
+    "from": "revindicar",
+    "replacements": [
+      "reivindicar"
+    ],
+    "source": "learned_know:orto_reivindicar_pichar"
+  },
+  {
+    "from": "revisao",
+    "replacements": [
+      "revisão"
+    ],
+    "source": "learned_know:acentuacao_03"
+  },
+  {
+    "from": "rídiculo",
+    "replacements": [
+      "ridículo"
+    ],
+    "source": "learned_know:acent-contem-ridiculo"
+  },
+  {
+    "from": "rigido",
+    "replacements": [
+      "rígido"
+    ],
+    "source": "learned_know:ace-033"
+  },
+  {
+    "from": "rigidos",
+    "replacements": [
+      "rígidos"
+    ],
+    "source": "learned_know:acento-3"
+  },
+  {
+    "from": "rigoroza",
+    "replacements": [
+      "rigorosa"
+    ],
+    "source": "learned_know:ortografia-rigorosa"
+  },
+  {
+    "from": "riquesa",
+    "replacements": [
+      "riqueza"
+    ],
+    "source": "learned_know:ort-14"
+  },
+  {
+    "from": "rítimo",
+    "replacements": [
+      "ritmo"
+    ],
+    "source": "learned_know:ort_09"
+  },
+  {
+    "from": "rítmo",
+    "replacements": [
+      "ritmo"
+    ],
+    "source": "learned_know:ace-01-assembleia"
+  },
+  {
+    "from": "robo",
+    "replacements": [
+      "robô"
+    ],
+    "source": "learned_know:acen-42"
+  },
+  {
+    "from": "rodoviaria",
+    "replacements": [
+      "rodoviária"
+    ],
+    "source": "learned_know:acentuacao_02"
+  },
+  {
+    "from": "rouspa",
+    "replacements": [
+      "roupa"
+    ],
+    "source": "learned_know:ort-44"
+  },
+  {
+    "from": "rruim",
+    "replacements": [
+      "ruim"
+    ],
+    "source": "learned_know:orto-27"
+  },
+  {
+    "from": "rúbrica",
+    "replacements": [
+      "rubrica"
+    ],
+    "source": "learned_know:ace-07"
+  },
+  {
+    "from": "ruido",
+    "replacements": [
+      "ruído"
+    ],
+    "source": "learned_know:acen-ruido-estranho"
+  },
+  {
+    "from": "ruidó",
+    "replacements": [
+      "ruído"
+    ],
+    "source": "learned_know:ace_25"
+  },
+  {
+    "from": "sabado",
+    "replacements": [
+      "sábado"
+    ],
+    "source": "learned_know:acent-08"
+  },
+  {
+    "from": "sabio",
+    "replacements": [
+      "sábio"
+    ],
+    "source": "learned_know:acen-39"
+  },
+  {
+    "from": "sagua",
+    "replacements": [
+      "saguão"
+    ],
+    "source": "learned_know:acentuacao_03"
+  },
+  {
+    "from": "saguao",
+    "replacements": [
+      "saguão"
+    ],
+    "source": "learned_know:acentuacao_02"
+  },
+  {
+    "from": "saida",
+    "replacements": [
+      "saída"
+    ],
+    "source": "learned_know:acen-saida"
+  },
+  {
+    "from": "Saimos",
+    "replacements": [
+      "Saímos"
+    ],
+    "source": "learned_know:ace_06"
+  },
+  {
+    "from": "salarios",
+    "replacements": [
+      "salários"
+    ],
+    "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "sanduiche",
+    "replacements": [
+      "sanduíche"
+    ],
+    "source": "learned_know:acen-09"
+  },
+  {
+    "from": "sauçe",
+    "replacements": [
+      "saúde"
+    ],
+    "source": "learned_know:orto-3"
+  },
+  {
+    "from": "saudavel",
+    "replacements": [
+      "saudável"
+    ],
+    "source": "learned_know:ace-41"
+  },
+  {
+    "from": "saude",
+    "replacements": [
+      "saúde"
+    ],
+    "source": "learned_know:acentu_04"
+  },
+  {
+    "from": "sauva",
+    "replacements": [
+      "saúva"
+    ],
+    "source": "learned_know:acen-04"
+  },
+  {
+    "from": "secão",
+    "replacements": [
+      "seção"
+    ],
+    "source": "learned_know:ortografia_008"
+  },
+  {
+    "from": "seção",
+    "replacements": [
+      "sessão"
+    ],
+    "source": "learned_know:ort-9"
+  },
+  {
+    "from": "segunda",
+    "replacements": [
+      "segundas"
+    ],
+    "source": "learned_know:hif_segundas_feiras_01"
+  },
+  {
+    "from": "segurânça",
+    "replacements": [
+      "segurança"
+    ],
+    "source": "learned_know:acentuacao_01"
+  },
+  {
+    "from": "seita",
+    "replacements": [
+      "seção"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "serias",
+    "replacements": [
+      "sérias"
+    ],
+    "source": "learned_know:ortografia_16"
+  },
+  {
+    "from": "serio",
+    "replacements": [
+      "sério"
+    ],
+    "source": "learned_know:ace-053"
+  },
+  {
+    "from": "sessão",
+    "replacements": [
+      "seção"
+    ],
+    "source": "learned_know:orto_03"
+  },
+  {
+    "from": "significatívo",
+    "replacements": [
+      "significativo"
+    ],
+    "source": "learned_know:acentuacao_05"
+  },
+  {
+    "from": "simpatico",
+    "replacements": [
+      "simpático"
+    ],
+    "source": "learned_know:acen-07"
+  },
+  {
+    "from": "sinico",
+    "replacements": [
+      "cínico"
+    ],
+    "source": "learned_know:orto-43"
+  },
+  {
+    "from": "sinto",
+    "replacements": [
+      "cinto"
+    ],
+    "source": "learned_know:orto-21"
+  },
+  {
+    "from": "situacao",
+    "replacements": [
+      "situação"
+    ],
+    "source": "learned_know:acento-03"
+  },
+  {
+    "from": "sivilização",
+    "replacements": [
+      "civilização"
+    ],
+    "source": "learned_know:ort-24"
+  },
+  {
+    "from": "socios",
+    "replacements": [
+      "sócios"
+    ],
+    "source": "learned_know:acentuacao_02"
+  },
+  {
+    "from": "sofa",
+    "replacements": [
+      "sofá"
+    ],
+    "source": "learned_know:ace-050"
+  },
+  {
+    "from": "solida",
+    "replacements": [
+      "sólida"
+    ],
+    "source": "learned_know:acentuacao_11"
+  },
+  {
+    "from": "solido",
+    "replacements": [
+      "sólido"
+    ],
+    "source": "learned_know:acentuacao_16"
+  },
+  {
+    "from": "sombrancelha",
+    "replacements": [
+      "sobrancelha"
+    ],
+    "source": "learned_know:ort_10"
+  },
+  {
+    "from": "sossêgo",
+    "replacements": [
+      "sossego"
+    ],
+    "source": "learned_know:ort_40"
+  },
+  {
+    "from": "subistência",
+    "replacements": [
+      "subsistência"
+    ],
+    "source": "learned_know:orto_frustrar_subsistência"
+  },
+  {
+    "from": "subzidiário",
+    "replacements": [
+      "subsidiário"
+    ],
+    "source": "learned_know:ort-subsidiario"
+  },
+  {
+    "from": "subzídio",
+    "replacements": [
+      "subsídio"
+    ],
+    "source": "learned_know:ort-20-subsidio"
+  },
+  {
+    "from": "sucecido",
+    "replacements": [
+      "sucedido"
+    ],
+    "source": "learned_know:ortografia_02"
+  },
+  {
+    "from": "suceço",
+    "replacements": [
+      "sucesso"
+    ],
+    "source": "learned_know:orto-18"
+  },
+  {
+    "from": "suçeço",
+    "replacements": [
+      "sucesso"
+    ],
+    "source": "learned_know:ortografia_11"
+  },
+  {
+    "from": "sumaria",
+    "replacements": [
+      "sumária"
+    ],
+    "source": "learned_know:acentuacao_12"
+  },
+  {
+    "from": "supeendente",
+    "replacements": [
+      "surpreendente"
+    ],
+    "source": "learned_know:ortografia_11"
+  },
+  {
+    "from": "supérfulo",
+    "replacements": [
+      "supérfluo"
+    ],
+    "source": "learned_know:ort-06"
+  },
+  {
+    "from": "supresa",
+    "replacements": [
+      "surpresa"
+    ],
+    "source": "learned_know:orto-39"
+  },
+  {
+    "from": "surpressa",
+    "replacements": [
+      "surpresa"
+    ],
+    "source": "learned_know:ortografia_17"
+  },
+  {
+    "from": "susinto",
+    "replacements": [
+      "sucinto"
+    ],
+    "source": "learned_know:orto-sucinto"
+  },
+  {
+    "from": "sussesso",
+    "replacements": [
+      "sucesso"
+    ],
+    "source": "learned_know:orto-06"
+  },
+  {
+    "from": "sussetível",
+    "replacements": [
+      "suscetível"
+    ],
+    "source": "learned_know:ort-05"
+  },
+  {
+    "from": "sussinto",
+    "replacements": [
+      "sucinto"
+    ],
+    "source": "learned_know:orto-20"
+  },
+  {
+    "from": "sustentábilidade",
+    "replacements": [
+      "sustentabilidade"
+    ],
+    "source": "learned_know:acentuacao_7"
+  },
+  {
+    "from": "sustentavel",
+    "replacements": [
+      "sustentável"
+    ],
+    "source": "learned_know:ortografia_18"
+  },
+  {
+    "from": "tambem",
+    "replacements": [
+      "também"
+    ],
+    "source": "learned_know:acent-tambem"
+  },
+  {
+    "from": "taxi",
+    "replacements": [
+      "táxi"
+    ],
+    "source": "learned_know:acen-13"
+  },
+  {
+    "from": "tchela",
+    "replacements": [
+      "tigela"
+    ],
+    "source": "learned_know:ort-10"
+  },
+  {
+    "from": "tecnico",
+    "replacements": [
+      "técnico"
+    ],
+    "source": "learned_know:acent_04"
+  },
+  {
+    "from": "tecnologico",
+    "replacements": [
+      "tecnológico"
+    ],
+    "source": "learned_know:ace-05-ideia"
+  },
+  {
+    "from": "tendençia",
+    "replacements": [
+      "tendência"
+    ],
+    "source": "learned_know:ortografia_16"
+  },
+  {
+    "from": "tenhu",
+    "replacements": [
+      "tenho"
+    ],
+    "source": "learned_know:orto_04"
+  },
+  {
+    "from": "tenis",
+    "replacements": [
+      "tênis"
+    ],
+    "source": "learned_know:ace_13"
+  },
+  {
+    "from": "tijela",
+    "replacements": [
+      "tigela"
+    ],
+    "source": "learned_know:ort-028"
+  },
+  {
+    "from": "tinhamos",
+    "replacements": [
+      "tínhamos"
+    ],
+    "source": "learned_know:ace-11"
+  },
+  {
+    "from": "tipico",
+    "replacements": [
+      "típico"
+    ],
+    "source": "learned_know:ace-33"
+  },
+  {
+    "from": "topico",
+    "replacements": [
+      "tópico"
+    ],
+    "source": "learned_know:acento-4"
+  },
+  {
+    "from": "traçer",
+    "replacements": [
+      "trazer"
+    ],
+    "source": "learned_know:orto-6"
+  },
+  {
+    "from": "trafico",
+    "replacements": [
+      "tráfico"
+    ],
+    "source": "learned_know:ortografia_11"
+  },
+  {
+    "from": "tragetória",
+    "replacements": [
+      "trajetória"
+    ],
+    "source": "learned_know:ort-12"
+  },
+  {
+    "from": "transito",
+    "replacements": [
+      "trânsito"
+    ],
+    "source": "learned_know:ace_06"
+  },
+  {
+    "from": "transparecia",
+    "replacements": [
+      "transparência"
+    ],
+    "source": "learned_know:ortografia_19"
+  },
+  {
+    "from": "tras",
+    "replacements": [
+      "trás"
+    ],
+    "source": "learned_know:acent_05"
+  },
+  {
+    "from": "trás",
+    "replacements": [
+      "traz"
+    ],
+    "source": "learned_know:orto_prazeroso_traz"
+  },
+  {
+    "from": "traser",
+    "replacements": [
+      "trazer"
+    ],
+    "source": "learned_know:orto-trazer-beneficio"
+  },
+  {
+    "from": "trasporte",
+    "replacements": [
+      "transporte"
+    ],
+    "source": "learned_know:ortografia_18"
+  },
+  {
+    "from": "trés",
+    "replacements": [
+      "três"
+    ],
+    "source": "learned_know:acentuacao_03"
+  },
+  {
+    "from": "trofeu",
+    "replacements": [
+      "troféu"
+    ],
+    "source": "learned_know:acen-02"
+  },
+  {
+    "from": "tropícal",
+    "replacements": [
+      "tropical"
+    ],
+    "source": "learned_know:ortografia_19"
+  },
+  {
+    "from": "trovoens",
+    "replacements": [
+      "trovões"
+    ],
+    "source": "learned_know:ortografia_017"
+  },
+  {
+    "from": "tunel",
+    "replacements": [
+      "túnel"
+    ],
+    "source": "learned_know:acent-18"
+  },
+  {
+    "from": "turisno",
+    "replacements": [
+      "turismo"
+    ],
+    "source": "learned_know:ortografia_17"
+  },
+  {
+    "from": "túristicos",
+    "replacements": [
+      "turísticos"
+    ],
+    "source": "learned_know:hifen_17"
+  },
+  {
+    "from": "ultimas",
+    "replacements": [
+      "últimas"
+    ],
+    "source": "learned_know:acentuacao_06"
+  },
+  {
+    "from": "ultimos",
+    "replacements": [
+      "últimos"
+    ],
+    "source": "learned_know:acentuacao_13"
+  },
+  {
+    "from": "umido",
+    "replacements": [
+      "úmido"
+    ],
+    "source": "learned_know:acen-42"
+  },
+  {
+    "from": "unamimidade",
+    "replacements": [
+      "unanimidade"
+    ],
+    "source": "learned_know:acentuacao_05"
+  },
+  {
+    "from": "unicas",
+    "replacements": [
+      "únicas"
+    ],
+    "source": "learned_know:acentuacao_03"
+  },
+  {
+    "from": "unico",
+    "replacements": [
+      "único"
+    ],
+    "source": "learned_know:acent-17"
+  },
+  {
+    "from": "universitario",
+    "replacements": [
+      "universitário"
+    ],
+    "source": "learned_know:acentuacao_18"
+  },
+  {
+    "from": "urgencia",
+    "replacements": [
+      "urgência"
+    ],
+    "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "usuario",
+    "replacements": [
+      "usuário"
+    ],
+    "source": "learned_know:acentuacao_01"
+  },
+  {
+    "from": "util",
+    "replacements": [
+      "útil"
+    ],
+    "source": "learned_know:acen-22"
+  },
+  {
+    "from": "Varios",
+    "replacements": [
+      "Vários"
+    ],
+    "source": "learned_know:acen-varios"
+  },
+  {
+    "from": "vazo",
+    "replacements": [
+      "vaza"
+    ],
+    "source": "learned_know:ort_06"
+  },
+  {
+    "from": "vêem",
+    "replacements": [
+      "veem"
+    ],
+    "source": "learned_know:acent_veem_leem"
+  },
+  {
+    "from": "veiculo",
+    "replacements": [
+      "veículo"
+    ],
+    "source": "learned_know:acen-29"
+  },
+  {
+    "from": "ventilassão",
+    "replacements": [
+      "ventilação"
+    ],
+    "source": "learned_know:ortografia_019"
+  },
+  {
+    "from": "viaguem",
+    "replacements": [
+      "viajem"
+    ],
+    "source": "learned_know:ort_22"
+  },
+  {
+    "from": "viajem",
+    "replacements": [
+      "viagem"
+    ],
+    "source": "learned_know:ort-51"
+  },
+  {
+    "from": "vicisitudes",
+    "replacements": [
+      "vicissitudes"
+    ],
+    "source": "learned_know:orto_vicissitude_concessao"
+  },
+  {
+    "from": "viroze",
+    "replacements": [
+      "virose"
+    ],
+    "source": "learned_know:ort-7"
+  },
+  {
+    "from": "virus",
+    "replacements": [
+      "vírus"
+    ],
+    "source": "learned_know:ace_28"
+  },
+  {
+    "from": "visinha",
+    "replacements": [
+      "vizinha"
+    ],
+    "source": "learned_know:orto-28"
+  },
+  {
+    "from": "vitoria",
+    "replacements": [
+      "vitória"
+    ],
+    "source": "learned_know:acen-30"
+  },
+  {
+    "from": "viuva",
+    "replacements": [
+      "viúva"
+    ],
+    "source": "learned_know:acen-viuva-heranca"
+  },
+  {
+    "from": "vizualizações",
+    "replacements": [
+      "visualizações"
+    ],
+    "source": "learned_know:orto_paralisacao_visualizacoes"
+  },
+  {
+    "from": "vizualizar",
+    "replacements": [
+      "visualizar"
+    ],
+    "source": "learned_know:ort_11"
+  },
+  {
+    "from": "Voçê",
+    "replacements": [
+      "Você"
+    ],
+    "source": "learned_know:acentuacao_15"
+  },
+  {
+    "from": "vôos",
+    "replacements": [
+      "voos"
+    ],
+    "source": "learned_know:orto-05"
+  },
+  {
+    "from": "vova",
+    "replacements": [
+      "vovó"
+    ],
+    "source": "learned_know:acen-25"
+  },
+  {
+    "from": "vultuosa",
+    "replacements": [
+      "vultosa"
+    ],
+    "source": "learned_know:ort-13"
+  },
+  {
+    "from": "vultuoso",
+    "replacements": [
+      "vultoso"
+    ],
+    "source": "learned_know:orto-21"
+  },
+  {
+    "from": "xérox",
+    "replacements": [
+      "xerox"
+    ],
+    "source": "learned_know:orto_06"
+  },
+  {
+    "from": "xicara",
+    "replacements": [
+      "xícara"
+    ],
+    "source": "learned_know:acen-40"
+  },
+  {
+    "from": "xuxu",
+    "replacements": [
+      "chuchu"
+    ],
+    "source": "learned_know:orto-chuchu-legume"
+  }
+]
