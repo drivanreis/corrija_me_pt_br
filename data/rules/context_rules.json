@@ -264,14 +264,6 @@
     "description": "Corrige confusao mal/mau."
   },
   {
-    "id": "PT_BR_CONTEXT_ONDE_MOVIMENTO",
-    "pattern": ["a", "onde", "voce", "vai"],
-    "targetIndex": 1,
-    "replacements": ["aonde"],
-    "message": "Use 'aonde' com verbos que indicam movimento.",
-    "description": "Corrige confusao entre onde/aonde."
-  },
-  {
     "id": "PT_BR_CONTEXT_AONDE_ESTATICIDADE",
     "pattern": ["aonde", "esta", "o", "livro"],
     "targetIndex": 0,
@@ -301,14 +293,6 @@
     "targetIndex": 1,
     "replacements": ["onde"],
     "message": "Use 'onde' com verbos que indicam lugar fixo.",
-    "description": "Corrige confusao onde/aonde."
-  },
-  {
-    "id": "PT_BR_CONTEXT_ONDE_VERBO_MOVIMENTO_IR",
-    "pattern": ["onde", "voce", "vai"],
-    "targetIndex": 0,
-    "replacements": ["aonde"],
-    "message": "Use 'aonde' com verbos de movimento.",
     "description": "Corrige confusao onde/aonde."
   },
   {
@@ -702,5 +686,133 @@
     "replacements": ["há"],
     "message": "Use 'há de' como locução verbal impessoal.",
     "description": "Corrige construcao com haver."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SECAO_CINEMA",
+    "pattern": ["seção", "de", "cinema"],
+    "targetIndex": 0,
+    "replacements": ["sessão"],
+    "message": "No contexto de exibição, a forma esperada é 'sessão'.",
+    "description": "Corrige uso de seção/sessão em contexto de cinema."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SECAO_TEATRO",
+    "pattern": ["seção", "de", "teatro"],
+    "targetIndex": 0,
+    "replacements": ["sessão"],
+    "message": "No contexto de exibição, a forma esperada é 'sessão'.",
+    "description": "Corrige uso de seção/sessão em contexto de teatro."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SECAO_FOTOS",
+    "pattern": ["seção", "de", "fotos"],
+    "targetIndex": 0,
+    "replacements": ["sessão"],
+    "message": "No contexto de ensaio ou registro, a forma esperada é 'sessão'.",
+    "description": "Corrige uso de seção/sessão em contexto fotográfico."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SECAO_TREINAMENTO",
+    "pattern": ["seção", "de", "treinamento"],
+    "targetIndex": 0,
+    "replacements": ["sessão"],
+    "message": "No contexto de encontro ou atividade, a forma esperada é 'sessão'.",
+    "description": "Corrige uso de seção/sessão em contexto de treinamento."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SESSAO_DIREITOS",
+    "pattern": ["sessão", "de", "direitos"],
+    "targetIndex": 0,
+    "replacements": ["cessão"],
+    "message": "No contexto jurídico, a forma esperada é 'cessão'.",
+    "description": "Corrige uso de sessão/cessão em contexto de direitos."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SESSAO_CREDITO",
+    "pattern": ["sessão", "de", "crédito"],
+    "targetIndex": 0,
+    "replacements": ["cessão"],
+    "message": "No contexto financeiro, a forma esperada é 'cessão'.",
+    "description": "Corrige uso de sessão/cessão em contexto de crédito."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SESSAO_TERRAS",
+    "pattern": ["sessão", "de", "terras"],
+    "targetIndex": 0,
+    "replacements": ["cessão"],
+    "message": "No contexto de transferência, a forma esperada é 'cessão'.",
+    "description": "Corrige uso de sessão/cessão em contexto patrimonial."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SESSAO_USO",
+    "pattern": ["sessão", "de", "uso"],
+    "targetIndex": 0,
+    "replacements": ["cessão"],
+    "message": "No contexto contratual, a forma esperada é 'cessão'.",
+    "description": "Corrige uso de sessão/cessão em contexto de uso."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SESSAO_DOCUMENTOS",
+    "pattern": ["sessão", "de", "documentos"],
+    "targetIndex": 0,
+    "replacements": ["seção"],
+    "message": "No contexto organizacional, a forma esperada é 'seção'.",
+    "description": "Corrige uso de sessão/seção em contexto administrativo."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SESSAO_ELETRONICOS",
+    "pattern": ["sessão", "de", "eletrônicos"],
+    "targetIndex": 0,
+    "replacements": ["seção"],
+    "message": "No contexto de loja ou catálogo, a forma esperada é 'seção'.",
+    "description": "Corrige uso de sessão/seção em contexto comercial."
+  },
+  {
+    "id": "PT_BR_CONTEXT_TACHAR_IMPORTACOES",
+    "pattern": ["tachar", "as", "importações"],
+    "targetIndex": 0,
+    "replacements": ["taxar"],
+    "message": "No contexto tributário, a forma esperada é 'taxar'.",
+    "description": "Corrige uso de taxar/tachar em contexto de importações."
+  },
+  {
+    "id": "PT_BR_CONTEXT_TACHAR_FORTUNAS",
+    "pattern": ["tachar", "grandes", "fortunas"],
+    "targetIndex": 0,
+    "replacements": ["taxar"],
+    "message": "No contexto tributário, a forma esperada é 'taxar'.",
+    "description": "Corrige uso de taxar/tachar em contexto fiscal."
+  },
+  {
+    "id": "PT_BR_CONTEXT_TACHAR_COMPRAS",
+    "pattern": ["tachar", "as", "compras", "internacionais"],
+    "targetIndex": 0,
+    "replacements": ["taxar"],
+    "message": "No contexto tributário, a forma esperada é 'taxar'.",
+    "description": "Corrige uso de taxar/tachar em contexto de compras internacionais."
+  },
+  {
+    "id": "PT_BR_CONTEXT_TAXAR_MENTIROSO",
+    "pattern": ["taxar", "de", "mentiroso"],
+    "targetIndex": 0,
+    "replacements": ["tachar"],
+    "message": "No sentido de rotular alguém, a forma esperada é 'tachar'.",
+    "description": "Corrige uso de taxar/tachar em contexto avaliativo."
+  },
+  {
+    "id": "PT_BR_CONTEXT_TAXAR_PREGUICOSO",
+    "pattern": ["taxar", "de", "preguiçoso"],
+    "targetIndex": 0,
+    "replacements": ["tachar"],
+    "message": "No sentido de rotular alguém, a forma esperada é 'tachar'.",
+    "description": "Corrige uso de taxar/tachar em contexto avaliativo."
+  },
+  {
+    "id": "PT_BR_CONTEXT_TAXAR_INCOMPETENTE",
+    "pattern": ["taxar", "de", "incompetente"],
+    "targetIndex": 0,
+    "replacements": ["tachar"],
+    "message": "No sentido de rotular alguém, a forma esperada é 'tachar'.",
+    "description": "Corrige uso de taxar/tachar em contexto avaliativo."
   }
 ]
