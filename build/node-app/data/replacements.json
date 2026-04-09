@@ -3584,6 +3584,13 @@
     "source": "curated_exact"
   },
   {
+    "from": "O principal motivo da sua ausência foi, que ele teve um mal entendido e não foi avisado.",
+    "replacements": [
+      "O principal motivo da sua ausência foi que ele teve um mal-entendido e não foi avisado."
+    ],
+    "source": "curated_exact"
+  },
+  {
     "from": "A medida em que o tempo passa, as lembranças do passado tornam-se cada vez mais presentes.",
     "replacements": [
       "À medida que o tempo passa, as lembranças do passado tornam-se cada vez mais presentes."
@@ -5589,6 +5596,13 @@
     "from": "A descrição do projeto estava mau escrita, porisso a equipe não compreendeu.",
     "replacements": [
       "A descrição do projeto estava mal escrita, por isso a equipe não compreendeu."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A espia tentou espia os segredos na rede.",
+    "replacements": [
+      "A espiã tentou espiar os segredos na rede."
     ],
     "source": "curated_exact"
   },
@@ -22022,6 +22036,13 @@
     "source": "curated_exact"
   },
   {
+    "from": "Não perca essa oportunidade unica.",
+    "replacements": [
+      "Não perca essa oportunidade única."
+    ],
+    "source": "curated_exact"
+  },
+  {
     "from": "Agente vamos viajar juntos semana que vem.",
     "replacements": [
       "A gente vai viajar junto semana que vem."
@@ -27465,6 +27486,125 @@
     "from": "Preciso ratificar o erro no texto.",
     "replacements": [
       "Preciso retificar o erro no texto."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Vou ratificar o erro e retificar o contrato.",
+    "replacements": [
+      "Vou retificar o erro e ratificar o contrato."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A empresa dispensa novas tecnologias para otimizar seus processos. Eles também não se importam com o meio-ambiente.",
+    "replacements": [
+      "A empresa adota novas tecnologias para otimizar seus processos. Eles também não se importam com o meio ambiente."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Ao invés de ir em casa, ele foi ao encontro da moça, sem saber o porque.",
+    "replacements": [
+      "Em vez de ir para casa, ele foi ao encontro da moça, sem saber o porquê."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "O novo diretor tinha uma personalidade muito marcante, e ele estava ancioso a iniciar os projetos.",
+    "replacements": [
+      "O novo diretor tinha uma personalidade muito marcante, e ele estava ansioso para iniciar os projetos."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A casa aonde eu foi é velha, porisso precisa de pintura.",
+    "replacements": [
+      "A casa onde eu fui é velha; por isso, precisa de pintura."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Ela estava àtoa, há cerca de mil problemas para resolver acerca de um projeto.",
+    "replacements": [
+      "Ela estava à toa, com cerca de mil problemas para resolver acerca de um projeto."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Ao invés de estudar, ele preferiu ir ao cinema, o que resultou em notas baixa. Não foi uma boa escolha.",
+    "replacements": [
+      "Em vez de estudar, ele preferiu ir ao cinema, o que resultou em notas baixas. Não foi uma boa escolha."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Por tanto, a conclusão do estudo indica que precisamos de medidas mais eficases para o controle.",
+    "replacements": [
+      "Portanto, a conclusão do estudo indica que precisamos de medidas mais eficazes para o controle."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Peço-lhe que de cabo da tarefa o quanto antes, sem delongas.",
+    "replacements": [
+      "Peço-lhe que conclua a tarefa o quanto antes, sem delongas."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Acerca de dez anos, ele falou a cerca disso.",
+    "replacements": [
+      "Há cerca de dez anos, ele falou acerca disso."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Ainda não decidimos aonde iremos para o almoço; mas acho que será em um restaurante italiano.",
+    "replacements": [
+      "Ainda não decidimos onde iremos para o almoço, mas acho que será em um restaurante italiano."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "O cachorro possuía um comportamento estranho, sempre latia para o nada.",
+    "replacements": [
+      "O cachorro tinha um comportamento estranho; sempre latia para o nada."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Ele preferiu ir do que ficar em casa, assistindo tv a noite toda.",
+    "replacements": [
+      "Ele preferiu ir a ficar em casa, assistindo TV a noite toda."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Ele estava mau-humorado, por que não dormiu direito.",
+    "replacements": [
+      "Ele estava mal-humorado porque não dormiu direito."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Informamos a V.Sa. que a reunião foi adiada para data posterior, devido a imprevistos na agenda.",
+    "replacements": [
+      "Informamos a V. Exa. que a reunião foi adiada para data posterior devido a imprevistos na agenda."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Chegou no banco e viu que a senhora tinha chegado no final da fila.",
+    "replacements": [
+      "Chegou ao banco e viu que a senhora tinha chegado ao final da fila."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Cerca de dez pessoas haviam chegado já, quando a palestra início.",
+    "replacements": [
+      "Cerca de dez pessoas já haviam chegado, quando a palestra iniciou."
     ],
     "source": "curated_exact"
   },
@@ -32922,13 +33062,6 @@
     "source": "core"
   },
   {
-    "from": "janta pra nois",
-    "replacements": [
-      "jantar para nós"
-    ],
-    "source": "bateria_continua"
-  },
-  {
     "from": "O bau de ouro.",
     "replacements": [
       "O baú de ouro."
@@ -34129,5 +34262,271 @@
       "você"
     ],
     "source": "core"
+  },
+  {
+    "from": "Haviam muitas flores no jardim, mais ela queria um mau buquê.",
+    "replacements": [
+      "Havia muitas flores no jardim, mas ela queria um bom buquê."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Nosso roadmap de desenvolvimento prevê o deployment para o próximo mês.",
+    "replacements": [
+      "Nosso roteiro de desenvolvimento prevê a implantação para o próximo mês."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Os colaboradores da empresa se adaptam-se bem às novas diretrizes.",
+    "replacements": [
+      "Os colaboradores da empresa se adaptam bem às novas diretrizes."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A política da organização são bastante claras para todos os funcionários.",
+    "replacements": [
+      "A política da organização é bastante clara para todos os funcionários."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A cerca de vinte pessoas participaram do seminário.",
+    "replacements": [
+      "Acerca de vinte pessoas participaram do seminário."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Não sei onde ele vai, mas a princípio, não deve demorar.",
+    "replacements": [
+      "Não sei aonde ele vai, mas a princípio, não deve demorar."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Rápido não temos tempo.",
+    "replacements": [
+      "Rápido, não temos tempo."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Me diga o que fazer para que possamos prosseguir com os trabalhos que iniciamos.",
+    "replacements": [
+      "Diga-me o que fazer para que possamos prosseguir com os trabalhos iniciados."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Precisamos de um input de dados mais rápido para melhorar o throughput.",
+    "replacements": [
+      "Precisamos de uma entrada de dados mais rápida para melhorar a vazão."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Em baixo da mesa tinha um estojo, para ninguem ver.",
+    "replacements": [
+      "Embaixo da mesa tinha um estojo, para ninguém ver."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Vou coser a carne enquanto ela vai cozer a calça.",
+    "replacements": [
+      "Vou cozer a carne enquanto ela vai coser a calça."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Conforme foi informado a cliente, a entrega ocorrerá em até 5 dias úteis.",
+    "replacements": [
+      "Conforme foi informado à cliente, a entrega ocorrerá em até 5 dias úteis."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Prefiro trabalhar do que estudar.",
+    "replacements": [
+      "Prefiro trabalhar a estudar."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "O pessoal chegaram cedo.",
+    "replacements": [
+      "O pessoal chegou cedo."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A cerca da casa esta pintada de azul, e eu estou acerca de mudar.",
+    "replacements": [
+      "A cerca da casa está pintada de azul, e eu estou a cerca de mudar."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Ele está traz das grades por que roubou.",
+    "replacements": [
+      "Ele está atrás das grades porque roubou."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A cerca de cinco anos, eu estive em Brasília, e vi o congresso nacional.",
+    "replacements": [
+      "Há cerca de cinco anos, eu estive em Brasília, e vi o Congresso Nacional."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A empresa faz uso de recursos escessivos na produção de seu material.",
+    "replacements": [
+      "A empresa faz uso de recursos excessivos na produção de seu material."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A sessao de cinema atrasou e não conseguimos assister o filme desde o inisio.",
+    "replacements": [
+      "A sessão de cinema atrasou e não conseguimos assistir ao filme desde o início."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "O acento da cadeira quebrou.",
+    "replacements": [
+      "O assento da cadeira quebrou."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Comprei um livro para ler que estava na promoção, e o capa era vermelha.",
+    "replacements": [
+      "Comprei um livro que estava na promoção para ler, e a capa era vermelha."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A anos ele não aparece aqui. A um mês, ele sumiu sem avisar.",
+    "replacements": [
+      "Há anos ele não aparece aqui. Há um mês, ele sumiu sem avisar."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Segue os documentos em anexo.",
+    "replacements": [
+      "Seguem os documentos em anexo."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "O óculos sumiu.",
+    "replacements": [
+      "Os óculos sumiram."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Eles estão quite com a loja.",
+    "replacements": [
+      "Eles estão quites com a loja."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Todos tem que haver com a decisão final, não é assim que funciona.",
+    "replacements": [
+      "Todos têm que a ver com a decisão final, não é assim que funciona."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Foi dado, a todos os funcionários, um aviso sobre a mudança de horário de entrada e saídas.",
+    "replacements": [
+      "Foi dado a todos os funcionários um aviso sobre a mudança de horário de entrada e saída."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Apesar de todos os esforços não conseguimos finalizar o projeto a tempo e isso é um problema.",
+    "replacements": [
+      "Apesar de todos os esforços, não conseguimos finalizar o projeto a tempo, e isso é um problema."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "O gerente pediu para o funcionario prever o relatorio ate o final do dia.",
+    "replacements": [
+      "O gerente pediu para o funcionário prover o relatório até o final do dia."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Já imprimir os documento necessários para a reunião de amanhã.",
+    "replacements": [
+      "Já imprimi os documentos necessários para a reunião de amanhã."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "O gerente ascençorista chegou para nos ajudar com o projeto de conciência ambiental.",
+    "replacements": [
+      "O gerente assessorista chegou para nos ajudar com o projeto de consciência ambiental."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Gostaria de comprimentar o novo colega, e o parabenizar pelo sucesso.",
+    "replacements": [
+      "Gostaria de cumprimentar o novo colega e parabenizá-lo pelo sucesso."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "Faz muitos anos que não vejo ele, desde que mudou de cidade.",
+    "replacements": [
+      "Há muitos anos que não o vejo, desde que ele mudou de cidade."
+    ],
+    "source": "curated_exact"
+  },
+  {
+    "from": "A gente fomos no mercado compra pão.",
+    "replacements": [
+      "A gente foi ao mercado comprar pão."
+    ],
+    "source": "manual_engine_fix"
+  },
+  {
+    "from": "Haviam muitas pessoa na fila mais ninguém reclamou.",
+    "replacements": [
+      "Havia muitas pessoas na fila, mas ninguém reclamou."
+    ],
+    "source": "manual_engine_fix"
+  },
+  {
+    "from": "discusão",
+    "replacements": [
+      "discussão"
+    ],
+    "source": "proof_gemini"
+  },
+  {
+    "from": "anciosos",
+    "replacements": [
+      "ansiosos"
+    ],
+    "source": "proof_gemini"
+  },
+  {
+    "from": "precentação",
+    "replacements": [
+      "apresentação"
+    ],
+    "source": "proof_gemini"
   }
 ]

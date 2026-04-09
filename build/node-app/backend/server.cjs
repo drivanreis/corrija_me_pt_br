@@ -17,7 +17,7 @@ function createWholeWordPattern(term) {
   return new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegExp(term)}(?![\\p{L}\\p{N}])`, "giu");
 }
 function createWordTokenPattern() {
-  return /(?<![\p{L}\p{N}\p{M}])[\p{L}][\p{L}\p{M}\p{Pc}\p{Pd}]*(?![\p{L}\p{N}\p{M}])/gu;
+  return /(?<![\p{L}\p{N}\p{M}])[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*(?![\p{L}\p{N}\p{M}])/gu;
 }
 function preserveReplacementCase(original, replacement) {
   if (!replacement) {
@@ -109,6 +109,9 @@ function createContextRuleMatches(text, rules) {
 }
 
 // src/core/nominal-agreement.ts
+function isHyphenatedToken(token) {
+  return Boolean(token?.normalized.includes("-"));
+}
 function tokenizeText2(text) {
   const tokens = [];
   const pattern = createWordTokenPattern();
@@ -226,6 +229,9 @@ function createDeterminerNounMatches(text, tokens, dictionary) {
     if (!articleToken || !nounToken) {
       continue;
     }
+    if (isHyphenatedToken(articleToken) || isHyphenatedToken(nounToken)) {
+      continue;
+    }
     const articleEntry = dictionary.linguisticData.lexicalEntries.get(articleToken.normalized);
     const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
     if (!isDeterminer(articleEntry) || !isNoun(nounEntry)) {
@@ -253,6 +259,9 @@ function createDeterminerNounAdjectiveMatches(text, tokens, dictionary) {
     const nounToken = tokens[index + 1];
     const adjectiveToken = tokens[index + 2];
     if (!determinerToken || !nounToken || !adjectiveToken) {
+      continue;
+    }
+    if (isHyphenatedToken(determinerToken) || isHyphenatedToken(nounToken) || isHyphenatedToken(adjectiveToken)) {
       continue;
     }
     const determinerEntry = dictionary.linguisticData.lexicalEntries.get(determinerToken.normalized);
@@ -284,6 +293,9 @@ function createNounAdjectiveMatches(text, tokens, dictionary) {
     const nounToken = tokens[index];
     const adjectiveToken = tokens[index + 1];
     if (!nounToken || !adjectiveToken) {
+      continue;
+    }
+    if (isHyphenatedToken(nounToken) || isHyphenatedToken(adjectiveToken)) {
       continue;
     }
     const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
@@ -318,6 +330,9 @@ function createNominalPredicateMatches(text, tokens, dictionary) {
     const thirdEntry = dictionary.linguisticData.lexicalEntries.get(thirdToken?.normalized || "");
     const fourthEntry = dictionary.linguisticData.lexicalEntries.get(fourthToken?.normalized || "");
     if (firstToken && secondToken && thirdToken && isDeterminer(firstEntry) && isNoun(secondEntry) && isLinkingVerb(thirdEntry) && isVariableAdjective(dictionary.linguisticData.lexicalEntries.get(thirdToken.normalized)) === false && isVariableAdjective(fourthEntry) && fourthToken) {
+      if (isHyphenatedToken(firstToken) || isHyphenatedToken(secondToken) || isHyphenatedToken(thirdToken) || isHyphenatedToken(fourthToken)) {
+        continue;
+      }
       const targetGenero = firstEntry?.genero || secondEntry?.genero || inferGender(secondToken.normalized);
       const targetNumero = firstEntry?.numero || inferNumber(secondToken.normalized);
       const expectedAdjective = getExpectedAdjectiveForm(fourthEntry, targetGenero, targetNumero);
@@ -331,6 +346,9 @@ function createNominalPredicateMatches(text, tokens, dictionary) {
       }
     }
     if (firstToken && secondToken && thirdToken && isNoun(firstEntry) && isLinkingVerb(secondEntry) && isVariableAdjective(thirdEntry)) {
+      if (isHyphenatedToken(firstToken) || isHyphenatedToken(secondToken) || isHyphenatedToken(thirdToken)) {
+        continue;
+      }
       const targetGenero = firstEntry?.genero || inferGender(firstToken.normalized);
       const targetNumero = inferNumber(firstToken.normalized);
       const expectedAdjective = getExpectedAdjectiveForm(thirdEntry, targetGenero, targetNumero);
@@ -362,6 +380,9 @@ function createExpandedNominalPredicateMatches(text, tokens, dictionary) {
     if (!determinerToken || !nounToken || !nounQualifierToken || !linkingVerbToken || !adjectiveToken || !isDeterminer(determinerEntry) || !isNoun(nounEntry) || !isVariableAdjective(nounQualifierEntry) || !isLinkingVerb(linkingVerbEntry) || !isVariableAdjective(adjectiveEntry)) {
       continue;
     }
+    if (isHyphenatedToken(determinerToken) || isHyphenatedToken(nounToken) || isHyphenatedToken(nounQualifierToken) || isHyphenatedToken(linkingVerbToken) || isHyphenatedToken(adjectiveToken)) {
+      continue;
+    }
     const targetGenero = determinerEntry?.genero || nounEntry?.genero || inferGender(nounToken.normalized);
     const targetNumero = determinerEntry?.numero || inferNumber(nounToken.normalized);
     const expectedAdjective = getExpectedAdjectiveForm(adjectiveEntry, targetGenero, targetNumero);
@@ -389,6 +410,9 @@ function createAttachmentPredicateMatches(text, tokens, dictionary) {
     const determinerEntry = dictionary.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
     const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
     if (!verbToken || !adjectiveToken || !determinerToken || !nounToken || !isAttachmentVerb(verbEntry) || !isVariableAdjective(adjectiveEntry) || !isDeterminer(determinerEntry) || !isNoun(nounEntry)) {
+      continue;
+    }
+    if (isHyphenatedToken(verbToken) || isHyphenatedToken(adjectiveToken) || isHyphenatedToken(determinerToken) || isHyphenatedToken(nounToken)) {
       continue;
     }
     const targetGenero = determinerEntry?.genero || nounEntry?.genero || inferGender(nounToken.normalized);
@@ -630,11 +654,12 @@ function createPunctuationHeuristicMatches(text) {
     matches
   );
   const lower = trimmed.toLocaleLowerCase("pt-BR");
-  const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que", "voc\xEA"];
+  const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que"];
   const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
   const looksLikeQuestion = questionStarts.some((prefix) => lower.startsWith(prefix));
   const looksLikeExclamation = exclamationStarts.some((prefix) => lower.startsWith(prefix));
-  if (!/[?!.]\s*$/u.test(trimmed)) {
+  const hasInternalTerminalPunctuation = /[?!.]/u.test(trimmed.replace(/[?!.]\s*$/u, ""));
+  if (!/[?!.]\s*$/u.test(trimmed) && !hasInternalTerminalPunctuation) {
     if (looksLikeQuestion) {
       createTerminalMatch(
         text,
@@ -656,7 +681,7 @@ function createPunctuationHeuristicMatches(text) {
         matches
       );
     }
-  } else if (looksLikeQuestion && /\.\s*$/u.test(trimmed)) {
+  } else if (looksLikeQuestion && /\.\s*$/u.test(trimmed) && !hasInternalTerminalPunctuation) {
     createTerminalReplacementMatch(
       text,
       /\.\s*$/u,
@@ -1073,6 +1098,7 @@ function createSimpleVerbalAgreementMatches(text, dictionary) {
 var preparedReplacementIndexCache = /* @__PURE__ */ new WeakMap();
 var checkResultCache = /* @__PURE__ */ new Map();
 var MAX_CHECK_RESULT_CACHE_SIZE = 512;
+var MAX_CORRECTION_PASSES = 3;
 function createConfidence(level, score, reason) {
   return {
     level,
@@ -1200,14 +1226,8 @@ function createReplacementMatches(text, entries) {
   }
   return matches;
 }
-function createDictionaryMistakeMatches(text, dictionary) {
-  if (!dictionary.commonMistakes.length) {
-    return [];
-  }
-  return createReplacementMatches(text, dictionary.commonMistakes);
-}
 function isIgnorableToken(word) {
-  return word.length < 3 || /\d/u.test(word) || /^[A-Z0-9_-]+$/u.test(word) || /[_@/\\.-]/u.test(word);
+  return word.length < 3 || /\d/u.test(word) || /^[A-Z0-9_-]+$/u.test(word) || /-/u.test(word) || /[_@/\\.-]/u.test(word);
 }
 function levenshteinDistance(left, right) {
   if (left === right) {
@@ -1338,6 +1358,9 @@ function createUnknownWordMatches(text, dictionary) {
     }
     const original = match[0];
     const normalized = normalizeDictionaryWord(original);
+    if (/^(segunda|terca|terça|quarta|quinta|sexta|sabado|sábado|domingo)-feira$/iu.test(original)) {
+      continue;
+    }
     if (!normalized || isIgnorableToken(original) || dictionary.words.has(normalized) || dictionary.linguisticData.allowedUnknownWords.has(normalized) || dictionary.linguisticData.blockedAutoCorrections.has(normalized) || overlapsTechnicalSpan(match.index, original.length, technicalSpans)) {
       continue;
     }
@@ -1425,6 +1448,204 @@ function tokenizeSlices(text) {
   }
   return tokens;
 }
+function buildTokenChangeGroups(sourceTokens, targetTokens) {
+  const rows = sourceTokens.length + 1;
+  const cols = targetTokens.length + 1;
+  const dp = Array.from({ length: rows }, () => new Array(cols).fill(0));
+  for (let i2 = 0; i2 < rows; i2 += 1) {
+    dp[i2][0] = i2;
+  }
+  for (let j2 = 0; j2 < cols; j2 += 1) {
+    dp[0][j2] = j2;
+  }
+  for (let i2 = 1; i2 < rows; i2 += 1) {
+    for (let j2 = 1; j2 < cols; j2 += 1) {
+      if (sourceTokens[i2 - 1] === targetTokens[j2 - 1]) {
+        dp[i2][j2] = dp[i2 - 1][j2 - 1];
+      } else {
+        dp[i2][j2] = Math.min(
+          dp[i2 - 1][j2] + 1,
+          dp[i2][j2 - 1] + 1,
+          dp[i2 - 1][j2 - 1] + 1
+        );
+      }
+    }
+  }
+  const operations = [];
+  let i = sourceTokens.length;
+  let j = targetTokens.length;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && sourceTokens[i - 1] === targetTokens[j - 1]) {
+      operations.push({ type: "equal", srcIndex: i - 1, tgtIndex: j - 1 });
+      i -= 1;
+      j -= 1;
+      continue;
+    }
+    const replaceCost = i > 0 && j > 0 ? dp[i - 1][j - 1] : Number.POSITIVE_INFINITY;
+    const deleteCost = i > 0 ? dp[i - 1][j] : Number.POSITIVE_INFINITY;
+    const currentCost = dp[i][j];
+    if (i > 0 && j > 0 && currentCost === replaceCost + 1) {
+      operations.push({ type: "replace", srcIndex: i - 1, tgtIndex: j - 1 });
+      i -= 1;
+      j -= 1;
+    } else if (i > 0 && currentCost === deleteCost + 1) {
+      operations.push({ type: "delete", srcIndex: i - 1 });
+      i -= 1;
+    } else {
+      operations.push({ type: "insert", tgtIndex: j - 1 });
+      j -= 1;
+    }
+  }
+  operations.reverse();
+  const groups = [];
+  let currentGroup = null;
+  let sourceCursor = 0;
+  let targetCursor = 0;
+  function closeGroup() {
+    if (!currentGroup) {
+      return;
+    }
+    groups.push({
+      ...currentGroup,
+      srcText: currentGroup.srcTokens.join(" ").trim(),
+      tgtText: currentGroup.tgtTokens.join(" ").trim()
+    });
+    currentGroup = null;
+  }
+  for (const operation of operations) {
+    if (operation.type === "equal") {
+      closeGroup();
+      sourceCursor += 1;
+      targetCursor += 1;
+      continue;
+    }
+    if (!currentGroup) {
+      currentGroup = {
+        srcStart: sourceCursor,
+        srcEnd: sourceCursor,
+        tgtStart: targetCursor,
+        tgtEnd: targetCursor,
+        srcTokens: [],
+        tgtTokens: []
+      };
+    }
+    if (operation.type === "replace") {
+      currentGroup.srcTokens.push(sourceTokens[operation.srcIndex ?? 0] || "");
+      currentGroup.tgtTokens.push(targetTokens[operation.tgtIndex ?? 0] || "");
+      sourceCursor += 1;
+      targetCursor += 1;
+    } else if (operation.type === "delete") {
+      currentGroup.srcTokens.push(sourceTokens[operation.srcIndex ?? 0] || "");
+      sourceCursor += 1;
+    } else {
+      currentGroup.tgtTokens.push(targetTokens[operation.tgtIndex ?? 0] || "");
+      targetCursor += 1;
+    }
+    currentGroup.srcEnd = sourceCursor;
+    currentGroup.tgtEnd = targetCursor;
+  }
+  closeGroup();
+  return groups.filter((group) => group.srcText && group.tgtText);
+}
+function createIterativeDiffMatches(originalText, finalText) {
+  if (originalText === finalText) {
+    return [];
+  }
+  const originalTokens = tokenizeSlices(originalText);
+  const finalTokens = tokenizeSlices(finalText);
+  const sourceTokenValues = originalTokens.map((token) => token.normalized);
+  const targetTokenValues = finalTokens.map((token) => token.normalized);
+  const groups = buildTokenChangeGroups(sourceTokenValues, targetTokenValues);
+  const diffMatches = groups.map((group) => {
+    const startToken = originalTokens[group.srcStart];
+    const endToken = originalTokens[group.srcEnd - 1];
+    if (!startToken || !endToken) {
+      return null;
+    }
+    const offset = startToken.offset;
+    const length = endToken.offset + endToken.length - startToken.offset;
+    const replacement = finalTokens.slice(group.tgtStart, group.tgtEnd).map((token) => token.value).join(" ").trim();
+    if (!replacement) {
+      return null;
+    }
+    return createMatch(
+      originalText,
+      offset,
+      length,
+      [replacement],
+      "PT_BR_MULTI_PASS",
+      "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
+      "Agrupa corre\xE7\xF5es encadeadas encontradas ap\xF3s reprocessar a frase.",
+      createConfidence("high", 0.93, "correcao iterativa consolidada")
+    );
+  }).filter((match) => Boolean(match));
+  return diffMatches.map((match) => {
+    const original = originalText.slice(match.offset, match.offset + match.length);
+    const replacement = match.replacements[0]?.value || "";
+    const leftContext = originalText.slice(0, match.offset);
+    const porMatch = /\bpor\s$/iu.exec(leftContext);
+    if (stripDiacritics(normalizeDictionaryWord(original)) === "que" && stripDiacritics(normalizeDictionaryWord(replacement)) === "que" && porMatch) {
+      const expandedOffset = match.offset - porMatch[0].length;
+      const expandedOriginal = originalText.slice(expandedOffset, match.offset + match.length);
+      return createMatch(
+        originalText,
+        expandedOffset,
+        expandedOriginal.length,
+        [preserveReplacementCase(expandedOriginal, "por qu\xEA")],
+        "PT_BR_MULTI_PASS",
+        "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
+        "Agrupa corre\xE7\xF5es encadeadas encontradas ap\xF3s reprocessar a frase.",
+        createConfidence("high", 0.93, "correcao iterativa consolidada")
+      );
+    }
+    return match;
+  });
+}
+function createWholeTextInferenceMatch(originalText, finalText) {
+  return createMatch(
+    originalText,
+    0,
+    originalText.length,
+    [finalText],
+    "PT_BR_MULTI_PASS",
+    "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
+    "Consolida a frase final quando a diferen\xE7a token a token nao preserva toda a corre\xE7\xE3o.",
+    createConfidence("high", 0.9, "consolidacao integral da frase")
+  );
+}
+function sanitizeInvalidWeekdayHyphenForms(text) {
+  return text.replace(/\bsegundas-feira\b/giu, "segunda-feira").replace(/\bterças-feira\b/giu, "ter\xE7a-feira").replace(/\btercas-feira\b/giu, "ter\xE7a-feira").replace(/\bquartas-feira\b/giu, "quarta-feira").replace(/\bquintas-feira\b/giu, "quinta-feira").replace(/\bsextas-feira\b/giu, "sexta-feira").replace(/\bsábados-feira\b/giu, "s\xE1bado-feira").replace(/\bsabados-feira\b/giu, "s\xE1bado-feira").replace(/\bdomingos-feira\b/giu, "domingo-feira");
+}
+function createConsolidatedInferenceMatches(originalText, finalText) {
+  const sanitizedFinalText = sanitizeInvalidWeekdayHyphenForms(finalText);
+  if (originalText === sanitizedFinalText) {
+    return [];
+  }
+  if (originalText === finalText) {
+    return [];
+  }
+  const diffMatches = createIterativeDiffMatches(originalText, sanitizedFinalText);
+  if (!diffMatches.length) {
+    return [createWholeTextInferenceMatch(originalText, sanitizedFinalText)];
+  }
+  const reconstructedText = applyVisibleMatches(originalText, diffMatches);
+  if (reconstructedText !== sanitizedFinalText) {
+    return [createWholeTextInferenceMatch(originalText, sanitizedFinalText)];
+  }
+  return diffMatches;
+}
+function applyVisibleMatches(text, matches) {
+  const ordered = collapseOverlappingMatches(matches).filter((match) => Array.isArray(match.replacements) && Boolean(match.replacements[0]?.value)).sort((left, right) => right.offset - left.offset || right.length - left.length);
+  let updatedText = text;
+  for (const match of ordered) {
+    const replacement = match.replacements[0]?.value;
+    if (!replacement) {
+      continue;
+    }
+    updatedText = updatedText.slice(0, match.offset) + replacement + updatedText.slice(match.offset + match.length);
+  }
+  return updatedText;
+}
 function createStructuredMatch(text, offset, length, replacement, ruleId, message, description, issueType, confidence) {
   return {
     message,
@@ -1476,6 +1697,80 @@ function createCraseHeuristicMatches(text) {
       "Corrige uso indevido de acento em 'a 5 minutos', 'a 2 horas' e constru\xE7\xF5es semelhantes.",
       "grammar",
       createConfidence("high", 0.92, "indicacao de distancia ou tempo")
+    ));
+  }
+  return matches;
+}
+function createPorQueHeuristicMatches(text) {
+  const matches = [];
+  const indirectQuestionPrefixes = [
+    "n\xE3o sei",
+    "nao sei",
+    "ningu\xE9m sabe",
+    "ninguem sabe",
+    "ningu\xE9m entende",
+    "ninguem entende",
+    "quero saber",
+    "queria saber",
+    "gostaria de saber",
+    "n\xE3o sabemos",
+    "nao sabemos",
+    "explique"
+  ];
+  for (const prefix of indirectQuestionPrefixes) {
+    const escapedPrefix = prefix.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&").replace(/\s+/gu, "\\s+");
+    const becausePattern = new RegExp(`\\b(${escapedPrefix})\\s+(porque|porqu\xEA)(?=\\s+\\p{L})`, "giu");
+    for (const match of text.matchAll(becausePattern)) {
+      if (match.index === void 0) {
+        continue;
+      }
+      const token = match[2];
+      const offset = match.index + match[0].lastIndexOf(token);
+      addIfNoOverlap(matches, createStructuredMatch(
+        text,
+        offset,
+        token.length,
+        preserveReplacementCase(token, "por que"),
+        "PT_BR_POR_QUE_INDIRECT_QUESTION",
+        "Em pergunta indireta, a forma esperada aqui e 'por que'.",
+        "Corrige o uso de 'porque' ou 'porqu\xEA' em construcoes de pergunta indireta.",
+        "grammar",
+        createConfidence("high", 0.91, "pergunta indireta recorrente")
+      ));
+    }
+  }
+  for (const match of text.matchAll(/\bpor\s+que(?=\s*[?!]\s*$)/giu)) {
+    if (match.index === void 0) {
+      continue;
+    }
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      match.index,
+      match[0].length,
+      preserveReplacementCase(match[0], "por qu\xEA"),
+      "PT_BR_POR_QUE_FINAL",
+      "No fim de pergunta, a forma esperada aqui e 'por qu\xEA'.",
+      "Corrige 'por que' em final de pergunta direta.",
+      "grammar",
+      createConfidence("high", 0.93, "por que em final de pergunta")
+    ));
+  }
+  for (const match of text.matchAll(new RegExp("\\bexplicou\\s+porqu\xEA(?=\\s+\\p{L})", "giu"))) {
+    if (match.index === void 0) {
+      continue;
+    }
+    const token = "porqu\xEA";
+    const offset = match.index + match[0].toLowerCase().lastIndexOf(token);
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      offset,
+      token.length,
+      "porque",
+      "PT_BR_PORQUE_EXPLICATIVO",
+      "Em ora\xE7\xE3o explicativa, a forma esperada aqui e 'porque'.",
+      "Corrige uso de 'porqu\xEA' onde a construcao pede conjuncao explicativa.",
+      "grammar",
+      createConfidence("high", 0.89, "oracao explicativa recorrente")
     ));
   }
   return matches;
@@ -1704,7 +1999,7 @@ function deriveMatchConfidence(match, text, dictionary) {
     return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
   }
   if (match.rule.id.startsWith("PT_BR_PHRASE_")) {
-    let score = 0.93;
+    let score = 0.97;
     if (hasMultipleSuggestions) {
       score -= 0.04;
     }
@@ -1795,19 +2090,107 @@ function storeCheckResultInCache(text, result) {
     checkResultCache.delete(oldestKey);
   }
 }
-function checkText(text, replacements, dictionary) {
-  const cached = checkResultCache.get(text);
-  if (cached) {
-    return cached;
+function hasSingleWholeTextMatch(result, text) {
+  return result.matches.length === 1 && result.matches[0]?.offset === 0 && result.matches[0]?.length === text.length && Boolean(result.matches[0]?.replacements[0]?.value);
+}
+function collectVisibleStageMatches(text, dictionary, matches) {
+  return finalizeMatches(text, matches, dictionary).matches;
+}
+function findWholeTextSpecialistMatches(text, replacements, dictionary) {
+  const candidates = [
+    ...createReplacementMatches(text, replacements),
+    ...createPhraseRuleMatches(text, dictionary.phraseRules),
+    ...createContextRuleMatches(text, dictionary.contextRules)
+  ];
+  const wholeTextCandidates = candidates.filter((match) => match.offset === 0 && match.length === text.length);
+  if (!wholeTextCandidates.length) {
+    return [];
   }
+  return finalizeMatches(text, wholeTextCandidates, dictionary).matches.filter((match) => match.offset === 0 && match.length === text.length);
+}
+function createInferenceStages(replacements, dictionary) {
+  return [
+    {
+      id: "symbolic_context",
+      description: "Aplica especialistas simbolicos de frase e contexto.",
+      collectMatches: (text) => [
+        ...createPhraseRuleMatches(text, dictionary.phraseRules),
+        ...createContextRuleMatches(text, dictionary.contextRules),
+        ...createPorQueHeuristicMatches(text),
+        ...createCraseHeuristicMatches(text),
+        ...createLocalizationDateMatches(text),
+        ...createAnnouncementAgreementMatches(text)
+      ]
+    },
+    {
+      id: "normalization",
+      description: "Normaliza trocas seguras e problemas mecanicos.",
+      collectMatches: (text) => [
+        ...createReplacementMatches(text, replacements),
+        ...createRepeatedWordMatches(text),
+        ...createDoubleSpaceMatches(text),
+        ...createSpaceBeforePunctuationMatches(text),
+        ...createSentenceCaseMatches(text)
+      ]
+    },
+    {
+      id: "linguistic_agreement",
+      description: "Resolve concordancia e sintaxe curta.",
+      collectMatches: (text) => [
+        ...createSimpleVerbalAgreementMatches(text, dictionary),
+        ...createSimpleNominalAgreementMatches(text, dictionary),
+        ...createSimpleSyntaxPatternMatches(text, dictionary)
+      ]
+    },
+    {
+      id: "refinement",
+      description: "Fecha a frase com refinamentos heur\xEDsticos.",
+      collectMatches: (text) => {
+        const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text);
+        const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => !punctuationHeuristicMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
+        return [
+          ...punctuationHeuristicMatches,
+          ...unknownWordMatches
+        ];
+      }
+    }
+  ];
+}
+function runInferencePipeline(text, replacements, dictionary) {
+  const wholeTextMatches = findWholeTextSpecialistMatches(text, replacements, dictionary);
+  if (wholeTextMatches.length) {
+    return finalizeMatches(text, wholeTextMatches, dictionary);
+  }
+  let currentText = text;
+  let exactWholeTextResult = null;
+  for (const stage of createInferenceStages(replacements, dictionary)) {
+    const visibleMatches = collectVisibleStageMatches(currentText, dictionary, stage.collectMatches(currentText));
+    if (!visibleMatches.length) {
+      continue;
+    }
+    if (visibleMatches.length === 1 && visibleMatches[0]?.offset === 0 && visibleMatches[0]?.length === currentText.length) {
+      exactWholeTextResult = finalizeMatches(text, [createWholeTextInferenceMatch(text, visibleMatches[0].replacements[0]?.value || currentText)], dictionary);
+      currentText = visibleMatches[0].replacements[0]?.value || currentText;
+      break;
+    }
+    const nextText = applyVisibleMatches(currentText, visibleMatches);
+    if (nextText === currentText) {
+      continue;
+    }
+    currentText = nextText;
+  }
+  if (exactWholeTextResult) {
+    return exactWholeTextResult;
+  }
+  return finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary);
+}
+function checkTextSinglePass(text, replacements, dictionary) {
+  return runInferencePipeline(text, replacements, dictionary);
   const replacementMatches = createReplacementMatches(text, replacements);
   const exactWholeTextReplacementMatches = replacementMatches.filter((match) => match.offset === 0 && match.length === text.length);
   if (exactWholeTextReplacementMatches.length) {
-    const exactResult = finalizeMatches(text, exactWholeTextReplacementMatches, dictionary);
-    storeCheckResultInCache(text, exactResult);
-    return exactResult;
+    return finalizeMatches(text, exactWholeTextReplacementMatches, dictionary);
   }
-  const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
   const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
   const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
   const craseHeuristicMatches = createCraseHeuristicMatches(text);
@@ -1818,7 +2201,6 @@ function checkText(text, replacements, dictionary) {
   const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
   const baseProtectedMatches = [
     ...replacementMatches,
-    ...dictionaryMistakeMatches,
     ...phraseRuleMatches,
     ...contextRuleMatches,
     ...craseHeuristicMatches,
@@ -1833,7 +2215,6 @@ function checkText(text, replacements, dictionary) {
   const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => !protectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
   const allMatches = [
     ...replacementMatches,
-    ...dictionaryMistakeMatches,
     ...phraseRuleMatches,
     ...contextRuleMatches,
     ...craseHeuristicMatches,
@@ -1853,8 +2234,259 @@ function checkText(text, replacements, dictionary) {
     confidence: deriveMatchConfidence(match, text, dictionary)
   })).filter((match) => shouldExposeMatch(match));
   const result = finalizeMatches(text, allMatches, dictionary);
+  return result;
+}
+function checkText(text, replacements, dictionary) {
+  const cached = checkResultCache.get(text);
+  if (cached) {
+    return cached;
+  }
+  let currentText = text;
+  let passResult = checkTextSinglePass(currentText, replacements, dictionary);
+  if (hasSingleWholeTextMatch(passResult, text)) {
+    storeCheckResultInCache(text, passResult);
+    return passResult;
+  }
+  let passCount = 1;
+  while (passCount < MAX_CORRECTION_PASSES) {
+    if (!passResult.matches.length) {
+      break;
+    }
+    const nextText = applyVisibleMatches(currentText, passResult.matches);
+    if (nextText === currentText) {
+      break;
+    }
+    currentText = nextText;
+    passResult = checkTextSinglePass(currentText, replacements, dictionary);
+    passCount += 1;
+  }
+  const result = currentText !== text && passCount > 1 ? finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary) : checkTextSinglePass(text, replacements, dictionary);
   storeCheckResultInCache(text, result);
   return result;
+}
+
+// src/backend/llm-core.ts
+var DEFAULT_OLLAMA_URL = "http://127.0.0.1:11434";
+var DEFAULT_OLLAMA_MODEL = "jandaia-1";
+var DEFAULT_TIMEOUT_MS = 12e4;
+var HOMOPHONE_TRIGGER_PATTERN = /\b(?:sess[aã]o|se[cç][aã]o|cess[aã]o|concerto|conserto|concertar|consertar|taxar|tachar|ratificar|retificar|infligir|infringir|onde|aonde|porque|por que|porquê|por quê)\b/iu;
+var JANDAIA_DIRECTIVE = [
+  "Voc\xEA \xE9 jandaia 1, especialista em corre\xE7\xE3o de portugu\xEAs do Brasil.",
+  "Corrija a frase preservando o sentido original.",
+  "Prefira a menor corre\xE7\xE3o suficiente.",
+  "Responda somente com a frase corrigida final.",
+  "N\xE3o explique, n\xE3o use r\xF3tulos e n\xE3o use marca\xE7\xE3o."
+].join("\n");
+function buildJandaiaPrompt(text) {
+  return [
+    JANDAIA_DIRECTIVE,
+    "",
+    "Exemplos:",
+    "Errada: A gente vamos no cinema amanh\xE3.",
+    "Correta: A gente vai ao cinema amanh\xE3.",
+    "",
+    "Errada: A se\xE7\xE3o de cinema come\xE7a \xE0s 20h.",
+    "Correta: A sess\xE3o de cinema come\xE7a \xE0s 20h.",
+    "",
+    "Errada: Ele n\xE3o sabe porque voc\xEA faltou.",
+    "Correta: Ele n\xE3o sabe por que voc\xEA faltou.",
+    "",
+    "Agora corrija apenas a frase abaixo.",
+    `Errada: ${text}`,
+    "Correta:"
+  ].join("\n");
+}
+function looksLikeCleanSentence(text) {
+  if (!text) {
+    return false;
+  }
+  if (/[<>{}\[\]]/u.test(text)) {
+    return false;
+  }
+  if (/\b(?:resposta|instruction|instrução|prompt|correta:|errada:)\b/iu.test(text)) {
+    return false;
+  }
+  if (text.length < 3 || text.length > 280) {
+    return false;
+  }
+  const letterCount = (text.match(new RegExp("\\p{L}", "gu")) || []).length;
+  if (letterCount < 2) {
+    return false;
+  }
+  const weirdPunctuationCount = (text.match(/["`]/gu) || []).length;
+  if (weirdPunctuationCount > 2) {
+    return false;
+  }
+  return true;
+}
+function parseBooleanFlag(value) {
+  if (!value) {
+    return false;
+  }
+  return ["1", "true", "yes", "on", "sim"].includes(value.trim().toLowerCase());
+}
+function normalizeGeneratedText(text) {
+  const cleaned = text.trim().replace(/<[^>]+>/gu, " ").replace(/^["'`]+|["'`]+$/g, "").replace(/^corrigida:\s*/iu, "").replace(/^frase corrigida:\s*/iu, "").replace(/^correta:\s*/iu, "").trim();
+  const firstLine = cleaned.split(/\r?\n/u)[0]?.trim() || "";
+  if (!looksLikeCleanSentence(firstLine)) {
+    return "";
+  }
+  return firstLine;
+}
+function readLlmCoreConfig(env = process.env) {
+  return {
+    enabled: parseBooleanFlag(env.CORRIJA_ME_LLM_CORE_ENABLED),
+    baseUrl: (env.CORRIJA_ME_LLM_CORE_URL || DEFAULT_OLLAMA_URL).replace(/\/+$/u, ""),
+    model: env.CORRIJA_ME_LLM_CORE_MODEL || DEFAULT_OLLAMA_MODEL,
+    timeoutMs: Number(env.CORRIJA_ME_LLM_CORE_TIMEOUT_MS || DEFAULT_TIMEOUT_MS)
+  };
+}
+async function checkLlmCoreHealth(config) {
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), Math.min(config.timeoutMs, 1e4));
+    const response = await fetch(`${config.baseUrl}/api/version`, {
+      method: "GET",
+      signal: controller.signal
+    });
+    clearTimeout(timeout);
+    if (!response.ok) {
+      return {
+        reachable: false,
+        model: config.model,
+        error: `http_${response.status}`
+      };
+    }
+    const payload = await response.json();
+    return {
+      reachable: true,
+      model: config.model,
+      version: payload.version || "unknown"
+    };
+  } catch (error) {
+    return {
+      reachable: false,
+      model: config.model,
+      error: error instanceof Error ? error.message : "llm_core_unreachable"
+    };
+  }
+}
+function decideLlmRouting(text, result) {
+  const confidenceScores = result.matches.map((match) => match.confidence?.score).filter((score) => typeof score === "number");
+  const confidenceFloor = confidenceScores.length ? Math.min(...confidenceScores) : 0;
+  const ambiguousMatchCount = result.matches.filter((match) => (match.replacements?.length || 0) > 1).length;
+  const hasHomophoneTrigger = HOMOPHONE_TRIGGER_PATTERN.test(text);
+  if (!result.matches.length) {
+    return {
+      shouldRoute: true,
+      reason: "motor_sem_saida",
+      confidenceFloor,
+      ambiguousMatchCount
+    };
+  }
+  if (hasHomophoneTrigger && (confidenceFloor < 0.96 || ambiguousMatchCount > 0)) {
+    return {
+      shouldRoute: true,
+      reason: "homofono_ou_contexto_ambiguo",
+      confidenceFloor,
+      ambiguousMatchCount
+    };
+  }
+  if (confidenceFloor < 0.85) {
+    return {
+      shouldRoute: true,
+      reason: "confianca_baixa",
+      confidenceFloor,
+      ambiguousMatchCount
+    };
+  }
+  if (result.matches.length >= 3) {
+    return {
+      shouldRoute: true,
+      reason: "muitas_edicoes_acopladas",
+      confidenceFloor,
+      ambiguousMatchCount
+    };
+  }
+  if (ambiguousMatchCount > 0) {
+    return {
+      shouldRoute: true,
+      reason: "candidatos_competindo",
+      confidenceFloor,
+      ambiguousMatchCount
+    };
+  }
+  return {
+    shouldRoute: false,
+    reason: "motor_confiavel",
+    confidenceFloor,
+    ambiguousMatchCount
+  };
+}
+async function requestLlmCoreSuggestion(text, config) {
+  const startedAt = Date.now();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), config.timeoutMs);
+  try {
+    const response = await fetch(`${config.baseUrl}/api/generate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      signal: controller.signal,
+      body: JSON.stringify({
+        model: config.model,
+        stream: false,
+        options: {
+          temperature: 0.05,
+          top_k: 40,
+          top_p: 0.9,
+          repeat_penalty: 1.25,
+          num_predict: 96
+        },
+        prompt: buildJandaiaPrompt(text)
+      })
+    });
+    if (!response.ok) {
+      throw new Error(`llm_core_http_${response.status}`);
+    }
+    const payload = await response.json();
+    const correctedText = normalizeGeneratedText(payload.response || "");
+    if (!correctedText) {
+      return null;
+    }
+    return {
+      correctedText,
+      latencyMs: Date.now() - startedAt,
+      model: config.model
+    };
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+function buildWholeTextLlmMatch(text, correctedText, reason) {
+  return {
+    message: "Sugest\xE3o do n\xFAcleo local para pt-BR.",
+    shortMessage: "Sugest\xE3o do n\xFAcleo local.",
+    offset: 0,
+    length: text.length,
+    replacements: [{ value: correctedText }],
+    confidence: {
+      level: "medium",
+      score: 0.74,
+      reason
+    },
+    rule: {
+      id: "PT_BR_LLM_CORE",
+      description: "Corre\xE7\xE3o integral sugerida pela camada local de IA.",
+      issueType: "misspelling"
+    },
+    context: {
+      text,
+      offset: 0,
+      length: text.length
+    }
+  };
 }
 
 // src/backend/dictionary.ts
@@ -2011,23 +2643,65 @@ function loadLinguisticData(dataDir2) {
 function loadReplacementEntries(pathname) {
   return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
 }
+function tokenizeReplacementText(value) {
+  return String(value || "").match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*/gu) || [];
+}
+var AMBIGUOUS_HOMOPHONE_FAMILIES = [
+  ["cessao", "sessao", "secao"],
+  ["concerto", "conserto"],
+  ["concertar", "consertar"],
+  ["taxar", "tachar"],
+  ["ratificar", "retificar"],
+  ["infligir", "infringir"]
+].map((family) => new Set(family.map((word) => normalizeDictionaryWord(word))));
+function isAmbiguousHomophonePair(from, to) {
+  if (!from || !to || from === to) {
+    return false;
+  }
+  return AMBIGUOUS_HOMOPHONE_FAMILIES.some((family) => family.has(from) && family.has(to));
+}
+function sanitizeReplacementEntries(entries) {
+  const symmetricPairs = /* @__PURE__ */ new Set();
+  const directional = /* @__PURE__ */ new Map();
+  for (const entry of entries) {
+    const fromTokens = tokenizeReplacementText(entry.from).map((token) => normalizeDictionaryWord(token));
+    const toTokens = Array.isArray(entry.replacements) && entry.replacements.length === 1 ? tokenizeReplacementText(entry.replacements[0]).map((token) => normalizeDictionaryWord(token)) : [];
+    if (fromTokens.length !== 1 || toTokens.length !== 1) {
+      continue;
+    }
+    const from = fromTokens[0];
+    const to = toTokens[0];
+    if (!from || !to || from === to) {
+      continue;
+    }
+    if (isAmbiguousHomophonePair(from, to)) {
+      continue;
+    }
+    directional.set(`${from}->${to}`, entry.source || "");
+    if (directional.has(`${to}->${from}`)) {
+      symmetricPairs.add(`${from}<->${to}`);
+      symmetricPairs.add(`${to}<->${from}`);
+    }
+  }
+  return entries.filter((entry) => {
+    const fromTokens = tokenizeReplacementText(entry.from).map((token) => normalizeDictionaryWord(token));
+    const toTokens = Array.isArray(entry.replacements) && entry.replacements.length === 1 ? tokenizeReplacementText(entry.replacements[0]).map((token) => normalizeDictionaryWord(token)) : [];
+    if (fromTokens.length !== 1 || toTokens.length !== 1) {
+      return true;
+    }
+    const from = fromTokens[0];
+    const to = toTokens[0];
+    if (isAmbiguousHomophonePair(from, to)) {
+      return false;
+    }
+    return !symmetricPairs.has(`${from}<->${to}`);
+  });
+}
 function loadOptionalReplacementEntries(pathname) {
   if (!(0, import_node_fs2.existsSync)(pathname)) {
     return [];
   }
-  return loadReplacementEntries(pathname);
-}
-function loadCommonMistakeEntries(pathname, existingReplacementEntries) {
-  const existingFrom = new Set(existingReplacementEntries.map((entry) => normalizeDictionaryWord(entry.from)));
-  const entries = JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
-  return entries.filter((entry) => !existingFrom.has(normalizeDictionaryWord(entry.from))).map((entry) => ({
-    from: entry.from,
-    replacements: entry.replacements,
-    source: entry.description?.trim() || "common_mistakes"
-  }));
-}
-function loadWordList(pathname) {
-  return (0, import_node_fs2.readFileSync)(pathname, "utf8").split(/\r?\n/u).map(normalizeDictionaryWord).filter((word) => word && !word.startsWith("#"));
+  return sanitizeReplacementEntries(loadReplacementEntries(pathname));
 }
 function loadContextRules(pathname) {
   return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
@@ -2035,11 +2709,34 @@ function loadContextRules(pathname) {
 function loadPhraseRules(pathname) {
   return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
 }
+function tokenizeRuleText(value) {
+  return String(value || "").match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*/gu) || [];
+}
+function isUnsafeContinuousPhraseRule(rule) {
+  if (!String(rule.id || "").startsWith("PT_BR_CONTINUOUS_")) {
+    return false;
+  }
+  const patternTokens = Array.isArray(rule.pattern) ? rule.pattern.map((token) => normalizeDictionaryWord(token)) : [];
+  const replacement = Array.isArray(rule.replacements) ? String(rule.replacements[0] || "") : "";
+  const replacementTokens = tokenizeRuleText(replacement).map((token) => normalizeDictionaryWord(token));
+  if (!patternTokens.length || !replacementTokens.length) {
+    return false;
+  }
+  const patternHasDigits = patternTokens.some((token) => /\d/u.test(token));
+  const replacementHasDigits = replacementTokens.some((token) => /\d/u.test(token));
+  if (!patternHasDigits && replacementHasDigits) {
+    return true;
+  }
+  return false;
+}
+function sanitizePhraseRules(rules) {
+  return rules.filter((rule) => !isUnsafeContinuousPhraseRule(rule));
+}
 function loadOptionalPhraseRules(pathname) {
   if (!(0, import_node_fs2.existsSync)(pathname)) {
     return [];
   }
-  return loadPhraseRules(pathname);
+  return sanitizePhraseRules(loadPhraseRules(pathname));
 }
 function loadOptionalContextRules(pathname) {
   if (!(0, import_node_fs2.existsSync)(pathname)) {
@@ -2047,41 +2744,14 @@ function loadOptionalContextRules(pathname) {
   }
   return loadContextRules(pathname);
 }
-function loadDictionaryManifest(dictionaryDir) {
-  const manifestPath = (0, import_node_path2.join)(dictionaryDir, "manifest.json");
-  if (!(0, import_node_fs2.existsSync)(manifestPath)) {
-    return null;
-  }
-  return JSON.parse((0, import_node_fs2.readFileSync)(manifestPath, "utf8"));
-}
 function loadDictionaryResources(dataDir2) {
-  const replacements = [
+  const replacements = sanitizeReplacementEntries([
     ...loadReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements.json")),
-    ...loadOptionalReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements_learned.json")),
-    ...loadOptionalReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements_proof.json"))
-  ];
-  const dictionaryDir = (0, import_node_path2.join)(dataDir2, "dictionary");
+    ...loadOptionalReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements_learned.json"))
+  ]);
   const rulesDir = (0, import_node_path2.join)(dataDir2, "rules");
   const linguisticData = loadLinguisticData(dataDir2);
-  const manifest = loadDictionaryManifest(dictionaryDir);
-  const useLegacyWordFiles = manifest?.useLegacyWordFiles ?? true;
-  const useLegacyCustomWords = manifest?.useLegacyCustomWords ?? true;
-  const useLegacyCommonMistakes = manifest?.useLegacyCommonMistakes ?? true;
-  const dictionaryFiles = manifest?.wordFiles?.length ? [...manifest.wordFiles] : (0, import_node_fs2.readdirSync)(dictionaryDir).filter((name) => /^words_\d+\.txt$/u.test(name)).sort((left, right) => left.localeCompare(right, "pt-BR", { numeric: true }));
   const words = /* @__PURE__ */ new Set();
-  if (useLegacyWordFiles) {
-    for (const fileName of dictionaryFiles) {
-      for (const word of loadWordList((0, import_node_path2.join)(dictionaryDir, fileName))) {
-        words.add(word);
-      }
-    }
-  }
-  const customWordsFile = manifest?.customWordsFile || "custom_words.txt";
-  if (useLegacyCustomWords) {
-    for (const word of loadWordList((0, import_node_path2.join)(dictionaryDir, customWordsFile))) {
-      words.add(word);
-    }
-  }
   for (const lemma of linguisticData.lexicalEntries.keys()) {
     words.add(lemma);
     const entry = linguisticData.lexicalEntries.get(lemma);
@@ -2092,25 +2762,20 @@ function loadDictionaryResources(dataDir2) {
   for (const word of linguisticData.allowedUnknownWords) {
     words.add(word);
   }
-  const commonMistakesFile = manifest?.commonMistakesFile || "common_mistakes.json";
-  const commonMistakes = useLegacyCommonMistakes ? loadCommonMistakeEntries((0, import_node_path2.join)(dictionaryDir, commonMistakesFile), replacements) : [];
   const dictionaryReady = words.size >= 5e3;
   const contextRules = [
     ...loadContextRules((0, import_node_path2.join)(rulesDir, "context_rules.json")),
-    ...loadOptionalContextRules((0, import_node_path2.join)(rulesDir, "context_rules_learned.json")),
-    ...loadOptionalContextRules((0, import_node_path2.join)(rulesDir, "context_rules_proof.json"))
+    ...loadOptionalContextRules((0, import_node_path2.join)(rulesDir, "context_rules_learned.json"))
   ];
   const phraseRules = [
-    ...loadPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules.json")),
+    ...sanitizePhraseRules(loadPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules.json"))),
     ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_seeded.json")),
     ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_continuous.json")),
-    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_learned.json")),
-    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_proof.json"))
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_learned.json"))
   ];
   return {
     replacements,
     words,
-    commonMistakes,
     dictionaryReady,
     contextRules,
     phraseRules,
@@ -2119,15 +2784,26 @@ function loadDictionaryResources(dataDir2) {
 }
 
 // src/backend/server.ts
-var import_node_fs3 = require("node:fs");
 var DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
 var isPackagedBinary = typeof process.pkg !== "undefined";
 var isCheckWorkerProcess = process.env.CORRIJA_ME_CHILD_MODE === "check-worker";
 var currentDir = __dirname;
 var dataDir = (0, import_node_path3.join)(currentDir, "../data");
 var dictionaryResources = isCheckWorkerProcess ? null : loadDictionaryResources(dataDir);
-var dictionaryManifestPath = (0, import_node_path3.join)(dataDir, "dictionary", "manifest.json");
-var dictionaryManifest = !isCheckWorkerProcess && (0, import_node_fs3.existsSync)(dictionaryManifestPath) ? JSON.parse((0, import_node_fs3.readFileSync)(dictionaryManifestPath, "utf8")) : null;
+var llmCoreConfig = readLlmCoreConfig();
+var RUNTIME_ARCHITECTURE = {
+  production: {
+    entrypoint: "backend_json_text",
+    first_barrier: "motor",
+    fallback: "jandaia",
+    primary_endpoint: "/v2/check-smart"
+  },
+  orientation: {
+    instructors: ["tucano_2", "quillbot"],
+    director: "gemini",
+    data_enrichment: "gemini"
+  }
+};
 function sendJson(response, statusCode, payload) {
   response.writeHead(statusCode, {
     "Content-Type": "application/json; charset=utf-8",
@@ -2180,7 +2856,11 @@ function ensureCheckWorker() {
     }
     pendingWorkerJobs.delete(jobId);
     if (message.ok) {
-      pending.resolve(message.result ?? {});
+      if (!message.result) {
+        pending.reject(new Error("Worker retornou resultado vazio."));
+        return;
+      }
+      pending.resolve(message.result);
       return;
     }
     pending.reject(new Error(message.error || "Falha ao processar analise."));
@@ -2212,12 +2892,67 @@ function runCheckInProcess(text) {
   }
   return checkText(text, dictionaryResources.replacements, {
     words: dictionaryResources.words,
-    commonMistakes: dictionaryResources.commonMistakes,
     dictionaryReady: dictionaryResources.dictionaryReady,
     contextRules: dictionaryResources.contextRules,
     phraseRules: dictionaryResources.phraseRules,
     linguisticData: dictionaryResources.linguisticData
   });
+}
+function createCorePayload(text, baseResult, correctedText, routeReason, llmMeta) {
+  if (!correctedText || correctedText === text) {
+    return {
+      result: baseResult,
+      baseResult,
+      core: {
+        enabled: llmCoreConfig.enabled,
+        changed: false,
+        routeReason,
+        ...llmMeta
+      }
+    };
+  }
+  return {
+    result: {
+      ...baseResult,
+      matches: [buildWholeTextLlmMatch(text, correctedText, routeReason)]
+    },
+    baseResult,
+    core: {
+      enabled: llmCoreConfig.enabled,
+      changed: true,
+      routeReason,
+      correctedText,
+      ...llmMeta
+    }
+  };
+}
+async function runMotorFirstCoreFlow(text) {
+  const baseResult = isPackagedBinary ? runCheckInProcess(text) : await runCheckInWorker(text);
+  const routing = decideLlmRouting(text, baseResult);
+  if (!llmCoreConfig.enabled || !routing.shouldRoute) {
+    return createCorePayload(text, baseResult, null, routing.reason, {
+      used: false,
+      model: llmCoreConfig.model
+    });
+  }
+  try {
+    const suggestion = await requestLlmCoreSuggestion(text, llmCoreConfig);
+    return createCorePayload(text, baseResult, suggestion?.correctedText || null, routing.reason, {
+      used: true,
+      latencyMs: suggestion?.latencyMs,
+      model: suggestion?.model || llmCoreConfig.model
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "llm_core_failed";
+    return createCorePayload(text, baseResult, null, routing.reason, {
+      used: true,
+      model: llmCoreConfig.model,
+      error: message
+    });
+  }
+}
+async function runMotorOnlyFlow(text) {
+  return isPackagedBinary ? runCheckInProcess(text) : runCheckInWorker(text);
 }
 if (isCheckWorkerProcess) {
   const workerResources = loadDictionaryResources(dataDir);
@@ -2230,7 +2965,6 @@ if (isCheckWorkerProcess) {
     try {
       const result = checkText(message.text, workerResources.replacements, {
         words: workerResources.words,
-        commonMistakes: workerResources.commonMistakes,
         dictionaryReady: workerResources.dictionaryReady,
         contextRules: workerResources.contextRules,
         phraseRules: workerResources.phraseRules,
@@ -2250,22 +2984,37 @@ if (isCheckWorkerProcess) {
       return;
     }
     if (request.method === "GET" && url.pathname === "/health") {
+      const llmHealth = llmCoreConfig.enabled ? await checkLlmCoreHealth(llmCoreConfig) : {
+        reachable: false,
+        model: llmCoreConfig.model,
+        error: "disabled"
+      };
       sendJson(response, 200, {
         status: "ok",
         service: "corrija_me_pt_br_node",
         dictionary: {
           words: dictionaryResources?.words.size ?? 0,
-          commonMistakes: dictionaryResources?.commonMistakes.length ?? 0,
           ready: dictionaryResources?.dictionaryReady ?? false,
           contextRules: dictionaryResources?.contextRules.length ?? 0,
           phraseRules: dictionaryResources?.phraseRules.length ?? 0,
           lexicalEntries: dictionaryResources?.linguisticData.lexicalEntries.size ?? 0,
-          syntaxPatterns: dictionaryResources?.linguisticData.syntaxPatterns.length ?? 0,
-          legacySources: {
-            wordFiles: dictionaryManifest?.useLegacyWordFiles ?? true,
-            customWords: dictionaryManifest?.useLegacyCustomWords ?? true,
-            commonMistakes: dictionaryManifest?.useLegacyCommonMistakes ?? true
-          }
+          syntaxPatterns: dictionaryResources?.linguisticData.syntaxPatterns.length ?? 0
+        },
+        llmCore: {
+          enabled: llmCoreConfig.enabled,
+          ...llmHealth
+        },
+        architecture: RUNTIME_ARCHITECTURE
+      });
+      return;
+    }
+    if (request.method === "GET" && url.pathname === "/v2/architecture") {
+      sendJson(response, 200, {
+        status: "ok",
+        runtime: RUNTIME_ARCHITECTURE,
+        llmCore: {
+          enabled: llmCoreConfig.enabled,
+          model: llmCoreConfig.model
         }
       });
       return;
@@ -2291,8 +3040,37 @@ if (isCheckWorkerProcess) {
         return;
       }
       try {
-        const result = isPackagedBinary ? runCheckInProcess(text) : await runCheckInWorker(text);
+        const result = await runMotorOnlyFlow(text);
         sendJson(response, 200, result);
+        return;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Falha ao processar analise.";
+        sendJson(response, 500, { error: message });
+        return;
+      }
+    }
+    if (request.method === "POST" && (url.pathname === "/v2/check-core" || url.pathname === "/v2/check-smart")) {
+      const bodyChunks = [];
+      for await (const chunk of request) {
+        bodyChunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+      }
+      const { text, language } = parseBody(Buffer.concat(bodyChunks).toString("utf8"), request.headers["content-type"]);
+      if ((language || "pt-BR") !== "pt-BR") {
+        sendJson(response, 400, { error: "Somente pt-BR esta disponivel nesta versao." });
+        return;
+      }
+      try {
+        const payload = await runMotorFirstCoreFlow(text);
+        sendJson(response, 200, {
+          ...payload,
+          runtime: {
+            mode: "motor_first_with_jandaia_fallback",
+            first_barrier: "motor",
+            fallback: "jandaia",
+            instructors: ["tucano_2", "quillbot"],
+            director: "gemini"
+          }
+        });
         return;
       } catch (error) {
         const message = error instanceof Error ? error.message : "Falha ao processar analise.";
