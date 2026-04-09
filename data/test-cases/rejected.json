@@ -96383,5 +96383,709 @@
       "formatting_or_numeric_conversion",
       "out_of_scope_for_curated_battery"
     ]
+  },
+  {
+    "id": "hifen-01",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "A nova auto escola oferece cursos de pré-vestibular e um super desconto para quem é ex aluno.",
+    "correto": "A nova autoescola oferece cursos de pré-vestibular e um superdesconto para quem é ex-aluno.",
+    "error_count": 3,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "novo_acordo",
+      "composto"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen-02",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "Ele é um super-herói do dia-a-dia, sempre auxiliando seus co-autores a superar as dificuldades extra oficina.",
+    "correto": "Ele é um super-herói do dia a dia, sempre auxiliando seus coautores a superar as dificuldades extraoficina.",
+    "error_count": 3,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "expressao_fixa",
+      "novo_acordo"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen-03",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "O vice presidente da micro empresa aprovou o projeto pré-existente de anti corrosão.",
+    "correto": "O vice-presidente da microempresa aprovou o projeto preexistente de anticorrosão.",
+    "error_count": 4,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "regra_geral",
+      "novo_acordo"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen-05",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "Este é um ex-diretor que se considera pró-ativo em qualquer situação pré estabelecida, mesmo sendo contra senso.",
+    "correto": "Este é um ex-diretor que se considera proativo em qualquer situação pré-estabelecida, mesmo sendo contrassenso.",
+    "error_count": 4,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "novo_acordo",
+      "ss"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen-06",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "A infra estrutura local não suportava o volume de dados e o super herói da TI teve que fazer um auto ajuste.",
+    "correto": "A infraestrutura local não suportava o volume de dados e o super-herói da TI teve que fazer um autoajuste.",
+    "error_count": 3,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "aglutinação",
+      "tecnologia"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen-07",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "Em contra mão ao que se esperava, a sessão de co-produção foi ultra proveitosa, sem nenhum contra tempo.",
+    "correto": "Em contramão ao que se esperava, a sessão de coprodução foi ultraproveitosa, sem nenhum contratempo.",
+    "error_count": 4,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "aglutinação",
+      "composto"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen-08",
+    "category": "hífen",
+    "difficulty": 5,
+    "errado": "Foi um super evento, mas a organização ficou a desejar, principalmente no quesito bem-estar e infra estrutura.",
+    "correto": "Foi um superevento, mas a organização ficou a desejar, principalmente no quesito bem-estar e infraestrutura.",
+    "error_count": 3,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "composto",
+      "aglutinação"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "loc-01",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "Os estados unidos da américa são um mercado chave, e o nosso currículum vitae precisa ser adaptado aos padrões deles.",
+    "correto": "Os Estados Unidos da América são um mercado-chave, e o nosso currículo precisa ser adaptado aos padrões deles.",
+    "error_count": 4,
+    "tags": [
+      "localização",
+      "capitalização",
+      "hífem",
+      "estrangeirismo"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-02",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "A Microsoft lançou um novo Site, mas o email de contato ainda esta com problemas de envio.",
+    "correto": "A Microsoft lançou um novo site, mas o e-mail de contato ainda está com problemas de envio.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "capitalização",
+      "hífem",
+      "acentuação"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-03",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "O valor do dólar subiu e o Euro caiu, impactando o Real brasileiro, que já estava fragilizado.",
+    "correto": "O valor do dólar subiu e o euro caiu, impactando o real brasileiro, que já estava fragilizado.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "capitalização",
+      "moeda"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-04",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "Na Terça-feira próxima, visitaremos o Rio de janeiro, no Brasil, para uma conferencia importante.",
+    "correto": "Na terça-feira próxima, visitaremos o Rio de Janeiro, no Brasil, para uma conferência importante.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "capitalização",
+      "acentuação",
+      "hífem"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-05",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "As reservas de Pre-sal no Oceano Atlantico são vitais para a economia da Amazônia e do país.",
+    "correto": "As reservas de pré-sal no Oceano Atlântico são vitais para a economia da Amazônia e do país.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "capitalização",
+      "hífem",
+      "geografia"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-06",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "O novo app permite fazer o Download de filmes e um upgrade da sua experiencia online.",
+    "correto": "O novo app permite fazer o download de filmes e um upgrade da sua experiência online.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "estrangeirismo",
+      "capitalização",
+      "acentuação"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-07",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "Pegamos o onibus, depois um taxi e, por fim, o trem para chegar à estação central, mas foi um dia exaustivo.",
+    "correto": "Pegamos o ônibus, depois um táxi e, por fim, o trem para chegar à estação central, mas foi um dia exaustivo.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "acentuação",
+      "transporte",
+      "ortografia"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-08",
+    "category": "localização",
+    "difficulty": 5,
+    "errado": "O Google, o Twitter e o Facebook, são empresas de tecnologia que revolucionaram a forma como interagimos na Internet.",
+    "correto": "O Google, o Twitter e o Facebook são empresas de tecnologia que revolucionaram a forma como interagimos na internet.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "capitalização",
+      "vírgula",
+      "internet"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "context-01",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Onde o diretor havia solicitado, o relatório final foi entregue à coordenação, a quem interessasse.",
+    "correto": "Onde o diretor havia solicitado, o relatório final foi entregue à coordenação, a quem interessasse.",
+    "error_count": 0,
+    "tags": [
+      "contexto",
+      "regência",
+      "pronome"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range",
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "context-05",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Este é o projeto que te falei onde todos estão empenhados a alcançar os objetivos ambiciosos.",
+    "correto": "Este é o projeto de que te falei em que todos estão empenhados em alcançar os objetivos ambiciosos.",
+    "error_count": 3,
+    "tags": [
+      "contexto",
+      "regência_verbal",
+      "pronome_relativo",
+      "preposição"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "context-06",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "O aluno mais experiente, que já havia completado o curso, nos ajudou a tirar nossas dúvidas, com mais facilidade.",
+    "correto": "O aluno mais experiente, que já havia completado o curso, nos ajudou a tirar nossas dúvidas com mais facilidade.",
+    "error_count": 1,
+    "tags": [
+      "contexto",
+      "vírgula",
+      "clareza"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "homof-01",
+    "category": "homófonos",
+    "difficulty": 5,
+    "errado": "Ele teve um mau dia, mas mesmo assim, há chances de reverter o placar; a vitória é importante.",
+    "correto": "Ele teve um mau dia, mas mesmo assim, há chances de reverter o placar; a vitória é importante.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "mau_mal",
+      "mas_mais",
+      "a_ha"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range",
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "homof-02",
+    "category": "homófonos",
+    "difficulty": 5,
+    "errado": "Por que você faltou à sessão da tarde? Eu queria saber o porquê da sua ausência.",
+    "correto": "Por que você faltou à sessão da tarde? Eu queria saber o porquê da sua ausência.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "por_que",
+      "sessao_secao"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range",
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "homof-07",
+    "category": "homófonos",
+    "difficulty": 5,
+    "errado": "O censo populacional revelou um senso de comunidade forte, mas o extrato bancário mostrou que as despesas eram altas.",
+    "correto": "O censo populacional revelou um senso de comunidade forte, mas o extrato bancário mostrou que as despesas eram altas.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "censo_senso",
+      "extrato_estrato"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range",
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "anu-01",
+    "category": "anúncios",
+    "difficulty": 5,
+    "errado": "Imperdivel! Venha conferir as novas ofertas de lançamento e garantir o seu. É por tempo limitado!",
+    "correto": "Imperdível! Venha conferir as novas ofertas de lançamento e garantir o seu. É por tempo limitado!",
+    "error_count": 1,
+    "tags": [
+      "anúncios",
+      "acentuação",
+      "chamada_ação"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "anu-06",
+    "category": "anúncios",
+    "difficulty": 5,
+    "errado": "Descontos incriveis e parcelas sem juros, aproveite esta oportunidade única para renovar sua casa.",
+    "correto": "Descontos incríveis e parcelas sem juros, aproveite esta oportunidade única para renovar sua casa.",
+    "error_count": 2,
+    "tags": [
+      "anúncios",
+      "acentuação",
+      "ortografia",
+      "finanças"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "tec-03",
+    "category": "texto técnico",
+    "difficulty": 5,
+    "errado": "O protocolo de comunicação foi desenhado para garantir a interoperabilidade entre diferentes sistemas legados e o novo hardware.",
+    "correto": "O protocolo de comunicação foi desenhado para garantir a interoperabilidade entre diferentes sistemas legados e o novo hardware.",
+    "error_count": 0,
+    "tags": [
+      "texto_técnico",
+      "jargão",
+      "ti",
+      "arquitetura"
+    ],
+    "rejected_reasons": [
+      "same_text",
+      "error_count_out_of_range",
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "ort-01-pret-mend",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "A excessiva pretenção do mendingo causou espanto na vizinhança.",
+    "correto": "A excessiva pretensão do mendigo causou espanto na vizinhança.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "vocabulário",
+      "escrita-formal"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "ort-08-conces-assess",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "A consessão foi aprovada pelo acessor jurídico da prefeitura.",
+    "correto": "A concessão foi aprovada pelo assessor jurídico da prefeitura.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "jurídico",
+      "governo"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "ace-08-pau-argu",
+    "category": "acentuação",
+    "difficulty": 6,
+    "errado": "O juíz arguíu o réu sobre o conteúdo do báu de provas.",
+    "correto": "O juiz arguiu o réu sobre o conteúdo do baú de provas.",
+    "error_count": 3,
+    "tags": [
+      "acentuação",
+      "jurídico",
+      "hiatos"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "hif-05-bem-mal",
+    "category": "hífen",
+    "difficulty": 6,
+    "errado": "Seja bemvindo ao nosso clube de quem sofre de malestar.",
+    "correto": "Seja bem-vindo ao nosso clube de quem sofre de mal-estar.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "hospitalidade",
+      "saúde"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hif-08-contra-extra",
+    "category": "hífen",
+    "difficulty": 6,
+    "errado": "O contra-regra pediu um serviço extra-curricular urgente.",
+    "correto": "O contrarregra pediu um serviço extracurricular urgente.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "prefixos",
+      "regras"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "loc-01-curr-format",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "O valor total do orçamento é de R$ 1.250.50 e vence em 10/Outubro.",
+    "correto": "O valor total do orçamento é de R$ 1.250,50 e vence em 10 de outubro.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "moeda",
+      "data"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-02-unid-med",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "A caixa pesa 15Kg e deve ser entregue às 14h. no setor B.",
+    "correto": "A caixa pesa 15 kg e deve ser entregue às 14h no setor B.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "unidades",
+      "abreviação"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-03-tel-br",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "Ligue para (11)98888-7777 ou envie um email para contato@site.",
+    "correto": "Ligue para (11) 98888-7777 ou envie um e-mail para contato@site.com.br.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "telefone",
+      "internet"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-04-data-ext",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "São Paulo, 05 de Abril de 2024. Atenciosamente.",
+    "correto": "São Paulo, 5 de abril de 2024. Atenciosamente,",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "correspondência",
+      "datas"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-05-temp-cels",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "A previsão para hoje é de 30º C com humidade de 50 %.",
+    "correto": "A previsão para hoje é de 30 ºC com umidade de 50%.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "clima",
+      "símbolos"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-06-end-abrev",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "Moro na Av. Paulista, 1000 apto. 52. no centro.",
+    "correto": "Moro na Av. Paulista, 1000, apto. 52, no centro.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "endereço",
+      "pontuação"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-07-deci-ponto",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "A taxa é de 10.5% e o PIB caiu 1.2 pontos.",
+    "correto": "A taxa é de 10,5% e o PIB caiu 1,2 ponto.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "finanças",
+      "números"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "loc-08-hora-min",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "O evento começa as 08:30AM e termina as 5:00PM.",
+    "correto": "O evento começa às 8h30 e termina às 17h.",
+    "error_count": 4,
+    "tags": [
+      "localização",
+      "tempo",
+      "crase"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "hom-06-acerca-de",
+    "category": "homófonos",
+    "difficulty": 6,
+    "errado": "Falamos a cerca de política por há cerca de duas horas.",
+    "correto": "Falamos acerca de política por cerca de duas horas.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "preposições",
+      "tempo"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "anu-01-vende-casa",
+    "category": "anúncios",
+    "difficulty": 6,
+    "errado": "Vende-se casas apartir de R$ 200.000 com garagem.",
+    "correto": "Vendem-se casas a partir de R$ 200.000,00 com garagem.",
+    "error_count": 3,
+    "tags": [
+      "anúncios",
+      "imobiliário",
+      "crase"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion"
+    ]
+  },
+  {
+    "id": "anu-06-entrega-gratis",
+    "category": "anúncios",
+    "difficulty": 6,
+    "errado": "Entregas em domicílio grátis para compras acima de 100 reais.",
+    "correto": "Entregas em domicílio gratuitas para compras acima de R$ 100,00.",
+    "error_count": 2,
+    "tags": [
+      "anúncios",
+      "delivery",
+      "moeda"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion"
+    ]
+  },
+  {
+    "id": "anu-07-queima-estoq",
+    "category": "anúncios",
+    "difficulty": 6,
+    "errado": "Venha conferir a queima de estoques, é só esse fds.",
+    "correto": "Venha conferir a queima de estoque; é só este fim de semana.",
+    "error_count": 3,
+    "tags": [
+      "anúncios",
+      "varejo",
+      "abreviação"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "tec-01-legal-haja",
+    "category": "texto técnico",
+    "difficulty": 6,
+    "errado": "O réu foi intimado, no entanto, não compareçeu à audiencia.",
+    "correto": "O réu foi intimado; no entanto, não compareceu à audiência.",
+    "error_count": 2,
+    "tags": [
+      "texto técnico",
+      "jurídico",
+      "expressões"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
   }
 ]

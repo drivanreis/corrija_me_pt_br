@@ -105323,5 +105323,1945 @@
       "concordancia_nominal",
       "qualidade"
     ]
+  },
+  {
+    "id": "ort-01",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "A espectativa de melhora é imprescindivel para a moral da equipe, mesmo com os obstaculos que surjem.",
+    "correto": "A expectativa de melhora é imprescindível para a moral da equipe, mesmo com os obstáculos que surgem.",
+    "error_count": 4,
+    "tags": [
+      "ortografia",
+      "erro_comum",
+      "acentuação",
+      "consonante"
+    ]
+  },
+  {
+    "id": "ort-02",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "Recebemos a notissia com surpresa, mas não ouve reação mau humorada dos presentes. Foi bem dificil controlar.",
+    "correto": "Recebemos a notícia com surpresa, mas não houve reação mal-humorada dos presentes. Foi bem difícil controlar.",
+    "error_count": 4,
+    "tags": [
+      "ortografia",
+      "hífem",
+      "verbo_haver",
+      "consonante"
+    ]
+  },
+  {
+    "id": "ort-03",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "A paralização dos serviços causou um disconforto geral, especialmente para os hospedes que ja haviam pago.",
+    "correto": "A paralisação dos serviços causou um desconforto geral, especialmente para os hóspedes que já haviam pago.",
+    "error_count": 4,
+    "tags": [
+      "ortografia",
+      "acentuação",
+      "sufixo",
+      "prefixo"
+    ]
+  },
+  {
+    "id": "ort-04",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "Não é concevivel que ela adivinhe o resultado sem nenhuma pista, concerteza tem algo errado ai.",
+    "correto": "Não é concebível que ela adivinhe o resultado sem nenhuma pista, com certeza tem algo errado aí.",
+    "error_count": 4,
+    "tags": [
+      "ortografia",
+      "expressao",
+      "verbo",
+      "acentuação"
+    ]
+  },
+  {
+    "id": "ort-05",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "Ele extorquiu o dinheiro com perspicassia, deixando a vitima em uma situação previlegiada por um acordo extranho.",
+    "correto": "Ele extorquiu o dinheiro com perspicácia, deixando a vítima em uma situação privilegiada por um acordo estranho.",
+    "error_count": 4,
+    "tags": [
+      "ortografia",
+      "consonante",
+      "acentuação",
+      "letra"
+    ]
+  },
+  {
+    "id": "ort-06",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "A conciência ambiental é impresindivel, mas a realisação de ações concretas ainda é desafiadora.",
+    "correto": "A consciência ambiental é imprescindível, mas a realização de ações concretas ainda é desafiadora.",
+    "error_count": 4,
+    "tags": [
+      "ortografia",
+      "sufixo",
+      "consonante",
+      "letra"
+    ]
+  },
+  {
+    "id": "ort-07",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "Era nescessário analisar as espectativas do publico e garantir a execusão correta dos tramites.",
+    "correto": "Era necessário analisar as expectativas do público e garantir a execução correta dos trâmites.",
+    "error_count": 4,
+    "tags": [
+      "ortografia",
+      "acentuação",
+      "consonante",
+      "sufixo"
+    ]
+  },
+  {
+    "id": "ort-08",
+    "category": "ortografia",
+    "difficulty": 5,
+    "errado": "Nao avia ninguem lá, o que causou um certo desconforto e um sentimento de obcessão pelo silêncio.",
+    "correto": "Não havia ninguém lá, o que causou um certo desconforto e um sentimento de obsessão pelo silêncio.",
+    "error_count": 4,
+    "tags": [
+      "ortografia",
+      "acentuação",
+      "verbo_haver",
+      "consonante"
+    ]
+  },
+  {
+    "id": "acent-01",
+    "category": "acentuacao",
+    "difficulty": 5,
+    "errado": "Porem, voce tem de entender que tambem é importante para eles terem acesso a educação.",
+    "correto": "Porém, você tem de entender que também é importante para eles terem acesso à educação.",
+    "error_count": 5,
+    "tags": [
+      "acentuação",
+      "crase",
+      "homografo",
+      "acentos_graficos"
+    ]
+  },
+  {
+    "id": "acent-02",
+    "category": "acentuacao",
+    "difficulty": 5,
+    "errado": "É pessimo ver a analise dos dados sem que ninguem se responsabilise pelo conteudo apresentado.",
+    "correto": "É péssimo ver a análise dos dados sem que ninguém se responsabilize pelo conteúdo apresentado.",
+    "error_count": 5,
+    "tags": [
+      "acentuação",
+      "ditongo",
+      "vogal_tonica",
+      "proparoxitona"
+    ]
+  },
+  {
+    "id": "acent-03",
+    "category": "acentuacao",
+    "difficulty": 5,
+    "errado": "A saude da população é prioridade e exige uma atenção especial para que o cafe da manha seja sempre garantido.",
+    "correto": "A saúde da população é prioridade e exige uma atenção especial para que o café da manhã seja sempre garantido.",
+    "error_count": 3,
+    "tags": [
+      "acentuação",
+      "hiato",
+      "oxítona",
+      "acentos_graficos"
+    ]
+  },
+  {
+    "id": "acent-04",
+    "category": "acentuacao",
+    "difficulty": 5,
+    "errado": "Ele não para de reclamar e se atrasa sempre, mesmo sabendo que a reunião publica foi as tres da tarde.",
+    "correto": "Ele não para de reclamar e se atrasa sempre, mesmo sabendo que a reunião pública foi às três da tarde.",
+    "error_count": 4,
+    "tags": [
+      "acentuação",
+      "crase",
+      "homografo",
+      "proparoxitona"
+    ]
+  },
+  {
+    "id": "acent-05",
+    "category": "acentuacao",
+    "difficulty": 5,
+    "errado": "Os juizes da assembleia decidiram que a ideia de reformar o palacio era um desperdicio de recursos publicos.",
+    "correto": "Os juízes da assembleia decidiram que a ideia de reformar o palácio era um desperdício de recursos públicos.",
+    "error_count": 5,
+    "tags": [
+      "acentuação",
+      "novo_acordo",
+      "hiato",
+      "proparoxitona"
+    ]
+  },
+  {
+    "id": "acent-06",
+    "category": "acentuacao",
+    "difficulty": 5,
+    "errado": "Com certeza, é preciso ter exito na implementação do projeto, e tambem ser mais objetivo em suas ações.",
+    "correto": "Com certeza, é preciso ter êxito na implementação do projeto, e também ser mais objetivo em suas ações.",
+    "error_count": 3,
+    "tags": [
+      "acentuação",
+      "proparoxitona",
+      "oxítona",
+      "ditongo"
+    ]
+  },
+  {
+    "id": "acent-07",
+    "category": "acentuacao",
+    "difficulty": 5,
+    "errado": "Para a terapia ser terapeutica, voce precisa seguir o tratamento ate o fim e acreditar nele. La, no fundo, sabe que é verdade.",
+    "correto": "Para a terapia ser terapêutica, você precisa seguir o tratamento até o fim e acreditar nele. Lá, no fundo, sabe que é verdade.",
+    "error_count": 4,
+    "tags": [
+      "acentuação",
+      "proparoxitona",
+      "oxítona",
+      "adverbio"
+    ]
+  },
+  {
+    "id": "acent-08",
+    "category": "acentuacao",
+    "difficulty": 5,
+    "errado": "Os clientes tem reclamado bastante; voce sabe que a historia da empresa é o mais valioso que eles tem.",
+    "correto": "Os clientes têm reclamado bastante; você sabe que a história da empresa é o mais valioso que eles têm.",
+    "error_count": 4,
+    "tags": [
+      "acentuação",
+      "homografo",
+      "paroxítona",
+      "verbo"
+    ]
+  },
+  {
+    "id": "hifen-01",
+    "category": "hifen",
+    "difficulty": 5,
+    "errado": "A nova auto escola oferece cursos de pré-vestibular e um super desconto para quem é ex aluno.",
+    "correto": "A nova autoescola oferece cursos de pré-vestibular e um superdesconto para quem é ex-aluno.",
+    "error_count": 3,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "novo_acordo",
+      "composto"
+    ]
+  },
+  {
+    "id": "hifen-02",
+    "category": "hifen",
+    "difficulty": 5,
+    "errado": "Ele é um super-herói do dia-a-dia, sempre auxiliando seus co-autores a superar as dificuldades extra oficina.",
+    "correto": "Ele é um super-herói do dia a dia, sempre auxiliando seus coautores a superar as dificuldades extraoficina.",
+    "error_count": 3,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "expressao_fixa",
+      "novo_acordo"
+    ]
+  },
+  {
+    "id": "hifen-03",
+    "category": "hifen",
+    "difficulty": 5,
+    "errado": "O vice presidente da micro empresa aprovou o projeto pré-existente de anti corrosão.",
+    "correto": "O vice-presidente da microempresa aprovou o projeto preexistente de anticorrosão.",
+    "error_count": 4,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "regra_geral",
+      "novo_acordo"
+    ]
+  },
+  {
+    "id": "hifen-04",
+    "category": "hifen",
+    "difficulty": 5,
+    "errado": "A recem nascida apresentava um mal estar generalizado e precisou de acompanhamento médico pós parto.",
+    "correto": "A recém-nascida apresentava um mal-estar generalizado e precisou de acompanhamento médico pós-parto.",
+    "error_count": 4,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "bem_mal",
+      "adjunto_adverbial"
+    ]
+  },
+  {
+    "id": "hifen-05",
+    "category": "hifen",
+    "difficulty": 5,
+    "errado": "Este é um ex-diretor que se considera pró-ativo em qualquer situação pré estabelecida, mesmo sendo contra senso.",
+    "correto": "Este é um ex-diretor que se considera proativo em qualquer situação pré-estabelecida, mesmo sendo contrassenso.",
+    "error_count": 4,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "novo_acordo",
+      "ss"
+    ]
+  },
+  {
+    "id": "hifen-06",
+    "category": "hifen",
+    "difficulty": 5,
+    "errado": "A infra estrutura local não suportava o volume de dados e o super herói da TI teve que fazer um auto ajuste.",
+    "correto": "A infraestrutura local não suportava o volume de dados e o super-herói da TI teve que fazer um autoajuste.",
+    "error_count": 3,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "aglutinação",
+      "tecnologia"
+    ]
+  },
+  {
+    "id": "hifen-07",
+    "category": "hifen",
+    "difficulty": 5,
+    "errado": "Em contra mão ao que se esperava, a sessão de co-produção foi ultra proveitosa, sem nenhum contra tempo.",
+    "correto": "Em contramão ao que se esperava, a sessão de coprodução foi ultraproveitosa, sem nenhum contratempo.",
+    "error_count": 4,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "aglutinação",
+      "composto"
+    ]
+  },
+  {
+    "id": "hifen-08",
+    "category": "hifen",
+    "difficulty": 5,
+    "errado": "Foi um super evento, mas a organização ficou a desejar, principalmente no quesito bem-estar e infra estrutura.",
+    "correto": "Foi um superevento, mas a organização ficou a desejar, principalmente no quesito bem-estar e infraestrutura.",
+    "error_count": 3,
+    "tags": [
+      "hífem",
+      "prefixo",
+      "composto",
+      "aglutinação"
+    ]
+  },
+  {
+    "id": "pont-01",
+    "category": "pontuacao",
+    "difficulty": 5,
+    "errado": "João o gerente de vendas viajou para São Paulo e Maria ficou responsável pelo escritório, mas os resultados não foram os esperados.",
+    "correto": "João, o gerente de vendas, viajou para São Paulo, e Maria ficou responsável pelo escritório; mas os resultados não foram os esperados.",
+    "error_count": 4,
+    "tags": [
+      "pontuação",
+      "vírgula",
+      "aposto",
+      "conjunção",
+      "ponto_e_vírgula"
+    ]
+  },
+  {
+    "id": "pont-02",
+    "category": "pontuacao",
+    "difficulty": 5,
+    "errado": "Os problemas que surgiram eram complexos e demandavam atenção contínua mas a equipe persistiu e encontrou uma solução.",
+    "correto": "Os problemas que surgiram eram complexos e demandavam atenção contínua; mas a equipe persistiu e encontrou uma solução.",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "vírgula",
+      "conjunção",
+      "ponto_e_vírgula"
+    ]
+  },
+  {
+    "id": "pont-03",
+    "category": "pontuacao",
+    "difficulty": 5,
+    "errado": "Senhores clientes a nova politica de preços já está em vigor desde o dia 1 de março de 2024 então não aceitamos mais negociações.",
+    "correto": "Senhores clientes, a nova política de preços já está em vigor desde o dia 1º de março de 2024; então, não aceitamos mais negociações.",
+    "error_count": 4,
+    "tags": [
+      "pontuação",
+      "vírgula",
+      "vocativo",
+      "ponto_e_vírgula",
+      "número_ordinal"
+    ]
+  },
+  {
+    "id": "pont-04",
+    "category": "pontuacao",
+    "difficulty": 5,
+    "errado": "A palestra abordará diversos temas entre eles: inovação tecnologia e sustentabilidade a ser realizada no auditório principal.",
+    "correto": "A palestra abordará diversos temas, entre eles: inovação, tecnologia e sustentabilidade, a ser realizada no auditório principal.",
+    "error_count": 3,
+    "tags": [
+      "pontuação",
+      "vírgula",
+      "lista",
+      "apostos"
+    ]
+  },
+  {
+    "id": "pont-05",
+    "category": "pontuacao",
+    "difficulty": 5,
+    "errado": "O desenvolvimento do projeto, atrasou, devido a falta de recursos, e, a equipe precisou se reorganizar, mas, conseguiu concluir.",
+    "correto": "O desenvolvimento do projeto atrasou devido à falta de recursos, e a equipe precisou se reorganizar, mas conseguiu concluir.",
+    "error_count": 5,
+    "tags": [
+      "pontuação",
+      "vírgula",
+      "excesso_vírgula",
+      "conjunção",
+      "crase"
+    ]
+  },
+  {
+    "id": "pont-06",
+    "category": "pontuacao",
+    "difficulty": 5,
+    "errado": "A reunião, que ocorreria amanhã, foi, adiada. Todos os, participantes foram avisados.",
+    "correto": "A reunião, que ocorreria amanhã, foi adiada. Todos os participantes foram avisados.",
+    "error_count": 3,
+    "tags": [
+      "pontuação",
+      "vírgula",
+      "sujeito_verbo",
+      "excesso_vírgula"
+    ]
+  },
+  {
+    "id": "pont-07",
+    "category": "pontuacao",
+    "difficulty": 5,
+    "errado": "Ele disse O trabalho está incompleto, portanto, não será aceito. Ninguém questionou a decisão",
+    "correto": "Ele disse: “O trabalho está incompleto; portanto, não será aceito”. Ninguém questionou a decisão.",
+    "error_count": 4,
+    "tags": [
+      "pontuação",
+      "aspas",
+      "dois_pontos",
+      "ponto_e_vírgula"
+    ]
+  },
+  {
+    "id": "pont-08",
+    "category": "pontuacao",
+    "difficulty": 5,
+    "errado": "Embora a empresa, tenha crescido muito, os desafios ainda, são grandes, principalmente: manter a qualidade, e, inovar sempre.",
+    "correto": "Embora a empresa tenha crescido muito, os desafios ainda são grandes, principalmente: manter a qualidade e inovar sempre.",
+    "error_count": 4,
+    "tags": [
+      "pontuação",
+      "vírgula",
+      "excesso_vírgula",
+      "lista"
+    ]
+  },
+  {
+    "id": "loc-01",
+    "category": "localizacao",
+    "difficulty": 5,
+    "errado": "Os estados unidos da américa são um mercado chave, e o nosso currículum vitae precisa ser adaptado aos padrões deles.",
+    "correto": "Os Estados Unidos da América são um mercado-chave, e o nosso currículo precisa ser adaptado aos padrões deles.",
+    "error_count": 4,
+    "tags": [
+      "localização",
+      "capitalização",
+      "hífem",
+      "estrangeirismo"
+    ]
+  },
+  {
+    "id": "loc-02",
+    "category": "localizacao",
+    "difficulty": 5,
+    "errado": "A Microsoft lançou um novo Site, mas o email de contato ainda esta com problemas de envio.",
+    "correto": "A Microsoft lançou um novo site, mas o e-mail de contato ainda está com problemas de envio.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "capitalização",
+      "hífem",
+      "acentuação"
+    ]
+  },
+  {
+    "id": "loc-03",
+    "category": "localizacao",
+    "difficulty": 5,
+    "errado": "O valor do dólar subiu e o Euro caiu, impactando o Real brasileiro, que já estava fragilizado.",
+    "correto": "O valor do dólar subiu e o euro caiu, impactando o real brasileiro, que já estava fragilizado.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "capitalização",
+      "moeda"
+    ]
+  },
+  {
+    "id": "loc-04",
+    "category": "localizacao",
+    "difficulty": 5,
+    "errado": "Na Terça-feira próxima, visitaremos o Rio de janeiro, no Brasil, para uma conferencia importante.",
+    "correto": "Na terça-feira próxima, visitaremos o Rio de Janeiro, no Brasil, para uma conferência importante.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "capitalização",
+      "acentuação",
+      "hífem"
+    ]
+  },
+  {
+    "id": "loc-05",
+    "category": "localizacao",
+    "difficulty": 5,
+    "errado": "As reservas de Pre-sal no Oceano Atlantico são vitais para a economia da Amazônia e do país.",
+    "correto": "As reservas de pré-sal no Oceano Atlântico são vitais para a economia da Amazônia e do país.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "capitalização",
+      "hífem",
+      "geografia"
+    ]
+  },
+  {
+    "id": "loc-06",
+    "category": "localizacao",
+    "difficulty": 5,
+    "errado": "O novo app permite fazer o Download de filmes e um upgrade da sua experiencia online.",
+    "correto": "O novo app permite fazer o download de filmes e um upgrade da sua experiência online.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "estrangeirismo",
+      "capitalização",
+      "acentuação"
+    ]
+  },
+  {
+    "id": "loc-07",
+    "category": "localizacao",
+    "difficulty": 5,
+    "errado": "Pegamos o onibus, depois um taxi e, por fim, o trem para chegar à estação central, mas foi um dia exaustivo.",
+    "correto": "Pegamos o ônibus, depois um táxi e, por fim, o trem para chegar à estação central, mas foi um dia exaustivo.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "acentuação",
+      "transporte",
+      "ortografia"
+    ]
+  },
+  {
+    "id": "loc-08",
+    "category": "localizacao",
+    "difficulty": 5,
+    "errado": "O Google, o Twitter e o Facebook, são empresas de tecnologia que revolucionaram a forma como interagimos na Internet.",
+    "correto": "O Google, o Twitter e o Facebook são empresas de tecnologia que revolucionaram a forma como interagimos na internet.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "capitalização",
+      "vírgula",
+      "internet"
+    ]
+  },
+  {
+    "id": "context-01",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Onde o diretor havia solicitado, o relatório final foi entregue à coordenação, a quem interessasse.",
+    "correto": "Onde o diretor havia solicitado, o relatório final foi entregue à coordenação, a quem interessasse.",
+    "error_count": 0,
+    "tags": [
+      "contexto",
+      "regência",
+      "pronome"
+    ]
+  },
+  {
+    "id": "context-02",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Faz muitos anos que não vejo ele, o que me faz pensar o quão distante nós se tornamos.",
+    "correto": "Faz muitos anos que não o vejo, o que me faz pensar o quão distantes nós nos tornamos.",
+    "error_count": 3,
+    "tags": [
+      "contexto",
+      "colocação_pronominal",
+      "concordância_verbal",
+      "concordância_nominal"
+    ]
+  },
+  {
+    "id": "context-03",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Ele preferia ir no cinema do que ficar em casa, mesmo com a pilha de livros a ler sobre a mesa.",
+    "correto": "Ele preferia ir ao cinema a ficar em casa, mesmo com a pilha de livros para ler sobre a mesa.",
+    "error_count": 3,
+    "tags": [
+      "contexto",
+      "regência_verbal",
+      "preposição",
+      "conjunção"
+    ]
+  },
+  {
+    "id": "context-04",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "A sala estava meio vazia e a secretária, com a voz meia rouca, informou que o evento foi cancelado.",
+    "correto": "A sala estava meio vazia e a secretária, com a voz meio rouca, informou que o evento foi cancelado.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "concordância_nominal",
+      "advérbio",
+      "adjunto_adverbial"
+    ]
+  },
+  {
+    "id": "context-05",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Este é o projeto que te falei onde todos estão empenhados a alcançar os objetivos ambiciosos.",
+    "correto": "Este é o projeto de que te falei em que todos estão empenhados em alcançar os objetivos ambiciosos.",
+    "error_count": 3,
+    "tags": [
+      "contexto",
+      "regência_verbal",
+      "pronome_relativo",
+      "preposição"
+    ]
+  },
+  {
+    "id": "context-06",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "O aluno mais experiente, que já havia completado o curso, nos ajudou a tirar nossas dúvidas, com mais facilidade.",
+    "correto": "O aluno mais experiente, que já havia completado o curso, nos ajudou a tirar nossas dúvidas com mais facilidade.",
+    "error_count": 1,
+    "tags": [
+      "contexto",
+      "vírgula",
+      "clareza"
+    ]
+  },
+  {
+    "id": "context-07",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "As pessoas, em geral, se preocupa com o futuro, mas poucos realmente se engaja em mudar o presente.",
+    "correto": "As pessoas, em geral, se preocupam com o futuro, mas poucos realmente se engajam em mudar o presente.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "concordância_verbal",
+      "regência"
+    ]
+  },
+  {
+    "id": "context-08",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Na medida em que a economia cresce, mais desafios são impostos aos governos e às empresas.",
+    "correto": "À medida que a economia cresce, mais desafios são impostos aos governos e às empresas.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "expressao_fixa",
+      "crase",
+      "conjunção"
+    ]
+  },
+  {
+    "id": "homof-01",
+    "category": "homofonos",
+    "difficulty": 5,
+    "errado": "Ele teve um mau dia, mas mesmo assim, há chances de reverter o placar; a vitória é importante.",
+    "correto": "Ele teve um mau dia, mas mesmo assim, há chances de reverter o placar; a vitória é importante.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "mau_mal",
+      "mas_mais",
+      "a_ha"
+    ]
+  },
+  {
+    "id": "homof-02",
+    "category": "homofonos",
+    "difficulty": 5,
+    "errado": "Por que você faltou à sessão da tarde? Eu queria saber o porquê da sua ausência.",
+    "correto": "Por que você faltou à sessão da tarde? Eu queria saber o porquê da sua ausência.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "por_que",
+      "sessao_secao"
+    ]
+  },
+  {
+    "id": "homof-03",
+    "category": "homofonos",
+    "difficulty": 5,
+    "errado": "Há tempos não vou a praia, mas esta é a vez de ir aonde a diversão me levar, sem preocupações.",
+    "correto": "Há tempos não vou à praia, mas esta é a vez de ir aonde a diversão me levar, sem preocupações.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "a_ha",
+      "crase",
+      "onde_aonde"
+    ]
+  },
+  {
+    "id": "homof-04",
+    "category": "homofonos",
+    "difficulty": 5,
+    "errado": "A concerta do carro era urgente, mas a cessão dos fundos para a manutenção foi negada, e a seção de peças estava fechada.",
+    "correto": "O conserto do carro era urgente, mas a cessão dos fundos para a manutenção foi negada, e a seção de peças estava fechada.",
+    "error_count": 3,
+    "tags": [
+      "homófonos",
+      "conserto_concerto",
+      "cessao_sessao_secao",
+      "ortografia"
+    ]
+  },
+  {
+    "id": "homof-05",
+    "category": "homofonos",
+    "difficulty": 5,
+    "errado": "Ele veio por o livro na mesa, mas não o fez. Para onde foi? A gente precisa de ajuda para entender.",
+    "correto": "Ele veio para pôr o livro na mesa, mas não o fez. Para onde foi? A gente precisa de ajuda para entender.",
+    "error_count": 3,
+    "tags": [
+      "homófonos",
+      "por_pôr",
+      "a_gente_agente",
+      "acentuação"
+    ]
+  },
+  {
+    "id": "homof-06",
+    "category": "homofonos",
+    "difficulty": 5,
+    "errado": "Mais de uma vez a havia alertado para o mau humor do chefe, mas ela insistiu em pedir um concerto de jazz no escritório.",
+    "correto": "Mais de uma vez a havia alertado para o mal humor do chefe, mas ela insistiu em pedir um show de jazz no escritório.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "mal_mau",
+      "concerto_conserto",
+      "expressao"
+    ]
+  },
+  {
+    "id": "homof-07",
+    "category": "homofonos",
+    "difficulty": 5,
+    "errado": "O censo populacional revelou um senso de comunidade forte, mas o extrato bancário mostrou que as despesas eram altas.",
+    "correto": "O censo populacional revelou um senso de comunidade forte, mas o extrato bancário mostrou que as despesas eram altas.",
+    "error_count": 0,
+    "tags": [
+      "homófonos",
+      "censo_senso",
+      "extrato_estrato"
+    ]
+  },
+  {
+    "id": "homof-08",
+    "category": "homofonos",
+    "difficulty": 5,
+    "errado": "Eles veem o problema, mas não sabem o por que. Trazendo soluções seria um bom começo.",
+    "correto": "Eles veem o problema, mas não sabem o porquê. Trazendo soluções seria um bom começo.",
+    "error_count": 3,
+    "tags": [
+      "homófonos",
+      "ver_vêem",
+      "por_que",
+      "traz_trás"
+    ]
+  },
+  {
+    "id": "anu-01",
+    "category": "anuncios",
+    "difficulty": 5,
+    "errado": "Imperdivel! Venha conferir as novas ofertas de lançamento e garantir o seu. É por tempo limitado!",
+    "correto": "Imperdível! Venha conferir as novas ofertas de lançamento e garantir o seu. É por tempo limitado!",
+    "error_count": 1,
+    "tags": [
+      "anúncio",
+      "acentuação",
+      "chamada_ação"
+    ]
+  },
+  {
+    "id": "anu-02",
+    "category": "anuncios",
+    "difficulty": 5,
+    "errado": "Liquidação de verão! Todos os produtos com 50% de disconto e o frete grátis para todo o Brasil. Aproveite já!",
+    "correto": "Liquidação de verão! Todos os produtos com 50% de desconto e o frete grátis para todo o Brasil. Aproveite já!",
+    "error_count": 2,
+    "tags": [
+      "anúncio",
+      "ortografia",
+      "acentuação",
+      "oferta"
+    ]
+  },
+  {
+    "id": "anu-03",
+    "category": "anuncios",
+    "difficulty": 5,
+    "errado": "Qualidade e atendimento exclusivo, você só encontra aqui! Nao perca tempo, venha nos visitar hoje mesmo.",
+    "correto": "Qualidade e atendimento exclusivo, você só encontra aqui! Não perca tempo, venha nos visitar hoje mesmo.",
+    "error_count": 2,
+    "tags": [
+      "anúncio",
+      "acentuação",
+      "ortografia",
+      "convite"
+    ]
+  },
+  {
+    "id": "anu-04",
+    "category": "anuncios",
+    "difficulty": 5,
+    "errado": "Clique aqui e saiba mas sobre a promoção especial. Exclusividade para clientes que se cadastrarem agora.",
+    "correto": "Clique aqui e saiba mais sobre a promoção especial. Exclusividade para clientes que se cadastrarem agora.",
+    "error_count": 2,
+    "tags": [
+      "anúncio",
+      "homófonos",
+      "concordância",
+      "chamada_ação"
+    ]
+  },
+  {
+    "id": "anu-05",
+    "category": "anuncios",
+    "difficulty": 5,
+    "errado": "Experimente nossos novos sabores, uma delicia que vai te surpreender. Vem pra cá provar!",
+    "correto": "Experimente nossos novos sabores, uma delícia que vai te surpreender. Vem pra cá provar!",
+    "error_count": 2,
+    "tags": [
+      "anúncio",
+      "acentuação",
+      "ortografia",
+      "gastronomia"
+    ]
+  },
+  {
+    "id": "anu-06",
+    "category": "anuncios",
+    "difficulty": 5,
+    "errado": "Descontos incriveis e parcelas sem juros, aproveite esta oportunidade única para renovar sua casa.",
+    "correto": "Descontos incríveis e parcelas sem juros, aproveite esta oportunidade única para renovar sua casa.",
+    "error_count": 2,
+    "tags": [
+      "anúncio",
+      "acentuação",
+      "ortografia",
+      "finanças"
+    ]
+  },
+  {
+    "id": "anu-07",
+    "category": "anuncios",
+    "difficulty": 5,
+    "errado": "Cadastre-se já e receba nossa newslleter com as ultimas novidades e promoções esclusivas para você.",
+    "correto": "Cadastre-se já e receba nossa newsletter com as últimas novidades e promoções exclusivas para você.",
+    "error_count": 4,
+    "tags": [
+      "anúncio",
+      "ortografia",
+      "acentuação",
+      "estrangeirismo"
+    ]
+  },
+  {
+    "id": "anu-08",
+    "category": "anuncios",
+    "difficulty": 5,
+    "errado": "Qualidade garantida com o melhor preçco da cidade. Não percam a chance, por que o estoque é limitado!",
+    "correto": "Qualidade garantida com o melhor preço da cidade. Não percam a chance, porque o estoque é limitado!",
+    "error_count": 2,
+    "tags": [
+      "anúncio",
+      "ortografia",
+      "homófonos",
+      "preço"
+    ]
+  },
+  {
+    "id": "tec-01",
+    "category": "texto_tecnico",
+    "difficulty": 5,
+    "errado": "A metodolojia de parametrização dos dados exige uma análise sistêmica para otimizar a performance dos algoritmos.",
+    "correto": "A metodologia de parametrização dos dados exige uma análise sistêmica para otimizar a performance dos algoritmos.",
+    "error_count": 2,
+    "tags": [
+      "texto_técnico",
+      "ortografia",
+      "jargão",
+      "processo"
+    ]
+  },
+  {
+    "id": "tec-02",
+    "category": "texto_tecnico",
+    "difficulty": 5,
+    "errado": "A implementacao das novas funcionalidades na interface do sistema é crucial para a escalabilidade da plataforma.",
+    "correto": "A implementação das novas funcionalidades na interface do sistema é crucial para a escalabilidade da plataforma.",
+    "error_count": 2,
+    "tags": [
+      "texto_técnico",
+      "ortografia",
+      "acentuação",
+      "tecnologia"
+    ]
+  },
+  {
+    "id": "tec-03",
+    "category": "texto_tecnico",
+    "difficulty": 5,
+    "errado": "O protocolo de comunicação foi desenhado para garantir a interoperabilidade entre diferentes sistemas legados e o novo hardware.",
+    "correto": "O protocolo de comunicação foi desenhado para garantir a interoperabilidade entre diferentes sistemas legados e o novo hardware.",
+    "error_count": 0,
+    "tags": [
+      "texto_técnico",
+      "jargão",
+      "ti",
+      "arquitetura"
+    ]
+  },
+  {
+    "id": "tec-04",
+    "category": "texto_tecnico",
+    "difficulty": 5,
+    "errado": "A resiliencia da infra-estrutura foi testada em cenarios de alta demanda, validando a sua robustez e escalabilidade.",
+    "correto": "A resiliência da infraestrutura foi testada em cenários de alta demanda, validando a sua robustez e escalabilidade.",
+    "error_count": 3,
+    "tags": [
+      "texto_técnico",
+      "acentuação",
+      "hífem",
+      "ortografia"
+    ]
+  },
+  {
+    "id": "tec-05",
+    "category": "texto_tecnico",
+    "difficulty": 5,
+    "errado": "Novos algoritmos de inteligencia artificial estão sendo implementados para otimizar o processamento de dados massivos.",
+    "correto": "Novos algoritmos de inteligência artificial estão sendo implementados para otimizar o processamento de dados massivos.",
+    "error_count": 2,
+    "tags": [
+      "texto_técnico",
+      "acentuação",
+      "tecnologia",
+      "ia"
+    ]
+  },
+  {
+    "id": "tec-06",
+    "category": "texto_tecnico",
+    "difficulty": 5,
+    "errado": "A premissa subjacente à estratégia de contingencia é a de que riscos inerentes devem ser mitigados proativamente.",
+    "correto": "A premissa subjacente à estratégia de contingência é a de que riscos inerentes devem ser mitigados proativamente.",
+    "error_count": 2,
+    "tags": [
+      "texto_técnico",
+      "acentuação",
+      "crase",
+      "estratégia"
+    ]
+  },
+  {
+    "id": "tec-07",
+    "category": "texto_tecnico",
+    "difficulty": 5,
+    "errado": "O roadmap de compliance foi atualizado com base no feedback recebido dos stakeholders internos e externos.",
+    "correto": "O roteiro de conformidade foi atualizado com base no feedback recebido dos stakeholders internos e externos.",
+    "error_count": 2,
+    "tags": [
+      "texto_técnico",
+      "estrangeirismo",
+      "negócios",
+      "jargão"
+    ]
+  },
+  {
+    "id": "tec-08",
+    "category": "texto_tecnico",
+    "difficulty": 5,
+    "errado": "A inferencia da analise de dados revela um novo paradigma no comportamento do consumidor, alterando as perspectivas de mercado.",
+    "correto": "A inferência da análise de dados revela um novo paradigma no comportamento do consumidor, alterando as perspectivas de mercado.",
+    "error_count": 2,
+    "tags": [
+      "texto_técnico",
+      "acentuação",
+      "análise",
+      "mercado"
+    ]
+  },
+  {
+    "id": "ort-01-pret-mend",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "A excessiva pretenção do mendingo causou espanto na vizinhança.",
+    "correto": "A excessiva pretensão do mendigo causou espanto na vizinhança.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "vocabulário",
+      "escrita-formal"
+    ]
+  },
+  {
+    "id": "ort-02-anal-paral",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "É preciso analizar a paralizia dos sistemas durante a manutenção.",
+    "correto": "É preciso analisar a paralisia dos sistemas durante a manutenção.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "sufixos",
+      "técnico"
+    ]
+  },
+  {
+    "id": "ort-03-bene-prev",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "O evento beneficiente atende um público previlegiado da capital.",
+    "correto": "O evento beneficente atende um público privilegiado da capital.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "fonética",
+      "comum"
+    ]
+  },
+  {
+    "id": "ort-04-exce-ascen",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "Não houve excesção na rápida ascenção da diretora executiva.",
+    "correto": "Não houve exceção na rápida ascensão da diretora executiva.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "carreira",
+      "erros-frequentes"
+    ]
+  },
+  {
+    "id": "ort-05-reiv-pix",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "Eles pretendem reinvindicar a limpeza da pichação no muro.",
+    "correto": "Eles pretendem reivindicar a limpeza da pichação no muro.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "protesto",
+      "cotidiano"
+    ]
+  },
+  {
+    "id": "ort-06-obs-prazer",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "Sua obseção por um trabalho praseroso compromete o foco.",
+    "correto": "Sua obsessão por um trabalho prazeroso compromete o foco.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "comportamento",
+      "psicologia"
+    ]
+  },
+  {
+    "id": "ort-07-susp-pret",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "A suspenção do edital irritou os candidatos pretençiosos.",
+    "correto": "A suspensão do edital irritou os candidatos pretensiosos.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "concurso",
+      "administrativo"
+    ]
+  },
+  {
+    "id": "ort-08-conces-assess",
+    "category": "ortografia",
+    "difficulty": 6,
+    "errado": "A consessão foi aprovada pelo acessor jurídico da prefeitura.",
+    "correto": "A concessão foi aprovada pelo assessor jurídico da prefeitura.",
+    "error_count": 2,
+    "tags": [
+      "ortografia",
+      "jurídico",
+      "governo"
+    ]
+  },
+  {
+    "id": "ace-01-ideia-heroi",
+    "category": "acentuacao",
+    "difficulty": 6,
+    "errado": "Tive uma idéia para o roteiro heróico do novo filme.",
+    "correto": "Tive uma ideia para o roteiro heroico do novo filme.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "acordo-ortográfico",
+      "ditongos"
+    ]
+  },
+  {
+    "id": "ace-02-enjoo-voo",
+    "category": "acentuacao",
+    "difficulty": 6,
+    "errado": "Sinto enjôo toda vez que o vôo passa por turbulência.",
+    "correto": "Sinto enjoo toda vez que o voo passa por turbulência.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "hiatos",
+      "acordo-ortográfico"
+    ]
+  },
+  {
+    "id": "ace-03-para-argui",
+    "category": "acentuacao",
+    "difficulty": 6,
+    "errado": "Ele pára o carro e arguí que não conhece o caminho.",
+    "correto": "Ele para o carro e argui que não conhece o caminho.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "acentos-diferenciais",
+      "verbos"
+    ]
+  },
+  {
+    "id": "ace-04-vem-creem",
+    "category": "acentuacao",
+    "difficulty": 6,
+    "errado": "Eles vem aqui porque crêem em nossa proposta de valor.",
+    "correto": "Eles vêm aqui porque creem em nossa proposta de valor.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "plural-verbal",
+      "acordo-ortográfico"
+    ]
+  },
+  {
+    "id": "ace-05-dist-crase",
+    "category": "acentuacao",
+    "difficulty": 6,
+    "errado": "A educação á distância deve ser oferecida à todas as pessoas.",
+    "correto": "A educação a distância deve ser oferecida a todas as pessoas.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "crase",
+      "ensino"
+    ]
+  },
+  {
+    "id": "ace-06-por-pode",
+    "category": "acentuacao",
+    "difficulty": 6,
+    "errado": "Ele não pode vir ontem, mas vai por o livro na estante hoje.",
+    "correto": "Ele não pôde vir ontem, mas vai pôr o livro na estante hoje.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "acento-diferencial",
+      "verbos"
+    ]
+  },
+  {
+    "id": "ace-07-bau-saude",
+    "category": "acentuacao",
+    "difficulty": 6,
+    "errado": "O bau de joias estava escondido por razões de saude pública.",
+    "correto": "O baú de joias estava escondido por razões de saúde pública.",
+    "error_count": 2,
+    "tags": [
+      "acentuação",
+      "hiatos",
+      "tonicidade"
+    ]
+  },
+  {
+    "id": "ace-08-pau-argu",
+    "category": "acentuacao",
+    "difficulty": 6,
+    "errado": "O juíz arguíu o réu sobre o conteúdo do báu de provas.",
+    "correto": "O juiz arguiu o réu sobre o conteúdo do baú de provas.",
+    "error_count": 3,
+    "tags": [
+      "acentuação",
+      "jurídico",
+      "hiatos"
+    ]
+  },
+  {
+    "id": "hif-01-auto-micro",
+    "category": "hifen",
+    "difficulty": 6,
+    "errado": "A auto-estima sobe ao comprar um micro-ondas novo.",
+    "correto": "A autoestima sobe ao comprar um micro-ondas novo.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "acordo-ortográfico",
+      "compras"
+    ]
+  },
+  {
+    "id": "hif-02-anti-sub",
+    "category": "hifen",
+    "difficulty": 6,
+    "errado": "O anti-inflamatório foi receitado pelo subreitor da faculdade.",
+    "correto": "O anti-inflamatório foi receitado pelo sub-reitor da faculdade.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "prefixos",
+      "acadêmico"
+    ]
+  },
+  {
+    "id": "hif-03-mao-fim",
+    "category": "hifen",
+    "difficulty": 6,
+    "errado": "A mão-de-obra contratada trabalhará no fim-de-semana.",
+    "correto": "A mão de obra contratada trabalhará no fim de semana.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "locuções",
+      "trabalho"
+    ]
+  },
+  {
+    "id": "hif-04-super-pan",
+    "category": "hifen",
+    "difficulty": 6,
+    "errado": "O atleta super-resistente venceu os jogos panamericano.",
+    "correto": "O atleta super-resistente venceu os jogos pan-americanos.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "esportes",
+      "prefixos"
+    ]
+  },
+  {
+    "id": "hif-05-bem-mal",
+    "category": "hifen",
+    "difficulty": 6,
+    "errado": "Seja bemvindo ao nosso clube de quem sofre de malestar.",
+    "correto": "Seja bem-vindo ao nosso clube de quem sofre de mal-estar.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "hospitalidade",
+      "saúde"
+    ]
+  },
+  {
+    "id": "hif-06-vice-ex",
+    "category": "hifen",
+    "difficulty": 6,
+    "errado": "O vice presidente encontrou seu exmarido no jantar beneficente.",
+    "correto": "O vice-presidente encontrou seu ex-marido no jantar beneficente.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "cargos",
+      "social"
+    ]
+  },
+  {
+    "id": "hif-07-inter-pos",
+    "category": "hifen",
+    "difficulty": 6,
+    "errado": "A interrelação entre os temas será debatida na pos-graduação.",
+    "correto": "A inter-relação entre os temas será debatida na pós-graduação.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "prefixos",
+      "acadêmico"
+    ]
+  },
+  {
+    "id": "hif-08-contra-extra",
+    "category": "hifen",
+    "difficulty": 6,
+    "errado": "O contra-regra pediu um serviço extra-curricular urgente.",
+    "correto": "O contrarregra pediu um serviço extracurricular urgente.",
+    "error_count": 2,
+    "tags": [
+      "hífen",
+      "prefixos",
+      "regras"
+    ]
+  },
+  {
+    "id": "pon-01-suj-pred",
+    "category": "pontuacao",
+    "difficulty": 6,
+    "errado": "O diretor da empresa, decidiu que João, não deve sair.",
+    "correto": "O diretor da empresa decidiu que João não deve sair.",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "sintaxe",
+      "vírgula"
+    ]
+  },
+  {
+    "id": "pon-02-adj-desl",
+    "category": "pontuacao",
+    "difficulty": 6,
+    "errado": "Ontem a noite fomos ao cinema mas, o filme estava ruim.",
+    "correto": "Ontem à noite fomos ao cinema, mas o filme estava ruim.",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "conjunções",
+      "advérbio"
+    ]
+  },
+  {
+    "id": "pon-03-voc-apos",
+    "category": "pontuacao",
+    "difficulty": 6,
+    "errado": "Olá doutor como vai o senhor seu paciente Carlos, espera.",
+    "correto": "Olá, doutor, como vai o senhor? Seu paciente, Carlos, espera.",
+    "error_count": 3,
+    "tags": [
+      "pontuação",
+      "vocativo",
+      "aposto"
+    ]
+  },
+  {
+    "id": "pon-04-enum-ponto",
+    "category": "pontuacao",
+    "difficulty": 6,
+    "errado": "Comprei: pão, leite, e ovos; mas esqueci o queijo.",
+    "correto": "Comprei pão, leite e ovos, mas esqueci o queijo.",
+    "error_count": 3,
+    "tags": [
+      "pontuação",
+      "enumeração",
+      "estilo"
+    ]
+  },
+  {
+    "id": "pon-05-expl-rest",
+    "category": "pontuacao",
+    "difficulty": 6,
+    "errado": "Os alunos, que estudam passam, os outros ficam de DP.",
+    "correto": "Os alunos que estudam passam; os outros ficam de DP.",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "orações-relativas",
+      "semântica"
+    ]
+  },
+  {
+    "id": "pon-06-porem-cont",
+    "category": "pontuacao",
+    "difficulty": 6,
+    "errado": "O sol estava forte porém, não queimava contudo, usei protetor.",
+    "correto": "O sol estava forte, porém não queimava; contudo, usei protetor.",
+    "error_count": 3,
+    "tags": [
+      "pontuação",
+      "conjunções",
+      "adversativas"
+    ]
+  },
+  {
+    "id": "pon-07-direto-aspas",
+    "category": "pontuacao",
+    "difficulty": 6,
+    "errado": "Ele disse: \"eu volto logo\", mas ele nunca voltou.",
+    "correto": "Ele disse: \"Eu volto logo\", mas ele nunca voltou.",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "discurso-direto",
+      "citação"
+    ]
+  },
+  {
+    "id": "pon-08-parent-pt",
+    "category": "pontuacao",
+    "difficulty": 6,
+    "errado": "O caso foi encerrado (conforme o juiz). nenhum recurso cabe.",
+    "correto": "O caso foi encerrado (conforme o juiz). Nenhum recurso cabe.",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "parênteses",
+      "maiusculização"
+    ]
+  },
+  {
+    "id": "loc-01-curr-format",
+    "category": "localizacao",
+    "difficulty": 6,
+    "errado": "O valor total do orçamento é de R$ 1.250.50 e vence em 10/Outubro.",
+    "correto": "O valor total do orçamento é de R$ 1.250,50 e vence em 10 de outubro.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "moeda",
+      "data"
+    ]
+  },
+  {
+    "id": "loc-02-unid-med",
+    "category": "localizacao",
+    "difficulty": 6,
+    "errado": "A caixa pesa 15Kg e deve ser entregue às 14h. no setor B.",
+    "correto": "A caixa pesa 15 kg e deve ser entregue às 14h no setor B.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "unidades",
+      "abreviação"
+    ]
+  },
+  {
+    "id": "loc-03-tel-br",
+    "category": "localizacao",
+    "difficulty": 6,
+    "errado": "Ligue para (11)98888-7777 ou envie um email para contato@site.",
+    "correto": "Ligue para (11) 98888-7777 ou envie um e-mail para contato@site.com.br.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "telefone",
+      "internet"
+    ]
+  },
+  {
+    "id": "loc-04-data-ext",
+    "category": "localizacao",
+    "difficulty": 6,
+    "errado": "São Paulo, 05 de Abril de 2024. Atenciosamente.",
+    "correto": "São Paulo, 5 de abril de 2024. Atenciosamente,",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "correspondência",
+      "datas"
+    ]
+  },
+  {
+    "id": "loc-05-temp-cels",
+    "category": "localizacao",
+    "difficulty": 6,
+    "errado": "A previsão para hoje é de 30º C com humidade de 50 %.",
+    "correto": "A previsão para hoje é de 30 ºC com umidade de 50%.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "clima",
+      "símbolos"
+    ]
+  },
+  {
+    "id": "loc-06-end-abrev",
+    "category": "localizacao",
+    "difficulty": 6,
+    "errado": "Moro na Av. Paulista, 1000 apto. 52. no centro.",
+    "correto": "Moro na Av. Paulista, 1000, apto. 52, no centro.",
+    "error_count": 2,
+    "tags": [
+      "localização",
+      "endereço",
+      "pontuação"
+    ]
+  },
+  {
+    "id": "loc-07-deci-ponto",
+    "category": "localizacao",
+    "difficulty": 6,
+    "errado": "A taxa é de 10.5% e o PIB caiu 1.2 pontos.",
+    "correto": "A taxa é de 10,5% e o PIB caiu 1,2 ponto.",
+    "error_count": 3,
+    "tags": [
+      "localização",
+      "finanças",
+      "números"
+    ]
+  },
+  {
+    "id": "loc-08-hora-min",
+    "category": "localizacao",
+    "difficulty": 6,
+    "errado": "O evento começa as 08:30AM e termina as 5:00PM.",
+    "correto": "O evento começa às 8h30 e termina às 17h.",
+    "error_count": 4,
+    "tags": [
+      "localização",
+      "tempo",
+      "crase"
+    ]
+  },
+  {
+    "id": "ctx-01-onde-aonde",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Aonde você mora? O lugar onde eu vou é muito longe.",
+    "correto": "Onde você mora? O lugar aonde eu vou é muito longe.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "regência",
+      "pronomes"
+    ]
+  },
+  {
+    "id": "ctx-02-encont-de",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Suas ideias vão de encontro às minhas, por isso concordamos.",
+    "correto": "Suas ideias vão ao encontro das minhas, por isso concordamos.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "semântica",
+      "expressões"
+    ]
+  },
+  {
+    "id": "ctx-03-impl-em",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "O atraso implicará em multa e farão dez anos que isso ocorre.",
+    "correto": "O atraso implicará multa e faz dez anos que isso ocorre.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "regência",
+      "concordância"
+    ]
+  },
+  {
+    "id": "ctx-04-meio-meia",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Eles estão meia preocupados, pois já são meio-dia e meia.",
+    "correto": "Eles estão meio preocupados, pois já é meio-dia e meia.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "advérbio",
+      "concordância"
+    ]
+  },
+  {
+    "id": "ctx-05-hav-faz",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Houveram muitos problemas e fazem dois meses que não os vejo.",
+    "correto": "Houve muitos problemas e faz dois meses que não os vejo.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "verbos-impessoais",
+      "concordância"
+    ]
+  },
+  {
+    "id": "ctx-06-proclise",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Me empresta o livro? Não quero ver-te sofrendo assim.",
+    "correto": "Empresta-me o livro? Não quero ver você sofrendo assim.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "pronomes",
+      "colocação"
+    ]
+  },
+  {
+    "id": "ctx-07-alug-se",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Vende-se carros e busca-se novas oportunidades.",
+    "correto": "Vendem-se carros e buscam-se novas oportunidades.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "voz-passiva",
+      "concordância"
+    ]
+  },
+  {
+    "id": "ctx-08-anexo-mesmo",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Seguem anexo as fotos, o mesmo deve ser arquivado logo.",
+    "correto": "Seguem anexas as fotos; elas devem ser arquivadas logo.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "concordância",
+      "coesão"
+    ]
+  },
+  {
+    "id": "hom-01-mau-mal",
+    "category": "homofonos",
+    "difficulty": 6,
+    "errado": "Ele é um mal elemento e se comportou mau na reunião.",
+    "correto": "Ele é um mau elemento e se comportou mal na reunião.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "semântica",
+      "comum"
+    ]
+  },
+  {
+    "id": "hom-02-sessao-secao",
+    "category": "homofonos",
+    "difficulty": 6,
+    "errado": "A cessão de cinema foi na seção de autógrafos do autor.",
+    "correto": "A sessão de cinema foi na seção de autógrafos do autor.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "ortografia",
+      "contexto"
+    ]
+  },
+  {
+    "id": "hom-03-traz-tras",
+    "category": "homofonos",
+    "difficulty": 6,
+    "errado": "Ele ficou para traz e não trás o que prometeu.",
+    "correto": "Ele ficou para trás e não traz o que prometeu.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "verbos",
+      "advérbios"
+    ]
+  },
+  {
+    "id": "hom-04-a-ha",
+    "category": "homofonos",
+    "difficulty": 6,
+    "errado": "Há muito tempo, a cerca de 2km, víamos a luz.",
+    "correto": "Há muito tempo, a cerca de 2 km, víamos a luz.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "tempo",
+      "distância"
+    ]
+  },
+  {
+    "id": "hom-05-senao-se-nao",
+    "category": "homofonos",
+    "difficulty": 6,
+    "errado": "Se não chover, eu vou, senao fico em casa.",
+    "correto": "Se não chover, eu vou, senão fico em casa.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "conjunções",
+      "lógica"
+    ]
+  },
+  {
+    "id": "hom-06-acerca-de",
+    "category": "homofonos",
+    "difficulty": 6,
+    "errado": "Falamos a cerca de política por há cerca de duas horas.",
+    "correto": "Falamos acerca de política por cerca de duas horas.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "preposições",
+      "tempo"
+    ]
+  },
+  {
+    "id": "hom-07-afim-a-fim",
+    "category": "homofonos",
+    "difficulty": 6,
+    "errado": "Estou afim de sair, pois temos ideias a fim sobre o tema.",
+    "correto": "Estou a fim de sair, pois temos ideias afins sobre o tema.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "interesses",
+      "concordância"
+    ]
+  },
+  {
+    "id": "hom-08-mas-mais",
+    "category": "homofonos",
+    "difficulty": 6,
+    "errado": "Quero mais café, mas porém não quero mas açúcar.",
+    "correto": "Quero mais café, porém não quero mais açúcar.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "conjunções",
+      "advérbios"
+    ]
+  },
+  {
+    "id": "anu-01-vende-casa",
+    "category": "anuncios",
+    "difficulty": 6,
+    "errado": "Vende-se casas apartir de R$ 200.000 com garagem.",
+    "correto": "Vendem-se casas a partir de R$ 200.000,00 com garagem.",
+    "error_count": 3,
+    "tags": [
+      "anúncios",
+      "imobiliário",
+      "crase"
+    ]
+  },
+  {
+    "id": "anu-02-avista-prazo",
+    "category": "anuncios",
+    "difficulty": 6,
+    "errado": "Preços á vista com desconto ou em 10x s/ juros.",
+    "correto": "Preços à vista com desconto ou em 10x sem juros.",
+    "error_count": 2,
+    "tags": [
+      "anúncios",
+      "varejo",
+      "crase"
+    ]
+  },
+  {
+    "id": "anu-03-maiores-info",
+    "category": "anuncios",
+    "difficulty": 6,
+    "errado": "Para maiores informações, ligue grátis: 0800-123-456.",
+    "correto": "Para mais informações, ligue grátis: 0800 123 456.",
+    "error_count": 2,
+    "tags": [
+      "anúncios",
+      "comercial",
+      "estilo"
+    ]
+  },
+  {
+    "id": "anu-04-promo-imperd",
+    "category": "anuncios",
+    "difficulty": 6,
+    "errado": "Promoção imperdivel: compre dois e leve um de brinde!",
+    "correto": "Promoção imperdível: compre dois e leve o terceiro de brinde!",
+    "error_count": 2,
+    "tags": [
+      "anúncios",
+      "marketing",
+      "acentuação"
+    ]
+  },
+  {
+    "id": "anu-05-clickbait-err",
+    "category": "anuncios",
+    "difficulty": 6,
+    "errado": "Você não vai crer no que aconteceu, clique áqui!",
+    "correto": "Você não vai crer no que aconteceu. Clique aqui!",
+    "error_count": 2,
+    "tags": [
+      "anúncios",
+      "digital",
+      "pontuação"
+    ]
+  },
+  {
+    "id": "anu-06-entrega-gratis",
+    "category": "anuncios",
+    "difficulty": 6,
+    "errado": "Entregas em domicílio grátis para compras acima de 100 reais.",
+    "correto": "Entregas em domicílio gratuitas para compras acima de R$ 100,00.",
+    "error_count": 2,
+    "tags": [
+      "anúncios",
+      "delivery",
+      "moeda"
+    ]
+  },
+  {
+    "id": "anu-07-queima-estoq",
+    "category": "anuncios",
+    "difficulty": 6,
+    "errado": "Venha conferir a queima de estoques, é só esse fds.",
+    "correto": "Venha conferir a queima de estoque; é só este fim de semana.",
+    "error_count": 3,
+    "tags": [
+      "anúncios",
+      "varejo",
+      "abreviação"
+    ]
+  },
+  {
+    "id": "anu-08-servico-garant",
+    "category": "anuncios",
+    "difficulty": 6,
+    "errado": "Conserta-se ar condicionado e faz-se instalações rapidas.",
+    "correto": "Consertam-se ares-condicionados e fazem-se instalações rápidas.",
+    "error_count": 3,
+    "tags": [
+      "anúncios",
+      "serviços",
+      "concordância"
+    ]
+  },
+  {
+    "id": "tec-01-legal-haja",
+    "category": "texto_tecnico",
+    "difficulty": 6,
+    "errado": "O réu foi intimado, no entanto, não compareçeu à audiencia.",
+    "correto": "O réu foi intimado; no entanto, não compareceu à audiência.",
+    "error_count": 2,
+    "tags": [
+      "técnico",
+      "jurídico",
+      "expressões"
+    ]
+  },
+  {
+    "id": "tec-02-it-software",
+    "category": "texto_tecnico",
+    "difficulty": 6,
+    "errado": "O sofware apresentou bugs que paralizaram o servidor.",
+    "correto": "O software apresentou bugs que paralisaram o servidor.",
+    "error_count": 2,
+    "tags": [
+      "técnico",
+      "TI",
+      "estrangeirismo"
+    ]
+  },
+  {
+    "id": "tec-03-med-hipot",
+    "category": "texto_tecnico",
+    "difficulty": 6,
+    "errado": "O paciente apresenta hipotensão e rítmo cardíaco instavel.",
+    "correto": "O paciente apresenta hipotensão e ritmo cardíaco instável.",
+    "error_count": 2,
+    "tags": [
+      "técnico",
+      "médico",
+      "acentuação"
+    ]
+  },
+  {
+    "id": "tec-04-acad-atraves",
+    "category": "texto_tecnico",
+    "difficulty": 6,
+    "errado": "A tese corrobóra com os dados, mas contêm falhas.",
+    "correto": "A tese corrobora os dados, mas contém falhas.",
+    "error_count": 3,
+    "tags": [
+      "técnico",
+      "acadêmico",
+      "regência"
+    ]
+  },
+  {
+    "id": "tec-05-corp-compli",
+    "category": "texto_tecnico",
+    "difficulty": 6,
+    "errado": "O compliânce exige que hajam auditorias trimestrais.",
+    "correto": "O compliance exige que haja auditorias trimestrais.",
+    "error_count": 2,
+    "tags": [
+      "técnico",
+      "corporativo",
+      "concordância"
+    ]
+  },
+  {
+    "id": "tec-06-eng-toler",
+    "category": "texto_tecnico",
+    "difficulty": 6,
+    "errado": "A toleráncia da peça é de 0.5mm conforme o desânho.",
+    "correto": "A tolerância da peça é de 0,5 mm conforme o desenho.",
+    "error_count": 3,
+    "tags": [
+      "técnico",
+      "engenharia",
+      "medidas"
+    ]
+  },
+  {
+    "id": "tec-07-fin-spread",
+    "category": "texto_tecnico",
+    "difficulty": 6,
+    "errado": "O espread bancário influe na liquidez dos ativos reais.",
+    "correto": "O spread bancário influi na liquidez dos ativos reais.",
+    "error_count": 2,
+    "tags": [
+      "técnico",
+      "financeiro",
+      "ortografia"
+    ]
+  },
+  {
+    "id": "tec-08-formal-vossa",
+    "category": "texto_tecnico",
+    "difficulty": 6,
+    "errado": "Vossa Senhoria estais convidado para a ceremônia.",
+    "correto": "Vossa Senhoria está convidada para a cerimônia.",
+    "error_count": 3,
+    "tags": [
+      "técnico",
+      "pronomes-de-tratamento",
+      "concordância"
+    ]
   }
 ]

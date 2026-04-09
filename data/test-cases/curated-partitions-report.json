@@ -1,138 +1,130 @@
 {
-  "generated_at": "2026-04-05T00:57:09.764Z",
-  "curated_total": 5520,
-  "know_total": 3840,
-  "proof_total": 1017,
-  "proof_ratio": 0.2094,
-  "total_family_keys": 613,
-  "proof_family_keys": 613,
-  "know_family_keys": 195,
+  "generated_at": "2026-04-06T20:47:29.469Z",
+  "curated_total": 5622,
+  "know_total": 4796,
+  "proof_total": 826,
+  "proof_ratio": 0.1469,
+  "total_family_keys": 627,
+  "proof_family_keys": 627,
+  "know_family_keys": 198,
   "uncovered_families_in_proof": [],
   "coverage_ok": true,
   "proof_coverage_by_family": [
     {
-      "family": "error_count:2",
-      "count": 386
-    },
-    {
       "family": "category:contexto",
-      "count": 383
+      "count": 391
     },
     {
       "family": "error_count:1",
-      "count": 371
+      "count": 354
     },
     {
-      "family": "difficulty:2",
-      "count": 301
+      "family": "error_count:2",
+      "count": 351
     },
     {
       "family": "phenomenon:homofonos",
-      "count": 291
+      "count": 295
     },
     {
       "family": "category:homofonos",
-      "count": 289
+      "count": 293
+    },
+    {
+      "family": "difficulty:2",
+      "count": 261
     },
     {
       "family": "difficulty:4",
-      "count": 285
-    },
-    {
-      "family": "phenomenon:ortografia",
-      "count": 229
-    },
-    {
-      "family": "phenomenon:acentuacao",
-      "count": 204
-    },
-    {
-      "family": "difficulty:5",
-      "count": 191
-    },
-    {
-      "family": "error_count:3",
-      "count": 185
-    },
-    {
-      "family": "phenomenon:pontuacao",
-      "count": 182
-    },
-    {
-      "family": "difficulty:3",
-      "count": 180
+      "count": 247
     },
     {
       "family": "phenomenon:contexto",
-      "count": 157
+      "count": 159
+    },
+    {
+      "family": "phenomenon:ortografia",
+      "count": 154
+    },
+    {
+      "family": "difficulty:5",
+      "count": 145
+    },
+    {
+      "family": "difficulty:3",
+      "count": 135
     },
     {
       "family": "phenomenon:concordancia_verbal",
-      "count": 137
+      "count": 131
+    },
+    {
+      "family": "phenomenon:acentuacao",
+      "count": 113
+    },
+    {
+      "family": "phenomenon:pontuacao",
+      "count": 107
+    },
+    {
+      "family": "error_count:3",
+      "count": 98
     },
     {
       "family": "phenomenon:crase",
-      "count": 127
-    },
-    {
-      "family": "category:texto tecnico",
-      "count": 80
-    },
-    {
-      "family": "phenomenon:hifen",
-      "count": 75
-    },
-    {
-      "family": "category:ortografia",
-      "count": 70
+      "count": 95
     },
     {
       "family": "phenomenon:regencia",
-      "count": 68
-    },
-    {
-      "family": "phenomenon:anuncios",
-      "count": 66
+      "count": 70
     },
     {
       "family": "phenomenon:colocacao_pronominal",
-      "count": 63
-    },
-    {
-      "family": "error_count:4",
-      "count": 62
-    },
-    {
-      "family": "phenomenon:texto_tecnico",
-      "count": 61
-    },
-    {
-      "family": "category:anuncios",
       "count": 60
     },
     {
-      "family": "difficulty:1",
-      "count": 60
+      "family": "category:texto tecnico",
+      "count": 46
+    },
+    {
+      "family": "phenomenon:hifen",
+      "count": 37
     },
     {
       "family": "phenomenon:texto tecnico",
-      "count": 57
+      "count": 34
     },
     {
-      "family": "category:pontuacao",
-      "count": 50
+      "family": "category:ortografia",
+      "count": 33
     },
     {
-      "family": "category:hifen",
-      "count": 45
+      "family": "phenomenon:anuncios",
+      "count": 33
     },
     {
-      "family": "category:acentuacao",
-      "count": 40
+      "family": "phenomenon:texto_tecnico",
+      "count": 32
+    },
+    {
+      "family": "category:anuncios",
+      "count": 30
+    },
+    {
+      "family": "difficulty:1",
+      "count": 28
     },
     {
       "family": "phenomenon:concordancia_nominal",
-      "count": 36
+      "count": 27
+    },
+    {
+      "family": "category:hifen",
+      "count": 21
+    },
+    {
+      "family": "error_count:4",
+      "count": 21
     },
     {
       "family": "diff:mal=>mau",
@@ -143,8 +135,12 @@
       "count": 16
     },
     {
+      "family": "diff:mau=>mal",
+      "count": 15
+    },
+    {
       "family": "diff:secao=>sessao",
-      "count": 16
+      "count": 15
     },
     {
       "family": "diff:aonde=>onde",
@@ -155,24 +151,16 @@
       "count": 14
     },
     {
-      "family": "diff:mau=>mal",
-      "count": 14
-    },
-    {
       "family": "diff:o=>a",
       "count": 14
     },
     {
-      "family": "error_count:5",
-      "count": 12
+      "family": "diff:houveram=>houve",
+      "count": 11
     },
     {
       "family": "diff:mas=>mais",
       "count": 11
-    },
-    {
-      "family": "diff:houveram=>houve",
-      "count": 10
     },
     {
       "family": "diff:onde=>aonde",
@@ -180,6 +168,10 @@
     },
     {
       "family": "diff:porque=>que",
+      "count": 10
+    },
+    {
+      "family": "difficulty:6",
       "count": 10
     },
     {
@@ -197,6 +189,10 @@
     {
       "family": "diff:mim=>eu",
       "count": 9
+    },
+    {
+      "family": "category:pontuacao",
+      "count": 8
     },
     {
       "family": "diff:nao=>senao",
@@ -219,7 +215,15 @@
       "count": 7
     },
     {
+      "family": "diff:no=>ao",
+      "count": 7
+    },
+    {
       "family": "diff:o=>ao",
+      "count": 7
+    },
+    {
+      "family": "diff:tras=>traz",
       "count": 7
     },
     {
@@ -231,11 +235,11 @@
       "count": 6
     },
     {
-      "family": "diff:foi=>foram",
+      "family": "diff:fazem=>faz",
       "count": 6
     },
     {
-      "family": "diff:no=>ao",
+      "family": "diff:foi=>foram",
       "count": 6
     },
     {
@@ -243,19 +247,15 @@
       "count": 6
     },
     {
-      "family": "diff:tras=>traz",
-      "count": 6
-    },
-    {
       "family": "phenomenon:numero_moeda",
       "count": 6
     },
     {
-      "family": "diff:fazem=>faz",
+      "family": "diff:menas=>menos",
       "count": 5
     },
     {
-      "family": "diff:menas=>menos",
+      "family": "diff:traz=>tras",
       "count": 5
     },
     {
@@ -263,7 +263,19 @@
       "count": 5
     },
     {
+      "family": "category:acentuacao",
+      "count": 4
+    },
+    {
+      "family": "diff:afim=>fim",
+      "count": 4
+    },
+    {
       "family": "diff:censo=>senso",
+      "count": 4
+    },
+    {
+      "family": "diff:ele=>vejo",
       "count": 4
     },
     {
@@ -271,15 +283,23 @@
       "count": 4
     },
     {
+      "family": "diff:meia=>meio",
+      "count": 4
+    },
+    {
       "family": "diff:pra=>para",
       "count": 4
     },
     {
-      "family": "diff:segue=>seguem",
+      "family": "diff:que=>a",
       "count": 4
     },
     {
-      "family": "diff:traz=>tras",
+      "family": "diff:vejo=>o",
+      "count": 4
+    },
+    {
+      "family": "diff:vende=>vendem",
       "count": 4
     },
     {
@@ -287,7 +307,7 @@
       "count": 3
     },
     {
-      "family": "diff:afim=>fim",
+      "family": "diff:a=>o",
       "count": 3
     },
     {
@@ -335,10 +355,6 @@
       "count": 3
     },
     {
-      "family": "diff:ele=>vejo",
-      "count": 3
-    },
-    {
       "family": "diff:eminente=>iminente",
       "count": 3
     },
@@ -363,7 +379,7 @@
       "count": 3
     },
     {
-      "family": "diff:meia=>meio",
+      "family": "diff:me=>-",
       "count": 3
     },
     {
@@ -375,7 +391,11 @@
       "count": 3
     },
     {
-      "family": "diff:que=>a",
+      "family": "diff:sao=>e",
+      "count": 3
+    },
+    {
+      "family": "diff:segue=>seguem",
       "count": 3
     },
     {
@@ -391,19 +411,7 @@
       "count": 3
     },
     {
-      "family": "diff:vejo=>o",
-      "count": 3
-    },
-    {
-      "family": "diff:vende=>vendem",
-      "count": 3
-    },
-    {
       "family": "diff:ver=>vir",
-      "count": 3
-    },
-    {
-      "family": "phenomenon:tempo_data_horario",
       "count": 3
     },
     {
@@ -419,7 +427,7 @@
       "count": 2
     },
     {
-      "family": "diff:a=>o",
+      "family": "diff:a=>para",
       "count": 2
     },
     {
@@ -459,6 +467,10 @@
       "count": 2
     },
     {
+      "family": "diff:deve=>devem",
+      "count": 2
+    },
+    {
       "family": "diff:discricao=>descricao",
       "count": 2
     },
@@ -484,6 +496,10 @@
     },
     {
       "family": "diff:eles=>os",
+      "count": 2
+    },
+    {
+      "family": "diff:empresta=>me",
       "count": 2
     },
     {
@@ -531,10 +547,6 @@
       "count": 2
     },
     {
-      "family": "diff:me=>-",
-      "count": 2
-    },
-    {
       "family": "diff:meios=>meio",
       "count": 2
     },
@@ -576,10 +588,6 @@
     },
     {
       "family": "diff:sairam=>saiu",
-      "count": 2
-    },
-    {
-      "family": "diff:sao=>e",
       "count": 2
     },
     {
@@ -628,6 +636,10 @@
     },
     {
       "family": "diff:vir=>vier",
+      "count": 2
+    },
+    {
+      "family": "phenomenon:tempo_data_horario",
       "count": 2
     },
     {
@@ -683,15 +695,15 @@
       "count": 1
     },
     {
+      "family": "diff:2km=>km",
+      "count": 1
+    },
+    {
       "family": "diff:a=>as",
       "count": 1
     },
     {
       "family": "diff:a=>na",
-      "count": 1
-    },
-    {
-      "family": "diff:a=>para",
       "count": 1
     },
     {
@@ -811,6 +823,10 @@
       "count": 1
     },
     {
+      "family": "diff:arquivado=>arquivadas",
+      "count": 1
+    },
+    {
       "family": "diff:as=>das",
       "count": 1
     },
@@ -924,6 +940,10 @@
     },
     {
       "family": "diff:bug=>falha",
+      "count": 1
+    },
+    {
+      "family": "diff:busca=>buscam",
       "count": 1
     },
     {
@@ -1059,7 +1079,15 @@
       "count": 1
     },
     {
+      "family": "diff:concerta=>conserto",
+      "count": 1
+    },
+    {
       "family": "diff:concertar=>consertar",
+      "count": 1
+    },
+    {
+      "family": "diff:concerto=>show",
       "count": 1
     },
     {
@@ -1215,10 +1243,6 @@
       "count": 1
     },
     {
-      "family": "diff:deve=>devem",
-      "count": 1
-    },
-    {
       "family": "diff:deveis=>deve",
       "count": 1
     },
@@ -1272,6 +1296,10 @@
     },
     {
       "family": "diff:disse=>dissera",
+      "count": 1
+    },
+    {
+      "family": "diff:distante=>distantes",
       "count": 1
     },
     {
@@ -1363,10 +1391,6 @@
       "count": 1
     },
     {
-      "family": "diff:empresta=>me",
-      "count": 1
-    },
-    {
       "family": "diff:emprestar=>pedir",
       "count": 1
     },
@@ -1376,6 +1400,10 @@
     },
     {
       "family": "diff:encontro=>reuniao",
+      "count": 1
+    },
+    {
+      "family": "diff:engaja=>engajam",
       "count": 1
     },
     {
@@ -1532,6 +1560,10 @@
     },
     {
       "family": "diff:faco=>faz",
+      "count": 1
+    },
+    {
+      "family": "diff:farao=>faz",
       "count": 1
     },
     {
@@ -1807,6 +1839,10 @@
       "count": 1
     },
     {
+      "family": "diff:mesmo=>elas",
+      "count": 1
+    },
+    {
       "family": "diff:mesmo=>ele",
       "count": 1
     },
@@ -1880,6 +1916,10 @@
     },
     {
       "family": "diff:o=>-",
+      "count": 1
+    },
+    {
+      "family": "diff:o=>;",
       "count": 1
     },
     {
@@ -2016,6 +2056,10 @@
     },
     {
       "family": "diff:preoculpa=>preocupa",
+      "count": 1
+    },
+    {
+      "family": "diff:preocupa=>preocupam",
       "count": 1
     },
     {
@@ -2175,6 +2219,10 @@
       "count": 1
     },
     {
+      "family": "diff:se=>nos",
+      "count": 1
+    },
+    {
       "family": "diff:se=>ouve",
       "count": 1
     },
@@ -2300,6 +2348,10 @@
     },
     {
       "family": "diff:te=>lhe",
+      "count": 1
+    },
+    {
+      "family": "diff:te=>voce",
       "count": 1
     },
     {
@@ -2459,6 +2511,10 @@
       "count": 1
     },
     {
+      "family": "error_count:5",
+      "count": 1
+    },
+    {
       "family": "error_count:6",
       "count": 1
     }
@@ -2466,119 +2522,131 @@
   "know_coverage_by_family": [
     {
       "family": "error_count:1",
-      "count": 2666
-    },
-    {
-      "family": "difficulty:4",
-      "count": 1102
-    },
-    {
-      "family": "difficulty:5",
-      "count": 1080
+      "count": 2846
     },
     {
       "family": "error_count:2",
-      "count": 983
+      "count": 1402
     },
     {
-      "family": "difficulty:3",
-      "count": 954
-    },
-    {
-      "family": "phenomenon:ortografia",
-      "count": 875
+      "family": "difficulty:4",
+      "count": 1358
     },
     {
       "family": "phenomenon:acentuacao",
-      "count": 874
+      "count": 1276
+    },
+    {
+      "family": "difficulty:5",
+      "count": 1227
+    },
+    {
+      "family": "phenomenon:ortografia",
+      "count": 1209
     },
     {
       "family": "phenomenon:pontuacao",
-      "count": 831
+      "count": 1138
+    },
+    {
+      "family": "difficulty:3",
+      "count": 1072
     },
     {
       "family": "difficulty:2",
-      "count": 685
-    },
-    {
-      "family": "category:ortografia",
-      "count": 623
+      "count": 1020
     },
     {
       "family": "category:pontuacao",
-      "count": 621
+      "count": 816
     },
     {
       "family": "category:acentuacao",
-      "count": 620
+      "count": 786
+    },
+    {
+      "family": "category:ortografia",
+      "count": 773
     },
     {
       "family": "phenomenon:hifen",
-      "count": 571
+      "count": 745
     },
     {
       "family": "category:hifen",
-      "count": 475
+      "count": 617
     },
     {
       "family": "category:anuncios",
-      "count": 461
+      "count": 611
     },
     {
       "family": "phenomenon:anuncios",
-      "count": 445
-    },
-    {
-      "family": "category:contexto",
-      "count": 383
+      "count": 597
     },
     {
       "family": "category:texto tecnico",
-      "count": 381
+      "count": 521
     },
     {
       "family": "phenomenon:texto tecnico",
-      "count": 342
-    },
-    {
-      "family": "category:homofonos",
-      "count": 276
-    },
-    {
-      "family": "phenomenon:homofonos",
-      "count": 275
-    },
-    {
-      "family": "phenomenon:texto_tecnico",
-      "count": 265
-    },
-    {
-      "family": "phenomenon:concordancia_verbal",
-      "count": 239
-    },
-    {
-      "family": "phenomenon:crase",
-      "count": 204
-    },
-    {
-      "family": "phenomenon:contexto",
-      "count": 179
+      "count": 460
     },
     {
       "family": "error_count:3",
+      "count": 418
+    },
+    {
+      "family": "category:contexto",
+      "count": 388
+    },
+    {
+      "family": "phenomenon:texto_tecnico",
+      "count": 378
+    },
+    {
+      "family": "phenomenon:concordancia_verbal",
+      "count": 291
+    },
+    {
+      "family": "phenomenon:homofonos",
+      "count": 290
+    },
+    {
+      "family": "phenomenon:crase",
+      "count": 286
+    },
+    {
+      "family": "category:homofonos",
+      "count": 284
+    },
+    {
+      "family": "phenomenon:contexto",
+      "count": 181
+    },
+    {
+      "family": "phenomenon:concordancia_nominal",
       "count": 169
     },
     {
       "family": "phenomenon:regencia",
-      "count": 129
+      "count": 144
     },
     {
-      "family": "phenomenon:concordancia_nominal",
-      "count": 110
+      "family": "error_count:4",
+      "count": 106
     },
     {
       "family": "phenomenon:colocacao_pronominal",
-      "count": 60
+      "count": 77
+    },
+    {
+      "family": "difficulty:1",
+      "count": 75
+    },
+    {
+      "family": "difficulty:6",
+      "count": 44
     },
     {
       "family": "diff:houveram=>houve",
@@ -2589,23 +2657,27 @@
       "count": 27
     },
     {
+      "family": "error_count:5",
+      "count": 23
+    },
+    {
+      "family": "diff:mau=>mal",
+      "count": 21
+    },
+    {
       "family": "diff:concerto=>conserto",
       "count": 20
     },
     {
-      "family": "diff:mau=>mal",
-      "count": 20
-    },
-    {
-      "family": "error_count:4",
-      "count": 20
-    },
-    {
-      "family": "difficulty:1",
-      "count": 19
+      "family": "phenomenon:tempo_data_horario",
+      "count": 18
     },
     {
       "family": "diff:meia=>meio",
+      "count": 17
+    },
+    {
+      "family": "diff:aonde=>onde",
       "count": 16
     },
     {
@@ -2613,11 +2685,11 @@
       "count": 15
     },
     {
-      "family": "diff:aonde=>onde",
+      "family": "diff:fazem=>faz",
       "count": 15
     },
     {
-      "family": "diff:fazem=>faz",
+      "family": "diff:onde=>aonde",
       "count": 15
     },
     {
@@ -2625,19 +2697,11 @@
       "count": 14
     },
     {
-      "family": "diff:onde=>aonde",
-      "count": 14
-    },
-    {
-      "family": "phenomenon:tempo_data_horario",
+      "family": "diff:secao=>sessao",
       "count": 13
     },
     {
       "family": "diff:conserto=>concerto",
-      "count": 12
-    },
-    {
-      "family": "diff:secao=>sessao",
       "count": 12
     },
     {
@@ -2657,15 +2721,19 @@
       "count": 10
     },
     {
-      "family": "diff:mais=>mas",
-      "count": 9
-    },
-    {
       "family": "diff:mal=>mau",
-      "count": 9
+      "count": 10
     },
     {
       "family": "diff:que=>porque",
+      "count": 10
+    },
+    {
+      "family": "diff:anexo=>anexas",
+      "count": 9
+    },
+    {
+      "family": "diff:mais=>mas",
       "count": 9
     },
     {
@@ -2677,10 +2745,6 @@
       "count": 8
     },
     {
-      "family": "diff:anexo=>anexas",
-      "count": 8
-    },
-    {
       "family": "diff:haviam=>havia",
       "count": 8
     },
@@ -2689,7 +2753,15 @@
       "count": 8
     },
     {
+      "family": "diff:segue=>seguem",
+      "count": 8
+    },
+    {
       "family": "diff:haver=>ver",
+      "count": 7
+    },
+    {
+      "family": "diff:mas=>mais",
       "count": 7
     },
     {
@@ -2701,10 +2773,6 @@
       "count": 7
     },
     {
-      "family": "diff:segue=>seguem",
-      "count": 7
-    },
-    {
       "family": "diff:sessao=>secao",
       "count": 7
     },
@@ -2713,15 +2781,15 @@
       "count": 7
     },
     {
+      "family": "phenomenon:numero_moeda",
+      "count": 7
+    },
+    {
       "family": "diff:-=>a",
       "count": 6
     },
     {
       "family": "diff:eu=>mim",
-      "count": 6
-    },
-    {
-      "family": "diff:mas=>mais",
       "count": 6
     },
     {
@@ -2757,6 +2825,10 @@
       "count": 5
     },
     {
+      "family": "diff:na=>a",
+      "count": 5
+    },
+    {
       "family": "diff:nao=>senao",
       "count": 5
     },
@@ -2774,10 +2846,6 @@
     },
     {
       "family": "diff:traz=>tras",
-      "count": 5
-    },
-    {
-      "family": "phenomenon:numero_moeda",
       "count": 5
     },
     {
@@ -2841,6 +2909,10 @@
       "count": 3
     },
     {
+      "family": "diff:cessao=>sessao",
+      "count": 3
+    },
+    {
       "family": "diff:chegaram=>chegou",
       "count": 3
     },
@@ -2870,10 +2942,6 @@
     },
     {
       "family": "diff:me=>-",
-      "count": 3
-    },
-    {
-      "family": "diff:na=>a",
       "count": 3
     },
     {
@@ -2929,11 +2997,11 @@
       "count": 2
     },
     {
-      "family": "diff:cessao=>sessao",
+      "family": "diff:coser=>cozer",
       "count": 2
     },
     {
-      "family": "diff:coser=>cozer",
+      "family": "diff:de=>ao",
       "count": 2
     },
     {
@@ -3045,6 +3113,10 @@
       "count": 1
     },
     {
+      "family": "diff:as=>das",
+      "count": 1
+    },
+    {
       "family": "diff:bastante=>bastantes",
       "count": 1
     },
@@ -3081,10 +3153,6 @@
       "count": 1
     },
     {
-      "family": "diff:de=>ao",
-      "count": 1
-    },
-    {
       "family": "diff:deploy=>implantacao",
       "count": 1
     },
@@ -3110,6 +3178,10 @@
     },
     {
       "family": "diff:faz=>faca",
+      "count": 1
+    },
+    {
+      "family": "diff:fim=>afins",
       "count": 1
     },
     {
@@ -3237,230 +3309,8 @@
       "count": 1
     },
     {
-      "family": "error_count:5",
-      "count": 1
-    },
-    {
       "family": "error_count:6",
       "count": 1
     }
-  ],
-  "rebalance": {
-    "moved_from_know_to_proof": 197,
-    "category_targets": {
-      "acentuacao": 40,
-      "pontuacao": 50,
-      "hifen": 45,
-      "ortografia": 70,
-      "anuncios": 60,
-      "texto tecnico": 80
-    },
-    "difficulty_targets": {
-      "1": 60,
-      "2": 280,
-      "3": 180,
-      "4": 260,
-      "5": 180
-    },
-    "multi_error_target": 540,
-    "moved_ids": [
-      "ort-51",
-      "ort-17",
-      "ortografia_04",
-      "orto-05",
-      "ort-4",
-      "ort-9",
-      "ort-15",
-      "ort-18",
-      "ort-27",
-      "ortografia_001",
-      "orto-01",
-      "ortografia_03",
-      "orto-04",
-      "ortografia_004",
-      "orto-08",
-      "ortografia_006",
-      "orto-10",
-      "ortografia_007",
-      "orto-15",
-      "ortografia_008",
-      "orto-39",
-      "ortografia_011",
-      "ort-1",
-      "ortografia_012",
-      "ortografia_02",
-      "ort-2",
-      "ortografia_014",
-      "ortografia_05",
-      "ort-3",
-      "ortografia_018",
-      "ortografia_07",
-      "ort-5",
-      "ortografia_1",
-      "ortografia_09",
-      "ort-10",
-      "ortografia_002",
-      "ortografia_10",
-      "acentuacao-rotina-trabalho",
-      "acent-02",
-      "acentuacao_07",
-      "acent-21",
-      "acentuacao_01",
-      "acentuacao_002",
-      "acentuacao_09",
-      "acent-01",
-      "acentuacao_003",
-      "acent-13",
-      "acentuacao_03",
-      "acentuacao_02",
-      "acentu_08",
-      "acentuacao_04",
-      "acentuacao_012",
-      "acentu_01",
-      "acentuacao_05",
-      "acentuacao_013",
-      "acentu_02",
-      "acentuacao_10",
-      "acentuacao_015",
-      "acentu_05",
-      "acentuacao_12",
-      "acentuacao_1",
-      "acentu_09",
-      "acen_05",
-      "acentuacao_06",
-      "acentu_12",
-      "acentuacao_08",
-      "acent_01",
-      "acent-contem-ridiculo",
-      "acent-05",
-      "acentuacao_11",
-      "acento-02",
-      "acent-08",
-      "acentuacao_004",
-      "pontuacao-mensagem-rapida",
-      "pontuacao_02",
-      "pont_01",
-      "pontuacao_006",
-      "pont-polissindeto",
-      "pontuacao_06",
-      "pont_06",
-      "pontuacao_012",
-      "pon-51",
-      "pontuacao_07",
-      "pont_04",
-      "pontuacao_002",
-      "pontuacao_09",
-      "pontuacao_11",
-      "pontua-01",
-      "pontuacao_13",
-      "pontuacao_05",
-      "pontuacao_12",
-      "pontua-06",
-      "pontuacao_2",
-      "pontuacao_10",
-      "pon_12",
-      "pont_05",
-      "pontuacao_4",
-      "pontuacao_03",
-      "pont-explicativa",
-      "pontuacao_1",
-      "pontuacao_5",
-      "pontu-02",
-      "pontuacao_04",
-      "pont-proclise-intercalada",
-      "pontuacao_16",
-      "pont_03",
-      "pont-gerente-virgula",
-      "pontuacao_08",
-      "pon-3",
-      "texto_tecnico_01",
-      "tecn-04",
-      "texto_tecnico_06",
-      "texto_tecnico_004",
-      "tec-51",
-      "texto_tecnico_05",
-      "texto_tecnico_09",
-      "tecn_05",
-      "texto_tecnico_013",
-      "tech-criptografia",
-      "texto_tecnico_13",
-      "tecn-05",
-      "texto_tecnico_016",
-      "texto_tecnico_02",
-      "tecnico_10",
-      "texto_tecnico_3",
-      "tecn_01",
-      "texto_tecnico_018",
-      "texto_tecnico_03",
-      "tecnico_12",
-      "texto_tecnico_4",
-      "tecn_04",
-      "texto_tecnico_005",
-      "texto_tecnico_04",
-      "tech-deploy",
-      "texto_tecnico_18",
-      "tec_01",
-      "texto_tecnico_015",
-      "texto_tecnico_08",
-      "tech-framework",
-      "texto_tecnico_14",
-      "texto_tecnico_1",
-      "texto_tecnico_5",
-      "tecn_02",
-      "anuncio-venda-imovel",
-      "anuncios_01",
-      "anuncios_1",
-      "anuncios_2",
-      "anuncios_003",
-      "anuncios_17",
-      "anuncios_06",
-      "ad-3",
-      "anuncios_02",
-      "anunc-04",
-      "anu_35",
-      "anuncios_11",
-      "anuncios_07",
-      "anuncios_002",
-      "anuncios_004",
-      "anuncios_03",
-      "anunc_06",
-      "anu_01",
-      "anuncios_05",
-      "anunc_03",
-      "anuncios_18",
-      "anuncios_19",
-      "anuncio-06",
-      "anu_13",
-      "anuncios_14",
-      "anuncios_3",
-      "anuncios_016",
-      "anun-01",
-      "anunc_01",
-      "anunc_02",
-      "hifen_09",
-      "hifen_01",
-      "hifen_2",
-      "hifen_02",
-      "hifen_recem_nascido_pos_graduacao",
-      "hife_01",
-      "hifen_03",
-      "hifen_04",
-      "hifen_17",
-      "hifen_001",
-      "hifen_1",
-      "hifen_8",
-      "hifen_05",
-      "hifen_06",
-      "hif_01",
-      "hifen-06",
-      "hifen_012",
-      "hifen_013",
-      "hifen_16",
-      "hife_03",
-      "hifen-1",
-      "hifen-4",
-      "hife_05",
-      "hifen-02"
-    ]
-  }
+  ]
 }

@@ -424,37 +424,6 @@
     }
   },
   {
-    "id": "cont_anexo_concordancia",
-    "category": "contexto",
-    "difficulty": 5,
-    "errado": "Segue anexo as faturas que foram solicitadas pela contabilidade.",
-    "correto": "Seguem anexas as faturas que foram solicitadas pela contabilidade.",
-    "error_count": 2,
-    "tags": [
-      "concordância",
-      "nominal",
-      "administrativo"
-    ],
-    "partition_metadata": {
-      "primary_family": "diff:anexo=>anexas",
-      "family_keys": [
-        "category:contexto",
-        "diff:anexo=>anexas",
-        "diff:segue=>seguem",
-        "difficulty:5",
-        "error_count:2",
-        "phenomenon:contexto"
-      ],
-      "phenomena": [
-        "contexto"
-      ],
-      "diff_pairs": [
-        "diff:anexo=>anexas",
-        "diff:segue=>seguem"
-      ]
-    }
-  },
-  {
     "id": "cont_pronome_mesmo",
     "category": "contexto",
     "difficulty": 5,
@@ -482,39 +451,6 @@
       "diff_pairs": [
         "diff:mesmo=>se",
         "diff:o=>ele"
-      ]
-    }
-  },
-  {
-    "id": "homo_sessao_secao_cessao",
-    "category": "homófonos",
-    "difficulty": 5,
-    "errado": "A seção de cinema começa logo após a cessão de fotos na entrada.",
-    "correto": "A sessão de cinema começa logo após a sessão de fotos na entrada.",
-    "error_count": 2,
-    "tags": [
-      "homófonos",
-      "ortografia",
-      "semântica"
-    ],
-    "partition_metadata": {
-      "primary_family": "diff:cessao=>sessao",
-      "family_keys": [
-        "category:homofonos",
-        "diff:cessao=>sessao",
-        "diff:secao=>sessao",
-        "difficulty:5",
-        "error_count:2",
-        "phenomenon:homofonos",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "homofonos",
-        "ortografia"
-      ],
-      "diff_pairs": [
-        "diff:cessao=>sessao",
-        "diff:secao=>sessao"
       ]
     }
   },
@@ -757,32 +693,6 @@
       "phenomena": [
         "hifen",
         "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Por favor, traga café pão e leite.",
-    "correto": "Por favor, traga café, pão e leite.",
-    "error_count": 1,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "enumeracao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:1",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
       ],
       "diff_pairs": []
     }
@@ -1522,32 +1432,6 @@
       ],
       "phenomena": [
         "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "João Maria e Pedro foram ao parque.",
-    "correto": "João, Maria e Pedro foram ao parque.",
-    "error_count": 1,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "listagem"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
       ],
       "diff_pairs": []
     }
@@ -2408,6 +2292,31 @@
     }
   },
   {
+    "id": "pont-05",
+    "category": "pontuação",
+    "difficulty": 3,
+    "errado": "João o vizinho do lado é muito simpático.",
+    "correto": "João, o vizinho do lado, é muito simpático.",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "aposto"
+    ],
+    "partition_metadata": {
+      "primary_family": "phenomenon:pontuacao",
+      "family_keys": [
+        "category:pontuacao",
+        "difficulty:3",
+        "error_count:2",
+        "phenomenon:pontuacao"
+      ],
+      "phenomena": [
+        "pontuacao"
+      ],
+      "diff_pairs": []
+    }
+  },
+  {
     "id": "ctx-27",
     "category": "contexto",
     "difficulty": 4,
@@ -2703,6 +2612,31 @@
       ],
       "phenomena": [
         "ortografia"
+      ],
+      "diff_pairs": []
+    }
+  },
+  {
+    "id": "pont-05",
+    "category": "pontuação",
+    "difficulty": 2,
+    "errado": "Embora estivesse chovendo ele saiu.",
+    "correto": "Embora estivesse chovendo, ele saiu.",
+    "error_count": 1,
+    "tags": [
+      "subordinação",
+      "vírgula"
+    ],
+    "partition_metadata": {
+      "primary_family": "phenomenon:pontuacao",
+      "family_keys": [
+        "category:pontuacao",
+        "difficulty:2",
+        "error_count:1",
+        "phenomenon:pontuacao"
+      ],
+      "phenomena": [
+        "pontuacao"
       ],
       "diff_pairs": []
     }
@@ -4225,32 +4159,6 @@
       "phenomena": [
         "concordancia_nominal",
         "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "Comprei maçãs peras e uvas na feira.",
-    "correto": "Comprei maçãs, peras e uvas na feira.",
-    "error_count": 1,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "lista"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:1",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
       ],
       "diff_pairs": []
     }
@@ -9260,34 +9168,6 @@
     }
   },
   {
-    "id": "hom_afim_02",
-    "category": "homófonos",
-    "difficulty": 5,
-    "errado": "Eles têm interesses a fim.",
-    "correto": "Eles têm interesses afins.",
-    "error_count": 1,
-    "tags": [
-      "semelhança",
-      "adjetivo"
-    ],
-    "partition_metadata": {
-      "primary_family": "diff:fim=>afins",
-      "family_keys": [
-        "category:homofonos",
-        "diff:fim=>afins",
-        "difficulty:5",
-        "error_count:1",
-        "phenomenon:concordancia_nominal"
-      ],
-      "phenomena": [
-        "concordancia_nominal"
-      ],
-      "diff_pairs": [
-        "diff:fim=>afins"
-      ]
-    }
-  },
-  {
     "id": "hom_tachar_02",
     "category": "homófonos",
     "difficulty": 5,
@@ -10034,6 +9914,31 @@
       "diff_pairs": [
         "diff:mudansa=>mudanca"
       ]
+    }
+  },
+  {
+    "id": "pont-05",
+    "category": "pontuação",
+    "difficulty": 3,
+    "errado": "Onde você vai, agora!",
+    "correto": "Onde você vai agora?",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "pergunta"
+    ],
+    "partition_metadata": {
+      "primary_family": "phenomenon:pontuacao",
+      "family_keys": [
+        "category:pontuacao",
+        "difficulty:3",
+        "error_count:2",
+        "phenomenon:pontuacao"
+      ],
+      "phenomena": [
+        "pontuacao"
+      ],
+      "diff_pairs": []
     }
   },
   {
@@ -11385,37 +11290,6 @@
     }
   },
   {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 4,
-    "errado": "Caros colegas, solicito a todos que encaminhem as propostas o mais rapido possivel e caso necessitem de mais informações contactem a secretaria.",
-    "correto": "Caros colegas, solicito a todos que encaminhem as propostas o mais rápido possível e, caso necessitem de mais informações, contatem a secretaria.",
-    "error_count": 5,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "ortografia",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:4",
-        "error_count:5",
-        "phenomenon:acentuacao",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
     "id": "contexto_01",
     "category": "contexto",
     "difficulty": 4,
@@ -12520,32 +12394,6 @@
       "phenomena": [
         "hifen",
         "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 4,
-    "errado": "Por favor traga os seguintes itens canetas, cadernos e lápis para a reunião.",
-    "correto": "Por favor, traga os seguintes itens: canetas, cadernos e lápis para a reunião.",
-    "error_count": 2,
-    "tags": [
-      "reuniao",
-      "lista",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:4",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
       ],
       "diff_pairs": []
     }
@@ -13855,31 +13703,6 @@
         "acentuacao",
         "hifen",
         "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 4,
-    "errado": "Comprei pão queijo leite e frutas para o café da manhã.",
-    "correto": "Comprei pão, queijo, leite e frutas para o café da manhã.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "lista"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:4",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
       ],
       "diff_pairs": []
     }
@@ -15478,33 +15301,6 @@
         "diff:-=>a",
         "diff:final=>semifinal"
       ]
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 4,
-    "errado": "Apesar das dificuldades a equipe se manteve focada; no objetivo principal contudo, os resultados, foram abaixo do esperado.",
-    "correto": "Apesar das dificuldades, a equipe se manteve focada no objetivo principal; contudo, os resultados foram abaixo do esperado.",
-    "error_count": 5,
-    "tags": [
-      "projeto",
-      "desempenho",
-      "pontuação",
-      "estrutura"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:4",
-        "error_count:5",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
     }
   },
   {
@@ -18243,33 +18039,6 @@
     }
   },
   {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "Sim claro precisamos rever estes termos antes de assinarmos o contrato não há mais tempo para hesitação",
-    "correto": "Sim, claro, precisamos rever estes termos antes de assinarmos o contrato. Não há mais tempo para hesitação.",
-    "error_count": 4,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "ponto final",
-      "contrato"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
     "id": "contexto_01",
     "category": "contexto",
     "difficulty": 5,
@@ -18648,6 +18417,34 @@
       ],
       "phenomena": [
         "ortografia"
+      ],
+      "diff_pairs": []
+    }
+  },
+  {
+    "id": "pont-05",
+    "category": "pontuação",
+    "difficulty": 2,
+    "errado": "São Paulo 10 de maio de 2023 atenciosamente.",
+    "correto": "São Paulo, 10 de maio de 2023. Atenciosamente,",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "datas",
+      "cartas"
+    ],
+    "partition_metadata": {
+      "primary_family": "phenomenon:pontuacao",
+      "family_keys": [
+        "category:pontuacao",
+        "difficulty:2",
+        "error_count:2",
+        "phenomenon:pontuacao",
+        "phenomenon:tempo_data_horario"
+      ],
+      "phenomena": [
+        "pontuacao",
+        "tempo_data_horario"
       ],
       "diff_pairs": []
     }
@@ -20511,35 +20308,6 @@
     }
   },
   {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Ele chegou cedo porem teve que esperar por mais de uma hora.",
-    "correto": "Ele chegou cedo, porém, teve que esperar por mais de uma hora.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "conjunção",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
     "id": "contexto_01",
     "category": "contexto",
     "difficulty": 2,
@@ -20976,32 +20744,6 @@
       ],
       "phenomena": [
         "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Apesar de todos os esforços não conseguimos finalizar o projeto a tempo e isso é um problema.",
-    "correto": "Apesar de todos os esforços, não conseguimos finalizar o projeto a tempo, e isso é um problema.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "profissional"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
       ],
       "diff_pairs": []
     }
@@ -21468,35 +21210,6 @@
       "phenomena": [
         "acentuacao",
         "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Eu fui a padaria comprei pão leite e café mas esqueci o açúcar.",
-    "correto": "Eu fui à padaria, comprei pão, leite e café, mas esqueci o açúcar.",
-    "error_count": 4,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "crase",
-      "conjunção"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:crase",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "crase",
         "pontuacao"
       ],
       "diff_pairs": []
@@ -23473,6 +23186,32 @@
     }
   },
   {
+    "id": "pont-05",
+    "category": "pontuação",
+    "difficulty": 2,
+    "errado": "Comprar mais suprimentos organizar os documentos e arquivar os relatórios são as tarefas prioritárias.",
+    "correto": "Comprar mais suprimentos, organizar os documentos e arquivar os relatórios são as tarefas prioritárias.",
+    "error_count": 2,
+    "tags": [
+      "pontuação",
+      "lista",
+      "tarefas"
+    ],
+    "partition_metadata": {
+      "primary_family": "phenomenon:pontuacao",
+      "family_keys": [
+        "category:pontuacao",
+        "difficulty:2",
+        "error_count:2",
+        "phenomenon:pontuacao"
+      ],
+      "phenomena": [
+        "pontuacao"
+      ],
+      "diff_pairs": []
+    }
+  },
+  {
     "id": "cont-01",
     "category": "contexto",
     "difficulty": 2,
@@ -23815,33 +23554,6 @@
       "phenomena": [
         "concordancia_nominal",
         "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_01",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Por favor traga-me água café e um suco de laranja.",
-    "correto": "Por favor, traga-me água, café e um suco de laranja.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "listagem",
-      "chamado"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
       ],
       "diff_pairs": []
     }
@@ -24758,5615 +24470,525 @@
     }
   },
   {
-    "id": "ort-51",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Ele quiz viajar, mas a viajem foi cancelada por preça.",
-    "correto": "Ele quis viajar, mas a viagem foi cancelada por pressa.",
-    "error_count": 3,
+    "id": "pont-05",
+    "category": "pontuação",
+    "difficulty": 5,
+    "errado": "O desenvolvimento do projeto, atrasou, devido a falta de recursos, e, a equipe precisou se reorganizar, mas, conseguiu concluir.",
+    "correto": "O desenvolvimento do projeto atrasou devido à falta de recursos, e a equipe precisou se reorganizar, mas conseguiu concluir.",
+    "error_count": 5,
     "tags": [
-      "verbo",
-      "g-j"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_verbal"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ort-17",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Ele feis o dever de casa com muita preça e erro tudo.",
-    "correto": "Ele fez o dever de casa com muita pressa e errou tudo.",
-    "error_count": 3,
-    "tags": [
-      "estudo",
-      "z-s"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_04",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Agente vai se encontrar as oito.",
-    "correto": "A gente vai se encontrar às oito.",
-    "error_count": 2,
-    "tags": [
-      "ortografia",
-      "locução",
-      "crase",
-      "informal"
+      "pontuação",
+      "vírgula",
+      "excesso_vírgula",
+      "conjunção",
+      "crase"
     ],
     "partition_metadata": {
       "primary_family": "phenomenon:crase",
       "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
+        "category:pontuacao",
+        "difficulty:5",
+        "error_count:5",
         "phenomenon:crase",
-        "phenomenon:ortografia"
+        "phenomenon:pontuacao"
       ],
       "phenomena": [
         "crase",
-        "ortografia"
+        "pontuacao"
       ],
       "diff_pairs": []
     }
   },
   {
-    "id": "orto-05",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "A compainha aérea cancelou todos os vôos da manhã.",
-    "correto": "A companhia aérea cancelou todos os voos da manhã.",
-    "error_count": 2,
+    "id": "context-02",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Faz muitos anos que não vejo ele, o que me faz pensar o quão distante nós se tornamos.",
+    "correto": "Faz muitos anos que não o vejo, o que me faz pensar o quão distantes nós nos tornamos.",
+    "error_count": 3,
     "tags": [
-      "ortografia",
-      "acentuação"
+      "contexto",
+      "colocação_pronominal",
+      "concordância_verbal",
+      "concordância_nominal"
     ],
     "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
+      "primary_family": "diff:distante=>distantes",
       "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
+        "category:contexto",
+        "diff:distante=>distantes",
+        "diff:ele=>vejo",
+        "diff:se=>nos",
+        "diff:vejo=>o",
+        "difficulty:5",
+        "error_count:3",
+        "phenomenon:colocacao_pronominal",
+        "phenomenon:concordancia_verbal"
+      ],
+      "phenomena": [
+        "colocacao_pronominal",
+        "concordancia_verbal"
+      ],
+      "diff_pairs": [
+        "diff:distante=>distantes",
+        "diff:ele=>vejo",
+        "diff:se=>nos",
+        "diff:vejo=>o"
+      ]
+    }
+  },
+  {
+    "id": "context-03",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "Ele preferia ir no cinema do que ficar em casa, mesmo com a pilha de livros a ler sobre a mesa.",
+    "correto": "Ele preferia ir ao cinema a ficar em casa, mesmo com a pilha de livros para ler sobre a mesa.",
+    "error_count": 3,
+    "tags": [
+      "contexto",
+      "regência_verbal",
+      "preposição",
+      "conjunção"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:a=>para",
+      "family_keys": [
+        "category:contexto",
+        "diff:a=>para",
+        "diff:no=>ao",
+        "diff:que=>a",
+        "difficulty:5",
+        "error_count:3",
+        "phenomenon:concordancia_verbal",
+        "phenomenon:crase",
+        "phenomenon:regencia"
+      ],
+      "phenomena": [
+        "concordancia_verbal",
+        "regencia"
+      ],
+      "diff_pairs": [
+        "diff:a=>para",
+        "diff:no=>ao",
+        "diff:que=>a"
+      ]
+    }
+  },
+  {
+    "id": "context-07",
+    "category": "contexto",
+    "difficulty": 5,
+    "errado": "As pessoas, em geral, se preocupa com o futuro, mas poucos realmente se engaja em mudar o presente.",
+    "correto": "As pessoas, em geral, se preocupam com o futuro, mas poucos realmente se engajam em mudar o presente.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "concordância_verbal",
+      "regência"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:engaja=>engajam",
+      "family_keys": [
+        "category:contexto",
+        "diff:engaja=>engajam",
+        "diff:preocupa=>preocupam",
+        "difficulty:5",
         "error_count:2",
-        "phenomenon:acentuacao",
+        "phenomenon:concordancia_verbal",
+        "phenomenon:regencia"
+      ],
+      "phenomena": [
+        "concordancia_verbal",
+        "regencia"
+      ],
+      "diff_pairs": [
+        "diff:engaja=>engajam",
+        "diff:preocupa=>preocupam"
+      ]
+    }
+  },
+  {
+    "id": "homof-04",
+    "category": "homófonos",
+    "difficulty": 5,
+    "errado": "A concerta do carro era urgente, mas a cessão dos fundos para a manutenção foi negada, e a seção de peças estava fechada.",
+    "correto": "O conserto do carro era urgente, mas a cessão dos fundos para a manutenção foi negada, e a seção de peças estava fechada.",
+    "error_count": 3,
+    "tags": [
+      "homófonos",
+      "conserto_concerto",
+      "cessao_sessao_secao",
+      "ortografia"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:a=>o",
+      "family_keys": [
+        "category:homofonos",
+        "diff:a=>o",
+        "diff:concerta=>conserto",
+        "difficulty:5",
+        "error_count:3",
+        "phenomenon:homofonos",
         "phenomenon:ortografia"
       ],
       "phenomena": [
-        "acentuacao",
+        "homofonos",
         "ortografia"
       ],
-      "diff_pairs": []
+      "diff_pairs": [
+        "diff:a=>o",
+        "diff:concerta=>conserto"
+      ]
     }
   },
   {
-    "id": "ort-4",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Não pretendo extrover o valor da taxa de inçerção.",
-    "correto": "Não pretendo extroverter o valor da taxa de inserção.",
+    "id": "homof-06",
+    "category": "homófonos",
+    "difficulty": 5,
+    "errado": "Mais de uma vez a havia alertado para o mau humor do chefe, mas ela insistiu em pedir um concerto de jazz no escritório.",
+    "correto": "Mais de uma vez a havia alertado para o mal humor do chefe, mas ela insistiu em pedir um show de jazz no escritório.",
     "error_count": 2,
     "tags": [
-      "verbo",
-      "s-c"
+      "homófonos",
+      "mal_mau",
+      "concerto_conserto",
+      "expressao"
     ],
     "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
+      "primary_family": "diff:concerto=>show",
       "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
+        "category:homofonos",
+        "diff:concerto=>show",
+        "diff:mau=>mal",
+        "difficulty:5",
         "error_count:2",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:ortografia"
+        "phenomenon:homofonos"
+      ],
+      "phenomena": [
+        "homofonos"
+      ],
+      "diff_pairs": [
+        "diff:concerto=>show",
+        "diff:mau=>mal"
+      ]
+    }
+  },
+  {
+    "id": "ctx-03-impl-em",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "O atraso implicará em multa e farão dez anos que isso ocorre.",
+    "correto": "O atraso implicará multa e faz dez anos que isso ocorre.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "regência",
+      "concordância"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:farao=>faz",
+      "family_keys": [
+        "category:contexto",
+        "diff:farao=>faz",
+        "difficulty:6",
+        "error_count:2",
+        "phenomenon:regencia"
+      ],
+      "phenomena": [
+        "regencia"
+      ],
+      "diff_pairs": [
+        "diff:farao=>faz"
+      ]
+    }
+  },
+  {
+    "id": "ctx-04-meio-meia",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Eles estão meia preocupados, pois já são meio-dia e meia.",
+    "correto": "Eles estão meio preocupados, pois já é meio-dia e meia.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "advérbio",
+      "concordância"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:meia=>meio",
+      "family_keys": [
+        "category:contexto",
+        "diff:meia=>meio",
+        "diff:sao=>e",
+        "difficulty:6",
+        "error_count:2",
+        "phenomenon:contexto"
+      ],
+      "phenomena": [
+        "contexto"
+      ],
+      "diff_pairs": [
+        "diff:meia=>meio",
+        "diff:sao=>e"
+      ]
+    }
+  },
+  {
+    "id": "ctx-05-hav-faz",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Houveram muitos problemas e fazem dois meses que não os vejo.",
+    "correto": "Houve muitos problemas e faz dois meses que não os vejo.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "verbos-impessoais",
+      "concordância"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:fazem=>faz",
+      "family_keys": [
+        "category:contexto",
+        "diff:fazem=>faz",
+        "diff:houveram=>houve",
+        "difficulty:6",
+        "error_count:2",
+        "phenomenon:concordancia_verbal"
       ],
       "phenomena": [
         "concordancia_verbal"
       ],
-      "diff_pairs": []
+      "diff_pairs": [
+        "diff:fazem=>faz",
+        "diff:houveram=>houve"
+      ]
     }
   },
   {
-    "id": "ort-9",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Vou analizar o projeto e trazer o resumo da seção.",
-    "correto": "Vou analisar o projeto e trazer o resumo da sessão.",
+    "id": "ctx-06-proclise",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Me empresta o livro? Não quero ver-te sofrendo assim.",
+    "correto": "Empresta-me o livro? Não quero ver você sofrendo assim.",
     "error_count": 2,
     "tags": [
-      "s-z",
-      "homofonia"
+      "contexto",
+      "pronomes",
+      "colocação"
     ],
     "partition_metadata": {
-      "primary_family": "phenomenon:homofonos",
+      "primary_family": "diff:empresta=>me",
       "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
+        "category:contexto",
+        "diff:empresta=>me",
+        "diff:me=>-",
+        "diff:te=>voce",
+        "difficulty:6",
+        "error_count:2",
+        "phenomenon:colocacao_pronominal",
+        "phenomenon:pontuacao"
+      ],
+      "phenomena": [
+        "colocacao_pronominal"
+      ],
+      "diff_pairs": [
+        "diff:empresta=>me",
+        "diff:me=>-",
+        "diff:te=>voce"
+      ]
+    }
+  },
+  {
+    "id": "ctx-07-alug-se",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Vende-se carros e busca-se novas oportunidades.",
+    "correto": "Vendem-se carros e buscam-se novas oportunidades.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "voz-passiva",
+      "concordância"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:busca=>buscam",
+      "family_keys": [
+        "category:contexto",
+        "diff:busca=>buscam",
+        "diff:vende=>vendem",
+        "difficulty:6",
+        "error_count:2",
+        "phenomenon:contexto"
+      ],
+      "phenomena": [
+        "contexto"
+      ],
+      "diff_pairs": [
+        "diff:busca=>buscam",
+        "diff:vende=>vendem"
+      ]
+    }
+  },
+  {
+    "id": "ctx-08-anexo-mesmo",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Seguem anexo as fotos, o mesmo deve ser arquivado logo.",
+    "correto": "Seguem anexas as fotos; elas devem ser arquivadas logo.",
+    "error_count": 2,
+    "tags": [
+      "contexto",
+      "concordância",
+      "coesão"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:anexo=>anexas",
+      "family_keys": [
+        "category:contexto",
+        "diff:anexo=>anexas",
+        "diff:arquivado=>arquivadas",
+        "diff:deve=>devem",
+        "diff:mesmo=>elas",
+        "diff:o=>;",
+        "difficulty:6",
+        "error_count:2",
+        "phenomenon:contexto",
+        "phenomenon:pontuacao"
+      ],
+      "phenomena": [
+        "contexto"
+      ],
+      "diff_pairs": [
+        "diff:anexo=>anexas",
+        "diff:arquivado=>arquivadas",
+        "diff:deve=>devem",
+        "diff:mesmo=>elas",
+        "diff:o=>;"
+      ]
+    }
+  },
+  {
+    "id": "hom-02-sessao-secao",
+    "category": "homófonos",
+    "difficulty": 6,
+    "errado": "A cessão de cinema foi na seção de autógrafos do autor.",
+    "correto": "A sessão de cinema foi na seção de autógrafos do autor.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "ortografia",
+      "contexto"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:cessao=>sessao",
+      "family_keys": [
+        "category:homofonos",
+        "diff:cessao=>sessao",
+        "difficulty:6",
         "error_count:2",
         "phenomenon:homofonos",
         "phenomenon:ortografia"
       ],
       "phenomena": [
+        "homofonos",
+        "ortografia"
+      ],
+      "diff_pairs": [
+        "diff:cessao=>sessao"
+      ]
+    }
+  },
+  {
+    "id": "hom-03-traz-tras",
+    "category": "homófonos",
+    "difficulty": 6,
+    "errado": "Ele ficou para traz e não trás o que prometeu.",
+    "correto": "Ele ficou para trás e não traz o que prometeu.",
+    "error_count": 2,
+    "tags": [
+      "homófonos",
+      "verbos",
+      "advérbios"
+    ],
+    "partition_metadata": {
+      "primary_family": "diff:tras=>traz",
+      "family_keys": [
+        "category:homofonos",
+        "diff:tras=>traz",
+        "diff:traz=>tras",
+        "difficulty:6",
+        "error_count:2",
+        "phenomenon:concordancia_verbal",
+        "phenomenon:homofonos"
+      ],
+      "phenomena": [
+        "concordancia_verbal",
         "homofonos"
       ],
-      "diff_pairs": []
+      "diff_pairs": [
+        "diff:tras=>traz",
+        "diff:traz=>tras"
+      ]
     }
   },
   {
-    "id": "ort-15",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "O cansaço excessivo me impediu de concerta o relógio.",
-    "correto": "O cansaço excessivo me impediu de consertar o relógio.",
+    "id": "hom-04-a-ha",
+    "category": "homófonos",
+    "difficulty": 6,
+    "errado": "Há muito tempo, a cerca de 2km, víamos a luz.",
+    "correto": "Há muito tempo, a cerca de 2 km, víamos a luz.",
     "error_count": 2,
     "tags": [
-      "verbo",
-      "s-c"
+      "homófonos",
+      "tempo",
+      "distância"
     ],
     "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
+      "primary_family": "diff:2km=>km",
       "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
+        "category:homofonos",
+        "diff:2km=>km",
+        "difficulty:6",
         "error_count:2",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:ortografia"
+        "phenomenon:homofonos"
       ],
       "phenomena": [
-        "concordancia_verbal"
+        "homofonos"
       ],
-      "diff_pairs": []
+      "diff_pairs": [
+        "diff:2km=>km"
+      ]
     }
   },
   {
-    "id": "ort-18",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "A canjica estava uma delíçia, mas faltou açucar.",
-    "correto": "A canjica estava uma delícia, mas faltou açúcar.",
+    "id": "hom-07-afim-a-fim",
+    "category": "homófonos",
+    "difficulty": 6,
+    "errado": "Estou afim de sair, pois temos ideias a fim sobre o tema.",
+    "correto": "Estou a fim de sair, pois temos ideias afins sobre o tema.",
     "error_count": 2,
     "tags": [
-      "comida",
-      "c-ç"
+      "homófonos",
+      "interesses",
+      "concordância"
     ],
     "partition_metadata": {
-      "primary_family": "phenomenon:crase",
+      "primary_family": "diff:afim=>fim",
       "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
+        "category:homofonos",
+        "diff:afim=>fim",
+        "diff:fim=>afins",
+        "difficulty:6",
         "error_count:2",
-        "phenomenon:crase",
-        "phenomenon:ortografia"
+        "phenomenon:homofonos"
       ],
       "phenomena": [
-        "ortografia"
+        "homofonos"
       ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ort-27",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "O geito dele é um pouco estranho, mas ele é jentil.",
-    "correto": "O jeito dele é um pouco estranho, mas ele é gentil.",
-    "error_count": 2,
-    "tags": [
-      "g-j",
-      "gentileza"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:acentuacao",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_001",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "A espectativa de sucesso era grande, mas a equipe precisa de um beneficiente treinamento para conssertar os erros criticos.",
-    "correto": "A expectativa de sucesso era grande, mas a equipe precisa de um beneficente treinamento para consertar os erros críticos.",
-    "error_count": 5,
-    "tags": [
-      "ortografia",
-      "erro comum",
-      "profissional",
-      "treinamento"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:5",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "orto-01",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Eles quizeram analizar os documentos ontem.",
-    "correto": "Eles quiseram analisar os documentos ontem.",
-    "error_count": 2,
-    "tags": [
-      "ortografia",
-      "verbos"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_verbal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_03",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "A paralização dos transportes público causou um grande transtorno a população que dependia deles para o trabalho.",
-    "correto": "A paralisação dos transportes públicos causou um grande transtorno à população que dependia deles para o trabalho.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "concordância",
-      "crase",
-      "transporte",
-      "social"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:crase",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "crase",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "orto-04",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Fasso o trabalho com muita conceteza.",
-    "correto": "Faço o trabalho com muita com certeza.",
-    "error_count": 2,
-    "tags": [
-      "ortografia",
-      "verbos"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_verbal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_004",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "Não houve concequências imediatas, mas a espectativa é que haja represálias severas pelos atos de insubordinassão.",
-    "correto": "Não houve consequências imediatas, mas a expectativa é que haja represálias severas pelos atos de insubordinação.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "consequência",
-      "expectativa",
-      "represália"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "orto-08",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Ele é munto estravagante na escolha.",
-    "correto": "Ele é muito extravagante na escolha.",
-    "error_count": 2,
-    "tags": [
-      "ortografia",
-      "adjetivo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_nominal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:concordancia_nominal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_nominal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_006",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "A pesquiza revelou dados essenciais, mas é precizo rever a metodologia para evitar prejúisos futuros na analise.",
-    "correto": "A pesquisa revelou dados essenciais, mas é preciso rever a metodologia para evitar prejuízos futuros na análise.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "pesquisa",
-      "metodologia",
-      "análise"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "orto-10",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "O privilégio de vizualizar o projeto sumiu.",
-    "correto": "O privilégio de visualizar o projeto sumiu.",
-    "error_count": 2,
-    "tags": [
-      "ortografia",
-      "texto técnico"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "ortografia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_007",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "A seção de perguntas é crucial para dezmistificar qualqer dúvida que surja durante a apresentassão do projeto.",
-    "correto": "A seção de perguntas é crucial para desmistificar qualquer dúvida que surja durante a apresentação do projeto.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "apresentação",
-      "projeto",
-      "dúvida"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "orto-15",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Vou pesquizar o preço do açucar agora.",
-    "correto": "Vou pesquisar o preço do açúcar agora.",
-    "error_count": 2,
-    "tags": [
-      "ortografia",
-      "compras"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:crase",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_008",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "É inpresindível que o chefe de secão faça uma avaliassão minuciosa de todos os relatórios antes da submissão.",
-    "correto": "É imprescindível que o chefe de seção faça uma avaliação minuciosa de todos os relatórios antes da submissão.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "gerência",
-      "relatório",
-      "avaliação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "orto-39",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "A quizeram comprar o carro vizinho.",
-    "correto": "Eles quiseram comprar o carro vizinho.",
-    "error_count": 2,
-    "tags": [
-      "ortografia",
-      "venda"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "anuncios",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_011",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "Para adiquirir seu passaporte é nescessário apresentar a certidão de nacimento e um comprovante de residençia.",
-    "correto": "Para adquirir seu passaporte é necessário apresentar a certidão de nascimento e um comprovante de residência.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "documentos",
-      "cotidiano",
-      "burocracia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ort-1",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "Apezar do cansaço, ele quiz continuar o trabalho.",
-    "correto": "Apesar do cansaço, ele quis continuar o trabalho.",
-    "error_count": 2,
-    "tags": [
-      "cotidiano",
-      "s-z"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_012",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "Mantenha o silençio, pois o ruidos do lado de fora podem atrapalhar a conscentração dos alunos duranto o exame.",
-    "correto": "Mantenha o silêncio, pois os ruídos do lado de fora podem atrapalhar a concentração dos alunos durante o exame.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "silêncio",
-      "exame",
-      "concentração"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_02",
-    "category": "ortografia",
-    "difficulty": 1,
-    "errado": "Ele não conhesse o caminho.",
-    "correto": "Ele não conhece o caminho.",
-    "error_count": 1,
-    "tags": [
-      "ortografia",
-      "nh_c",
-      "verbo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_verbal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ort-2",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "O previlégio de ser mestre exige muita paciençia.",
-    "correto": "O privilégio de ser mestre exige muita paciência.",
-    "error_count": 2,
-    "tags": [
-      "vogal",
-      "ç-c"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_014",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "Não houve desensão quanto a proposta; a maioria acedeu as novas condiçoes, que foram bem recebidas.",
-    "correto": "Não houve dissenção quanto à proposta; a maioria acedeu às novas condições, que foram bem recebidas.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "concordância",
-      "proposta",
-      "condições"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_05",
-    "category": "ortografia",
-    "difficulty": 1,
-    "errado": "Este é um projeto anbicioso.",
-    "correto": "Este é um projeto ambicioso.",
-    "error_count": 1,
-    "tags": [
-      "ortografia",
-      "m_n",
-      "substantivo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_nominal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:concordancia_nominal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_nominal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ort-3",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "A excessão da regra gerou uma paralisia na analize.",
-    "correto": "A exceção da regra gerou uma paralisia na análise.",
-    "error_count": 2,
-    "tags": [
-      "x-cc",
-      "s-z"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_018",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "O palestrante fez uma apresentaçao excencialmente confusa, com muitos slides e pouca claresa na exposiçao.",
-    "correto": "O palestrante fez uma apresentação essencialmente confusa, com muitos slides e pouca clareza na exposição.",
-    "error_count": 4,
-    "tags": [
-      "ortografia",
-      "apresentação",
-      "clareza",
-      "palestra"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_07",
-    "category": "ortografia",
-    "difficulty": 1,
-    "errado": "Ele é um exelente profissional.",
-    "correto": "Ele é um excelente profissional.",
-    "error_count": 1,
-    "tags": [
-      "ortografia",
-      "x_c",
-      "adjetivo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_nominal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:concordancia_nominal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_nominal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ort-5",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "O meitro da obra preçisa de mais argamaça.",
-    "correto": "O mestre da obra precisa de mais argamassa.",
-    "error_count": 2,
-    "tags": [
-      "construção",
-      "ss-c"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_1",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "A espectativa de crescimento da firma foi frustada por uma série de fatores exógenos e falhas de planejamento interino.",
-    "correto": "A expectativa de crescimento da firma foi frustrada por uma série de fatores exógenos e falhas de planejamento interno.",
-    "error_count": 3,
-    "tags": [
-      "ortografia",
-      "sufixo",
-      "adjetivo",
-      "planejamento"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_nominal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:concordancia_nominal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_nominal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_09",
-    "category": "ortografia",
-    "difficulty": 1,
-    "errado": "A empresa ofereçe um bom benefício.",
-    "correto": "A empresa oferece um bom benefício.",
-    "error_count": 1,
-    "tags": [
-      "ortografia",
-      "ç_c",
-      "verbo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_verbal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ort-10",
-    "category": "ortografia",
-    "difficulty": 3,
-    "errado": "A xícara de porçelana quebrou durante a faxina na coçinha.",
-    "correto": "A xícara de porcelana quebrou durante a faxina na cozinha.",
-    "error_count": 2,
-    "tags": [
-      "casa",
-      "c-z"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_002",
-    "category": "ortografia",
-    "difficulty": 5,
-    "errado": "Previlégio é ter acesso a um material de exseção como este, que desmistifica a essência do projecto.",
-    "correto": "Privilégio é ter acesso a um material de exceção como este, que desmistifica a essência do projeto.",
-    "error_count": 3,
-    "tags": [
-      "ortografia",
-      "erro comum",
-      "profissional",
-      "projeto"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ortografia_10",
-    "category": "ortografia",
-    "difficulty": 1,
-    "errado": "Não posso prever o futoro.",
-    "correto": "Não posso prever o futuro.",
-    "error_count": 1,
-    "tags": [
-      "ortografia",
-      "o_u",
-      "substantivo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_nominal",
-      "family_keys": [
-        "category:ortografia",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:concordancia_nominal",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "concordancia_nominal",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao-rotina-trabalho",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "Voce ja enviou o relatorio de sabado?",
-    "correto": "Você já enviou o relatório de sábado?",
-    "error_count": 4,
-    "tags": [
-      "acentuação",
-      "oxítona",
-      "proparoxítona"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:4",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acent-02",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "O nivel de agua do reservatorio esta baixo.",
-    "correto": "O nível de água do reservatório está baixo.",
-    "error_count": 4,
-    "tags": [
-      "acentuação",
-      "paroxitonas"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:4",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_07",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "O juiz sentenciou o réu a prisão perpetua, uma pena polemica e de dificil aceitação social.",
-    "correto": "O juiz sentenciou o réu à prisão perpétua, uma pena polêmica e de difícil aceitação social.",
-    "error_count": 5,
-    "tags": [
-      "acentuação",
-      "crase",
-      "justiça",
-      "controvérsia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:5",
-        "phenomenon:acentuacao",
-        "phenomenon:crase"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acent-21",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "O carater do homem se ve em suas acoes.",
-    "correto": "O caráter do homem se vê em suas ações.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "paroxitona",
-      "til"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:crase"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_01",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "Voce ja foi ao medico?",
-    "correto": "Você já foi ao médico?",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "agudo",
-      "comum"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_002",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "Sua atitude côrroborou com a ideia de que a empresa não à disposta à fazer concessões à seus funcionários.",
-    "correto": "Sua atitude corroborou com a ideia de que a empresa não está disposta a fazer concessões a seus funcionários.",
-    "error_count": 4,
-    "tags": [
-      "acentuação",
-      "crase",
-      "concessões",
-      "empresa"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:crase"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_09",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "Ele e um heroi da nacao.",
-    "correto": "Ele é um herói da nação.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "heroi",
-      "nacao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acent-01",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "Eu nao tive a ideia de fazer o curso de ingles.",
-    "correto": "Eu não tive a ideia de fazer o curso de inglês.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "til",
-      "reforma"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_003",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "Eles têem um sério problema de comunicação e, se não resolvem logo, o prejuízo sera enorme à todos.",
-    "correto": "Eles têm um sério problema de comunicação e, se não resolverem logo, o prejuízo será enorme a todos.",
-    "error_count": 4,
-    "tags": [
-      "acentuação",
-      "comunicação",
-      "prejuízo",
-      "será"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:crase"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acent-13",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "A historia daquele pais e muito complexa.",
-    "correto": "A história daquele país é muito complexa.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "hiato",
-      "paroxitonas"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_03",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "Ela e uma otima pessoa.",
-    "correto": "Ela é uma ótima pessoa.",
-    "error_count": 2,
-    "tags": [
-      "acentuação",
-      "verbo",
-      "adjetivo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:acentuacao",
-        "phenomenon:concordancia_nominal",
-        "phenomenon:concordancia_verbal"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "concordancia_nominal",
-        "concordancia_verbal"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_02",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "Alem do mais, a ideia é de dificil execucao e não teremos nenhum benefício pratico no futuro.",
-    "correto": "Além do mais, a ideia é de difícil execução e não teremos nenhum benefício prático no futuro.",
-    "error_count": 4,
-    "tags": [
-      "acentuação",
-      "execução",
-      "benefício",
-      "planejamento"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentu_08",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "Vende-se automovel em otimo estado de conservacao.",
-    "correto": "Vende-se automóvel em ótimo estado de conservação.",
-    "error_count": 3,
-    "tags": [
-      "acento",
-      "anuncio"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_04",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "Nos vamos viajar amanha.",
-    "correto": "Nós vamos viajar amanhã.",
-    "error_count": 2,
-    "tags": [
-      "acentuação",
-      "pronomes",
-      "circunflexo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:acentuacao",
-        "phenomenon:colocacao_pronominal"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "colocacao_pronominal"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_012",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "Para que os alunos se sintam bem, é fundamental que haja um ambiente de aprendizado prazeroso e sem prejuizos à auto-estima.",
-    "correto": "Para que os alunos se sintam bem, é fundamental que haja um ambiente de aprendizado prazeroso e sem prejuízos à autoestima.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "hífen",
-      "autoestima",
-      "prejuízos"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentu_01",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "Voce sabe onde fica a saida de emergencia?",
-    "correto": "Você sabe onde fica a saída de emergência?",
-    "error_count": 3,
-    "tags": [
-      "acento",
-      "segurança"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_05",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "O onibus esta atrasado.",
-    "correto": "O ônibus está atrasado.",
-    "error_count": 2,
-    "tags": [
-      "acentuação",
-      "circunflexo",
-      "esta"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_013",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "Os páis devem acompanhar de perto o desenvolvimento dos filhos, dando-lhes a atenção e o apoio necessário à essa jornada.",
-    "correto": "Os pais devem acompanhar de perto o desenvolvimento dos filhos, dando-lhes a atenção e o apoio necessários a essa jornada.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "concordância",
-      "parentalidade",
-      "jornada"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:crase"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentu_02",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "O transito estava horrivel esta manha.",
-    "correto": "O trânsito estava horrível esta manhã.",
-    "error_count": 3,
-    "tags": [
-      "acento",
-      "transporte"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_10",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "O conteudo e muito util.",
-    "correto": "O conteúdo é muito útil.",
-    "error_count": 2,
-    "tags": [
-      "acentuação",
-      "util",
-      "conteudo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_015",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "Aquela reunião foi à três anos, e desde então, muita coisa mudou na empresa, principalmente à respeito das políticas internas.",
-    "correto": "Aquela reunião foi há três anos, e desde então, muita coisa mudou na empresa, principalmente a respeito das políticas internas.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "há/a",
-      "crase",
-      "reunião"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:crase"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentu_05",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "O pagamento sera efetuado ate o fim do mes.",
-    "correto": "O pagamento será efetuado até o fim do mês.",
-    "error_count": 3,
-    "tags": [
-      "acento",
-      "financeiro"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_12",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "Ele tem uma pessima memoria.",
-    "correto": "Ele tem uma péssima memória.",
-    "error_count": 2,
-    "tags": [
-      "acentuação",
-      "agudo",
-      "grave"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_1",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "A série de eventos climaticos extremos tem tido um impacto significativo na agriculcura, causando perdas imensuráveis aos produtores rurais.",
-    "correto": "A série de eventos climáticos extremos tem tido um impacto significativo na agricultura, causando perdas imensuráveis aos produtores rurais.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "paroxítona",
-      "climáticos",
-      "agricultura"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentu_09",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "Esta noticia e de ultima hora.",
-    "correto": "Esta notícia é de última hora.",
-    "error_count": 3,
-    "tags": [
-      "acento",
-      "jornalismo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acen_05",
-    "category": "acentuação",
-    "difficulty": 2,
-    "errado": "A situaçao economico e politica do país e critica.",
-    "correto": "A situação econômica e política do país é crítica.",
-    "error_count": 5,
-    "tags": [
-      "acentuação",
-      "trema",
-      "proparoxítona",
-      "notícias"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:2",
-        "error_count:5",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_06",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "As ultimas notícias sobre a economia indicam um cenário de instabilidade, exigindo prudencia dos investidores.",
-    "correto": "As últimas notícias sobre a economia indicam um cenário de instabilidade, exigindo prudência dos investidores.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "economia",
-      "investimento",
-      "notícias"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentu_12",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "O heroi da historia perdeu seus papeis.",
-    "correto": "O herói da história perdeu seus papéis.",
-    "error_count": 3,
-    "tags": [
-      "acento",
-      "literatura"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_08",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "Tudo o que e bom dura pouco.",
-    "correto": "Tudo o que é bom dura pouco.",
-    "error_count": 1,
-    "tags": [
-      "acentuação",
-      "verbo",
-      "e"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:acentuacao",
-        "phenomenon:concordancia_verbal"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "concordancia_verbal"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acent_01",
-    "category": "acentuação",
-    "difficulty": 2,
-    "errado": "Voce deve ter uma atitude agil para resolver o problema de logistica, ou sera dificil.",
-    "correto": "Você deve ter uma atitude ágil para resolver o problema de logística, ou será difícil.",
-    "error_count": 5,
-    "tags": [
-      "acentuação",
-      "circunflexo",
-      "aguda",
-      "cotidiano"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:2",
-        "error_count:5",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acent-contem-ridiculo",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "Vou averigüar se eles contem o avanço da febre com esse rídiculo arguirei.",
-    "correto": "Vou averiguar se eles contêm o avanço da febre com esse ridículo arguirei.",
-    "error_count": 3,
-    "tags": [
-      "trema",
-      "plural",
-      "proparoxitona"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acent-05",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "O proximo onibus passara em dez minutos.",
-    "correto": "O próximo ônibus passará em dez minutos.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "proparoxitonas"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_11",
-    "category": "acentuação",
-    "difficulty": 1,
-    "errado": "A reuniao foi na sala ao lado.",
-    "correto": "A reunião foi na sala ao lado.",
-    "error_count": 1,
-    "tags": [
-      "acentuação",
-      "til",
-      "substantivo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:acentuacao",
-        "phenomenon:concordancia_nominal"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "concordancia_nominal"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acento-02",
-    "category": "acentuação",
-    "difficulty": 2,
-    "errado": "Alem do horario flexivel, a empresa oferece beneficios inumeros para o bem estar do funcionario.",
-    "correto": "Além do horário flexível, a empresa oferece benefícios inúmeros para o bem-estar do funcionário.",
-    "error_count": 4,
-    "tags": [
-      "acentuação",
-      "trabalho",
-      "benefícios",
-      "empresa",
-      "qualidade de vida"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acent-08",
-    "category": "acentuação",
-    "difficulty": 3,
-    "errado": "Aquela maquina de cafe sempre quebra no sabado.",
-    "correto": "Aquela máquina de café sempre quebra no sábado.",
-    "error_count": 3,
-    "tags": [
-      "acentuação",
-      "proparoxitonas"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:acentuacao"
-      ],
-      "phenomena": [
-        "acentuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "acentuacao_004",
-    "category": "acentuação",
-    "difficulty": 5,
-    "errado": "À medida que os países desenvolvem, os desafios aumentam, requerendo soluções mais complexas e eficazes.",
-    "correto": "À medida que os países se desenvolvem, os desafios aumentam, requerendo soluções mais complexas e eficazes.",
-    "error_count": 2,
-    "tags": [
-      "acentuação",
-      "crase",
-      "desenvolvimento",
-      "desafios"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:acentuacao",
-        "difficulty:5",
-        "error_count:2",
-        "phenomenon:acentuacao",
-        "phenomenon:crase"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao-mensagem-rapida",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "Oi tudo bem você pode falar agora",
-    "correto": "Oi, tudo bem? Você pode falar agora?",
-    "error_count": 4,
-    "tags": [
-      "pontuação",
-      "vocativo",
-      "interrogação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:4",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_02",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "Ele estudou muito no entanto não passou.",
-    "correto": "Ele estudou muito; no entanto, não passou.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "conectivo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont_01",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Por favor tragam todos os documentos necessarios identidade comprovante de residencia e o contrato.",
-    "correto": "Por favor, tragam todos os documentos necessários: identidade, comprovante de residência e o contrato.",
-    "error_count": 5,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "lista",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:5",
-        "phenomenon:acentuacao",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_006",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "Por exemplo: o uso de vírgulas, ponto e vírgula e dois pontos é essêncial para a clareza do texto, à ser analisado por todos.",
-    "correto": "Por exemplo, o uso de vírgulas, ponto e vírgula e dois pontos é essencial para a clareza do texto, a ser analisado por todos.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "acentuação",
-      "crase",
-      "clareza"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:crase",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont-polissindeto",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "E reza e chora e pede e espera por um milagre.",
-    "correto": "E reza, e chora, e pede, e espera por um milagre.",
-    "error_count": 3,
-    "tags": [
-      "figura-de-linguagem",
-      "literatura"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_06",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "Ele gosta de frutas maçãs laranjas e uvas.",
-    "correto": "Ele gosta de frutas: maçãs, laranjas e uvas.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "dois_pontos",
-      "listagem"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont_06",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Choveu muito, durante a noite, no entanto, o show, não foi, cancelado.",
-    "correto": "Choveu muito durante a noite; no entanto, o show não foi cancelado.",
-    "error_count": 5,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "ponto_e_vírgula",
-      "oposição"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:5",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_012",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "Ainda que o cenário seja desafiador, não podemos perder a esperança, e devemos continuar lutando por nossos idéais, à todo custo.",
-    "correto": "Ainda que o cenário seja desafiador, não podemos perder a esperança e devemos continuar lutando por nossos ideais, a todo custo.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "acentuação",
-      "crase"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:crase",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pon-51",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "Olá Maria tudo bem, você trouxe o livro.",
-    "correto": "Olá, Maria, tudo bem? Você trouxe o livro?",
-    "error_count": 3,
-    "tags": [
-      "vocativo",
-      "interrogacao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_07",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "Meu colega Paulo chegou cedo.",
-    "correto": "Meu colega, Paulo, chegou cedo.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "aposto"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont_04",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Comprei, pão queijo e leite na padaria nova e tava tudo otimo.",
-    "correto": "Comprei pão, queijo e leite na padaria nova, e estava tudo ótimo.",
-    "error_count": 4,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "ortografia",
-      "cotidiano"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_002",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "Apesar de todos os esforços, as vendas diminuíram drasticamente, por isso, precisamos rever a estratégia de marketing, á fim de evitar a falência à longo prazo.",
-    "correto": "Apesar de todos os esforços, as vendas diminuíram drasticamente; por isso, precisamos rever a estratégia de marketing, a fim de evitar a falência a longo prazo.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "ponto e vírgula",
-      "crase",
-      "estratégia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:crase",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "crase",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_09",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "Ele leu vários livros entre eles Dom Casmurro Memórias Póstumas de Brás Cubas e O Cortiço.",
-    "correto": "Ele leu vários livros, entre eles Dom Casmurro, Memórias Póstumas de Brás Cubas e O Cortiço.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "lista",
-      "livros"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_11",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "O gerente Pedro avisou a todos.",
-    "correto": "O gerente, Pedro, avisou a todos.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "vocativo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontua-01",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Por favor, traga os seguintes itens pão leite ovos e café.",
-    "correto": "Por favor, traga os seguintes itens: pão, leite, ovos e café.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "dois pontos",
-      "lista",
-      "compras"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_13",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "O palestrante explicou três conceitos chave para o sucesso motivação persistência e foco nos objetivos.",
-    "correto": "O palestrante explicou três conceitos-chave para o sucesso: motivação, persistência e foco nos objetivos.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "hífen",
-      "dois_pontos",
-      "sucesso"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "hifen",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_05",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "Disse o professor a matéria é extensa.",
-    "correto": "Disse o professor: 'A matéria é extensa'.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "dois_pontos",
-      "citação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:crase",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_12",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "A empresa oferece muitos benefícios plano de saúde vale refeição e transporte.",
-    "correto": "A empresa oferece muitos benefícios: plano de saúde, vale refeição e transporte.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "dois_pontos",
-      "listagem"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontua-06",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "A empresa oferece muitos benefícios plano de saúde vale refeição e seguro de vida.",
-    "correto": "A empresa oferece muitos benefícios: plano de saúde, vale-refeição e seguro de vida.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "dois pontos",
-      "benefícios",
-      "trabalho"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_2",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "O novo sistema que promete revolucionar o mercado será lançado no próximo mês mas ainda precisa de ajustes finais.",
-    "correto": "O novo sistema, que promete revolucionar o mercado, será lançado no próximo mês, mas ainda precisa de ajustes finais.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "aposto",
-      "sistema"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_10",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "A empresa contudo não concordou com a proposta.",
-    "correto": "A empresa, contudo, não concordou com a proposta.",
-    "error_count": 2,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "advérbio"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pon_12",
-    "category": "pontuação",
-    "difficulty": 4,
-    "errado": "Os dados foram coletados em três etapas: a primeira entrevista a segunda questionário e a terceira observação.",
-    "correto": "Os dados foram coletados em três etapas: a primeira, entrevista; a segunda, questionário; e a terceira, observação.",
-    "error_count": 4,
-    "tags": [
-      "pontuação",
-      "ponto e vírgula",
-      "vírgula",
-      "enumeração complexa"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont_05",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Se chover amanhã, não iremos ao parque, porem poderemos ir ao cinema.",
-    "correto": "Se chover amanhã, não iremos ao parque; porém, poderemos ir ao cinema.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "ponto_e_virgula",
-      "acentuação",
-      "conjunção"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_4",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "Prezados colegas, a reunião de hoje, focará nos seguintes pontos orçamento, estratégias de marketing, e cronograma do próximo evento.",
-    "correto": "Prezados colegas, a reunião de hoje focará nos seguintes pontos: orçamento, estratégias de marketing e cronograma do próximo evento.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "dois_pontos",
-      "reunião"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_03",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "Você vem hoje",
-    "correto": "Você vem hoje?",
-    "error_count": 1,
-    "tags": [
-      "pontuação",
-      "interrogacao",
-      "pergunta"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont-explicativa",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "Brasília a capital do Brasil foi planejada por Oscar Niemeyer.",
-    "correto": "Brasília, a capital do Brasil, foi planejada por Oscar Niemeyer.",
-    "error_count": 2,
-    "tags": [
-      "aposto",
-      "geografia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_1",
-    "category": "pontuação",
-    "difficulty": 4,
-    "errado": "Os participantes da reunião eram: Maria, diretora, João, gerente e Ana coordenadora.",
-    "correto": "Os participantes da reunião eram: Maria, diretora; João, gerente; e Ana, coordenadora.",
-    "error_count": 4,
-    "tags": [
-      "pontuação",
-      "vírgula",
-      "listas",
-      "profissional"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_5",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "Ele comprou tudo o que precisava canetas lápis cadernos e livros para o início do semestre letivo.",
-    "correto": "Ele comprou tudo o que precisava: canetas, lápis, cadernos e livros para o início do semestre letivo.",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "dois_pontos",
-      "vírgula",
-      "compras"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontu-02",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Por favor, traga: pão leite ovos e café da manhã para todos, ok",
-    "correto": "Por favor, traga: pão, leite, ovos e café da manhã para todos, ok?",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "lista",
-      "interrogacao",
-      "exclamacao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_04",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "Que dia lindo",
-    "correto": "Que dia lindo!",
-    "error_count": 1,
-    "tags": [
-      "pontuação",
-      "exclamacao",
-      "sentimento"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont-proclise-intercalada",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "Quem, me disse isso, não estava bem informado.",
-    "correto": "Quem me disse isso não estava bem informado.",
-    "error_count": 2,
-    "tags": [
-      "pronome",
-      "ênclise"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:colocacao_pronominal",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:colocacao_pronominal",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "colocacao_pronominal"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_16",
-    "category": "pontuação",
-    "difficulty": 4,
-    "errado": "Ele era inteligente carismático e um bom líder ninguem podia negar.",
-    "correto": "Ele era inteligente, carismático e um bom líder, ninguém podia negar.",
-    "error_count": 3,
-    "tags": [
-      "lideranca",
-      "qualidades",
-      "pontuação",
-      "ortografia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont_03",
-    "category": "pontuação",
-    "difficulty": 2,
-    "errado": "Você sabe, onde fica, a papelaria?",
-    "correto": "Você sabe onde fica a papelaria?",
-    "error_count": 3,
-    "tags": [
-      "pontuação",
-      "vírgula_indevida",
-      "interrogativa",
-      "cotidiano"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pont-gerente-virgula",
-    "category": "pontuação",
-    "difficulty": 5,
-    "errado": "O gerente de projetos, disse que o prazo final, seria ontem e o cliente, não aceitou.",
-    "correto": "O gerente de projetos disse que o prazo final seria ontem, e o cliente não aceitou.",
-    "error_count": 3,
-    "tags": [
-      "sintaxe",
-      "virgula",
-      "sujeito-verbo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "concordancia_verbal",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pontuacao_08",
-    "category": "pontuação",
-    "difficulty": 1,
-    "errado": "Por favor me ajude com isso.",
-    "correto": "Por favor, me ajude com isso.",
-    "error_count": 1,
-    "tags": [
-      "pontuação",
-      "virgula",
-      "expressao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:pontuacao",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "pon-3",
-    "category": "pontuação",
-    "difficulty": 3,
-    "errado": "Em São Paulo as ruas, estão sempre cheias.",
-    "correto": "Em São Paulo, as ruas estão sempre cheias.",
-    "error_count": 2,
-    "tags": [
-      "adjunto",
-      "virgula"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_nominal",
-      "family_keys": [
-        "category:pontuacao",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:concordancia_nominal",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "concordancia_nominal",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_01",
-    "category": "texto técnico",
-    "difficulty": 1,
-    "errado": "A implementacao do software sera gradual.",
-    "correto": "A implementação do software será gradual.",
-    "error_count": 2,
-    "tags": [
-      "texto técnico",
-      "acentuação",
-      "implementacao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:acentuacao",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tecn-04",
-    "category": "texto técnico",
-    "difficulty": 2,
-    "errado": "A implantação do novo sistema, irá iniciar em breve, gerando, uma serie de beneficios.",
-    "correto": "A implantação do novo sistema iniciará em breve, gerando uma série de benefícios.",
-    "error_count": 5,
-    "tags": [
-      "texto técnico",
-      "pontuação",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:2",
-        "error_count:5",
-        "phenomenon:acentuacao",
-        "phenomenon:pontuacao",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "pontuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_06",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "O processo de fabricação exige um rigoroso controle de qualidae, e a adesão as normas tecnicas internacionais, para garantir a conformidade.",
-    "correto": "O processo de fabricação exige um rigoroso controle de qualidade e a adesão às normas técnicas internacionais, para garantir a conformidade.",
-    "error_count": 4,
-    "tags": [
-      "indústria",
-      "qualidade",
-      "ortografia",
-      "crase",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:crase",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "crase",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_004",
-    "category": "texto técnico",
-    "difficulty": 5,
-    "errado": "A infra estrutura de TI, não suporta a demanda atual, o que gera atrasos e prejuisos significativos à empresa.",
-    "correto": "A infraestrutura de TI não suporta a demanda atual, o que gera atrasos e prejuízos significativos à empresa.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "hífen",
-      "acentuação",
-      "ti",
-      "prejuízos"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tec-51",
-    "category": "texto técnico",
-    "difficulty": 3,
-    "errado": "O deployer deve startar o server após o loguin.",
-    "correto": "O implantador deve iniciar o servidor após o login.",
-    "error_count": 3,
-    "tags": [
-      "ti",
-      "estrangeirismo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:texto tecnico",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:3",
-        "error_count:3",
-        "phenomenon:texto tecnico"
-      ],
-      "phenomena": [
-        "texto tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_05",
-    "category": "texto técnico",
-    "difficulty": 1,
-    "errado": "A configuração de rede esta correta.",
-    "correto": "A configuração de rede está correta.",
-    "error_count": 2,
-    "tags": [
-      "texto técnico",
-      "acentuação",
-      "configuracao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:acentuacao",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_09",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "A bateria de ions de litio possui uma vida util mais longa, porem, requer cuidados especiais de armazenamento e descarte.",
-    "correto": "A bateria de íons de lítio possui uma vida útil mais longa; porém, requer cuidados especiais de armazenamento e descarte.",
-    "error_count": 4,
-    "tags": [
-      "energia",
-      "tecnologia",
-      "acentuação",
-      "ortografia",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tecn_05",
-    "category": "texto técnico",
-    "difficulty": 2,
-    "errado": "Afim de garantir a conformidade, os procedimentos devem ser seguido a risca.",
-    "correto": "A fim de garantir a conformidade, os procedimentos devem ser seguidos à risca.",
-    "error_count": 4,
-    "tags": [
-      "texto técnico",
-      "locução",
-      "concordância",
-      "crase",
-      "procedimento"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:crase",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "crase",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_013",
-    "category": "texto técnico",
-    "difficulty": 5,
-    "errado": "Os fatores sócio economicos influenciam diretamente na saúde pública, e por isso, precisam ser analisados à exaustão.",
-    "correto": "Os fatores socioeconômicos influenciam diretamente na saúde pública e, por isso, precisam ser analisados à exaustão.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "hífen",
-      "acentuação",
-      "vírgula",
-      "saúde pública"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen",
-        "pontuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tech-criptografia",
-    "category": "texto técnico",
-    "difficulty": 3,
-    "errado": "A criptográfia de ponta-a-ponta garante a privacidade dos dados.",
-    "correto": "A criptografia de ponta a ponta garante a privacidade dos dados.",
-    "error_count": 2,
-    "tags": [
-      "acentuação",
-      "hífen"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen",
-        "phenomenon:texto tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_13",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "A arquitetura de microserviços, oferece maior flexibilidade e escalabilidade, porem, exige uma gestão mais complexa e robusta.",
-    "correto": "A arquitetura de microsserviços oferece maior flexibilidade e escalabilidade; porém, exige uma gestão mais complexa e robusta.",
-    "error_count": 4,
-    "tags": [
-      "tecnologia",
-      "desenvolvimento",
-      "hífen",
-      "acentuação",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tecn-05",
-    "category": "texto técnico",
-    "difficulty": 2,
-    "errado": "A equipe técnica analisaram os dados e chegaram a conclusão que a falha foi operacional.",
-    "correto": "A equipe técnica analisou os dados e chegou à conclusão de que a falha foi operacional.",
-    "error_count": 4,
-    "tags": [
-      "texto técnico",
-      "concordancia_verbal",
-      "crase"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:concordancia_verbal",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:concordancia_verbal",
-        "phenomenon:crase",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "concordancia_verbal",
-        "crase",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_016",
-    "category": "texto técnico",
-    "difficulty": 5,
-    "errado": "A pesquisa multi-disciplinar revelou dados cruciais, mas a publicação à posteriori, foi atrasada por questões burocráticas.",
-    "correto": "A pesquisa multidisciplinar revelou dados cruciais, mas a publicação a posteriori foi atrasada por questões burocráticas.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "hífen",
-      "crase",
-      "vírgula",
-      "pesquisa"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:crase",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "crase",
-        "hifen",
-        "pontuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_02",
-    "category": "texto técnico",
-    "difficulty": 1,
-    "errado": "O relatório detalhava os parametro do projeto.",
-    "correto": "O relatório detalhava os parâmetros do projeto.",
-    "error_count": 1,
-    "tags": [
-      "texto técnico",
-      "acentuação",
-      "parametro"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:acentuacao",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tecnico_10",
-    "category": "texto técnico",
-    "difficulty": 3,
-    "errado": "A interface de usuario amigavel facilita o uso.",
-    "correto": "A interface de usuário amigável facilita o uso.",
-    "error_count": 2,
-    "tags": [
-      "texto técnico",
-      "ux"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:texto tecnico",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_3",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "O protótipo demonstrou-se eficiente, porém, necessita de ajustes para uma performance otimizada, e a integraçao com outros modulos.",
-    "correto": "O protótipo demonstrou-se eficiente; porém, necessita de ajustes para uma performance otimizada e a integração com outros módulos.",
-    "error_count": 4,
-    "tags": [
-      "texto técnico",
-      "pontuação",
-      "acentuação",
-      "desenvolvimento"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:pontuacao",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "pontuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tecn_01",
-    "category": "texto técnico",
-    "difficulty": 2,
-    "errado": "A equipe técnica efetuou os procedimentos de modo mais eficiente possivel, visando a otimização.",
-    "correto": "A equipe técnica efetuou os procedimentos do modo mais eficiente possível, visando à otimização.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "preposicao",
-      "acentuação",
-      "crase",
-      "otimizacao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:crase",
-        "phenomenon:regencia",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase",
-        "regencia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_018",
-    "category": "texto técnico",
-    "difficulty": 5,
-    "errado": "O estudo exploratório indicou uma correlação insignificante, o que contradiz à hipóteses pré concebidas da equipe de pesquisa.",
-    "correto": "O estudo exploratório indicou uma correlação insignificante, o que contradiz as hipóteses preconcebidas da equipe de pesquisa.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "crase",
-      "hífen",
-      "pesquisa"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:crase",
-        "phenomenon:hifen",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "crase",
-        "hifen",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_03",
-    "category": "texto técnico",
-    "difficulty": 1,
-    "errado": "A interface de usuario precisa ser intuitiva.",
-    "correto": "A interface de usuário precisa ser intuitiva.",
-    "error_count": 1,
-    "tags": [
-      "texto técnico",
-      "acentuação",
-      "interface"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:acentuacao",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tecnico_12",
-    "category": "texto técnico",
-    "difficulty": 3,
-    "errado": "Ata da reuniao ordinaria de conselho.",
-    "correto": "Ata da reunião ordinária de conselho.",
-    "error_count": 2,
-    "tags": [
-      "texto técnico",
-      "administrativo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:texto tecnico",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_4",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "A equipe de desevolvimento desenveleu um novo algoritimo capaz de processar grandes volume de dados em tempo real.",
-    "correto": "A equipe de desenvolvimento desenvolveu um novo algoritmo capaz de processar grande volume de dados em tempo real.",
-    "error_count": 4,
-    "tags": [
-      "texto técnico",
-      "ortografia",
-      "concordância",
-      "algoritmos"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:ortografia",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "ortografia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tecn_04",
-    "category": "texto técnico",
-    "difficulty": 2,
-    "errado": "A instalação requer um mínimo de 8 Gigabytes de RAM e um processador com frequencia de 2.4 GHz.",
-    "correto": "A instalação requer um mínimo de 8 GB de RAM e um processador com frequência de 2,4 GHz.",
-    "error_count": 3,
-    "tags": [
-      "erro_localizacao",
-      "abreviacao",
-      "erro_acentuacao",
-      "especificacoes_tecnicas"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "ortografia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_005",
-    "category": "texto técnico",
-    "difficulty": 5,
-    "errado": "O artigo científico foi submetido à revisão, mas a metodologia utilizada continha inconsistencias, o que comprometeu os resultados.",
-    "correto": "O artigo científico foi submetido a revisão, mas a metodologia utilizada continha inconsistências, o que comprometeu os resultados.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "crase",
-      "acentuação",
-      "metodologia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:crase",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_04",
-    "category": "texto técnico",
-    "difficulty": 1,
-    "errado": "A equipe de suporte respondeu a demanda.",
-    "correto": "A equipe de suporte respondeu à demanda.",
-    "error_count": 1,
-    "tags": [
-      "texto técnico",
-      "crase",
-      "demanda"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:crase",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "crase",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tech-deploy",
-    "category": "texto técnico",
-    "difficulty": 3,
-    "errado": "O deploy da aplicação foi realizado com sucesso no ambiente de prod.",
-    "correto": "O \"deploy\" da aplicação foi realizado com sucesso no ambiente de produção.",
-    "error_count": 2,
-    "tags": [
-      "estrangeirismo",
-      "abreviação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia",
-        "phenomenon:texto tecnico"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_18",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "A inteligência artificial tem o potencial de revolucionar diversos setores; porem, levanta questões eticas e sociais importantes, sobre o futuro.",
-    "correto": "A inteligência artificial tem o potencial de revolucionar diversos setores; porém, levanta questões éticas e sociais importantes sobre o futuro.",
-    "error_count": 3,
-    "tags": [
-      "inteligência artificial",
-      "tecnologia",
-      "acentuação",
-      "ortografia",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao",
-        "phenomenon:texto tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tec_01",
-    "category": "texto técnico",
-    "difficulty": 2,
-    "errado": "O desenvolvimento de novas tecnologia tem um inpacto significatívo.",
-    "correto": "O desenvolvimento de novas tecnologias tem um impacto significativo.",
-    "error_count": 3,
-    "tags": [
-      "tecnico",
-      "ortografia",
-      "concordancia",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:ortografia",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "ortografia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_015",
-    "category": "texto técnico",
-    "difficulty": 5,
-    "errado": "A implementação do sistema levou à problemas operacionais inesperados, e a equipe de suporte, foi acionada à tempo.",
-    "correto": "A implementação do sistema levou a problemas operacionais inesperados, e a equipe de suporte foi acionada a tempo.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "crase",
-      "vírgula",
-      "sistema"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:crase",
-        "phenomenon:pontuacao",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "crase",
-        "pontuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_08",
-    "category": "texto técnico",
-    "difficulty": 1,
-    "errado": "É essencial que se elabore um plano de contigência.",
-    "correto": "É essencial que se elabore um plano de contingência.",
-    "error_count": 1,
-    "tags": [
-      "texto técnico",
-      "ortografia",
-      "contingencia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:1",
-        "error_count:1",
-        "phenomenon:ortografia",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "ortografia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tech-framework",
-    "category": "texto técnico",
-    "difficulty": 3,
-    "errado": "Estamos utilizando um novo fremework para o front-end.",
-    "correto": "Estamos utilizando um novo \"framework\" para o \"front-end\".",
-    "error_count": 2,
-    "tags": [
-      "ortografia",
-      "ti"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:ortografia",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:3",
-        "error_count:2",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_14",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "Os participantes foram instruídos à preencher um questionário detalhado antes do inicio da sessão.",
-    "correto": "Os participantes foram instruídos a preencher um questionário detalhado antes do início da sessão.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "crase",
-      "acentuação",
-      "ortografia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:crase",
-        "phenomenon:ortografia",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "crase",
-        "ortografia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_1",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "A instalação do software requere atenção aos detalhes, especialmente no que se refere aos pré requisitos de sistema.",
-    "correto": "A instalação do software requer atenção aos detalhes, especialmente no que se refere aos pré-requisitos do sistema.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "ortografia",
-      "hífen",
-      "software"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:ortografia",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "texto_tecnico_5",
-    "category": "texto técnico",
-    "difficulty": 4,
-    "errado": "É crucial que todos os parámetros de configuração sejam verificados antes da ativação do sistema, evitando assim falhas criticas.",
-    "correto": "É crucial que todos os parâmetros de configuração sejam verificados antes da ativação do sistema, evitando, assim, falhas críticas.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "acentuação",
-      "pontuação",
-      "configuração"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:pontuacao",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "pontuacao",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "tecn_02",
-    "category": "texto técnico",
-    "difficulty": 2,
-    "errado": "No relatório onde a seção de dados falta, deve-se incluir a analise.",
-    "correto": "No relatório em que a seção de dados falta, deve-se incluir a análise.",
-    "error_count": 3,
-    "tags": [
-      "texto técnico",
-      "pronome_relativo",
-      "acentuação",
-      "relatório"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:texto tecnico",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:colocacao_pronominal",
-        "phenomenon:texto tecnico",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "colocacao_pronominal",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncio-venda-imovel",
-    "category": "anúncios",
-    "difficulty": 1,
-    "errado": "Vende-se casas com garagem e churrasquera.",
-    "correto": "Vendem-se casas com garagem e churrasqueira.",
-    "error_count": 2,
-    "tags": [
-      "concordância",
-      "ortografia",
-      "comercial"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:1",
-        "error_count:2",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_01",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Não perca está oportunidade unica de adquirir produtos de qualidae com preçoes imperdiveis por tempo limitado!",
-    "correto": "Não perca esta oportunidade única de adquirir produtos de qualidade com preços imperdíveis por tempo limitado!",
-    "error_count": 5,
-    "tags": [
-      "marketing",
-      "promoção",
-      "ortografia",
-      "acentuação",
-      "comércio"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:5",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_1",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Não perca essa oportunidade unica! Descontos incriveis te esperam, venha conferir.",
-    "correto": "Não perca essa oportunidade única! Descontos incríveis esperam por você. Venha conferir!",
-    "error_count": 5,
-    "tags": [
-      "anúncios",
-      "acentuação",
-      "colocação pronominal",
-      "oferta"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:5",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:colocacao_pronominal",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "colocacao_pronominal"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_2",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Oferta imperdivel, validá somente hoje! Aproveite o frete gratis para todo o brasil.",
-    "correto": "Oferta imperdível, válida somente hoje! Aproveite o frete grátis para todo o Brasil.",
-    "error_count": 5,
-    "tags": [
-      "anúncios",
-      "acentuação",
-      "ortografia",
-      "promoção"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:5",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_003",
-    "category": "anúncios",
-    "difficulty": 5,
-    "errado": "Compre já seu carro semi-novo com parcelas à perder de vista e condições imperdiveis. Garantia de um ano de fabrica.",
-    "correto": "Compre já seu carro seminovo com parcelas a perder de vista e condições imperdíveis. Garantia de um ano de fábrica.",
-    "error_count": 4,
-    "tags": [
-      "anúncios",
-      "carro",
-      "hífen",
-      "acentuação",
-      "ortografia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:crase",
-        "phenomenon:hifen",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_17",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Aberto todos os dias das 8 as 22h, inclusive feriados e fins de semana, venha nos visitar.",
-    "correto": "Aberto todos os dias das 8h às 22h, inclusive feriados e fins de semana. Venha nos visitar!",
-    "error_count": 4,
-    "tags": [
-      "anúncios",
-      "crase",
-      "hora",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:anuncios",
-        "phenomenon:crase",
-        "phenomenon:pontuacao",
-        "phenomenon:tempo_data_horario"
-      ],
-      "phenomena": [
-        "anuncios",
-        "crase",
-        "pontuacao",
-        "tempo_data_horario"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_06",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Novo sabor de torta de limão, uma esperiencia inesquesivel e refrescante!",
-    "correto": "Novo sabor de torta de limão: uma experiência inesquecível e refrescante!",
-    "error_count": 4,
-    "tags": [
-      "anúncios",
-      "ortografia",
-      "acentuação",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "ad-3",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Seu novo carro espera por você, não perca a oportunidade de adquirir o seu veiculo dos sonhos com condições incriveis.",
-    "correto": "Seu novo carro espera por você! Não perca a oportunidade de adquirir o seu veículo dos sonhos com condições incríveis!",
-    "error_count": 4,
-    "tags": [
-      "anúncios",
-      "pontuação",
-      "ortografia",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_02",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Oferta relampago! Descontos incríveis, só hoje e amanhã aproveite!",
-    "correto": "Oferta relâmpago! Descontos incríveis só hoje e amanhã! Aproveite!",
-    "error_count": 4,
-    "tags": [
-      "anúncios",
-      "acentuação",
-      "pontuação",
-      "virgula"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anunc-04",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Seu pet merece o melhor, então, de a ele nosso carinho e cuidado diario!",
-    "correto": "Seu pet merece o melhor; então, dê a ele nosso carinho e cuidado diário!",
-    "error_count": 4,
-    "tags": [
-      "anúncios",
-      "acentuação",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anu_35",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Vendo notebook usado com 8gb de ram e ssd 240gb.",
-    "correto": "Vendo notebook usado com 8 GB de RAM e SSD 240 GB.",
-    "error_count": 4,
-    "tags": [
-      "unidade",
-      "tecnologia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:anuncios"
-      ],
-      "phenomena": [
-        "anuncios"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_11",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Melhor preço garantido! Não ha concorrência que nos bata. Venha conferir. E ganhe um bonus!",
-    "correto": "Melhor preço garantido! Não há concorrência que nos bata. Venha conferir e ganhe um bônus!",
-    "error_count": 3,
-    "tags": [
-      "anuncio",
-      "promocao",
-      "a_a_ha",
-      "acentuação",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:crase",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "crase",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_07",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Matricule-se já no nosso curso de inglês! Professores qualificados, material didatico exclusivo, e aulas dinâmicas.",
-    "correto": "Matricule-se já no nosso curso de inglês! Professores qualificados, material didático exclusivo e aulas dinâmicas.",
-    "error_count": 3,
-    "tags": [
-      "educação",
-      "idiomas",
-      "acentuação",
-      "ortografia",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_002",
-    "category": "anúncios",
-    "difficulty": 5,
-    "errado": "Vagas abertas para desenhista pró-ativo! Exigimos portfolio e experiência comprovada à área de arquitetura e design.",
-    "correto": "Vagas abertas para desenhista proativo! Exigimos portfólio e experiência comprovada na área de arquitetura e design.",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "vagas",
-      "hífen",
-      "acentuação",
-      "crase"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:crase",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "crase",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_004",
-    "category": "anúncios",
-    "difficulty": 5,
-    "errado": "Desfrute de uma experiência unica de beleza e bem estar. Agende seu horário à partir de segunda e sinta a diferença!",
-    "correto": "Desfrute de uma experiência única de beleza e bem-estar. Agende seu horário a partir de segunda e sinta a diferença!",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "beleza",
-      "hífen",
-      "crase",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:crase",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "crase",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_03",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Compre já o seu novo celular e ganhe um brindes exclusivo, alem de frete grátis para todo o Brasil!",
-    "correto": "Compre já o seu novo celular e ganhe um brinde exclusivo, além de frete grátis para todo o Brasil!",
-    "error_count": 3,
-    "tags": [
-      "tecnologia",
-      "promoção",
-      "ortografia",
-      "acentuação",
-      "anúncios"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anunc_06",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Vagas limitada! Currículos devem ser enviados para o e mail abaixo. Contratamos rapido!",
-    "correto": "Vagas limitadas! Currículos devem ser enviados para o e-mail abaixo. Contratamos rápido!",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "concordancia_nominal",
-      "hífen",
-      "acentuação",
-      "emprego"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anu_01",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Não perca essa oportunidade imperdivel compre já!",
-    "correto": "Não perca esta oportunidade imperdível; compre já!",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "acentuação",
-      "pontuação",
-      "pronomes"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:colocacao_pronominal",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "colocacao_pronominal",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_05",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Cansado de pagar caro? Aqui você economisa de verdade, e recebe um atendimento exepcional.",
-    "correto": "Cansado de pagar caro? Aqui você economiza de verdade e recebe um atendimento excepcional.",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "ortografia",
-      "acentuação",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anunc_03",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Venha nos visitar e confira o melhor preçoo da cidade, são ofertas unicas.",
-    "correto": "Venha nos visitar e confira o melhor preço da cidade, são ofertas únicas!",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "ortografia",
-      "acentuação",
-      "comércio"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_18",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Atendimento personalizado e de qualidade, a sua disposição 24 horas por dia, com profissionais qualificádo.",
-    "correto": "Atendimento personalizado e de qualidade, à sua disposição 24 horas por dia, com profissionais qualificados.",
-    "error_count": 3,
-    "tags": [
-      "anuncio",
-      "servico",
-      "atendimento",
-      "crase",
-      "concordancia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:anuncios",
-        "phenomenon:crase"
-      ],
-      "phenomena": [
-        "anuncios",
-        "crase"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_19",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Compre agora e receba em casa! Frete grátis para todo o Brasil. Aproveite já. Os preços? Imbatível!",
-    "correto": "Compre agora e receba em casa! Frete grátis para todo o Brasil. Aproveite já! Os preços? Imbatíveis!",
-    "error_count": 3,
-    "tags": [
-      "anuncio",
-      "ecommerce",
-      "promocao",
-      "pontuação",
-      "concordancia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:anuncios",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "anuncios",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncio-06",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Descubra uma experiencia gastronomica inesquecivel, a partir das 19hrs de segunda a sabado.",
-    "correto": "Descubra uma experiência gastronômica inesquecível, a partir das 19h de segunda a sábado.",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "restaurante",
-      "gastronomia",
-      "horário",
-      "experiência"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:anuncios",
-        "phenomenon:tempo_data_horario"
-      ],
-      "phenomena": [
-        "anuncios",
-        "tempo_data_horario"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anu_13",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Curso de inglês online matriculas abertas hoje.",
-    "correto": "Curso de inglês on-line; matrículas abertas hoje.",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "estrangeirismo",
-      "acentuação",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_14",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Passe o Natal em familia, com pacotes de viagem incríveis e desconto esclusivos.",
-    "correto": "Passe o Natal em família, com pacotes de viagem incríveis e descontos exclusivos.",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "acentuação",
-      "ortografia",
-      "concordancia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_3",
-    "category": "anúncios",
-    "difficulty": 4,
-    "errado": "Seu carro novo esta aqui, com as melhores condições de financiamento. Entre em contacto já!",
-    "correto": "Seu carro novo está aqui, com as melhores condições de financiamento. Entre em contato já!",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "acentuação",
-      "ortografia",
-      "vendas"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anuncios_016",
-    "category": "anúncios",
-    "difficulty": 5,
-    "errado": "Serviços de jardinagem profissional à preços imbatíveis. Cuidamos do seu jardim com carinho e dedicação que ele mereçe.",
-    "correto": "Serviços de jardinagem profissional a preços imbatíveis. Cuidamos do seu jardim com o carinho e dedicação que ele merece.",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "jardinagem",
-      "crase",
-      "ortografia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:anuncios",
-        "phenomenon:crase",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "anuncios",
-        "crase",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anun-01",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Promoção imperdivel! Preços incríveis para você aproveita e economizar muito dinheiro.",
-    "correto": "Promoção imperdível! Preços incríveis para você aproveitar e economizar muito dinheiro.",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "ortografia",
-      "infinitivo",
-      "exclamacao"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:anuncios",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "anuncios",
-        "ortografia",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anunc_01",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Preços imbativeis. Ligue ja e garanta o seu!",
-    "correto": "Preços imbatíveis! Ligue já e garanta o seu!",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "acentuação",
-      "pontuação",
-      "venda"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "anunc_02",
-    "category": "anúncios",
-    "difficulty": 2,
-    "errado": "Super promoção! Nao perca esta oportunidade unica!",
-    "correto": "Superpromoção! Não perca esta oportunidade única!",
-    "error_count": 3,
-    "tags": [
-      "anúncios",
-      "hífen",
-      "acentuação",
-      "oferta"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:anuncios",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:anuncios",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "anuncios",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_09",
-    "category": "hífen",
-    "difficulty": 4,
-    "errado": "A relação custo beneficio do novo equipamento é exelente, e todos aprováram.",
-    "correto": "A relação custo-benefício do novo equipamento é excelente, e todos aprovaram.",
-    "error_count": 4,
-    "tags": [
-      "hífen",
-      "acentuação",
-      "ortografia",
-      "concordancia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_01",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "O anti-corpo reagiu mal a microonda, causando um antiinflamatorio.",
-    "correto": "O anticorpo reagiu mal à micro-onda, causando um anti-inflamatório.",
-    "error_count": 4,
-    "tags": [
-      "hífen",
-      "novo acordo",
-      "crase",
-      "prefixos"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:crase",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:crase",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "crase",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_2",
-    "category": "hífen",
-    "difficulty": 4,
-    "errado": "A reunião pró ativa com o vice presidente ajudou a resolver o problema inter regional de pós vendas.",
-    "correto": "A reunião proativa com o vice-presidente ajudou a resolver o problema inter-regional de pós-vendas.",
-    "error_count": 4,
-    "tags": [
-      "hífen",
-      "reunião",
-      "vendas",
-      "negócios"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:anuncios",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:4",
-        "error_count:4",
-        "phenomenon:anuncios",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "anuncios",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_02",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "O ex diretor geral da empresa era bem humorado, mas tomava decisões dificeis.",
-    "correto": "O ex-diretor-geral da empresa era bem-humorado, mas tomava decisões difíceis.",
-    "error_count": 4,
-    "tags": [
-      "hífen",
-      "prefixo",
-      "palavra composta",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_recem_nascido_pos_graduacao",
-    "category": "hífen",
-    "difficulty": 5,
-    "errado": "O recem nascido dormia enquanto ela estudava para a pos graduação.",
-    "correto": "O recém-nascido dormia enquanto ela estudava para a pós-graduação.",
-    "error_count": 4,
-    "tags": [
-      "acentuação",
-      "hífen",
-      "prefixo"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:5",
-        "error_count:4",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hife_01",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "O ex diretor e o vice presidente da empresa foram coautores do anti plagio.",
-    "correto": "O ex-diretor e o vice-presidente da empresa foram coautores do antiplágio.",
-    "error_count": 4,
-    "tags": [
-      "erro_hifen",
-      "ortografia",
-      "texto_profissional"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:4",
-        "phenomenon:hifen",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_03",
-    "category": "hífen",
-    "difficulty": 4,
-    "errado": "Ele é um super-herói anti-social, que prefere agir sozinho e manter-se longe do olha-público.",
-    "correto": "Ele é um super-herói antissocial, que prefere agir sozinho e manter-se longe do olhar público.",
-    "error_count": 3,
-    "tags": [
-      "personagem",
-      "ficção",
-      "hífen",
-      "ortografia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_04",
-    "category": "hífen",
-    "difficulty": 5,
-    "errado": "O bem estar dos funcionários é uma prioridade, porisso oferecemos um plano de saúde e auxilio creche.",
-    "correto": "O bem-estar dos funcionários é uma prioridade, por isso oferecemos um plano de saúde e auxílio-creche.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "ortografia",
-      "bem-estar",
-      "benefícios"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_17",
-    "category": "hífen",
-    "difficulty": 4,
-    "errado": "O anti-herói do filme tem uma visão pós-moderna da justiça, e age como um extra-terrestre na sociedade atual.",
-    "correto": "O anti-herói do filme tem uma visão pós-moderna da justiça e age como um extraterrestre na sociedade atual.",
-    "error_count": 3,
-    "tags": [
-      "cinema",
-      "ficção",
-      "hífen",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "hifen",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_001",
-    "category": "hífen",
-    "difficulty": 5,
-    "errado": "A nova diretriz anti-inflamatória exige que a auto medicação seja coibida, especialmente em crianças pré escolares.",
-    "correto": "A nova diretriz anti-inflamatória exige que a automedicação seja coibida, especialmente em crianças pré-escolares.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "ortografia",
-      "automedicação",
-      "pré-escolar"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_1",
-    "category": "hífen",
-    "difficulty": 5,
-    "errado": "O trabalho pós graduação exige muita dedicação e auto disciplina, principalmente na elaboração da tese e na defesa oral da pesquisa.",
-    "correto": "O trabalho de pós-graduação exige muita dedicação e autodisciplina, principalmente na elaboração da tese e na defesa oral da pesquisa.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "préfixo",
-      "ortografia",
-      "acadêmico"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_8",
-    "category": "hífen",
-    "difficulty": 5,
-    "errado": "A reforma ortografica trouxe mudanças significativas na forma de escreve certas palavras, como no uso de prefixos pre e pos.",
-    "correto": "A reforma ortográfica trouxe mudanças significativas na forma de escrever certas palavras, como no uso de prefixos pré e pós.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "ortografia",
-      "reforma",
-      "linguagem"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_05",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "O super heroi lutou contra o infravermelho e o semi deus.",
-    "correto": "O super-herói lutou contra o infravermelho e o semideus.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "ficção",
-      "prefixos",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_06",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "Precisamos de um pré-requisito para o sub secretario antes de fazer a pós graduação.",
-    "correto": "Precisamos de um pré-requisito para o subsecretário antes de fazer a pós-graduação.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "educação",
-      "prefixo",
-      "acentuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hif_01",
-    "category": "hífen",
-    "difficulty": 4,
-    "errado": "O microondas e o antiinflamatório estão na infra-estrutura.",
-    "correto": "O micro-ondas e o anti-inflamatório estão na infraestrutura.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "prefixos",
-      "acordo-ortografico"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:ortografia",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen-06",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "Gostaria de um micro ondas novo e um café sem açúcar por favor.",
-    "correto": "Gostaria de um micro-ondas novo e um café sem açúcar, por favor.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "acentuação",
-      "pontuação"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:acentuacao",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:acentuacao",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "acentuacao",
-        "hifen",
-        "pontuacao"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_012",
-    "category": "hífen",
-    "difficulty": 5,
-    "errado": "O co-piloto e o ex-diretor conversaram sobre a infraestrutura da empresa e suas ramificações super regionais.",
-    "correto": "O copiloto e o ex-diretor conversaram sobre a infraestrutura da empresa e suas ramificações super-regionais.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "copiloto",
-      "ex-diretor",
-      "super-regionais"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_013",
-    "category": "hífen",
-    "difficulty": 5,
-    "errado": "O semi árbitro e o técnico, ambos recém chegados, discutiram sobre o mal-estar gerado pela má colocação do bem me quer.",
-    "correto": "O semiárbitro e o técnico, ambos recém-chegados, discutiram sobre o mal-estar gerado pela má colocação do bem-me-quer.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "semiárbitro",
-      "recém-chegados",
-      "bem-me-quer"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:5",
-        "error_count:3",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen_16",
-    "category": "hífen",
-    "difficulty": 4,
-    "errado": "Fiz um pós graduação em engenharia de software, e agora busco um novo emprego.",
-    "correto": "Fiz uma pós-graduação em engenharia de software, e agora busco um novo emprego.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "concordancia",
-      "ortografia"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:4",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:ortografia"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hife_03",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "Havia um sem fim de problemas inter relacionados na documentação pós projeto.",
-    "correto": "Havia um sem-fim de problemas inter-relacionados na documentação pós-projeto.",
-    "error_count": 3,
-    "tags": [
-      "erro_hifen",
-      "documentacao",
-      "texto técnico"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "hifen",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen-1",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "O anti-corpo recém descoberto pode ter um efeito pró inflamatório.",
-    "correto": "O anticorpo recém-descoberto pode ter um efeito pró-inflamatório.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "ciência",
-      "medicina"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:hifen",
-        "phenomenon:pontuacao"
-      ],
-      "phenomena": [
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen-4",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "O super herói e seu arqui inimigo se enfrentaram em um contra ataque decisivo.",
-    "correto": "O super-herói e seu arqui-inimigo se enfrentaram em um contra-ataque decisivo.",
-    "error_count": 3,
-    "tags": [
-      "hífen",
-      "entretenimento",
-      "narrativa"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:3",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "hifen"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hife_05",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "Fizeram um ultra som da região abdominal, mas o pós operatório foi tranquilo.",
-    "correto": "Fizeram um ultrassom da região abdominal, mas o pós-operatório foi tranquilo.",
-    "error_count": 2,
-    "tags": [
-      "erro_hifen",
-      "ortografia",
-      "saude",
-      "texto técnico"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:2",
-        "phenomenon:hifen",
-        "phenomenon:ortografia",
-        "phenomenon:texto_tecnico"
-      ],
-      "phenomena": [
-        "hifen",
-        "ortografia",
-        "texto_tecnico"
-      ],
-      "diff_pairs": []
-    }
-  },
-  {
-    "id": "hifen-02",
-    "category": "hífen",
-    "difficulty": 2,
-    "errado": "Temos um sistema pós vendas muito eficiente e um serviço anti roubo integrado.",
-    "correto": "Temos um sistema pós-vendas muito eficiente e um serviço antirroubo integrado.",
-    "error_count": 2,
-    "tags": [
-      "hífen",
-      "negócios",
-      "segurança",
-      "tecnologia",
-      "serviço"
-    ],
-    "partition_metadata": {
-      "primary_family": "phenomenon:hifen",
-      "family_keys": [
-        "category:hifen",
-        "difficulty:2",
-        "error_count:2",
-        "phenomenon:hifen"
-      ],
-      "phenomena": [
-        "hifen"
-      ],
-      "diff_pairs": []
+      "diff_pairs": [
+        "diff:afim=>fim",
+        "diff:fim=>afins"
+      ]
     }
   }
 ]
