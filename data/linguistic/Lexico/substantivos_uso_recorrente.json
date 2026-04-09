@@ -177,6 +177,18 @@
     "numero": "singular",
     "forms": ["semana", "semanas"]
   },
+  "sessao": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["sessão", "sessao", "sessões", "sessoes"]
+  },
+  "secao": {
+    "classes": ["substantivo"],
+    "genero": "feminino",
+    "numero": "singular",
+    "forms": ["seção", "secao", "seções", "secoes"]
+  },
   "tempo": {
     "classes": ["substantivo"],
     "genero": "masculino",

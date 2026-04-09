@@ -177,12 +177,13 @@ export function createPunctuationHeuristicMatches(text: string): RuleMatch[] {
   );
 
   const lower = trimmed.toLocaleLowerCase("pt-BR");
-  const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que", "você"];
+  const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que"];
   const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
   const looksLikeQuestion = questionStarts.some((prefix) => lower.startsWith(prefix));
   const looksLikeExclamation = exclamationStarts.some((prefix) => lower.startsWith(prefix));
+  const hasInternalTerminalPunctuation = /[?!.]/u.test(trimmed.replace(/[?!.]\s*$/u, ""));
 
-  if (!/[?!.]\s*$/u.test(trimmed)) {
+  if (!/[?!.]\s*$/u.test(trimmed) && !hasInternalTerminalPunctuation) {
     if (looksLikeQuestion) {
       createTerminalMatch(
         text,
@@ -204,7 +205,7 @@ export function createPunctuationHeuristicMatches(text: string): RuleMatch[] {
         matches
       );
     }
-  } else if (looksLikeQuestion && /\.\s*$/u.test(trimmed)) {
+  } else if (looksLikeQuestion && /\.\s*$/u.test(trimmed) && !hasInternalTerminalPunctuation) {
     createTerminalReplacementMatch(
       text,
       /\.\s*$/u,

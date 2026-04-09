@@ -6,7 +6,6 @@ export interface ReplacementEntry {
 
 export interface DictionaryData {
   words: Set<string>;
-  commonMistakes: ReplacementEntry[];
   dictionaryReady: boolean;
   contextRules: ContextRuleDefinition[];
   phraseRules: PhraseRuleDefinition[];

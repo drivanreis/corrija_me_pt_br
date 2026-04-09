@@ -11,7 +11,7 @@ export function createWholeWordPattern(term: string): RegExp {
 }
 
 export function createWordTokenPattern(): RegExp {
-  return /(?<![\p{L}\p{N}\p{M}])[\p{L}][\p{L}\p{M}\p{Pc}\p{Pd}]*(?![\p{L}\p{N}\p{M}])/gu;
+  return /(?<![\p{L}\p{N}\p{M}])[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*(?![\p{L}\p{N}\p{M}])/gu;
 }
 
 export function preserveReplacementCase(original: string, replacement: string): string {
