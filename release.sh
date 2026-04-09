@@ -13,6 +13,10 @@ npm run lint
 echo "Validando backend..."
 npm run test:backend
 
+echo "Limpando artefatos antigos..."
+npm run clean
+rm -rf releases
+
 echo "Gerando pacotes de instalacao..."
 npm run package:portable
 

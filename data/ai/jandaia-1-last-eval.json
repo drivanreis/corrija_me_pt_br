@@ -1,0 +1,51 @@
+{
+  "model": "jandaia-1",
+  "base_model": "hf.co/GuilhermeAumo/Tucano-2b4-Instruct-Q4_K_M-GGUF:latest",
+  "passed": 0,
+  "total": 6,
+  "accuracy": 0,
+  "report": [
+    {
+      "id": "jandaia_agreement_001",
+      "input": "A gente vamos no cinema amanhã.",
+      "expected": "A gente vai ao cinema amanhã.",
+      "output": "",
+      "ok": false
+    },
+    {
+      "id": "jandaia_homophone_001",
+      "input": "A seção de cinema começa às 20h.",
+      "expected": "A sessão de cinema começa às 20h.",
+      "output": "",
+      "ok": false
+    },
+    {
+      "id": "jandaia_homophone_002",
+      "input": "A sessão dos direitos autorais foi assinada.",
+      "expected": "A cessão dos direitos autorais foi assinada.",
+      "output": "AaEaçãoErraResposta",
+      "ok": false
+    },
+    {
+      "id": "jandaia_porque_001",
+      "input": "Ele não sabe porque você faltou.",
+      "expected": "Ele não sabe por que você faltou.",
+      "output": "",
+      "ok": false
+    },
+    {
+      "id": "jandaia_conserto_001",
+      "input": "O concerto do rádio ficou caro.",
+      "expected": "O conserto do rádio ficou caro.",
+      "output": "AO ooEErem:",
+      "ok": false
+    },
+    {
+      "id": "jandaia_crase_001",
+      "input": "Ele foi a escola às pressas.",
+      "expected": "Ele foi à escola às pressas.",
+      "output": "",
+      "ok": false
+    }
+  ]
+}

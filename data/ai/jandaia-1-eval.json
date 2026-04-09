@@ -1,0 +1,32 @@
+[
+  {
+    "id": "jandaia_agreement_001",
+    "input": "A gente vamos no cinema amanhã.",
+    "expected": "A gente vai ao cinema amanhã."
+  },
+  {
+    "id": "jandaia_homophone_001",
+    "input": "A seção de cinema começa às 20h.",
+    "expected": "A sessão de cinema começa às 20h."
+  },
+  {
+    "id": "jandaia_homophone_002",
+    "input": "A sessão dos direitos autorais foi assinada.",
+    "expected": "A cessão dos direitos autorais foi assinada."
+  },
+  {
+    "id": "jandaia_porque_001",
+    "input": "Ele não sabe porque você faltou.",
+    "expected": "Ele não sabe por que você faltou."
+  },
+  {
+    "id": "jandaia_conserto_001",
+    "input": "O concerto do rádio ficou caro.",
+    "expected": "O conserto do rádio ficou caro."
+  },
+  {
+    "id": "jandaia_crase_001",
+    "input": "Ele foi a escola às pressas.",
+    "expected": "Ele foi à escola às pressas."
+  }
+]

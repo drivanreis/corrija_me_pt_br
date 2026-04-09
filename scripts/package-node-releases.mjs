@@ -1,4 +1,4 @@
-import { mkdir, rm, cp, copyFile, chmod, writeFile } from "node:fs/promises";
+import { chmod, copyFile, cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,24 +8,63 @@ import { promisify } from "node:util";
 const execFileAsync = promisify(execFile);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
+const packageJson = JSON.parse(await readFile(path.join(rootDir, "package.json"), "utf8"));
 const buildDir = path.join(rootDir, "build", "node-app");
 const pkgDir = path.join(buildDir, "pkg");
 const releaseDir = path.join(rootDir, "releases");
-const releaseStagingDir = path.join(buildDir, "release-staging");
+const stagingDir = path.join(buildDir, "release-staging");
+const releaseVersion = String(packageJson.version || "0.0.0");
 
-async function zipDirectory(sourceDir, outputZip) {
-  await execFileAsync("zip", ["-qr", outputZip, path.basename(sourceDir)], {
-    cwd: path.dirname(sourceDir)
-  });
-}
+const releaseTargets = [
+  {
+    id: "linux_x64",
+    folderName: "corrija_me_pt_br_linux_x64",
+    archiveName: "corrija_me_pt_br_linux_x64.zip",
+    executableSource: path.join(pkgDir, "corrija-me-pt-br-ts-linux"),
+    executableRelativePath: path.join("app", "server", "corrija-me-pt-br-server"),
+    executableMode: 0o755,
+    readmeTitle: "corrija_me_pt_br - Linux x64",
+    installRootNote: "/opt/corrija_me_pt_br",
+    installFiles: async (targetRoot) => {
+      await writeFile(path.join(targetRoot, "install.sh"), linuxInstallScript(), "utf8");
+      await chmod(path.join(targetRoot, "install.sh"), 0o755);
+      await writeFile(path.join(targetRoot, "uninstall.sh"), linuxUninstallScript(), "utf8");
+      await chmod(path.join(targetRoot, "uninstall.sh"), 0o755);
+    }
+  },
+  {
+    id: "windows_x64",
+    folderName: "corrija_me_pt_br_windows_x64",
+    archiveName: "corrija_me_pt_br_windows_x64.zip",
+    executableSource: path.join(pkgDir, "corrija-me-pt-br-ts-win.exe"),
+    executableRelativePath: path.join("app", "server", "corrija-me-pt-br-server.exe"),
+    executableMode: null,
+    readmeTitle: "corrija_me_pt_br - Windows x64",
+    installRootNote: "%LOCALAPPDATA%\\corrija_me_pt_br",
+    installFiles: async (targetRoot) => {
+      await writeFile(path.join(targetRoot, "install.bat"), windowsInstallBat(), "utf8");
+      await writeFile(path.join(targetRoot, "uninstall.bat"), windowsUninstallBat(), "utf8");
+      await writeFile(path.join(targetRoot, "install.ps1"), windowsInstallPs1(), "utf8");
+      await writeFile(path.join(targetRoot, "uninstall.ps1"), windowsUninstallPs1(), "utf8");
+      await writeFile(path.join(targetRoot, "StartServer.ps1"), windowsStartPs1(), "utf8");
+      await writeFile(path.join(targetRoot, "StopServer.ps1"), windowsStopPs1(), "utf8");
+      await writeFile(path.join(targetRoot, "ServerStatus.ps1"), windowsStatusPs1(), "utf8");
+      await writeFile(path.join(targetRoot, "StartServer.bat"), windowsHelperBat("StartServer.ps1"), "utf8");
+      await writeFile(path.join(targetRoot, "StopServer.bat"), windowsHelperBat("StopServer.ps1"), "utf8");
+      await writeFile(path.join(targetRoot, "ServerStatus.bat"), windowsHelperBat("ServerStatus.ps1"), "utf8");
+    }
+  }
+];
 
 function linuxInstallScript() {
   return `#!/usr/bin/env bash
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+APP_DIR="$ROOT_DIR/app"
 INSTALL_ROOT="/opt/corrija_me_pt_br"
-SERVICE_PATH="/etc/systemd/system/corrija-me-pt-br-node.service"
+SERVICE_NAME="corrija-me-pt-br.service"
+SERVICE_PATH="/etc/systemd/system/$SERVICE_NAME"
 PORT_FILE="$INSTALL_ROOT/server-port.txt"
 
 find_free_port() {
@@ -44,40 +83,39 @@ if [[ "$(id -u)" -ne 0 ]]; then
   exit 1
 fi
 
+if [[ ! -x "$APP_DIR/server/corrija-me-pt-br-server" ]]; then
+  echo "Executavel do backend nao encontrado em $APP_DIR/server/corrija-me-pt-br-server"
+  exit 1
+fi
+
 SELECTED_PORT="$(find_free_port)"
 SERVER_URL="http://127.0.0.1:$SELECTED_PORT"
 
-if command -v systemctl >/dev/null 2>&1; then
-  systemctl stop corrija-me-pt-br-node.service || true
-fi
+systemctl stop "$SERVICE_NAME" >/dev/null 2>&1 || true
+systemctl disable "$SERVICE_NAME" >/dev/null 2>&1 || true
 
 rm -rf "$INSTALL_ROOT"
 mkdir -p "$INSTALL_ROOT"
-cp -R "$ROOT_DIR/server" "$INSTALL_ROOT/"
-cp -R "$ROOT_DIR/chrome-extension" "$INSTALL_ROOT/"
+cp -R "$APP_DIR/." "$INSTALL_ROOT/"
 chmod +x "$INSTALL_ROOT/server/corrija-me-pt-br-server"
+
 printf '%s\n' "$SELECTED_PORT" > "$PORT_FILE"
-cat > "$ROOT_DIR/chrome-extension/server-config.json" <<EOF
-{
-  "serverUrl": "$SERVER_URL"
-}
-EOF
-cat > "$INSTALL_ROOT/chrome-extension/server-config.json" <<EOF
+cat > "$INSTALL_ROOT/extension/server-config.json" <<EOF
 {
   "serverUrl": "$SERVER_URL"
 }
 EOF
 
-cat > "$SERVICE_PATH" <<'EOF'
+cat > "$SERVICE_PATH" <<EOF
 [Unit]
-Description=corrija_me_pt_br backend local em Node.js
+Description=corrija_me_pt_br backend local
 After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/corrija_me_pt_br
-Environment=CORRIJA_ME_PORT=__CORRIJA_ME_PORT__
-ExecStart=/opt/corrija_me_pt_br/server/corrija-me-pt-br-server
+WorkingDirectory=$INSTALL_ROOT
+Environment=CORRIJA_ME_PORT=$SELECTED_PORT
+ExecStart=$INSTALL_ROOT/server/corrija-me-pt-br-server
 Restart=always
 RestartSec=3
 
@@ -85,18 +123,16 @@ RestartSec=3
 WantedBy=multi-user.target
 EOF
 
-sed -i "s/__CORRIJA_ME_PORT__/$SELECTED_PORT/" "$SERVICE_PATH"
-
 systemctl daemon-reload
-systemctl enable corrija-me-pt-br-node.service
-systemctl restart corrija-me-pt-br-node.service
+systemctl enable "$SERVICE_NAME"
+systemctl restart "$SERVICE_NAME"
 
 echo
 echo "Instalacao concluida."
-echo "Servidor local configurado em $SERVER_URL"
-echo "No Chrome, abra chrome://extensions"
-echo "Ative o modo do desenvolvedor e selecione:"
-echo "  /opt/corrija_me_pt_br/chrome-extension"
+echo "Backend local: $SERVER_URL"
+echo "Extensao Chrome/Chromium:"
+echo "  $INSTALL_ROOT/extension"
+echo "Carregue a pasta acima em chrome://extensions"
 `;
 }
 
@@ -105,51 +141,23 @@ function linuxUninstallScript() {
 set -euo pipefail
 
 INSTALL_ROOT="/opt/corrija_me_pt_br"
-SERVICE_PATH="/etc/systemd/system/corrija-me-pt-br-node.service"
+SERVICE_NAME="corrija-me-pt-br.service"
+SERVICE_PATH="/etc/systemd/system/$SERVICE_NAME"
 
 if [[ "$(id -u)" -ne 0 ]]; then
   echo "Execute este desinstalador com sudo."
   exit 1
 fi
 
-if command -v systemctl >/dev/null 2>&1; then
-  systemctl stop corrija-me-pt-br-node.service || true
-  systemctl disable corrija-me-pt-br-node.service || true
-fi
-
+systemctl stop "$SERVICE_NAME" >/dev/null 2>&1 || true
+systemctl disable "$SERVICE_NAME" >/dev/null 2>&1 || true
 rm -f "$SERVICE_PATH"
 rm -rf "$INSTALL_ROOT"
-
-if command -v systemctl >/dev/null 2>&1; then
-  systemctl daemon-reload || true
-fi
+systemctl daemon-reload >/dev/null 2>&1 || true
 
 echo
 echo "Desinstalacao concluida."
 echo "Arquivos removidos de $INSTALL_ROOT"
-echo "Servico local removido."
-echo "Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em chrome://extensions."
-`;
-}
-
-function linuxReadme() {
-  return `corrija_me_pt_br - pacote Linux
-=================================
-
-1. Extraia este pacote.
-2. Execute com sudo:
-   ./install.sh
-3. Abra o Chrome em chrome://extensions
-4. Ative "Modo do desenvolvedor"
-5. Clique em "Carregar sem compactacao"
-6. Selecione a pasta:
-   /opt/corrija_me_pt_br/chrome-extension
-
-O backend local inicia automaticamente com o sistema.
-A porta e escolhida automaticamente a partir de 18081.
-
-Para desinstalar:
-sudo ./uninstall.sh
 `;
 }
 
@@ -157,12 +165,6 @@ function windowsInstallBat() {
   return `@echo off
 setlocal
 powershell -ExecutionPolicy Bypass -File "%~dp0install.ps1"
-if errorlevel 1 (
-  echo.
-  echo O instalador encontrou um erro. Veja a mensagem acima.
-  pause
-  exit /b %errorlevel%
-)
 `;
 }
 
@@ -170,12 +172,13 @@ function windowsUninstallBat() {
   return `@echo off
 setlocal
 powershell -ExecutionPolicy Bypass -File "%~dp0uninstall.ps1"
-if errorlevel 1 (
-  echo.
-  echo O desinstalador encontrou um erro. Veja a mensagem acima.
-  pause
-  exit /b %errorlevel%
-)
+`;
+}
+
+function windowsHelperBat(ps1Name) {
+  return `@echo off
+setlocal
+powershell -ExecutionPolicy Bypass -File "%~dp0${ps1Name}"
 `;
 }
 
@@ -183,13 +186,11 @@ function windowsInstallPs1() {
   return `$ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
+$appDir = Join-Path $root "app"
 $installRoot = Join-Path $env:LOCALAPPDATA "corrija_me_pt_br"
 $startupFolder = [Environment]::GetFolderPath("Startup")
-$startupLauncherPath = Join-Path $startupFolder "IniciarCorrijaMePtBr.bat"
+$startupLauncherPath = Join-Path $startupFolder "CorrijaMePtBr-Start.bat"
 $portFile = Join-Path $installRoot "server-port.txt"
-$rootConfigPath = Join-Path $root "chrome-extension\\server-config.json"
-$configPath = Join-Path $installRoot "chrome-extension\\server-config.json"
-$pidFile = Join-Path $installRoot "server\\corrija_me_pt_br.pid"
 
 function Get-FreePort {
   $port = 18081
@@ -209,14 +210,8 @@ function Get-FreePort {
   }
 }
 
-if (Test-Path $pidFile) {
-  $savedPid = Get-Content $pidFile -ErrorAction SilentlyContinue
-  if ($savedPid) {
-    $existingProcess = Get-Process -Id $savedPid -ErrorAction SilentlyContinue
-    if ($existingProcess) {
-      Stop-Process -Id $savedPid -Force
-    }
-  }
+if (-not (Test-Path (Join-Path $appDir "server\\corrija-me-pt-br-server.exe"))) {
+  throw "Executavel do backend nao encontrado no pacote."
 }
 
 if (Test-Path $installRoot) {
@@ -224,7 +219,7 @@ if (Test-Path $installRoot) {
 }
 
 New-Item -ItemType Directory -Path $installRoot -Force | Out-Null
-Copy-Item (Join-Path $root "*") $installRoot -Recurse -Force
+Copy-Item (Join-Path $appDir "*") $installRoot -Recurse -Force
 
 $selectedPort = Get-FreePort
 $serverUrl = "http://127.0.0.1:$selectedPort"
@@ -233,32 +228,21 @@ $selectedPort | Set-Content -Path $portFile -Encoding ASCII
 {
   "serverUrl": "$serverUrl"
 }
-"@ | Set-Content -Path $rootConfigPath -Encoding ASCII
+"@ | Set-Content -Path (Join-Path $installRoot "extension\\server-config.json") -Encoding ASCII
+
 @"
-{
-  "serverUrl": "$serverUrl"
-}
-"@ | Set-Content -Path $configPath -Encoding ASCII
-
-$startupContent = @"
 @echo off
-start "" /min "$installRoot\\IniciarServidor.bat"
-"@
-Set-Content -Path $startupLauncherPath -Value $startupContent -Encoding ASCII
+powershell -ExecutionPolicy Bypass -File "$installRoot\\StartServer.ps1"
+"@ | Set-Content -Path $startupLauncherPath -Encoding ASCII
 
-Write-Host "Instalando backend local..."
-& (Join-Path $installRoot "IniciarServidor.ps1")
-
-Start-Process explorer.exe (Join-Path $installRoot "chrome-extension") | Out-Null
-Start-Process "cmd.exe" '/c start chrome://extensions' -ErrorAction SilentlyContinue | Out-Null
+& (Join-Path $root "StartServer.ps1")
 
 Write-Host ""
 Write-Host "Instalacao concluida."
-Write-Host "Servidor local configurado em $serverUrl"
-Write-Host "No Chrome, clique em 'Carregar sem compactacao' e selecione:"
-Write-Host "  $installRoot\\chrome-extension"
-Write-Host ""
-Write-Host "O backend local sera iniciado automaticamente ao entrar no Windows."
+Write-Host "Backend local: $serverUrl"
+Write-Host "Extensao Chrome/Chromium:"
+Write-Host "  $installRoot\\extension"
+Write-Host "Carregue a pasta acima em chrome://extensions"
 `;
 }
 
@@ -267,7 +251,7 @@ function windowsUninstallPs1() {
 
 $installRoot = Join-Path $env:LOCALAPPDATA "corrija_me_pt_br"
 $startupFolder = [Environment]::GetFolderPath("Startup")
-$startupLauncherPath = Join-Path $startupFolder "IniciarCorrijaMePtBr.bat"
+$startupLauncherPath = Join-Path $startupFolder "CorrijaMePtBr-Start.bat"
 $pidFile = Join-Path $installRoot "server\\corrija_me_pt_br.pid"
 
 if (Test-Path $pidFile) {
@@ -290,9 +274,6 @@ if (Test-Path $installRoot) {
 
 Write-Host ""
 Write-Host "Desinstalacao concluida."
-Write-Host "Arquivos removidos de $installRoot"
-Write-Host "Inicializacao automatica removida."
-Write-Host "Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em chrome://extensions."
 `;
 }
 
@@ -308,21 +289,14 @@ if (-not (Test-Path $exePath)) {
   throw "Executavel do backend nao encontrado em $exePath"
 }
 
-if (-not (Test-Path $portFile)) {
-  throw "Arquivo de porta nao encontrado em $portFile"
-}
-
 $selectedPort = (Get-Content $portFile -ErrorAction Stop | Select-Object -First 1).Trim()
-if (-not $selectedPort) {
-  throw "Nenhuma porta configurada encontrada em $portFile"
-}
 
 if (Test-Path $pidFile) {
   $savedPid = Get-Content $pidFile -ErrorAction SilentlyContinue
   if ($savedPid) {
     $existingProcess = Get-Process -Id $savedPid -ErrorAction SilentlyContinue
     if ($existingProcess) {
-      Write-Host "Backend ja esta em execucao. PID: $savedPid"
+      Write-Host "Backend ja esta em execucao."
       exit 0
     }
   }
@@ -332,17 +306,7 @@ if (Test-Path $pidFile) {
 $process = Start-Process -FilePath $exePath -WorkingDirectory $root -WindowStyle Hidden -PassThru -Environment @{ CORRIJA_ME_PORT = $selectedPort }
 $process.Id | Set-Content -Path $pidFile -Encoding ASCII
 Start-Sleep -Seconds 2
-
-try {
-  $response = Invoke-WebRequest -Uri "http://127.0.0.1:$selectedPort/health" -UseBasicParsing -TimeoutSec 10
-  if ($response.StatusCode -eq 200) {
-    Write-Host "Backend iniciado com sucesso em http://127.0.0.1:$selectedPort"
-    exit 0
-  }
-} catch {
-}
-
-Write-Warning "O processo foi iniciado, mas a API ainda nao respondeu. Aguarde alguns segundos."
+Write-Host "Backend iniciado em http://127.0.0.1:$selectedPort"
 `;
 }
 
@@ -353,7 +317,7 @@ $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $pidFile = Join-Path $root "server\\corrija_me_pt_br.pid"
 
 if (-not (Test-Path $pidFile)) {
-  Write-Host "Nenhum PID salvo. O backend pode ja estar parado."
+  Write-Host "Nenhum backend em execucao."
   exit 0
 }
 
@@ -362,11 +326,11 @@ if ($savedPid) {
   $process = Get-Process -Id $savedPid -ErrorAction SilentlyContinue
   if ($process) {
     Stop-Process -Id $savedPid -Force
-    Write-Host "Backend finalizado. PID: $savedPid"
   }
 }
 
 Remove-Item $pidFile -Force -ErrorAction SilentlyContinue
+Write-Host "Backend finalizado."
 `;
 }
 
@@ -375,103 +339,137 @@ function windowsStatusPs1() {
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $portFile = Join-Path $root "server-port.txt"
-
-if (-not (Test-Path $portFile)) {
-  Write-Host "Arquivo de porta nao encontrado."
-  exit 1
-}
-
 $selectedPort = (Get-Content $portFile -ErrorAction Stop | Select-Object -First 1).Trim()
 
 try {
   $response = Invoke-WebRequest -Uri "http://127.0.0.1:$selectedPort/health" -UseBasicParsing -TimeoutSec 10
-  if ($response.StatusCode -eq 200) {
-    Write-Host "Backend online em http://127.0.0.1:$selectedPort"
-    Write-Host $response.Content
-    exit 0
-  }
+  Write-Host "Backend online em http://127.0.0.1:$selectedPort"
+  Write-Host $response.Content
 } catch {
+  Write-Host "Backend offline em http://127.0.0.1:$selectedPort"
+  exit 1
 }
-
-Write-Host "Backend offline em http://127.0.0.1:$selectedPort"
-exit 1
 `;
 }
 
-async function packageLinux() {
-  const linuxRoot = path.join(releaseStagingDir, "corrija_me_pt_br_linux_x64");
-  const linuxExecutable = path.join(pkgDir, "corrija-me-pt-br-ts-linux");
-  await rm(linuxRoot, { recursive: true, force: true });
-  await mkdir(path.join(linuxRoot, "server"), { recursive: true });
-  await cp(path.join(buildDir, "extension"), path.join(linuxRoot, "chrome-extension"), { recursive: true });
-  await copyFile(linuxExecutable, path.join(linuxRoot, "server", "corrija-me-pt-br-server"));
-  await chmod(path.join(linuxRoot, "server", "corrija-me-pt-br-server"), 0o755);
-  await writeFile(path.join(linuxRoot, "install.sh"), linuxInstallScript());
-  await chmod(path.join(linuxRoot, "install.sh"), 0o755);
-  await writeFile(path.join(linuxRoot, "uninstall.sh"), linuxUninstallScript());
-  await chmod(path.join(linuxRoot, "uninstall.sh"), 0o755);
-  await writeFile(path.join(linuxRoot, "README.txt"), linuxReadme());
-  await rm(path.join(releaseDir, "corrija_me_pt_br_linux_x64.zip"), { force: true });
-  await zipDirectory(linuxRoot, path.join(releaseDir, "corrija_me_pt_br_linux_x64.zip"));
+function readmeText(title, installRootNote) {
+  return `${title}
+${"=".repeat(title.length)}
+
+Versao: ${releaseVersion}
+
+Conteudo do pacote:
+- app/server
+- app/extension
+- instaladores e scripts auxiliares
+
+Instalacao:
+- Linux: execute install.sh com sudo
+- Windows: execute install.bat
+
+Extensao do navegador:
+- carregue a pasta instalada "extension" manualmente em chrome://extensions
+
+Diretorio de instalacao previsto:
+- ${installRootNote}
+`;
 }
 
-async function writeWindowsHelper(root, fileName, ps1Name) {
-  const content = `@echo off\r\npowershell -ExecutionPolicy Bypass -File "%~dp0${ps1Name}"\r\n`;
-  await writeFile(path.join(root, fileName), content);
+function releaseManifest(target) {
+  return {
+    app: "corrija_me_pt_br",
+    version: releaseVersion,
+    target: target.id,
+    archive: target.archiveName,
+    generated_at: new Date().toISOString(),
+    runtime: {
+      primary_endpoint: "/v2/check-smart",
+      first_barrier: "motor",
+      fallback: "jandaia",
+      instructors: ["tucano_2", "quillbot"],
+      director: "gemini"
+    }
+  };
 }
 
-async function packageWindows() {
-  const windowsRoot = path.join(releaseStagingDir, "corrija_me_pt_br_windows_x64");
-  const windowsExecutable = path.join(pkgDir, "corrija-me-pt-br-ts-win.exe");
-  await rm(windowsRoot, { recursive: true, force: true });
-  await mkdir(path.join(windowsRoot, "server"), { recursive: true });
-  await cp(path.join(buildDir, "extension"), path.join(windowsRoot, "chrome-extension"), { recursive: true });
-  await copyFile(windowsExecutable, path.join(windowsRoot, "server", "corrija-me-pt-br-server.exe"));
-  await writeFile(path.join(windowsRoot, "install.bat"), windowsInstallBat());
-  await writeFile(path.join(windowsRoot, "install.ps1"), windowsInstallPs1());
-  await writeFile(path.join(windowsRoot, "uninstall.bat"), windowsUninstallBat());
-  await writeFile(path.join(windowsRoot, "uninstall.ps1"), windowsUninstallPs1());
-  await writeFile(path.join(windowsRoot, "IniciarServidor.ps1"), windowsStartPs1());
-  await writeFile(path.join(windowsRoot, "PararServidor.ps1"), windowsStopPs1());
-  await writeFile(path.join(windowsRoot, "StatusServidor.ps1"), windowsStatusPs1());
-  await writeWindowsHelper(windowsRoot, "IniciarServidor.bat", "IniciarServidor.ps1");
-  await writeWindowsHelper(windowsRoot, "PararServidor.bat", "PararServidor.ps1");
-  await writeWindowsHelper(windowsRoot, "StatusServidor.bat", "StatusServidor.ps1");
-  await writeFile(path.join(windowsRoot, "README.txt"), `corrija_me_pt_br - pacote Windows
-===================================
+async function zipDirectory(sourceDir, outputZip) {
+  await execFileAsync("zip", ["-qr", outputZip, path.basename(sourceDir)], {
+    cwd: path.dirname(sourceDir)
+  });
+}
 
-1. Extraia este pacote.
-2. Execute install.bat
-3. No Chrome, abra chrome://extensions
-4. Ative "Modo do desenvolvedor"
-5. Clique em "Carregar sem compactacao"
-6. Selecione a pasta:
-   %LOCALAPPDATA%\\corrija_me_pt_br\\chrome-extension
+async function ensureExecutableExists(filePath) {
+  if (!existsSync(filePath)) {
+    throw new Error(`Executavel nao encontrado: ${filePath}. Rode 'npm run package:backend' primeiro.`);
+  }
+}
 
-O backend local sera iniciado automaticamente no login do Windows.
-A porta e escolhida automaticamente a partir de 18081.
+async function stageTarget(target) {
+  await ensureExecutableExists(target.executableSource);
 
-Para desinstalar:
-execute uninstall.bat
-`);
-  await rm(path.join(releaseDir, "corrija_me_pt_br_windows_x64.zip"), { force: true });
-  await zipDirectory(windowsRoot, path.join(releaseDir, "corrija_me_pt_br_windows_x64.zip"));
+  const targetRoot = path.join(stagingDir, target.folderName);
+  const appRoot = path.join(targetRoot, "app");
+  const extensionRoot = path.join(appRoot, "extension");
+  const executableOutput = path.join(targetRoot, target.executableRelativePath);
+
+  await rm(targetRoot, { recursive: true, force: true });
+  await mkdir(path.dirname(executableOutput), { recursive: true });
+  await cp(path.join(buildDir, "extension"), extensionRoot, { recursive: true });
+  await copyFile(target.executableSource, executableOutput);
+
+  if (target.executableMode !== null) {
+    await chmod(executableOutput, target.executableMode);
+  }
+
+  await target.installFiles(targetRoot);
+  await writeFile(path.join(targetRoot, "README.txt"), `${readmeText(target.readmeTitle, target.installRootNote)}\n`, "utf8");
+  await writeFile(path.join(targetRoot, "release-manifest.json"), `${JSON.stringify(releaseManifest(target), null, 2)}\n`, "utf8");
+
+  return targetRoot;
+}
+
+async function validateStagedTarget(targetRoot, target) {
+  const requiredFiles = [
+    path.join(targetRoot, "README.txt"),
+    path.join(targetRoot, "release-manifest.json"),
+    path.join(targetRoot, "app", "extension", "manifest.json"),
+    path.join(targetRoot, target.executableRelativePath)
+  ];
+
+  for (const filePath of requiredFiles) {
+    if (!existsSync(filePath)) {
+      throw new Error(`Pacote invalido para ${target.id}. Arquivo ausente: ${filePath}`);
+    }
+  }
+}
+
+async function packageTarget(target) {
+  const targetRoot = await stageTarget(target);
+  await validateStagedTarget(targetRoot, target);
+  const archivePath = path.join(releaseDir, target.archiveName);
+  await rm(archivePath, { force: true });
+  await zipDirectory(targetRoot, archivePath);
+  return archivePath;
 }
 
 async function main() {
-  if (!existsSync(path.join(pkgDir, "corrija-me-pt-br-ts-linux")) || !existsSync(path.join(pkgDir, "corrija-me-pt-br-ts-win.exe"))) {
-    throw new Error("Executaveis empacotados nao encontrados. Rode 'npm run package:backend' primeiro.");
+  await mkdir(releaseDir, { recursive: true });
+  await rm(stagingDir, { recursive: true, force: true });
+  await mkdir(stagingDir, { recursive: true });
+
+  const outputs = [];
+  for (const target of releaseTargets) {
+    const archivePath = await packageTarget(target);
+    outputs.push(path.relative(rootDir, archivePath));
   }
 
-  await mkdir(releaseDir, { recursive: true });
-  await rm(releaseStagingDir, { recursive: true, force: true });
-  await mkdir(releaseStagingDir, { recursive: true });
-  await packageLinux();
-  await packageWindows();
-  console.log(`Pacotes portateis criados em ${releaseDir}`);
+  console.log("Pacotes portateis criados:");
+  for (const output of outputs) {
+    console.log(`- ${output}`);
+  }
 }
 
 main().catch((error) => {
-  console.error(error);
+  console.error(error instanceof Error ? error.message : String(error));
   process.exitCode = 1;
 });
