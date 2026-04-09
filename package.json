@@ -33,7 +33,8 @@
     "dev": "npm run build && npm run start:backend",
     "package:backend": "npm run build && pkg . --targets node18-linux-x64,node18-win-x64 --out-path build/node-app/pkg",
     "package:portable": "npm run package:backend && node scripts/package-node-releases.mjs",
-    "test:backend": "npm run build && node scripts/smoke-test-node-app.mjs",
+    "test:backend": "npm run build && node scripts/smoke-test-node-app.mjs && node test/backend-external-regression.mjs",
+    "test:external-regression": "npm run build && node test/backend-external-regression.mjs",
     "test:llm-core": "npm run build && node scripts/smoke-test-llm-core.mjs",
     "release": "bash ./release.sh",
     "publish:update": "bash ./scripts/publish-update.sh"
