@@ -20,6 +20,8 @@ servidor.log
 
 # Local backup/history files
 local_history.patch
+.codex
+.models/
 
 # OS files
 .DS_Store
