@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
-const dictionaryDir = path.join(rootDir, "data", "dictionary");
 const rulesDir = path.join(rootDir, "data", "rules");
 const linguisticDir = path.join(rootDir, "data", "linguistic");
 
@@ -16,25 +15,11 @@ function isNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
-async function readWordsFile(filePath) {
-  const content = await readFile(filePath, "utf8");
-  return content
-    .split(/\r?\n/u)
-    .map(normalizeWord)
-    .filter((word) => word && !word.startsWith("#"));
-}
-
 async function main() {
-  const wordsPath = path.join(dictionaryDir, "words_01.txt");
-  const customWordsPath = path.join(dictionaryDir, "custom_words.txt");
   const rulesPath = path.join(rulesDir, "context_rules.json");
   const phraseRulesPath = path.join(rulesDir, "phrase_rules.json");
   const phraseRulesContinuousPath = path.join(rulesDir, "phrase_rules_continuous.json");
   const linguisticManifestPath = path.join(linguisticDir, "manifest.json");
-
-  const words = await readWordsFile(wordsPath);
-  const customWords = await readWordsFile(customWordsPath);
-  const uniqueWords = new Set([...words, ...customWords]);
 
   const rules = JSON.parse(await readFile(rulesPath, "utf8"));
   if (!Array.isArray(rules)) {
@@ -222,9 +207,6 @@ async function main() {
     errors.push("Sintaxe/padroes_basicos.json precisa conter um array em 'patterns'.");
   }
 
-  console.log(`Palavras em words_01.txt: ${words.length}`);
-  console.log(`Palavras em custom_words.txt: ${customWords.length}`);
-  console.log(`Palavras unicas totais: ${uniqueWords.size}`);
   console.log(`Regras em context_rules.json: ${rules.length}`);
   console.log(`Regras em phrase_rules.json: ${phraseRules.length}`);
   console.log(`Regras em phrase_rules_continuous.json: ${phraseRulesContinuous.length}`);

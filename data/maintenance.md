@@ -7,9 +7,6 @@ Padronizar a evolução do dicionário e das regras de contexto do `corrija_me_p
 ## Onde os dados ficam
 
 - Runtime ativo: `data/linguistic/`, `data/replacements.json`, `data/rules/`
-- Material legado historico: `data/dictionary/words_01.txt`
-- Material legado historico: `data/dictionary/custom_words.txt`
-- Material legado historico: `data/dictionary/common_mistakes.json`
 - Regras de contexto: `data/rules/context_rules.json`
 - Base estruturada nova: `data/linguistic/`
 
@@ -44,7 +41,7 @@ npm run release
 - Devem ser palavras válidas no português do Brasil ou termos realmente aceitos no produto.
 - Evitar lixo, tokens quebrados, URLs, emails e palavras acidentais.
 - Preferir minúsculas no arquivo.
-- Não reabrir o legado como fonte operacional; usar o legado apenas como referência de auditoria.
+- Não reintroduzir arquivos paralelos fora da base estruturada.
 
 ## Critérios para novas regras
 
@@ -65,4 +62,4 @@ npm run release
 
 - Expandir gradualmente `data/linguistic/` com curadoria forte.
 - Usar `data/replacements.json` para substituições seguras e auditáveis.
-- Tratar os arquivos legados como histórico de referência, não como base viva do runtime.
+- Tratar `data/linguistic/` como única base viva do runtime.
