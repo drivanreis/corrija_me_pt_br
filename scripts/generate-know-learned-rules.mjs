@@ -560,23 +560,28 @@ function buildSurfaceReplacementCandidate(item, validWords) {
 }
 
 async function loadValidWords() {
-  const dictionaryDir = path.resolve(process.cwd(), "data/dictionary");
-  const fileNames = await fs.readdir(dictionaryDir);
-  const wordFiles = fileNames.filter((fileName) => /^words_\d+\.txt$/u.test(fileName));
+  const linguisticDir = path.resolve(process.cwd(), "data/linguistic");
+  const manifest = JSON.parse(await fs.readFile(path.join(linguisticDir, "manifest.json"), "utf8"));
+  const lexicalFiles = Array.isArray(manifest.lexical) ? manifest.lexical : [];
   const validWords = new Set();
 
-  for (const fileName of [...wordFiles, "custom_words.txt"]) {
-    const filePath = path.join(dictionaryDir, fileName);
-    try {
-      const content = await fs.readFile(filePath, "utf8");
-      for (const line of content.split(/\r?\n/u)) {
-        const word = normalizeToken(line);
-        if (word && !word.startsWith("#")) {
-          validWords.add(word);
-        }
+  for (const fileName of lexicalFiles) {
+    const filePath = path.join(linguisticDir, "Lexico", fileName);
+    const content = JSON.parse(await fs.readFile(filePath, "utf8"));
+    for (const [lemma, entry] of Object.entries(content)) {
+      const normalizedLemma = normalizeToken(lemma);
+      if (normalizedLemma) {
+        validWords.add(normalizedLemma);
       }
-    } catch {
-      // Ignora arquivos opcionais ausentes.
+
+      if (entry && typeof entry === "object" && Array.isArray(entry.forms)) {
+        for (const form of entry.forms) {
+          const normalizedForm = normalizeToken(form);
+          if (normalizedForm) {
+            validWords.add(normalizedForm);
+          }
+        }
+      } 
     }
   }
 

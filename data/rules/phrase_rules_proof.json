@@ -10,5 +10,1761 @@
     ],
     "message": "Com artigo, a forma esperada é 'porquê'.",
     "description": "Regra curta derivada de falha observada no proof (homo_03)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_05_DIFF",
+    "pattern": [
+      "pra",
+      "traz"
+    ],
+    "replacements": [
+      "para trás"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_05)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_28_DIFF",
+    "pattern": [
+      "que",
+      "faço"
+    ],
+    "replacements": [
+      "quem faz"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont-28)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_05_DIFF",
+    "pattern": [
+      "mal",
+      "tempo",
+      "mais"
+    ],
+    "replacements": [
+      "mau tempo mas"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo_05)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_04_DIFF",
+    "pattern": [
+      "descepcionante"
+    ],
+    "replacements": [
+      "decepcionante"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_03_DIFF",
+    "pattern": [
+      "vira"
+    ],
+    "replacements": [
+      "virá"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo_03)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_01_DIFF",
+    "pattern": [
+      "asssim"
+    ],
+    "replacements": [
+      "assim"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_01_DIFF",
+    "pattern": [
+      "a",
+      "festa",
+      "mais"
+    ],
+    "replacements": [
+      "à festa mas"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_01_DIFF",
+    "pattern": [
+      "se",
+      "não"
+    ],
+    "replacements": [
+      "senão"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_02_DIFF",
+    "pattern": [
+      "ao",
+      "invés"
+    ],
+    "replacements": [
+      "Em vez"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_02)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_03_DIFF",
+    "pattern": [
+      "haviam"
+    ],
+    "replacements": [
+      "havia"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont_03)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOF_02_DIFF",
+    "pattern": [
+      "traz"
+    ],
+    "replacements": [
+      "trás"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homof_02)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_18_CHEGUEI_NO",
+    "pattern": [
+      "cheguei",
+      "no"
+    ],
+    "replacements": [
+      "cheguei ao"
+    ],
+    "message": "Com 'chegar', a regência esperada aqui é 'ao'.",
+    "description": "Regra curta derivada de falha observada no proof (cont-18)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_19_NAMORA_COM",
+    "pattern": [
+      "namora",
+      "com"
+    ],
+    "replacements": [
+      "namora"
+    ],
+    "message": "Nesse uso, a forma esperada dispensa a preposição.",
+    "description": "Regra curta derivada de falha observada no proof (cont-19)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_TACHAR_TAXAR_TACHAR_PRODUTOS",
+    "pattern": [
+      "tachar",
+      "os",
+      "produtos"
+    ],
+    "replacements": [
+      "taxar os produtos"
+    ],
+    "message": "No contexto tributário, a forma esperada é 'taxar'.",
+    "description": "Regra curta derivada de falha observada no proof (homo_tachar_taxar)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_TACHAR_TAXAR_TAXAR_GERENTE",
+    "pattern": [
+      "taxar",
+      "o",
+      "gerente",
+      "de",
+      "incompetente"
+    ],
+    "replacements": [
+      "tachar o gerente de incompetente"
+    ],
+    "message": "No sentido de rotular alguém, a forma esperada é 'tachar'.",
+    "description": "Regra curta derivada de falha observada no proof (homo_tachar_taxar)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_01_SESSAO_CREDITO",
+    "pattern": [
+      "sessão",
+      "de",
+      "crédito"
+    ],
+    "replacements": [
+      "cessão de crédito"
+    ],
+    "message": "No contexto financeiro, a forma esperada é 'cessão'.",
+    "description": "Regra curta derivada de falha observada no proof (homo-01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_01_SECAO_CINEMA",
+    "pattern": [
+      "seção",
+      "de",
+      "cinema"
+    ],
+    "replacements": [
+      "sessão de cinema"
+    ],
+    "message": "No contexto de exibição, a forma esperada é 'sessão'.",
+    "description": "Regra curta derivada de falha observada no proof (homo-01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_02_TACHAR_IMPOSTO",
+    "pattern": [
+      "tachar",
+      "o",
+      "imposto"
+    ],
+    "replacements": [
+      "taxar o imposto"
+    ],
+    "message": "No contexto tributário, a forma esperada é 'taxar'.",
+    "description": "Regra curta derivada de falha observada no proof (homo-02)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_02_TAXAR_IMAGEM",
+    "pattern": [
+      "taxar",
+      "a",
+      "imagem",
+      "ruim"
+    ],
+    "replacements": [
+      "tachar a imagem ruim"
+    ],
+    "message": "No sentido de rotular algo, a forma esperada é 'tachar'.",
+    "description": "Regra curta derivada de falha observada no proof (homo-02)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_03_CINTO_SINTO",
+    "pattern": [
+      "eu",
+      "cinto",
+      "que",
+      "o",
+      "sinto"
+    ],
+    "replacements": [
+      "Eu sinto que o cinto"
+    ],
+    "message": "Nesse contexto, 'sinto' é verbo e 'cinto' é substantivo.",
+    "description": "Regra curta derivada de falha observada no proof (homo-03)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_07_CONCERTAR_RADIO",
+    "pattern": [
+      "concertar",
+      "o",
+      "rádio"
+    ],
+    "replacements": [
+      "consertar o rádio"
+    ],
+    "message": "No contexto de reparo, a forma esperada é 'consertar'.",
+    "description": "Regra curta derivada de falha observada no proof (homo-07)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_07_VER_CONSERTO",
+    "pattern": [
+      "ver",
+      "o",
+      "conserto"
+    ],
+    "replacements": [
+      "ver o concerto"
+    ],
+    "message": "No contexto de apresentação, a forma esperada é 'concerto'.",
+    "description": "Regra curta derivada de falha observada no proof (homo-07)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_01_SESSAO_PROBLEMAS",
+    "pattern": [
+      "sessão",
+      "de",
+      "problemas"
+    ],
+    "replacements": [
+      "seção de problemas"
+    ],
+    "message": "No contexto organizacional, a forma esperada é 'seção'.",
+    "description": "Regra curta derivada de falha observada no proof (homo_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_04_DIFF",
+    "pattern": [
+      "encontra-los"
+    ],
+    "replacements": [
+      "encontrá-los"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_20_INCIDIR_ERRO",
+    "pattern": [
+      "incidir",
+      "em",
+      "erro"
+    ],
+    "replacements": [
+      "incorrer em erro"
+    ],
+    "message": "Nesta construção formal, a forma esperada é 'incorrer em erro'.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_01_AONDE_QUER_QUE",
+    "pattern": [
+      "aonde",
+      "quer",
+      "que",
+      "fosse"
+    ],
+    "replacements": [
+      "onde quer que fosse"
+    ],
+    "message": "Com ideia de lugar fixo, a forma esperada é 'onde'.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXT_03_IR_NO_CINEMA",
+    "pattern": [
+      "ir",
+      "no",
+      "cinema"
+    ],
+    "replacements": [
+      "ir ao cinema"
+    ],
+    "message": "Nesse contexto, a regência esperada é 'ao cinema'.",
+    "description": "Regra curta derivada de falha observada no proof (context-03)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_TEC_06_DIFF",
+    "pattern": [
+      "acordão"
+    ],
+    "replacements": [
+      "acórdão"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (tec_06)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_18_NADA_A_VER",
+    "pattern": [
+      "nada",
+      "à",
+      "ver"
+    ],
+    "replacements": [
+      "nada a ver"
+    ],
+    "message": "A expressão esperada é 'nada a ver'.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_18)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_12_AONDE_DEIXOU",
+    "pattern": [
+      "aonde",
+      "você",
+      "deixou"
+    ],
+    "replacements": [
+      "onde você deixou"
+    ],
+    "message": "Com verbo estático, a forma esperada é 'onde'.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_12)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_12_DIFF",
+    "pattern": [
+      "aonde"
+    ],
+    "replacements": [
+      "Onde"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_12)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_18_SECAO_DIREITOS_AUTORAIS",
+    "pattern": [
+      "seção",
+      "dos",
+      "seus",
+      "direitos",
+      "autorais"
+    ],
+    "replacements": [
+      "cessão dos seus direitos autorais"
+    ],
+    "message": "No contexto jurídico, a forma esperada é 'cessão'.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_18)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_14_DIFF",
+    "pattern": [
+      "exige"
+    ],
+    "replacements": [
+      "exigem"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_14)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_15_DIFF",
+    "pattern": [
+      "porquê"
+    ],
+    "replacements": [
+      "porque"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_15)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_TEXTO_TECNICO_20_DIFF",
+    "pattern": [
+      "distribuidos"
+    ],
+    "replacements": [
+      "distribuídos"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (texto_tecnico_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_PRONOME_MESMO_DIFF",
+    "pattern": [
+      "o",
+      "mesmo",
+      "encontra-se"
+    ],
+    "replacements": [
+      "ele se encontra"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont_pronome_mesmo)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_MAIORIA_HOUVERAM_DIFF",
+    "pattern": [
+      "decidiram",
+      "que",
+      "houveram"
+    ],
+    "replacements": [
+      "decidiu que houve"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont-maioria-houveram)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_EXTATICO_FELIZ_DIFF",
+    "pattern": [
+      "estático"
+    ],
+    "replacements": [
+      "extático"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-extatico-feliz)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_DE_ENCONTRO_A_AO_ENCONTRO_ODEIO",
+    "pattern": [
+      "ao",
+      "encontro",
+      "do",
+      "que",
+      "eu"
+    ],
+    "replacements": [
+      "de encontro ao que eu odeio"
+    ],
+    "message": "Com ideia de choque ou oposição, a locução esperada é 'de encontro a'.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-de-encontro-a)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_DE_ENCONTRO_A_DIFF",
+    "pattern": [
+      "ao",
+      "encontro",
+      "do"
+    ],
+    "replacements": [
+      "de encontro ao"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-de-encontro-a)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_001_DIFF",
+    "pattern": [
+      "deferir",
+      "as"
+    ],
+    "replacements": [
+      "atender às"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_001)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_008_NADA_DEMAIS",
+    "pattern": [
+      "nada",
+      "de",
+      "mais"
+    ],
+    "replacements": [
+      "nada demais"
+    ],
+    "message": "Nesta expressão, a forma esperada é 'demais'.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_008)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_2_SECAO_DO_FILME",
+    "pattern": [
+      "seção",
+      "do",
+      "filme"
+    ],
+    "replacements": [
+      "sessão do filme"
+    ],
+    "message": "No contexto de exibição, a forma esperada é 'sessão'.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_2)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_12_POR_QUE_CHEFE",
+    "pattern": [
+      "por",
+      "que",
+      "seu",
+      "chefe"
+    ],
+    "replacements": [
+      "porque seu chefe"
+    ],
+    "message": "Em oração explicativa, a forma esperada é 'porque'.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_12)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_07_POR_QUAL_MOTIVO",
+    "pattern": [
+      "por",
+      "qual",
+      "motivo"
+    ],
+    "replacements": [
+      "por que motivo"
+    ],
+    "message": "Nesta construção interrogativa, a forma esperada é 'por que motivo'.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_07)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_19_ESPECTADOR_EXPECTADOR_DIFF",
+    "pattern": [
+      "expectador"
+    ],
+    "replacements": [
+      "espectador"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-19-espectador-expectador)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HIFEN_14_DIFF",
+    "pattern": [
+      "anti",
+      "inflamatorio"
+    ],
+    "replacements": [
+      "anti-inflamatório"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hifen_14)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_08_DIFF",
+    "pattern": [
+      "calmo",
+      "e",
+      "centrado"
+    ],
+    "replacements": [
+      "impaciente e preocupado"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_08)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_02_DIFF",
+    "pattern": [
+      "desperdiçe"
+    ],
+    "replacements": [
+      "desperdice"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_02)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_ANUNCIOS_04_DIFF",
+    "pattern": [
+      "liquidacao"
+    ],
+    "replacements": [
+      "Liquidação"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (anuncios_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_01_DIFF",
+    "pattern": [
+      "mas",
+      "dinheiro",
+      "e"
+    ],
+    "replacements": [
+      "mais dinheiro mas"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_ANUNCIOS_20_DIFF",
+    "pattern": [
+      "rápidez"
+    ],
+    "replacements": [
+      "rapidez"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (anuncios_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_2_DIFF",
+    "pattern": [
+      "forão",
+      "surpreendente",
+      "mais"
+    ],
+    "replacements": [
+      "foram surpreendentes mas"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_2)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_04_DIFF",
+    "pattern": [
+      "disposta"
+    ],
+    "replacements": [
+      "dispostas"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_06_DIFF",
+    "pattern": [
+      "igualitaria"
+    ],
+    "replacements": [
+      "igualitária"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_06)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_16_DIFF",
+    "pattern": [
+      "ecosistemas"
+    ],
+    "replacements": [
+      "ecossistemas"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_16)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_ANUNCIOS_04_DIFF",
+    "pattern": [
+      "preçoes"
+    ],
+    "replacements": [
+      "preços"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (anuncios_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_QUAISQUER_DIFF",
+    "pattern": [
+      "qualquer"
+    ],
+    "replacements": [
+      "Quaisquer"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont-quaisquer)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_ORTO_42_DIFF",
+    "pattern": [
+      "mudansa",
+      "era",
+      "visivel"
+    ],
+    "replacements": [
+      "mudança era visível"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (orto-42)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_01_DIFF",
+    "pattern": [
+      "mal",
+      "funcionário",
+      "mau"
+    ],
+    "replacements": [
+      "mau funcionário mal"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_ORTO_03_NAO_HA",
+    "pattern": [
+      "não",
+      "ha"
+    ],
+    "replacements": [
+      "não há"
+    ],
+    "message": "Nessa construção, a forma esperada é 'não há'.",
+    "description": "Regra curta derivada de falha observada no proof (orto-03)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_02_SESSAO_SECAO_DIFF",
+    "pattern": [
+      "cessão"
+    ],
+    "replacements": [
+      "sessão"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-02-sessao-secao)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_SE_EU_VER_DIFF",
+    "pattern": [
+      "ver",
+      "ele"
+    ],
+    "replacements": [
+      "o vir"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont-se-eu-ver)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_017_DIFF",
+    "pattern": [
+      "chegaram",
+      "atrasados"
+    ],
+    "replacements": [
+      "chegou atrasado"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-017)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HIF_031_DIFF",
+    "pattern": [
+      "o",
+      "mini-saia"
+    ],
+    "replacements": [
+      "A minissaia"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hif-031)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HIF_039_DIFF",
+    "pattern": [
+      "o",
+      "auto-ajuda"
+    ],
+    "replacements": [
+      "A autoajuda"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hif-039)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_ORT_29_DIFF",
+    "pattern": [
+      "anti-social",
+      "e",
+      "rabujento"
+    ],
+    "replacements": [
+      "antissocial e rabugento"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ort-29)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_BASTANTE_ADJETIVO_DIFF",
+    "pattern": [
+      "bastantes"
+    ],
+    "replacements": [
+      "bastante"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont_bastante_adjetivo)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_FAZ_FRIO_DIFF",
+    "pattern": [
+      "devem"
+    ],
+    "replacements": [
+      "Deve"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont-faz-frio)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONT_OBRIGADO_FEM_DIFF",
+    "pattern": [
+      "obrigado"
+    ],
+    "replacements": [
+      "obrigada"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (cont-obrigado-fem)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_VIAJEM_VERBO_DIFF",
+    "pattern": [
+      "viagem"
+    ],
+    "replacements": [
+      "viajem"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-viajem-verbo)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_APRECAR_VALOR_DIFF",
+    "pattern": [
+      "apressar"
+    ],
+    "replacements": [
+      "apreçar"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-apreçar-valor)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_EXTRATO_BANCARIO_DIFF",
+    "pattern": [
+      "estrato"
+    ],
+    "replacements": [
+      "extrato"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-extrato-bancario)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_ESTRATO_SOCIAL_DIFF",
+    "pattern": [
+      "extrato"
+    ],
+    "replacements": [
+      "estrato"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-estrato-social)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_BUCHO_ESTOMAGO_DIFF",
+    "pattern": [
+      "buxo"
+    ],
+    "replacements": [
+      "bucho"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-bucho-estomago)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_BUXO_ARBUSTO_DIFF",
+    "pattern": [
+      "bucho"
+    ],
+    "replacements": [
+      "buxo"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-buxo-arbusto)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_CERRAR_FECHAR_DIFF",
+    "pattern": [
+      "serrar"
+    ],
+    "replacements": [
+      "cerrar"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-cerrar-fechar)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_SERRAR_MADEIRA_DIFF",
+    "pattern": [
+      "cerrar"
+    ],
+    "replacements": [
+      "serrar"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-serrar-madeira)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_ESTATICO_PARADO_DIFF",
+    "pattern": [
+      "extático"
+    ],
+    "replacements": [
+      "estático"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-estatico-parado)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_024_DIFF",
+    "pattern": [
+      "chego"
+    ],
+    "replacements": [
+      "chegado"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-024)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_033_DIFF",
+    "pattern": [
+      "alugam-se"
+    ],
+    "replacements": [
+      "Aluga-se"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-033)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_035_DIFF",
+    "pattern": [
+      "meios"
+    ],
+    "replacements": [
+      "meio"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-035)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_047_DIFF",
+    "pattern": [
+      "bastam"
+    ],
+    "replacements": [
+      "Basta"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-047)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_03_DIFF",
+    "pattern": [
+      "a",
+      "nível"
+    ],
+    "replacements": [
+      "Em termos"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-03)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_06_DIFF",
+    "pattern": [
+      "que",
+      "eu"
+    ],
+    "replacements": [
+      "a que"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-06)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_14_DIFF",
+    "pattern": [
+      "estuda"
+    ],
+    "replacements": [
+      "estudam"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-14)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_24_DIFF",
+    "pattern": [
+      "manter"
+    ],
+    "replacements": [
+      "mantiver"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-24)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_03_DIFF",
+    "pattern": [
+      "onde"
+    ],
+    "replacements": [
+      "Aonde"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_03)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_CIDADAOS_DIFF",
+    "pattern": [
+      "cidadões"
+    ],
+    "replacements": [
+      "cidadãos"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-cidadaos)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOF_04_DIFF",
+    "pattern": [
+      "a",
+      "concerta"
+    ],
+    "replacements": [
+      "O conserto"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homof-04)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_18_DIFF",
+    "pattern": [
+      "mínimo"
+    ],
+    "replacements": [
+      "máximo"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_18)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_28_DIFF",
+    "pattern": [
+      "reaveram"
+    ],
+    "replacements": [
+      "reouveram"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-28)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_30_DIFF",
+    "pattern": [
+      "entreti"
+    ],
+    "replacements": [
+      "entretive"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con-30)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_06_DIFF",
+    "pattern": [
+      "dispensa"
+    ],
+    "replacements": [
+      "despensa"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-06)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_ALERTA_DIFF",
+    "pattern": [
+      "alertas"
+    ],
+    "replacements": [
+      "alerta"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-alerta)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_EM_VEZ_DE_DIFF",
+    "pattern": [
+      "em",
+      "vez"
+    ],
+    "replacements": [
+      "Ao invés"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-em-vez-de)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_ESTADIA_DIFF",
+    "pattern": [
+      "estada"
+    ],
+    "replacements": [
+      "estadia"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-estadia)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_ESTADA_DIFF",
+    "pattern": [
+      "estadia"
+    ],
+    "replacements": [
+      "estada"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-estada)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_INFLIGIR_DIFF",
+    "pattern": [
+      "infringir"
+    ],
+    "replacements": [
+      "infligir"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-infligir)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_INFRINGIR_DIFF",
+    "pattern": [
+      "infligir"
+    ],
+    "replacements": [
+      "infringir"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-infringir)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_DISCRECAO_DIFF",
+    "pattern": [
+      "descrição"
+    ],
+    "replacements": [
+      "discrição"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-discrecao)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_EMERGIR_DIFF",
+    "pattern": [
+      "imergir"
+    ],
+    "replacements": [
+      "emergir"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-emergir)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_ATRAVES_01_DIFF",
+    "pattern": [
+      "através",
+      "do"
+    ],
+    "replacements": [
+      "pelo"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx_através_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_CUSTAR_01_DIFF",
+    "pattern": [
+      "custou",
+      "para",
+      "ele"
+    ],
+    "replacements": [
+      "Custou-lhe"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx_custar_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_PERCA_PERDA_01_DIFF",
+    "pattern": [
+      "perca"
+    ],
+    "replacements": [
+      "perda"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx_perca_perda_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_TACHAR_02_DIFF",
+    "pattern": [
+      "taxaram"
+    ],
+    "replacements": [
+      "Tacharam"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom_tachar_02)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_013_DIFF",
+    "pattern": [
+      "iniciada"
+    ],
+    "replacements": [
+      "iniciado"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_013)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_002_DIFF",
+    "pattern": [
+      "consserto"
+    ],
+    "replacements": [
+      "conserto"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_002)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_014_DIFF",
+    "pattern": [
+      "prostrava"
+    ],
+    "replacements": [
+      "prostava"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_014)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_016_DIFF",
+    "pattern": [
+      "taxada"
+    ],
+    "replacements": [
+      "tachada"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_016)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_2_DIFF",
+    "pattern": [
+      "cultural"
+    ],
+    "replacements": [
+      "culturais"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_2)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_5_DIFF",
+    "pattern": [
+      "participante",
+      "esteja",
+      "ciente"
+    ],
+    "replacements": [
+      "participantes estejam cientes"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_5)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_10_DIFF",
+    "pattern": [
+      "surja"
+    ],
+    "replacements": [
+      "surjam"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_10)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_13_DIFF",
+    "pattern": [
+      "coletado"
+    ],
+    "replacements": [
+      "coletados"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_13)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_14_DIFF",
+    "pattern": [
+      "importa"
+    ],
+    "replacements": [
+      "importam"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_14)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_15_DIFF",
+    "pattern": [
+      "concerar"
+    ],
+    "replacements": [
+      "consertar"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_15)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_ANUNCIOS_20_DIFF",
+    "pattern": [
+      "ultimas"
+    ],
+    "replacements": [
+      "Últimas"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (anuncios_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMOFONOS_15_DIFF",
+    "pattern": [
+      "aviam"
+    ],
+    "replacements": [
+      "haviam"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homofonos_15)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_07_DIFF",
+    "pattern": [
+      "mau",
+      "humorado"
+    ],
+    "replacements": [
+      "mal-humorado"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_07)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CONTEXTO_08_DIFF",
+    "pattern": [
+      "importancia"
+    ],
+    "replacements": [
+      "importância"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (contexto_08)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_ANUNCIOS_04_DIFF",
+    "pattern": [
+      "inigualavel"
+    ],
+    "replacements": [
+      "inigualáveis"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (anuncios_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_27_DIFF",
+    "pattern": [
+      "foram",
+      "doados"
+    ],
+    "replacements": [
+      "foi doada"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-27)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_05_DIFF",
+    "pattern": [
+      "imergiu"
+    ],
+    "replacements": [
+      "emergiu"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con_05)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_06_DIFF",
+    "pattern": [
+      "imigrantes"
+    ],
+    "replacements": [
+      "emigrantes"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con_06)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CON_10_DIFF",
+    "pattern": [
+      "afim",
+      "com",
+      "os"
+    ],
+    "replacements": [
+      "a fim dos"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (con_10)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_09_DIFF",
+    "pattern": [
+      "tachado"
+    ],
+    "replacements": [
+      "taxado"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom_09)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_08_DIFF",
+    "pattern": [
+      "deveis"
+    ],
+    "replacements": [
+      "deve"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-08)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_13_ERR_DIFF",
+    "pattern": [
+      "meio"
+    ],
+    "replacements": [
+      "meia"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-13-err)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_26_DIFF",
+    "pattern": [
+      "estarem"
+    ],
+    "replacements": [
+      "estar"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-26)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_05_BASTANTE_BASTANTES_DIFF",
+    "pattern": [
+      "bastante"
+    ],
+    "replacements": [
+      "bastantes"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-05-bastante-bastantes)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_11_PRECISA_SE_DIFF",
+    "pattern": [
+      "precisam-se"
+    ],
+    "replacements": [
+      "Precisa-se"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-11-precisa-se)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_17_ASSENTO_ACENTO_DIFF",
+    "pattern": [
+      "assento"
+    ],
+    "replacements": [
+      "acento"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-17-assento-acento)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_20_FLUIR_FRUIR_DIFF",
+    "pattern": [
+      "fluir"
+    ],
+    "replacements": [
+      "fruir"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-20-fluir-fruir)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_23_MANDADO_MANDATO_DIFF",
+    "pattern": [
+      "mandato"
+    ],
+    "replacements": [
+      "mandado"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-23-mandado-mandato)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_24_PACO_PASSO_DIFF",
+    "pattern": [
+      "passo"
+    ],
+    "replacements": [
+      "Paço"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-24-paço-passo)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HIF_27_DIFF",
+    "pattern": [
+      "ultra-passado"
+    ],
+    "replacements": [
+      "ultrapassado"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hif_27)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_21_DIFF",
+    "pattern": [
+      "ajuda"
+    ],
+    "replacements": [
+      "ajudam"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx_21)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_1_DIFF",
+    "pattern": [
+      "cavaleiro"
+    ],
+    "replacements": [
+      "cavalheiro"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-1)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOMO_CASSAR_MANDATO_DIFF",
+    "pattern": [
+      "caçar"
+    ],
+    "replacements": [
+      "cassar"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (homo-cassar-mandato)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_11_DIFF",
+    "pattern": [
+      "mandado"
+    ],
+    "replacements": [
+      "mandato"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom_11)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_16_DIFF",
+    "pattern": [
+      "concertou"
+    ],
+    "replacements": [
+      "conserto"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom_16)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_20_DIFF",
+    "pattern": [
+      "tráfego"
+    ],
+    "replacements": [
+      "tráfico"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_26_DIFF",
+    "pattern": [
+      "comprimento"
+    ],
+    "replacements": [
+      "cumprimento"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom_26)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_30_DIFF",
+    "pattern": [
+      "fuzível"
+    ],
+    "replacements": [
+      "fusível"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom_30)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_TEC_04_DIFF",
+    "pattern": [
+      "indice"
+    ],
+    "replacements": [
+      "índice"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (tec_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_11_DIFF",
+    "pattern": [
+      "foram",
+      "aprovados"
+    ],
+    "replacements": [
+      "foi aprovada"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-11)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_13_DIFF",
+    "pattern": [
+      "revisarem",
+      "eles",
+      "mesmos"
+    ],
+    "replacements": [
+      "mesmos os revisarem"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-13)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_CTX_21_DIFF",
+    "pattern": [
+      "quanto",
+      "antes"
+    ],
+    "replacements": [
+      "mais rápido"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (ctx-21)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_HOM_21_DIFF",
+    "pattern": [
+      "há",
+      "cerca"
+    ],
+    "replacements": [
+      "Acerca"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (hom-21)."
+  },
+  {
+    "id": "PT_BR_PROOF_SEEDED_TEC_23_DIFF",
+    "pattern": [
+      "assincrono"
+    ],
+    "replacements": [
+      "assíncrono"
+    ],
+    "message": "Essa sequência costuma ser escrita de outra forma.",
+    "description": "Regra curta derivada de falha observada no proof (tec-23)."
   }
 ]

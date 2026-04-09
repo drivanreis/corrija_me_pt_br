@@ -135,6 +135,21 @@
     "description": "Regra aprendida a partir da base know (acen_jiboia_bau)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_acent-02_9",
+    "pattern": [
+      "ninguem",
+      "se",
+      "responsabilise",
+      "pelo",
+      "conteudo"
+    ],
+    "replacements": [
+      "ninguém se responsabilize pelo conteúdo"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (acent-02)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_acent-05_1",
     "pattern": [
       "paleto",
@@ -588,6 +603,20 @@
     "description": "Regra aprendida a partir da base know (anuncios_002)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_acent-04_14",
+    "pattern": [
+      "publica",
+      "foi",
+      "as",
+      "tres"
+    ],
+    "replacements": [
+      "pública foi às três"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (acent-04)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_anuncios_01_9",
     "pattern": [
       "qualidae",
@@ -614,6 +643,20 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (orto-11)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec-04_1",
+    "pattern": [
+      "resiliencia",
+      "da",
+      "infra",
+      "estrutura"
+    ],
+    "replacements": [
+      "resiliência da infraestrutura"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec-04)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_acentuacao_02_1",
@@ -801,6 +844,19 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (ort-02)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_ort-02-anal-paral_2",
+    "pattern": [
+      "analizar",
+      "a",
+      "paralizia"
+    ],
+    "replacements": [
+      "analisar a paralisia"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (ort-02-anal-paral)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_ortografia_01_6",
@@ -1115,6 +1171,19 @@
     "description": "Regra aprendida a partir da base know (con_02)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_ctx-02-encont-de_3",
+    "pattern": [
+      "de",
+      "encontro",
+      "às"
+    ],
+    "replacements": [
+      "ao encontro das"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (ctx-02-encont-de)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_orto_02_2",
     "pattern": [
       "derrepente",
@@ -1282,6 +1351,32 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (ortografia_16)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_ort-07_4",
+    "pattern": [
+      "espectativas",
+      "do",
+      "publico"
+    ],
+    "replacements": [
+      "expectativas do público"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (ort-07)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec-07-fin-spread_1",
+    "pattern": [
+      "espread",
+      "bancário",
+      "influe"
+    ],
+    "replacements": [
+      "spread bancário influi"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec-07-fin-spread)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif_guarda_chuva_01_0",
@@ -1505,6 +1600,19 @@
     "description": "Regra aprendida a partir da base know (acento-05)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_ort-03_11",
+    "pattern": [
+      "hospedes",
+      "que",
+      "ja"
+    ],
+    "replacements": [
+      "hóspedes que já"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (ort-03)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_orto-04_0",
     "pattern": [
       "houveram",
@@ -1633,6 +1741,19 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (anunc_05)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec-08_1",
+    "pattern": [
+      "inferencia",
+      "da",
+      "analise"
+    ],
+    "replacements": [
+      "inferência da análise"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec-08)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_ortografia_2_8",
@@ -1830,6 +1951,32 @@
     "description": "Regra aprendida a partir da base know (tec-7)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_context-08_0",
+    "pattern": [
+      "na",
+      "medida",
+      "em"
+    ],
+    "replacements": [
+      "À medida"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (context-08)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_ort-08_0",
+    "pattern": [
+      "nao",
+      "avia",
+      "ninguem"
+    ],
+    "replacements": [
+      "Não havia ninguém"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (ort-08)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_acento-01_0",
     "pattern": [
       "nao",
@@ -1947,6 +2094,19 @@
     "description": "Regra aprendida a partir da base know (ort-28)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_ort-01_14",
+    "pattern": [
+      "obstaculos",
+      "que",
+      "surjem"
+    ],
+    "replacements": [
+      "obstáculos que surgem"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (ort-01)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_ortografia_1_4",
     "pattern": [
       "ofereçe",
@@ -1984,6 +2144,19 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (anuncios_14)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_ort-02_7",
+    "pattern": [
+      "ouve",
+      "reação",
+      "mau"
+    ],
+    "replacements": [
+      "houve reação mal"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (ort-02)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_ort-11_6",
@@ -2426,6 +2599,32 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (ace_6)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec-03-med-hipot_5",
+    "pattern": [
+      "rítmo",
+      "cardíaco",
+      "instavel"
+    ],
+    "replacements": [
+      "ritmo cardíaco instável"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec-03-med-hipot)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec-07_1",
+    "pattern": [
+      "roadmap",
+      "de",
+      "compliance"
+    ],
+    "replacements": [
+      "roteiro de conformidade"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec-07)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_acent-07_1",
@@ -2916,18 +3115,6 @@
     "description": "Regra aprendida a partir da base know (texto_tecnico_02)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_orto-01_6",
-    "pattern": [
-      "a",
-      "concerta"
-    ],
-    "replacements": [
-      "o conserto"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (orto-01)."
-  },
-  {
     "id": "PT_BR_PHRASE_LEARNED_anuncios_11_1",
     "pattern": [
       "à",
@@ -2950,6 +3137,18 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (orto_excecao_previlegio)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_hom_afim_02_3",
+    "pattern": [
+      "a",
+      "fim"
+    ],
+    "replacements": [
+      "afins"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hom_afim_02)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_01_5",
@@ -3948,6 +4147,18 @@
     "description": "Regra aprendida a partir da base know (hif-17-circum-escolar)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_anu-05-clickbait-err_7",
+    "pattern": [
+      "clique",
+      "áqui"
+    ],
+    "replacements": [
+      "Clique aqui"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (anu-05-clickbait-err)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_hifen_06_3",
     "pattern": [
       "co",
@@ -4174,6 +4385,18 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (ort-27)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec-04-acad-atraves_2",
+    "pattern": [
+      "corrobóra",
+      "com"
+    ],
+    "replacements": [
+      "corrobora"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec-04-acad-atraves)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_tecn-46_5",
@@ -4522,6 +4745,18 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (ad-6)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec-08-formal-vossa_2",
+    "pattern": [
+      "estais",
+      "convidado"
+    ],
+    "replacements": [
+      "está convidada"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec-08-formal-vossa)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_orto_01_1",
@@ -5662,6 +5897,18 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (hifen-pontape)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_acent-01_0",
+    "pattern": [
+      "porem",
+      "voce"
+    ],
+    "replacements": [
+      "Porém você"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (acent-01)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_orto-13_3",
@@ -6828,6 +7075,18 @@
     "description": "Regra aprendida a partir da base know (hif_25)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_acent-07_4",
+    "pattern": [
+      "terapeutica",
+      "voce"
+    ],
+    "replacements": [
+      "terapêutica você"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (acent-07)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_hif-21_1",
     "pattern": [
       "termo",
@@ -7330,17 +7589,6 @@
     "description": "Regra aprendida a partir da base know (hif-circum-navegacao)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_orto-10_0",
-    "pattern": [
-      "concerteza"
-    ],
-    "replacements": [
-      "Com certeza"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (orto-10)."
-  },
-  {
     "id": "PT_BR_PHRASE_LEARNED_orto-04_5",
     "pattern": [
       "conceteza"
@@ -7440,6 +7688,17 @@
     "description": "Regra aprendida a partir da base know (hifen_vice_presidente_ex_diretor)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_hif-06-vice-ex_5",
+    "pattern": [
+      "exmarido"
+    ],
+    "replacements": [
+      "ex marido"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hif-06-vice-ex)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_hifen_03_1",
     "pattern": [
       "exmulher"
@@ -7504,6 +7763,17 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (hif_15)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_hif-07-inter-pos_1",
+    "pattern": [
+      "interrelação"
+    ],
+    "replacements": [
+      "inter relação"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hif-07-inter-pos)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_an-05-liquida-estoque_0",

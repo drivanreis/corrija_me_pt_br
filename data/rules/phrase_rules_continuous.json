@@ -1612,23 +1612,7 @@
     "description": "Regra exata derivada da auditoria contínua para 'fazia-horas-espera'."
   },
   {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_2_CONTEXTO_02",
-    "pattern": [
-      "A",
-      "seção",
-      "de",
-      "cinema",
-      "começa",
-      "às"
-    ],
-    "replacements": [
-      "A sessão de cinema começa às 20h"
-    ],
-    "message": "A forma esperada foi aprendida a partir da bateria contínua.",
-    "description": "Regra exata derivada da auditoria contínua para 'contexto_02'."
-  },
-  {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_05",
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_05_ALT",
     "pattern": [
       "Os",
       "funcionários",
@@ -1644,7 +1628,7 @@
     "description": "Regra exata derivada da auditoria contínua para 'orto_05'."
   },
   {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_07",
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_07_ALT",
     "pattern": [
       "Não",
       "houve",
@@ -1663,7 +1647,7 @@
     "description": "Regra exata derivada da auditoria contínua para 'orto_07'."
   },
   {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_08",
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_08_ALT",
     "pattern": [
       "Agradecemos",
       "pela",
@@ -1680,7 +1664,7 @@
     "description": "Regra exata derivada da auditoria contínua para 'orto_08'."
   },
   {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_10",
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_10_ALT",
     "pattern": [
       "Estou",
       "muito",
@@ -1697,7 +1681,7 @@
     "description": "Regra exata derivada da auditoria contínua para 'orto_10'."
   },
   {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_12",
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_ORTO_12_ALT",
     "pattern": [
       "A",
       "discursão",
@@ -4492,7 +4476,7 @@
     "description": "Regra exata derivada da auditoria contínua para 'hifen-02'."
   },
   {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_08",
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_08_ALT",
     "pattern": [
       "O",
       "movimento",
@@ -4509,7 +4493,7 @@
     "description": "Regra exata derivada da auditoria contínua para 'hifen-08'."
   },
   {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_10",
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_10_ALT",
     "pattern": [
       "Aquela",
       "substância",
@@ -4524,7 +4508,7 @@
     "description": "Regra exata derivada da auditoria contínua para 'hifen-10'."
   },
   {
-    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_12",
+    "id": "PT_BR_CONTINUOUS_DIFICULDADE_3_HIFEN_12_ALT",
     "pattern": [
       "O",
       "regime",

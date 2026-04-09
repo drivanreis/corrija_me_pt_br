@@ -1,0 +1,110 @@
+[
+  {
+    "cycle": 0,
+    "audit": "/tmp/corrija-proof-autopilot-baseline-1775680259009.json",
+    "global_score": 44,
+    "totals": {
+      "existing_errors": 1292,
+      "corrected_errors": 566,
+      "remaining_errors": 666,
+      "corrected_wrong_errors": 60,
+      "new_errors": 30
+    },
+    "accepted": true
+  },
+  {
+    "cycle": 1,
+    "audit": "/tmp/corrija-proof-autopilot-cycle-1.json",
+    "global_score": 50,
+    "delta": 6,
+    "totals": {
+      "existing_errors": 1292,
+      "corrected_errors": 643,
+      "remaining_errors": 569,
+      "corrected_wrong_errors": 80,
+      "new_errors": 52
+    },
+    "accepted": true,
+    "candidates": {
+      "replacements": 34,
+      "phraseRules": 64,
+      "contextRules": 41
+    }
+  },
+  {
+    "cycle": 2,
+    "audit": "/tmp/corrija-proof-autopilot-cycle-2.json",
+    "global_score": 52,
+    "delta": 2,
+    "totals": {
+      "existing_errors": 1292,
+      "corrected_errors": 677,
+      "remaining_errors": 527,
+      "corrected_wrong_errors": 88,
+      "new_errors": 58
+    },
+    "accepted": true,
+    "candidates": {
+      "replacements": 12,
+      "phraseRules": 55,
+      "contextRules": 47
+    }
+  },
+  {
+    "cycle": 3,
+    "audit": "/tmp/corrija-proof-autopilot-cycle-3.json",
+    "global_score": 54,
+    "delta": 2,
+    "totals": {
+      "existing_errors": 1292,
+      "corrected_errors": 700,
+      "remaining_errors": 499,
+      "corrected_wrong_errors": 93,
+      "new_errors": 69
+    },
+    "accepted": true,
+    "candidates": {
+      "replacements": 14,
+      "phraseRules": 52,
+      "contextRules": 43
+    }
+  },
+  {
+    "cycle": 4,
+    "audit": "/tmp/corrija-proof-autopilot-cycle-4.json",
+    "global_score": 56,
+    "delta": 2,
+    "totals": {
+      "existing_errors": 1292,
+      "corrected_errors": 718,
+      "remaining_errors": 481,
+      "corrected_wrong_errors": 93,
+      "new_errors": 73
+    },
+    "accepted": true,
+    "candidates": {
+      "replacements": 13,
+      "phraseRules": 50,
+      "contextRules": 36
+    }
+  },
+  {
+    "cycle": 5,
+    "audit": "/tmp/corrija-proof-autopilot-cycle-5.json",
+    "global_score": 56,
+    "delta": 0,
+    "totals": {
+      "existing_errors": 1292,
+      "corrected_errors": 728,
+      "remaining_errors": 470,
+      "corrected_wrong_errors": 94,
+      "new_errors": 71
+    },
+    "accepted": false,
+    "candidates": {
+      "replacements": 15,
+      "phraseRules": 49,
+      "contextRules": 35
+    }
+  }
+]

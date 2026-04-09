@@ -54,5 +54,257 @@
       "incrivelmente"
     ],
     "source": "proof_fallback:ortografia_06"
+  },
+  {
+    "from": "exelente",
+    "replacements": [
+      "excelente"
+    ],
+    "source": "proof_fallback:ortografia_020"
+  },
+  {
+    "from": "perserverança",
+    "replacements": [
+      "perseverança"
+    ],
+    "source": "proof_fallback:ortografia_020"
+  },
+  {
+    "from": "dedicaçao",
+    "replacements": [
+      "dedicação"
+    ],
+    "source": "proof_fallback:ortografia_020"
+  },
+  {
+    "from": "secretario",
+    "replacements": [
+      "secretário"
+    ],
+    "source": "proof_fallback:acentuacao_3"
+  },
+  {
+    "from": "medico",
+    "replacements": [
+      "médico"
+    ],
+    "source": "proof_fallback:acentuacao_3"
+  },
+  {
+    "from": "diagnostico",
+    "replacements": [
+      "diagnóstico"
+    ],
+    "source": "proof_fallback:acentuacao_3"
+  },
+  {
+    "from": "coletanea",
+    "replacements": [
+      "coletânea"
+    ],
+    "source": "proof_fallback:acentuacao_3"
+  },
+  {
+    "from": "reijeitou",
+    "replacements": [
+      "rejeitou"
+    ],
+    "source": "proof_fallback:ortografia_06"
+  },
+  {
+    "from": "inexecuível",
+    "replacements": [
+      "inexequível"
+    ],
+    "source": "proof_fallback:ortografia_06"
+  },
+  {
+    "from": "planejameto",
+    "replacements": [
+      "planejamento"
+    ],
+    "source": "proof_fallback:ortografia_06"
+  },
+  {
+    "from": "beringela",
+    "replacements": [
+      "berinjela"
+    ],
+    "source": "proof_fallback:orto-03"
+  },
+  {
+    "from": "estragado",
+    "replacements": [
+      "estragada"
+    ],
+    "source": "proof_fallback:orto-03"
+  },
+  {
+    "from": "sobre-loja",
+    "replacements": [
+      "sobreloja"
+    ],
+    "source": "proof_fallback:hif-19"
+  },
+  {
+    "from": "incluia",
+    "replacements": [
+      "incluía"
+    ],
+    "source": "proof_fallback:acentuacao_011"
+  },
+  {
+    "from": "discução",
+    "replacements": [
+      "discussão"
+    ],
+    "source": "proof_fallback:acentuacao_011"
+  },
+  {
+    "from": "côragem",
+    "replacements": [
+      "coragem"
+    ],
+    "source": "proof_fallback:acentuacao_3"
+  },
+  {
+    "from": "essêncial",
+    "replacements": [
+      "essencial"
+    ],
+    "source": "proof_fallback:acentuacao_3"
+  },
+  {
+    "from": "ítens",
+    "replacements": [
+      "itens"
+    ],
+    "source": "proof_fallback:acentuacao_8"
+  },
+  {
+    "from": "estratégica",
+    "replacements": [
+      "estratégia"
+    ],
+    "source": "proof_fallback:acentuacao_8"
+  },
+  {
+    "from": "proximo",
+    "replacements": [
+      "próximo"
+    ],
+    "source": "proof_fallback:acentuacao_8"
+  },
+  {
+    "from": "delicioso",
+    "replacements": [
+      "deliciosa"
+    ],
+    "source": "proof_fallback:hif_27"
+  },
+  {
+    "from": "silencio",
+    "replacements": [
+      "silêncio"
+    ],
+    "source": "proof_fallback:ortografia_06"
+  },
+  {
+    "from": "micro-empreendedor",
+    "replacements": [
+      "microempreendedor"
+    ],
+    "source": "proof_fallback:hifen_14"
+  },
+  {
+    "from": "repercução",
+    "replacements": [
+      "repercussão"
+    ],
+    "source": "proof_fallback:hifen_14"
+  },
+  {
+    "from": "posvenda",
+    "replacements": [
+      "pós-venda"
+    ],
+    "source": "proof_fallback:hifen_14"
+  },
+  {
+    "from": "fidelizacão",
+    "replacements": [
+      "fidelização"
+    ],
+    "source": "proof_fallback:hifen_14"
+  },
+  {
+    "from": "suçeço",
+    "replacements": [
+      "sucesso"
+    ],
+    "source": "proof_fallback:ort-29"
+  },
+  {
+    "from": "mudansa",
+    "replacements": [
+      "mudança"
+    ],
+    "source": "proof_fallback:orto-42"
+  },
+  {
+    "from": "visivel",
+    "replacements": [
+      "visível"
+    ],
+    "source": "proof_fallback:orto-42"
+  },
+  {
+    "from": "estagiarios",
+    "replacements": [
+      "estagiários"
+    ],
+    "source": "proof_fallback:orto-03"
+  },
+  {
+    "from": "mini-saia",
+    "replacements": [
+      "minissaia"
+    ],
+    "source": "proof_fallback:hif-031"
+  },
+  {
+    "from": "auto-ajuda",
+    "replacements": [
+      "autoajuda"
+    ],
+    "source": "proof_fallback:hif-039"
+  },
+  {
+    "from": "anti-social",
+    "replacements": [
+      "antissocial"
+    ],
+    "source": "proof_fallback:ort-29"
+  },
+  {
+    "from": "rabujento",
+    "replacements": [
+      "rabugento"
+    ],
+    "source": "proof_fallback:ort-29"
+  },
+  {
+    "from": "desinsetsção",
+    "replacements": [
+      "desinsetização"
+    ],
+    "source": "proof_fallback:ort-29"
+  },
+  {
+    "from": "ultra-passado",
+    "replacements": [
+      "ultrapassado"
+    ],
+    "source": "proof_fallback:hif_27"
   }
 ]

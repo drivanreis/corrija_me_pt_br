@@ -399,6 +399,13 @@
     "source": "learned_know:ace_21"
   },
   {
+    "from": "arguí",
+    "replacements": [
+      "argui"
+    ],
+    "source": "learned_know:ace-03-para-argui"
+  },
+  {
     "from": "argúi",
     "replacements": [
       "argui"
@@ -959,13 +966,6 @@
     "source": "learned_know:acentuacao_07"
   },
   {
-    "from": "cessão",
-    "replacements": [
-      "sessão"
-    ],
-    "source": "learned_know:ort-17"
-  },
-  {
     "from": "chapeu",
     "replacements": [
       "chapéu"
@@ -1232,20 +1232,6 @@
     "source": "learned_know:ort-15"
   },
   {
-    "from": "concertar",
-    "replacements": [
-      "consertar"
-    ],
-    "source": "learned_know:orto-07"
-  },
-  {
-    "from": "concerto",
-    "replacements": [
-      "conserto"
-    ],
-    "source": "learned_know:ort_14"
-  },
-  {
     "from": "concervação",
     "replacements": [
       "conservação"
@@ -1258,6 +1244,13 @@
       "concentração"
     ],
     "source": "learned_know:ort_30"
+  },
+  {
+    "from": "concevivel",
+    "replacements": [
+      "concebível"
+    ],
+    "source": "learned_know:ort-04"
   },
   {
     "from": "concidência",
@@ -1419,13 +1412,6 @@
       "conseguiu"
     ],
     "source": "learned_know:acentuacao_20"
-  },
-  {
-    "from": "conserto",
-    "replacements": [
-      "concerto"
-    ],
-    "source": "learned_know:ort_14"
   },
   {
     "from": "conservacao",
@@ -1708,13 +1694,6 @@
     "source": "learned_know:ortografia_08"
   },
   {
-    "from": "descriminar",
-    "replacements": [
-      "descriminalizar"
-    ],
-    "source": "learned_know:ort-16"
-  },
-  {
     "from": "descrisção",
     "replacements": [
       "discrição"
@@ -1783,6 +1762,13 @@
       "dispendioso"
     ],
     "source": "learned_know:orto_03"
+  },
+  {
+    "from": "desperdicio",
+    "replacements": [
+      "desperdício"
+    ],
+    "source": "learned_know:acent-05"
   },
   {
     "from": "destinguir",
@@ -2520,6 +2506,13 @@
     "source": "learned_know:ort_9"
   },
   {
+    "from": "excesção",
+    "replacements": [
+      "exceção"
+    ],
+    "source": "learned_know:ort-04-exce-ascen"
+  },
+  {
     "from": "excessão",
     "replacements": [
       "exceção"
@@ -2553,6 +2546,13 @@
       "excessivo"
     ],
     "source": "learned_know:ortografia_05"
+  },
+  {
+    "from": "execusão",
+    "replacements": [
+      "execução"
+    ],
+    "source": "learned_know:ort-07"
   },
   {
     "from": "execussão",
@@ -2742,6 +2742,13 @@
       "estendido"
     ],
     "source": "learned_know:ort-01"
+  },
+  {
+    "from": "extranho",
+    "replacements": [
+      "estranho"
+    ],
+    "source": "learned_know:ort-05"
   },
   {
     "from": "extravante",
@@ -3309,6 +3316,13 @@
       "imprescindível"
     ],
     "source": "learned_know:ort_03"
+  },
+  {
+    "from": "impresindivel",
+    "replacements": [
+      "imprescindível"
+    ],
+    "source": "learned_know:ort-06"
   },
   {
     "from": "imprevistos",
@@ -4200,6 +4214,13 @@
     "source": "learned_know:acent-20"
   },
   {
+    "from": "notissia",
+    "replacements": [
+      "notícia"
+    ],
+    "source": "learned_know:ort-02"
+  },
+  {
     "from": "numero",
     "replacements": [
       "número"
@@ -4247,6 +4268,13 @@
       "obcecado"
     ],
     "source": "learned_know:orto_obcecado_ansioso"
+  },
+  {
+    "from": "obseção",
+    "replacements": [
+      "obsessão"
+    ],
+    "source": "learned_know:ort-06-obs-prazer"
   },
   {
     "from": "obsidiar",
@@ -4438,6 +4466,13 @@
     "source": "learned_know:acent-17"
   },
   {
+    "from": "palacio",
+    "replacements": [
+      "palácio"
+    ],
+    "source": "learned_know:acent-05"
+  },
+  {
     "from": "papeis",
     "replacements": [
       "papéis"
@@ -4571,6 +4606,13 @@
     "source": "learned_know:ort_24"
   },
   {
+    "from": "perspicassia",
+    "replacements": [
+      "perspicácia"
+    ],
+    "source": "learned_know:ort-05"
+  },
+  {
     "from": "perssistência",
     "replacements": [
       "persistência"
@@ -4618,6 +4660,13 @@
       "péssima"
     ],
     "source": "learned_know:acen-03"
+  },
+  {
+    "from": "pessimo",
+    "replacements": [
+      "péssimo"
+    ],
+    "source": "learned_know:acent-02"
   },
   {
     "from": "pixação",
@@ -4898,6 +4947,13 @@
       "pretensioso"
     ],
     "source": "learned_know:orto-22"
+  },
+  {
+    "from": "pretençiosos",
+    "replacements": [
+      "pretensiosos"
+    ],
+    "source": "learned_know:ort-07-susp-pret"
   },
   {
     "from": "pretesto",
@@ -5187,6 +5243,13 @@
     "source": "learned_know:ortografia_03"
   },
   {
+    "from": "publicos",
+    "replacements": [
+      "públicos"
+    ],
+    "source": "learned_know:acent-05"
+  },
+  {
     "from": "puchas",
     "replacements": [
       "puxar"
@@ -5297,6 +5360,13 @@
       "rosto"
     ],
     "source": "learned_know:orto-14"
+  },
+  {
+    "from": "realisação",
+    "replacements": [
+      "realização"
+    ],
+    "source": "learned_know:ort-06"
   },
   {
     "from": "realisada",
@@ -5740,13 +5810,6 @@
     "source": "learned_know:ortografia_008"
   },
   {
-    "from": "seção",
-    "replacements": [
-      "sessão"
-    ],
-    "source": "learned_know:ort-9"
-  },
-  {
     "from": "segunda",
     "replacements": [
       "segundas"
@@ -5780,13 +5843,6 @@
       "sério"
     ],
     "source": "learned_know:ace-053"
-  },
-  {
-    "from": "sessão",
-    "replacements": [
-      "seção"
-    ],
-    "source": "learned_know:orto_03"
   },
   {
     "from": "significatívo",
@@ -5957,6 +6013,13 @@
     "source": "learned_know:orto-sucinto"
   },
   {
+    "from": "suspenção",
+    "replacements": [
+      "suspensão"
+    ],
+    "source": "learned_know:ort-07-susp-pret"
+  },
+  {
     "from": "sussesso",
     "replacements": [
       "sucesso"
@@ -6095,6 +6158,13 @@
       "trajetória"
     ],
     "source": "learned_know:ort-12"
+  },
+  {
+    "from": "tramites",
+    "replacements": [
+      "trâmites"
+    ],
+    "source": "learned_know:ort-07"
   },
   {
     "from": "transito",
@@ -6333,6 +6403,13 @@
       "vizinha"
     ],
     "source": "learned_know:orto-28"
+  },
+  {
+    "from": "vitima",
+    "replacements": [
+      "vítima"
+    ],
+    "source": "learned_know:ort-05"
   },
   {
     "from": "vitoria",

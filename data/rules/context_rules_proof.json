@@ -1,1 +1,1882 @@
-[]
+[
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONT_04_DIFF",
+    "pattern": [
+      "um",
+      "pouco",
+      "descepcionante"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "decepcionante"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (cont_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_03_DIFF",
+    "pattern": [
+      "mas",
+      "não",
+      "vira",
+      "isso",
+      "é"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "virá"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo_03)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_01_DIFF",
+    "pattern": [
+      "para",
+      "que",
+      "asssim",
+      "possamos",
+      "prosseguir"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "assim"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-01)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_04_DIFF",
+    "pattern": [
+      "não",
+      "veio",
+      "a",
+      "reunião",
+      "hoje"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "à"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONT_03_DIFF",
+    "pattern": [
+      "que",
+      "não",
+      "haviam",
+      "problemas",
+      "como"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "havia"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (cont_03)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOF_02_DIFF",
+    "pattern": [
+      "por",
+      "traz",
+      "das",
+      "cortinas"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "trás"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homof_02)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_PONT_05_DIFF",
+    "pattern": [
+      "atrasou",
+      "devido",
+      "a",
+      "falta",
+      "de"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "à"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (pont-05)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_04_DIFF",
+    "pattern": [
+      "novamente",
+      "para",
+      "encontra-los"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "encontrá-los"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_TEC_06_DIFF",
+    "pattern": [
+      "o",
+      "acordão",
+      "foi",
+      "publicado"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "acórdão"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (tec_06)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_12_DIFF",
+    "pattern": [
+      "aonde",
+      "você",
+      "deixou"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Onde"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_12)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_14_DIFF",
+    "pattern": [
+      "diversos",
+      "e",
+      "exige",
+      "uma",
+      "análise"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "exigem"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_14)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_15_DIFF",
+    "pattern": [
+      "à",
+      "festa",
+      "porquê",
+      "estava",
+      "se"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "porque"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_15)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_TEXTO_TECNICO_20_DIFF",
+    "pattern": [
+      "de",
+      "dados",
+      "distribuidos",
+      "oferece",
+      "alta"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "distribuídos"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (texto_tecnico_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_EXTATICO_FELIZ_DIFF",
+    "pattern": [
+      "público",
+      "estava",
+      "estático",
+      "com",
+      "a"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "extático"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-extatico-feliz)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_19_ESPECTADOR_EXPECTADOR_DIFF",
+    "pattern": [
+      "o",
+      "expectador",
+      "ficou",
+      "maravilhado"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "espectador"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-19-espectador-expectador)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_02_DIFF",
+    "pattern": [
+      "mas",
+      "não",
+      "desperdiçe",
+      "essa",
+      "oportunidade"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "desperdice"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_02)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_ANUNCIOS_04_DIFF",
+    "pattern": [
+      "liquidacao",
+      "total",
+      "tudo"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Liquidação"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (anuncios_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_05_DIFF",
+    "pattern": [
+      "para",
+      "mim",
+      "fazer",
+      "este"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "eu"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_05)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_ANUNCIOS_20_DIFF",
+    "pattern": [
+      "preço",
+      "e",
+      "rápidez"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "rapidez"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (anuncios_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_04_DIFF",
+    "pattern": [
+      "de",
+      "pessoas",
+      "disposta",
+      "a",
+      "enfrentar"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "dispostas"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_06_DIFF",
+    "pattern": [
+      "justa",
+      "e",
+      "igualitaria"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "igualitária"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_06)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_16_DIFF",
+    "pattern": [
+      "proteger",
+      "os",
+      "ecosistemas",
+      "ameaçados"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "ecossistemas"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_16)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_13_DIFF",
+    "pattern": [
+      "cativantes",
+      "estava",
+      "iminente",
+      "a",
+      "fazer"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "prestes"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_13)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_ANUNCIOS_04_DIFF",
+    "pattern": [
+      "sapatos",
+      "com",
+      "preçoes",
+      "imperdíveis",
+      "para"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "preços"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (anuncios_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONT_QUAISQUER_DIFF",
+    "pattern": [
+      "qualquer",
+      "que",
+      "sejam"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Quaisquer"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (cont-quaisquer)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONT_18_DIFF",
+    "pattern": [
+      "quando",
+      "você",
+      "vir",
+      "aqui",
+      "me"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "vier"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (cont-18)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_02_SESSAO_SECAO_DIFF",
+    "pattern": [
+      "a",
+      "cessão",
+      "de",
+      "cinema"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "sessão"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-02-sessao-secao)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONT_BASTANTE_ADJETIVO_DIFF",
+    "pattern": [
+      "eles",
+      "estavam",
+      "bastantes",
+      "cansados",
+      "após"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "bastante"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (cont_bastante_adjetivo)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONT_FAZ_FRIO_DIFF",
+    "pattern": [
+      "devem",
+      "fazer",
+      "três"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Deve"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (cont-faz-frio)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONT_EM_MAO_MAOS_DIFF",
+    "pattern": [
+      "envelope",
+      "em",
+      "mão",
+      "para",
+      "o"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "mãos"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (cont-em-mao-maos)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONT_OBRIGADO_FEM_DIFF",
+    "pattern": [
+      "muito",
+      "obrigado",
+      "disse",
+      "a"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "obrigada"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (cont-obrigado-fem)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_VIAJEM_VERBO_DIFF",
+    "pattern": [
+      "que",
+      "vocês",
+      "viagem",
+      "para",
+      "a"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "viajem"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-viajem-verbo)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_APRECAR_VALOR_DIFF",
+    "pattern": [
+      "vou",
+      "apressar",
+      "os",
+      "produtos"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "apreçar"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-apreçar-valor)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_EXTRATO_BANCARIO_DIFF",
+    "pattern": [
+      "retirei",
+      "um",
+      "estrato",
+      "da",
+      "minha"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "extrato"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-extrato-bancario)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_ESTRATO_SOCIAL_DIFF",
+    "pattern": [
+      "cada",
+      "extrato",
+      "da",
+      "sociedade"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "estrato"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-estrato-social)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_BUCHO_ESTOMAGO_DIFF",
+    "pattern": [
+      "com",
+      "o",
+      "buxo",
+      "muito",
+      "cheio"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "bucho"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-bucho-estomago)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_BUXO_ARBUSTO_DIFF",
+    "pattern": [
+      "podou",
+      "o",
+      "bucho",
+      "que",
+      "estava"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "buxo"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-buxo-arbusto)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_CERRAR_FECHAR_DIFF",
+    "pattern": [
+      "ela",
+      "decidiu",
+      "serrar",
+      "os",
+      "olhos"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "cerrar"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-cerrar-fechar)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_SERRAR_MADEIRA_DIFF",
+    "pattern": [
+      "começou",
+      "a",
+      "cerrar",
+      "as",
+      "tábuas"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "serrar"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-serrar-madeira)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_ESTATICO_PARADO_DIFF",
+    "pattern": [
+      "ele",
+      "ficou",
+      "extático",
+      "ao",
+      "ver"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "estático"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-estatico-parado)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_008_DIFF",
+    "pattern": [
+      "dos",
+      "alunos",
+      "saíram",
+      "mais",
+      "cedo"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "saiu"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-008)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_014_DIFF",
+    "pattern": [
+      "tinha",
+      "muitas",
+      "pessoas"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Havia"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-014)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_033_DIFF",
+    "pattern": [
+      "alugam-se",
+      "esta",
+      "sala"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Aluga-se"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-033)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_14_DIFF",
+    "pattern": [
+      "que",
+      "mais",
+      "estuda",
+      "na",
+      "turma"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "estudam"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-14)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_15_DIFF",
+    "pattern": [
+      "de",
+      "alunos",
+      "pediram",
+      "mais",
+      "tempo"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "pediu"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-15)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_24_DIFF",
+    "pattern": [
+      "se",
+      "você",
+      "manter",
+      "o",
+      "foco"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "mantiver"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-24)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_25_DIFF",
+    "pattern": [
+      "quando",
+      "eu",
+      "ver",
+      "o",
+      "resultado"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "vir"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-25)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_03_DIFF",
+    "pattern": [
+      "onde",
+      "você",
+      "vai"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Aonde"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_03)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_18_DIFF",
+    "pattern": [
+      "com",
+      "o",
+      "mínimo",
+      "de",
+      "cuidado"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "máximo"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_18)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_20_DIFF",
+    "pattern": [
+      "tão",
+      "distante",
+      "haverá",
+      "algum",
+      "problema"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "Há"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_10_DIFF",
+    "pattern": [
+      "que",
+      "se",
+      "faz",
+      "uma",
+      "análise"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "faça"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_10)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_28_DIFF",
+    "pattern": [
+      "eles",
+      "reaveram",
+      "os",
+      "objetos"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "reouveram"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-28)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_30_DIFF",
+    "pattern": [
+      "eu",
+      "entreti",
+      "os",
+      "convidados"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "entretive"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con-30)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_06_DIFF",
+    "pattern": [
+      "a",
+      "dispensa",
+      "do",
+      "funcionário"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "despensa"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-06)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_ALERTA_DIFF",
+    "pattern": [
+      "soldados",
+      "estavam",
+      "alertas"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "alerta"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-alerta)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_ASSISTIR_AJUDAR_DIFF",
+    "pattern": [
+      "médico",
+      "assistiu",
+      "ao",
+      "paciente",
+      "ferido"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "o"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-assistir-ajudar)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_ESTADIA_DIFF",
+    "pattern": [
+      "a",
+      "estada",
+      "do",
+      "navio"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "estadia"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-estadia)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_ESTADA_DIFF",
+    "pattern": [
+      "minha",
+      "estadia",
+      "em",
+      "paris"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "estada"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-estada)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_INFRINGIR_DIFF",
+    "pattern": [
+      "evite",
+      "infligir",
+      "as",
+      "leis"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "infringir"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-infringir)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_DISCRECAO_DIFF",
+    "pattern": [
+      "a",
+      "descrição",
+      "é",
+      "uma"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "discrição"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-discrecao)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_EMERGIR_DIFF",
+    "pattern": [
+      "submarino",
+      "vai",
+      "imergir",
+      "agora"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "emergir"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-emergir)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_PERCA_PERDA_01_DIFF",
+    "pattern": [
+      "a",
+      "perca",
+      "de",
+      "tempo"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "perda"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx_perca_perda_01)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_TACHAR_02_DIFF",
+    "pattern": [
+      "taxaram",
+      "o",
+      "rapaz"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Tacharam"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom_tachar_02)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_028_DIFF",
+    "pattern": [
+      "vão",
+      "haver",
+      "mudanças"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Vai"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx_028)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_006_DIFF",
+    "pattern": [
+      "fator",
+      "muito",
+      "beneficiente",
+      "para",
+      "o"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "benéfico"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_006)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_013_DIFF",
+    "pattern": [
+      "digitalização",
+      "foi",
+      "iniciada",
+      "mas",
+      "os"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "iniciado"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_013)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_017_DIFF",
+    "pattern": [
+      "se",
+      "possa",
+      "discernir",
+      "entre",
+      "o"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "distinguir"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_017)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_002_DIFF",
+    "pattern": [
+      "de",
+      "um",
+      "consserto",
+      "nos",
+      "instrumentos"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "conserto"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_002)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_014_DIFF",
+    "pattern": [
+      "ele",
+      "se",
+      "prostrava",
+      "diante",
+      "de"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "prostava"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_014)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_016_DIFF",
+    "pattern": [
+      "juros",
+      "foi",
+      "taxada",
+      "como",
+      "abusiva"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "tachada"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_016)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_2_DIFF",
+    "pattern": [
+      "de",
+      "eventos",
+      "cultural",
+      "no",
+      "centro"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "culturais"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_2)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_4_DIFF",
+    "pattern": [
+      "houveram",
+      "muitos",
+      "problemas"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Houve"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_4)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_8_DIFF",
+    "pattern": [
+      "sempre",
+      "se",
+      "preocupou",
+      "com",
+      "a"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "preocuparam"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_8)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_10_DIFF",
+    "pattern": [
+      "os",
+      "obstáculos",
+      "surja",
+      "a",
+      "equipe"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "surjam"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_10)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_13_DIFF",
+    "pattern": [
+      "os",
+      "dados",
+      "coletado",
+      "indicam",
+      "uma"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "coletados"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_13)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_14_DIFF",
+    "pattern": [
+      "eles",
+      "se",
+      "importa",
+      "com",
+      "a"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "importam"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_14)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_18_DIFF",
+    "pattern": [
+      "os",
+      "pesquisadores",
+      "analisou",
+      "os",
+      "dados"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "analisaram"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_18)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_20_DIFF",
+    "pattern": [
+      "foram",
+      "tomadas",
+      "era",
+      "as",
+      "mais"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "eram"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_13_DIFF",
+    "pattern": [
+      "pode",
+      "viajar",
+      "há",
+      "trabalho",
+      "este"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "a"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_13)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_15_DIFF",
+    "pattern": [
+      "está",
+      "tentando",
+      "concerar",
+      "o",
+      "carro"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "consertar"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_15)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_ANUNCIOS_20_DIFF",
+    "pattern": [
+      "ultimas",
+      "unidades",
+      "do"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Últimas"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (anuncios_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMOFONOS_15_DIFF",
+    "pattern": [
+      "do",
+      "que",
+      "aviam",
+      "lhe",
+      "falado"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "haviam"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homofonos_15)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CONTEXTO_08_DIFF",
+    "pattern": [
+      "isso",
+      "a",
+      "importancia",
+      "de",
+      "um"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "importância"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (contexto_08)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_ANUNCIOS_04_DIFF",
+    "pattern": [
+      "e",
+      "maciez",
+      "inigualavel",
+      "compre",
+      "o"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "inigualáveis"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (anuncios_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_05_DIFF",
+    "pattern": [
+      "ele",
+      "imergiu",
+      "da",
+      "água"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "emergiu"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con_05)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CON_06_DIFF",
+    "pattern": [
+      "os",
+      "imigrantes",
+      "foram",
+      "expulsos"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "emigrantes"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (con_06)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_07_DIFF",
+    "pattern": [
+      "você",
+      "vês",
+      "o",
+      "futuro"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "vê"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom_07)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_09_DIFF",
+    "pattern": [
+      "ele",
+      "foi",
+      "tachado",
+      "de",
+      "covarde"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "taxado"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom_09)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_ORT_29_DIFF",
+    "pattern": [
+      "equipe",
+      "de",
+      "desinsetsção",
+      "chegará",
+      "às"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "desinsetização"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ort-29)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_08_DIFF",
+    "pattern": [
+      "vossa",
+      "excelência",
+      "deveis",
+      "decidir",
+      "sobre"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "deve"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-08)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_13_ERR_DIFF",
+    "pattern": [
+      "meio-dia",
+      "e",
+      "meio",
+      "atrasando",
+      "o"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "meia"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-13-err)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_14_DIFF",
+    "pattern": [
+      "não",
+      "lhes",
+      "vi",
+      "durante"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "os"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-14)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_16_DIFF",
+    "pattern": [
+      "nós",
+      "quem",
+      "trouxemos",
+      "os",
+      "equipamentos"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "trouxe"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-16)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_26_DIFF",
+    "pattern": [
+      "crianças",
+      "parecem",
+      "estarem",
+      "cansadas",
+      "depois"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "estar"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-26)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_28_DIFF",
+    "pattern": [
+      "de",
+      "manifestantes",
+      "caminharam",
+      "em",
+      "direção"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "caminhou"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-28)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_06_DIFF",
+    "pattern": [
+      "o",
+      "mal",
+      "funcionário",
+      "foi"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "mau"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-06)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_05_BASTANTE_BASTANTES_DIFF",
+    "pattern": [
+      "pois",
+      "realizaram",
+      "bastante",
+      "tarefas",
+      "hoje"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "bastantes"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-05-bastante-bastantes)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_11_PRECISA_SE_DIFF",
+    "pattern": [
+      "precisam-se",
+      "de",
+      "operários"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Precisa-se"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-11-precisa-se)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_07_ACERCA_A_CERCA_DIFF",
+    "pattern": [
+      "discutimos",
+      "a",
+      "cerca",
+      "de"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "por"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-07-acerca-a-cerca)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_17_ASSENTO_ACENTO_DIFF",
+    "pattern": [
+      "não",
+      "recebe",
+      "assento",
+      "circunflexo",
+      "segundo"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "acento"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-17-assento-acento)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_20_FLUIR_FRUIR_DIFF",
+    "pattern": [
+      "devemos",
+      "fluir",
+      "dos",
+      "benefícios"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "fruir"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-20-fluir-fruir)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_23_MANDADO_MANDATO_DIFF",
+    "pattern": [
+      "expediu",
+      "um",
+      "mandato",
+      "de",
+      "busca"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "mandado"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-23-mandado-mandato)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_24_PACO_PASSO_DIFF",
+    "pattern": [
+      "ocorreu",
+      "no",
+      "passo",
+      "municipal",
+      "de"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "Paço"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-24-paço-passo)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HIF_27_DIFF",
+    "pattern": [
+      "o",
+      "ultra-passado",
+      "modelo",
+      "de"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "ultrapassado"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hif_27)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_21_DIFF",
+    "pattern": [
+      "mais",
+      "me",
+      "ajuda"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "ajudam"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx_21)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_26_DIFF",
+    "pattern": [
+      "eu",
+      "não",
+      "lhe",
+      "vi",
+      "no"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "o"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx_26)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_05_DIFF",
+    "pattern": [
+      "dos",
+      "candidatos",
+      "desistiram",
+      "da",
+      "prova"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "desistiu"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-05)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_1_DIFF",
+    "pattern": [
+      "o",
+      "cavaleiro",
+      "foi",
+      "muito"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "cavalheiro"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-1)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOMO_CASSAR_MANDATO_DIFF",
+    "pattern": [
+      "tribunal",
+      "decidiu",
+      "caçar",
+      "o",
+      "mandato"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "cassar"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (homo-cassar-mandato)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_06_DIFF",
+    "pattern": [
+      "eles",
+      "estão",
+      "meios",
+      "cansados",
+      "depois"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "meio"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-06)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_11_DIFF",
+    "pattern": [
+      "o",
+      "seu",
+      "mandado",
+      "até",
+      "o"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "mandato"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom_11)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_16_DIFF",
+    "pattern": [
+      "o",
+      "concertou",
+      "do",
+      "meu"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "conserto"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom_16)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_20_DIFF",
+    "pattern": [
+      "o",
+      "tráfego",
+      "de",
+      "drogas"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "tráfico"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom_20)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_26_DIFF",
+    "pattern": [
+      "o",
+      "comprimento",
+      "de",
+      "todas"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "cumprimento"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom_26)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_30_DIFF",
+    "pattern": [
+      "o",
+      "fuzível",
+      "do",
+      "carro"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "fusível"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom_30)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_TEC_04_DIFF",
+    "pattern": [
+      "impactou",
+      "o",
+      "indice",
+      "de",
+      "preços"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "índice"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (tec_04)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_05_DIFF",
+    "pattern": [
+      "esqueci",
+      "de",
+      "que"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Esqueci-me"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-05)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_08_DIFF",
+    "pattern": [
+      "chegamos",
+      "no",
+      "aeroporto",
+      "com"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "ao"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-08)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_CTX_28_DIFF",
+    "pattern": [
+      "informei-lhe",
+      "de",
+      "que"
+    ],
+    "targetIndex": 0,
+    "replacements": [
+      "Informei-o"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (ctx-28)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_HOM_26_DIFF",
+    "pattern": [
+      "poder",
+      "de",
+      "descriminar",
+      "a",
+      "pena"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "discricionar"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (hom-26)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_TEC_17_DIFF",
+    "pattern": [
+      "tempo",
+      "de",
+      "downtime",
+      "do",
+      "servidor"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "inatividade"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (tec-17)."
+  },
+  {
+    "id": "PT_BR_PROOF_CONTEXT_TEC_23_DIFF",
+    "pattern": [
+      "o",
+      "processamento",
+      "assincrono",
+      "permite",
+      "que"
+    ],
+    "targetIndex": 2,
+    "replacements": [
+      "assíncrono"
+    ],
+    "message": "Nesse contexto, a forma esperada é outra.",
+    "description": "Regra contextual curta derivada de falha observada no proof (tec-23)."
+  }
+]

@@ -211,6 +211,13 @@ async function main() {
     }
 
     if (delta <= 0) {
+      await Promise.all([
+        writeJson(args.replacementsPath, currentReplacements),
+        writeJson(args.phraseRulesPath, currentPhraseRules),
+        writeJson(args.contextRulesPath, currentContextRules)
+      ]);
+      console.log(`Ciclo ${cycle}: rollback dos assets do proof-pardau por delta nao positivo.`);
+      await runCommand("npm", ["run", "build"], "build rollback");
       console.log(`Ciclo ${cycle}: sem ganho adicional. Interrompendo para revisar os candidatos gerados.`);
       break;
     }

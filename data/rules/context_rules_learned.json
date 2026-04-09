@@ -28,6 +28,20 @@
     "description": "Regra aprendida a partir da base know (anun-parcelas-sem-juros)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-02-avista-prazo_8",
+    "pattern": [
+      "10x",
+      "s",
+      "juros"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "sem"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-02-avista-prazo)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_anun-03_5",
     "pattern": [
       "12",
@@ -798,7 +812,7 @@
     "description": "Regra aprendida a partir da base know (homo-sela-cavalo)."
   },
   {
-    "id": "PT_BR_CONTEXT_LEARNED_hom_04_1",
+    "id": "PT_BR_CONTEXT_LEARNED_homo_sessao_secao_cessao_8",
     "pattern": [
       "a",
       "cessão",
@@ -809,7 +823,7 @@
       "sessão"
     ],
     "message": "A palavra pode não combinar com este contexto.",
-    "description": "Regra aprendida a partir da base know (hom_04)."
+    "description": "Regra aprendida a partir da base know (homo_sessao_secao_cessao)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_anuncios_10_3",
@@ -1862,6 +1876,20 @@
     "description": "Regra aprendida a partir da base know (ortografia-excecao)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-07_10",
+    "pattern": [
+      "a",
+      "execusão",
+      "correta"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "execução"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-07)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acentuacao_09_7",
     "pattern": [
       "a",
@@ -2128,6 +2156,20 @@
     "description": "Regra aprendida a partir da base know (ort-31)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-08_9",
+    "pattern": [
+      "a",
+      "historia",
+      "da"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "história"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-08)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_ace_08_1",
     "pattern": [
       "a",
@@ -2238,6 +2280,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (texto_tecnico_01)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-02_1",
+    "pattern": [
+      "a",
+      "implementacao",
+      "das"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "implementação"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-02)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_tec_03_1",
@@ -2814,6 +2870,20 @@
     "description": "Regra aprendida a partir da base know (tec-metodologia)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-01_1",
+    "pattern": [
+      "a",
+      "metodolojia",
+      "de"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "metodologia"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-01)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_ort-20_1",
     "pattern": [
       "a",
@@ -2910,6 +2980,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acen-06)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-02_2",
+    "pattern": [
+      "a",
+      "notissia",
+      "com"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "notícia"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-02)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_orto-23_1",
@@ -3500,6 +3584,34 @@
     "description": "Regra aprendida a partir da base know (acent_raiz_raizes)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-06_7",
+    "pattern": [
+      "a",
+      "realisação",
+      "de"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "realização"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-06)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_hifen-04_1",
+    "pattern": [
+      "a",
+      "recem",
+      "nascida"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "recém"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (hifen-04)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_tecn-02_1",
     "pattern": [
       "a",
@@ -3878,6 +3990,20 @@
     "description": "Regra aprendida a partir da base know (tec_8)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-07-susp-pret_1",
+    "pattern": [
+      "a",
+      "suspenção",
+      "do"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "suspensão"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-07-susp-pret)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acentuacao_7_18",
     "pattern": [
       "a",
@@ -3904,6 +4030,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (ort-028)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-06-eng-toler_1",
+    "pattern": [
+      "a",
+      "toleráncia",
+      "da"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "tolerância"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-06-eng-toler)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_ort-12_1",
@@ -4044,6 +4184,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (homo-viajem-subst)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-05_8",
+    "pattern": [
+      "a",
+      "vitima",
+      "em"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "vítima"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-05)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_acen-30_1",
@@ -4956,6 +5110,20 @@
     "description": "Regra aprendida a partir da base know (homofonos_012)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-03_8",
+    "pattern": [
+      "aqui",
+      "nao",
+      "perca"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "não"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-03)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_hifen_01_9",
     "pattern": [
       "ar",
@@ -5290,6 +5458,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acentuacao_06)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-07_9",
+    "pattern": [
+      "as",
+      "ultimas",
+      "novidades"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "últimas"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-07)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_orto_vicissitude_concessao_1",
@@ -5852,6 +6034,20 @@
     "description": "Regra aprendida a partir da base know (acento-3)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-08_5",
+    "pattern": [
+      "bastante",
+      "voce",
+      "sabe"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "você"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-08)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_tec-06_4",
     "pattern": [
       "bateria",
@@ -5864,6 +6060,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (tec-06)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-02_15",
+    "pattern": [
+      "bem",
+      "dificil",
+      "controlar"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "difícil"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-02)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_acentuacao_02_14",
@@ -6594,6 +6804,20 @@
     "description": "Regra aprendida a partir da base know (anun-satisfacao-cliente)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-08_2",
+    "pattern": [
+      "clientes",
+      "tem",
+      "reclamado"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "têm"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-08)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_anun_05_1",
     "pattern": [
       "clique",
@@ -6902,6 +7126,20 @@
     "description": "Regra aprendida a partir da base know (orto-21)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-05_5",
+    "pattern": [
+      "com",
+      "perspicassia",
+      "deixando"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "perspicácia"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-05)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acent_06_8",
     "pattern": [
       "com",
@@ -7138,6 +7376,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (homo-mau-mal-03)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_hom-01-mau-mal_8",
+    "pattern": [
+      "comportou",
+      "mau",
+      "na"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "mal"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (hom-01-mau-mal)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_ortografia_07_8",
@@ -8106,6 +8358,20 @@
     "description": "Regra aprendida a partir da base know (hif-08-semi-novo)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-06_6",
+    "pattern": [
+      "de",
+      "contingencia",
+      "é"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "contingência"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-06)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_anuncios_17_2",
     "pattern": [
       "de",
@@ -8188,6 +8454,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acentuacao_07)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-02_9",
+    "pattern": [
+      "de",
+      "disconto",
+      "e"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "desconto"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-02)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_anun-liquidacao-estoque_7",
@@ -8680,6 +8960,20 @@
     "description": "Regra aprendida a partir da base know (tecnico-03)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-05_3",
+    "pattern": [
+      "de",
+      "inteligencia",
+      "artificial"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "inteligência"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-05)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_tec_03_8",
     "pattern": [
       "de",
@@ -8860,6 +9154,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (ortografia_011)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-08_14",
+    "pattern": [
+      "de",
+      "obcessão",
+      "pelo"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "obsessão"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-08)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_hifen_08_3",
@@ -9182,6 +9490,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acent-03)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-07-bau-saude_9",
+    "pattern": [
+      "de",
+      "saude",
+      "pública"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "saúde"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-07-bau-saude)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_ortografia_008_6",
@@ -10668,6 +10990,20 @@
     "description": "Regra aprendida a partir da base know (orto_obcecado_ansioso)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-03-para-argui_5",
+    "pattern": [
+      "e",
+      "arguí",
+      "que"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "argui"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-03-para-argui)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_hifen_04_15",
     "pattern": [
       "e",
@@ -10722,6 +11058,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (tecn-28)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-04_2",
+    "pattern": [
+      "é",
+      "concevivel",
+      "que"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "concebível"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-04)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_orto-06_8",
@@ -11032,6 +11382,20 @@
     "description": "Regra aprendida a partir da base know (acentuacao_06)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-01_5",
+    "pattern": [
+      "é",
+      "imprescindivel",
+      "para"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "imprescindível"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-01)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_ort_03_7",
     "pattern": [
       "é",
@@ -11058,6 +11422,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acentuacao_10)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-06_4",
+    "pattern": [
+      "é",
+      "impresindivel",
+      "mas"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "imprescindível"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-06)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_orto_03_1",
@@ -11480,6 +11858,20 @@
     "description": "Regra aprendida a partir da base know (ace-pera)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-02_1",
+    "pattern": [
+      "é",
+      "pessimo",
+      "ver"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "péssimo"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-02)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acent_02_1",
     "pattern": [
       "é",
@@ -11648,6 +12040,20 @@
     "description": "Regra aprendida a partir da base know (acent-04)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-06_11",
+    "pattern": [
+      "e",
+      "tambem",
+      "ser"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "também"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-06)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_ortografia_19_5",
     "pattern": [
       "é",
@@ -11674,6 +12080,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (ortografia_017)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-05-dist-crase_2",
+    "pattern": [
+      "educação",
+      "á",
+      "distância"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "a"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-05-dist-crase)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_texto_tecnico_17_9",
@@ -12390,6 +12810,20 @@
     "description": "Regra aprendida a partir da base know (acent_veem_leem)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-04-vem-creem_1",
+    "pattern": [
+      "eles",
+      "vem",
+      "aqui"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "vêm"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-04-vem-creem)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acentuacao_09_1",
     "pattern": [
       "eles",
@@ -12514,6 +12948,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (texto_tecnico_03)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-04_8",
+    "pattern": [
+      "em",
+      "cenarios",
+      "de"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "cenários"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-04)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_homo-xeque_4",
@@ -13116,6 +13564,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (orto-24)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-07_1",
+    "pattern": [
+      "era",
+      "nescessário",
+      "analisar"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "necessário"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-07)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_orto-pretensioso_3",
@@ -14068,6 +14530,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (ort-10-err)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-03-bene-prev_2",
+    "pattern": [
+      "evento",
+      "beneficiente",
+      "atende"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "beneficente"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-03-bene-prev)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_orto_06_2",
@@ -15820,6 +16296,20 @@
     "description": "Regra aprendida a partir da base know (ortografia_004)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-04-exce-ascen_2",
+    "pattern": [
+      "houve",
+      "excesção",
+      "na"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "exceção"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-04-exce-ascen)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acentuacao_04_11",
     "pattern": [
       "humano",
@@ -16604,6 +17094,20 @@
     "description": "Regra aprendida a partir da base know (texto_tecnico_09)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ctx-01-onde-aonde_5",
+    "pattern": [
+      "lugar",
+      "onde",
+      "eu"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "aonde"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ctx-01-onde-aonde)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_anun-proximo_3",
     "pattern": [
       "luxo",
@@ -16870,6 +17374,20 @@
     "description": "Regra aprendida a partir da base know (hom-30)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-04-acad-atraves_7",
+    "pattern": [
+      "mas",
+      "contêm",
+      "falhas"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "contém"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-04-acad-atraves)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_ctx-03_4",
     "pattern": [
       "mas",
@@ -17078,6 +17596,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (anu-26)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-08_5",
+    "pattern": [
+      "melhor",
+      "preçco",
+      "da"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "preço"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-08)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_anunc_03_7",
@@ -17934,6 +18466,20 @@
     "description": "Regra aprendida a partir da base know (acent-20)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_hif-07-inter-pos_8",
+    "pattern": [
+      "na",
+      "pos",
+      "graduação"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "pós"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (hif-07-inter-pos)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_hif-pro-reitoria_4",
     "pattern": [
       "na",
@@ -18494,6 +19040,20 @@
     "description": "Regra aprendida a partir da base know (homofonos_001)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-07_16",
+    "pattern": [
+      "nele",
+      "la",
+      "no"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "lá"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-07)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_orto-excecao_3",
     "pattern": [
       "nenhuma",
@@ -18828,6 +19388,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (orto_04)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-07_6",
+    "pattern": [
+      "nossa",
+      "newslleter",
+      "com"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "newsletter"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-07)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_anun-oferta-pl_3",
@@ -19920,6 +20494,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acentuacao_07)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-05-corp-compli_1",
+    "pattern": [
+      "o",
+      "compliânce",
+      "exige"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "compliance"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-05-corp-compli)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_ortografia_2_5",
@@ -21322,6 +21910,20 @@
     "description": "Regra aprendida a partir da base know (ort_pajé_01)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-05_11",
+    "pattern": [
+      "o",
+      "palacio",
+      "era"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "palácio"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-05)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acen-57_1",
     "pattern": [
       "o",
@@ -22442,6 +23044,20 @@
     "description": "Regra aprendida a partir da base know (ace-050)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-02-it-software_1",
+    "pattern": [
+      "o",
+      "sofware",
+      "apresentou"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "software"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-02-it-software)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_tec-01_1",
     "pattern": [
       "o",
@@ -22932,6 +23548,20 @@
     "description": "Regra aprendida a partir da base know (acento-03)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-02-enjoo-voo_6",
+    "pattern": [
+      "o",
+      "vôo",
+      "passa"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "voo"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-02-enjoo-voo)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acent_voo_enjoo_2",
     "pattern": [
       "o",
@@ -23112,6 +23742,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (cont-ha-cerca-de)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-05-dist-crase_7",
+    "pattern": [
+      "oferecida",
+      "à",
+      "todas"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "a"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-05-dist-crase)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_anun-01_1",
@@ -23546,6 +24190,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (ace-04-itens-hifens)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-05_1",
+    "pattern": [
+      "os",
+      "juizes",
+      "da"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "juízes"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-05)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_acent_juiz_juizes_4",
@@ -24906,6 +25564,20 @@
     "description": "Regra aprendida a partir da base know (acentuacao_007)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-04-vem-creem_4",
+    "pattern": [
+      "porque",
+      "crêem",
+      "em"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "creem"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-04-vem-creem)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_texto_tecnico_05_6",
     "pattern": [
       "possível",
@@ -25368,6 +26040,20 @@
     "description": "Regra aprendida a partir da base know (hom-12-ratificar-retificar)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-02-avista-prazo_1",
+    "pattern": [
+      "preços",
+      "á",
+      "vista"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "à"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-02-avista-prazo)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_anu-7_3",
     "pattern": [
       "preços",
@@ -25548,6 +26234,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (orto_05)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-05-reiv-pix_2",
+    "pattern": [
+      "pretendem",
+      "reinvindicar",
+      "a"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "reivindicar"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-05-reiv-pix)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_orto-07_3",
@@ -26166,6 +26866,20 @@
     "description": "Regra aprendida a partir da base know (anuncios_03)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-07_13",
+    "pattern": [
+      "promoções",
+      "esclusivas",
+      "para"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "exclusivas"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-07)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_acent_argui_averigue_2",
     "pattern": [
       "promotor",
@@ -26248,6 +26962,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (texto_tecnico_016)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-03-bene-prev_6",
+    "pattern": [
+      "público",
+      "previlegiado",
+      "da"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "privilegiado"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-03-bene-prev)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_anuncios_18_5",
@@ -26460,6 +27188,20 @@
     "description": "Regra aprendida a partir da base know (contx_ha_a_tempo)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-05-corp-compli_4",
+    "pattern": [
+      "que",
+      "hajam",
+      "auditorias"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "haja"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-05-corp-compli)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_ctx-24_3",
     "pattern": [
       "que",
@@ -26500,6 +27242,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acentuacao_10)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_tec-02-it-software_5",
+    "pattern": [
+      "que",
+      "paralizaram",
+      "o"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "paralisaram"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (tec-02-it-software)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_tecnico-06_9",
@@ -26558,6 +27314,20 @@
     "description": "Regra aprendida a partir da base know (acent-02)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-01_6",
+    "pattern": [
+      "que",
+      "tambem",
+      "é"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "também"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-01)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_anuncios_13_10",
     "pattern": [
       "que",
@@ -26612,6 +27382,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (hom-tachar)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_hom-08-mas-mais_7",
+    "pattern": [
+      "quero",
+      "mas",
+      "açúcar"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "mais"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (hom-08-mas-mais)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_hom-04_3",
@@ -26682,6 +27466,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (anuncios_014)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-04-exce-ascen_5",
+    "pattern": [
+      "rápida",
+      "ascenção",
+      "da"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "ascensão"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-04-exce-ascen)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_ortografia_11_4",
@@ -26948,6 +27746,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (texto_tecnico_06)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-01-ideia-heroi_6",
+    "pattern": [
+      "roteiro",
+      "heróico",
+      "do"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "heroico"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-01-ideia-heroi)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_homofonos_004_11",
@@ -27242,20 +28054,6 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (tecn-01)."
-  },
-  {
-    "id": "PT_BR_CONTEXT_LEARNED_ctx-06-anexo_3",
-    "pattern": [
-      "seguem",
-      "anexo",
-      "ao"
-    ],
-    "targetIndex": 1,
-    "replacements": [
-      "anexas"
-    ],
-    "message": "A palavra pode não combinar com este contexto.",
-    "description": "Regra aprendida a partir da base know (ctx-06-anexo)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_con_5_1",
@@ -28028,6 +28826,20 @@
     "description": "Regra aprendida a partir da base know (homofonos_004)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-02-enjoo-voo_1",
+    "pattern": [
+      "sinto",
+      "enjôo",
+      "toda"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "enjoo"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-02-enjoo-voo)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_tec-01_4",
     "pattern": [
       "sistema",
@@ -28096,6 +28908,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acentuacao_11)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-05_12",
+    "pattern": [
+      "situação",
+      "previlegiada",
+      "por"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "privilegiada"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-05)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_anuncios_01_5",
@@ -28446,6 +29272,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (ortografia_03)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-06-obs-prazer_1",
+    "pattern": [
+      "sua",
+      "obseção",
+      "por"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "obsessão"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-06-obs-prazer)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_ortografia_18_1",
@@ -28980,20 +29820,6 @@
     "description": "Regra aprendida a partir da base know (ort-09)."
   },
   {
-    "id": "PT_BR_CONTEXT_LEARNED_ort-16_3",
-    "pattern": [
-      "tentou",
-      "descriminar",
-      "a"
-    ],
-    "targetIndex": 1,
-    "replacements": [
-      "descriminalizar"
-    ],
-    "message": "A palavra pode não combinar com este contexto.",
-    "description": "Regra aprendida a partir da base know (ort-16)."
-  },
-  {
     "id": "PT_BR_CONTEXT_LEARNED_acentuacao_12_3",
     "pattern": [
       "ter",
@@ -29034,6 +29860,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (acentuacao_05)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-06_5",
+    "pattern": [
+      "ter",
+      "exito",
+      "na"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "êxito"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-06)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_texto_tecnico_003_14",
@@ -29190,6 +30030,20 @@
     "description": "Regra aprendida a partir da base know (ortografia_01)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ort-06-obs-prazer_5",
+    "pattern": [
+      "trabalho",
+      "praseroso",
+      "compromete"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "prazeroso"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ort-06-obs-prazer)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_anuncios_10_14",
     "pattern": [
       "trainers",
@@ -29258,6 +30112,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (hom-02-mau-mal)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-07_10",
+    "pattern": [
+      "tratamento",
+      "ate",
+      "o"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "até"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-07)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_tec_29_2",
@@ -29680,6 +30548,20 @@
     "description": "Regra aprendida a partir da base know (ort-21)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_acent-05_14",
+    "pattern": [
+      "um",
+      "desperdicio",
+      "de"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "desperdício"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (acent-05)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_ort-22_3",
     "pattern": [
       "um",
@@ -29958,6 +30840,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (homof_04)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_hom-01-mau-mal_3",
+    "pattern": [
+      "um",
+      "mal",
+      "elemento"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "mau"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (hom-01-mau-mal)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_cont-mal-mau_4",
@@ -30560,6 +31456,20 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (ort-18)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_anu-05_5",
+    "pattern": [
+      "uma",
+      "delicia",
+      "que"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "delícia"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (anu-05)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_tec-discriminacao-precos_2",
@@ -31360,6 +32270,20 @@
     "description": "Regra aprendida a partir da base know (orto-paralizar)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_ace-06-por-pode_7",
+    "pattern": [
+      "vai",
+      "por",
+      "o"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "pôr"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (ace-06-por-pode)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_homo-taxar_3",
     "pattern": [
       "vai",
@@ -32088,6 +33012,20 @@
     "description": "Regra aprendida a partir da base know (ctx_crase_lugar_01)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_homof-03_4",
+    "pattern": [
+      "vou",
+      "a",
+      "praia"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "à"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (homof-03)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_hom-11_1",
     "pattern": [
       "vou",
@@ -32340,6 +33278,20 @@
     "description": "Regra aprendida a partir da base know (hom-ratificar)."
   },
   {
+    "id": "PT_BR_CONTEXT_LEARNED_hom-05-senao-se-nao_5",
+    "pattern": [
+      "vou",
+      "senao",
+      "fico"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "senão"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (hom-05-senao-se-nao)."
+  },
+  {
     "id": "PT_BR_CONTEXT_LEARNED_hom-041_1",
     "pattern": [
       "vou",
@@ -32366,5 +33318,19 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (hom_14)."
+  },
+  {
+    "id": "PT_BR_CONTEXT_LEARNED_context-04_11",
+    "pattern": [
+      "voz",
+      "meia",
+      "rouca"
+    ],
+    "targetIndex": 1,
+    "replacements": [
+      "meio"
+    ],
+    "message": "A palavra pode não combinar com este contexto.",
+    "description": "Regra aprendida a partir da base know (context-04)."
   }
 ]
