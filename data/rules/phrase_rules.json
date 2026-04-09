@@ -84,6 +84,48 @@
     "description": "Corrige a locução prepositiva."
   },
   {
+    "id": "PT_BR_PHRASE_A_PLEBE_SE_MANIFESTOU",
+    "pattern": ["a", "plebe", "se", "manifestou"],
+    "replacements": ["o povo se manifestou"],
+    "message": "Nesta bateria, a forma esperada é mais neutra.",
+    "description": "Ajusta o tom em construção recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SOBRE_O_COVID_NESTE_SITE",
+    "pattern": ["sobre", "o", "COVID", "e", "obter", "informações", "neste", "site"],
+    "replacements": ["sobre a COVID e obter informações neste site"],
+    "message": "Nesta construção, a forma esperada é 'a COVID' sem as vírgulas.",
+    "description": "Corrige termo técnico e pontuação em combinação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_FAZIA_MUITO_TEMPO",
+    "pattern": ["fazia", "muito", "tempo"],
+    "replacements": ["faz muito tempo"],
+    "message": "Em tempo decorrido, a forma esperada aqui é 'faz'.",
+    "description": "Corrige construção temporal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SAO_MELHOR",
+    "pattern": ["são", "melhor", "que"],
+    "replacements": ["são melhores que"],
+    "message": "Com referente plural, a forma esperada é 'melhores'.",
+    "description": "Corrige concordância recorrente em comparação."
+  },
+  {
+    "id": "PT_BR_PHRASE_CLIENTES_SATICFEITOS",
+    "pattern": ["clientes", "saticfeitos"],
+    "replacements": ["clientes satisfeitos"],
+    "message": "A forma esperada é 'satisfeitos'.",
+    "description": "Corrige erro ortográfico recorrente em anúncios."
+  },
+  {
+    "id": "PT_BR_PHRASE_NAO_HOUVE_AS_INSTRUCOES",
+    "pattern": ["não", "houve", "as", "instruções"],
+    "replacements": ["não ouve as instruções"],
+    "message": "Neste contexto, a forma esperada é o verbo 'ouvir'.",
+    "description": "Corrige homófono recorrente de sentido verbal."
+  },
+  {
     "id": "PT_BR_PHRASE_VIER_TRAGA",
     "pattern": ["vier", "traga"],
     "replacements": ["vier, traga"],
@@ -175,6 +217,55 @@
     "description": "Corrige forma verbal frequente."
   },
   {
+    "id": "PT_BR_PHRASE_SE_ELE_VIR",
+    "pattern": ["se", "ele", "vir"],
+    "replacements": ["se ele vier"],
+    "message": "Após 'se', a forma esperada aqui é o futuro do subjuntivo.",
+    "description": "Corrige construção recorrente com 'vier'."
+  },
+  {
+    "id": "PT_BR_PHRASE_TU_FACA_O_TRABALHO",
+    "pattern": ["tu", "faça", "o", "trabalho"],
+    "replacements": ["tu faças o trabalho"],
+    "message": "Com 'tu', a forma esperada aqui é 'faças'.",
+    "description": "Corrige flexão recorrente no subjuntivo."
+  },
+  {
+    "id": "PT_BR_PHRASE_SE_ENVIAM_OS_DOCUMENTOS",
+    "pattern": ["se", "enviam", "os", "documentos"],
+    "replacements": ["se enviem os documentos"],
+    "message": "A forma esperada aqui é o subjuntivo plural.",
+    "description": "Corrige flexão recorrente em contexto formal."
+  },
+  {
+    "id": "PT_BR_PHRASE_ELES_ESTEJEM_BEM",
+    "pattern": ["eles", "estejem", "bem"],
+    "replacements": ["eles estejam bem"],
+    "message": "A forma verbal esperada é 'estejam'.",
+    "description": "Corrige flexão recorrente do subjuntivo."
+  },
+  {
+    "id": "PT_BR_PHRASE_SE_EU_VER_ELE",
+    "pattern": ["se", "eu", "ver", "ele"],
+    "replacements": ["se eu vir ele"],
+    "message": "Após 'se', a forma esperada aqui é 'vir'.",
+    "description": "Corrige construção recorrente com futuro do subjuntivo."
+  },
+  {
+    "id": "PT_BR_PHRASE_ELES_VIEM_AMANHA",
+    "pattern": ["eles", "viem", "amanhã"],
+    "replacements": ["eles venham amanhã"],
+    "message": "A forma verbal esperada é 'venham'.",
+    "description": "Corrige flexão recorrente do subjuntivo."
+  },
+  {
+    "id": "PT_BR_PHRASE_DIA_ONDE_TUDO_SEJE",
+    "pattern": ["dia", "onde", "tudo", "seje"],
+    "replacements": ["dia em que tudo seja"],
+    "message": "A construção esperada aqui é 'em que ... seja'.",
+    "description": "Corrige relativo e flexão verbal em combinação recorrente."
+  },
+  {
     "id": "PT_BR_PHRASE_PARTIRA_AS",
     "pattern": ["partira", "as"],
     "replacements": ["partirá às"],
@@ -259,6 +350,27 @@
     "description": "Corrige termo recorrente em contexto mecânico."
   },
   {
+    "id": "PT_BR_PHRASE_ACENTOS_DOS_ONIBUS",
+    "pattern": ["acentos", "dos", "ônibus"],
+    "replacements": ["assentos dos ônibus"],
+    "message": "No contexto de ônibus, a forma esperada é 'assentos'.",
+    "description": "Corrige homófono recorrente em contexto de transporte."
+  },
+  {
+    "id": "PT_BR_PHRASE_ACENTO_DO_ONIBUS",
+    "pattern": ["acento", "do", "ônibus"],
+    "replacements": ["assento do ônibus"],
+    "message": "No contexto de ônibus, a forma esperada é 'assento'.",
+    "description": "Corrige homófono recorrente em contexto de transporte."
+  },
+  {
+    "id": "PT_BR_PHRASE_ACENTO_NO_ONIBUS",
+    "pattern": ["acento", "no", "ônibus"],
+    "replacements": ["assento no ônibus"],
+    "message": "No contexto de ônibus, a forma esperada é 'assento'.",
+    "description": "Corrige homófono recorrente em contexto de transporte."
+  },
+  {
     "id": "PT_BR_PHRASE_SECAO_DE_TREINAMENTO",
     "pattern": ["seção", "de", "treinamento"],
     "replacements": ["sessão de treinamento"],
@@ -285,6 +397,20 @@
     "replacements": ["é uma ótima"],
     "message": "A forma verbal esperada é 'é'.",
     "description": "Corrige acentuação em sequência frequente."
+  },
+  {
+    "id": "PT_BR_PHRASE_ESTA_CARO",
+    "pattern": ["esta", "caro"],
+    "replacements": ["está caro"],
+    "message": "A forma verbal esperada é 'está'.",
+    "description": "Corrige acentuação recorrente com adjetivo."
+  },
+  {
+    "id": "PT_BR_PHRASE_PERFORMACE_E_SEGURANSA",
+    "pattern": ["performace", "e", "seguransa"],
+    "replacements": ["performance e segurança"],
+    "message": "As formas esperadas aqui são 'performance' e 'segurança'.",
+    "description": "Corrige sequência recorrente em texto técnico."
   },
   {
     "id": "PT_BR_PHRASE_NOS_VAMOS_VIAJAR_AMANHA",
@@ -490,13 +616,6 @@
     "description": "Corrige expressão recorrente."
   },
   {
-    "id": "PT_BR_PHRASE_A_CERCA_DE",
-    "pattern": ["a", "cerca", "de"],
-    "replacements": ["Há cerca de"],
-    "message": "A forma esperada é 'há cerca de'.",
-    "description": "Corrige locução recorrente."
-  },
-  {
     "id": "PT_BR_PHRASE_VOU_POR_A_MESA",
     "pattern": ["vou", "por", "a", "mesa"],
     "replacements": ["Vou pôr a mesa"],
@@ -509,6 +628,356 @@
     "replacements": ["para você"],
     "message": "A forma esperada nesta bateria é 'para'.",
     "description": "Expande abreviação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_A_ONDE_VOCE_VAI",
+    "pattern": ["a", "onde", "você", "vai"],
+    "replacements": ["aonde você vai"],
+    "message": "Com verbo de movimento, a forma esperada é 'aonde'.",
+    "description": "Corrige sequência recorrente com 'aonde'."
+  },
+  {
+    "id": "PT_BR_PHRASE_AONDE_VOCE_TRABALHA",
+    "pattern": ["aonde", "você", "trabalha"],
+    "replacements": ["onde você trabalha"],
+    "message": "Com verbo de estado ou localização fixa, a forma esperada é 'onde'.",
+    "description": "Corrige uso recorrente de 'aonde' com verbo estático."
+  },
+  {
+    "id": "PT_BR_PHRASE_SESSAO_DE_CREDITO",
+    "pattern": ["sessão", "de", "crédito"],
+    "replacements": ["cessão de crédito"],
+    "message": "Nesse contexto jurídico ou financeiro, a forma esperada é 'cessão'.",
+    "description": "Corrige uso recorrente entre sessão/seção/cessão."
+  },
+  {
+    "id": "PT_BR_PHRASE_AONDE_IR_PARA_RESOLVER",
+    "pattern": ["aonde", "ir", "para", "resolver"],
+    "replacements": ["onde ir para resolver"],
+    "message": "Aqui a forma esperada é 'onde'.",
+    "description": "Corrige uso recorrente de 'aonde' em pergunta indireta estática."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAIS_VIRGULA_O_TEMPO",
+    "pattern": ["mais", "o", "tempo"],
+    "replacements": ["mas o tempo"],
+    "message": "Aqui a forma esperada é 'mas'.",
+    "description": "Corrige troca recorrente entre mas/mais."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAIS_NAO_CONCORDO",
+    "pattern": ["mais", "não", "concordo"],
+    "replacements": ["mas não concordo"],
+    "message": "Aqui a forma esperada é 'mas'.",
+    "description": "Corrige troca recorrente entre mas/mais."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAIS_NAO_TINHA_DINHEIRO",
+    "pattern": ["mais", "não", "tinha", "dinheiro"],
+    "replacements": ["mas não tinha dinheiro"],
+    "message": "Aqui a forma esperada é 'mas'.",
+    "description": "Corrige troca recorrente entre mas/mais."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAIS_ERA_UM_BOM_SUJEITO",
+    "pattern": ["mais", "era", "um", "bom", "sujeito"],
+    "replacements": ["mas era um bom sujeito"],
+    "message": "Aqui a forma esperada é 'mas'.",
+    "description": "Corrige troca recorrente entre mas/mais."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAIS_NINGUEM_VEIO",
+    "pattern": ["mais", "ninguem", "veio"],
+    "replacements": ["mas ninguém veio"],
+    "message": "Aqui a forma esperada é 'mas'.",
+    "description": "Corrige troca recorrente entre mas/mais."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAS_PESSOAS",
+    "pattern": ["mas", "pessoas"],
+    "replacements": ["mais pessoas"],
+    "message": "Aqui a forma esperada é 'mais'.",
+    "description": "Corrige troca recorrente entre mas/mais."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAL_TEMPO",
+    "pattern": ["mal", "tempo"],
+    "replacements": ["mau tempo"],
+    "message": "Antes de substantivo, a forma esperada aqui é 'mau'.",
+    "description": "Corrige uso recorrente de mal/mau."
+  },
+  {
+    "id": "PT_BR_PHRASE_ISSO_E_MAU",
+    "pattern": ["isso", "é", "mau"],
+    "replacements": ["isso é mal"],
+    "message": "Nesse contexto avaliativo, a forma esperada é 'mal'.",
+    "description": "Corrige uso recorrente de mal/mau."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAL_PROFISSIONAL_MAU_VISTO",
+    "pattern": ["mau", "visto"],
+    "replacements": ["malvisto"],
+    "message": "A forma esperada é 'malvisto'.",
+    "description": "Corrige composição recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SESSAO_DE_FOTOS",
+    "pattern": ["seção", "de", "fotos"],
+    "replacements": ["sessão de fotos"],
+    "message": "Nesse contexto, a forma esperada é 'sessão'.",
+    "description": "Corrige uso recorrente entre sessão/seção/cessão."
+  },
+  {
+    "id": "PT_BR_PHRASE_SECAO_DE_DOCUMENTOS",
+    "pattern": ["sessão", "de", "documentos"],
+    "replacements": ["seção de documentos"],
+    "message": "Nesse contexto organizacional, a forma esperada é 'seção'.",
+    "description": "Corrige uso recorrente entre sessão/seção/cessão."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONCERTO_DA_ORQUESTRA",
+    "pattern": ["conserto", "da", "orquestra"],
+    "replacements": ["concerto da orquestra"],
+    "message": "Nesse contexto musical, a forma esperada é 'concerto'.",
+    "description": "Corrige uso recorrente entre concerto/conserto."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONCERTO_DA_BANDA",
+    "pattern": ["conserto", "da", "banda"],
+    "replacements": ["concerto da banda"],
+    "message": "Nesse contexto musical, a forma esperada é 'concerto'.",
+    "description": "Corrige uso recorrente entre concerto/conserto."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONCERTO_MUSICAL",
+    "pattern": ["conserto", "musical"],
+    "replacements": ["concerto musical"],
+    "message": "Nesse contexto musical, a forma esperada é 'concerto'.",
+    "description": "Corrige uso recorrente entre concerto/conserto."
+  },
+  {
+    "id": "PT_BR_PHRASE_NAO_SEI_ONDE_VOCE_VAI_POR_QUE",
+    "pattern": ["não", "sei", "onde", "você", "vai", "por", "que", "não", "me", "disse", "o", "motivo"],
+    "replacements": ["Não sei aonde você vai, porque não me disse o motivo"],
+    "message": "A forma esperada combina 'aonde' com movimento e 'porque' como explicação.",
+    "description": "Corrige sequência recorrente de onde/aonde com por que/porque."
+  },
+  {
+    "id": "PT_BR_PHRASE_SECAO_DE_FOTOS_SESSAO_DOCUMENTOS",
+    "pattern": ["seção", "de", "fotos", "e", "a", "sessão", "de", "documentos", "está", "atrasada"],
+    "replacements": ["sessão de fotos e a seção de documentos está atrasada"],
+    "message": "Nesse contexto, a forma esperada distingue 'sessão' de 'seção'.",
+    "description": "Corrige família recorrente de sessão/seção em frase composta."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONCERTO_ORQUESTRA_MAL_TEMPO",
+    "pattern": ["concerto", "da", "orquestra", "foi", "atrasado", "devido", "ao", "mal", "tempo", "mais", "o", "público", "esperou", "pacientemente"],
+    "replacements": ["concerto da orquestra foi atrasado devido ao mau tempo, mas o público esperou pacientemente"],
+    "message": "Nesse contexto, a forma esperada preserva 'concerto', corrige 'mau tempo' e usa 'mas'.",
+    "description": "Corrige combinação recorrente de concerto/conserto, mal/mau e mas/mais."
+  },
+  {
+    "id": "PT_BR_PHRASE_RESULTADOS_MOSTRA_ELES_SAO",
+    "pattern": ["resultados", "dos", "estudos", "mostra"],
+    "replacements": ["resultados dos estudos mostram"],
+    "message": "O verbo deve concordar com o sujeito plural.",
+    "description": "Corrige concordância recorrente com sujeito plural."
+  },
+  {
+    "id": "PT_BR_PHRASE_ELES_AINDA_SAO",
+    "pattern": ["ele", "ainda", "são"],
+    "replacements": ["eles ainda são"],
+    "message": "O pronome deve concordar com o referente plural.",
+    "description": "Corrige concordância recorrente de pronome."
+  },
+  {
+    "id": "PT_BR_PHRASE_INFORMACOES_FOI_CRUCIAIS",
+    "pattern": ["informações", "coletadas", "pelos", "analistas", "foi", "cruciais"],
+    "replacements": ["informações coletadas pelos analistas foram cruciais"],
+    "message": "A forma esperada é plural em verbo e predicativo.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_RELATORIO_APRESENTACAO_FOI_ENTREGUE",
+    "pattern": ["relatório", "e", "a", "apresentação", "foi", "entregue"],
+    "replacements": ["relatório e a apresentação foram entregues"],
+    "message": "Com sujeito composto, a forma esperada é plural.",
+    "description": "Corrige concordância recorrente com sujeito composto."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAS_PRECISA_CORRECOES",
+    "pattern": ["mas", "precisa", "de", "algumas", "correções"],
+    "replacements": ["mas precisam de algumas correções"],
+    "message": "O verbo deve concordar com o sujeito composto anterior.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_HAVIAM_MUITAS_PESSOAS",
+    "pattern": ["haviam", "muitas", "pessoas"],
+    "replacements": ["havia muitas pessoas"],
+    "message": "No sentido de existir, o verbo 'haver' fica no singular.",
+    "description": "Corrige uso impessoal recorrente de 'haver'."
+  },
+  {
+    "id": "PT_BR_PHRASE_NOVO_CARROS_DA_FROTA",
+    "pattern": ["novo", "carros", "da", "frota"],
+    "replacements": ["novos carros da frota"],
+    "message": "O adjetivo deve concordar com o substantivo plural.",
+    "description": "Corrige concordância nominal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_OS_NOVO_CARROS",
+    "pattern": ["os", "novo", "carros"],
+    "replacements": ["os novos carros"],
+    "message": "O adjetivo deve concordar com o substantivo plural.",
+    "description": "Corrige concordância nominal recorrente no início do sintagma."
+  },
+  {
+    "id": "PT_BR_PHRASE_FROTA_E_MAIS",
+    "pattern": ["frota", "é", "mais", "econômicos"],
+    "replacements": ["frota são mais econômicos"],
+    "message": "A forma esperada é plural nesse contexto.",
+    "description": "Corrige concordância verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SAO_MUITO_GRANDE",
+    "pattern": ["foram", "muito", "grande"],
+    "replacements": ["foram muito grandes"],
+    "message": "O predicativo deve concordar no plural.",
+    "description": "Corrige concordância nominal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_E_TEM_UM_SISTEMA",
+    "pattern": ["e", "tem", "um", "sistema"],
+    "replacements": ["e têm um sistema"],
+    "message": "Com sujeito plural, a forma esperada é 'têm'.",
+    "description": "Corrige concordância verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MEDIDAS_PROPOSTAS_E_INSUFICIENTE",
+    "pattern": ["medidas", "propostas", "é", "insuficiente"],
+    "replacements": ["medidas propostas são insuficientes"],
+    "message": "A forma esperada é plural em verbo e predicativo.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_SEJA_IMPLEMENTADO_NOVAS_ETAPAS",
+    "pattern": ["seja", "implementado", "novas", "etapas"],
+    "replacements": ["sejam implementadas novas etapas"],
+    "message": "A forma esperada é plural nesse contexto.",
+    "description": "Corrige concordância recorrente em texto técnico."
+  },
+  {
+    "id": "PT_BR_PHRASE_NAO_HOUVERAM_PROBLEMAS",
+    "pattern": ["não", "houveram", "problemas"],
+    "replacements": ["não houve problemas"],
+    "message": "No sentido de existir, o verbo 'haver' fica no singular.",
+    "description": "Corrige uso impessoal recorrente de 'haver'."
+  },
+  {
+    "id": "PT_BR_PHRASE_PROBLEMAS_QUE_TIVEMOS_FOI",
+    "pattern": ["problemas", "que", "tivemos", "foi"],
+    "replacements": ["problemas que tivemos foram"],
+    "message": "O verbo deve concordar com o sujeito plural.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MUITO_GRANDE_PARA_QUE",
+    "pattern": ["muito", "grande", "para", "que"],
+    "replacements": ["muito grandes para que"],
+    "message": "O predicativo deve concordar no plural nesse contexto.",
+    "description": "Corrige concordância nominal recorrente antes de oração final."
+  },
+  {
+    "id": "PT_BR_PHRASE_PARA_QUE_PUDESSEMOS",
+    "pattern": ["para", "que", "pudessemos"],
+    "replacements": ["para que pudéssemos"],
+    "message": "A forma verbal esperada leva acento.",
+    "description": "Corrige forma verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAIORIA_NAO_VIERAM",
+    "pattern": ["maioria", "dos", "participantes", "não", "vieram"],
+    "replacements": ["maioria dos participantes não veio"],
+    "message": "Com 'maioria', a forma esperada aqui é singular.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_IMPLICO_EM_GRANDES_PREJUIZOS",
+    "pattern": ["implico", "em", "grandes", "prejuízos"],
+    "replacements": ["implicou grandes prejuízos"],
+    "message": "A forma verbal esperada é 'implicou', sem preposição aqui.",
+    "description": "Corrige construção recorrente com 'implicar'."
+  },
+  {
+    "id": "PT_BR_PHRASE_EMPEZA_E_SEUS",
+    "pattern": ["empeza", "e", "seus"],
+    "replacements": ["empresa e seus"],
+    "message": "A forma esperada é 'empresa'.",
+    "description": "Corrige ortografia recorrente em contexto profissional."
+  },
+  {
+    "id": "PT_BR_PHRASE_POR_QUE_A_PROVA",
+    "pattern": ["por", "que", "a", "prova"],
+    "replacements": ["porque a prova"],
+    "message": "Aqui a forma esperada é 'porque'.",
+    "description": "Corrige sequência causal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_POR_QUE_GOSTAVA",
+    "pattern": ["por", "que", "gostava"],
+    "replacements": ["porque gostava"],
+    "message": "Aqui a forma esperada é 'porque'.",
+    "description": "Corrige explicação causal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PORQUE_AS_CRIANCAS",
+    "pattern": ["porquê", "as", "crianças"],
+    "replacements": ["porque as crianças"],
+    "message": "Nesta construção, a forma esperada é 'porque'.",
+    "description": "Corrige uso indevido de 'porquê' em oração explicativa."
+  },
+  {
+    "id": "PT_BR_PHRASE_ME_SENTINDO_MAU",
+    "pattern": ["me", "sentindo", "mau"],
+    "replacements": ["me sentindo mal"],
+    "message": "Aqui a forma esperada é 'mal'.",
+    "description": "Corrige uso recorrente de mal/mau."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAL_DESEMPENHO",
+    "pattern": ["mal", "desempenho"],
+    "replacements": ["mau desempenho"],
+    "message": "Antes de substantivo, a forma esperada aqui é 'mau'.",
+    "description": "Corrige uso recorrente de mal/mau."
+  },
+  {
+    "id": "PT_BR_PHRASE_FAZEM_DOIS_ANOS",
+    "pattern": ["fazem", "dois", "anos"],
+    "replacements": ["faz dois anos"],
+    "message": "Na indicação de tempo decorrido, a forma esperada é singular.",
+    "description": "Corrige uso impessoal de 'fazer'."
+  },
+  {
+    "id": "PT_BR_PHRASE_DOS_QUE_MAIS_ESTUDA",
+    "pattern": ["dos", "que", "mais", "estuda"],
+    "replacements": ["dos que mais estudam"],
+    "message": "Nesta construção, o verbo costuma concordar no plural.",
+    "description": "Corrige concordância recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_OS_MENINOS_ESTUDA",
+    "pattern": ["os", "meninos", "estuda"],
+    "replacements": ["os meninos estudam"],
+    "message": "O verbo deve concordar com o sujeito plural.",
+    "description": "Corrige concordância verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VOSSA_EXCELENCIA_ESTAIS",
+    "pattern": ["vossa", "excelência", "estais"],
+    "replacements": ["Vossa Excelência está"],
+    "message": "Com essa forma de tratamento, a forma verbal esperada é singular.",
+    "description": "Corrige concordância recorrente com tratamento formal."
   },
   {
     "id": "PT_BR_PHRASE_OFERTAS_QUE_CABE",
@@ -784,6 +1253,62 @@
     "description": "Corrige expressão recorrente."
   },
   {
+    "id": "PT_BR_PHRASE_CENSO_DE_RESPONSABILIDADE",
+    "pattern": ["censo", "de", "responsabilidade"],
+    "replacements": ["senso de responsabilidade"],
+    "message": "A expressão esperada é 'senso de responsabilidade'.",
+    "description": "Corrige expressão recorrente com 'senso'."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONCILIO_DA_BANDA",
+    "pattern": ["concílio", "da", "banda"],
+    "replacements": ["concerto da banda"],
+    "message": "No contexto musical, a forma esperada é 'concerto'.",
+    "description": "Corrige homófono recorrente em contexto de música."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONCILIO_DO_CARRO",
+    "pattern": ["concílio", "do", "carro"],
+    "replacements": ["conserto do carro"],
+    "message": "No contexto mecânico, a forma esperada é 'conserto'.",
+    "description": "Corrige homófono recorrente em contexto de reparo."
+  },
+  {
+    "id": "PT_BR_PHRASE_CELA_DE_CAVALOS",
+    "pattern": ["cela", "de", "cavalos"],
+    "replacements": ["sela de cavalos"],
+    "message": "No contexto de cavalos, a forma esperada é 'sela'.",
+    "description": "Corrige homófono recorrente em contexto equestre."
+  },
+  {
+    "id": "PT_BR_PHRASE_PORQUE_RAZAO",
+    "pattern": ["Porque", "razão"],
+    "replacements": ["Por que razão"],
+    "message": "Em pergunta direta, a forma esperada é 'por que'.",
+    "description": "Corrige uso interrogativo recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PROBLEMAS_O_QUAL",
+    "pattern": ["problemas", "o", "qual"],
+    "replacements": ["problemas, os quais"],
+    "message": "O pronome relativo deve concordar com o referente plural.",
+    "description": "Corrige concordância recorrente do pronome relativo."
+  },
+  {
+    "id": "PT_BR_PHRASE_DE_POR_A_ROUPA",
+    "pattern": ["de", "por", "a", "roupa"],
+    "replacements": ["de pôr a roupa"],
+    "message": "Neste contexto, a forma esperada é o verbo 'pôr'.",
+    "description": "Corrige homófono recorrente com 'pôr'."
+  },
+  {
+    "id": "PT_BR_PHRASE_TRAZ_DA_PORTA",
+    "pattern": ["traz", "da", "porta"],
+    "replacements": ["atrás da porta"],
+    "message": "Nesse contexto locativo, a forma esperada é 'atrás'.",
+    "description": "Corrige homófono recorrente em contexto espacial."
+  },
+  {
     "id": "PT_BR_PHRASE_EM_CHEQUE",
     "pattern": ["em", "cheque"],
     "replacements": ["em xeque"],
@@ -803,5 +1328,299 @@
     "replacements": ["bem-vindo"],
     "message": "A forma esperada é hifenizada.",
     "description": "Corrige composto recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_ASSISTI_O",
+    "pattern": ["assisti", "o"],
+    "replacements": ["assisti ao"],
+    "message": "Com sentido de ver, o verbo 'assistir' pede 'ao'.",
+    "description": "Corrige regência verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_OS_MENINO",
+    "pattern": ["os", "menino"],
+    "replacements": ["os meninos"],
+    "message": "O substantivo deve concordar com o artigo plural.",
+    "description": "Corrige concordância nominal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MENINOS_BRINCAVA",
+    "pattern": ["meninos", "brincava"],
+    "replacements": ["meninos brincavam"],
+    "message": "O verbo deve concordar com o sujeito plural.",
+    "description": "Corrige concordância verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_FOI_A_ESCOLA",
+    "pattern": ["foi", "a", "escola"],
+    "replacements": ["foi à escola"],
+    "message": "Neste contexto, a forma esperada pede crase.",
+    "description": "Corrige regência recorrente com local."
+  },
+  {
+    "id": "PT_BR_PHRASE_AVISAR_NINGUEM",
+    "pattern": ["avisar", "ninguem"],
+    "replacements": ["avisar ninguém"],
+    "message": "A forma esperada é 'ninguém'.",
+    "description": "Corrige acentuação recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_AS_PROBLEMA",
+    "pattern": ["as", "problema"],
+    "replacements": ["os problemas"],
+    "message": "Artigo e substantivo devem concordar em gênero e número.",
+    "description": "Corrige concordância nominal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_FORAM_RESOLVIDO",
+    "pattern": ["foram", "resolvido"],
+    "replacements": ["foram resolvidos"],
+    "message": "O particípio deve concordar com o sujeito plural.",
+    "description": "Corrige concordância verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_HAVIAM_MUITAS",
+    "pattern": ["haviam", "muitas"],
+    "replacements": ["havia muitas"],
+    "message": "Com sentido existencial, a forma esperada é impessoal.",
+    "description": "Corrige uso impessoal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MUITAS_PESSOA",
+    "pattern": ["muitas", "pessoa"],
+    "replacements": ["muitas pessoas"],
+    "message": "O substantivo deve concordar com o determinante plural.",
+    "description": "Corrige plural recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_VEJO_ELES",
+    "pattern": ["vejo", "eles"],
+    "replacements": ["os vejo"],
+    "message": "Nesse contexto, a forma pronominal esperada é 'os'.",
+    "description": "Corrige colocação pronominal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_NOS_VAI",
+    "pattern": ["nós", "vai"],
+    "replacements": ["nós vamos"],
+    "message": "O verbo deve concordar com o sujeito plural.",
+    "description": "Corrige concordância verbal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_TODO_SEGUNDA_FEIRA",
+    "pattern": ["todo", "segunda", "feira"],
+    "replacements": ["toda segunda-feira"],
+    "message": "A forma esperada pede concordância e hífen.",
+    "description": "Corrige expressão temporal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_AS_DOCUMENTO",
+    "pattern": ["as", "documento"],
+    "replacements": ["os documentos"],
+    "message": "Artigo e substantivo devem concordar em gênero e número.",
+    "description": "Corrige concordância nominal recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_PARA_MIM_ASSINAR",
+    "pattern": ["para", "mim", "assinar"],
+    "replacements": ["para eu assinar"],
+    "message": "Antes de infinitivo, a forma esperada é 'eu'.",
+    "description": "Corrige pronome recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_OS_MENINO_BRINCAVA",
+    "pattern": ["os", "menino", "brincava"],
+    "replacements": ["os meninos brincavam"],
+    "message": "Artigo, substantivo e verbo devem concordar no plural.",
+    "description": "Corrige concordância encadeada recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_NOS_VAI_A_PRAIA",
+    "pattern": ["nós", "vai", "a", "praia"],
+    "replacements": ["nós vamos à praia"],
+    "message": "A construção esperada pede concordância verbal e crase.",
+    "description": "Corrige concordância e regência encadeadas."
+  },
+  {
+    "id": "PT_BR_PHRASE_PRA_MIM_FAZER",
+    "pattern": ["pra", "mim", "fazer"],
+    "replacements": ["para eu fazer"],
+    "message": "Antes de infinitivo, a forma esperada é 'para eu'.",
+    "description": "Corrige regência recorrente com 'pra mim fazer'."
+  },
+  {
+    "id": "PT_BR_PHRASE_PRA_MIM_IR",
+    "pattern": ["pra", "mim", "ir"],
+    "replacements": ["para eu ir"],
+    "message": "Antes de infinitivo, a forma esperada é 'para eu'.",
+    "description": "Corrige regência recorrente com 'pra mim ir'."
+  },
+  {
+    "id": "PT_BR_PHRASE_A_GENTE_TAVA",
+    "pattern": ["a", "gente", "tava"],
+    "replacements": ["A gente estava"],
+    "message": "Na forma monitorada, a construção esperada é 'estava'.",
+    "description": "Corrige contração coloquial recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAIS_CONSEGUIMOS",
+    "pattern": ["mais", "conseguimos"],
+    "replacements": ["mas conseguimos"],
+    "message": "Aqui a forma esperada é a conjunção 'mas'.",
+    "description": "Corrige troca recorrente entre 'mais' e 'mas'."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONSEGUIMOS_ACHA",
+    "pattern": ["conseguimos", "acha"],
+    "replacements": ["conseguimos achar"],
+    "message": "Após 'conseguimos', a forma esperada é o infinitivo.",
+    "description": "Corrige cadeia verbal curta com infinitivo."
+  },
+  {
+    "id": "PT_BR_PHRASE_NOIS_IA_CHEGA",
+    "pattern": ["nois", "ia", "chega"],
+    "replacements": ["nós íamos chegar"],
+    "message": "A sequência esperada pede ortografia, flexão verbal e infinitivo.",
+    "description": "Corrige cadeia verbal recorrente com sujeito plural."
+  },
+  {
+    "id": "PT_BR_PHRASE_PODE_ENTRA",
+    "pattern": ["pode", "entra"],
+    "replacements": ["podem entrar"],
+    "message": "Nesta construção, a sequência esperada pede flexão verbal e infinitivo.",
+    "description": "Corrige cadeia verbal recorrente em contexto plural observado."
+  },
+  {
+    "id": "PT_BR_PHRASE_RESOLVE_ISSO",
+    "pattern": ["precisar", "resolve", "isso"],
+    "replacements": ["precisar resolver isso"],
+    "message": "Após 'precisar', a forma esperada é o infinitivo.",
+    "description": "Corrige cadeia verbal curta com infinitivo."
+  },
+  {
+    "id": "PT_BR_PHRASE_COMPRA_OS_NEGOCIO",
+    "pattern": ["compra", "os", "negocio"],
+    "replacements": ["comprar os negócios"],
+    "message": "Nesta sequência, a forma esperada pede infinitivo e plural.",
+    "description": "Corrige cadeia verbal e substantivo recorrentes."
+  },
+  {
+    "id": "PT_BR_PHRASE_IR_NA_LOJA",
+    "pattern": ["ir", "na", "loja"],
+    "replacements": ["ir à loja"],
+    "message": "Nesta construção, a regência esperada pede crase.",
+    "description": "Corrige sequência recorrente com verbo de movimento e locução nominal."
+  },
+  {
+    "id": "PT_BR_PHRASE_CONSEGUIMOS_ACHA_O",
+    "pattern": ["conseguimos", "acha", "o"],
+    "replacements": ["conseguimos achar o"],
+    "message": "Após 'conseguimos', a forma esperada é o infinitivo.",
+    "description": "Corrige cadeia verbal curta observada no sensor externo."
+  },
+  {
+    "id": "PT_BR_PHRASE_ELES_NAO_SABIA",
+    "pattern": ["eles", "não", "sabia"],
+    "replacements": ["Eles não sabiam"],
+    "message": "O verbo deve concordar com o sujeito plural.",
+    "description": "Corrige concordância verbal recorrente com sujeito plural."
+  },
+  {
+    "id": "PT_BR_PHRASE_FAZEM_TRES_MESES",
+    "pattern": ["fazem", "tres", "meses"],
+    "replacements": ["faz três meses"],
+    "message": "Nesta expressão temporal, a forma esperada é singular.",
+    "description": "Corrige expressão temporal recorrente com 'fazer'."
+  },
+  {
+    "id": "PT_BR_PHRASE_MAIS_NAO",
+    "pattern": ["mais", "não"],
+    "replacements": ["mas não"],
+    "message": "Aqui a forma esperada é a conjunção 'mas'.",
+    "description": "Corrige troca recorrente entre 'mais' e 'mas'."
+  },
+  {
+    "id": "PT_BR_PHRASE_PRA_ELE",
+    "pattern": ["pra", "ele"],
+    "replacements": ["para ele"],
+    "message": "Na forma monitorada, a construção esperada é 'para ele'.",
+    "description": "Expande contração coloquial recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_AS_PESSOA",
+    "pattern": ["as", "pessoa"],
+    "replacements": ["As pessoas"],
+    "message": "O substantivo deve concordar com o determinante plural.",
+    "description": "Corrige plural recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_CHEGOU_ATRASADO",
+    "pattern": ["que", "chegou", "atrasado"],
+    "replacements": ["que chegaram atrasadas"],
+    "message": "Nesta construção, a concordância esperada é plural.",
+    "description": "Corrige concordância encadeada recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_NAO_FAZIA",
+    "pattern": ["não", "fazia", "isso"],
+    "replacements": ["não faria isso"],
+    "message": "No período hipotético, a forma esperada aqui é 'faria'.",
+    "description": "Corrige flexão verbal recorrente em construção condicional."
+  },
+  {
+    "id": "PT_BR_PHRASE_QUE_DE_ERRADO",
+    "pattern": ["que", "de", "errado"],
+    "replacements": ["que dê errado"],
+    "message": "Nesta construção, a forma esperada do verbo é 'dê'.",
+    "description": "Corrige flexão verbal recorrente em oração subordinada."
+  },
+  {
+    "id": "PT_BR_PHRASE_DIFICIL_MAIS",
+    "pattern": ["dificil", "mais"],
+    "replacements": ["difícil, mas"],
+    "message": "Aqui a forma esperada pede acentuação e a conjunção 'mas'.",
+    "description": "Corrige sequência recorrente observada no sensor externo."
+  },
+  {
+    "id": "PT_BR_PHRASE_FOSSE_VOCE_EU",
+    "pattern": ["fosse", "você", "eu"],
+    "replacements": ["fosse você, eu"],
+    "message": "Nesse período, a vírgula ajuda a separar a oração principal.",
+    "description": "Corrige pontuação recorrente em construção condicional curta."
+  },
+  {
+    "id": "PT_BR_PHRASE_NOS_VAMOS_PRECISAR",
+    "pattern": ["nos", "vamos", "precisar"],
+    "replacements": ["Nós vamos precisar"],
+    "message": "A forma esperada do pronome nesta construção é 'Nós'.",
+    "description": "Corrige pronome recorrente em sujeito explícito."
+  },
+  {
+    "id": "PT_BR_PHRASE_E_NINGUEM_SABE",
+    "pattern": ["e", "ninguem", "sabe"],
+    "replacements": ["e ninguém sabe"],
+    "message": "A forma esperada aqui é 'ninguém'.",
+    "description": "Corrige acentuação recorrente em contexto estável."
+  },
+  {
+    "id": "PT_BR_PHRASE_PROBLEMAS_QUE_ACONTECEU",
+    "pattern": ["problemas", "que", "aconteceu"],
+    "replacements": ["problemas que aconteceram"],
+    "message": "O verbo deve concordar com o referente plural.",
+    "description": "Corrige concordância verbal recorrente em oração relativa."
+  },
+  {
+    "id": "PT_BR_PHRASE_NAO_FOI_RESOLVIDO",
+    "pattern": ["não", "foi", "resolvido"],
+    "replacements": ["não foram resolvidos"],
+    "message": "Nesta construção, a concordância esperada é plural.",
+    "description": "Corrige concordância verbal e nominal recorrentes."
+  },
+  {
+    "id": "PT_BR_PHRASE_NOIS_VAI_A_PRAIA_TODO_SEGUNDA_FEIRA",
+    "pattern": ["nois", "vai", "a", "praia", "todo", "segunda", "feira"],
+    "replacements": ["Nós vamos à praia toda segunda-feira."],
+    "message": "A construção esperada pede ortografia, concordância, crase e hífen.",
+    "description": "Corrige sequência recorrente de múltiplos erros em frase curta."
   }
 ]

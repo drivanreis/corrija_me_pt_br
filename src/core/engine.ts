@@ -39,6 +39,7 @@ interface PreparedReplacementIndex {
 const preparedReplacementIndexCache = new WeakMap<ReplacementEntry[], PreparedReplacementIndex>();
 const checkResultCache = new Map<string, CheckResult>();
 const MAX_CHECK_RESULT_CACHE_SIZE = 512;
+const MAX_CORRECTION_PASSES = 3;
 
 function createConfidence(level: MatchConfidence["level"], score: number, reason?: string): MatchConfidence {
   return {
@@ -203,19 +204,12 @@ function createReplacementMatches(text: string, entries: ReplacementEntry[]): Ru
   return matches;
 }
 
-function createDictionaryMistakeMatches(text: string, dictionary: DictionaryData): RuleMatch[] {
-  if (!dictionary.commonMistakes.length) {
-    return [];
-  }
-
-  return createReplacementMatches(text, dictionary.commonMistakes);
-}
-
 function isIgnorableToken(word: string): boolean {
   return (
     word.length < 3
     || /\d/u.test(word)
     || /^[A-Z0-9_-]+$/u.test(word)
+    || /-/u.test(word)
     || /[_@/\\.-]/u.test(word)
   );
 }
@@ -383,6 +377,10 @@ function createUnknownWordMatches(text: string, dictionary: DictionaryData): Rul
 
     const original = match[0];
     const normalized = normalizeDictionaryWord(original);
+    if (/^(segunda|terca|terça|quarta|quinta|sexta|sabado|sábado|domingo)-feira$/iu.test(original)) {
+      continue;
+    }
+
     if (
       !normalized
       || isIgnorableToken(original)
@@ -496,6 +494,275 @@ function tokenizeSlices(text: string): TokenSlice[] {
   return tokens;
 }
 
+interface TokenChangeGroup {
+  srcStart: number;
+  srcEnd: number;
+  tgtStart: number;
+  tgtEnd: number;
+  srcTokens: string[];
+  tgtTokens: string[];
+  srcText: string;
+  tgtText: string;
+}
+
+interface InferenceStageDefinition {
+  id: string;
+  description: string;
+  collectMatches: (text: string) => RuleMatch[];
+}
+
+function buildTokenChangeGroups(sourceTokens: string[], targetTokens: string[]): TokenChangeGroup[] {
+  const rows = sourceTokens.length + 1;
+  const cols = targetTokens.length + 1;
+  const dp = Array.from({ length: rows }, () => new Array<number>(cols).fill(0));
+
+  for (let i = 0; i < rows; i += 1) {
+    dp[i][0] = i;
+  }
+
+  for (let j = 0; j < cols; j += 1) {
+    dp[0][j] = j;
+  }
+
+  for (let i = 1; i < rows; i += 1) {
+    for (let j = 1; j < cols; j += 1) {
+      if (sourceTokens[i - 1] === targetTokens[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = Math.min(
+          dp[i - 1][j] + 1,
+          dp[i][j - 1] + 1,
+          dp[i - 1][j - 1] + 1
+        );
+      }
+    }
+  }
+
+  const operations: Array<{ type: "equal" | "replace" | "delete" | "insert"; srcIndex?: number; tgtIndex?: number }> = [];
+  let i = sourceTokens.length;
+  let j = targetTokens.length;
+
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && sourceTokens[i - 1] === targetTokens[j - 1]) {
+      operations.push({ type: "equal", srcIndex: i - 1, tgtIndex: j - 1 });
+      i -= 1;
+      j -= 1;
+      continue;
+    }
+
+    const replaceCost = i > 0 && j > 0 ? dp[i - 1][j - 1] : Number.POSITIVE_INFINITY;
+    const deleteCost = i > 0 ? dp[i - 1][j] : Number.POSITIVE_INFINITY;
+    const currentCost = dp[i][j];
+
+    if (i > 0 && j > 0 && currentCost === replaceCost + 1) {
+      operations.push({ type: "replace", srcIndex: i - 1, tgtIndex: j - 1 });
+      i -= 1;
+      j -= 1;
+    } else if (i > 0 && currentCost === deleteCost + 1) {
+      operations.push({ type: "delete", srcIndex: i - 1 });
+      i -= 1;
+    } else {
+      operations.push({ type: "insert", tgtIndex: j - 1 });
+      j -= 1;
+    }
+  }
+
+  operations.reverse();
+
+  const groups: TokenChangeGroup[] = [];
+  let currentGroup: Omit<TokenChangeGroup, "srcText" | "tgtText"> | null = null;
+  let sourceCursor = 0;
+  let targetCursor = 0;
+
+  function closeGroup(): void {
+    if (!currentGroup) {
+      return;
+    }
+
+    groups.push({
+      ...currentGroup,
+      srcText: currentGroup.srcTokens.join(" ").trim(),
+      tgtText: currentGroup.tgtTokens.join(" ").trim()
+    });
+    currentGroup = null;
+  }
+
+  for (const operation of operations) {
+    if (operation.type === "equal") {
+      closeGroup();
+      sourceCursor += 1;
+      targetCursor += 1;
+      continue;
+    }
+
+    if (!currentGroup) {
+      currentGroup = {
+        srcStart: sourceCursor,
+        srcEnd: sourceCursor,
+        tgtStart: targetCursor,
+        tgtEnd: targetCursor,
+        srcTokens: [],
+        tgtTokens: []
+      };
+    }
+
+    if (operation.type === "replace") {
+      currentGroup.srcTokens.push(sourceTokens[operation.srcIndex ?? 0] || "");
+      currentGroup.tgtTokens.push(targetTokens[operation.tgtIndex ?? 0] || "");
+      sourceCursor += 1;
+      targetCursor += 1;
+    } else if (operation.type === "delete") {
+      currentGroup.srcTokens.push(sourceTokens[operation.srcIndex ?? 0] || "");
+      sourceCursor += 1;
+    } else {
+      currentGroup.tgtTokens.push(targetTokens[operation.tgtIndex ?? 0] || "");
+      targetCursor += 1;
+    }
+
+    currentGroup.srcEnd = sourceCursor;
+    currentGroup.tgtEnd = targetCursor;
+  }
+
+  closeGroup();
+  return groups.filter((group) => group.srcText && group.tgtText);
+}
+
+function createIterativeDiffMatches(originalText: string, finalText: string): RuleMatch[] {
+  if (originalText === finalText) {
+    return [];
+  }
+
+  const originalTokens = tokenizeSlices(originalText);
+  const finalTokens = tokenizeSlices(finalText);
+  const sourceTokenValues = originalTokens.map((token) => token.normalized);
+  const targetTokenValues = finalTokens.map((token) => token.normalized);
+  const groups = buildTokenChangeGroups(sourceTokenValues, targetTokenValues);
+
+  const diffMatches = groups
+    .map((group) => {
+      const startToken = originalTokens[group.srcStart];
+      const endToken = originalTokens[group.srcEnd - 1];
+      if (!startToken || !endToken) {
+        return null;
+      }
+
+      const offset = startToken.offset;
+      const length = endToken.offset + endToken.length - startToken.offset;
+      const replacement = finalTokens.slice(group.tgtStart, group.tgtEnd).map((token) => token.value).join(" ").trim();
+      if (!replacement) {
+        return null;
+      }
+
+      return createMatch(
+        originalText,
+        offset,
+        length,
+        [replacement],
+        "PT_BR_MULTI_PASS",
+        "Correção composta inferida a partir de múltiplas passagens.",
+        "Agrupa correções encadeadas encontradas após reprocessar a frase.",
+        createConfidence("high", 0.93, "correcao iterativa consolidada")
+      );
+    })
+    .filter((match): match is RuleMatch => Boolean(match));
+
+  return diffMatches.map((match) => {
+    const original = originalText.slice(match.offset, match.offset + match.length);
+    const replacement = match.replacements[0]?.value || "";
+    const leftContext = originalText.slice(0, match.offset);
+    const porMatch = /\bpor\s$/iu.exec(leftContext);
+
+    if (
+      stripDiacritics(normalizeDictionaryWord(original)) === "que"
+      && stripDiacritics(normalizeDictionaryWord(replacement)) === "que"
+      && porMatch
+    ) {
+      const expandedOffset = match.offset - porMatch[0].length;
+      const expandedOriginal = originalText.slice(expandedOffset, match.offset + match.length);
+      return createMatch(
+        originalText,
+        expandedOffset,
+        expandedOriginal.length,
+        [preserveReplacementCase(expandedOriginal, "por quê")],
+        "PT_BR_MULTI_PASS",
+        "Correção composta inferida a partir de múltiplas passagens.",
+        "Agrupa correções encadeadas encontradas após reprocessar a frase.",
+        createConfidence("high", 0.93, "correcao iterativa consolidada")
+      );
+    }
+
+    return match;
+  });
+}
+
+function createWholeTextInferenceMatch(originalText: string, finalText: string): RuleMatch {
+  return createMatch(
+    originalText,
+    0,
+    originalText.length,
+    [finalText],
+    "PT_BR_MULTI_PASS",
+    "Correção composta inferida a partir de múltiplas passagens.",
+    "Consolida a frase final quando a diferença token a token nao preserva toda a correção.",
+    createConfidence("high", 0.9, "consolidacao integral da frase")
+  );
+}
+
+function sanitizeInvalidWeekdayHyphenForms(text: string): string {
+  return text
+    .replace(/\bsegundas-feira\b/giu, "segunda-feira")
+    .replace(/\bterças-feira\b/giu, "terça-feira")
+    .replace(/\btercas-feira\b/giu, "terça-feira")
+    .replace(/\bquartas-feira\b/giu, "quarta-feira")
+    .replace(/\bquintas-feira\b/giu, "quinta-feira")
+    .replace(/\bsextas-feira\b/giu, "sexta-feira")
+    .replace(/\bsábados-feira\b/giu, "sábado-feira")
+    .replace(/\bsabados-feira\b/giu, "sábado-feira")
+    .replace(/\bdomingos-feira\b/giu, "domingo-feira");
+}
+
+function createConsolidatedInferenceMatches(originalText: string, finalText: string): RuleMatch[] {
+  const sanitizedFinalText = sanitizeInvalidWeekdayHyphenForms(finalText);
+
+  if (originalText === sanitizedFinalText) {
+    return [];
+  }
+
+  if (originalText === finalText) {
+    return [];
+  }
+
+  const diffMatches = createIterativeDiffMatches(originalText, sanitizedFinalText);
+  if (!diffMatches.length) {
+    return [createWholeTextInferenceMatch(originalText, sanitizedFinalText)];
+  }
+
+  const reconstructedText = applyVisibleMatches(originalText, diffMatches);
+  if (reconstructedText !== sanitizedFinalText) {
+    return [createWholeTextInferenceMatch(originalText, sanitizedFinalText)];
+  }
+
+  return diffMatches;
+}
+
+function applyVisibleMatches(text: string, matches: RuleMatch[]): string {
+  const ordered = collapseOverlappingMatches(matches)
+    .filter((match) => Array.isArray(match.replacements) && Boolean(match.replacements[0]?.value))
+    .sort((left, right) => right.offset - left.offset || right.length - left.length);
+
+  let updatedText = text;
+  for (const match of ordered) {
+    const replacement = match.replacements[0]?.value;
+    if (!replacement) {
+      continue;
+    }
+
+    updatedText = updatedText.slice(0, match.offset) + replacement + updatedText.slice(match.offset + match.length);
+  }
+
+  return updatedText;
+}
+
 function createStructuredMatch(
   text: string,
   offset: number,
@@ -562,6 +829,89 @@ function createCraseHeuristicMatches(text: string): RuleMatch[] {
       "Corrige uso indevido de acento em 'a 5 minutos', 'a 2 horas' e construções semelhantes.",
       "grammar",
       createConfidence("high", 0.92, "indicacao de distancia ou tempo")
+    ));
+  }
+
+  return matches;
+}
+
+function createPorQueHeuristicMatches(text: string): RuleMatch[] {
+  const matches: RuleMatch[] = [];
+  const indirectQuestionPrefixes = [
+    "não sei",
+    "nao sei",
+    "ninguém sabe",
+    "ninguem sabe",
+    "ninguém entende",
+    "ninguem entende",
+    "quero saber",
+    "queria saber",
+    "gostaria de saber",
+    "não sabemos",
+    "nao sabemos",
+    "explique"
+  ];
+
+  for (const prefix of indirectQuestionPrefixes) {
+    const escapedPrefix = prefix.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&").replace(/\s+/gu, "\\s+");
+    const becausePattern = new RegExp(`\\b(${escapedPrefix})\\s+(porque|porquê)(?=\\s+\\p{L})`, "giu");
+
+    for (const match of text.matchAll(becausePattern)) {
+      if (match.index === undefined) {
+        continue;
+      }
+
+      const token = match[2];
+      const offset = match.index + match[0].lastIndexOf(token);
+      addIfNoOverlap(matches, createStructuredMatch(
+        text,
+        offset,
+        token.length,
+        preserveReplacementCase(token, "por que"),
+        "PT_BR_POR_QUE_INDIRECT_QUESTION",
+        "Em pergunta indireta, a forma esperada aqui e 'por que'.",
+        "Corrige o uso de 'porque' ou 'porquê' em construcoes de pergunta indireta.",
+        "grammar",
+        createConfidence("high", 0.91, "pergunta indireta recorrente")
+      ));
+    }
+  }
+
+  for (const match of text.matchAll(/\bpor\s+que(?=\s*[?!]\s*$)/giu)) {
+    if (match.index === undefined) {
+      continue;
+    }
+
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      match.index,
+      match[0].length,
+      preserveReplacementCase(match[0], "por quê"),
+      "PT_BR_POR_QUE_FINAL",
+      "No fim de pergunta, a forma esperada aqui e 'por quê'.",
+      "Corrige 'por que' em final de pergunta direta.",
+      "grammar",
+      createConfidence("high", 0.93, "por que em final de pergunta")
+    ));
+  }
+
+  for (const match of text.matchAll(/\bexplicou\s+porquê(?=\s+\p{L})/giu)) {
+    if (match.index === undefined) {
+      continue;
+    }
+
+    const token = "porquê";
+    const offset = match.index + match[0].toLowerCase().lastIndexOf(token);
+    addIfNoOverlap(matches, createStructuredMatch(
+      text,
+      offset,
+      token.length,
+      "porque",
+      "PT_BR_PORQUE_EXPLICATIVO",
+      "Em oração explicativa, a forma esperada aqui e 'porque'.",
+      "Corrige uso de 'porquê' onde a construcao pede conjuncao explicativa.",
+      "grammar",
+      createConfidence("high", 0.89, "oracao explicativa recorrente")
     ));
   }
 
@@ -834,7 +1184,7 @@ function deriveMatchConfidence(match: RuleMatch, text: string, dictionary: Dicti
   }
 
   if (match.rule.id.startsWith("PT_BR_PHRASE_")) {
-    let score = 0.93;
+    let score = 0.97;
     if (hasMultipleSuggestions) {
       score -= 0.04;
     }
@@ -951,21 +1301,135 @@ function storeCheckResultInCache(text: string, result: CheckResult): void {
   }
 }
 
-export function checkText(text: string, replacements: ReplacementEntry[], dictionary: DictionaryData): CheckResult {
-  const cached = checkResultCache.get(text);
-  if (cached) {
-    return cached;
+function hasSingleWholeTextMatch(result: CheckResult, text: string): boolean {
+  return (
+    result.matches.length === 1
+    && result.matches[0]?.offset === 0
+    && result.matches[0]?.length === text.length
+    && Boolean(result.matches[0]?.replacements[0]?.value)
+  );
+}
+
+function collectVisibleStageMatches(text: string, dictionary: DictionaryData, matches: RuleMatch[]): RuleMatch[] {
+  return finalizeMatches(text, matches, dictionary).matches;
+}
+
+function findWholeTextSpecialistMatches(text: string, replacements: ReplacementEntry[], dictionary: DictionaryData): RuleMatch[] {
+  const candidates = [
+    ...createReplacementMatches(text, replacements),
+    ...createPhraseRuleMatches(text, dictionary.phraseRules),
+    ...createContextRuleMatches(text, dictionary.contextRules)
+  ];
+
+  const wholeTextCandidates = candidates.filter((match) => match.offset === 0 && match.length === text.length);
+  if (!wholeTextCandidates.length) {
+    return [];
   }
+
+  return finalizeMatches(text, wholeTextCandidates, dictionary).matches
+    .filter((match) => match.offset === 0 && match.length === text.length);
+}
+
+function createInferenceStages(replacements: ReplacementEntry[], dictionary: DictionaryData): InferenceStageDefinition[] {
+  return [
+    {
+      id: "symbolic_context",
+      description: "Aplica especialistas simbolicos de frase e contexto.",
+      collectMatches: (text) => [
+        ...createPhraseRuleMatches(text, dictionary.phraseRules),
+        ...createContextRuleMatches(text, dictionary.contextRules),
+        ...createPorQueHeuristicMatches(text),
+        ...createCraseHeuristicMatches(text),
+        ...createLocalizationDateMatches(text),
+        ...createAnnouncementAgreementMatches(text)
+      ]
+    },
+    {
+      id: "normalization",
+      description: "Normaliza trocas seguras e problemas mecanicos.",
+      collectMatches: (text) => [
+        ...createReplacementMatches(text, replacements),
+        ...createRepeatedWordMatches(text),
+        ...createDoubleSpaceMatches(text),
+        ...createSpaceBeforePunctuationMatches(text),
+        ...createSentenceCaseMatches(text)
+      ]
+    },
+    {
+      id: "linguistic_agreement",
+      description: "Resolve concordancia e sintaxe curta.",
+      collectMatches: (text) => [
+        ...createSimpleVerbalAgreementMatches(text, dictionary),
+        ...createSimpleNominalAgreementMatches(text, dictionary),
+        ...createSimpleSyntaxPatternMatches(text, dictionary)
+      ]
+    },
+    {
+      id: "refinement",
+      description: "Fecha a frase com refinamentos heurísticos.",
+      collectMatches: (text) => {
+        const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text);
+        const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => (
+          !punctuationHeuristicMatches.some((existing) => (
+            candidate.offset < existing.offset + existing.length
+            && existing.offset < candidate.offset + candidate.length
+          ))
+        ));
+
+        return [
+          ...punctuationHeuristicMatches,
+          ...unknownWordMatches
+        ];
+      }
+    }
+  ];
+}
+
+function runInferencePipeline(text: string, replacements: ReplacementEntry[], dictionary: DictionaryData): CheckResult {
+  const wholeTextMatches = findWholeTextSpecialistMatches(text, replacements, dictionary);
+  if (wholeTextMatches.length) {
+    return finalizeMatches(text, wholeTextMatches, dictionary);
+  }
+
+  let currentText = text;
+  let exactWholeTextResult: CheckResult | null = null;
+
+  for (const stage of createInferenceStages(replacements, dictionary)) {
+    const visibleMatches = collectVisibleStageMatches(currentText, dictionary, stage.collectMatches(currentText));
+    if (!visibleMatches.length) {
+      continue;
+    }
+
+    if (visibleMatches.length === 1 && visibleMatches[0]?.offset === 0 && visibleMatches[0]?.length === currentText.length) {
+      exactWholeTextResult = finalizeMatches(text, [createWholeTextInferenceMatch(text, visibleMatches[0].replacements[0]?.value || currentText)], dictionary);
+      currentText = visibleMatches[0].replacements[0]?.value || currentText;
+      break;
+    }
+
+    const nextText = applyVisibleMatches(currentText, visibleMatches);
+    if (nextText === currentText) {
+      continue;
+    }
+
+    currentText = nextText;
+  }
+
+  if (exactWholeTextResult) {
+    return exactWholeTextResult;
+  }
+
+  return finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary);
+}
+
+function checkTextSinglePass(text: string, replacements: ReplacementEntry[], dictionary: DictionaryData): CheckResult {
+  return runInferencePipeline(text, replacements, dictionary);
 
   const replacementMatches = createReplacementMatches(text, replacements);
   const exactWholeTextReplacementMatches = replacementMatches.filter((match) => match.offset === 0 && match.length === text.length);
   if (exactWholeTextReplacementMatches.length) {
-    const exactResult = finalizeMatches(text, exactWholeTextReplacementMatches, dictionary);
-    storeCheckResultInCache(text, exactResult);
-    return exactResult;
+    return finalizeMatches(text, exactWholeTextReplacementMatches, dictionary);
   }
 
-  const dictionaryMistakeMatches = createDictionaryMistakeMatches(text, dictionary);
   const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
   const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
   const craseHeuristicMatches = createCraseHeuristicMatches(text);
@@ -976,7 +1440,6 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
   const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
   const baseProtectedMatches = [
     ...replacementMatches,
-    ...dictionaryMistakeMatches,
     ...phraseRuleMatches,
     ...contextRuleMatches,
     ...craseHeuristicMatches,
@@ -1002,7 +1465,6 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
 
   const allMatches = [
     ...replacementMatches,
-    ...dictionaryMistakeMatches,
     ...phraseRuleMatches,
     ...contextRuleMatches,
     ...craseHeuristicMatches,
@@ -1026,6 +1488,44 @@ export function checkText(text: string, replacements: ReplacementEntry[], dictio
     ;
 
   const result = finalizeMatches(text, allMatches, dictionary);
+  return result;
+}
+
+export function checkText(text: string, replacements: ReplacementEntry[], dictionary: DictionaryData): CheckResult {
+  const cached = checkResultCache.get(text);
+  if (cached) {
+    return cached;
+  }
+
+  let currentText = text;
+  let passResult = checkTextSinglePass(currentText, replacements, dictionary);
+
+  if (hasSingleWholeTextMatch(passResult, text)) {
+    storeCheckResultInCache(text, passResult);
+    return passResult;
+  }
+
+  let passCount = 1;
+
+  while (passCount < MAX_CORRECTION_PASSES) {
+    if (!passResult.matches.length) {
+      break;
+    }
+
+    const nextText = applyVisibleMatches(currentText, passResult.matches);
+    if (nextText === currentText) {
+      break;
+    }
+
+    currentText = nextText;
+    passResult = checkTextSinglePass(currentText, replacements, dictionary);
+    passCount += 1;
+  }
+
+  const result = currentText !== text && passCount > 1
+    ? finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary)
+    : checkTextSinglePass(text, replacements, dictionary);
+
   storeCheckResultInCache(text, result);
   return result;
 }

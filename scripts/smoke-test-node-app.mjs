@@ -76,8 +76,11 @@ async function main() {
   const phraseSuggestions = Array.isArray(phrasePayload.matches)
     ? phrasePayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
     : [];
+  const hasWholeTextPhraseCorrection = phraseSuggestions.some((value) => (
+    value.includes("semi-nova") && value.includes("Fortaleza, Ceará")
+  ));
 
-  if (!phraseSuggestions.includes("semi-nova") || !phraseSuggestions.includes("Fortaleza, Ceará")) {
+  if (!hasWholeTextPhraseCorrection && (!phraseSuggestions.includes("semi-nova") || !phraseSuggestions.includes("Fortaleza, Ceará"))) {
     throw new Error("Smoke test falhou: regras frasais nao apareceram como esperado.");
   }
 
@@ -223,9 +226,112 @@ async function main() {
   const nominalAdvancedSuggestions = Array.isArray(nominalAdvancedPayload.matches)
     ? nominalAdvancedPayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
     : [];
+  const hasWholeTextNominalAdvancedCorrection = nominalAdvancedSuggestions.some((value) => (
+    value.includes("anexas")
+  ));
 
-  if (!nominalAdvancedSuggestions.includes("anexas")) {
+  if (!hasWholeTextNominalAdvancedCorrection && !nominalAdvancedSuggestions.includes("anexas")) {
     throw new Error("Smoke test falhou: expansao do predicativo nominal nao apareceu como esperado.");
+  }
+
+  const meioAdverbResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    },
+    body: new URLSearchParams({
+      language: "pt-BR",
+      text: "A gente estava meio perdido."
+    })
+  });
+
+  const meioAdverbPayload = await meioAdverbResponse.json();
+  const meioAdverbSuggestions = Array.isArray(meioAdverbPayload.matches)
+    ? meioAdverbPayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
+    : [];
+
+  if (meioAdverbSuggestions.includes("meia")) {
+    throw new Error("Smoke test falhou: o runtime voltou a contaminar 'meio' com regra de proof.");
+  }
+
+  const porQueSubstantiveResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    },
+    body: new URLSearchParams({
+      language: "pt-BR",
+      text: "Ninguém sabe o porquê."
+    })
+  });
+
+  const porQueSubstantivePayload = await porQueSubstantiveResponse.json();
+  const porQueSubstantiveSuggestions = Array.isArray(porQueSubstantivePayload.matches)
+    ? porQueSubstantivePayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
+    : [];
+
+  if (porQueSubstantiveSuggestions.includes("porque")) {
+    throw new Error("Smoke test falhou: o runtime voltou a degradar 'o porquê' por vazamento da prova.");
+  }
+
+  const porQueIndirectResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    },
+    body: new URLSearchParams({
+      language: "pt-BR",
+      text: "Não sei porque ele faltou."
+    })
+  });
+
+  const porQueIndirectPayload = await porQueIndirectResponse.json();
+  const porQueIndirectSuggestions = Array.isArray(porQueIndirectPayload.matches)
+    ? porQueIndirectPayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
+    : [];
+
+  if (!porQueIndirectSuggestions.includes("por que")) {
+    throw new Error("Smoke test falhou: pergunta indireta com 'porque' ainda ficou sem cobertura.");
+  }
+
+  const porQueFinalResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    },
+    body: new URLSearchParams({
+      language: "pt-BR",
+      text: "Você saiu por que?"
+    })
+  });
+
+  const porQueFinalPayload = await porQueFinalResponse.json();
+  const porQueFinalSuggestions = Array.isArray(porQueFinalPayload.matches)
+    ? porQueFinalPayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
+    : [];
+
+  if (!porQueFinalSuggestions.includes("por quê") && !porQueFinalSuggestions.includes("quê")) {
+    throw new Error("Smoke test falhou: 'por que' em fim de pergunta ainda nao virou 'por quê'.");
+  }
+
+  const porQueExplanatoryResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    },
+    body: new URLSearchParams({
+      language: "pt-BR",
+      text: "Ele explicou porquê estava cansado."
+    })
+  });
+
+  const porQueExplanatoryPayload = await porQueExplanatoryResponse.json();
+  const porQueExplanatorySuggestions = Array.isArray(porQueExplanatoryPayload.matches)
+    ? porQueExplanatoryPayload.matches.flatMap((match) => Array.isArray(match.replacements) ? match.replacements.map((entry) => entry.value) : [])
+    : [];
+
+  if (!porQueExplanatorySuggestions.includes("porque")) {
+    throw new Error("Smoke test falhou: uso explicativo de 'porquê' ainda nao virou 'porque'.");
   }
 
   const syntaxResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {

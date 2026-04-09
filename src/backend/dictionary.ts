@@ -1,28 +1,12 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { normalizeDictionaryWord } from "../core/text.js";
 import type { ContextRuleDefinition, PhraseRuleDefinition, ReplacementEntry } from "../core/types.js";
 import { loadLinguisticData } from "./linguistic-data.js";
 
-interface CommonMistakeFileEntry {
-  from: string;
-  replacements: string[];
-  description?: string;
-}
-
-interface DictionaryManifest {
-  wordFiles?: string[];
-  customWordsFile?: string;
-  commonMistakesFile?: string;
-  useLegacyWordFiles?: boolean;
-  useLegacyCustomWords?: boolean;
-  useLegacyCommonMistakes?: boolean;
-}
-
 export interface DictionaryResources {
   replacements: ReplacementEntry[];
   words: Set<string>;
-  commonMistakes: ReplacementEntry[];
   dictionaryReady: boolean;
   contextRules: ContextRuleDefinition[];
   phraseRules: PhraseRuleDefinition[];
@@ -33,31 +17,84 @@ function loadReplacementEntries(pathname: string): ReplacementEntry[] {
   return JSON.parse(readFileSync(pathname, "utf8")) as ReplacementEntry[];
 }
 
+function tokenizeReplacementText(value: string): string[] {
+  return String(value || "").match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*/gu) || [];
+}
+
+const AMBIGUOUS_HOMOPHONE_FAMILIES = [
+  ["cessao", "sessao", "secao"],
+  ["concerto", "conserto"],
+  ["concertar", "consertar"],
+  ["taxar", "tachar"],
+  ["ratificar", "retificar"],
+  ["infligir", "infringir"]
+].map((family) => new Set(family.map((word) => normalizeDictionaryWord(word))));
+
+function isAmbiguousHomophonePair(from: string, to: string): boolean {
+  if (!from || !to || from === to) {
+    return false;
+  }
+
+  return AMBIGUOUS_HOMOPHONE_FAMILIES.some((family) => family.has(from) && family.has(to));
+}
+
+function sanitizeReplacementEntries(entries: ReplacementEntry[]): ReplacementEntry[] {
+  const symmetricPairs = new Set<string>();
+  const directional = new Map<string, string>();
+
+  for (const entry of entries) {
+    const fromTokens = tokenizeReplacementText(entry.from).map((token) => normalizeDictionaryWord(token));
+    const toTokens = Array.isArray(entry.replacements) && entry.replacements.length === 1
+      ? tokenizeReplacementText(entry.replacements[0]).map((token) => normalizeDictionaryWord(token))
+      : [];
+
+    if (fromTokens.length !== 1 || toTokens.length !== 1) {
+      continue;
+    }
+
+    const from = fromTokens[0];
+    const to = toTokens[0];
+    if (!from || !to || from === to) {
+      continue;
+    }
+
+    if (isAmbiguousHomophonePair(from, to)) {
+      continue;
+    }
+
+    directional.set(`${from}->${to}`, entry.source || "");
+    if (directional.has(`${to}->${from}`)) {
+      symmetricPairs.add(`${from}<->${to}`);
+      symmetricPairs.add(`${to}<->${from}`);
+    }
+  }
+
+  return entries.filter((entry) => {
+    const fromTokens = tokenizeReplacementText(entry.from).map((token) => normalizeDictionaryWord(token));
+    const toTokens = Array.isArray(entry.replacements) && entry.replacements.length === 1
+      ? tokenizeReplacementText(entry.replacements[0]).map((token) => normalizeDictionaryWord(token))
+      : [];
+
+    if (fromTokens.length !== 1 || toTokens.length !== 1) {
+      return true;
+    }
+
+    const from = fromTokens[0];
+    const to = toTokens[0];
+    if (isAmbiguousHomophonePair(from, to)) {
+      return false;
+    }
+
+    return !symmetricPairs.has(`${from}<->${to}`);
+  });
+}
+
 function loadOptionalReplacementEntries(pathname: string): ReplacementEntry[] {
   if (!existsSync(pathname)) {
     return [];
   }
 
-  return loadReplacementEntries(pathname);
-}
-
-function loadCommonMistakeEntries(pathname: string, existingReplacementEntries: ReplacementEntry[]): ReplacementEntry[] {
-  const existingFrom = new Set(existingReplacementEntries.map((entry) => normalizeDictionaryWord(entry.from)));
-  const entries = JSON.parse(readFileSync(pathname, "utf8")) as CommonMistakeFileEntry[];
-  return entries
-    .filter((entry) => !existingFrom.has(normalizeDictionaryWord(entry.from)))
-    .map((entry) => ({
-      from: entry.from,
-      replacements: entry.replacements,
-      source: entry.description?.trim() || "common_mistakes"
-    }));
-}
-
-function loadWordList(pathname: string): string[] {
-  return readFileSync(pathname, "utf8")
-    .split(/\r?\n/u)
-    .map(normalizeDictionaryWord)
-    .filter((word) => word && !word.startsWith("#"));
+  return sanitizeReplacementEntries(loadReplacementEntries(pathname));
 }
 
 function loadContextRules(pathname: string): ContextRuleDefinition[] {
@@ -68,12 +105,42 @@ function loadPhraseRules(pathname: string): PhraseRuleDefinition[] {
   return JSON.parse(readFileSync(pathname, "utf8")) as PhraseRuleDefinition[];
 }
 
+function tokenizeRuleText(value: string): string[] {
+  return String(value || "").match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*/gu) || [];
+}
+
+function isUnsafeContinuousPhraseRule(rule: PhraseRuleDefinition): boolean {
+  if (!String(rule.id || "").startsWith("PT_BR_CONTINUOUS_")) {
+    return false;
+  }
+
+  const patternTokens = Array.isArray(rule.pattern) ? rule.pattern.map((token) => normalizeDictionaryWord(token)) : [];
+  const replacement = Array.isArray(rule.replacements) ? String(rule.replacements[0] || "") : "";
+  const replacementTokens = tokenizeRuleText(replacement).map((token) => normalizeDictionaryWord(token));
+
+  if (!patternTokens.length || !replacementTokens.length) {
+    return false;
+  }
+
+  const patternHasDigits = patternTokens.some((token) => /\d/u.test(token));
+  const replacementHasDigits = replacementTokens.some((token) => /\d/u.test(token));
+  if (!patternHasDigits && replacementHasDigits) {
+    return true;
+  }
+
+  return false;
+}
+
+function sanitizePhraseRules(rules: PhraseRuleDefinition[]): PhraseRuleDefinition[] {
+  return rules.filter((rule) => !isUnsafeContinuousPhraseRule(rule));
+}
+
 function loadOptionalPhraseRules(pathname: string): PhraseRuleDefinition[] {
   if (!existsSync(pathname)) {
     return [];
   }
 
-  return loadPhraseRules(pathname);
+  return sanitizePhraseRules(loadPhraseRules(pathname));
 }
 
 function loadOptionalContextRules(pathname: string): ContextRuleDefinition[] {
@@ -84,49 +151,15 @@ function loadOptionalContextRules(pathname: string): ContextRuleDefinition[] {
   return loadContextRules(pathname);
 }
 
-function loadDictionaryManifest(dictionaryDir: string): DictionaryManifest | null {
-  const manifestPath = join(dictionaryDir, "manifest.json");
-  if (!existsSync(manifestPath)) {
-    return null;
-  }
-
-  return JSON.parse(readFileSync(manifestPath, "utf8")) as DictionaryManifest;
-}
-
 export function loadDictionaryResources(dataDir: string): DictionaryResources {
-  const replacements = [
+  const replacements = sanitizeReplacementEntries([
     ...loadReplacementEntries(join(dataDir, "replacements.json")),
-    ...loadOptionalReplacementEntries(join(dataDir, "replacements_learned.json")),
-    ...loadOptionalReplacementEntries(join(dataDir, "replacements_proof.json"))
-  ];
-  const dictionaryDir = join(dataDir, "dictionary");
+    ...loadOptionalReplacementEntries(join(dataDir, "replacements_learned.json"))
+  ]);
   const rulesDir = join(dataDir, "rules");
   const linguisticData = loadLinguisticData(dataDir);
-  const manifest = loadDictionaryManifest(dictionaryDir);
-  const useLegacyWordFiles = manifest?.useLegacyWordFiles ?? true;
-  const useLegacyCustomWords = manifest?.useLegacyCustomWords ?? true;
-  const useLegacyCommonMistakes = manifest?.useLegacyCommonMistakes ?? true;
-  const dictionaryFiles = manifest?.wordFiles?.length
-    ? [...manifest.wordFiles]
-    : readdirSync(dictionaryDir)
-      .filter((name) => /^words_\d+\.txt$/u.test(name))
-      .sort((left, right) => left.localeCompare(right, "pt-BR", { numeric: true }));
 
   const words = new Set<string>();
-  if (useLegacyWordFiles) {
-    for (const fileName of dictionaryFiles) {
-      for (const word of loadWordList(join(dictionaryDir, fileName))) {
-        words.add(word);
-      }
-    }
-  }
-
-  const customWordsFile = manifest?.customWordsFile || "custom_words.txt";
-  if (useLegacyCustomWords) {
-    for (const word of loadWordList(join(dictionaryDir, customWordsFile))) {
-      words.add(word);
-    }
-  }
 
   for (const lemma of linguisticData.lexicalEntries.keys()) {
     words.add(lemma);
@@ -140,28 +173,21 @@ export function loadDictionaryResources(dataDir: string): DictionaryResources {
     words.add(word);
   }
 
-  const commonMistakesFile = manifest?.commonMistakesFile || "common_mistakes.json";
-  const commonMistakes = useLegacyCommonMistakes
-    ? loadCommonMistakeEntries(join(dictionaryDir, commonMistakesFile), replacements)
-    : [];
   const dictionaryReady = words.size >= 5_000;
   const contextRules = [
     ...loadContextRules(join(rulesDir, "context_rules.json")),
-    ...loadOptionalContextRules(join(rulesDir, "context_rules_learned.json")),
-    ...loadOptionalContextRules(join(rulesDir, "context_rules_proof.json"))
+    ...loadOptionalContextRules(join(rulesDir, "context_rules_learned.json"))
   ];
   const phraseRules = [
-    ...loadPhraseRules(join(rulesDir, "phrase_rules.json")),
+    ...sanitizePhraseRules(loadPhraseRules(join(rulesDir, "phrase_rules.json"))),
     ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_seeded.json")),
     ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_continuous.json")),
-    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_learned.json")),
-    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_proof.json"))
+    ...loadOptionalPhraseRules(join(rulesDir, "phrase_rules_learned.json"))
   ];
 
   return {
     replacements,
     words,
-    commonMistakes,
     dictionaryReady,
     contextRules,
     phraseRules,

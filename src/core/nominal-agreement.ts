@@ -8,6 +8,10 @@ interface TokenMatch {
   length: number;
 }
 
+function isHyphenatedToken(token: TokenMatch | undefined): boolean {
+  return Boolean(token?.normalized.includes("-"));
+}
+
 function tokenizeText(text: string): TokenMatch[] {
   const tokens: TokenMatch[] = [];
   const pattern = createWordTokenPattern();
@@ -161,6 +165,10 @@ function createDeterminerNounMatches(text: string, tokens: TokenMatch[], diction
       continue;
     }
 
+    if (isHyphenatedToken(articleToken) || isHyphenatedToken(nounToken)) {
+      continue;
+    }
+
     const articleEntry = dictionary.linguisticData.lexicalEntries.get(articleToken.normalized);
     const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
     if (!isDeterminer(articleEntry) || !isNoun(nounEntry)) {
@@ -193,6 +201,10 @@ function createDeterminerNounAdjectiveMatches(text: string, tokens: TokenMatch[]
     const nounToken = tokens[index + 1];
     const adjectiveToken = tokens[index + 2];
     if (!determinerToken || !nounToken || !adjectiveToken) {
+      continue;
+    }
+
+    if (isHyphenatedToken(determinerToken) || isHyphenatedToken(nounToken) || isHyphenatedToken(adjectiveToken)) {
       continue;
     }
 
@@ -230,6 +242,10 @@ function createNounAdjectiveMatches(text: string, tokens: TokenMatch[], dictiona
     const nounToken = tokens[index];
     const adjectiveToken = tokens[index + 1];
     if (!nounToken || !adjectiveToken) {
+      continue;
+    }
+
+    if (isHyphenatedToken(nounToken) || isHyphenatedToken(adjectiveToken)) {
       continue;
     }
 
@@ -282,6 +298,10 @@ function createNominalPredicateMatches(text: string, tokens: TokenMatch[], dicti
       && isVariableAdjective(fourthEntry)
       && fourthToken
     ) {
+      if (isHyphenatedToken(firstToken) || isHyphenatedToken(secondToken) || isHyphenatedToken(thirdToken) || isHyphenatedToken(fourthToken)) {
+        continue;
+      }
+
       const targetGenero = firstEntry?.genero || secondEntry?.genero || inferGender(secondToken.normalized);
       const targetNumero = firstEntry?.numero || inferNumber(secondToken.normalized);
       const expectedAdjective = getExpectedAdjectiveForm(fourthEntry, targetGenero, targetNumero);
@@ -303,6 +323,10 @@ function createNominalPredicateMatches(text: string, tokens: TokenMatch[], dicti
       && isLinkingVerb(secondEntry)
       && isVariableAdjective(thirdEntry)
     ) {
+      if (isHyphenatedToken(firstToken) || isHyphenatedToken(secondToken) || isHyphenatedToken(thirdToken)) {
+        continue;
+      }
+
       const targetGenero = firstEntry?.genero || inferGender(firstToken.normalized);
       const targetNumero = inferNumber(firstToken.normalized);
       const expectedAdjective = getExpectedAdjectiveForm(thirdEntry, targetGenero, targetNumero);
@@ -351,6 +375,10 @@ function createExpandedNominalPredicateMatches(text: string, tokens: TokenMatch[
       continue;
     }
 
+    if (isHyphenatedToken(determinerToken) || isHyphenatedToken(nounToken) || isHyphenatedToken(nounQualifierToken) || isHyphenatedToken(linkingVerbToken) || isHyphenatedToken(adjectiveToken)) {
+      continue;
+    }
+
     const targetGenero = determinerEntry?.genero || nounEntry?.genero || inferGender(nounToken.normalized);
     const targetNumero = determinerEntry?.numero || inferNumber(nounToken.normalized);
     const expectedAdjective = getExpectedAdjectiveForm(adjectiveEntry, targetGenero, targetNumero);
@@ -393,6 +421,10 @@ function createAttachmentPredicateMatches(text: string, tokens: TokenMatch[], di
       || !isDeterminer(determinerEntry)
       || !isNoun(nounEntry)
     ) {
+      continue;
+    }
+
+    if (isHyphenatedToken(verbToken) || isHyphenatedToken(adjectiveToken) || isHyphenatedToken(determinerToken) || isHyphenatedToken(nounToken)) {
       continue;
     }
 
