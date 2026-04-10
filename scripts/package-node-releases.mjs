@@ -28,6 +28,8 @@ const releaseTargets = [
     installFiles: async (targetRoot) => {
       await writeFile(path.join(targetRoot, "install.sh"), linuxInstallScript(), "utf8");
       await chmod(path.join(targetRoot, "install.sh"), 0o755);
+      await writeFile(path.join(targetRoot, "install-jandaia.sh"), linuxInstallJandaiaScript(), "utf8");
+      await chmod(path.join(targetRoot, "install-jandaia.sh"), 0o755);
       await writeFile(path.join(targetRoot, "uninstall.sh"), linuxUninstallScript(), "utf8");
       await chmod(path.join(targetRoot, "uninstall.sh"), 0o755);
     }
@@ -43,8 +45,10 @@ const releaseTargets = [
     installRootNote: "%LOCALAPPDATA%\\corrija_me_pt_br",
     installFiles: async (targetRoot) => {
       await writeFile(path.join(targetRoot, "install.bat"), windowsInstallBat(), "utf8");
+      await writeFile(path.join(targetRoot, "install-jandaia.bat"), windowsInstallJandaiaBat(), "utf8");
       await writeFile(path.join(targetRoot, "uninstall.bat"), windowsUninstallBat(), "utf8");
       await writeFile(path.join(targetRoot, "install.ps1"), windowsInstallPs1(), "utf8");
+      await writeFile(path.join(targetRoot, "install-jandaia.ps1"), windowsInstallJandaiaPs1(), "utf8");
       await writeFile(path.join(targetRoot, "uninstall.ps1"), windowsUninstallPs1(), "utf8");
       await writeFile(path.join(targetRoot, "StartServer.ps1"), windowsStartPs1(), "utf8");
       await writeFile(path.join(targetRoot, "StopServer.ps1"), windowsStopPs1(), "utf8");
@@ -136,6 +140,41 @@ echo "Carregue a pasta acima em chrome://extensions"
 `;
 }
 
+function linuxInstallJandaiaScript() {
+  return `#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
+INSTALL_ROOT="/opt/corrija_me_pt_br"
+MODELS_URL="\${CORRIJA_ME_LLM_CORE_URL:-http://127.0.0.1:11434}"
+OLLAMA_BIN="\${OLLAMA_BIN:-}"
+
+if [[ -z "$OLLAMA_BIN" ]]; then
+  if command -v ollama >/dev/null 2>&1; then
+    OLLAMA_BIN="$(command -v ollama)"
+  elif [[ -x "$HOME/.local/bin/ollama" ]]; then
+    OLLAMA_BIN="$HOME/.local/bin/ollama"
+  else
+    echo "Ollama nao encontrado. Instale o Ollama antes de ativar a Jandaia."
+    exit 1
+  fi
+fi
+
+if [[ ! -f "$INSTALL_ROOT/ai/jandaia-1.Modelfile" ]]; then
+  echo "Modelfile da Jandaia nao encontrado em $INSTALL_ROOT/ai/jandaia-1.Modelfile"
+  exit 1
+fi
+
+"$OLLAMA_BIN" pull qwen2.5:1.5b-instruct
+"$OLLAMA_BIN" create jandaia-1 -f "$INSTALL_ROOT/ai/jandaia-1.Modelfile"
+
+echo
+echo "Jandaia instalada no Ollama local."
+echo "Para usar no backend instalado pelo pacote, ative as variaveis de ambiente do servico manualmente."
+echo "Backend base continua funcionando sem a LLM."
+`;
+}
+
 function linuxUninstallScript() {
   return `#!/usr/bin/env bash
 set -euo pipefail
@@ -165,6 +204,13 @@ function windowsInstallBat() {
   return `@echo off
 setlocal
 powershell -ExecutionPolicy Bypass -File "%~dp0install.ps1"
+`;
+}
+
+function windowsInstallJandaiaBat() {
+  return `@echo off
+setlocal
+powershell -ExecutionPolicy Bypass -File "%~dp0install-jandaia.ps1"
 `;
 }
 
@@ -243,6 +289,32 @@ Write-Host "Backend local: $serverUrl"
 Write-Host "Extensao Chrome/Chromium:"
 Write-Host "  $installRoot\\extension"
 Write-Host "Carregue a pasta acima em chrome://extensions"
+`;
+}
+
+function windowsInstallJandaiaPs1() {
+  return `$ErrorActionPreference = "Stop"
+
+$root = Split-Path -Parent $MyInvocation.MyCommand.Path
+$installRoot = Join-Path $env:LOCALAPPDATA "corrija_me_pt_br"
+$modelfilePath = Join-Path $installRoot "ai\\jandaia-1.Modelfile"
+$ollamaBin = if ($env:OLLAMA_BIN) { $env:OLLAMA_BIN } elseif (Get-Command ollama -ErrorAction SilentlyContinue) { "ollama" } else { $null }
+
+if (-not $ollamaBin) {
+  throw "Ollama nao encontrado. Instale o Ollama antes de ativar a Jandaia."
+}
+
+if (-not (Test-Path $modelfilePath)) {
+  throw "Modelfile da Jandaia nao encontrado em $modelfilePath"
+}
+
+& $ollamaBin pull "qwen2.5:1.5b-instruct"
+& $ollamaBin create "jandaia-1" "-f" $modelfilePath
+
+Write-Host ""
+Write-Host "Jandaia instalada no Ollama local."
+Write-Host "O backend base continua funcionando sem a LLM."
+Write-Host "A ativacao da LLM no backend empacotado fica como etapa opcional avancada."
 `;
 }
 
@@ -361,11 +433,19 @@ Versao: ${releaseVersion}
 Conteudo do pacote:
 - app/server
 - app/extension
+- app/ai
 - instaladores e scripts auxiliares
 
 Instalacao:
 - Linux: execute install.sh com sudo
 - Windows: execute install.bat
+
+Jandaia local:
+- a LLM NAO vem ativada por padrao no pacote base
+- o produto base instala primeiro o motor e a extensao
+- a ativacao da Jandaia e opcional e fica em:
+  - Linux: install-jandaia.sh
+  - Windows: install-jandaia.bat
 
 Extensao do navegador:
 - carregue a pasta instalada "extension" manualmente em chrome://extensions
@@ -410,11 +490,14 @@ async function stageTarget(target) {
   const targetRoot = path.join(stagingDir, target.folderName);
   const appRoot = path.join(targetRoot, "app");
   const extensionRoot = path.join(appRoot, "extension");
+  const aiRoot = path.join(appRoot, "ai");
   const executableOutput = path.join(targetRoot, target.executableRelativePath);
 
   await rm(targetRoot, { recursive: true, force: true });
   await mkdir(path.dirname(executableOutput), { recursive: true });
   await cp(path.join(buildDir, "extension"), extensionRoot, { recursive: true });
+  await mkdir(aiRoot, { recursive: true });
+  await copyFile(path.join(rootDir, "data", "ai", "jandaia-1.Modelfile"), path.join(aiRoot, "jandaia-1.Modelfile"));
   await copyFile(target.executableSource, executableOutput);
 
   if (target.executableMode !== null) {

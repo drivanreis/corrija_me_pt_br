@@ -20,6 +20,15 @@ Esta pasta concentra os testes que fazem parte oficial do sistema.
 - `npm run test:external-regression`
   - roda apenas a bancada externa de regressao
 
+## Observacao operacional
+
+- Comandos que fazem `npm run build` e usam `build/node-app` devem ser executados em serie.
+- Evite rodar em paralelo, por exemplo:
+  - `npm run test:backend`
+  - `npm run test:external-regression`
+  - `npm run check:jandaia`
+  - `npm run benchmark:hybrid`
+
 ## Limite Intencional
 
 O arquivo raiz `teste.sh` nao faz parte desta pasta nem do sistema oficial.

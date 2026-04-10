@@ -121,7 +121,12 @@ Build gerado automaticamente.
 }
 
 async function main() {
-  await rm(buildDir, { recursive: true, force: true });
+  await rm(buildDir, {
+    recursive: true,
+    force: true,
+    maxRetries: 5,
+    retryDelay: 200
+  });
   await mkdir(backendDir, { recursive: true });
   await mkdir(extensionDir, { recursive: true });
   await buildReplacementData();

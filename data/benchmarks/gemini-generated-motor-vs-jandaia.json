@@ -1,0 +1,70 @@
+{
+  "gemini": {
+    "modelo": "gemini-2.5-flash",
+    "tempoGeracaoMs": 13703
+  },
+  "casos": [
+    {
+      "id": "caso1",
+      "errado": "Os dois garotos foi na rua comprar pão mas eles não lembro do dinheiro e esqueceu a chave de casa.",
+      "correto": "Os dois garotos foram à rua comprar pão, mas eles não se lembraram do dinheiro e esqueceram a chave de casa."
+    },
+    {
+      "id": "caso2",
+      "errado": "Na reuniao de hoje eu apresentei um projeto novo para a equipe eles gostaram más tinha algumas questoes para serem revisto faltava coerencia.",
+      "correto": "Na reunião de hoje, eu apresentei um projeto novo para a equipe; eles gostaram, mas tinham algumas questões para serem revistas. Faltava coerência."
+    },
+    {
+      "id": "caso3",
+      "errado": "A festa foi muito boa avia bastante gente de diversos lugares e a musica estava animada porem o barulho era inssuportável.",
+      "correto": "A festa foi muito boa; havia bastante gente de diversos lugares, e a música estava animada. Porém, o barulho era insuportável."
+    }
+  ],
+  "resultados": [
+    {
+      "id": "caso1",
+      "errado": "Os dois garotos foi na rua comprar pão mas eles não lembro do dinheiro e esqueceu a chave de casa.",
+      "correto": "Os dois garotos foram à rua comprar pão, mas eles não se lembraram do dinheiro e esqueceram a chave de casa.",
+      "motor": {
+        "tempoMs": 8929,
+        "saida": "Os dois garotos foi na rua comprar pão, mas eles não lembro do dinheiro e esqueceu a chave de casa.",
+        "exact": false
+      },
+      "jandaia": {
+        "tempoMs": 43473,
+        "saida": "osErros",
+        "exact": false
+      }
+    },
+    {
+      "id": "caso2",
+      "errado": "Na reuniao de hoje eu apresentei um projeto novo para a equipe eles gostaram más tinha algumas questoes para serem revisto faltava coerencia.",
+      "correto": "Na reunião de hoje, eu apresentei um projeto novo para a equipe; eles gostaram, mas tinham algumas questões para serem revistas. Faltava coerência.",
+      "motor": {
+        "tempoMs": 10084,
+        "saida": "Na reunião de hoje eu apresentei um projeto novo para a equipe eles gostaram más tinha algumas questoes para serem revisto faltava coerencia.",
+        "exact": false
+      },
+      "jandaia": {
+        "tempoMs": 23143,
+        "saida": "Na ApresentResposta incorreta",
+        "exact": false
+      }
+    },
+    {
+      "id": "caso3",
+      "errado": "A festa foi muito boa avia bastante gente de diversos lugares e a musica estava animada porem o barulho era inssuportável.",
+      "correto": "A festa foi muito boa; havia bastante gente de diversos lugares, e a música estava animada. Porém, o barulho era insuportável.",
+      "motor": {
+        "tempoMs": 9407,
+        "saida": "A festa foi muito boa havia bastante gente de diversos lugares e à música estava animada, porém o barulho era inssuportável.",
+        "exact": false
+      },
+      "jandaia": {
+        "tempoMs": 22143,
+        "saida": "fmA festaResposta",
+        "exact": false
+      }
+    }
+  ]
+}

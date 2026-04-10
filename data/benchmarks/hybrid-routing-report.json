@@ -1,0 +1,678 @@
+{
+  "generatedAt": "2026-04-09T21:55:45.468Z",
+  "casesFile": "data/test-cases/curated-proof.json",
+  "total": 25,
+  "runtime": {
+    "llmCoreEnabled": true,
+    "llmCoreReachable": true,
+    "llmCoreModel": "jandaia-1",
+    "architecturePhase": "fase_2_roteamento_endurecido",
+    "note": "llm_core_habilitado"
+  },
+  "systems": {
+    "motor": {
+      "total": 25,
+      "exact": 18,
+      "changed": 22,
+      "unchanged": 3,
+      "avgLatencyMs": 449.44,
+      "llmUsed": 0,
+      "llmChanged": 0,
+      "exactRate": 0.72,
+      "llmUsedRate": 0,
+      "llmChangedRate": 0
+    },
+    "hybrid": {
+      "total": 25,
+      "exact": 18,
+      "changed": 22,
+      "unchanged": 3,
+      "avgLatencyMs": 21099.48,
+      "llmUsed": 25,
+      "llmChanged": 0,
+      "exactRate": 0.72,
+      "llmUsedRate": 1,
+      "llmChangedRate": 0
+    }
+  },
+  "delta": {
+    "exact": 0,
+    "exactRate": 0
+  },
+  "routingReasons": {
+    "consolidacao_multipla_passagem": 17,
+    "homofono_ou_contexto_ambiguo": 4,
+    "correcao_integral_com_confianca_intermediaria": 1,
+    "motor_sem_saida": 3
+  },
+  "routingReasonSummaries": {
+    "consolidacao_multipla_passagem": {
+      "total": 17,
+      "exact": 14,
+      "changed": 17,
+      "unchanged": 0,
+      "avgLatencyMs": 21623.24,
+      "llmUsed": 17,
+      "llmChanged": 0,
+      "exactRate": 0.8235,
+      "llmUsedRate": 1,
+      "llmChangedRate": 0
+    },
+    "homofono_ou_contexto_ambiguo": {
+      "total": 4,
+      "exact": 3,
+      "changed": 4,
+      "unchanged": 0,
+      "avgLatencyMs": 21073.25,
+      "llmUsed": 4,
+      "llmChanged": 0,
+      "exactRate": 0.75,
+      "llmUsedRate": 1,
+      "llmChangedRate": 0
+    },
+    "motor_sem_saida": {
+      "total": 3,
+      "exact": 0,
+      "changed": 0,
+      "unchanged": 3,
+      "avgLatencyMs": 18229.33,
+      "llmUsed": 3,
+      "llmChanged": 0,
+      "exactRate": 0,
+      "llmUsedRate": 1,
+      "llmChangedRate": 0
+    },
+    "correcao_integral_com_confianca_intermediaria": {
+      "total": 1,
+      "exact": 1,
+      "changed": 1,
+      "unchanged": 0,
+      "avgLatencyMs": 20911,
+      "llmUsed": 1,
+      "llmChanged": 0,
+      "exactRate": 1,
+      "llmUsedRate": 1,
+      "llmChangedRate": 0
+    }
+  },
+  "routeTargetSummaries": {
+    "jandaia_1": {
+      "total": 25,
+      "exact": 18,
+      "changed": 22,
+      "unchanged": 3,
+      "avgLatencyMs": 21099.48,
+      "llmUsed": 25,
+      "llmChanged": 0,
+      "exactRate": 0.72,
+      "llmUsedRate": 1,
+      "llmChangedRate": 0
+    }
+  },
+  "targetLayerSummaries": {
+    "jandaia_1": {
+      "total": 25,
+      "exact": 18,
+      "changed": 22,
+      "unchanged": 3,
+      "avgLatencyMs": 21099.48,
+      "llmUsed": 25,
+      "llmChanged": 0,
+      "exactRate": 0.72,
+      "llmUsedRate": 1,
+      "llmChangedRate": 0
+    }
+  },
+  "items": [
+    {
+      "id": "venda-produto-concordancia",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Vende-se dois aparelhos de som que estão em exelente estado.",
+      "expected": "Vendem-se dois aparelhos de som que estão em excelente estado.",
+      "motor": {
+        "correctedText": "Vendem-se dois aparelhos de som que estão em excelente estado.",
+        "exact": true,
+        "latencyMs": 9820
+      },
+      "hybrid": {
+        "correctedText": "Vendem-se dois aparelhos de som que estão em excelente estado.",
+        "exact": true,
+        "latencyMs": 46201,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "jantar-nois-informal",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Vou fazer uma janta pra nois.",
+      "expected": "Vou fazer um jantar para nós.",
+      "motor": {
+        "correctedText": "Vou fazer um jantar para nós.",
+        "exact": true,
+        "latencyMs": 53
+      },
+      "hybrid": {
+        "correctedText": "Vou fazer um jantar para nós.",
+        "exact": true,
+        "latencyMs": 20515,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "fazia-horas-espera",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Onde vc está? Já faziam horas que eu te esperava.",
+      "expected": "Onde você está? Já fazia horas que eu te esperava.",
+      "motor": {
+        "correctedText": "Onde você está? Já fazia horas que eu te esperava.",
+        "exact": true,
+        "latencyMs": 59
+      },
+      "hybrid": {
+        "correctedText": "Onde você está? Já fazia horas que eu te esperava.",
+        "exact": true,
+        "latencyMs": 23400,
+        "routeReason": "homofono_ou_contexto_ambiguo",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "vendem-se-seminovas-anuncio",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Vende-se bicicletas semi novas com garantia.",
+      "expected": "Vendem-se bicicletas seminovas com garantia.",
+      "motor": {
+        "correctedText": "Vendem-se bicicletas seminovas com garantia.",
+        "exact": true,
+        "latencyMs": 63
+      },
+      "hybrid": {
+        "correctedText": "Vendem-se bicicletas seminovas com garantia.",
+        "exact": true,
+        "latencyMs": 27908,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "faco-questao-ortografia",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Eu fasso questão de pagar o café hoje.",
+      "expected": "Eu faço questão de pagar o café hoje.",
+      "motor": {
+        "correctedText": "Eu faço questão de pagar o café hoje.",
+        "exact": true,
+        "latencyMs": 65
+      },
+      "hybrid": {
+        "correctedText": "Eu faço questão de pagar o café hoje.",
+        "exact": true,
+        "latencyMs": 20921,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "trago-as-frutas-plural",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Pode deixar que eu trago as fruta pra você.",
+      "expected": "Pode deixar que eu trago as frutas para você.",
+      "motor": {
+        "correctedText": "Pode deixar que eu trago as frutas para você.",
+        "exact": true,
+        "latencyMs": 65
+      },
+      "hybrid": {
+        "correctedText": "Pode deixar que eu trago as frutas para você.",
+        "exact": true,
+        "latencyMs": 22285,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "vim-vir-palestra",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "O diretor deve vim para a palestra amanhã.",
+      "expected": "O diretor deve vir para a palestra amanhã.",
+      "motor": {
+        "correctedText": "O diretor deve vir para a palestra amanhã.",
+        "exact": true,
+        "latencyMs": 53
+      },
+      "hybrid": {
+        "correctedText": "O diretor deve vir para a palestra amanhã.",
+        "exact": true,
+        "latencyMs": 17139,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "oferta-plural-fim-ano",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Venha conferir nossas oferta de fim de ano.",
+      "expected": "Venha conferir nossas ofertas de fim de ano.",
+      "motor": {
+        "correctedText": "Venha conferir nossas ofertas de fim de ano.",
+        "exact": true,
+        "latencyMs": 72
+      },
+      "hybrid": {
+        "correctedText": "Venha conferir nossas ofertas de fim de ano.",
+        "exact": true,
+        "latencyMs": 21559,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "esteje-voce-subjuntivo",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Espero que voçê esteje bem.",
+      "expected": "Espero que você esteja bem.",
+      "motor": {
+        "correctedText": "Espero que você esteja bem.",
+        "exact": true,
+        "latencyMs": 49
+      },
+      "hybrid": {
+        "correctedText": "Espero que você esteja bem.",
+        "exact": true,
+        "latencyMs": 16651,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "contexto-assino",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Eu assento o documento agora mesmo.",
+      "expected": "Eu assino o documento agora mesmo.",
+      "motor": {
+        "correctedText": "Eu assino o documento agora mesmo.",
+        "exact": true,
+        "latencyMs": 94
+      },
+      "hybrid": {
+        "correctedText": "Eu assino o documento agora mesmo.",
+        "exact": true,
+        "latencyMs": 20591,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "contexto-age",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Ele sempre agi com muita cautela.",
+      "expected": "Ele sempre age com muita cautela.",
+      "motor": {
+        "correctedText": "Ele sempre age com muita cautela.",
+        "exact": true,
+        "latencyMs": 39
+      },
+      "hybrid": {
+        "correctedText": "Ele sempre age com muita cautela.",
+        "exact": true,
+        "latencyMs": 24002,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "contx_12",
+      "category": "contexto",
+      "difficulty": 3,
+      "original": "O pessoal chegaram muito animados para a viagem.",
+      "expected": "O pessoal chegou muito animado para a viagem.",
+      "motor": {
+        "correctedText": "O pessoal chegou muito animados para a viagem.",
+        "exact": false,
+        "latencyMs": 61
+      },
+      "hybrid": {
+        "correctedText": "O pessoal chegou muito animados para a viagem.",
+        "exact": false,
+        "latencyMs": 18942,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "contexto_01",
+      "category": "contexto",
+      "difficulty": 3,
+      "original": "Os dados foi coletado para análise.",
+      "expected": "Os dados foram coletados para análise.",
+      "motor": {
+        "correctedText": "Os dados foram coletados para análise.",
+        "exact": true,
+        "latencyMs": 40
+      },
+      "hybrid": {
+        "correctedText": "Os dados foram coletados para análise.",
+        "exact": true,
+        "latencyMs": 19520,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "texto_tecnico_10",
+      "category": "texto técnico",
+      "difficulty": 3,
+      "original": "Esta tecnologia oferece um diferencial competitivo, que o mercado anseia.",
+      "expected": "Esta tecnologia oferece um diferencial competitivo pelo qual o mercado anseia.",
+      "motor": {
+        "correctedText": "Esta tecnologia oferece um diferencial competitivo pelo qual o mercado anseia.",
+        "exact": true,
+        "latencyMs": 27
+      },
+      "hybrid": {
+        "correctedText": "Esta tecnologia oferece um diferencial competitivo pelo qual o mercado anseia.",
+        "exact": true,
+        "latencyMs": 20911,
+        "routeReason": "correcao_integral_com_confianca_intermediaria",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "cont_pronome_mesmo",
+      "category": "contexto",
+      "difficulty": 5,
+      "original": "Antes de entrar no elevador, verifique se o mesmo encontra-se parado.",
+      "expected": "Antes de entrar no elevador, verifique se ele se encontra parado.",
+      "motor": {
+        "correctedText": "Antes de entrar no elevador, verifique se ele encontra-se parado.",
+        "exact": false,
+        "latencyMs": 58
+      },
+      "hybrid": {
+        "correctedText": "Antes de entrar no elevador, verifique se ele encontra-se parado.",
+        "exact": false,
+        "latencyMs": 11066,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "homo_a_ha",
+      "category": "homófonos",
+      "difficulty": 5,
+      "original": "Moro aqui a cinco anos, mas a empresa fica há duas quadras daqui.",
+      "expected": "Moro aqui há cinco anos, mas a empresa fica a duas quadras daqui.",
+      "motor": {
+        "correctedText": "Moro aqui a cinco anos, mas a empresa fica há duas quadras daqui.",
+        "exact": false,
+        "latencyMs": 61
+      },
+      "hybrid": {
+        "correctedText": "Moro aqui a cinco anos, mas a empresa fica há duas quadras daqui.",
+        "exact": false,
+        "latencyMs": 21212,
+        "routeReason": "motor_sem_saida",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "homo_senão_se_não",
+      "category": "homófonos",
+      "difficulty": 5,
+      "original": "Senão chover amanhã, iremos à praia, se não teremos que cancelar.",
+      "expected": "Se não chover amanhã, iremos à praia, senão teremos que cancelar.",
+      "motor": {
+        "correctedText": "Senão chover amanhã, iremos à praia, se não teremos que cancelar.",
+        "exact": false,
+        "latencyMs": 59
+      },
+      "hybrid": {
+        "correctedText": "Senão chover amanhã, iremos à praia, se não teremos que cancelar.",
+        "exact": false,
+        "latencyMs": 21686,
+        "routeReason": "motor_sem_saida",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "homo_incipiente_insipiente",
+      "category": "homófonos",
+      "difficulty": 5,
+      "original": "O projeto ainda é insipiente, mas o gestor é um homem incipiente.",
+      "expected": "O projeto ainda é incipiente, mas o gestor é um homem insipiente.",
+      "motor": {
+        "correctedText": "O projeto ainda é insipiente, mas o gestor é um homem incipiente.",
+        "exact": false,
+        "latencyMs": 55
+      },
+      "hybrid": {
+        "correctedText": "O projeto ainda é insipiente, mas o gestor é um homem incipiente.",
+        "exact": false,
+        "latencyMs": 11790,
+        "routeReason": "motor_sem_saida",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "homo_taxar_tachar",
+      "category": "homófonos",
+      "difficulty": 5,
+      "original": "O governo resolveu tachar as importações e o público o taxou de louco.",
+      "expected": "O governo resolveu taxar as importações e o público o tachou de louco.",
+      "motor": {
+        "correctedText": "O governo resolveu taxar as importações e o públicos o taxou de louco.",
+        "exact": false,
+        "latencyMs": 81
+      },
+      "hybrid": {
+        "correctedText": "O governo resolveu taxar as importações e o públicos o taxou de louco.",
+        "exact": false,
+        "latencyMs": 21667,
+        "routeReason": "homofono_ou_contexto_ambiguo",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "homo_eminente_iminente",
+      "category": "homófonos",
+      "difficulty": 5,
+      "original": "O perigo é eminente, segundo o iminente jurista que nos visitou.",
+      "expected": "O perigo é iminente, segundo o eminente jurista que nos visitou.",
+      "motor": {
+        "correctedText": "O perigo é iminente, segundo o iminente jurista que nos visitou.",
+        "exact": false,
+        "latencyMs": 102
+      },
+      "hybrid": {
+        "correctedText": "O perigo é iminente, segundo o iminente jurista que nos visitou.",
+        "exact": false,
+        "latencyMs": 19764,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "anun_proibido_estacionar",
+      "category": "anúncios",
+      "difficulty": 5,
+      "original": "É proibido entrada de pessoas estranhas ao serviço.",
+      "expected": "É proibida a entrada de pessoas estranhas ao serviço.",
+      "motor": {
+        "correctedText": "É proibida a entrada de pessoas estranhas ao serviço.",
+        "exact": true,
+        "latencyMs": 50
+      },
+      "hybrid": {
+        "correctedText": "É proibida a entrada de pessoas estranhas ao serviço.",
+        "exact": true,
+        "latencyMs": 19994,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "ortografia_06",
+      "category": "ortografia",
+      "difficulty": 2,
+      "original": "Chegou o momento de decidir onde iremos por hora.",
+      "expected": "Chegou o momento de decidir onde iremos por ora.",
+      "motor": {
+        "correctedText": "Chegou o momento de decidir onde iremos por ora.",
+        "exact": true,
+        "latencyMs": 55
+      },
+      "hybrid": {
+        "correctedText": "Chegou o momento de decidir onde iremos por ora.",
+        "exact": true,
+        "latencyMs": 19670,
+        "routeReason": "homofono_ou_contexto_ambiguo",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "hifen_07",
+      "category": "hífen",
+      "difficulty": 2,
+      "original": "Aquele foi um evento extra-curricular muito interessante.",
+      "expected": "Aquele foi um evento extracurricular muito interessante.",
+      "motor": {
+        "correctedText": "Aquele foi um evento extracurricular muito interessante.",
+        "exact": true,
+        "latencyMs": 45
+      },
+      "hybrid": {
+        "correctedText": "Aquele foi um evento extracurricular muito interessante.",
+        "exact": true,
+        "latencyMs": 20308,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "contexto_01",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Ele é um mal profissional, sempre atrasado.",
+      "expected": "Ele é um mau profissional, sempre atrasado.",
+      "motor": {
+        "correctedText": "Ele é um mau profissional, sempre atrasado.",
+        "exact": true,
+        "latencyMs": 58
+      },
+      "hybrid": {
+        "correctedText": "Ele é um mau profissional, sempre atrasado.",
+        "exact": true,
+        "latencyMs": 20229,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    },
+    {
+      "id": "contexto_02",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "A seção de cinema começa às 20h.",
+      "expected": "A sessão de cinema começa às 20h.",
+      "motor": {
+        "correctedText": "A sessão de cinema começa às 20h.",
+        "exact": true,
+        "latencyMs": 52
+      },
+      "hybrid": {
+        "correctedText": "A sessão de cinema começa às 20h.",
+        "exact": true,
+        "latencyMs": 19556,
+        "routeReason": "homofono_ou_contexto_ambiguo",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "jandaia_1",
+        "llmUsed": true,
+        "llmChanged": false
+      }
+    }
+  ]
+}

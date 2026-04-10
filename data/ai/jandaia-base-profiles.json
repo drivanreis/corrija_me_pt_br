@@ -1,0 +1,55 @@
+{
+  "preferredProfile": "qwen2_5_1_5b",
+  "profiles": {
+    "qwen2_5_1_5b": {
+      "label": "Qwen2.5 1.5B Instruct",
+      "status": "candidato_principal_local",
+      "notes": [
+        "modelo menor e mais rapido para uso quase off-line",
+        "multilingue com suporte a portugues",
+        "alvo principal para substituir Tucano-2 como base local"
+      ],
+      "localModelCandidates": [
+        ".models/jandaia/Qwen2.5-1.5B-Instruct-Q5_K_M.gguf",
+        ".models/jandaia/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+        ".models/jandaia/Qwen2.5-1.5B-Instruct-Q3_K_M.gguf"
+      ],
+      "baseModelCandidates": [
+        "qwen2.5:1.5b-instruct",
+        "qwen2.5:1.5b"
+      ],
+      "download": {
+        "kind": "ollama_pull",
+        "model": "qwen2.5:1.5b-instruct"
+      }
+    },
+    "tucano_2b4_legacy": {
+      "label": "Tucano-2b4 Instruct",
+      "status": "legado_para_comparacao",
+      "notes": [
+        "mantido para comparacao historica e testes controlados",
+        "nao e mais o alvo principal do runtime local"
+      ],
+      "localModelCandidates": [
+        ".models/jandaia/Tucano-2b4-Instruct-Q5_K_M.gguf",
+        ".models/jandaia/Tucano-2b4-Instruct-Q4_K_M.gguf",
+        ".models/jandaia/Tucano-2b4-Instruct-Q3_K_M.gguf",
+        ".models/jandaia/Tucano-2b4-Instruct-Q2_K.gguf"
+      ],
+      "baseModelCandidates": [
+        ".models/jandaia/Tucano-2b4-Instruct-Q5_K_M.gguf",
+        ".models/jandaia/Tucano-2b4-Instruct-Q4_K_M.gguf",
+        ".models/jandaia/Tucano-2b4-Instruct-Q3_K_M.gguf",
+        ".models/jandaia/Tucano-2b4-Instruct-Q2_K.gguf",
+        "hf.co/tensorblock/Tucano-2b4-Instruct-GGUF:Q3_K_M",
+        "hf.co/tensorblock/Tucano-2b4-Instruct-GGUF:Q2_K",
+        "hf.co/GuilhermeAumo/Tucano-2b4-Instruct-Q4_K_M-GGUF:latest"
+      ],
+      "download": {
+        "kind": "curl",
+        "targetPath": ".models/jandaia/Tucano-2b4-Instruct-Q3_K_M.gguf",
+        "sourceUrl": "https://huggingface.co/tensorblock/Tucano-2b4-Instruct-GGUF/resolve/main/Tucano-2b4-Instruct-Q3_K_M.gguf"
+      }
+    }
+  }
+}

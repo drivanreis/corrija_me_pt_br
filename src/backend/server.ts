@@ -3,7 +3,7 @@ import { spawn } from "node:child_process";
 import { join } from "node:path";
 import { checkText } from "../core/engine.js";
 import type { CheckResult } from "../core/types.js";
-import { buildWholeTextLlmMatch, checkLlmCoreHealth, decideLlmRouting, readLlmCoreConfig, requestLlmCoreSuggestion } from "./llm-core.js";
+import { buildWholeTextLlmMatch, checkLlmCoreHealth, decideLlmRouting, readJandaiaArchitectureProfile, readJandaiaRuntimeReadiness, readLlmCoreConfig, requestLlmCoreSuggestion } from "./llm-core.js";
 import { loadDictionaryResources } from "./dictionary.js";
 
 const DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
@@ -13,17 +13,47 @@ const currentDir = __dirname;
 const dataDir = join(currentDir, "../data");
 const dictionaryResources = isCheckWorkerProcess ? null : loadDictionaryResources(dataDir);
 const llmCoreConfig = readLlmCoreConfig();
+const jandaiaArchitectureProfile = readJandaiaArchitectureProfile();
 const RUNTIME_ARCHITECTURE = {
   production: {
     entrypoint: "backend_json_text",
     first_barrier: "motor",
     fallback: "jandaia",
-    primary_endpoint: "/v2/check-smart"
+    primary_endpoint: "/v2/check-smart",
+    runtime_mode: jandaiaArchitectureProfile.runtimeMode,
+    service_level_budget_ms: llmCoreConfig.timeoutMs
   },
   orientation: {
     instructors: ["tucano_2", "quillbot"],
     director: "gemini",
     data_enrichment: "gemini"
+  },
+  components: {
+    motor: {
+      role: "primeira_defesa",
+      priorities: ["velocidade", "previsibilidade", "baixo_custo"]
+    },
+    jandaia_1: {
+      role: jandaiaArchitectureProfile.primaryRole,
+      style: jandaiaArchitectureProfile.correctionStyle
+    },
+    tucano_2: {
+      role: "referencia_de_base_local"
+    },
+    quillbot: {
+      role: "referencia_de_qualidade_de_reescrita"
+    },
+    gemini: {
+      role: "consultor_externo_e_arbitro"
+    }
+  },
+  implementation: {
+    phase: "fase_3_orcamento_de_tempo_e_fallback_controlado",
+    next_steps: [
+      "medir_quantos_casos_complexos_a_jandaia_resolve_dentro_do_teto",
+      "reduzir_latencia_do_modelo_local_sem_perder_qualidade",
+      "refinar_gatilhos_por_familia_de_erro"
+    ]
   }
 };
 
@@ -138,7 +168,22 @@ function runCheckInProcess(text: string): CheckResult {
   });
 }
 
-function createCorePayload(text: string, baseResult: CheckResult, correctedText: string | null, routeReason: string, llmMeta: { used: boolean; latencyMs?: number; model?: string; error?: string }) {
+function createCorePayload(
+  text: string,
+  baseResult: CheckResult,
+  correctedText: string | null,
+  routing: ReturnType<typeof decideLlmRouting>,
+  llmMeta: {
+    attempted?: boolean;
+    used: boolean;
+    latencyMs?: number;
+    model?: string;
+    error?: string;
+    timedOut?: boolean;
+    budgetMs?: number;
+    remainingBudgetMs?: number;
+  }
+) {
   if (!correctedText || correctedText === text) {
     return {
       result: baseResult,
@@ -146,7 +191,9 @@ function createCorePayload(text: string, baseResult: CheckResult, correctedText:
       core: {
         enabled: llmCoreConfig.enabled,
         changed: false,
-        routeReason,
+        routeReason: routing.reason,
+        targetLayer: "motor",
+        routing,
         ...llmMeta
       }
     };
@@ -155,13 +202,15 @@ function createCorePayload(text: string, baseResult: CheckResult, correctedText:
   return {
     result: {
       ...baseResult,
-      matches: [buildWholeTextLlmMatch(text, correctedText, routeReason)]
+      matches: [buildWholeTextLlmMatch(text, correctedText, routing.reason)]
     },
     baseResult,
     core: {
       enabled: llmCoreConfig.enabled,
       changed: true,
-      routeReason,
+      routeReason: routing.reason,
+      targetLayer: "jandaia_1",
+      routing,
       correctedText,
       ...llmMeta
     }
@@ -169,29 +218,57 @@ function createCorePayload(text: string, baseResult: CheckResult, correctedText:
 }
 
 async function runMotorFirstCoreFlow(text: string): Promise<ReturnType<typeof createCorePayload>> {
+  const startedAt = Date.now();
   const baseResult: CheckResult = isPackagedBinary ? runCheckInProcess(text) : await runCheckInWorker(text);
   const routing = decideLlmRouting(text, baseResult);
+  const elapsedBeforeLlmMs = Date.now() - startedAt;
+  const remainingBudgetMs = Math.max(0, llmCoreConfig.timeoutMs - elapsedBeforeLlmMs);
 
   if (!llmCoreConfig.enabled || !routing.shouldRoute) {
-    return createCorePayload(text, baseResult, null, routing.reason, {
+    return createCorePayload(text, baseResult, null, routing, {
+      attempted: false,
       used: false,
-      model: llmCoreConfig.model
+      model: llmCoreConfig.model,
+      budgetMs: llmCoreConfig.timeoutMs,
+      remainingBudgetMs
+    });
+  }
+
+  if (remainingBudgetMs < 250) {
+    return createCorePayload(text, baseResult, null, routing, {
+      attempted: false,
+      used: false,
+      model: llmCoreConfig.model,
+      budgetMs: llmCoreConfig.timeoutMs,
+      remainingBudgetMs,
+      timedOut: true,
+      error: "orcamento_esgotado_no_motor"
     });
   }
 
   try {
-    const suggestion = await requestLlmCoreSuggestion(text, llmCoreConfig);
-    return createCorePayload(text, baseResult, suggestion?.correctedText || null, routing.reason, {
-      used: true,
+    const suggestion = await requestLlmCoreSuggestion(text, {
+      ...llmCoreConfig,
+      timeoutMs: remainingBudgetMs
+    });
+    return createCorePayload(text, baseResult, suggestion?.correctedText || null, routing, {
+      attempted: true,
+      used: Boolean(suggestion?.correctedText),
       latencyMs: suggestion?.latencyMs,
-      model: suggestion?.model || llmCoreConfig.model
+      model: suggestion?.model || llmCoreConfig.model,
+      budgetMs: llmCoreConfig.timeoutMs,
+      remainingBudgetMs
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "llm_core_failed";
-    return createCorePayload(text, baseResult, null, routing.reason, {
-      used: true,
+    return createCorePayload(text, baseResult, null, routing, {
+      attempted: true,
+      used: false,
       model: llmCoreConfig.model,
-      error: message
+      error: message,
+      timedOut: /aborted|abort|timeout/iu.test(message),
+      budgetMs: llmCoreConfig.timeoutMs,
+      remainingBudgetMs
     });
   }
 }
@@ -239,6 +316,7 @@ if (isCheckWorkerProcess) {
         model: llmCoreConfig.model,
         error: "disabled"
       };
+      const jandaiaRuntime = await readJandaiaRuntimeReadiness(llmCoreConfig);
 
       sendJson(response, 200, {
         status: "ok",
@@ -255,15 +333,19 @@ if (isCheckWorkerProcess) {
           enabled: llmCoreConfig.enabled,
           ...llmHealth
         },
+        jandaiaRuntime,
         architecture: RUNTIME_ARCHITECTURE
       });
       return;
     }
 
     if (request.method === "GET" && url.pathname === "/v2/architecture") {
+      const jandaiaRuntime = await readJandaiaRuntimeReadiness(llmCoreConfig);
       sendJson(response, 200, {
         status: "ok",
         runtime: RUNTIME_ARCHITECTURE,
+        jandaia: jandaiaArchitectureProfile,
+        jandaiaRuntime,
         llmCore: {
           enabled: llmCoreConfig.enabled,
           model: llmCoreConfig.model
@@ -323,11 +405,14 @@ if (isCheckWorkerProcess) {
         sendJson(response, 200, {
           ...payload,
           runtime: {
-            mode: "motor_first_with_jandaia_fallback",
+            mode: "motor_first_with_budgeted_jandaia_fallback",
             first_barrier: "motor",
             fallback: "jandaia",
+            serviceLevelBudgetMs: llmCoreConfig.timeoutMs,
             instructors: ["tucano_2", "quillbot"],
-            director: "gemini"
+            director: "gemini",
+            architectureProfile: jandaiaArchitectureProfile,
+            routing: payload.core.routing
           }
         });
         return;

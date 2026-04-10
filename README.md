@@ -22,6 +22,8 @@ Depois de baixar, faca assim:
 - funciona sem Java
 - possui pacote portatil para Windows e Linux
 - escolhe automaticamente uma porta livre a partir de `18081`
+- instala primeiro o produto base
+- deixa a `Jandaia` local como recurso opcional
 
 ## Instalacao rapida
 
@@ -39,6 +41,11 @@ Depois de baixar, faca assim:
 
 Depois disso, o backend local sera iniciado automaticamente quando o usuario entrar no Windows.
 O instalador escolhe automaticamente uma porta livre.
+
+Opcional:
+
+- se quiser testar a `Jandaia` local depois, execute `install-jandaia.bat`
+- o produto base continua funcionando sem a LLM
 
 Para desinstalar:
 
@@ -65,6 +72,11 @@ sudo ./install.sh
 
 Depois disso, o backend local sera iniciado automaticamente com o sistema.
 O instalador escolhe automaticamente uma porta livre.
+
+Opcional:
+
+- se quiser testar a `Jandaia` local depois, execute `./install-jandaia.sh`
+- o produto base continua funcionando sem a LLM
 
 Para desinstalar:
 
@@ -93,6 +105,8 @@ Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em `chrome
 - extensao pronta para carregar no Chrome
 - instalador
 - desinstalador
+- arquivos de configuracao da `Jandaia`
+- ativacao opcional da `Jandaia`, sem vir ligada por padrao
 
 ## Para desenvolvimento
 

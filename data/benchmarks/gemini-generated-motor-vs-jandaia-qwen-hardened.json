@@ -1,0 +1,52 @@
+{
+  "baseProfile": "qwen2_5_1_5b",
+  "mode": "qwen_hardened_prompt",
+  "sourceFile": "data/benchmarks/gemini-generated-motor-vs-jandaia.json",
+  "resultados": [
+    {
+      "id": "caso1",
+      "errado": "Os dois garotos foi na rua comprar pão mas eles não lembro do dinheiro e esqueceu a chave de casa.",
+      "correto": "Os dois garotos foram à rua comprar pão, mas eles não se lembraram do dinheiro e esqueceram a chave de casa.",
+      "motor": {
+        "tempoMs": 9486,
+        "saida": "Os dois garotos foi na rua comprar pão, mas eles não lembro do dinheiro e esqueceu a chave de casa.",
+        "exact": false
+      },
+      "jandaia": {
+        "tempoMs": 26353,
+        "saida": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "caso2",
+      "errado": "Na reuniao de hoje eu apresentei um projeto novo para a equipe eles gostaram más tinha algumas questoes para serem revisto faltava coerencia.",
+      "correto": "Na reunião de hoje, eu apresentei um projeto novo para a equipe; eles gostaram, mas tinham algumas questões para serem revistas. Faltava coerência.",
+      "motor": {
+        "tempoMs": 10924,
+        "saida": "Na reunião de hoje eu apresentei um projeto novo para a equipe eles gostaram más tinha algumas questoes para serem revisto faltava coerencia.",
+        "exact": false
+      },
+      "jandaia": {
+        "tempoMs": 3565,
+        "saida": "",
+        "exact": false
+      }
+    },
+    {
+      "id": "caso3",
+      "errado": "A festa foi muito boa avia bastante gente de diversos lugares e a musica estava animada porem o barulho era inssuportável.",
+      "correto": "A festa foi muito boa; havia bastante gente de diversos lugares, e a música estava animada. Porém, o barulho era insuportável.",
+      "motor": {
+        "tempoMs": 83,
+        "saida": "A festa foi muito boa havia bastante gente de diversos lugares e à música estava animada, porém o barulho era inssuportável.",
+        "exact": false
+      },
+      "jandaia": {
+        "tempoMs": 3860,
+        "saida": "",
+        "exact": false
+      }
+    }
+  ]
+}

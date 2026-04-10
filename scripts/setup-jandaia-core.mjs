@@ -7,12 +7,7 @@ const ROOT = process.cwd();
 const DEFAULT_MODEL = process.env.CORRIJA_ME_LLM_CORE_MODEL || "jandaia-1";
 const DEFAULT_OLLAMA_BIN = process.env.OLLAMA_BIN || path.join(process.env.HOME || "", ".local", "bin", "ollama");
 const MODELS_BASE_URL = (process.env.CORRIJA_ME_LLM_CORE_URL || "http://127.0.0.1:11434").replace(/\/+$/u, "");
-const LOCAL_Q5_PATH = path.join(ROOT, ".models", "jandaia", "Tucano-2b4-Instruct-Q5_K_M.gguf");
-const BASE_MODEL_CANDIDATES = [
-  LOCAL_Q5_PATH,
-  "hf.co/tensorblock/Tucano-2b4-Instruct-GGUF:Q5_K_M",
-  "hf.co/GuilhermeAumo/Tucano-2b4-Instruct-Q4_K_M-GGUF:latest"
-];
+const PROFILE_PATH = path.join(ROOT, "data", "ai", "jandaia-base-profiles.json");
 
 function runCommand(command, args, label = `${command} ${args.join(" ")}`, timeoutMs = 300_000) {
   return new Promise((resolve, reject) => {
@@ -84,7 +79,33 @@ function normalize(text) {
   return cleaned;
 }
 
+async function readProfileConfig() {
+  const raw = JSON.parse(await fs.readFile(PROFILE_PATH, "utf8"));
+  const selectedProfileId = process.env.CORRIJA_ME_JANDAIA_BASE_PROFILE || raw.preferredProfile;
+  const selectedProfile = raw.profiles?.[selectedProfileId];
+
+  if (!selectedProfile) {
+    throw new Error(`Perfil de base invalido: ${selectedProfileId}`);
+  }
+
+  const localModelCandidates = Array.isArray(selectedProfile.localModelCandidates)
+    ? selectedProfile.localModelCandidates.map((candidate) => path.join(ROOT, candidate))
+    : [];
+
+  return {
+    id: selectedProfileId,
+    ...selectedProfile,
+    localModelCandidates,
+    baseModelCandidates: Array.isArray(selectedProfile.baseModelCandidates)
+      ? selectedProfile.baseModelCandidates.map((candidate) => (
+        candidate.startsWith(".") ? path.join(ROOT, candidate) : candidate
+      ))
+      : []
+  };
+}
+
 async function main() {
+  const profile = await readProfileConfig();
   const modelfilePath = path.join(ROOT, "data", "ai", "jandaia-1.Modelfile");
   const evalPath = path.join(ROOT, "data", "ai", "jandaia-1-eval.json");
   const modelfile = await fs.readFile(modelfilePath, "utf8");
@@ -97,11 +118,13 @@ async function main() {
   let selectedBaseModel = "";
   let lastBaseError = null;
 
-  for (const candidate of BASE_MODEL_CANDIDATES) {
+  for (const candidate of profile.baseModelCandidates) {
     try {
-      if (candidate === LOCAL_Q5_PATH) {
+      if (profile.localModelCandidates.includes(candidate)) {
         await fs.access(candidate);
-      } else if (candidate.startsWith("hf.co/tensorblock/")) {
+      } else if (!candidate.startsWith("hf.co/") && !candidate.includes(path.sep)) {
+        await runCommand(DEFAULT_OLLAMA_BIN, ["pull", candidate], `pull ${candidate}`, 900_000);
+      } else if (candidate.startsWith("hf.co/")) {
         await runCommand(DEFAULT_OLLAMA_BIN, ["pull", candidate], `pull ${candidate}`, 900_000);
       }
       await createDerivedModel(candidate, modelfilePath);
@@ -150,6 +173,7 @@ async function main() {
 
   const summary = {
     model: DEFAULT_MODEL,
+    base_profile: profile.id,
     base_model: selectedBaseModel,
     passed,
     total: evalCases.length,

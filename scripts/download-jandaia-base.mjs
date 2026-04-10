@@ -5,8 +5,8 @@ import { spawn } from "node:child_process";
 
 const ROOT = process.cwd();
 const TARGET_DIR = path.join(ROOT, ".models", "jandaia");
-const TARGET_PATH = path.join(TARGET_DIR, "Tucano-2b4-Instruct-Q5_K_M.gguf");
-const SOURCE_URL = "https://huggingface.co/tensorblock/Tucano-2b4-Instruct-GGUF/resolve/main/Tucano-2b4-Instruct-Q5_K_M.gguf";
+const PROFILE_PATH = path.join(ROOT, "data", "ai", "jandaia-base-profiles.json");
+const DEFAULT_OLLAMA_BIN = process.env.OLLAMA_BIN || path.join(process.env.HOME || "", ".local", "bin", "ollama");
 
 function runCommand(command, args, label = `${command} ${args.join(" ")}`, timeoutMs = 7_200_000) {
   return new Promise((resolve, reject) => {
@@ -32,14 +32,49 @@ function runCommand(command, args, label = `${command} ${args.join(" ")}`, timeo
   });
 }
 
+async function readProfileConfig() {
+  const raw = JSON.parse(await fs.readFile(PROFILE_PATH, "utf8"));
+  const selectedProfileId = process.env.CORRIJA_ME_JANDAIA_BASE_PROFILE || raw.preferredProfile;
+  const selectedProfile = raw.profiles?.[selectedProfileId];
+
+  if (!selectedProfile) {
+    throw new Error(`Perfil de base invalido: ${selectedProfileId}`);
+  }
+
+  return {
+    id: selectedProfileId,
+    ...selectedProfile
+  };
+}
+
 async function main() {
+  const profile = await readProfileConfig();
   await fs.mkdir(TARGET_DIR, { recursive: true });
-  await runCommand("curl", ["-L", "-C", "-", "-o", TARGET_PATH, SOURCE_URL], "download jandaia q5");
-  const stats = await fs.stat(TARGET_PATH);
-  console.log(JSON.stringify({
-    target: TARGET_PATH,
-    size_bytes: stats.size
-  }, null, 2));
+
+  if (profile.download?.kind === "ollama_pull") {
+    await runCommand(DEFAULT_OLLAMA_BIN, ["pull", profile.download.model], `ollama pull ${profile.download.model}`);
+    console.log(JSON.stringify({
+      profile: profile.id,
+      strategy: "ollama_pull",
+      targetModel: profile.download.model
+    }, null, 2));
+    return;
+  }
+
+  if (profile.download?.kind === "curl") {
+    const targetPath = path.join(ROOT, profile.download.targetPath);
+    await runCommand("curl", ["-L", "-C", "-", "-o", targetPath, profile.download.sourceUrl], `download ${profile.id}`);
+    const stats = await fs.stat(targetPath);
+    console.log(JSON.stringify({
+      profile: profile.id,
+      strategy: "curl",
+      target: targetPath,
+      size_bytes: stats.size
+    }, null, 2));
+    return;
+  }
+
+  throw new Error(`Estrategia de download nao suportada para o perfil ${profile.id}`);
 }
 
 main().catch((error) => {

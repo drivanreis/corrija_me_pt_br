@@ -1,6 +1,7 @@
 {
   "model": "jandaia-1",
-  "base_model": "hf.co/GuilhermeAumo/Tucano-2b4-Instruct-Q4_K_M-GGUF:latest",
+  "base_profile": "qwen2_5_1_5b",
+  "base_model": "qwen2.5:1.5b-instruct",
   "passed": 0,
   "total": 6,
   "accuracy": 0,
@@ -9,35 +10,35 @@
       "id": "jandaia_agreement_001",
       "input": "A gente vamos no cinema amanhã.",
       "expected": "A gente vai ao cinema amanhã.",
-      "output": "",
+      "output": "Errado, a pessoa está falando que vão para o cinema. Portanto, deve-se colocar \"vamos\" em vez do verbo ir e depois adicionar ao final da frase um horário específico (20h). Assim sendo: A gente vai no cinema amanhã às 20 horas.",
       "ok": false
     },
     {
       "id": "jandaia_homophone_001",
       "input": "A seção de cinema começa às 20h.",
       "expected": "A sessão de cinema começa às 20h.",
-      "output": "",
+      "output": "Errada: O professor está falando sobre a importância da correção do português. Correto:",
       "ok": false
     },
     {
       "id": "jandaia_homophone_002",
       "input": "A sessão dos direitos autorais foi assinada.",
       "expected": "A cessão dos direitos autorais foi assinada.",
-      "output": "AaEaçãoErraResposta",
+      "output": "Correto:",
       "ok": false
     },
     {
       "id": "jandaia_porque_001",
       "input": "Ele não sabe porque você faltou.",
       "expected": "Ele não sabe por que você faltou.",
-      "output": "",
+      "output": "Ele não sabe por que você falhou.",
       "ok": false
     },
     {
       "id": "jandaia_conserto_001",
       "input": "O concerto do rádio ficou caro.",
       "expected": "O conserto do rádio ficou caro.",
-      "output": "AO ooEErem:",
+      "output": "O show da banda rock foi gratuito.",
       "ok": false
     },
     {

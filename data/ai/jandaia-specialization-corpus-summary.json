@@ -1,0 +1,8 @@
+{
+  "total": 5627,
+  "sources": [
+    "data/ai/jandaia-1-eval.json",
+    "data/test-cases/curated-proof.json",
+    "data/test-cases/curated-know.json"
+  ]
+}

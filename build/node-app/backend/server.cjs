@@ -1,10 +1,32 @@
 /* corrija_me_pt_br backend */
 "use strict";
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 
 // src/backend/server.ts
 var import_node_http = require("node:http");
 var import_node_child_process = require("node:child_process");
-var import_node_path3 = require("node:path");
+var import_node_path4 = require("node:path");
 
 // src/core/text.ts
 function escapeRegExp(value) {
@@ -2266,16 +2288,45 @@ function checkText(text, replacements, dictionary) {
 }
 
 // src/backend/llm-core.ts
+var import_node_fs = require("node:fs");
+var import_node_path = __toESM(require("node:path"), 1);
 var DEFAULT_OLLAMA_URL = "http://127.0.0.1:11434";
 var DEFAULT_OLLAMA_MODEL = "jandaia-1";
-var DEFAULT_TIMEOUT_MS = 12e4;
+var DEFAULT_TIMEOUT_MS = 15e3;
+var BASE_PROFILE_PATH = import_node_path.default.join(process.cwd(), "data", "ai", "jandaia-base-profiles.json");
+function readBaseProfileConfig(env = process.env) {
+  const raw = JSON.parse((0, import_node_fs.readFileSync)(BASE_PROFILE_PATH, "utf8"));
+  const profileId = env.CORRIJA_ME_JANDAIA_BASE_PROFILE || raw.preferredProfile || "qwen2_5_1_5b";
+  const profile = raw.profiles?.[profileId];
+  if (!profile) {
+    return {
+      id: profileId,
+      localModelCandidates: []
+    };
+  }
+  return {
+    id: profileId,
+    localModelCandidates: Array.isArray(profile.localModelCandidates) ? profile.localModelCandidates.map((candidate) => import_node_path.default.join(process.cwd(), candidate)) : []
+  };
+}
+function resolveLocalModelPath(env = process.env) {
+  const profile = readBaseProfileConfig(env);
+  return profile.localModelCandidates.find((candidate) => (0, import_node_fs.existsSync)(candidate)) || profile.localModelCandidates[0] || "";
+}
+var MIN_ROUTE_TEXT_LENGTH = 12;
+var MAX_ROUTE_TEXT_LENGTH = 280;
+var MIN_ROUTE_WORD_COUNT = 3;
 var HOMOPHONE_TRIGGER_PATTERN = /\b(?:sess[aã]o|se[cç][aã]o|cess[aã]o|concerto|conserto|concertar|consertar|taxar|tachar|ratificar|retificar|infligir|infringir|onde|aonde|porque|por que|porquê|por quê)\b/iu;
 var JANDAIA_DIRECTIVE = [
   "Voc\xEA \xE9 jandaia 1, especialista em corre\xE7\xE3o de portugu\xEAs do Brasil.",
-  "Corrija a frase preservando o sentido original.",
-  "Prefira a menor corre\xE7\xE3o suficiente.",
-  "Responda somente com a frase corrigida final.",
-  "N\xE3o explique, n\xE3o use r\xF3tulos e n\xE3o use marca\xE7\xE3o."
+  "Sua tarefa \xE9 corrigir a frase com a MENOR quantidade de mudan\xE7as poss\xEDvel.",
+  "Preserve o sentido original, a estrutura da frase e as palavras j\xE1 corretas.",
+  "N\xE3o reescreva por estilo, n\xE3o resuma, n\xE3o melhore fluidez e n\xE3o troque palavras por sin\xF4nimos.",
+  "N\xE3o invente detalhes, n\xE3o acrescente informa\xE7\xE3o e n\xE3o remova conte\xFAdo.",
+  "Se a frase j\xE1 estiver correta, devolva a mesma frase.",
+  "Responda somente com JSON v\xE1lido em uma \xFAnica linha.",
+  'Formato obrigat\xF3rio: {"final":"FRASE_CORRIGIDA","changed":true}.',
+  "N\xE3o escreva nada antes ou depois do JSON."
 ].join("\n");
 function buildJandaiaPrompt(text) {
   return [
@@ -2283,17 +2334,20 @@ function buildJandaiaPrompt(text) {
     "",
     "Exemplos:",
     "Errada: A gente vamos no cinema amanh\xE3.",
-    "Correta: A gente vai ao cinema amanh\xE3.",
+    '{"final":"A gente vai ao cinema amanh\xE3.","changed":true}',
     "",
     "Errada: A se\xE7\xE3o de cinema come\xE7a \xE0s 20h.",
-    "Correta: A sess\xE3o de cinema come\xE7a \xE0s 20h.",
+    '{"final":"A sess\xE3o de cinema come\xE7a \xE0s 20h.","changed":true}',
     "",
     "Errada: Ele n\xE3o sabe porque voc\xEA faltou.",
-    "Correta: Ele n\xE3o sabe por que voc\xEA faltou.",
+    '{"final":"Ele n\xE3o sabe por que voc\xEA faltou.","changed":true}',
+    "",
+    "Errada: Os dois garotos foi na rua comprar p\xE3o mas eles n\xE3o lembro do dinheiro e esqueceu a chave de casa.",
+    '{"final":"Os dois garotos foram \xE0 rua comprar p\xE3o, mas eles n\xE3o se lembraram do dinheiro e esqueceram a chave de casa.","changed":true}',
     "",
     "Agora corrija apenas a frase abaixo.",
     `Errada: ${text}`,
-    "Correta:"
+    '{"final":'
   ].join("\n");
 }
 function looksLikeCleanSentence(text) {
@@ -2326,12 +2380,43 @@ function parseBooleanFlag(value) {
   return ["1", "true", "yes", "on", "sim"].includes(value.trim().toLowerCase());
 }
 function normalizeGeneratedText(text) {
+  const jsonMatch = text.match(/\{[\s\S]*\}/u);
+  if (jsonMatch) {
+    try {
+      const parsed = JSON.parse(jsonMatch[0]);
+      const structuredFinal = String(parsed?.final || "").trim();
+      if (looksLikeCleanSentence(structuredFinal)) {
+        return structuredFinal;
+      }
+    } catch {
+    }
+  }
   const cleaned = text.trim().replace(/<[^>]+>/gu, " ").replace(/^["'`]+|["'`]+$/g, "").replace(/^corrigida:\s*/iu, "").replace(/^frase corrigida:\s*/iu, "").replace(/^correta:\s*/iu, "").trim();
   const firstLine = cleaned.split(/\r?\n/u)[0]?.trim() || "";
   if (!looksLikeCleanSentence(firstLine)) {
     return "";
   }
   return firstLine;
+}
+function readJandaiaArchitectureProfile() {
+  return {
+    runtimeMode: "motor_first_with_budgeted_specialized_llm_fallback",
+    primaryRole: "fallback_qualificado_pt_br",
+    instructors: ["tucano_2", "quillbot"],
+    externalAdvisor: "gemini",
+    correctionStyle: [
+      "preservar_sentido",
+      "menor_correcao_suficiente",
+      "evitar_sofisticacao_desnecessaria",
+      "priorizar_pt_br_natural"
+    ],
+    executionPolicy: {
+      strategy: "motor_imediato_com_jandaia_orcada_em_segundo_plano",
+      serviceLevelBudgetMs: DEFAULT_TIMEOUT_MS,
+      simpleCasesLayer: "motor",
+      complexCasesLayer: "jandaia_1"
+    }
+  };
 }
 function readLlmCoreConfig(env = process.env) {
   return {
@@ -2371,56 +2456,159 @@ async function checkLlmCoreHealth(config) {
     };
   }
 }
+async function readJandaiaRuntimeReadiness(config) {
+  const health = await checkLlmCoreHealth(config);
+  const baseProfile = readBaseProfileConfig().id;
+  const resolvedLocalModelPath = resolveLocalModelPath();
+  const localModelFilePresent = (0, import_node_fs.existsSync)(resolvedLocalModelPath);
+  let configuredModelPresent = false;
+  if (health.reachable) {
+    try {
+      const response = await fetch(`${config.baseUrl}/api/tags`);
+      if (response.ok) {
+        const payload = await response.json();
+        configuredModelPresent = Array.isArray(payload.models) && payload.models.some((entry) => String(entry?.name || "").startsWith(`${config.model}:`));
+      }
+    } catch {
+      configuredModelPresent = false;
+    }
+  }
+  return {
+    baseProfile,
+    configuredModel: config.model,
+    localModelFilePresent,
+    ollamaReachable: Boolean(health.reachable),
+    llmCoreEnabled: config.enabled,
+    configuredModelPresent,
+    readyForActivation: config.enabled && Boolean(health.reachable) && configuredModelPresent,
+    localModelPath: resolvedLocalModelPath
+  };
+}
 function decideLlmRouting(text, result) {
+  const normalizedText = text.trim();
+  const wordCount = (normalizedText.match(/[\p{L}\p{N}]+/gu) || []).length;
+  const matchCount = result.matches.length;
   const confidenceScores = result.matches.map((match) => match.confidence?.score).filter((score) => typeof score === "number");
   const confidenceFloor = confidenceScores.length ? Math.min(...confidenceScores) : 0;
   const ambiguousMatchCount = result.matches.filter((match) => (match.replacements?.length || 0) > 1).length;
   const hasHomophoneTrigger = HOMOPHONE_TRIGGER_PATTERN.test(text);
-  if (!result.matches.length) {
+  const hasWholeTextMatch = result.matches.some((match) => match.offset === 0 && match.length === normalizedText.length);
+  const hasMultiPassMatch = result.matches.some((match) => match.rule?.id === "PT_BR_MULTI_PASS");
+  const triggers = [];
+  if (normalizedText.length < MIN_ROUTE_TEXT_LENGTH || wordCount < MIN_ROUTE_WORD_COUNT) {
+    return {
+      shouldRoute: false,
+      reason: "texto_curto_ou_pouco_informativo",
+      confidenceFloor,
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "motor"
+    };
+  }
+  if (normalizedText.length > MAX_ROUTE_TEXT_LENGTH) {
+    return {
+      shouldRoute: false,
+      reason: "texto_grande_demais_para_fallback",
+      confidenceFloor,
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "motor"
+    };
+  }
+  if (!matchCount) {
+    triggers.push("motor_sem_saida");
     return {
       shouldRoute: true,
       reason: "motor_sem_saida",
       confidenceFloor,
-      ambiguousMatchCount
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "jandaia_1"
     };
   }
   if (hasHomophoneTrigger && (confidenceFloor < 0.96 || ambiguousMatchCount > 0)) {
+    triggers.push("homofono_ou_contexto_ambiguo");
     return {
       shouldRoute: true,
       reason: "homofono_ou_contexto_ambiguo",
       confidenceFloor,
-      ambiguousMatchCount
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "jandaia_1"
     };
   }
   if (confidenceFloor < 0.85) {
+    triggers.push("confianca_baixa");
     return {
       shouldRoute: true,
       reason: "confianca_baixa",
       confidenceFloor,
-      ambiguousMatchCount
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "jandaia_1"
     };
   }
-  if (result.matches.length >= 3) {
+  if (matchCount >= 3) {
+    triggers.push("muitas_edicoes_acopladas");
     return {
       shouldRoute: true,
       reason: "muitas_edicoes_acopladas",
       confidenceFloor,
-      ambiguousMatchCount
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "jandaia_1"
     };
   }
   if (ambiguousMatchCount > 0) {
+    triggers.push("candidatos_competindo");
     return {
       shouldRoute: true,
       reason: "candidatos_competindo",
       confidenceFloor,
-      ambiguousMatchCount
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "jandaia_1"
+    };
+  }
+  if (hasWholeTextMatch && confidenceFloor < 0.94) {
+    triggers.push("correcao_integral_com_confianca_intermediaria");
+    return {
+      shouldRoute: true,
+      reason: "correcao_integral_com_confianca_intermediaria",
+      confidenceFloor,
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "jandaia_1"
+    };
+  }
+  if (hasMultiPassMatch && confidenceFloor < 0.95) {
+    triggers.push("consolidacao_multipla_passagem");
+    return {
+      shouldRoute: true,
+      reason: "consolidacao_multipla_passagem",
+      confidenceFloor,
+      ambiguousMatchCount,
+      matchCount,
+      triggers,
+      routeTarget: "jandaia_1"
     };
   }
   return {
     shouldRoute: false,
     reason: "motor_confiavel",
     confidenceFloor,
-    ambiguousMatchCount
+    ambiguousMatchCount,
+    matchCount,
+    triggers,
+    routeTarget: "motor"
   };
 }
 async function requestLlmCoreSuggestion(text, config) {
@@ -2438,11 +2626,12 @@ async function requestLlmCoreSuggestion(text, config) {
         model: config.model,
         stream: false,
         options: {
-          temperature: 0.05,
-          top_k: 40,
-          top_p: 0.9,
-          repeat_penalty: 1.25,
-          num_predict: 96
+          temperature: 0,
+          top_k: 20,
+          top_p: 0.8,
+          repeat_penalty: 1.35,
+          num_predict: 80,
+          stop: ["}\n", "\n\n"]
         },
         prompt: buildJandaiaPrompt(text)
       })
@@ -2490,17 +2679,17 @@ function buildWholeTextLlmMatch(text, correctedText, reason) {
 }
 
 // src/backend/dictionary.ts
-var import_node_fs2 = require("node:fs");
-var import_node_path2 = require("node:path");
+var import_node_fs3 = require("node:fs");
+var import_node_path3 = require("node:path");
 
 // src/backend/linguistic-data.ts
-var import_node_fs = require("node:fs");
-var import_node_path = require("node:path");
+var import_node_fs2 = require("node:fs");
+var import_node_path2 = require("node:path");
 function readJsonFile(pathname, fallback) {
-  if (!(0, import_node_fs.existsSync)(pathname)) {
+  if (!(0, import_node_fs2.existsSync)(pathname)) {
     return fallback;
   }
-  return JSON.parse((0, import_node_fs.readFileSync)(pathname, "utf8"));
+  return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
 }
 function normalizeKey(value) {
   return normalizeDictionaryWord(value);
@@ -2544,14 +2733,14 @@ function addLexicalEntries(target, source) {
 function loadLexicalEntries(baseDir, fileNames) {
   const lexicalEntries = /* @__PURE__ */ new Map();
   for (const fileName of fileNames) {
-    const pathname = (0, import_node_path.join)(baseDir, "Lexico", fileName);
+    const pathname = (0, import_node_path2.join)(baseDir, "Lexico", fileName);
     const content = readJsonFile(pathname, {});
     addLexicalEntries(lexicalEntries, content);
   }
   return lexicalEntries;
 }
 function loadAllowedUnknownWords(baseDir) {
-  const entries = readJsonFile((0, import_node_path.join)(baseDir, "Excecoes", "palavras_desconhecidas.json"), {});
+  const entries = readJsonFile((0, import_node_path2.join)(baseDir, "Excecoes", "palavras_desconhecidas.json"), {});
   const allowedUnknownWords = /* @__PURE__ */ new Set();
   const blockedAutoCorrections = /* @__PURE__ */ new Set();
   for (const [rawWord, config] of Object.entries(entries)) {
@@ -2567,35 +2756,35 @@ function loadAllowedUnknownWords(baseDir) {
   return { allowedUnknownWords, blockedAutoCorrections };
 }
 function loadLocutions(baseDir) {
-  const content = readJsonFile((0, import_node_path.join)(baseDir, "Excecoes", "locucoes.json"), {});
+  const content = readJsonFile((0, import_node_path2.join)(baseDir, "Excecoes", "locucoes.json"), {});
   return new Map(
     Object.entries(content).map(([key, value]) => [normalizeKey(key), value]).filter(([key, value]) => key && typeof value === "string" && value.trim())
   );
 }
 function loadSyntaxPatterns(baseDir) {
-  const content = readJsonFile((0, import_node_path.join)(baseDir, "Sintaxe", "padroes_basicos.json"), { patterns: [] });
+  const content = readJsonFile((0, import_node_path2.join)(baseDir, "Sintaxe", "padroes_basicos.json"), { patterns: [] });
   return Array.isArray(content.patterns) ? content.patterns : [];
 }
 function loadVerbConjugation(baseDir) {
-  return readJsonFile((0, import_node_path.join)(baseDir, "Regras", "conjugacao_verbal.json"), {});
+  return readJsonFile((0, import_node_path2.join)(baseDir, "Regras", "conjugacao_verbal.json"), {});
 }
 function loadNominalInflection(baseDir) {
-  return readJsonFile((0, import_node_path.join)(baseDir, "Regras", "flexao_nominal.json"), null);
+  return readJsonFile((0, import_node_path2.join)(baseDir, "Regras", "flexao_nominal.json"), null);
 }
 function loadDerivation(baseDir) {
-  return readJsonFile((0, import_node_path.join)(baseDir, "Regras", "derivacao.json"), null);
+  return readJsonFile((0, import_node_path2.join)(baseDir, "Regras", "derivacao.json"), null);
 }
 function loadVerbalAgreement(baseDir) {
-  const content = readJsonFile((0, import_node_path.join)(baseDir, "Concordancia", "verbal.json"), {});
+  const content = readJsonFile((0, import_node_path2.join)(baseDir, "Concordancia", "verbal.json"), {});
   return Object.fromEntries(
     Object.entries(content).map(([key, value]) => [normalizeKey(key), value])
   );
 }
 function loadIrregularVerbs(baseDir) {
-  return readJsonFile((0, import_node_path.join)(baseDir, "Irregularidades", "verbos_irregulares.json"), {});
+  return readJsonFile((0, import_node_path2.join)(baseDir, "Irregularidades", "verbos_irregulares.json"), {});
 }
 function loadIrregularPlurals(baseDir) {
-  return readJsonFile((0, import_node_path.join)(baseDir, "Irregularidades", "plurais_irregulares.json"), {});
+  return readJsonFile((0, import_node_path2.join)(baseDir, "Irregularidades", "plurais_irregulares.json"), {});
 }
 function createEmptyLinguisticData() {
   return {
@@ -2613,11 +2802,11 @@ function createEmptyLinguisticData() {
   };
 }
 function loadLinguisticData(dataDir2) {
-  const baseDir = (0, import_node_path.join)(dataDir2, "linguistic");
-  if (!(0, import_node_fs.existsSync)(baseDir)) {
+  const baseDir = (0, import_node_path2.join)(dataDir2, "linguistic");
+  if (!(0, import_node_fs2.existsSync)(baseDir)) {
     return createEmptyLinguisticData();
   }
-  const manifest = readJsonFile((0, import_node_path.join)(baseDir, "manifest.json"), {});
+  const manifest = readJsonFile((0, import_node_path2.join)(baseDir, "manifest.json"), {});
   const lexicalEntries = loadLexicalEntries(baseDir, manifest.lexical || []);
   const { allowedUnknownWords, blockedAutoCorrections } = loadAllowedUnknownWords(baseDir);
   const locutions = loadLocutions(baseDir);
@@ -2641,7 +2830,7 @@ function loadLinguisticData(dataDir2) {
 
 // src/backend/dictionary.ts
 function loadReplacementEntries(pathname) {
-  return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
+  return JSON.parse((0, import_node_fs3.readFileSync)(pathname, "utf8"));
 }
 function tokenizeReplacementText(value) {
   return String(value || "").match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*/gu) || [];
@@ -2698,16 +2887,16 @@ function sanitizeReplacementEntries(entries) {
   });
 }
 function loadOptionalReplacementEntries(pathname) {
-  if (!(0, import_node_fs2.existsSync)(pathname)) {
+  if (!(0, import_node_fs3.existsSync)(pathname)) {
     return [];
   }
   return sanitizeReplacementEntries(loadReplacementEntries(pathname));
 }
 function loadContextRules(pathname) {
-  return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
+  return JSON.parse((0, import_node_fs3.readFileSync)(pathname, "utf8"));
 }
 function loadPhraseRules(pathname) {
-  return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
+  return JSON.parse((0, import_node_fs3.readFileSync)(pathname, "utf8"));
 }
 function tokenizeRuleText(value) {
   return String(value || "").match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*/gu) || [];
@@ -2733,23 +2922,23 @@ function sanitizePhraseRules(rules) {
   return rules.filter((rule) => !isUnsafeContinuousPhraseRule(rule));
 }
 function loadOptionalPhraseRules(pathname) {
-  if (!(0, import_node_fs2.existsSync)(pathname)) {
+  if (!(0, import_node_fs3.existsSync)(pathname)) {
     return [];
   }
   return sanitizePhraseRules(loadPhraseRules(pathname));
 }
 function loadOptionalContextRules(pathname) {
-  if (!(0, import_node_fs2.existsSync)(pathname)) {
+  if (!(0, import_node_fs3.existsSync)(pathname)) {
     return [];
   }
   return loadContextRules(pathname);
 }
 function loadDictionaryResources(dataDir2) {
   const replacements = sanitizeReplacementEntries([
-    ...loadReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements.json")),
-    ...loadOptionalReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements_learned.json"))
+    ...loadReplacementEntries((0, import_node_path3.join)(dataDir2, "replacements.json")),
+    ...loadOptionalReplacementEntries((0, import_node_path3.join)(dataDir2, "replacements_learned.json"))
   ]);
-  const rulesDir = (0, import_node_path2.join)(dataDir2, "rules");
+  const rulesDir = (0, import_node_path3.join)(dataDir2, "rules");
   const linguisticData = loadLinguisticData(dataDir2);
   const words = /* @__PURE__ */ new Set();
   for (const lemma of linguisticData.lexicalEntries.keys()) {
@@ -2764,14 +2953,14 @@ function loadDictionaryResources(dataDir2) {
   }
   const dictionaryReady = words.size >= 5e3;
   const contextRules = [
-    ...loadContextRules((0, import_node_path2.join)(rulesDir, "context_rules.json")),
-    ...loadOptionalContextRules((0, import_node_path2.join)(rulesDir, "context_rules_learned.json"))
+    ...loadContextRules((0, import_node_path3.join)(rulesDir, "context_rules.json")),
+    ...loadOptionalContextRules((0, import_node_path3.join)(rulesDir, "context_rules_learned.json"))
   ];
   const phraseRules = [
-    ...sanitizePhraseRules(loadPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules.json"))),
-    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_seeded.json")),
-    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_continuous.json")),
-    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_learned.json"))
+    ...sanitizePhraseRules(loadPhraseRules((0, import_node_path3.join)(rulesDir, "phrase_rules.json"))),
+    ...loadOptionalPhraseRules((0, import_node_path3.join)(rulesDir, "phrase_rules_seeded.json")),
+    ...loadOptionalPhraseRules((0, import_node_path3.join)(rulesDir, "phrase_rules_continuous.json")),
+    ...loadOptionalPhraseRules((0, import_node_path3.join)(rulesDir, "phrase_rules_learned.json"))
   ];
   return {
     replacements,
@@ -2788,20 +2977,50 @@ var DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
 var isPackagedBinary = typeof process.pkg !== "undefined";
 var isCheckWorkerProcess = process.env.CORRIJA_ME_CHILD_MODE === "check-worker";
 var currentDir = __dirname;
-var dataDir = (0, import_node_path3.join)(currentDir, "../data");
+var dataDir = (0, import_node_path4.join)(currentDir, "../data");
 var dictionaryResources = isCheckWorkerProcess ? null : loadDictionaryResources(dataDir);
 var llmCoreConfig = readLlmCoreConfig();
+var jandaiaArchitectureProfile = readJandaiaArchitectureProfile();
 var RUNTIME_ARCHITECTURE = {
   production: {
     entrypoint: "backend_json_text",
     first_barrier: "motor",
     fallback: "jandaia",
-    primary_endpoint: "/v2/check-smart"
+    primary_endpoint: "/v2/check-smart",
+    runtime_mode: jandaiaArchitectureProfile.runtimeMode,
+    service_level_budget_ms: llmCoreConfig.timeoutMs
   },
   orientation: {
     instructors: ["tucano_2", "quillbot"],
     director: "gemini",
     data_enrichment: "gemini"
+  },
+  components: {
+    motor: {
+      role: "primeira_defesa",
+      priorities: ["velocidade", "previsibilidade", "baixo_custo"]
+    },
+    jandaia_1: {
+      role: jandaiaArchitectureProfile.primaryRole,
+      style: jandaiaArchitectureProfile.correctionStyle
+    },
+    tucano_2: {
+      role: "referencia_de_base_local"
+    },
+    quillbot: {
+      role: "referencia_de_qualidade_de_reescrita"
+    },
+    gemini: {
+      role: "consultor_externo_e_arbitro"
+    }
+  },
+  implementation: {
+    phase: "fase_3_orcamento_de_tempo_e_fallback_controlado",
+    next_steps: [
+      "medir_quantos_casos_complexos_a_jandaia_resolve_dentro_do_teto",
+      "reduzir_latencia_do_modelo_local_sem_perder_qualidade",
+      "refinar_gatilhos_por_familia_de_erro"
+    ]
   }
 };
 function sendJson(response, statusCode, payload) {
@@ -2898,7 +3117,7 @@ function runCheckInProcess(text) {
     linguisticData: dictionaryResources.linguisticData
   });
 }
-function createCorePayload(text, baseResult, correctedText, routeReason, llmMeta) {
+function createCorePayload(text, baseResult, correctedText, routing, llmMeta) {
   if (!correctedText || correctedText === text) {
     return {
       result: baseResult,
@@ -2906,7 +3125,9 @@ function createCorePayload(text, baseResult, correctedText, routeReason, llmMeta
       core: {
         enabled: llmCoreConfig.enabled,
         changed: false,
-        routeReason,
+        routeReason: routing.reason,
+        targetLayer: "motor",
+        routing,
         ...llmMeta
       }
     };
@@ -2914,40 +3135,69 @@ function createCorePayload(text, baseResult, correctedText, routeReason, llmMeta
   return {
     result: {
       ...baseResult,
-      matches: [buildWholeTextLlmMatch(text, correctedText, routeReason)]
+      matches: [buildWholeTextLlmMatch(text, correctedText, routing.reason)]
     },
     baseResult,
     core: {
       enabled: llmCoreConfig.enabled,
       changed: true,
-      routeReason,
+      routeReason: routing.reason,
+      targetLayer: "jandaia_1",
+      routing,
       correctedText,
       ...llmMeta
     }
   };
 }
 async function runMotorFirstCoreFlow(text) {
+  const startedAt = Date.now();
   const baseResult = isPackagedBinary ? runCheckInProcess(text) : await runCheckInWorker(text);
   const routing = decideLlmRouting(text, baseResult);
+  const elapsedBeforeLlmMs = Date.now() - startedAt;
+  const remainingBudgetMs = Math.max(0, llmCoreConfig.timeoutMs - elapsedBeforeLlmMs);
   if (!llmCoreConfig.enabled || !routing.shouldRoute) {
-    return createCorePayload(text, baseResult, null, routing.reason, {
+    return createCorePayload(text, baseResult, null, routing, {
+      attempted: false,
       used: false,
-      model: llmCoreConfig.model
+      model: llmCoreConfig.model,
+      budgetMs: llmCoreConfig.timeoutMs,
+      remainingBudgetMs
+    });
+  }
+  if (remainingBudgetMs < 250) {
+    return createCorePayload(text, baseResult, null, routing, {
+      attempted: false,
+      used: false,
+      model: llmCoreConfig.model,
+      budgetMs: llmCoreConfig.timeoutMs,
+      remainingBudgetMs,
+      timedOut: true,
+      error: "orcamento_esgotado_no_motor"
     });
   }
   try {
-    const suggestion = await requestLlmCoreSuggestion(text, llmCoreConfig);
-    return createCorePayload(text, baseResult, suggestion?.correctedText || null, routing.reason, {
-      used: true,
+    const suggestion = await requestLlmCoreSuggestion(text, {
+      ...llmCoreConfig,
+      timeoutMs: remainingBudgetMs
+    });
+    return createCorePayload(text, baseResult, suggestion?.correctedText || null, routing, {
+      attempted: true,
+      used: Boolean(suggestion?.correctedText),
       latencyMs: suggestion?.latencyMs,
-      model: suggestion?.model || llmCoreConfig.model
+      model: suggestion?.model || llmCoreConfig.model,
+      budgetMs: llmCoreConfig.timeoutMs,
+      remainingBudgetMs
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "llm_core_failed";
-    return createCorePayload(text, baseResult, null, routing.reason, {
-      used: true,
+    return createCorePayload(text, baseResult, null, routing, {
+      attempted: true,
+      used: false,
       model: llmCoreConfig.model,
-      error: message
+      error: message,
+      timedOut: /aborted|abort|timeout/iu.test(message),
+      budgetMs: llmCoreConfig.timeoutMs,
+      remainingBudgetMs
     });
   }
 }
@@ -2989,6 +3239,7 @@ if (isCheckWorkerProcess) {
         model: llmCoreConfig.model,
         error: "disabled"
       };
+      const jandaiaRuntime = await readJandaiaRuntimeReadiness(llmCoreConfig);
       sendJson(response, 200, {
         status: "ok",
         service: "corrija_me_pt_br_node",
@@ -3004,14 +3255,18 @@ if (isCheckWorkerProcess) {
           enabled: llmCoreConfig.enabled,
           ...llmHealth
         },
+        jandaiaRuntime,
         architecture: RUNTIME_ARCHITECTURE
       });
       return;
     }
     if (request.method === "GET" && url.pathname === "/v2/architecture") {
+      const jandaiaRuntime = await readJandaiaRuntimeReadiness(llmCoreConfig);
       sendJson(response, 200, {
         status: "ok",
         runtime: RUNTIME_ARCHITECTURE,
+        jandaia: jandaiaArchitectureProfile,
+        jandaiaRuntime,
         llmCore: {
           enabled: llmCoreConfig.enabled,
           model: llmCoreConfig.model
@@ -3064,11 +3319,14 @@ if (isCheckWorkerProcess) {
         sendJson(response, 200, {
           ...payload,
           runtime: {
-            mode: "motor_first_with_jandaia_fallback",
+            mode: "motor_first_with_budgeted_jandaia_fallback",
             first_barrier: "motor",
             fallback: "jandaia",
+            serviceLevelBudgetMs: llmCoreConfig.timeoutMs,
             instructors: ["tucano_2", "quillbot"],
-            director: "gemini"
+            director: "gemini",
+            architectureProfile: jandaiaArchitectureProfile,
+            routing: payload.core.routing
           }
         });
         return;

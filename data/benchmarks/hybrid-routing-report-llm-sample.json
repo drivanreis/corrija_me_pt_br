@@ -1,0 +1,144 @@
+{
+  "generatedAt": "2026-04-09T22:26:58.999Z",
+  "casesFile": "data/test-cases/curated-proof.json",
+  "total": 1,
+  "runtime": {
+    "llmCoreEnabled": true,
+    "llmCoreReachable": true,
+    "llmCoreModel": "jandaia-1",
+    "architecturePhase": "fase_3_orcamento_de_tempo_e_fallback_controlado",
+    "note": "llm_core_habilitado"
+  },
+  "systems": {
+    "motor": {
+      "total": 1,
+      "exact": 1,
+      "changed": 1,
+      "unchanged": 0,
+      "avgLatencyMs": 9932,
+      "llmUsed": 0,
+      "llmChanged": 0,
+      "llmAttempted": 0,
+      "timedOut": 0,
+      "fellBackToMotor": 0,
+      "exactRate": 1,
+      "llmUsedRate": 0,
+      "llmChangedRate": 0,
+      "llmAttemptedRate": 0,
+      "timedOutRate": 0,
+      "fellBackToMotorRate": 0
+    },
+    "hybrid": {
+      "total": 1,
+      "exact": 1,
+      "changed": 1,
+      "unchanged": 0,
+      "avgLatencyMs": 15015,
+      "llmUsed": 0,
+      "llmChanged": 0,
+      "llmAttempted": 1,
+      "timedOut": 1,
+      "fellBackToMotor": 1,
+      "exactRate": 1,
+      "llmUsedRate": 0,
+      "llmChangedRate": 0,
+      "llmAttemptedRate": 1,
+      "timedOutRate": 1,
+      "fellBackToMotorRate": 1
+    }
+  },
+  "delta": {
+    "exact": 0,
+    "exactRate": 0
+  },
+  "routingReasons": {
+    "consolidacao_multipla_passagem": 1
+  },
+  "routingReasonSummaries": {
+    "consolidacao_multipla_passagem": {
+      "total": 1,
+      "exact": 1,
+      "changed": 1,
+      "unchanged": 0,
+      "avgLatencyMs": 15015,
+      "llmUsed": 0,
+      "llmChanged": 0,
+      "llmAttempted": 1,
+      "timedOut": 1,
+      "fellBackToMotor": 1,
+      "exactRate": 1,
+      "llmUsedRate": 0,
+      "llmChangedRate": 0,
+      "llmAttemptedRate": 1,
+      "timedOutRate": 1,
+      "fellBackToMotorRate": 1
+    }
+  },
+  "routeTargetSummaries": {
+    "jandaia_1": {
+      "total": 1,
+      "exact": 1,
+      "changed": 1,
+      "unchanged": 0,
+      "avgLatencyMs": 15015,
+      "llmUsed": 0,
+      "llmChanged": 0,
+      "llmAttempted": 1,
+      "timedOut": 1,
+      "fellBackToMotor": 1,
+      "exactRate": 1,
+      "llmUsedRate": 0,
+      "llmChangedRate": 0,
+      "llmAttemptedRate": 1,
+      "timedOutRate": 1,
+      "fellBackToMotorRate": 1
+    }
+  },
+  "targetLayerSummaries": {
+    "motor": {
+      "total": 1,
+      "exact": 1,
+      "changed": 1,
+      "unchanged": 0,
+      "avgLatencyMs": 15015,
+      "llmUsed": 0,
+      "llmChanged": 0,
+      "llmAttempted": 1,
+      "timedOut": 1,
+      "fellBackToMotor": 1,
+      "exactRate": 1,
+      "llmUsedRate": 0,
+      "llmChangedRate": 0,
+      "llmAttemptedRate": 1,
+      "timedOutRate": 1,
+      "fellBackToMotorRate": 1
+    }
+  },
+  "items": [
+    {
+      "id": "venda-produto-concordancia",
+      "category": "contexto",
+      "difficulty": 2,
+      "original": "Vende-se dois aparelhos de som que estão em exelente estado.",
+      "expected": "Vendem-se dois aparelhos de som que estão em excelente estado.",
+      "motor": {
+        "correctedText": "Vendem-se dois aparelhos de som que estão em excelente estado.",
+        "exact": true,
+        "latencyMs": 9932
+      },
+      "hybrid": {
+        "correctedText": "Vendem-se dois aparelhos de som que estão em excelente estado.",
+        "exact": true,
+        "latencyMs": 15015,
+        "routeReason": "consolidacao_multipla_passagem",
+        "routeTarget": "jandaia_1",
+        "targetLayer": "motor",
+        "llmUsed": false,
+        "llmChanged": false,
+        "llmAttempted": true,
+        "timedOut": true,
+        "fellBackToMotor": true
+      }
+    }
+  ]
+}
