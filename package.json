@@ -32,6 +32,7 @@
     "check:jandaia": "npm run build && node scripts/check-jandaia-readiness.mjs",
     "benchmark:llm-arbiter": "node scripts/run-llm-arbiter-benchmark.mjs",
     "benchmark:hybrid": "node scripts/run-hybrid-benchmark.mjs",
+    "benchmark:bravo": "npm run build && node scripts/run-bravo-benchmark.mjs",
     "start:backend": "node build/node-app/backend/server.cjs",
     "dev": "npm run build && npm run start:backend",
     "package:backend": "npm run build && pkg . --targets node18-linux-x64,node18-win-x64 --out-path build/node-app/pkg",

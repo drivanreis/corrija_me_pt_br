@@ -18,6 +18,9 @@ target-ide/
 *.log
 servidor.log
 
+# Benchmark artifacts
+test/bravo-results-*.json
+
 # Local backup/history files
 local_history.patch
 .codex
