@@ -9,32 +9,42 @@ LLM_CORE_URL="${LLM_CORE_URL:-http://127.0.0.1:11434}"
 LLM_CORE_MODEL="${LLM_CORE_MODEL:-jandaia-1}"
 LLM_TIMEOUT_MS="${LLM_TIMEOUT_MS:-15000}"
 QUIET="${QUIET:-0}" # 1 para suprimir diffs por frase
+CASE_FILE="${CASE_FILE:-test/bravo-cases.json}"
 
-textsErro=(
-  "A gente fomos no evento ontem onde assistimos uma palestra sobre tecnologia."
-  "Faziam anos que eu não via ele, por isso não lhe reconheci de primeira."
-  "As decisões que o governo toma, as vezes prejudica a população mais carente."
-  "Eu cheguei na empresa as nove horas e não tinha ninguém na recepção esperando."
-  "Houve muitos problemas na entrega e os cliente quer que devolve o dinheiro."
-  "Se você ver o diretor avise ele que eu já terminei de fazer o relatório."
-  "Eles preferem mais ficar em casa do que sair na chuva pra ir no cinema."
-  "Me empresta esse livro pra mim ler ele enquanto eu tiver de férias?"
-  "Tinha bastante pessoas na fila mas poucas conseguiram compra o ingresso."
-  "Aonde você pensa que vai com essas mala tudo sem me dar uma explicação?"
-)
+textsErro=()
+textsExpected=()
+textsChallenge=()
 
-textsExpected=(
-  "A gente foi ao evento ontem, no qual assistimos a uma palestra sobre tecnologia."
-  "Fazia anos que eu não o via, por isso não o reconheci de primeira."
-  "As decisões que o governo toma às vezes prejudicam a população mais carente."
-  "Eu cheguei à empresa às nove horas e não havia ninguém na recepção esperando."
-  "Houve muitos problemas na entrega e os clientes querem que se devolva o dinheiro."
-  "Se você vir o diretor, avise-o de que eu já terminei de fazer o relatório."
-  "Eles preferem ficar em casa a sair na chuva para ir ao cinema."
-  "Empresta-me este livro para eu o ler enquanto eu estiver de férias?"
-  "Havia bastantes pessoas na fila, mas poucas conseguiram comprar o ingresso."
-  "Aonde você pensa que vai com todas essas malas sem me dar uma explicação?"
-)
+cases_output="$(CASE_FILE="$CASE_FILE" node - <<'NODE'
+const fs = require("node:fs");
+
+const filePath = String(process.env.CASE_FILE || "test/bravo-cases.json");
+const raw = fs.readFileSync(filePath, "utf8");
+const parsed = JSON.parse(raw);
+
+if (!Array.isArray(parsed)) {
+  throw new Error("CASE_FILE deve ser um array JSON.");
+}
+
+for (const item of parsed) {
+  const challenge = String(item?.challenge || "").trim();
+  const errado = String(item?.errado || "").trim();
+  const esperado = String(item?.esperado || "").trim();
+
+  if (!challenge || !errado || !esperado) {
+    throw new Error("Cada caso precisa ter: challenge, errado, esperado.");
+  }
+
+  process.stdout.write(`${challenge}\t${errado}\t${esperado}\n`);
+}
+NODE
+)"
+
+while IFS=$'\t' read -r challenge errado esperado; do
+  textsChallenge+=("$challenge")
+  textsErro+=("$errado")
+  textsExpected+=("$esperado")
+done <<<"$cases_output"
 
 # Proteção contra erro humano
 if [[ ${#textsErro[@]} -ne ${#textsExpected[@]} ]]; then
@@ -127,6 +137,7 @@ fail_count=0
 for i in "${!responses[@]}"; do
   original="${textsErro[$i]}"
   expected="${textsExpected[$i]}"
+  challenge="${textsChallenge[$i]:-unknown}"
 
   corrected="${responses[$i]}"
   if [[ "$MODE" == "motor" && "$MOTOR_TRANSPORT" == "http" ]]; then
@@ -137,6 +148,7 @@ for i in "${!responses[@]}"; do
     fail_count=$((fail_count + 1))
     if [[ "$QUIET" != "1" ]]; then
       echo "-----------------------------"
+      echo "Desafio        : $challenge"
       echo "Frase original : $original"
       echo "Backend retornou: $corrected"
       echo "Esperado        : $expected"
@@ -148,4 +160,19 @@ done
 
 echo "-----------------------------"
 echo "Total de falhas: $fail_count"
+total_count="${#textsErro[@]}"
+success_count="$((total_count - fail_count))"
+success_rate="$(TOTAL="$total_count" SUCCESS="$success_count" node - <<'NODE'
+const total = Number(process.env.TOTAL || 0);
+const success = Number(process.env.SUCCESS || 0);
+if (!total) {
+  process.stdout.write("0.00");
+} else {
+  process.stdout.write(((success / total) * 100).toFixed(2));
+}
+NODE
+)"
+echo "total_casos=$total_count"
+echo "sucessos=$success_count"
+echo "taxa_sucesso_percent=$success_rate"
 echo "tempo_total_ms=$elapsed_ms"

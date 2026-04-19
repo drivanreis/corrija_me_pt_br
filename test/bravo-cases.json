@@ -1,0 +1,602 @@
+[
+  {
+    "id": "bravo-001",
+    "challenge": "concordancia_a_gente",
+    "errado": "A gente fomos no evento ontem onde assistimos uma palestra sobre tecnologia.",
+    "esperado": "A gente foi ao evento ontem, no qual assistimos a uma palestra sobre tecnologia."
+  },
+  {
+    "id": "bravo-002",
+    "challenge": "fazer_tempo_e_pronomes",
+    "errado": "Faziam anos que eu não via ele, por isso não lhe reconheci de primeira.",
+    "esperado": "Fazia anos que eu não o via, por isso não o reconheci de primeira."
+  },
+  {
+    "id": "bravo-003",
+    "challenge": "as_vezes_e_concordancia",
+    "errado": "As decisões que o governo toma, as vezes prejudica a população mais carente.",
+    "esperado": "As decisões que o governo toma às vezes prejudicam a população mais carente."
+  },
+  {
+    "id": "bravo-004",
+    "challenge": "crase_e_haver",
+    "errado": "Eu cheguei na empresa as nove horas e não tinha ninguém na recepção esperando.",
+    "esperado": "Eu cheguei à empresa às nove horas e não havia ninguém na recepção esperando."
+  },
+  {
+    "id": "bravo-005",
+    "challenge": "plural_e_voz_passiva",
+    "errado": "Houve muitos problemas na entrega e os cliente quer que devolve o dinheiro.",
+    "esperado": "Houve muitos problemas na entrega e os clientes querem que se devolva o dinheiro."
+  },
+  {
+    "id": "bravo-006",
+    "challenge": "vir_avisar_e_pronomes",
+    "errado": "Se você ver o diretor avise ele que eu já terminei de fazer o relatório.",
+    "esperado": "Se você vir o diretor, avise-o de que eu já terminei de fazer o relatório."
+  },
+  {
+    "id": "bravo-007",
+    "challenge": "preferir_x_a_y",
+    "errado": "Eles preferem mais ficar em casa do que sair na chuva pra ir no cinema.",
+    "esperado": "Eles preferem ficar em casa a sair na chuva para ir ao cinema."
+  },
+  {
+    "id": "bravo-008",
+    "challenge": "para_eu_o_ler",
+    "errado": "Me empresta esse livro pra mim ler ele enquanto eu tiver de férias?",
+    "esperado": "Empresta-me este livro para eu o ler enquanto eu estiver de férias?"
+  },
+  {
+    "id": "bravo-009",
+    "challenge": "havia_plural_e_comprar",
+    "errado": "Tinha bastante pessoas na fila mas poucas conseguiram compra o ingresso.",
+    "esperado": "Havia bastantes pessoas na fila, mas poucas conseguiram comprar o ingresso."
+  },
+  {
+    "id": "bravo-010",
+    "challenge": "todas_essas_malas",
+    "errado": "Aonde você pensa que vai com essas mala tudo sem me dar uma explicação?",
+    "esperado": "Aonde você pensa que vai com todas essas malas sem me dar uma explicação?"
+  },
+  {
+    "id": "bravo-011",
+    "challenge": "crase_com_hora",
+    "errado": "A reunião foi marcada as dez horas da manhã.",
+    "esperado": "A reunião foi marcada às dez horas da manhã."
+  },
+  {
+    "id": "bravo-012",
+    "challenge": "concordancia_verbal_sujeito_posposto",
+    "errado": "Saiu da gaveta os documentos importantes.",
+    "esperado": "Saíram da gaveta os documentos importantes."
+  },
+  {
+    "id": "bravo-013",
+    "challenge": "regencia_verbal_visar",
+    "errado": "O presidente visou o cargo por muito tempo.",
+    "esperado": "O presidente visou ao cargo por muito tempo."
+  },
+  {
+    "id": "bravo-014",
+    "challenge": "colocacao_pronominal_futuro",
+    "errado": "Me emprestará o livro quando terminar?",
+    "esperado": "Emprestar-me-á o livro quando terminar?"
+  },
+  {
+    "id": "bravo-015",
+    "challenge": "porques_interrogativo_direto",
+    "errado": "Porquê ele faltou ao trabalho hoje?",
+    "esperado": "Por que ele faltou ao trabalho hoje?"
+  },
+  {
+    "id": "bravo-016",
+    "challenge": "onde_aonde",
+    "errado": "Onde você irá nas férias de verão?",
+    "esperado": "Aonde você irá nas férias de verão?"
+  },
+  {
+    "id": "bravo-017",
+    "challenge": "virgula_sujeito_predicado",
+    "errado": "A maioria dos funcionários, não concordou com a decisão.",
+    "esperado": "A maioria dos funcionários não concordou com a decisão."
+  },
+  {
+    "id": "bravo-018",
+    "challenge": "tempos_verbais_condicional",
+    "errado": "Se eu tivesse dinheiro, comprava uma casa maior.",
+    "esperado": "Se eu tivesse dinheiro, compraria uma casa maior."
+  },
+  {
+    "id": "bravo-019",
+    "challenge": "acentuacao_proparoxitona",
+    "errado": "O tecnico de enfermagem é muito atencioso.",
+    "esperado": "O técnico de enfermagem é muito atencioso."
+  },
+  {
+    "id": "bravo-020",
+    "challenge": "hifen_com_prefixo_co",
+    "errado": "Ele é co-autor de diversos artigos científicos.",
+    "esperado": "Ele é coautor de diversos artigos científicos."
+  },
+  {
+    "id": "bravo-021",
+    "challenge": "plural_subst_composto_verbo_substantivo",
+    "errado": "Os guarda-chuva foram esquecidos no carro.",
+    "esperado": "Os guarda-chuvas foram esquecidos no carro."
+  },
+  {
+    "id": "bravo-022",
+    "challenge": "mas_mais",
+    "errado": "Ele estudou muito, mais não conseguiu passar no exame.",
+    "esperado": "Ele estudou muito, mas não conseguiu passar no exame."
+  },
+  {
+    "id": "bravo-023",
+    "challenge": "mau_mal",
+    "errado": "Ele é um mal humorado.",
+    "esperado": "Ele é um mau humorado."
+  },
+  {
+    "id": "bravo-024",
+    "challenge": "crase_a_demonstrativo_aquela",
+    "errado": "Refiro-me aquela situação que nos deixou preocupados.",
+    "esperado": "Refiro-me àquela situação que nos deixou preocupados."
+  },
+  {
+    "id": "bravo-025",
+    "challenge": "concordancia_verbal_verbo_ser_quant",
+    "errado": "Dois mil reais é pouco para pagar a dívida.",
+    "esperado": "Dois mil reais são pouco para pagar a dívida."
+  },
+  {
+    "id": "bravo-026",
+    "challenge": "regencia_verbal_implicar",
+    "errado": "A nova lei implica em mudanças significativas.",
+    "esperado": "A nova lei implica mudanças significativas."
+  },
+  {
+    "id": "bravo-027",
+    "challenge": "colocacao_pronominal_iniciando_frase",
+    "errado": "Me disseram que o evento foi cancelado.",
+    "esperado": "Disseram-me que o evento foi cancelado."
+  },
+  {
+    "id": "bravo-028",
+    "challenge": "uso_pronomes_demonstrativos",
+    "errado": "Essa semana que vem teremos um feriado.",
+    "esperado": "Esta semana que vem teremos um feriado."
+  },
+  {
+    "id": "bravo-029",
+    "challenge": "crase_antes_de_plural_feminino",
+    "errado": "Ele se dedicou as tarefas com afinco.",
+    "esperado": "Ele se dedicou às tarefas com afinco."
+  },
+  {
+    "id": "bravo-030",
+    "challenge": "regencia_verbal_assistir_ver",
+    "errado": "Assistimos o novo filme no cinema ontem.",
+    "esperado": "Assistimos ao novo filme no cinema ontem."
+  },
+  {
+    "id": "bravo-031",
+    "challenge": "pontuacao_dois_pontos",
+    "errado": "Ele disse: que não poderia comparecer ao encontro.",
+    "esperado": "Ele disse que não poderia comparecer ao encontro."
+  },
+  {
+    "id": "bravo-032",
+    "challenge": "homofonos_seccao_sessao_cessao",
+    "errado": "A seção de fotos durou mais do que o esperado.",
+    "esperado": "A sessão de fotos durou mais do que o esperado."
+  },
+  {
+    "id": "bravo-033",
+    "challenge": "plural_substantivos_em_ao",
+    "errado": "Os orgãos do governo anunciaram novas medidas.",
+    "esperado": "Os órgãos do governo anunciaram novas medidas."
+  },
+  {
+    "id": "bravo-034",
+    "challenge": "concordancia_nominal_adjetivo",
+    "errado": "As roupas estavam sujo na máquina.",
+    "esperado": "As roupas estavam sujas na máquina."
+  },
+  {
+    "id": "bravo-035",
+    "challenge": "regencia_nominal_necessidade",
+    "errado": "Ele sentia necessidade em aprender mais.",
+    "esperado": "Ele sentia necessidade de aprender mais."
+  },
+  {
+    "id": "bravo-036",
+    "challenge": "colocacao_pronominal_enclise_iniciativa",
+    "errado": "Me ajude a carregar essas caixas pesadas.",
+    "esperado": "Ajude-me a carregar essas caixas pesadas."
+  },
+  {
+    "id": "bravo-037",
+    "challenge": "porques_explicativo",
+    "errado": "Não saí de casa, por que estava chovendo muito.",
+    "esperado": "Não saí de casa, porque estava chovendo muito."
+  },
+  {
+    "id": "bravo-038",
+    "challenge": "acentuacao_hiato_i_u",
+    "errado": "A saida de emergência estava bloqueada.",
+    "esperado": "A saída de emergência estava bloqueada."
+  },
+  {
+    "id": "bravo-039",
+    "challenge": "hifen_com_prefixo_auto",
+    "errado": "Ele é um auto-didata em várias áreas.",
+    "esperado": "Ele é um autodidata em várias áreas."
+  },
+  {
+    "id": "bravo-040",
+    "challenge": "expressao_a_principio_em_principio",
+    "errado": "Em princípio, ele se mostrou favorável à ideia.",
+    "esperado": "A princípio, ele se mostrou favorável à ideia."
+  },
+  {
+    "id": "bravo-041",
+    "challenge": "crase_a_medida_que",
+    "errado": "As vendas de imóveis aumentam a medida que o mercado se aquece.",
+    "esperado": "As vendas de imóveis aumentam à medida que o mercado se aquece."
+  },
+  {
+    "id": "bravo-042",
+    "challenge": "concordancia_coletivo",
+    "errado": "Uma porção dos documentos sumiram misteriosamente do cartório.",
+    "esperado": "Uma porção dos documentos sumiu misteriosamente do cartório."
+  },
+  {
+    "id": "bravo-043",
+    "challenge": "regencia_obedecer",
+    "errado": "Ele desobedeceu as normas de segurança do edifício.",
+    "esperado": "Ele desobedeceu às normas de segurança do edifício."
+  },
+  {
+    "id": "bravo-044",
+    "challenge": "hifen_com_sem",
+    "errado": "O novo projeto de apartamentos é sem teto.",
+    "esperado": "O novo projeto de apartamentos é sem-teto."
+  },
+  {
+    "id": "bravo-045",
+    "challenge": "acentuacao_ditongo",
+    "errado": "A imobiliária tem muita experiencia com aluguéis.",
+    "esperado": "A imobiliária tem muita experiência com aluguéis."
+  },
+  {
+    "id": "bravo-046",
+    "challenge": "porques_indireta",
+    "errado": "Gostaria de entender porque o financiamento foi negado.",
+    "esperado": "Gostaria de entender por que o financiamento foi negado."
+  },
+  {
+    "id": "bravo-047",
+    "challenge": "mesoclise_futuro",
+    "errado": "Entregarei-te a proposta assim que for aprovada.",
+    "esperado": "Entregar-te-ei a proposta assim que for aprovada."
+  },
+  {
+    "id": "bravo-048",
+    "challenge": "homofonos_ha_a",
+    "errado": "O cliente espera a anos por essa oportunidade de compra.",
+    "esperado": "O cliente espera há anos por essa oportunidade de compra."
+  },
+  {
+    "id": "bravo-049",
+    "challenge": "virgula_adv_deslocada",
+    "errado": "Quando o contrato for assinado enviaremos as chaves.",
+    "esperado": "Quando o contrato for assinado, enviaremos as chaves."
+  },
+  {
+    "id": "bravo-050",
+    "challenge": "concordancia_anexo",
+    "errado": "As certidões de nascimento seguem anexo ao processo.",
+    "esperado": "As certidões de nascimento seguem anexas ao processo."
+  },
+  {
+    "id": "bravo-051",
+    "challenge": "onde_em_que",
+    "errado": "A situação onde o comprador se encontra é complicada.",
+    "esperado": "A situação em que o comprador se encontra é complicada."
+  },
+  {
+    "id": "bravo-052",
+    "challenge": "plural_er_ez",
+    "errado": "Os aluguel atrasados geram multas diárias.",
+    "esperado": "Os aluguéis atrasados geram multas diárias."
+  },
+  {
+    "id": "bravo-053",
+    "challenge": "regencia_pagar",
+    "errado": "Ele pagou o gerente do banco pelo serviço prestado.",
+    "esperado": "Ele pagou ao gerente do banco pelo serviço prestado."
+  },
+  {
+    "id": "bravo-054",
+    "challenge": "crase_termo_masculino",
+    "errado": "A casa está à venda à vista ou à prazo.",
+    "esperado": "A casa está à venda à vista ou a prazo."
+  },
+  {
+    "id": "bravo-055",
+    "challenge": "enclise_infinitivo",
+    "errado": "É necessário notificar-os sobre as novas regras.",
+    "esperado": "É necessário notificá-los sobre as novas regras."
+  },
+  {
+    "id": "bravo-056",
+    "challenge": "homofonos_concerto",
+    "errado": "Precisamos de um concerto urgente na tubulação do prédio.",
+    "esperado": "Precisamos de um conserto urgente na tubulação do prédio."
+  },
+  {
+    "id": "bravo-057",
+    "challenge": "part_irregular",
+    "errado": "A documentação já tinha sido imprimida pelo cartório.",
+    "esperado": "A documentação já tinha sido impressa pelo cartório."
+  },
+  {
+    "id": "bravo-058",
+    "challenge": "acentuacao_ditongo_aberto_pos_acordo",
+    "errado": "As idéias do arquiteto foram bem recebidas.",
+    "esperado": "As ideias do arquiteto foram bem recebidas."
+  },
+  {
+    "id": "bravo-059",
+    "challenge": "hifen_com_bem",
+    "errado": "A equipe de vendas é muito bem humorada.",
+    "esperado": "A equipe de vendas é muito bem-humorada."
+  },
+  {
+    "id": "bravo-060",
+    "challenge": "ponto_e_virgula",
+    "errado": "A reunião foi produtiva, discutimos preços, prazos, e estratégias de marketing.",
+    "esperado": "A reunião foi produtiva; discutimos preços, prazos e estratégias de marketing."
+  },
+  {
+    "id": "bravo-061",
+    "challenge": "concordancia_verbo_ser_predicativo",
+    "errado": "Era os detalhes que impediam o fechamento do negócio.",
+    "esperado": "Eram os detalhes que impediam o fechamento do negócio."
+  },
+  {
+    "id": "bravo-062",
+    "challenge": "regencia_apto",
+    "errado": "Este lote não está apto em receber uma construção alta.",
+    "esperado": "Este lote não está apto a receber uma construção alta."
+  },
+  {
+    "id": "bravo-063",
+    "challenge": "pronome_cujo",
+    "errado": "Este é o apartamento que a vista dele é panorâmica.",
+    "esperado": "Este é o apartamento cuja vista é panorâmica."
+  },
+  {
+    "id": "bravo-064",
+    "challenge": "plural_em_m",
+    "errado": "Os álbum de fotos dos empreendimentos estavam desorganizados.",
+    "esperado": "Os álbuns de fotos dos empreendimentos estavam desorganizados."
+  },
+  {
+    "id": "bravo-065",
+    "challenge": "crase_casa_terra",
+    "errado": "Depois da viagem, ela retornou a casa dos pais para descansar.",
+    "esperado": "Depois da viagem, ela retornou à casa dos pais para descansar."
+  },
+  {
+    "id": "bravo-066",
+    "challenge": "proclise_adverbio",
+    "errado": "Nunca vi-o tão feliz com uma venda realizada.",
+    "esperado": "Nunca o vi tão feliz com uma venda realizada."
+  },
+  {
+    "id": "bravo-067",
+    "challenge": "concordancia_meio_bastante",
+    "errado": "Ela estava meia preocupada com a negociação do imóvel.",
+    "esperado": "Ela estava meio preocupada com a negociação do imóvel."
+  },
+  {
+    "id": "bravo-068",
+    "challenge": "regencia_custar",
+    "errado": "Custei a entender o contrato de financiamento.",
+    "esperado": "Custou-me entender o contrato de financiamento."
+  },
+  {
+    "id": "bravo-069",
+    "challenge": "homofonos_se_nao_senao",
+    "errado": "Não há outra alternativa se não aceitar a proposta de compra.",
+    "esperado": "Não há outra alternativa senão aceitar a proposta de compra."
+  },
+  {
+    "id": "bravo-070",
+    "challenge": "hifen_com_vice",
+    "errado": "O vice presidente da empresa assinará os papéis finais.",
+    "esperado": "O vice-presidente da empresa assinará os papéis finais."
+  },
+  {
+    "id": "bravo-071",
+    "challenge": "crase_locucao_feminina",
+    "errado": "Graças a insistência dele, o projeto foi aprovado.",
+    "esperado": "Graças à insistência dele, o projeto foi aprovado."
+  },
+  {
+    "id": "bravo-072",
+    "challenge": "regencia_agradar",
+    "errado": "O novo sabor do bolo agradou os clientes.",
+    "esperado": "O novo sabor do bolo agradou aos clientes."
+  },
+  {
+    "id": "bravo-073",
+    "challenge": "concordancia_suj_composto",
+    "errado": "A paciência e a dedicação foi fundamental para o sucesso.",
+    "esperado": "A paciência e a dedicação foram fundamentais para o sucesso."
+  },
+  {
+    "id": "bravo-074",
+    "challenge": "pronome_relativo_preposicao_que",
+    "errado": "A empresa que confio está contratando.",
+    "esperado": "A empresa em que confio está contratando."
+  },
+  {
+    "id": "bravo-075",
+    "challenge": "hifen_prefixo_ex_recem",
+    "errado": "Ele é um ex atleta que ainda se mantém em forma.",
+    "esperado": "Ele é um ex-atleta que ainda se mantém em forma."
+  },
+  {
+    "id": "bravo-076",
+    "challenge": "homofonos_traz_tras",
+    "errado": "Por favor, traz o pacote que deixei lá a traz.",
+    "esperado": "Por favor, traz o pacote que deixei lá atrás."
+  },
+  {
+    "id": "bravo-077",
+    "challenge": "porques_substantivo",
+    "errado": "Ninguém sabia o por que da sua decisão inesperada.",
+    "esperado": "Ninguém sabia o porquê da sua decisão inesperada."
+  },
+  {
+    "id": "bravo-078",
+    "challenge": "acentuacao_tem_tem",
+    "errado": "Ele tem muitos amigos, mas eles não tem paciência.",
+    "esperado": "Ele tem muitos amigos, mas eles não têm paciência."
+  },
+  {
+    "id": "bravo-079",
+    "challenge": "crase_a_proporcao_que",
+    "errado": "O trabalho crescia a proporção que novos membros eram adicionados.",
+    "esperado": "O trabalho crescia à proporção que novos membros eram adicionados."
+  },
+  {
+    "id": "bravo-080",
+    "challenge": "regencia_proceder",
+    "errado": "A empresa irá proceder a análise dos documentos.",
+    "esperado": "A empresa irá proceder à análise dos documentos."
+  },
+  {
+    "id": "bravo-081",
+    "challenge": "colocacao_se_iniciando_clausula",
+    "errado": "Me disseram que o resultado será divulgado amanhã.",
+    "esperado": "Disseram-me que o resultado será divulgado amanhã."
+  },
+  {
+    "id": "bravo-082",
+    "challenge": "plural_guarda_chuva",
+    "errado": "Comprei dois guarda-chuva novos para a viagem.",
+    "esperado": "Comprei dois guarda-chuvas novos para a viagem."
+  },
+  {
+    "id": "bravo-083",
+    "challenge": "homofonos_encontro_a",
+    "errado": "As novas regras vão de encontro aos interesses dos trabalhadores, promovendo melhorias.",
+    "esperado": "As novas regras vão ao encontro dos interesses dos trabalhadores, promovendo melhorias."
+  },
+  {
+    "id": "bravo-084",
+    "challenge": "crase_locucao_adverbial_feminina",
+    "errado": "Ele chegou a noite, exausto da viagem.",
+    "esperado": "Ele chegou à noite, exausto da viagem."
+  },
+  {
+    "id": "bravo-085",
+    "challenge": "regencia_chamar_dar_nome",
+    "errado": "Os pais chamaram-lhe de Pedro.",
+    "esperado": "Os pais o chamaram de Pedro."
+  },
+  {
+    "id": "bravo-086",
+    "challenge": "concordancia_percentual",
+    "errado": "Vinte por cento dos funcionários optou por férias coletivas.",
+    "esperado": "Vinte por cento dos funcionários optaram por férias coletivas."
+  },
+  {
+    "id": "bravo-087",
+    "challenge": "infinitivo_pessoal_impessoal",
+    "errado": "Para mim fazer a prova, preciso de concentração.",
+    "esperado": "Para eu fazer a prova, preciso de concentração."
+  },
+  {
+    "id": "bravo-088",
+    "challenge": "virgula_antes_e",
+    "errado": "Os alunos estudaram muito e os professores ficaram orgulhosos.",
+    "esperado": "Os alunos estudaram muito, e os professores ficaram orgulhosos."
+  },
+  {
+    "id": "bravo-089",
+    "challenge": "crase_a_pronome_demonstrativo",
+    "errado": "Não me refiro a isso, mas sim a aquilo que você disse ontem.",
+    "esperado": "Não me refiro a isso, mas sim àquilo que você disse ontem."
+  },
+  {
+    "id": "bravo-090",
+    "challenge": "regencia_esquecer_lembrar",
+    "errado": "Eu esqueci do compromisso.",
+    "esperado": "Eu esqueci o compromisso."
+  },
+  {
+    "id": "bravo-091",
+    "challenge": "concordancia_menas_meia",
+    "errado": "Havia menas chances de sucesso para a equipe.",
+    "esperado": "Havia menos chances de sucesso para a equipe."
+  },
+  {
+    "id": "bravo-092",
+    "challenge": "homofonos_afim_a_fim",
+    "errado": "Estou afim de viajar para a praia neste fim de semana.",
+    "esperado": "Estou a fim de viajar para a praia neste fim de semana."
+  },
+  {
+    "id": "bravo-093",
+    "challenge": "hifen_prefixo_nao",
+    "errado": "Ele se considera um não fumante convicto.",
+    "esperado": "Ele se considera um não-fumante convicto."
+  },
+  {
+    "id": "bravo-094",
+    "challenge": "tempos_verbais_subjuntivo",
+    "errado": "É provável que ele chega atrasado.",
+    "esperado": "É provável que ele chegue atrasado."
+  },
+  {
+    "id": "bravo-095",
+    "challenge": "crase_pronome_tratamento",
+    "errado": "Dirigi-me à Vossa Senhoria para esclarecer a questão.",
+    "esperado": "Dirigi-me a Vossa Senhoria para esclarecer a questão."
+  },
+  {
+    "id": "bravo-096",
+    "challenge": "plural_subst_composto_preposicao",
+    "errado": "Os pão-de-ló foram servidos na festa.",
+    "esperado": "Os pães de ló foram servidos na festa."
+  },
+  {
+    "id": "bravo-097",
+    "challenge": "concordancia_tal_qual",
+    "errado": "Ela é tal qual a irmã, muito inteligentes.",
+    "esperado": "Ela é tal qual a irmã, muito inteligente."
+  },
+  {
+    "id": "bravo-098",
+    "challenge": "homofonos_a_cerca_de",
+    "errado": "Acerca de dois anos que não o vejo.",
+    "esperado": "Há cerca de dois anos que não o vejo."
+  },
+  {
+    "id": "bravo-099",
+    "challenge": "concordancia_nome_proprio_plural",
+    "errado": "Os Estados Unidos é uma potência econômica.",
+    "esperado": "Os Estados Unidos são uma potência econômica."
+  },
+  {
+    "id": "bravo-100",
+    "challenge": "crase_distancia",
+    "errado": "Mantenha-se a distância para evitar acidentes.",
+    "esperado": "Mantenha-se à distância para evitar acidentes."
+  }
+]
