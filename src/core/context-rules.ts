@@ -1,5 +1,5 @@
 import { buildContext, createWordTokenPattern, dedupeStrings, normalizeDictionaryWord, preserveReplacementCase } from "./text.js";
-import type { ContextRuleDefinition, RuleMatch } from "./types.js";
+import type { ContextRuleDefinition, RuleMatch, RulePatternToken } from "./types.js";
 
 interface TokenMatch {
   value: string;
@@ -45,6 +45,73 @@ function createContextMatch(text: string, token: TokenMatch, rule: ContextRuleDe
   };
 }
 
+function isSentenceStart(text: string, offset: number): boolean {
+  // Look for the previous non-whitespace character before the first token of the match.
+  for (let index = offset - 1; index >= 0; index -= 1) {
+    const char = text[index];
+    if (!char || /\s/u.test(char)) {
+      continue;
+    }
+
+    return /[.!?\n\r]/u.test(char);
+  }
+
+  return true;
+}
+
+function isHourToken(token: TokenMatch): boolean {
+  const value = token.normalized;
+  if (!value) {
+    return false;
+  }
+
+  // Digits (e.g. 10) and common hour words (e.g. dez).
+  if (/^\d{1,2}$/u.test(value)) {
+    return true;
+  }
+
+  const hourWords = new Set([
+    "zero",
+    "uma",
+    "duas",
+    "três",
+    "tres",
+    "quatro",
+    "cinco",
+    "seis",
+    "sete",
+    "oito",
+    "nove",
+    "dez",
+    "onze",
+    "doze"
+  ]);
+
+  return hourWords.has(value);
+}
+
+function tokenMatches(expected: RulePatternToken, token: TokenMatch): boolean {
+  if (typeof expected === "string") {
+    return token.normalized === normalizeDictionaryWord(expected);
+  }
+
+  if ("any" in expected && expected.any) {
+    return true;
+  }
+
+  if ("oneOf" in expected) {
+    return expected.oneOf.some((value) => token.normalized === normalizeDictionaryWord(value));
+  }
+
+  if ("category" in expected) {
+    if (expected.category === "hour") {
+      return isHourToken(token);
+    }
+  }
+
+  return false;
+}
+
 export function createContextRuleMatches(text: string, rules: ContextRuleDefinition[]): RuleMatch[] {
   if (!rules.length) {
     return [];
@@ -59,9 +126,22 @@ export function createContextRuleMatches(text: string, rules: ContextRuleDefinit
         continue;
       }
 
-      const matched = rule.pattern.every((expected, patternIndex) => (
-        tokens[index + patternIndex]?.normalized === normalizeDictionaryWord(expected)
-      ));
+      const startToken = tokens[index];
+      if (!startToken) {
+        continue;
+      }
+
+      if (rule.scope?.sentenceStart && !isSentenceStart(text, startToken.offset)) {
+        continue;
+      }
+
+      const matched = rule.pattern.every((expected, patternIndex) => {
+        const token = tokens[index + patternIndex];
+        if (!token) {
+          return false;
+        }
+        return tokenMatches(expected, token);
+      });
 
       if (!matched) {
         continue;

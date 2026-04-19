@@ -9,14 +9,14 @@ A ideia central e:
 - manter o `motor` como camada rapida, previsivel e barata
 - usar a `Jandaia-1` como fallback qualificado
 - usar `Tucano-2` e `QuillBot` como referencias de comportamento e conhecimento
-- usar `Gemini` como arbitro externo, consultor tecnico e apoio de curadoria
+- usar `Gemini` como arbitro externo, consultor tecnico e apoio de curadoria e, quando on-line e explicitamente habilitado, como etapa final opcional de correcao
 
 ## Restricoes de produto que passam a ser obrigatorias no plano
 
 - o produto deve funcionar `quase off-line`
 - o runtime principal nao pode depender de servidor backend pago da equipe
 - o runtime principal nao pode exigir compartilhamento de chave de API do usuario
-- `Gemini` fica restrito a desenvolvimento, auditoria, curadoria e apoio tecnico
+- `Gemini` fica por padrao restrito a desenvolvimento, auditoria, curadoria e apoio tecnico; quando on-line e habilitado, pode existir como trilha final opcional (sem ser requisito do runtime)
 - internet continua permitida apenas para:
   - atualizacoes futuras
   - novas regras, palavras e recursos

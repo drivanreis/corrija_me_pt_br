@@ -1,0 +1,602 @@
+[
+  {
+    "id": "bravo-001",
+    "challenge": "crase_numeral_cardinal",
+    "errado": "Os investimentos aumentaram à três milhões de reais, e isso impactará diretamente à todas as áreas da empresa que dependem destes recursos para operar.",
+    "esperado": "Os investimentos aumentaram a três milhões de reais, e isso impactará diretamente todas as áreas da empresa que dependem destes recursos para operar."
+  },
+  {
+    "id": "bravo-002",
+    "challenge": "concordancia_adj_dois_generos",
+    "errado": "A sala e o corredor estava limpa, mas os funcionários insistiram que era necessário fazer uma limpeza mais profunda para o evento importante que ocorreria logo.",
+    "esperado": "A sala e o corredor estavam limpos, mas os funcionários insistiram que era necessário fazer uma limpeza mais profunda para o evento importante que ocorreria logo."
+  },
+  {
+    "id": "bravo-003",
+    "challenge": "regencia_informar_duplo_obj",
+    "errado": "A secretaria informou à todos os alunos que a prova seria adiada, e muitos deles não ligou para o aviso dado à eles antes da reunião importante.",
+    "esperado": "A secretaria informou a todos os alunos de que a prova seria adiada, e muitos deles não ligaram para o aviso dado a eles antes da reunião importante."
+  },
+  {
+    "id": "bravo-004",
+    "challenge": "ambiguidade_pronome_possessivo",
+    "errado": "O gerente pediu para o cliente revisar sua proposta e, se necessário, fazer as modificações antes que ela fosse apresentada à diretoria completa e aos investidores.",
+    "esperado": "O gerente pediu para o cliente revisar a proposta dele e, se necessário, fazer as modificações antes que ela fosse apresentada à diretoria completa e aos investidores."
+  },
+  {
+    "id": "bravo-005",
+    "challenge": "por_que_interrog_e_subst",
+    "errado": "O diretor não compreendia o por que da demora, e queria saber por que os relatórios não foram entregues à tempo, causando um atraso considerável em todo o projeto.",
+    "esperado": "O diretor não compreendia o porquê da demora, e queria saber por que os relatórios não foram entregues a tempo, causando um atraso considerável em todo o projeto."
+  },
+  {
+    "id": "bravo-006",
+    "challenge": "homofonos_ratificar_retificar",
+    "errado": "Após a reunião, foi necessário ratificar as informações sobre o orçamento para que o conselho pudesse retificar a decisão, pois havia vários erros cruciais nos dados apresentados.",
+    "esperado": "Após a reunião, foi necessário retificar as informações sobre o orçamento para que o conselho pudesse ratificar a decisão, pois havia vários erros cruciais nos dados apresentados."
+  },
+  {
+    "id": "bravo-007",
+    "challenge": "virgula_adv_intercalada",
+    "errado": "O projeto quando finalmente aprovado pela diretoria exigiu meses de trabalho árduo da equipe de desenvolvimento para ser implementado com sucesso.",
+    "esperado": "O projeto, quando finalmente aprovado pela diretoria, exigiu meses de trabalho árduo da equipe de desenvolvimento para ser implementado com sucesso."
+  },
+  {
+    "id": "bravo-008",
+    "challenge": "tempos_verbais_coerencia_futuro",
+    "errado": "Se o cliente quisesse o contrato, ele precisava aceitar as novas condições impostas pela empresa, que farão o serviço mais caro do que o esperado inicialmente.",
+    "esperado": "Se o cliente quiser o contrato, ele precisará aceitar as novas condições impostas pela empresa, que farão o serviço mais caro do que o esperado inicialmente."
+  },
+  {
+    "id": "bravo-009",
+    "challenge": "acentuacao_paroxitona_ditongo",
+    "errado": "Os niveis de complexidade do projeto são muito altos, e as equipes precisarão de um esforço extraordinário para cumprir os prazos estabelecidos à tempo.",
+    "esperado": "Os níveis de complexidade do projeto são muito altos, e as equipes precisarão de um esforço extraordinário para cumprir os prazos estabelecidos a tempo."
+  },
+  {
+    "id": "bravo-010",
+    "challenge": "hifen_prefixo_sub",
+    "errado": "A sub gerente de projetos organizou uma reunião para discutir as novas diretrizes do departamento, pois o sub solo do prédio estava alagado devido à forte chuva.",
+    "esperado": "A subgerente de projetos organizou uma reunião para discutir as novas diretrizes do departamento, pois o subsolo do prédio estava alagado devido à forte chuva."
+  },
+  {
+    "id": "bravo-011",
+    "challenge": "plural_adj_subst_composto",
+    "errado": "Os uniformes azul-claro foram encomendados para todos os funcionários novos, e a gerente pediu para eles serem entregues o mais rápido possível à filial local.",
+    "esperado": "Os uniformes azuis-claros foram encomendados para todos os funcionários novos, e a gerente pediu para eles serem entregues o mais rápido possível à filial local."
+  },
+  {
+    "id": "bravo-012",
+    "challenge": "uso_se_particula_apassivadora",
+    "errado": "Precisava-se de novos talentos para a equipe de marketing, e também se contratava pessoas com experiência prévia na área de tecnologia digital para preencher as vagas.",
+    "esperado": "Precisavam-se de novos talentos para a equipe de marketing, e também se contratavam pessoas com experiência prévia na área de tecnologia digital para preencher as vagas."
+  },
+  {
+    "id": "bravo-013",
+    "challenge": "voz_passiva_sintetica_concordancia",
+    "errado": "Vende-se casas e apartamentos na nova urbanização, mas a maioria dos interessados preferia imóveis de alto padrão que oferecia mais conforto e segurança para a família.",
+    "esperado": "Vendem-se casas e apartamentos na nova urbanização, mas a maioria dos interessados preferia imóveis de alto padrão que ofereciam mais conforto e segurança para a família."
+  },
+  {
+    "id": "bravo-014",
+    "challenge": "uso_meio_adv_numeral",
+    "errado": "A candidata estava meia nervosa antes da entrevista decisiva, e tinha apenas meio-hora para se preparar antes de entrar na sala de reuniões com os avaliadores.",
+    "esperado": "A candidata estava meio nervosa antes da entrevista decisiva, e tinha apenas meia hora para se preparar antes de entrar na sala de reuniões com os avaliadores."
+  },
+  {
+    "id": "bravo-015",
+    "challenge": "uso_preposicao_regencia_nominal",
+    "errado": "A empresa demonstrou aptidão por desenvolver soluções inovadoras, mas sua capacidade em lidar com os desafios complexos foi posta à prova durante o projeto final.",
+    "esperado": "A empresa demonstrou aptidão para desenvolver soluções inovadoras, mas sua capacidade de lidar com os desafios complexos foi posta à prova durante o projeto final."
+  },
+  {
+    "id": "bravo-016",
+    "challenge": "colocacao_pronominal_conjuncao_subordinativa",
+    "errado": "Quando concluir-se o trabalho, os resultados serão enviados à gerência para análise e aprovação, e a equipe poderá descansar antes de iniciar o próximo projeto da empresa.",
+    "esperado": "Quando se concluir o trabalho, os resultados serão enviados à gerência para análise e aprovação, e a equipe poderá descansar antes de iniciar o próximo projeto da empresa."
+  },
+  {
+    "id": "bravo-017",
+    "challenge": "crase_com_pronome_possessivo",
+    "errado": "Dedico-me à minha carreira com muita paixão, e espero que, no futuro, a empresa continue à crescer e ofereça novas oportunidades à seus funcionários talentosos.",
+    "esperado": "Dedico-me à minha carreira com muita paixão, e espero que, no futuro, a empresa continue a crescer e ofereça novas oportunidades a seus funcionários talentosos."
+  },
+  {
+    "id": "bravo-018",
+    "challenge": "pleonasmo_de_construcao",
+    "errado": "Foi com os próprios olhos que eu vi o acidente acontecer na rua principal, e não tive outra alternativa a não ser chamar à polícia para intervir.",
+    "esperado": "Foi com os próprios olhos que vi o acidente acontecer na rua principal, e não tive outra alternativa a não ser chamar a polícia para intervir."
+  },
+  {
+    "id": "bravo-019",
+    "challenge": "participio_abundante",
+    "errado": "O relatório foi imprimido ontem à noite e as cópias haviam sido entregues à tempo para a apresentação da manhã, causando surpresa à todos os presentes.",
+    "esperado": "O relatório foi impresso ontem à noite e as cópias haviam sido entregues a tempo para a apresentação da manhã, causando surpresa a todos os presentes."
+  },
+  {
+    "id": "bravo-020",
+    "challenge": "conjuncao_consequencia",
+    "errado": "O problema era tão complexo, que a equipe demorou muito para encontrar uma solução eficaz, e o prazo final para a entrega do projeto foi estendido por mais duas semanas.",
+    "esperado": "O problema era tão complexo que a equipe demorou muito para encontrar uma solução eficaz, e o prazo final para a entrega do projeto foi estendido por mais duas semanas."
+  },
+  {
+    "id": "bravo-021",
+    "challenge": "regencia_aspirar_desejar",
+    "errado": "Muitos jovens aspiram um futuro de sucesso, embora nem todos se dedique o suficiente para alcançá-lo ou mesmo mantê-lo.",
+    "esperado": "Muitos jovens aspiram a um futuro de sucesso, embora nem todos se dediquem o suficiente para alcançá-lo ou mesmo mantê-lo."
+  },
+  {
+    "id": "bravo-022",
+    "challenge": "concordancia_verbo_qual_de",
+    "errado": "Qual de vocês, entre os candidatos mais experientes, são os mais aptos a assumir a nova gerência do setor de desenvolvimento?",
+    "esperado": "Qual de vocês, entre os candidatos mais experientes, é o mais apto a assumir a nova gerência do setor de desenvolvimento?"
+  },
+  {
+    "id": "bravo-023",
+    "challenge": "hifen_com_mal_e_homofono",
+    "errado": "O mau-humorado funcionário, que sempre se mostrava mau humorado, recusou-se a atender os clientes com o devido respeito e cordialidade que esperavam.",
+    "esperado": "O mal-humorado funcionário, que sempre se mostrava mal-humorado, recusou-se a atender aos clientes com o devido respeito e cordialidade que esperavam."
+  },
+  {
+    "id": "bravo-024",
+    "challenge": "crase_ate_a_e_regencia",
+    "errado": "Chegou a conclusão de que deveria ir até a praça, mesmo que chovesse forte, para se encontrar com sua amiga, segundo o plano.",
+    "esperado": "Chegou à conclusão de que deveria ir até à praça, mesmo que chovesse forte, para se encontrar com sua amiga, segundo o plano."
+  },
+  {
+    "id": "bravo-025",
+    "challenge": "proclise_adv_negativo_e_virgula",
+    "errado": "Não preocupava-se com as consequências de suas ações ele sempre achava que tudo resolver-se-ia, mas nem sempre era verdade.",
+    "esperado": "Não se preocupava com as consequências de suas ações; ele sempre achava que tudo se resolveria, mas nem sempre era verdade."
+  },
+  {
+    "id": "bravo-026",
+    "challenge": "virgula_oracoes_assindeticas",
+    "errado": "O trabalho estava atrasado as reuniões eram constantes a pressão aumentava a cada dia os resultados precisavam sair urgentemente para todos.",
+    "esperado": "O trabalho estava atrasado; as reuniões eram constantes; a pressão aumentava a cada dia; os resultados precisavam sair urgentemente para todos."
+  },
+  {
+    "id": "bravo-027",
+    "challenge": "acentuacao_ter_vir_plural",
+    "errado": "As crianças, que tem muitos brinquedos, vem sempre alegremente para a escola, e suas mães os trazem todos os dias sem falta.",
+    "esperado": "As crianças, que têm muitos brinquedos, vêm sempre alegremente para a escola, e suas mães as trazem todos os dias sem falta."
+  },
+  {
+    "id": "bravo-028",
+    "challenge": "homofonos_ao_inves_em_vez",
+    "errado": "Ao invés de estudar para a prova, ele preferiu jogar videogame em vez de se esforçar, optou pela diversão passageira e fácil de encontrar.",
+    "esperado": "Em vez de estudar para a prova, ele preferiu jogar videogame; em vez de se esforçar, optou pela diversão passageira e fácil de encontrar."
+  },
+  {
+    "id": "bravo-029",
+    "challenge": "plural_estrangeirismos",
+    "errado": "Os ranking's dos melhores filmes, que foram divulgados ontem, mostraram que os flash's da câmera capturaram momentos importantes dos eventos ocorridos.",
+    "esperado": "Os rankings dos melhores filmes, que foram divulgados ontem, mostraram que os flashes da câmera capturaram momentos importantes dos eventos ocorridos."
+  },
+  {
+    "id": "bravo-030",
+    "challenge": "regencia_concordar_e_crase",
+    "errado": "Não concordei a ideia de que a equipe deveria trabalhar até tarde, por isso argumentei veementemente contra ela, avisando as pessoas.",
+    "esperado": "Não concordei com a ideia de que a equipe deveria trabalhar até tarde, por isso argumentei veementemente contra ela, avisando às pessoas."
+  },
+  {
+    "id": "bravo-031",
+    "challenge": "uso_onde_lugar_figurado",
+    "errado": "Foi naquele momento, aonde a felicidade parecia distante, que ele percebeu a importância da resiliência na vida de todos, sem exceção.",
+    "esperado": "Foi naquele momento, onde a felicidade parecia distante, que ele percebeu a importância da resiliência na vida de todos sem exceção."
+  },
+  {
+    "id": "bravo-032",
+    "challenge": "crase_subentendida_e_concordancia",
+    "errado": "Ele foi a padaria e depois a sapataria, para comprar um presente a sua mãe, que estava de aniversário e merece um bom mimo.",
+    "esperado": "Ele foi à padaria e depois à sapataria, para comprar um presente à sua mãe, que estava de aniversário e merece um bom mimo."
+  },
+  {
+    "id": "bravo-033",
+    "challenge": "colocacao_pronominal_pron_relativo",
+    "errado": "O documento, o qual anexou-se a este e-mail, foi preparado cuidadosamente e entregue na data limite, conforme as instruções.",
+    "esperado": "O documento, o qual se anexou a este e-mail, foi preparado cuidadosamente e entregue na data limite, conforme as instruções."
+  },
+  {
+    "id": "bravo-034",
+    "challenge": "concordancia_sujeito_com_ou",
+    "errado": "A chuva ou o vento, que fustigava a casa durante a noite, não os deixava dormir tranquilamente, causando grande desconforto.",
+    "esperado": "A chuva ou o vento, que fustigavam a casa durante a noite, não os deixavam dormir tranquilamente, causando grande desconforto."
+  },
+  {
+    "id": "bravo-035",
+    "challenge": "hifen_prefixo_micro_tele",
+    "errado": "Aquele micro ônibus, que já estava em péssimas condições de uso, quase bateu em um carro da tele entrega, provocando susto geral.",
+    "esperado": "Aquele micro-ônibus, que já estava em péssimas condições de uso, quase bateu em um carro da tele-entrega, provocando susto geral."
+  },
+  {
+    "id": "bravo-036",
+    "challenge": "coerencia_temporal_geral",
+    "errado": "Se ele tivesse estudado mais, teria passado no exame; mas como não se dedicava, reprovou merecidamente e sem direito a revisão.",
+    "esperado": "Se ele tivesse estudado mais, teria passado no exame; mas como não se dedicou, reprovou merecidamente e sem direito a revisão."
+  },
+  {
+    "id": "bravo-037",
+    "challenge": "uso_demais_adverbio_pronome",
+    "errado": "Os demais colegas estavam satisfeitos com os resultados, mas alguns se queixaram demais das condições do trabalho e da pressão alta.",
+    "esperado": "Os demais colegas estavam satisfeitos com os resultados, mas alguns se queixaram de mais das condições do trabalho e da pressão alta."
+  },
+  {
+    "id": "bravo-038",
+    "challenge": "regencia_agradecer_crase",
+    "errado": "Agradecemos à todos os participantes o empenho e dedicação que mostraram durante todo o evento, tornando-o um sucesso inesperado.",
+    "esperado": "Agradecemos a todos os participantes o empenho e a dedicação que mostraram durante todo o evento, tornando-o um sucesso inesperado."
+  },
+  {
+    "id": "bravo-039",
+    "challenge": "pontuacao_traversao_intercalar",
+    "errado": "O novo gerente, uma pessoa muito competente e experiente, está implementando várias mudanças – visando a otimização dos processos internos, para o futuro.",
+    "esperado": "O novo gerente – uma pessoa muito competente e experiente – está implementando várias mudanças visando a otimização dos processos internos para o futuro."
+  },
+  {
+    "id": "bravo-040",
+    "challenge": "regencia_perdoar",
+    "errado": "Perdoe-me a todos os erros que cometi no passado, pois eles me ensinaram lições importantes para a vida futura de cada um.",
+    "esperado": "Perdoe-me todos os erros que cometi no passado, pois eles me ensinaram lições importantes para a vida futura de cada um."
+  },
+  {
+    "id": "bravo-041",
+    "challenge": "regencia_implicar_em_nao_transit",
+    "errado": "A atitude dos diretores implicou em uma série de consequências negativas para a equipe, que ficou desmotivada, e isso não foi o que esperávamos do projeto.",
+    "esperado": "A atitude dos diretores implicou uma série de consequências negativas para a equipe, que ficou desmotivada, e isso não foi o que esperávamos do projeto."
+  },
+  {
+    "id": "bravo-042",
+    "challenge": "concordancia_verbo_sujeitos_diferentes",
+    "errado": "Nem a secretária, nem o gerente da filial soube lidar com a situação de crise, que exigia uma resposta rápida e eficaz de todos os envolvidos.",
+    "esperado": "Nem a secretária, nem o gerente da filial souberam lidar com a situação de crise, que exigia uma resposta rápida e eficaz de todos os envolvidos."
+  },
+  {
+    "id": "bravo-043",
+    "challenge": "crase_antes_artigo_indefinido",
+    "errado": "Os resultados do estudo foram apresentados à uma plateia de especialistas, apesar de alguns dados ainda precisarem de revisão profunda e consistente.",
+    "esperado": "Os resultados do estudo foram apresentados a uma plateia de especialistas, apesar de alguns dados ainda precisarem de revisão profunda e consistente."
+  },
+  {
+    "id": "bravo-044",
+    "challenge": "regencia_verbo_chegar_em",
+    "errado": "Chegamos em casa tarde, mas conseguimos terminar o trabalho que nos foi delegado para entregar no dia seguinte, antes do prazo.",
+    "esperado": "Chegamos a casa tarde, mas conseguimos terminar o trabalho que nos foi delegado para entregar no dia seguinte, antes do prazo."
+  },
+  {
+    "id": "bravo-045",
+    "challenge": "homofonos_destinto_distinto",
+    "errado": "Seu trabalho é tão destinto do que foi apresentado anteriormente, que causa um impacto bem significativo em quem o analisa profundamente.",
+    "esperado": "Seu trabalho é tão distinto do que foi apresentado anteriormente, que causa um impacto bem significativo em quem o analisa profundamente."
+  },
+  {
+    "id": "bravo-046",
+    "challenge": "virgula_vocativo",
+    "errado": "Senhores clientes a nova política de privacidade entrará em vigor a partir do próximo mês, conforme anunciado anteriormente por e-mail.",
+    "esperado": "Senhores clientes, a nova política de privacidade entrará em vigor a partir do próximo mês, conforme anunciado anteriormente por e-mail."
+  },
+  {
+    "id": "bravo-047",
+    "challenge": "concordancia_nominal_cor_genero",
+    "errado": "As blusas cinza-claro foram as mais vendidas na liquidação, superando as expectativas iniciais do departamento de vendas, que ficou satisfeito.",
+    "esperado": "As blusas cinzas-claro foram as mais vendidas na liquidação, superando as expectativas iniciais do departamento de vendas, que ficou satisfeito."
+  },
+  {
+    "id": "bravo-048",
+    "challenge": "concordancia_verbo_ser_data",
+    "errado": "Hoje são primeiro de maio, uma data importante para os trabalhadores do mundo todo, que buscam melhores condições de vida para suas famílias.",
+    "esperado": "Hoje é primeiro de maio, uma data importante para os trabalhadores do mundo todo, que buscam melhores condições de vida para suas famílias."
+  },
+  {
+    "id": "bravo-049",
+    "challenge": "regencia_pedir_para",
+    "errado": "A gerência pediu para que todos os funcionários chegassem mais cedo amanhã, devido a um treinamento obrigatório e urgente para a equipe.",
+    "esperado": "A gerência pediu que todos os funcionários chegassem mais cedo amanhã, devido a um treinamento obrigatório e urgente para a equipe."
+  },
+  {
+    "id": "bravo-050",
+    "challenge": "porques_substantivo_e_conj_explicativa",
+    "errado": "Não entendi o porque de tanta demora no atendimento, por que o sistema estava lento, mas ninguém explicou os verdadeiros motivos.",
+    "esperado": "Não entendi o porquê de tanta demora no atendimento, porque o sistema estava lento, mas ninguém explicou os verdadeiros motivos."
+  },
+  {
+    "id": "bravo-051",
+    "challenge": "acentuacao_paroxitona_terminada_em_um",
+    "errado": "O album de fotos da viagem me trouxe muitas recordações boas, daquelas que aquecem o coração em dias frios e nostálgicos.",
+    "esperado": "O álbum de fotos da viagem me trouxe muitas recordações boas, daquelas que aquecem o coração em dias frios e nostálgicos."
+  },
+  {
+    "id": "bravo-052",
+    "challenge": "pleonasmo_redundancia",
+    "errado": "Para entrar para dentro do prédio, é preciso apresentar um documento de identificação na portaria, conforme as novas regras de segurança.",
+    "esperado": "Para entrar no prédio, é preciso apresentar um documento de identificação na portaria, conforme as novas regras de segurança."
+  },
+  {
+    "id": "bravo-053",
+    "challenge": "virgula_antes_conjuncao_adversativa",
+    "errado": "Ele estudou muito para a prova mas não conseguiu a nota desejada, o que o deixou bastante frustrado com o resultado final.",
+    "esperado": "Ele estudou muito para a prova, mas não conseguiu a nota desejada, o que o deixou bastante frustrado com o resultado final."
+  },
+  {
+    "id": "bravo-054",
+    "challenge": "concordancia_com_um_dos_que",
+    "errado": "Ele é um dos poucos que sempre cumpre com o prometido, o que o torna uma pessoa de extrema confiança para todos nós da equipe.",
+    "esperado": "Ele é um dos poucos que sempre cumprem com o prometido, o que o torna uma pessoa de extrema confiança para todos nós da equipe."
+  },
+  {
+    "id": "bravo-055",
+    "challenge": "concordancia_numeral_fracionario",
+    "errado": "Dois terços da população apoia a nova medida, mesmo que ela afete temporariamente algumas de suas rotinas diárias e hábitos comuns.",
+    "esperado": "Dois terços da população apoiam a nova medida, mesmo que ela afete temporariamente algumas de suas rotinas diárias e hábitos comuns."
+  },
+  {
+    "id": "bravo-056",
+    "challenge": "homofonos_ascencao_assensao",
+    "errado": "A assenção ao cargo de gerente foi celebrada por todos, pois ele merecia o reconhecimento depois de tanto trabalho árduo e dedicação.",
+    "esperado": "A ascensão ao cargo de gerente foi celebrada por todos, pois ele merecia o reconhecimento depois de tanto trabalho árduo e dedicação."
+  },
+  {
+    "id": "bravo-057",
+    "challenge": "duplicidade_preposicao",
+    "errado": "Após à análise dos dados, percebemos que o projeto não é viável, então teremos que repensar toda a estratégia e os objetivos propostos.",
+    "esperado": "Após a análise dos dados, percebemos que o projeto não é viável, então teremos que repensar toda a estratégia e os objetivos propostos."
+  },
+  {
+    "id": "bravo-058",
+    "challenge": "tempos_verbais_futuro_do_subjuntivo",
+    "errado": "Quando você vem ao escritório, me avise para que possamos organizar a reunião de pauta com todos os interessados no projeto.",
+    "esperado": "Quando você vier ao escritório, me avise para que possamos organizar a reunião de pauta com todos os interessados no projeto."
+  },
+  {
+    "id": "bravo-059",
+    "challenge": "uso_do_gerundio_vicioso",
+    "errado": "Estaremos enviando o comunicado a todos os participantes na próxima semana, quando a decisão final for tomada e aprovada pela diretoria.",
+    "esperado": "Enviaremos o comunicado a todos os participantes na próxima semana, quando a decisão final for tomada e aprovada pela diretoria."
+  },
+  {
+    "id": "bravo-060",
+    "challenge": "hifen_com_prefixo_pos",
+    "errado": "No pós guerra, a economia do país entrou em uma fase de recessão profunda, com altas taxas de desemprego e pobreza em toda a nação.",
+    "esperado": "No pós-guerra, a economia do país entrou em uma fase de recessão profunda, com altas taxas de desemprego e pobreza em toda a nação."
+  },
+  {
+    "id": "bravo-061",
+    "challenge": "regencia_implicar_acarretar",
+    "errado": "O chefe decidiu perdoar ao erro do colaborador, apesar de que a falha implicou em sérios prejuízos para toda a equipe, exigindo um planejamento adicional.",
+    "esperado": "O chefe decidiu perdoar o erro do colaborador, apesar de a falha implicar sérios prejuízos para toda a equipe, exigindo um planejamento adicional."
+  },
+  {
+    "id": "bravo-062",
+    "challenge": "crase_antes_de_pronome_indefinido",
+    "errado": "Ele se dedicou à qualquer tarefa que lhe fosse atribuída, demonstrando um compromisso exemplar àqueles que o observavam na organização.",
+    "esperado": "Ele se dedicou a qualquer tarefa que lhe fosse atribuída, demonstrando um compromisso exemplar àqueles que o observavam na organização."
+  },
+  {
+    "id": "bravo-063",
+    "challenge": "hifen_com_prefixo_pos_pre_pro",
+    "errado": "Após a conferência, a equipe de desenvolvimento terá um pós encontro para discutir as próximas etapas, pré agendado para a próxima semana e pró atividade é fundamental.",
+    "esperado": "Após a conferência, a equipe de desenvolvimento terá um pós-encontro para discutir as próximas etapas, pré-agendado para a próxima semana e pró-atividade é fundamental."
+  },
+  {
+    "id": "bravo-064",
+    "challenge": "regencia_verbal_perdoar_verbo",
+    "errado": "Mesmo com o grande sucesso, o gerente não conseguiu perdoar o atraso da equipe, que prejudicou a imagem da empresa perante os clientes mais exigentes.",
+    "esperado": "Mesmo com o grande sucesso, o gerente não conseguiu perdoar o atraso à equipe, que prejudicou a imagem da empresa perante os clientes mais exigentes."
+  },
+  {
+    "id": "bravo-065",
+    "challenge": "acentuacao_hiato_ee_oo",
+    "errado": "A reunião pôde crêer que as condições para o desenvolvimento do projeto irão cêer rapidamente, sendo necessário um esforço contínuo de todos os envolvidos nesse processo.",
+    "esperado": "A reunião pôde crer que as condições para o desenvolvimento do projeto irão ceder rapidamente, sendo necessário um esforço contínuo de todos os envolvidos nesse processo."
+  },
+  {
+    "id": "bravo-066",
+    "challenge": "pontuacao_virgula_aposto",
+    "errado": "O novo gerente, uma pessoa com vasta experiência profissional apresentou novas ideias para o setor que foram bem recebidas pela equipe, embora inicialmente houvesse resistência.",
+    "esperado": "O novo gerente, uma pessoa com vasta experiência profissional, apresentou novas ideias para o setor que foram bem recebidas pela equipe, embora inicialmente houvesse resistência."
+  },
+  {
+    "id": "bravo-067",
+    "challenge": "uso_senso_censo",
+    "errado": "Para avaliar a situação, foi preciso um censo comum entre os participantes, pois um senso geral da população indicava a necessidade de mudanças urgentes nos programas sociais.",
+    "esperado": "Para avaliar a situação, foi preciso um senso comum entre os participantes, pois um censo geral da população indicava a necessidade de mudanças urgentes nos programas sociais."
+  },
+  {
+    "id": "bravo-068",
+    "challenge": "colocacao_pronominal_com_negativa",
+    "errado": "Ninguém tinha se lembrado da reunião importante, que deveria ter ocorrido ontem, o que causou atrasos significativos nos prazos estabelecidos para o projeto crucial.",
+    "esperado": "Ninguém se tinha lembrado da reunião importante, que deveria ter ocorrido ontem, o que causou atrasos significativos nos prazos estabelecidos para o projeto crucial."
+  },
+  {
+    "id": "bravo-069",
+    "challenge": "regencia_verbal_agradecer_verbo",
+    "errado": "Os estudantes agradeceram ao professor por todas as aulas extras que dedicou para ajudá-los a entender o conteúdo complexo, que foi fundamental para a prova final.",
+    "esperado": "Os estudantes agradeceram ao professor todas as aulas extras que dedicou para ajudá-los a entender o conteúdo complexo, que foi fundamental para a prova final."
+  },
+  {
+    "id": "bravo-070",
+    "challenge": "hifen_com_prefixo_alem_aquem",
+    "errado": "A nova pesquisa revelou descobertas além mar que podem ter impactos significativos em diversas áreas, e a equipe está aquém mar de novas informações importantes.",
+    "esperado": "A nova pesquisa revelou descobertas além-mar que podem ter impactos significativos em diversas áreas, e a equipe está aquém-mar de novas informações importantes."
+  },
+  {
+    "id": "bravo-071",
+    "challenge": "crase_facultativa_pron_possessivo",
+    "errado": "Ele deu as chaves à sua assistente, pedindo que ela fosse à agência bancária antes que o expediente terminasse, para resolver algumas pendências financeiras urgentes.",
+    "esperado": "Ele deu as chaves a sua assistente, pedindo que ela fosse à agência bancária antes que o expediente terminasse, para resolver algumas pendências financeiras urgentes."
+  },
+  {
+    "id": "bravo-072",
+    "challenge": "tempos_verbais_futuro_do_pret",
+    "errado": "Se o cliente quisesse fazer a alteração, nós poderíamos ter feito a tempo, e assim não enfrentaríamos esses desafios logísticos que surgiram inesperadamente.",
+    "esperado": "Se o cliente quisesse fazer a alteração, nós teríamos feito a tempo, e assim não enfrentaríamos esses desafios logísticos que surgiram inesperadamente."
+  },
+  {
+    "id": "bravo-073",
+    "challenge": "acentuacao_monossilabo_tonico",
+    "errado": "Ele tem um pê no escritório que causa muita dor e dificultava a concentração no trabalho, o que comprometeu parte de seu desempenho naquele importante projeto.",
+    "esperado": "Ele tem um pé no escritório que causa muita dor e dificultava a concentração no trabalho, o que comprometeu parte de seu desempenho naquele importante projeto."
+  },
+  {
+    "id": "bravo-074",
+    "challenge": "concordancia_nominal_muito_adv_adj",
+    "errado": "As pessoas estavam muitos preocupadas com o futuro da empresa, pois havia muitas dúvidas sobre as novas diretrizes que seriam implementadas em breve.",
+    "esperado": "As pessoas estavam muito preocupadas com o futuro da empresa, pois havia muitas dúvidas sobre as novas diretrizes que seriam implementadas em breve."
+  },
+  {
+    "id": "bravo-075",
+    "challenge": "regencia_verbal_namorar_vtd",
+    "errado": "Ela namora com um rapaz muito simpático e inteligente, que ela conheceu na universidade, e eles planejam viajar juntos nas próximas férias de verão.",
+    "esperado": "Ela namora um rapaz muito simpático e inteligente, que ela conheceu na universidade, e eles planejam viajar juntos nas próximas férias de verão."
+  },
+  {
+    "id": "bravo-076",
+    "challenge": "uso_demais_de_mais",
+    "errado": "Ele estudou de mais para a prova, sentindo-se exausto, e percebeu que precisava descansar por demais antes do grande dia para ter um bom desempenho.",
+    "esperado": "Ele estudou demais para a prova, sentindo-se exausto, e percebeu que precisava descansar por demais antes do grande dia para ter um bom desempenho."
+  },
+  {
+    "id": "bravo-077",
+    "challenge": "hifen_com_prefixo_pan_circun",
+    "errado": "A empresa está expandindo suas operações em uma escala pan americana, e o novo projeto exige uma circun navegação completa para entender os mercados locais.",
+    "esperado": "A empresa está expandindo suas operações em uma escala pan-americana, e o novo projeto exige uma circun-navegação completa para entender os mercados locais."
+  },
+  {
+    "id": "bravo-078",
+    "challenge": "concordancia_verbal_sujeito_oracional",
+    "errado": "Ver os resultados sendo alcançados por toda a equipe nos faziam sentir muito satisfeitos, e isso impulsionava a todos para buscarem metas ainda mais ambiciosas no futuro.",
+    "esperado": "Ver os resultados sendo alcançados por toda a equipe nos fazia sentir muito satisfeitos, e isso impulsionava a todos para buscarem metas ainda mais ambiciosas no futuro."
+  },
+  {
+    "id": "bravo-079",
+    "challenge": "pontuacao_travessao_explicativo",
+    "errado": "A proposta que foi muito elogiada por todos os presentes na reunião deve ser implementada o mais rápido possível para aproveitarmos as novas oportunidades de mercado.",
+    "esperado": "A proposta – que foi muito elogiada por todos os presentes na reunião – deve ser implementada o mais rápido possível para aproveitarmos as novas oportunidades de mercado."
+  },
+  {
+    "id": "bravo-080",
+    "challenge": "crase_com_expressao_a_moda_de",
+    "errado": "Ele gosta de comer bife a milanesa, um prato que remonta as tradições de sua família, e sempre prepara a maneira antiga, com temperos especiais e muito carinho.",
+    "esperado": "Ele gosta de comer bife à milanesa, um prato que remonta às tradições de sua família, e sempre prepara à maneira antiga, com temperos especiais e muito carinho."
+  },
+  {
+    "id": "bravo-081",
+    "challenge": "crase_com_pronome_indefinido",
+    "errado": "À qualquer momento, houveram várias interrupções durante o discurso, levando à várias pessoas a questionar a organização do evento.",
+    "esperado": "A qualquer momento, houve várias interrupções durante o discurso, levando a várias pessoas a questionar a organização do evento."
+  },
+  {
+    "id": "bravo-082",
+    "challenge": "concordancia_sujeito_composto_diferente",
+    "errado": "O diretor e seus assistentes pode ir a onde for preciso, mesmo que o resultado seja mau para a empresa, pois eles estão dispostos à tudo.",
+    "esperado": "O diretor e seus assistentes podem ir aonde for preciso, mesmo que o resultado seja mau para a empresa, pois eles estão dispostos a tudo."
+  },
+  {
+    "id": "bravo-083",
+    "challenge": "regencia_verbo_ir_com_infinitivo",
+    "errado": "Ele decidiu ir para estudar na Europa no próximo ano, mas não avisou-me antes de tomar uma decisão tão importante.",
+    "esperado": "Ele decidiu ir estudar na Europa no próximo ano, mas não me avisou antes de tomar uma decisão tão importante."
+  },
+  {
+    "id": "bravo-084",
+    "challenge": "colocacao_pronominal_com_verbo_auxiliar",
+    "errado": "Eu não irei-te procurar amanhã, pois a reunião visa encontrar uma solução definitiva para os problemas que afetam todos.",
+    "esperado": "Eu não te procurarei amanhã, pois a reunião visa a encontrar uma solução definitiva para os problemas que afetam a todos."
+  },
+  {
+    "id": "bravo-085",
+    "challenge": "porques_final_precedido_de_preposicao",
+    "errado": "Ele não explicou o motivo de ter agido assim, nem para mim fazer o que ele pediu, por isso ninguém sabe o por que.",
+    "esperado": "Ele não explicou o motivo de ter agido assim, nem para eu fazer o que ele pediu, por isso ninguém sabe o porquê."
+  },
+  {
+    "id": "bravo-086",
+    "challenge": "homofonos_seja_se_ja",
+    "errado": "Não sei seja já tarde para pedir desculpas, mais gostaria que soubéssem que me arrependo das coisas que não fiz.",
+    "esperado": "Não sei se já é tarde para pedir desculpas, mas gostaria que soubessem que me arrependo das coisas que não fiz."
+  },
+  {
+    "id": "bravo-087",
+    "challenge": "virgula_apostos_explicativos",
+    "errado": "João o novo gerente eleito recentemente à nível da empresa, apresentou uma nova proposta à todas as equipes.",
+    "esperado": "João, o novo gerente eleito recentemente, em nível da empresa, apresentou uma nova proposta a todas as equipes."
+  },
+  {
+    "id": "bravo-088",
+    "challenge": "tempos_vervais_coerencia_passado",
+    "errado": "Ela, tinha informado o cliente sobre os atrasos na entrega e esperava que ele entendeu a situação ruim.",
+    "esperado": "Ela tinha informado ao cliente sobre os atrasos na entrega e esperava que ele entendesse a situação ruim."
+  },
+  {
+    "id": "bravo-089",
+    "challenge": "acentuacao_proparoxitona_aparente",
+    "errado": "Ele revisou todos os ítens da pauta, o que gerou bastantes dúvidas à muitos presentes na última reunião.",
+    "esperado": "Ele revisou todos os itens da pauta, o que gerou bastante dúvidas a muitos presentes na última reunião."
+  },
+  {
+    "id": "bravo-090",
+    "challenge": "hifen_com_prefixo_alem",
+    "errado": "A gente fomos viajar para além fronteiras, porquê queríamos conhecer outras culturas, e nos divertimos muito.",
+    "esperado": "A gente foi viajar para além-fronteiras, porque queríamos conhecer outras culturas, e nos divertimos muito."
+  },
+  {
+    "id": "bravo-091",
+    "challenge": "plural_subst_composto_adj_adj",
+    "errado": "Os carros azuis-claro pareciam menas resistentes, e o artista dedicou-se à pintar os detalhes das rodas.",
+    "esperado": "Os carros azuis-claros pareciam menos resistentes, e o artista dedicou-se a pintar os detalhes das rodas."
+  },
+  {
+    "id": "bravo-092",
+    "challenge": "uso_se_indice_indeterminacao",
+    "errado": "Necessitam-se de mais profissionais qualificados que possa contribuir com a inovação tecnológica da empresa.",
+    "esperado": "Necessita-se de mais profissionais qualificados que possam contribuir com a inovação tecnológica da empresa."
+  },
+  {
+    "id": "bravo-093",
+    "challenge": "voz_passiva_sintetica_e_analitica",
+    "errado": "Se vende casas e carros antigos a preço de banana, mas à prazo, com juros que quase dobram o valor.",
+    "esperado": "Vendem-se casas e carros antigos a preço de banana, mas a prazo, com juros que quase dobram o valor."
+  },
+  {
+    "id": "bravo-094",
+    "challenge": "uso_de_meio_substantivo_e_adv",
+    "errado": "Ela queria trabalhar apenas por meia período, pois estava meia cansada e esperava ter menas responsabilidades.",
+    "esperado": "Ela queria trabalhar apenas por meio período, pois estava meio cansada e esperava ter menos responsabilidades."
+  },
+  {
+    "id": "bravo-095",
+    "challenge": "uso_preposicao_regencia_verbal_sentar",
+    "errado": "Ele sentou na mesa do lado, e o mecânico prometeu que o concerto do carro ficaria pronto à bordo.",
+    "esperado": "Ele sentou à mesa do lado, e o mecânico prometeu que o conserto do carro ficaria pronto a bordo."
+  },
+  {
+    "id": "bravo-096",
+    "challenge": "colocacao_pronominal_verbo_ter_que",
+    "errado": "Nós não tinhamos que te avisar sobre a mudança, e mesmo assim informamos ele do novo horário.",
+    "esperado": "Nós não tínhamos que te avisar sobre a mudança, e mesmo assim o informamos do novo horário."
+  },
+  {
+    "id": "bravo-097",
+    "challenge": "crase_com_substantivo_feminino_generico",
+    "errado": "O cientista dedicou-se à pesquisa para aprimorar o tratamento, porisso a ideia não agradava ele inicialmente.",
+    "esperado": "O cientista dedicou-se à pesquisa para aprimorar o tratamento, por isso a ideia não o agradava inicialmente."
+  },
+  {
+    "id": "bravo-098",
+    "challenge": "pleonasmo_vicioso",
+    "errado": "O grupo de alunos subiu para cima do palco, haja vistas os excelentes resultados obtidos, mas haviam menos cadeiras.",
+    "esperado": "O grupo de alunos subiu ao palco, haja vista os excelentes resultados obtidos, mas havia menos cadeiras."
+  },
+  {
+    "id": "bravo-099",
+    "challenge": "part_irregular_e_regular",
+    "errado": "A equipe tinha pego todos os documentos que se reune na sala, mas a proposta não agradava eles.",
+    "esperado": "A equipe tinha pegado todos os documentos que se reúnem na sala, mas a proposta não os agradava."
+  },
+  {
+    "id": "bravo-100",
+    "challenge": "conjuncao_adversativa_coerencia",
+    "errado": "A não ser que chova, a reunião ocorrerá ao ar livre e teremos que apresentar alguns documentos anexo à todos os participantes.",
+    "esperado": "A menos que chova, a reunião ocorrerá ao ar livre e teremos que apresentar alguns documentos anexos a todos os participantes."
+  }
+]

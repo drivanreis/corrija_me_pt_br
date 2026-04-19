@@ -4445,13 +4445,6 @@
     "source": "learned_know:acent-20"
   },
   {
-    "from": "pais",
-    "replacements": [
-      "país"
-    ],
-    "source": "learned_know:acent-08"
-  },
-  {
     "from": "páis",
     "replacements": [
       "pais"

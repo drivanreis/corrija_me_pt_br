@@ -1,191 +1,1467 @@
 [
   {
-    "id": "PT_BR_SEEDED_PORISSO",
-    "pattern": ["porisso"],
-    "replacements": ["por isso"],
+    "id": "PT_BR_PHRASE_SEEDED_PORISSO",
+    "pattern": [
+      "porisso"
+    ],
+    "replacements": [
+      "por isso"
+    ],
     "message": "Essa locução costuma ser escrita separada.",
     "description": "Corrige o composto colado 'porisso'."
   },
   {
-    "id": "PT_BR_SEEDED_BEM_ESTAR",
-    "pattern": ["bem", "estar"],
-    "replacements": ["bem-estar"],
+    "id": "PT_BR_PHRASE_SEEDED_BEM_ESTAR",
+    "pattern": [
+      "bem",
+      "estar"
+    ],
+    "replacements": [
+      "bem-estar"
+    ],
     "message": "Esse composto costuma ser escrito com hífen.",
     "description": "Corrige a forma 'bem-estar'."
   },
   {
-    "id": "PT_BR_SEEDED_SEGUNDA_FEIRA",
-    "pattern": ["segunda", "feira"],
-    "replacements": ["segunda-feira"],
+    "id": "PT_BR_PHRASE_SEEDED_SEGUNDA_FEIRA",
+    "pattern": [
+      "segunda",
+      "feira"
+    ],
+    "replacements": [
+      "segunda-feira"
+    ],
     "message": "O dia da semana costuma ser escrito com hífen nesta base.",
     "description": "Corrige a forma 'segunda-feira'."
   },
   {
-    "id": "PT_BR_SEEDED_SEXTA_FEIRA",
-    "pattern": ["sexta", "feira"],
-    "replacements": ["sexta-feira"],
+    "id": "PT_BR_PHRASE_SEEDED_SEXTA_FEIRA",
+    "pattern": [
+      "sexta",
+      "feira"
+    ],
+    "replacements": [
+      "sexta-feira"
+    ],
     "message": "O dia da semana costuma ser escrito com hífen nesta base.",
     "description": "Corrige a forma 'sexta-feira'."
   },
   {
-    "id": "PT_BR_SEEDED_A_MEDIDA_EM",
-    "pattern": ["a", "medida", "em"],
-    "replacements": ["à medida"],
+    "id": "PT_BR_PHRASE_SEEDED_A_MEDIDA_EM",
+    "pattern": [
+      "a",
+      "medida",
+      "em"
+    ],
+    "replacements": [
+      "à medida"
+    ],
     "message": "Nesta locução, a forma esperada é 'à medida que'.",
     "description": "Corrige a expressão 'à medida que'."
   },
   {
-    "id": "PT_BR_SEEDED_A_NIVEL_DE",
-    "pattern": ["a", "nível", "de"],
-    "replacements": ["em nível de"],
+    "id": "PT_BR_PHRASE_SEEDED_A_NIVEL_DE",
+    "pattern": [
+      "a",
+      "nível",
+      "de"
+    ],
+    "replacements": [
+      "em nível de"
+    ],
     "message": "A formulação mais natural costuma ser 'em nível de'.",
     "description": "Corrige a locução 'a nível de'."
   },
   {
-    "id": "PT_BR_SEEDED_A_NIVEL",
-    "pattern": ["a", "nível"],
-    "replacements": ["em nível"],
+    "id": "PT_BR_PHRASE_SEEDED_A_NIVEL",
+    "pattern": [
+      "a",
+      "nível"
+    ],
+    "replacements": [
+      "em nível"
+    ],
     "message": "A formulação mais natural costuma ser 'em nível'.",
     "description": "Corrige a locução 'a nível'."
   },
   {
-    "id": "PT_BR_SEEDED_NAO_HA",
-    "pattern": ["não", "ha"],
-    "replacements": ["não há"],
+    "id": "PT_BR_PHRASE_SEEDED_NAO_HA",
+    "pattern": [
+      "não",
+      "ha"
+    ],
+    "replacements": [
+      "não há"
+    ],
     "message": "Nessa construção, a forma esperada é 'não há'.",
     "description": "Corrige a ausência de acento em 'há'."
   },
   {
-    "id": "PT_BR_SEEDED_O_PORQUE",
-    "pattern": ["o", "porque"],
-    "replacements": ["o porquê"],
+    "id": "PT_BR_PHRASE_SEEDED_O_PORQUE",
+    "pattern": [
+      "o",
+      "porque"
+    ],
+    "replacements": [
+      "o porquê"
+    ],
     "message": "Com artigo, a forma esperada é 'porquê'.",
     "description": "Corrige o uso substantivo de 'porquê'."
   },
   {
-    "id": "PT_BR_SEEDED_DE_ENCONTRO_AO",
-    "pattern": ["de", "encontro", "ao"],
-    "replacements": ["ao encontro do"],
+    "id": "PT_BR_PHRASE_SEEDED_DE_ENCONTRO_AO",
+    "pattern": [
+      "de",
+      "encontro",
+      "ao"
+    ],
+    "replacements": [
+      "ao encontro do"
+    ],
     "message": "Nesta construção, a forma esperada é 'ao encontro de'.",
     "description": "Corrige a expressão 'de encontro ao'."
   },
   {
-    "id": "PT_BR_SEEDED_DE_ENCONTRO_AOS",
-    "pattern": ["de", "encontro", "aos"],
-    "replacements": ["ao encontro dos"],
+    "id": "PT_BR_PHRASE_SEEDED_DE_ENCONTRO_AOS",
+    "pattern": [
+      "de",
+      "encontro",
+      "aos"
+    ],
+    "replacements": [
+      "ao encontro dos"
+    ],
     "message": "Nesta construção, a forma esperada é 'ao encontro de'.",
     "description": "Corrige a expressão 'de encontro aos'."
   },
   {
-    "id": "PT_BR_SEEDED_DE_ENCONTRO_A",
-    "pattern": ["de", "encontro", "a"],
-    "replacements": ["ao encontro da"],
+    "id": "PT_BR_PHRASE_SEEDED_DE_ENCONTRO_A",
+    "pattern": [
+      "de",
+      "encontro",
+      "a"
+    ],
+    "replacements": [
+      "ao encontro da"
+    ],
     "message": "Nesta construção, a forma esperada é 'ao encontro de'.",
     "description": "Corrige a expressão 'de encontro a'."
   },
   {
-    "id": "PT_BR_SEEDED_DE_ENCONTRO_AS",
-    "pattern": ["de", "encontro", "as"],
-    "replacements": ["ao encontro das"],
+    "id": "PT_BR_PHRASE_SEEDED_DE_ENCONTRO_AS",
+    "pattern": [
+      "de",
+      "encontro",
+      "as"
+    ],
+    "replacements": [
+      "ao encontro das"
+    ],
     "message": "Nesta construção, a forma esperada é 'ao encontro de'.",
     "description": "Corrige a expressão 'de encontro as'."
   },
   {
-    "id": "PT_BR_SEEDED_TAO_POUCO",
-    "pattern": ["tão", "pouco"],
-    "replacements": ["tampouco"],
+    "id": "PT_BR_PHRASE_SEEDED_TAO_POUCO",
+    "pattern": [
+      "tão",
+      "pouco"
+    ],
+    "replacements": [
+      "tampouco"
+    ],
     "message": "Nesta construção, a forma esperada é 'tampouco'.",
     "description": "Corrige a locução 'tão pouco' quando usada com valor aditivo."
   },
   {
-    "id": "PT_BR_SEEDED_AGENTE_VAI",
-    "pattern": ["agente", "vai"],
-    "replacements": ["a gente vai"],
+    "id": "PT_BR_PHRASE_SEEDED_AGENTE_VAI",
+    "pattern": [
+      "agente",
+      "vai"
+    ],
+    "replacements": [
+      "a gente vai"
+    ],
     "message": "Neste contexto, a forma esperada é 'a gente'.",
     "description": "Corrige uso coloquial frequente de 'agente'."
   },
   {
-    "id": "PT_BR_SEEDED_AGENTE_NAO",
-    "pattern": ["agente", "não"],
-    "replacements": ["a gente não"],
+    "id": "PT_BR_PHRASE_SEEDED_AGENTE_NAO",
+    "pattern": [
+      "agente",
+      "não"
+    ],
+    "replacements": [
+      "a gente não"
+    ],
     "message": "Neste contexto, a forma esperada é 'a gente'.",
     "description": "Corrige uso coloquial frequente de 'agente'."
   },
   {
-    "id": "PT_BR_SEEDED_AGENTE_CONSIGA",
-    "pattern": ["agente", "consiga"],
-    "replacements": ["a gente consiga"],
+    "id": "PT_BR_PHRASE_SEEDED_AGENTE_CONSIGA",
+    "pattern": [
+      "agente",
+      "consiga"
+    ],
+    "replacements": [
+      "a gente consiga"
+    ],
     "message": "Neste contexto, a forma esperada é 'a gente'.",
     "description": "Corrige uso coloquial frequente de 'agente'."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_01_EVENTO",
-    "pattern": ["a", "gente", "fomos", "no", "evento", "ontem", "onde", "assistimos", "uma", "palestra", "sobre", "tecnologia"],
-    "replacements": ["A gente foi ao evento ontem, no qual assistimos a uma palestra sobre tecnologia"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_01_EVENTO",
+    "pattern": [
+      "a",
+      "gente",
+      "fomos",
+      "no",
+      "evento",
+      "ontem",
+      "onde",
+      "assistimos",
+      "uma",
+      "palestra",
+      "sobre",
+      "tecnologia"
+    ],
+    "replacements": [
+      "A gente foi ao evento ontem, no qual assistimos a uma palestra sobre tecnologia"
+    ],
     "message": "Ajusta concordância, regência e pontuação neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (evento/palestra)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_02_FAZER_ANOS",
-    "pattern": ["faziam", "anos", "que", "eu", "não", "via", "ele", "por", "isso", "não", "lhe", "reconheci", "de", "primeira"],
-    "replacements": ["Fazia anos que eu não o via, por isso não o reconheci de primeira"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_02_FAZER_ANOS",
+    "pattern": [
+      "faziam",
+      "anos",
+      "que",
+      "eu",
+      "não",
+      "via",
+      "ele",
+      "por",
+      "isso",
+      "não",
+      "lhe",
+      "reconheci",
+      "de",
+      "primeira"
+    ],
+    "replacements": [
+      "Fazia anos que eu não o via, por isso não o reconheci de primeira"
+    ],
     "message": "Ajusta impessoalidade de 'fazer' e pronomes oblíquos neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (fazer anos / pronomes)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_03_AS_VEZES_PREJUDICAM",
-    "pattern": ["as", "decisões", "que", "o", "governo", "toma", "as", "vezes", "prejudica", "a", "população", "mais", "carente"],
-    "replacements": ["As decisões que o governo toma às vezes prejudicam a população mais carente"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_03_AS_VEZES_PREJUDICAM",
+    "pattern": [
+      "as",
+      "decisões",
+      "que",
+      "o",
+      "governo",
+      "toma",
+      "as",
+      "vezes",
+      "prejudica",
+      "a",
+      "população",
+      "mais",
+      "carente"
+    ],
+    "replacements": [
+      "As decisões que o governo toma às vezes prejudicam a população mais carente"
+    ],
     "message": "Ajusta acentuação de 'às vezes' e concordância verbal neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (às vezes / concordância)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_04_CHEGUEI_AS_NOVE",
-    "pattern": ["eu", "cheguei", "na", "empresa", "as", "nove", "horas", "e", "não", "tinha", "ninguém", "na", "recepção", "esperando"],
-    "replacements": ["Eu cheguei à empresa às nove horas e não havia ninguém na recepção esperando"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_04_CHEGUEI_AS_NOVE",
+    "pattern": [
+      "eu",
+      "cheguei",
+      "na",
+      "empresa",
+      "as",
+      "nove",
+      "horas",
+      "e",
+      "não",
+      "tinha",
+      "ninguém",
+      "na",
+      "recepção",
+      "esperando"
+    ],
+    "replacements": [
+      "Eu cheguei à empresa às nove horas e não havia ninguém na recepção esperando"
+    ],
     "message": "Ajusta crase e impessoalidade neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (crase / havia)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_05_CLIENTES_QUEREM",
-    "pattern": ["houve", "muitos", "problemas", "na", "entrega", "e", "os", "cliente", "quer", "que", "devolve", "o", "dinheiro"],
-    "replacements": ["Houve muitos problemas na entrega e os clientes querem que se devolva o dinheiro"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_05_CLIENTES_QUEREM",
+    "pattern": [
+      "houve",
+      "muitos",
+      "problemas",
+      "na",
+      "entrega",
+      "e",
+      "os",
+      "cliente",
+      "quer",
+      "que",
+      "devolve",
+      "o",
+      "dinheiro"
+    ],
+    "replacements": [
+      "Houve muitos problemas na entrega e os clientes querem que se devolva o dinheiro"
+    ],
     "message": "Ajusta plural, concordância e voz passiva sintética neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (clientes querem / se devolva)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_06_SE_VOCE_VIR_AVISE",
-    "pattern": ["se", "você", "ver", "o", "diretor", "avise", "ele", "que", "eu", "já", "terminei", "de", "fazer", "o", "relatório"],
-    "replacements": ["Se você vir o diretor, avise-o de que eu já terminei de fazer o relatório"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_06_SE_VOCE_VIR_AVISE",
+    "pattern": [
+      "se",
+      "você",
+      "ver",
+      "o",
+      "diretor",
+      "avise",
+      "ele",
+      "que",
+      "eu",
+      "já",
+      "terminei",
+      "de",
+      "fazer",
+      "o",
+      "relatório"
+    ],
+    "replacements": [
+      "Se você vir o diretor, avise-o de que eu já terminei de fazer o relatório"
+    ],
     "message": "Ajusta 'ver/vir', pontuação e pronomes neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (vir / avise-o / de que)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_07_PREFEREM_FICAR",
-    "pattern": ["eles", "preferem", "mais", "ficar", "em", "casa", "do", "que", "sair", "na", "chuva", "pra", "ir", "no", "cinema"],
-    "replacements": ["Eles preferem ficar em casa a sair na chuva para ir ao cinema"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_07_PREFEREM_FICAR",
+    "pattern": [
+      "eles",
+      "preferem",
+      "mais",
+      "ficar",
+      "em",
+      "casa",
+      "do",
+      "que",
+      "sair",
+      "na",
+      "chuva",
+      "pra",
+      "ir",
+      "no",
+      "cinema"
+    ],
+    "replacements": [
+      "Eles preferem ficar em casa a sair na chuva para ir ao cinema"
+    ],
     "message": "Ajusta construção de preferência e regências neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (preferir X a Y)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_08_EMPRESTA_ME",
-    "pattern": ["me", "empresta", "esse", "livro", "pra", "mim", "ler", "ele", "enquanto", "eu", "tiver", "de", "férias"],
-    "replacements": ["Empresta-me este livro para eu o ler enquanto eu estiver de férias"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_08_EMPRESTA_ME",
+    "pattern": [
+      "me",
+      "empresta",
+      "esse",
+      "livro",
+      "pra",
+      "mim",
+      "ler",
+      "ele",
+      "enquanto",
+      "eu",
+      "tiver",
+      "de",
+      "férias"
+    ],
+    "replacements": [
+      "Empresta-me este livro para eu o ler enquanto eu estiver de férias"
+    ],
     "message": "Ajusta pronomes, regência e tempo verbal neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (para eu o ler / estiver)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_09_HAVIA_BASTANTES",
-    "pattern": ["tinha", "bastante", "pessoas", "na", "fila", "mas", "poucas", "conseguiram", "compra", "o", "ingresso"],
-    "replacements": ["Havia bastantes pessoas na fila, mas poucas conseguiram comprar o ingresso"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_09_HAVIA_BASTANTES",
+    "pattern": [
+      "tinha",
+      "bastante",
+      "pessoas",
+      "na",
+      "fila",
+      "mas",
+      "poucas",
+      "conseguiram",
+      "compra",
+      "o",
+      "ingresso"
+    ],
+    "replacements": [
+      "Havia bastantes pessoas na fila, mas poucas conseguiram comprar o ingresso"
+    ],
     "message": "Ajusta verbo, plural e pontuação neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (havia / bastantes / vírgula)."
   },
   {
-    "id": "PT_BR_SEEDED_REG_TEST_10_AONDE_MALAS",
-    "pattern": ["aonde", "você", "pensa", "que", "vai", "com", "essas", "mala", "tudo", "sem", "me", "dar", "uma", "explicação"],
-    "replacements": ["Aonde você pensa que vai com todas essas malas sem me dar uma explicação"],
+    "id": "PT_BR_PHRASE_SEEDED_REG_TEST_10_AONDE_MALAS",
+    "pattern": [
+      "aonde",
+      "você",
+      "pensa",
+      "que",
+      "vai",
+      "com",
+      "essas",
+      "mala",
+      "tudo",
+      "sem",
+      "me",
+      "dar",
+      "uma",
+      "explicação"
+    ],
+    "replacements": [
+      "Aonde você pensa que vai com todas essas malas sem me dar uma explicação"
+    ],
     "message": "Ajusta determinantes e plural neste padrão.",
     "description": "Regra seeded para caso complexo de regressão (todas essas malas)."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_ACENTUACAO_DITONGO_ABERTO_POS_ACORDO",
+    "pattern": [
+      "as",
+      "idéias",
+      "do",
+      "arquiteto",
+      "foram",
+      "bem",
+      "recebidas"
+    ],
+    "replacements": [
+      "As ideias do arquiteto foram bem recebidas"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'acentuacao_ditongo_aberto_pos_acordo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_ANEXO",
+    "pattern": [
+      "as",
+      "certidões",
+      "de",
+      "nascimento",
+      "seguem",
+      "anexo",
+      "ao",
+      "processo"
+    ],
+    "replacements": [
+      "As certidões de nascimento seguem anexas ao processo"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_anexo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_COLETIVO",
+    "pattern": [
+      "uma",
+      "porção",
+      "dos",
+      "documentos",
+      "sumiram",
+      "misteriosamente",
+      "do",
+      "cartório"
+    ],
+    "replacements": [
+      "Uma porção dos documentos sumiu misteriosamente do cartório"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_coletivo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_MEIO_BASTANTE",
+    "pattern": [
+      "ela",
+      "estava",
+      "meia",
+      "preocupada",
+      "com",
+      "a",
+      "negociação",
+      "do",
+      "imóvel"
+    ],
+    "replacements": [
+      "Ela estava meio preocupada com a negociação do imóvel"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_meio_bastante'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_NOME_PROPRIO_PLURAL",
+    "pattern": [
+      "os",
+      "estados",
+      "unidos",
+      "é",
+      "uma",
+      "potência",
+      "econômica"
+    ],
+    "replacements": [
+      "Os Estados Unidos são uma potência econômica"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_nome_proprio_plural'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_NOMINAL_ADJETIVO",
+    "pattern": [
+      "as",
+      "roupas",
+      "estavam",
+      "sujo",
+      "na",
+      "máquina"
+    ],
+    "replacements": [
+      "As roupas estavam sujas na máquina"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_nominal_adjetivo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_PERCENTUAL",
+    "pattern": [
+      "vinte",
+      "por",
+      "cento",
+      "dos",
+      "funcionários",
+      "optou",
+      "por",
+      "férias",
+      "coletivas"
+    ],
+    "replacements": [
+      "Vinte por cento dos funcionários optaram por férias coletivas"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_percentual'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_SUJ_COMPOSTO",
+    "pattern": [
+      "a",
+      "paciência",
+      "e",
+      "a",
+      "dedicação",
+      "foi",
+      "fundamental",
+      "para",
+      "o",
+      "sucesso"
+    ],
+    "replacements": [
+      "A paciência e a dedicação foram fundamentais para o sucesso"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_suj_composto'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_TAL_QUAL",
+    "pattern": [
+      "ela",
+      "é",
+      "tal",
+      "qual",
+      "a",
+      "irmã",
+      "muito",
+      "inteligentes"
+    ],
+    "replacements": [
+      "Ela é tal qual a irmã, muito inteligente"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_tal_qual'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_VERBAL_VERBO_SER_QUANT",
+    "pattern": [
+      "dois",
+      "mil",
+      "reais",
+      "é",
+      "pouco",
+      "para",
+      "pagar",
+      "a",
+      "dívida"
+    ],
+    "replacements": [
+      "Dois mil reais são pouco para pagar a dívida"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_verbal_verbo_ser_quant'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CONCORDANCIA_VERBO_SER_PREDICATIVO",
+    "pattern": [
+      "era",
+      "os",
+      "detalhes",
+      "que",
+      "impediam",
+      "o",
+      "fechamento",
+      "do",
+      "negócio"
+    ],
+    "replacements": [
+      "Eram os detalhes que impediam o fechamento do negócio"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'concordancia_verbo_ser_predicativo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_A_MEDIDA_QUE",
+    "pattern": [
+      "as",
+      "vendas",
+      "de",
+      "imóveis",
+      "aumentam",
+      "a",
+      "medida",
+      "que",
+      "o",
+      "mercado",
+      "se",
+      "aquece"
+    ],
+    "replacements": [
+      "As vendas de imóveis aumentam à medida que o mercado se aquece"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_a_medida_que'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_A_PRONOME_DEMONSTRATIVO",
+    "pattern": [
+      "não",
+      "me",
+      "refiro",
+      "a",
+      "isso",
+      "mas",
+      "sim",
+      "a",
+      "aquilo",
+      "que",
+      "você",
+      "disse",
+      "ontem"
+    ],
+    "replacements": [
+      "Não me refiro a isso, mas sim àquilo que você disse ontem"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_a_pronome_demonstrativo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_A_PROPORCAO_QUE",
+    "pattern": [
+      "o",
+      "trabalho",
+      "crescia",
+      "a",
+      "proporção",
+      "que",
+      "novos",
+      "membros",
+      "eram",
+      "adicionados"
+    ],
+    "replacements": [
+      "O trabalho crescia à proporção que novos membros eram adicionados"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_a_proporcao_que'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_CASA_TERRA",
+    "pattern": [
+      "depois",
+      "da",
+      "viagem",
+      "ela",
+      "retornou",
+      "a",
+      "casa",
+      "dos",
+      "pais",
+      "para",
+      "descansar"
+    ],
+    "replacements": [
+      "Depois da viagem, ela retornou à casa dos pais para descansar"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_casa_terra'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_DISTANCIA",
+    "pattern": [
+      "mantenha-se",
+      "a",
+      "distância",
+      "para",
+      "evitar",
+      "acidentes"
+    ],
+    "replacements": [
+      "Mantenha-se à distância para evitar acidentes"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_distancia'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_LOCUCAO_ADVERBIAL_FEMININA",
+    "pattern": [
+      "ele",
+      "chegou",
+      "a",
+      "noite",
+      "exausto",
+      "da",
+      "viagem"
+    ],
+    "replacements": [
+      "Ele chegou à noite, exausto da viagem"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_locucao_adverbial_feminina'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_LOCUCAO_FEMININA",
+    "pattern": [
+      "graças",
+      "a",
+      "insistência",
+      "dele",
+      "o",
+      "projeto",
+      "foi",
+      "aprovado"
+    ],
+    "replacements": [
+      "Graças à insistência dele, o projeto foi aprovado"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_locucao_feminina'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_PRONOME_TRATAMENTO",
+    "pattern": [
+      "dirigi-me",
+      "à",
+      "vossa",
+      "senhoria",
+      "para",
+      "esclarecer",
+      "a",
+      "questão"
+    ],
+    "replacements": [
+      "Dirigi-me a Vossa Senhoria para esclarecer a questão"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_pronome_tratamento'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_CRASE_TERMO_MASCULINO",
+    "pattern": [
+      "a",
+      "casa",
+      "está",
+      "à",
+      "venda",
+      "à",
+      "vista",
+      "ou",
+      "à",
+      "prazo"
+    ],
+    "replacements": [
+      "A casa está à venda à vista ou a prazo"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'crase_termo_masculino'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_ENCLISE_INFINITIVO",
+    "pattern": [
+      "é",
+      "necessário",
+      "notificar-os",
+      "sobre",
+      "as",
+      "novas",
+      "regras"
+    ],
+    "replacements": [
+      "É necessário notificá-los sobre as novas regras"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'enclise_infinitivo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_EXPRESSAO_A_PRINCIPIO_EM_PRINCIPIO",
+    "pattern": [
+      "em",
+      "princípio",
+      "ele",
+      "se",
+      "mostrou",
+      "favorável",
+      "à",
+      "ideia"
+    ],
+    "replacements": [
+      "A princípio, ele se mostrou favorável à ideia"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'expressao_a_principio_em_principio'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_HOMOFONOS_A_CERCA_DE",
+    "pattern": [
+      "acerca",
+      "de",
+      "dois",
+      "anos",
+      "que",
+      "não",
+      "o",
+      "vejo"
+    ],
+    "replacements": [
+      "Há cerca de dois anos que não o vejo"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'homofonos_a_cerca_de'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_HOMOFONOS_AFIM_A_FIM",
+    "pattern": [
+      "estou",
+      "afim",
+      "de",
+      "viajar",
+      "para",
+      "a",
+      "praia",
+      "neste",
+      "fim",
+      "de",
+      "semana"
+    ],
+    "replacements": [
+      "Estou a fim de viajar para a praia neste fim de semana"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'homofonos_afim_a_fim'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_HOMOFONOS_CONCERTO",
+    "pattern": [
+      "precisamos",
+      "de",
+      "um",
+      "concerto",
+      "urgente",
+      "na",
+      "tubulação",
+      "do",
+      "prédio"
+    ],
+    "replacements": [
+      "Precisamos de um conserto urgente na tubulação do prédio"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'homofonos_concerto'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_HOMOFONOS_HA_A",
+    "pattern": [
+      "o",
+      "cliente",
+      "espera",
+      "a",
+      "anos",
+      "por",
+      "essa",
+      "oportunidade",
+      "de",
+      "compra"
+    ],
+    "replacements": [
+      "O cliente espera há anos por essa oportunidade de compra"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'homofonos_ha_a'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_HOMOFONOS_SE_NAO_SENAO",
+    "pattern": [
+      "não",
+      "há",
+      "outra",
+      "alternativa",
+      "se",
+      "não",
+      "aceitar",
+      "a",
+      "proposta",
+      "de",
+      "compra"
+    ],
+    "replacements": [
+      "Não há outra alternativa senão aceitar a proposta de compra"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'homofonos_se_nao_senao'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_HOMOFONOS_TRAZ_TRAS",
+    "pattern": [
+      "por",
+      "favor",
+      "traz",
+      "o",
+      "pacote",
+      "que",
+      "deixei",
+      "lá",
+      "a",
+      "traz"
+    ],
+    "replacements": [
+      "Por favor, traz o pacote que deixei lá atrás"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'homofonos_traz_tras'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_MESOCLISE_FUTURO",
+    "pattern": [
+      "entregarei-te",
+      "a",
+      "proposta",
+      "assim",
+      "que",
+      "for",
+      "aprovada"
+    ],
+    "replacements": [
+      "Entregar-te-ei a proposta assim que for aprovada"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'mesoclise_futuro'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_ONDE_EM_QUE",
+    "pattern": [
+      "a",
+      "situação",
+      "onde",
+      "o",
+      "comprador",
+      "se",
+      "encontra",
+      "é",
+      "complicada"
+    ],
+    "replacements": [
+      "A situação em que o comprador se encontra é complicada"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'onde_em_que'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PART_IRREGULAR",
+    "pattern": [
+      "a",
+      "documentação",
+      "já",
+      "tinha",
+      "sido",
+      "imprimida",
+      "pelo",
+      "cartório"
+    ],
+    "replacements": [
+      "A documentação já tinha sido impressa pelo cartório"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'part_irregular'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PLURAL_EM_M",
+    "pattern": [
+      "os",
+      "álbum",
+      "de",
+      "fotos",
+      "dos",
+      "empreendimentos",
+      "estavam",
+      "desorganizados"
+    ],
+    "replacements": [
+      "Os álbuns de fotos dos empreendimentos estavam desorganizados"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'plural_em_m'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PLURAL_ER_EZ",
+    "pattern": [
+      "os",
+      "aluguel",
+      "atrasados",
+      "geram",
+      "multas",
+      "diárias"
+    ],
+    "replacements": [
+      "Os aluguéis atrasados geram multas diárias"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'plural_er_ez'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PLURAL_GUARDA_CHUVA",
+    "pattern": [
+      "comprei",
+      "dois",
+      "guarda-chuva",
+      "novos",
+      "para",
+      "a",
+      "viagem"
+    ],
+    "replacements": [
+      "Comprei dois guarda-chuvas novos para a viagem"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'plural_guarda_chuva'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PLURAL_SUBST_COMPOSTO_PREPOSICAO",
+    "pattern": [
+      "os",
+      "pão-de-ló",
+      "foram",
+      "servidos",
+      "na",
+      "festa"
+    ],
+    "replacements": [
+      "Os pães de ló foram servidos na festa"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'plural_subst_composto_preposicao'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PLURAL_SUBSTANTIVOS_EM_AO",
+    "pattern": [
+      "os",
+      "orgãos",
+      "do",
+      "governo",
+      "anunciaram",
+      "novas",
+      "medidas"
+    ],
+    "replacements": [
+      "Os órgãos do governo anunciaram novas medidas"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'plural_substantivos_em_ao'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PONTO_E_VIRGULA",
+    "pattern": [
+      "a",
+      "reunião",
+      "foi",
+      "produtiva",
+      "discutimos",
+      "preços",
+      "prazos",
+      "e",
+      "estratégias",
+      "de",
+      "marketing"
+    ],
+    "replacements": [
+      "A reunião foi produtiva; discutimos preços, prazos e estratégias de marketing"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'ponto_e_virgula'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PORQUES_EXPLICATIVO",
+    "pattern": [
+      "não",
+      "saí",
+      "de",
+      "casa",
+      "por",
+      "que",
+      "estava",
+      "chovendo",
+      "muito"
+    ],
+    "replacements": [
+      "Não saí de casa, porque estava chovendo muito"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'porques_explicativo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PORQUES_INDIRETA",
+    "pattern": [
+      "gostaria",
+      "de",
+      "entender",
+      "porque",
+      "o",
+      "financiamento",
+      "foi",
+      "negado"
+    ],
+    "replacements": [
+      "Gostaria de entender por que o financiamento foi negado"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'porques_indireta'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PROCLISE_ADVERBIO",
+    "pattern": [
+      "nunca",
+      "vi-o",
+      "tão",
+      "feliz",
+      "com",
+      "uma",
+      "venda",
+      "realizada"
+    ],
+    "replacements": [
+      "Nunca o vi tão feliz com uma venda realizada"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'proclise_adverbio'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PRONOME_CUJO",
+    "pattern": [
+      "este",
+      "é",
+      "o",
+      "apartamento",
+      "que",
+      "a",
+      "vista",
+      "dele",
+      "é",
+      "panorâmica"
+    ],
+    "replacements": [
+      "Este é o apartamento cuja vista é panorâmica"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'pronome_cujo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_PRONOME_RELATIVO_PREPOSICAO_QUE",
+    "pattern": [
+      "a",
+      "empresa",
+      "que",
+      "confio",
+      "está",
+      "contratando"
+    ],
+    "replacements": [
+      "A empresa em que confio está contratando"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'pronome_relativo_preposicao_que'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_AGRADAR",
+    "pattern": [
+      "o",
+      "novo",
+      "sabor",
+      "do",
+      "bolo",
+      "agradou",
+      "os",
+      "clientes"
+    ],
+    "replacements": [
+      "O novo sabor do bolo agradou aos clientes"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_agradar'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_APTO",
+    "pattern": [
+      "este",
+      "lote",
+      "não",
+      "está",
+      "apto",
+      "em",
+      "receber",
+      "uma",
+      "construção",
+      "alta"
+    ],
+    "replacements": [
+      "Este lote não está apto a receber uma construção alta"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_apto'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_CHAMAR_DAR_NOME",
+    "pattern": [
+      "os",
+      "pais",
+      "chamaram-lhe",
+      "de",
+      "pedro"
+    ],
+    "replacements": [
+      "Os pais o chamaram de Pedro"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_chamar_dar_nome'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_CUSTAR",
+    "pattern": [
+      "custei",
+      "a",
+      "entender",
+      "o",
+      "contrato",
+      "de",
+      "financiamento"
+    ],
+    "replacements": [
+      "Custou-me entender o contrato de financiamento"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_custar'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_ESQUECER_LEMBRAR",
+    "pattern": [
+      "eu",
+      "esqueci",
+      "do",
+      "compromisso"
+    ],
+    "replacements": [
+      "Eu esqueci o compromisso"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_esquecer_lembrar'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_NOMINAL_NECESSIDADE",
+    "pattern": [
+      "ele",
+      "sentia",
+      "necessidade",
+      "em",
+      "aprender",
+      "mais"
+    ],
+    "replacements": [
+      "Ele sentia necessidade de aprender mais"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_nominal_necessidade'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_OBEDECER",
+    "pattern": [
+      "ele",
+      "desobedeceu",
+      "as",
+      "normas",
+      "de",
+      "segurança",
+      "do",
+      "edifício"
+    ],
+    "replacements": [
+      "Ele desobedeceu às normas de segurança do edifício"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_obedecer'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_PAGAR",
+    "pattern": [
+      "ele",
+      "pagou",
+      "o",
+      "gerente",
+      "do",
+      "banco",
+      "pelo",
+      "serviço",
+      "prestado"
+    ],
+    "replacements": [
+      "Ele pagou ao gerente do banco pelo serviço prestado"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_pagar'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_REGENCIA_PROCEDER",
+    "pattern": [
+      "a",
+      "empresa",
+      "irá",
+      "proceder",
+      "a",
+      "análise",
+      "dos",
+      "documentos"
+    ],
+    "replacements": [
+      "A empresa irá proceder à análise dos documentos"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'regencia_proceder'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_TEMPOS_VERBAIS_CONDICIONAL",
+    "pattern": [
+      "se",
+      "eu",
+      "tivesse",
+      "dinheiro",
+      "comprava",
+      "uma",
+      "casa",
+      "maior"
+    ],
+    "replacements": [
+      "Se eu tivesse dinheiro, compraria uma casa maior"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'tempos_verbais_condicional'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_TEMPOS_VERBAIS_SUBJUNTIVO",
+    "pattern": [
+      "é",
+      "provável",
+      "que",
+      "ele",
+      "chega",
+      "atrasado"
+    ],
+    "replacements": [
+      "É provável que ele chegue atrasado"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'tempos_verbais_subjuntivo'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_USO_PRONOMES_DEMONSTRATIVOS",
+    "pattern": [
+      "essa",
+      "semana",
+      "que",
+      "vem",
+      "teremos",
+      "um",
+      "feriado"
+    ],
+    "replacements": [
+      "Esta semana que vem teremos um feriado"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'uso_pronomes_demonstrativos'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_VIRGULA_ADV_DESLOCADA",
+    "pattern": [
+      "quando",
+      "o",
+      "contrato",
+      "for",
+      "assinado",
+      "enviaremos",
+      "as",
+      "chaves"
+    ],
+    "replacements": [
+      "Quando o contrato for assinado, enviaremos as chaves"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'virgula_adv_deslocada'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_BRAVO_SEEDED_VIRGULA_ANTES_E",
+    "pattern": [
+      "os",
+      "alunos",
+      "estudaram",
+      "muito",
+      "e",
+      "os",
+      "professores",
+      "ficaram",
+      "orgulhosos"
+    ],
+    "replacements": [
+      "Os alunos estudaram muito, e os professores ficaram orgulhosos"
+    ],
+    "message": "Ajuste seeded (BRAVO) para 'virgula_antes_e'.",
+    "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
   }
 ]

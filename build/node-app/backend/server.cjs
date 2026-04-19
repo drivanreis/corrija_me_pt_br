@@ -105,6 +105,59 @@ function createContextMatch(text, token, rule) {
     context: buildContext(text, token.offset, token.length)
   };
 }
+function isSentenceStart(text, offset) {
+  for (let index = offset - 1; index >= 0; index -= 1) {
+    const char = text[index];
+    if (!char || /\s/u.test(char)) {
+      continue;
+    }
+    return /[.!?\n\r]/u.test(char);
+  }
+  return true;
+}
+function isHourToken(token) {
+  const value = token.normalized;
+  if (!value) {
+    return false;
+  }
+  if (/^\d{1,2}$/u.test(value)) {
+    return true;
+  }
+  const hourWords = /* @__PURE__ */ new Set([
+    "zero",
+    "uma",
+    "duas",
+    "tr\xEAs",
+    "tres",
+    "quatro",
+    "cinco",
+    "seis",
+    "sete",
+    "oito",
+    "nove",
+    "dez",
+    "onze",
+    "doze"
+  ]);
+  return hourWords.has(value);
+}
+function tokenMatches(expected, token) {
+  if (typeof expected === "string") {
+    return token.normalized === normalizeDictionaryWord(expected);
+  }
+  if ("any" in expected && expected.any) {
+    return true;
+  }
+  if ("oneOf" in expected) {
+    return expected.oneOf.some((value) => token.normalized === normalizeDictionaryWord(value));
+  }
+  if ("category" in expected) {
+    if (expected.category === "hour") {
+      return isHourToken(token);
+    }
+  }
+  return false;
+}
 function createContextRuleMatches(text, rules) {
   if (!rules.length) {
     return [];
@@ -116,7 +169,20 @@ function createContextRuleMatches(text, rules) {
       if (index + rule.pattern.length > tokens.length) {
         continue;
       }
-      const matched = rule.pattern.every((expected, patternIndex) => tokens[index + patternIndex]?.normalized === normalizeDictionaryWord(expected));
+      const startToken = tokens[index];
+      if (!startToken) {
+        continue;
+      }
+      if (rule.scope?.sentenceStart && !isSentenceStart(text, startToken.offset)) {
+        continue;
+      }
+      const matched = rule.pattern.every((expected, patternIndex) => {
+        const token = tokens[index + patternIndex];
+        if (!token) {
+          return false;
+        }
+        return tokenMatches(expected, token);
+      });
       if (!matched) {
         continue;
       }
@@ -500,6 +566,59 @@ function createPhraseMatch(text, startToken, endToken, rule) {
     context: buildContext(text, offset, length)
   };
 }
+function isSentenceStart2(text, offset) {
+  for (let index = offset - 1; index >= 0; index -= 1) {
+    const char = text[index];
+    if (!char || /\s/u.test(char)) {
+      continue;
+    }
+    return /[.!?\n\r]/u.test(char);
+  }
+  return true;
+}
+function isHourToken2(token) {
+  const value = token.normalized;
+  if (!value) {
+    return false;
+  }
+  if (/^\d{1,2}$/u.test(value)) {
+    return true;
+  }
+  const hourWords = /* @__PURE__ */ new Set([
+    "zero",
+    "uma",
+    "duas",
+    "tr\xEAs",
+    "tres",
+    "quatro",
+    "cinco",
+    "seis",
+    "sete",
+    "oito",
+    "nove",
+    "dez",
+    "onze",
+    "doze"
+  ]);
+  return hourWords.has(value);
+}
+function tokenMatches2(expected, token) {
+  if (typeof expected === "string") {
+    return token.normalized === normalizeDictionaryWord(expected);
+  }
+  if ("any" in expected && expected.any) {
+    return true;
+  }
+  if ("oneOf" in expected) {
+    return expected.oneOf.some((value) => token.normalized === normalizeDictionaryWord(value));
+  }
+  if ("category" in expected) {
+    if (expected.category === "hour") {
+      return isHourToken2(token);
+    }
+  }
+  return false;
+}
 function createPhraseRuleMatches(text, rules) {
   if (!rules.length) {
     return [];
@@ -511,11 +630,23 @@ function createPhraseRuleMatches(text, rules) {
       if (index + rule.pattern.length > tokens.length) {
         continue;
       }
-      const matched = rule.pattern.every((expected, patternIndex) => tokens[index + patternIndex]?.normalized === normalizeDictionaryWord(expected));
+      const startToken = tokens[index];
+      if (!startToken) {
+        continue;
+      }
+      if (rule.scope?.sentenceStart && !isSentenceStart2(text, startToken.offset)) {
+        continue;
+      }
+      const matched = rule.pattern.every((expected, patternIndex) => {
+        const token = tokens[index + patternIndex];
+        if (!token) {
+          return false;
+        }
+        return tokenMatches2(expected, token);
+      });
       if (!matched) {
         continue;
       }
-      const startToken = tokens[index];
       const endToken = tokens[index + rule.pattern.length - 1];
       if (!startToken || !endToken) {
         continue;
@@ -676,7 +807,7 @@ function createPunctuationHeuristicMatches(text) {
     matches
   );
   const lower = trimmed.toLocaleLowerCase("pt-BR");
-  const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que"];
+  const questionStarts = ["quem", "onde", "como", "qual", "quais", "por que", "o que"];
   const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
   const looksLikeQuestion = questionStarts.some((prefix) => lower.startsWith(prefix));
   const looksLikeExclamation = exclamationStarts.some((prefix) => lower.startsWith(prefix));
@@ -2905,7 +3036,7 @@ function isUnsafeContinuousPhraseRule(rule) {
   if (!String(rule.id || "").startsWith("PT_BR_CONTINUOUS_")) {
     return false;
   }
-  const patternTokens = Array.isArray(rule.pattern) ? rule.pattern.map((token) => normalizeDictionaryWord(token)) : [];
+  const patternTokens = Array.isArray(rule.pattern) ? rule.pattern.filter((token) => typeof token === "string").map((token) => normalizeDictionaryWord(token)) : [];
   const replacement = Array.isArray(rule.replacements) ? String(rule.replacements[0] || "") : "";
   const replacementTokens = tokenizeRuleText(replacement).map((token) => normalizeDictionaryWord(token));
   if (!patternTokens.length || !replacementTokens.length) {

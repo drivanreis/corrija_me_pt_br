@@ -15,6 +15,46 @@ function isNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function isValidPatternToken(value) {
+  if (isNonEmptyString(value)) {
+    return true;
+  }
+
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return false;
+  }
+
+  if (value.any === true) {
+    return true;
+  }
+
+  if (Array.isArray(value.oneOf) && value.oneOf.length > 0 && value.oneOf.every(isNonEmptyString)) {
+    return true;
+  }
+
+  if (value.category === "hour") {
+    return true;
+  }
+
+  return false;
+}
+
+function isValidRuleScope(value) {
+  if (value === undefined) {
+    return true;
+  }
+
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return false;
+  }
+
+  if (value.sentenceStart !== undefined && typeof value.sentenceStart !== "boolean") {
+    return false;
+  }
+
+  return true;
+}
+
 async function main() {
   const rulesPath = path.join(rulesDir, "context_rules.json");
   const phraseRulesPath = path.join(rulesDir, "phrase_rules.json");
@@ -68,7 +108,7 @@ async function main() {
       ids.add(rule.id);
     }
 
-    if (!Array.isArray(rule.pattern) || !rule.pattern.length || !rule.pattern.every(isNonEmptyString)) {
+    if (!Array.isArray(rule.pattern) || !rule.pattern.length || !rule.pattern.every(isValidPatternToken)) {
       errors.push(`${prefix}: campo 'pattern' invalido.`);
     }
 
@@ -86,6 +126,10 @@ async function main() {
 
     if (!isNonEmptyString(rule.description)) {
       errors.push(`${prefix}: campo 'description' invalido.`);
+    }
+
+    if (!isValidRuleScope(rule.scope)) {
+      errors.push(`${prefix}: campo 'scope' invalido.`);
     }
   });
 
@@ -105,7 +149,7 @@ async function main() {
       ids.add(rule.id);
     }
 
-    if (!Array.isArray(rule.pattern) || !rule.pattern.length || !rule.pattern.every(isNonEmptyString)) {
+    if (!Array.isArray(rule.pattern) || !rule.pattern.length || !rule.pattern.every(isValidPatternToken)) {
       errors.push(`${prefix}: campo 'pattern' invalido.`);
     }
 
@@ -119,6 +163,10 @@ async function main() {
 
     if (!isNonEmptyString(rule.description)) {
       errors.push(`${prefix}: campo 'description' invalido.`);
+    }
+
+    if (!isValidRuleScope(rule.scope)) {
+      errors.push(`${prefix}: campo 'scope' invalido.`);
     }
   });
 
@@ -138,7 +186,7 @@ async function main() {
       ids.add(rule.id);
     }
 
-    if (!Array.isArray(rule.pattern) || !rule.pattern.length || !rule.pattern.every(isNonEmptyString)) {
+    if (!Array.isArray(rule.pattern) || !rule.pattern.length || !rule.pattern.every(isValidPatternToken)) {
       errors.push(`${prefix}: campo 'pattern' invalido.`);
     }
 
@@ -152,6 +200,10 @@ async function main() {
 
     if (!isNonEmptyString(rule.description)) {
       errors.push(`${prefix}: campo 'description' invalido.`);
+    }
+
+    if (!isValidRuleScope(rule.scope)) {
+      errors.push(`${prefix}: campo 'scope' invalido.`);
     }
   });
 

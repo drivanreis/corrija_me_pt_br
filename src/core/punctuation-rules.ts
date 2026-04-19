@@ -177,7 +177,9 @@ export function createPunctuationHeuristicMatches(text: string): RuleMatch[] {
   );
 
   const lower = trimmed.toLocaleLowerCase("pt-BR");
-  const questionStarts = ["quem", "onde", "quando", "como", "qual", "quais", "por que", "o que"];
+  // "quando" é ambíguo em pt-BR (pergunta vs. oração subordinada temporal),
+  // então evitamos forçar interrogação apenas por prefixo.
+  const questionStarts = ["quem", "onde", "como", "qual", "quais", "por que", "o que"];
   const exclamationStarts = ["que belo", "que dia lindo", "que belo dia"];
   const looksLikeQuestion = questionStarts.some((prefix) => lower.startsWith(prefix));
   const looksLikeExclamation = exclamationStarts.some((prefix) => lower.startsWith(prefix));

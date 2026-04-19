@@ -3139,18 +3139,6 @@
     "description": "Regra aprendida a partir da base know (orto_excecao_previlegio)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hom_afim_02_3",
-    "pattern": [
-      "a",
-      "fim"
-    ],
-    "replacements": [
-      "afins"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hom_afim_02)."
-  },
-  {
     "id": "PT_BR_PHRASE_LEARNED_hifen_01_5",
     "pattern": [
       "a",
@@ -7409,18 +7397,6 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (acent_02)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_tecn-vossa-senhoria_1",
-    "pattern": [
-      "vossa",
-      "senhoria"
-    ],
-    "replacements": [
-      "a Vossa Senhoria"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (tecn-vossa-senhoria)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_anu_24_4",

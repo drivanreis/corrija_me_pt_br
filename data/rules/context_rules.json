@@ -814,5 +814,78 @@
     "replacements": ["tachar"],
     "message": "No sentido de rotular alguém, a forma esperada é 'tachar'.",
     "description": "Corrige uso de taxar/tachar em contexto avaliativo."
+  },
+  {
+    "id": "PT_BR_CONTEXT_CRASE_AS_HORAS",
+    "pattern": ["as", { "category": "hour" }, { "oneOf": ["hora", "horas"] }],
+    "targetIndex": 0,
+    "replacements": ["às"],
+    "message": "Em horário, a forma esperada é 'às'.",
+    "description": "Corrige crase em construções como 'às dez horas'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_DEDICAR_AS_CRASE",
+    "pattern": [{ "oneOf": ["dedico", "dedica", "dedicou", "dedicava", "dedicaram", "dedicará", "dedicariam"] }, "as"],
+    "targetIndex": 1,
+    "replacements": ["às"],
+    "message": "O verbo 'dedicar-se' costuma exigir crase nesse contexto.",
+    "description": "Corrige 'dedicou as' para 'dedicou às' em construções comuns."
+  },
+  {
+    "id": "PT_BR_CONTEXT_REFIRO_ME_AQUELA",
+    "pattern": ["refiro-me", "aquela"],
+    "targetIndex": 1,
+    "replacements": ["àquela"],
+    "message": "Com demonstrativo feminino iniciado por 'a', a forma esperada é com crase.",
+    "description": "Corrige 'aquela' para 'àquela' após 'refiro-me'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_ASSISTIR_AO",
+    "pattern": [{ "oneOf": ["assisti", "assistia", "assistiam", "assistimos", "assistiu", "assistiram", "assistirei", "assistirá", "assistirão"] }, "o"],
+    "targetIndex": 1,
+    "replacements": ["ao"],
+    "message": "No sentido de ver/acompanhar, 'assistir' costuma pedir preposição 'a'.",
+    "description": "Corrige 'assistir o' para 'assistir ao' em padrões comuns."
+  },
+  {
+    "id": "PT_BR_CONTEXT_VISAO_AO_CARGO",
+    "pattern": ["visou", "o", "cargo"],
+    "targetIndex": 1,
+    "replacements": ["ao"],
+    "message": "No sentido de ter como objetivo, a forma esperada é 'visar a'.",
+    "description": "Corrige 'visou o cargo' para 'visou ao cargo'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_MAU_HUMORADO",
+    "pattern": ["mal", "humorado"],
+    "targetIndex": 0,
+    "replacements": ["mau"],
+    "message": "Em adjetivos, a forma esperada costuma ser 'mau'.",
+    "description": "Corrige 'mal humorado' para 'mau humorado'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_OS_GUARDA_CHUVAS",
+    "pattern": ["os", "guarda-chuva"],
+    "targetIndex": 1,
+    "replacements": ["guarda-chuvas"],
+    "message": "Nesse substantivo composto, o plural recai no segundo elemento.",
+    "description": "Corrige 'os guarda-chuva' para 'os guarda-chuvas'."
+  },
+  {
+    "id": "PT_BR_CONTEXT_SAIRAM_DA_GAVETA",
+    "pattern": ["saiu", "da", "gaveta", "os"],
+    "targetIndex": 0,
+    "replacements": ["saíram"],
+    "message": "Com sujeito plural posposto, o verbo deve concordar no plural.",
+    "description": "Corrige concordância em padrão comum com sujeito posposto."
+  },
+  {
+    "id": "PT_BR_CONTEXT_PORQUE_INTERROGATIVO_DIRETO",
+    "pattern": ["porquê", { "any": true }],
+    "targetIndex": 0,
+    "replacements": ["por que"],
+    "message": "Em pergunta direta, a forma esperada costuma ser 'por que'.",
+    "description": "Corrige 'porquê' em perguntas diretas no início de frase.",
+    "scope": { "sentenceStart": true }
   }
 ]

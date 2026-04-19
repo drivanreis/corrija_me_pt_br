@@ -9,6 +9,7 @@ LLM_CORE_URL="${LLM_CORE_URL:-http://127.0.0.1:11434}"
 LLM_CORE_MODEL="${LLM_CORE_MODEL:-jandaia-1}"
 LLM_TIMEOUT_MS="${LLM_TIMEOUT_MS:-15000}"
 QUIET="${QUIET:-0}" # 1 para suprimir diffs por frase
+FAILURES_JSON="${FAILURES_JSON:-}" # caminho para salvar relatório JSON de falhas (opcional)
 CASE_FILE="${CASE_FILE:-test/bravo-cases.json}"
 
 textsErro=()
@@ -94,6 +95,12 @@ responses=()
 
 start_ms="$(date +%s%3N)"
 
+tmp_failures=""
+if [[ -n "$FAILURES_JSON" ]]; then
+  tmp_failures="$(mktemp)"
+  trap 'rm -f "$tmp_failures"' EXIT
+fi
+
 case "$MODE" in
   motor)
     case "$MOTOR_TRANSPORT" in
@@ -146,6 +153,14 @@ for i in "${!responses[@]}"; do
 
   if [[ "$corrected" != "$expected" ]]; then
     fail_count=$((fail_count + 1))
+    if [[ -n "$tmp_failures" ]]; then
+      printf '%s\t%s\t%s\t%s\n' \
+        "$(printf '%s' "$challenge" | base64 -w0)" \
+        "$(printf '%s' "$original" | base64 -w0)" \
+        "$(printf '%s' "$corrected" | base64 -w0)" \
+        "$(printf '%s' "$expected" | base64 -w0)" \
+        >>"$tmp_failures"
+    fi
     if [[ "$QUIET" != "1" ]]; then
       echo "-----------------------------"
       echo "Desafio        : $challenge"
@@ -176,3 +191,56 @@ echo "total_casos=$total_count"
 echo "sucessos=$success_count"
 echo "taxa_sucesso_percent=$success_rate"
 echo "tempo_total_ms=$elapsed_ms"
+
+if [[ -n "$tmp_failures" ]]; then
+  TMP_FAILURES="$tmp_failures" \
+  FAILURES_JSON="$FAILURES_JSON" \
+  MODE="$MODE" \
+  MOTOR_TRANSPORT="$MOTOR_TRANSPORT" \
+  CASE_FILE="$CASE_FILE" \
+  TOTAL_CASES="$total_count" \
+  FAIL_COUNT="$fail_count" \
+  SUCCESS_COUNT="$success_count" \
+  SUCCESS_RATE="$success_rate" \
+  ELAPSED_MS="$elapsed_ms" \
+  node - <<'NODE'
+const fs = require("node:fs");
+
+function b64(s) {
+  return Buffer.from(String(s || ""), "base64").toString("utf8");
+}
+
+const tmp = String(process.env.TMP_FAILURES || "");
+const outPath = String(process.env.FAILURES_JSON || "");
+if (!tmp || !outPath) process.exit(0);
+
+const lines = fs.readFileSync(tmp, "utf8").trim().split("\n").filter(Boolean);
+const failures = lines.map((line) => {
+  const [challengeB64, originalB64, correctedB64, expectedB64] = line.split("\t");
+  return {
+    challenge: b64(challengeB64),
+    errado: b64(originalB64),
+    obtido: b64(correctedB64),
+    esperado: b64(expectedB64),
+  };
+});
+
+const payload = {
+  meta: {
+    generated_at: new Date().toISOString(),
+    mode: process.env.MODE || "",
+    motor_transport: process.env.MOTOR_TRANSPORT || "",
+    case_file: process.env.CASE_FILE || "",
+    total_cases: Number(process.env.TOTAL_CASES || 0),
+    success_count: Number(process.env.SUCCESS_COUNT || 0),
+    fail_count: Number(process.env.FAIL_COUNT || 0),
+    success_rate_percent: Number(process.env.SUCCESS_RATE || 0),
+    elapsed_ms: Number(process.env.ELAPSED_MS || 0),
+  },
+  failures,
+};
+
+fs.writeFileSync(outPath, JSON.stringify(payload, null, 2) + "\n", "utf8");
+NODE
+  echo "failures_json=$FAILURES_JSON"
+fi

@@ -12,21 +12,37 @@ export interface DictionaryData {
   linguisticData: LinguisticData;
 }
 
+export type RulePatternToken =
+  | string
+  | { any: true }
+  | { oneOf: string[] }
+  | { category: "hour" };
+
+export interface RulePatternScope {
+  /**
+   * When true, only matches at the start of a sentence (or start of text).
+   * Useful to avoid turning valid proclisis into enclisis in the middle of a clause.
+   */
+  sentenceStart?: boolean;
+}
+
 export interface ContextRuleDefinition {
   id: string;
-  pattern: string[];
+  pattern: RulePatternToken[];
   targetIndex: number;
   replacements: string[];
   message: string;
   description: string;
+  scope?: RulePatternScope;
 }
 
 export interface PhraseRuleDefinition {
   id: string;
-  pattern: string[];
+  pattern: RulePatternToken[];
   replacements: string[];
   message: string;
   description: string;
+  scope?: RulePatternScope;
 }
 
 export interface RuleMatchReplacement {

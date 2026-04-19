@@ -1622,5 +1622,127 @@
     "replacements": ["Nós vamos à praia toda segunda-feira."],
     "message": "A construção esperada pede ortografia, concordância, crase e hífen.",
     "description": "Corrige sequência recorrente de múltiplos erros em frase curta."
+  },
+  {
+    "id": "PT_BR_PHRASE_VICE_PRESIDENTE",
+    "pattern": ["vice", "presidente"],
+    "replacements": ["vice-presidente"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'vice-presidente'."
+  },
+  {
+    "id": "PT_BR_PHRASE_EX_ATLETA",
+    "pattern": ["ex", "atleta"],
+    "replacements": ["ex-atleta"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'ex-atleta'."
+  },
+  {
+    "id": "PT_BR_PHRASE_NAO_FUMANTE",
+    "pattern": ["não", "fumante"],
+    "replacements": ["não-fumante"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'não-fumante'."
+  },
+  {
+    "id": "PT_BR_PHRASE_SEM_TETO",
+    "pattern": ["sem", "teto"],
+    "replacements": ["sem-teto"],
+    "message": "Nesse uso, a forma preferida é com hífen.",
+    "description": "Corrige a forma 'sem-teto'."
+  },
+  {
+    "id": "PT_BR_PHRASE_BEM_HUMORADO",
+    "pattern": ["bem", "humorado"],
+    "replacements": ["bem-humorado"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'bem-humorado'."
+  },
+  {
+    "id": "PT_BR_PHRASE_BEM_HUMORADA",
+    "pattern": ["bem", "humorada"],
+    "replacements": ["bem-humorada"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'bem-humorada'."
+  },
+  {
+    "id": "PT_BR_PHRASE_BEM_HUMORADOS",
+    "pattern": ["bem", "humorados"],
+    "replacements": ["bem-humorados"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'bem-humorados'."
+  },
+  {
+    "id": "PT_BR_PHRASE_BEM_HUMORADAS",
+    "pattern": ["bem", "humoradas"],
+    "replacements": ["bem-humoradas"],
+    "message": "Esse composto costuma ser escrito com hífen.",
+    "description": "Corrige a forma 'bem-humoradas'."
+  },
+  {
+    "id": "PT_BR_PHRASE_DISSE_QUE",
+    "pattern": ["disse", "que"],
+    "replacements": ["disse que"],
+    "message": "Evite separar 'disse' e 'que' por dois-pontos.",
+    "description": "Remove pontuação indevida em 'disse: que'."
+  },
+  {
+    "id": "PT_BR_PHRASE_FUNCIONARIOS_NAO",
+    "pattern": ["funcionários", "não"],
+    "replacements": ["funcionários não"],
+    "message": "Evite vírgula entre sujeito e predicado.",
+    "description": "Remove vírgula indevida em padrão recorrente."
+  },
+  {
+    "id": "PT_BR_PHRASE_IMPLICA_EM",
+    "pattern": ["implica", "em"],
+    "replacements": ["implica"],
+    "message": "Nesse uso, a forma mais recomendada é sem preposição.",
+    "description": "Corrige 'implica em' para 'implica'."
+  },
+  {
+    "id": "PT_BR_PHRASE_DISSE_ME",
+    "pattern": ["me", "disseram"],
+    "replacements": ["disseram-me"],
+    "message": "Em início de frase, prefira ênclise.",
+    "description": "Corrige 'Me disseram' para 'Disseram-me'.",
+    "scope": { "sentenceStart": true }
+  },
+  {
+    "id": "PT_BR_PHRASE_AJUDE_ME",
+    "pattern": ["me", "ajude"],
+    "replacements": ["ajude-me"],
+    "message": "Em início de frase, prefira ênclise.",
+    "description": "Corrige 'Me ajude' para 'Ajude-me'.",
+    "scope": { "sentenceStart": true }
+  },
+  {
+    "id": "PT_BR_PHRASE_EMPRESTAR_ME_A",
+    "pattern": ["me", "emprestará"],
+    "replacements": ["emprestar-me-á"],
+    "message": "Em futuro do presente, a forma formal admite mesóclise.",
+    "description": "Corrige 'Me emprestará' para 'Emprestar-me-á' em início de frase.",
+    "scope": { "sentenceStart": true }
+  },
+  {
+    "id": "PT_BR_PHRASE_AONDE_VOCE_IRA",
+    "pattern": ["onde", "você", "irá"],
+    "replacements": ["aonde você irá"],
+    "message": "Com ideia de movimento, a forma esperada é 'aonde'.",
+    "description": "Corrige 'Onde você irá' para 'Aonde você irá'."
+  },
+  {
+    "id": "PT_BR_PHRASE_AUTODIDATA_COM_HIFEN",
+    "pattern": ["auto-didata"],
+    "replacements": ["autodidata"],
+    "message": "A forma esperada costuma ser escrita sem hífen.",
+    "description": "Corrige 'auto-didata' para 'autodidata'."
+  },
+  {
+    "id": "PT_BR_PHRASE_AUTODIDATA_SEM_HIFEN",
+    "pattern": ["auto", "didata"],
+    "replacements": ["autodidata"],
+    "message": "A forma esperada costuma ser escrita sem espaço.",
+    "description": "Corrige 'auto didata' para 'autodidata'."
   }
 ]

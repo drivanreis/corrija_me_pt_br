@@ -13,6 +13,7 @@ const GENERATION_TIMEOUT_MS = 90_000;
 const MODEL_CANDIDATES = [
   "gemini-2.5-flash"
 ];
+const DEFAULT_COMPLEXITY = "normal"; // normal | hard
 
 function parseArgs(argv) {
   const args = {
@@ -20,7 +21,9 @@ function parseArgs(argv) {
     target: DEFAULT_TARGET,
     batch: DEFAULT_BATCH_SIZE,
     model: "",
-    maxRounds: 12
+    maxRounds: 12,
+    excludeFiles: [],
+    complexity: DEFAULT_COMPLEXITY
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -42,6 +45,12 @@ function parseArgs(argv) {
     } else if (current === "--max-rounds" && next) {
       args.maxRounds = Number(next);
       index += 1;
+    } else if (current === "--exclude-file" && next) {
+      args.excludeFiles.push(next);
+      index += 1;
+    } else if (current === "--complexity" && next) {
+      args.complexity = next;
+      index += 1;
     }
   }
 
@@ -55,6 +64,10 @@ function parseArgs(argv) {
 
   if (!Number.isInteger(args.maxRounds) || args.maxRounds < 1 || args.maxRounds > 40) {
     throw new Error("--max-rounds deve ser um inteiro entre 1 e 40.");
+  }
+
+  if (!["normal", "hard"].includes(args.complexity)) {
+    throw new Error("--complexity deve ser normal|hard.");
   }
 
   return args;
@@ -163,10 +176,19 @@ function normalizeItem(item) {
   return { challenge, errado, esperado };
 }
 
-function buildPrompt({ count, existingChallenges }) {
+function buildPrompt({ count, existingChallenges, complexity }) {
   const challengeBlock = existingChallenges.length
     ? `Desafios já usados (NÃO repetir): ${existingChallenges.slice(0, 120).join(", ")}`
     : "Ainda não há desafios usados.";
+
+  const complexityRules = complexity === "hard"
+    ? `Complexidade (HARD):
+- Frases com 18 a 38 palavras e pelo menos 2 orações (ex.: oração subordinada/relativa).
+- Use pontuação realista (vírgulas, travessões ou ponto e vírgula quando fizer sentido).
+- Evite casos triviais de 1 palavra (ex.: apenas acento em uma palavra isolada).
+- Prefira 2 a 4 erros por frase, com um desafio principal bem claro.`
+    : `Complexidade (NORMAL):
+- Prefira 1 a 3 erros por frase, com um desafio principal bem claro.`;
 
   return `Você está ajudando a criar um teste BRAVO (pt-BR) para um corretor local.
 
@@ -183,8 +205,10 @@ Objetivo do BRAVO:
 
 Regras importantes:
 - "challenge" deve ser ÚNICO dentro do seu array e também não pode repetir nenhum desafio já usado.
-- Prefira 1 a 3 erros por frase (podem existir secundários), mas o desafio principal deve ser claro.
+- Não reescreva a frase por estilo; corrija apenas o necessário.
 - Misture fenômenos: crase, concordância, regência, pronomes, porquês, homófonos, pontuação, colocação pronominal, tempos verbais, hífen, acentuação, pluralização, "aonde/onde", etc.
+
+${complexityRules}
 
 ${challengeBlock}
 
@@ -253,6 +277,22 @@ async function main() {
   const existingPairs = new Set(normalizedExisting.map((entry) => `${entry.errado}|||${entry.esperado}`));
   const existingIds = new Set(normalizedExisting.map((entry) => entry.id));
 
+  for (const excludeFile of args.excludeFiles) {
+    const excluded = await readJsonArray(excludeFile);
+    for (const entry of excluded) {
+      if (!entry || typeof entry !== "object") continue;
+      const challenge = normalizeChallenge(entry.challenge);
+      const errado = String(entry.errado || "").trim();
+      const esperado = String(entry.esperado || "").trim();
+      if (challenge) {
+        existingChallenges.add(challenge);
+      }
+      if (errado && esperado) {
+        existingPairs.add(`${errado}|||${esperado}`);
+      }
+    }
+  }
+
   const missing = Math.max(0, args.target - normalizedExisting.length);
   if (!missing) {
     console.log(`OK: já existem ${normalizedExisting.length} casos em ${args.caseFile}.`);
@@ -277,7 +317,8 @@ async function main() {
     const batchCount = Math.min(args.batch, remaining);
     const prompt = buildPrompt({
       count: batchCount,
-      existingChallenges: [...existingChallenges]
+      existingChallenges: [...existingChallenges],
+      complexity: args.complexity
     });
 
     const model = modelCandidates[modelIndex % modelCandidates.length];

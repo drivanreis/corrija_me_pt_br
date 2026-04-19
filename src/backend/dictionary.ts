@@ -114,7 +114,11 @@ function isUnsafeContinuousPhraseRule(rule: PhraseRuleDefinition): boolean {
     return false;
   }
 
-  const patternTokens = Array.isArray(rule.pattern) ? rule.pattern.map((token) => normalizeDictionaryWord(token)) : [];
+  const patternTokens = Array.isArray(rule.pattern)
+    ? rule.pattern
+      .filter((token) => typeof token === "string")
+      .map((token) => normalizeDictionaryWord(token))
+    : [];
   const replacement = Array.isArray(rule.replacements) ? String(rule.replacements[0] || "") : "";
   const replacementTokens = tokenizeRuleText(replacement).map((token) => normalizeDictionaryWord(token));
 
