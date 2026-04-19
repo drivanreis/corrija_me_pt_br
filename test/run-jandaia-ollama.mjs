@@ -7,13 +7,11 @@ const timeoutMs = Number(process.env.LLM_TIMEOUT_MS || "15000");
 const JANDAIA_DIRECTIVE = [
   "Você é jandaia 1, especialista em correção de português do Brasil.",
   "Sua tarefa é corrigir a frase com a MENOR quantidade de mudanças possível.",
-  "Preserve o sentido original, a estrutura da frase e as palavras já corretas.",
-  "Não reescreva por estilo, não resuma, não melhore fluidez e não troque palavras por sinônimos.",
-  "Não invente detalhes, não acrescente informação e não remova conteúdo.",
-  "Se a frase já estiver correta, devolva a mesma frase.",
-  "Responda somente com JSON válido em uma única linha.",
-  "Formato obrigatório: {\"final\":\"FRASE_CORRIGIDA\",\"changed\":true}.",
-  "Não escreva nada antes ou depois do JSON."
+  "Preserve o sentido original e as palavras já corretas.",
+  "Não reescreva por estilo e não troque palavras por sinônimos.",
+  "Não invente detalhes e não acrescente informação.",
+  "Responda em uma única linha no formato <final>FRASE_CORRIGIDA</final>.",
+  "Não escreva nada antes ou depois do <final>...</final>."
 ].join("\n");
 
 function buildPrompt(text) {
@@ -22,20 +20,16 @@ function buildPrompt(text) {
     "",
     "Exemplos:",
     "Errada: A gente vamos no cinema amanhã.",
-    "{\"final\":\"A gente vai ao cinema amanhã.\",\"changed\":true}",
+    "<final>A gente vai ao cinema amanhã.</final>",
     "",
     "Errada: A seção de cinema começa às 20h.",
-    "{\"final\":\"A sessão de cinema começa às 20h.\",\"changed\":true}",
+    "<final>A sessão de cinema começa às 20h.</final>",
     "",
     "Errada: Ele não sabe porque você faltou.",
-    "{\"final\":\"Ele não sabe por que você faltou.\",\"changed\":true}",
-    "",
-    "Errada: Os dois garotos foi na rua comprar pão mas eles não lembro do dinheiro e esqueceu a chave de casa.",
-    "{\"final\":\"Os dois garotos foram à rua comprar pão, mas eles não se lembraram do dinheiro e esqueceram a chave de casa.\",\"changed\":true}",
+    "<final>Ele não sabe por que você faltou.</final>",
     "",
     "Agora corrija apenas a frase abaixo.",
-    `Errada: ${text}`,
-    "{\"final\":"
+    `Errada: ${text}`
   ].join("\n");
 }
 
@@ -46,7 +40,7 @@ function looksLikeCleanSentence(text) {
   if (/[<>{}\[\]]/u.test(text)) {
     return false;
   }
-  if (/\b(?:resposta|instruction|instrução|prompt|correta:|errada:)\b/iu.test(text)) {
+  if (/\b(?:resposta|instruction|instrução|prompt)\b/iu.test(text)) {
     return false;
   }
   if (text.length < 3 || text.length > 280) {
@@ -64,16 +58,12 @@ function looksLikeCleanSentence(text) {
 }
 
 function normalizeGeneratedText(text) {
-  const jsonMatch = text.match(/\{[\s\S]*\}/u);
-  if (jsonMatch) {
-    try {
-      const parsed = JSON.parse(jsonMatch[0]);
-      const structuredFinal = String(parsed?.final || "").trim();
-      if (looksLikeCleanSentence(structuredFinal)) {
-        return structuredFinal;
-      }
-    } catch {
-      // fallback below
+  const finalTagMatches = [...text.matchAll(/<final>([\s\S]*?)<\/final>/giu)];
+  if (finalTagMatches.length) {
+    const last = finalTagMatches[finalTagMatches.length - 1];
+    const candidate = String(last?.[1] || "").trim();
+    if (looksLikeCleanSentence(candidate)) {
+      return candidate;
     }
   }
 
@@ -81,9 +71,9 @@ function normalizeGeneratedText(text) {
     .trim()
     .replace(/<[^>]+>/gu, " ")
     .replace(/^["'`]+|["'`]+$/g, "")
+    .replace(/^\s*correta:\s*/iu, "")
     .replace(/^corrigida:\s*/iu, "")
     .replace(/^frase corrigida:\s*/iu, "")
-    .replace(/^correta:\s*/iu, "")
     .trim();
 
   const firstLine = (cleaned.split(/\r?\n/u)[0] || "").trim();
@@ -111,7 +101,7 @@ async function requestSuggestion(text) {
           top_p: 0.8,
           repeat_penalty: 1.35,
           num_predict: 80,
-          stop: ["}\n", "\n\n"]
+          stop: ["</final>", "</instruction>"]
         },
         prompt: buildPrompt(text)
       })

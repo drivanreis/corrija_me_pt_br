@@ -177,13 +177,11 @@ function createMotorWorker() {
 const JANDAIA_DIRECTIVE = [
   "Você é jandaia 1, especialista em correção de português do Brasil.",
   "Sua tarefa é corrigir a frase com a MENOR quantidade de mudanças possível.",
-  "Preserve o sentido original, a estrutura da frase e as palavras já corretas.",
-  "Não reescreva por estilo, não resuma, não melhore fluidez e não troque palavras por sinônimos.",
-  "Não invente detalhes, não acrescente informação e não remova conteúdo.",
-  "Se a frase já estiver correta, devolva a mesma frase.",
-  "Responda somente com JSON válido em uma única linha.",
-  "Formato obrigatório: {\"final\":\"FRASE_CORRIGIDA\",\"changed\":true}.",
-  "Não escreva nada antes ou depois do JSON."
+  "Preserve o sentido original e as palavras já corretas.",
+  "Não reescreva por estilo e não troque palavras por sinônimos.",
+  "Não invente detalhes e não acrescente informação.",
+  "Responda em uma única linha no formato <final>FRASE_CORRIGIDA</final>.",
+  "Não escreva nada antes ou depois do <final>...</final>."
 ].join("\n");
 
 function buildJandaiaPrompt(text) {
@@ -192,24 +190,23 @@ function buildJandaiaPrompt(text) {
     "",
     "Exemplos:",
     "Errada: A gente vamos no cinema amanhã.",
-    "{\"final\":\"A gente vai ao cinema amanhã.\",\"changed\":true}",
+    "<final>A gente vai ao cinema amanhã.</final>",
     "",
     "Errada: A seção de cinema começa às 20h.",
-    "{\"final\":\"A sessão de cinema começa às 20h.\",\"changed\":true}",
+    "<final>A sessão de cinema começa às 20h.</final>",
     "",
     "Errada: Ele não sabe porque você faltou.",
-    "{\"final\":\"Ele não sabe por que você faltou.\",\"changed\":true}",
+    "<final>Ele não sabe por que você faltou.</final>",
     "",
     "Agora corrija apenas a frase abaixo.",
-    `Errada: ${text}`,
-    "{\"final\":"
+    `Errada: ${text}`
   ].join("\n");
 }
 
 function looksLikeCleanSentence(text) {
   if (!text) return false;
   if (/[<>{}\[\]]/u.test(text)) return false;
-  if (/\b(?:resposta|instruction|instrução|prompt|correta:|errada:)\b/iu.test(text)) return false;
+  if (/\b(?:resposta|instruction|instrução|prompt)\b/iu.test(text)) return false;
   if (text.length < 3 || text.length > 280) return false;
   const letterCount = (text.match(/\p{L}/gu) || []).length;
   if (letterCount < 2) return false;
@@ -217,6 +214,13 @@ function looksLikeCleanSentence(text) {
 }
 
 function normalizeGeneratedText(text) {
+  const finalTagMatches = [...text.matchAll(/<final>([\s\S]*?)<\/final>/giu)];
+  if (finalTagMatches.length) {
+    const last = finalTagMatches[finalTagMatches.length - 1];
+    const candidate = String(last?.[1] || "").trim();
+    if (looksLikeCleanSentence(candidate)) return candidate;
+  }
+
   const jsonMatch = text.match(/\{[\s\S]*\}/u);
   if (jsonMatch) {
     try {
@@ -234,7 +238,6 @@ function normalizeGeneratedText(text) {
     .replace(/^["'`]+|["'`]+$/g, "")
     .replace(/^corrigida:\s*/iu, "")
     .replace(/^frase corrigida:\s*/iu, "")
-    .replace(/^correta:\s*/iu, "")
     .trim();
 
   const firstLine = (cleaned.split(/\r?\n/u)[0] || "").trim();
@@ -286,8 +289,8 @@ async function requestJandaiaSuggestion(text, { baseUrl, model, timeoutMs }) {
           top_k: 20,
           top_p: 0.8,
           repeat_penalty: 1.35,
-          num_predict: 120,
-          stop: ["}\n", "\n\n"]
+          num_predict: 96,
+          stop: ["</final>", "</instruction>"]
         },
         prompt: buildJandaiaPrompt(text)
       })
@@ -450,4 +453,3 @@ main().catch((error) => {
   console.error(error instanceof Error ? error.message : error);
   process.exitCode = 1;
 });
-
