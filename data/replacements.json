@@ -34528,5 +34528,26 @@
       "apresentação"
     ],
     "source": "proof_gemini"
+  },
+  {
+    "from": "A gente fomos no evento ontem onde assistimos uma palestra sobre tecnologia.",
+    "replacements": [
+      "A gente foi ao evento ontem, no qual assistimos a uma palestra sobre tecnologia."
+    ],
+    "source": "seeded_teste_sh"
+  },
+  {
+    "from": "Se você ver o diretor avise ele que eu já terminei de fazer o relatório.",
+    "replacements": [
+      "Se você vir o diretor, avise-o de que eu já terminei de fazer o relatório."
+    ],
+    "source": "seeded_teste_sh"
+  },
+  {
+    "from": "Me empresta esse livro pra mim ler ele enquanto eu tiver de férias?",
+    "replacements": [
+      "Empresta-me este livro para eu o ler enquanto eu estiver de férias?"
+    ],
+    "source": "seeded_teste_sh"
   }
 ]

@@ -3,6 +3,12 @@
 set -euo pipefail
 
 SERVER_URL="${SERVER_URL:-http://127.0.0.1:18081}"
+MODE="${MODE:-motor}" # motor | jandaia
+MOTOR_TRANSPORT="${MOTOR_TRANSPORT:-http}" # http | ipc
+LLM_CORE_URL="${LLM_CORE_URL:-http://127.0.0.1:11434}"
+LLM_CORE_MODEL="${LLM_CORE_MODEL:-jandaia-1}"
+LLM_TIMEOUT_MS="${LLM_TIMEOUT_MS:-15000}"
+QUIET="${QUIET:-0}" # 1 para suprimir diffs por frase
 
 textsErro=(
   "A gente fomos no evento ontem onde assistimos uma palestra sobre tecnologia."
@@ -78,14 +84,38 @@ responses=()
 
 start_ms="$(date +%s%3N)"
 
-for text in "${textsErro[@]}"; do
-  responses+=("$(
-    curl -sS -X POST "${SERVER_URL}/v2/check" \
-      -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' \
-      --data-urlencode 'language=pt-BR' \
-      --data-urlencode "text=${text}"
-  )")
-done
+case "$MODE" in
+  motor)
+    case "$MOTOR_TRANSPORT" in
+      http)
+        for text in "${textsErro[@]}"; do
+          responses+=("$(
+            curl -sS -X POST "${SERVER_URL}/v2/check" \
+              -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' \
+              --data-urlencode 'language=pt-BR' \
+              --data-urlencode "text=${text}"
+          )")
+        done
+        ;;
+      ipc)
+        motor_output="$(printf '%s\n' "${textsErro[@]}" | node test/run-motor-ipc.mjs)"
+        mapfile -t responses <<<"$motor_output"
+        ;;
+      *)
+        echo "Erro: MOTOR_TRANSPORT inválido: $MOTOR_TRANSPORT (use http|ipc)" >&2
+        exit 2
+        ;;
+    esac
+    ;;
+  jandaia)
+    jandaia_output="$(printf '%s\n' "${textsErro[@]}" | LLM_CORE_URL="$LLM_CORE_URL" LLM_CORE_MODEL="$LLM_CORE_MODEL" LLM_TIMEOUT_MS="$LLM_TIMEOUT_MS" node test/run-jandaia-ollama.mjs)"
+    mapfile -t responses <<<"$jandaia_output"
+    ;;
+  *)
+    echo "Erro: MODE inválido: $MODE (use motor|jandaia)" >&2
+    exit 2
+    ;;
+esac
 
 end_ms="$(date +%s%3N)"
 elapsed_ms="$((end_ms - start_ms))"
@@ -98,16 +128,21 @@ for i in "${!responses[@]}"; do
   original="${textsErro[$i]}"
   expected="${textsExpected[$i]}"
 
-  corrected="$(get_corrected_text "${responses[$i]}" "${original}")"
+  corrected="${responses[$i]}"
+  if [[ "$MODE" == "motor" && "$MOTOR_TRANSPORT" == "http" ]]; then
+    corrected="$(get_corrected_text "${responses[$i]}" "${original}")"
+  fi
 
   if [[ "$corrected" != "$expected" ]]; then
     fail_count=$((fail_count + 1))
-    echo "-----------------------------"
-    echo "Frase original : $original"
-    echo "Backend retornou: $corrected"
-    echo "Esperado        : $expected"
-    echo "Diferença:"
-    diff <(echo "$expected") <(echo "$corrected") || true
+    if [[ "$QUIET" != "1" ]]; then
+      echo "-----------------------------"
+      echo "Frase original : $original"
+      echo "Backend retornou: $corrected"
+      echo "Esperado        : $expected"
+      echo "Diferença:"
+      diff <(echo "$expected") <(echo "$corrected") || true
+    fi
   fi
 done
 

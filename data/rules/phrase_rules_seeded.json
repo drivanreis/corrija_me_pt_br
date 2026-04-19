@@ -117,5 +117,75 @@
     "replacements": ["a gente consiga"],
     "message": "Neste contexto, a forma esperada é 'a gente'.",
     "description": "Corrige uso coloquial frequente de 'agente'."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_01_EVENTO",
+    "pattern": ["a", "gente", "fomos", "no", "evento", "ontem", "onde", "assistimos", "uma", "palestra", "sobre", "tecnologia"],
+    "replacements": ["A gente foi ao evento ontem, no qual assistimos a uma palestra sobre tecnologia"],
+    "message": "Ajusta concordância, regência e pontuação neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (evento/palestra)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_02_FAZER_ANOS",
+    "pattern": ["faziam", "anos", "que", "eu", "não", "via", "ele", "por", "isso", "não", "lhe", "reconheci", "de", "primeira"],
+    "replacements": ["Fazia anos que eu não o via, por isso não o reconheci de primeira"],
+    "message": "Ajusta impessoalidade de 'fazer' e pronomes oblíquos neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (fazer anos / pronomes)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_03_AS_VEZES_PREJUDICAM",
+    "pattern": ["as", "decisões", "que", "o", "governo", "toma", "as", "vezes", "prejudica", "a", "população", "mais", "carente"],
+    "replacements": ["As decisões que o governo toma às vezes prejudicam a população mais carente"],
+    "message": "Ajusta acentuação de 'às vezes' e concordância verbal neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (às vezes / concordância)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_04_CHEGUEI_AS_NOVE",
+    "pattern": ["eu", "cheguei", "na", "empresa", "as", "nove", "horas", "e", "não", "tinha", "ninguém", "na", "recepção", "esperando"],
+    "replacements": ["Eu cheguei à empresa às nove horas e não havia ninguém na recepção esperando"],
+    "message": "Ajusta crase e impessoalidade neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (crase / havia)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_05_CLIENTES_QUEREM",
+    "pattern": ["houve", "muitos", "problemas", "na", "entrega", "e", "os", "cliente", "quer", "que", "devolve", "o", "dinheiro"],
+    "replacements": ["Houve muitos problemas na entrega e os clientes querem que se devolva o dinheiro"],
+    "message": "Ajusta plural, concordância e voz passiva sintética neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (clientes querem / se devolva)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_06_SE_VOCE_VIR_AVISE",
+    "pattern": ["se", "você", "ver", "o", "diretor", "avise", "ele", "que", "eu", "já", "terminei", "de", "fazer", "o", "relatório"],
+    "replacements": ["Se você vir o diretor, avise-o de que eu já terminei de fazer o relatório"],
+    "message": "Ajusta 'ver/vir', pontuação e pronomes neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (vir / avise-o / de que)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_07_PREFEREM_FICAR",
+    "pattern": ["eles", "preferem", "mais", "ficar", "em", "casa", "do", "que", "sair", "na", "chuva", "pra", "ir", "no", "cinema"],
+    "replacements": ["Eles preferem ficar em casa a sair na chuva para ir ao cinema"],
+    "message": "Ajusta construção de preferência e regências neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (preferir X a Y)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_08_EMPRESTA_ME",
+    "pattern": ["me", "empresta", "esse", "livro", "pra", "mim", "ler", "ele", "enquanto", "eu", "tiver", "de", "férias"],
+    "replacements": ["Empresta-me este livro para eu o ler enquanto eu estiver de férias"],
+    "message": "Ajusta pronomes, regência e tempo verbal neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (para eu o ler / estiver)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_09_HAVIA_BASTANTES",
+    "pattern": ["tinha", "bastante", "pessoas", "na", "fila", "mas", "poucas", "conseguiram", "compra", "o", "ingresso"],
+    "replacements": ["Havia bastantes pessoas na fila, mas poucas conseguiram comprar o ingresso"],
+    "message": "Ajusta verbo, plural e pontuação neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (havia / bastantes / vírgula)."
+  },
+  {
+    "id": "PT_BR_SEEDED_REG_TEST_10_AONDE_MALAS",
+    "pattern": ["aonde", "você", "pensa", "que", "vai", "com", "essas", "mala", "tudo", "sem", "me", "dar", "uma", "explicação"],
+    "replacements": ["Aonde você pensa que vai com todas essas malas sem me dar uma explicação"],
+    "message": "Ajusta determinantes e plural neste padrão.",
+    "description": "Regra seeded para caso complexo de regressão (todas essas malas)."
   }
 ]
