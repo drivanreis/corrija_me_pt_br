@@ -3,7 +3,7 @@
 set -euo pipefail
 
 SERVER_URL="${SERVER_URL:-http://127.0.0.1:18081}"
-MODE="${MODE:-motor}" # motor | jandaia
+MODE="${MODE:-motor}" # motor | jandaia | versus
 MOTOR_TRANSPORT="${MOTOR_TRANSPORT:-http}" # http | ipc
 LLM_CORE_URL="${LLM_CORE_URL:-http://127.0.0.1:11434}"
 LLM_CORE_MODEL="${LLM_CORE_MODEL:-jandaia-1}"
@@ -11,6 +11,72 @@ LLM_TIMEOUT_MS="${LLM_TIMEOUT_MS:-15000}"
 QUIET="${QUIET:-0}" # 1 para suprimir diffs por frase
 FAILURES_JSON="${FAILURES_JSON:-}" # caminho para salvar relatório JSON de falhas (opcional)
 CASE_FILE="${CASE_FILE:-test/bravo-cases.json}"
+
+extract_metric() {
+  local key="$1"
+  local report="$2"
+  awk -F'=' -v metric="$key" '$1 == metric { value = $2 } END { print value }' <<<"$report"
+}
+
+if [[ "$MODE" == "versus" ]]; then
+  script_path="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/$(basename -- "${BASH_SOURCE[0]}")"
+
+  motor_failures_json="${FAILURES_JSON:-/tmp/corrija-motor-failures.json}"
+  jandaia_failures_json="${FAILURES_JSON:-/tmp/corrija-jandaia-failures.json}"
+
+  motor_report="$(
+    MODE="motor" \
+    MOTOR_TRANSPORT="$MOTOR_TRANSPORT" \
+    SERVER_URL="$SERVER_URL" \
+    CASE_FILE="$CASE_FILE" \
+    FAILURES_JSON="$motor_failures_json" \
+    QUIET="1" \
+    bash "$script_path"
+  )"
+
+  jandaia_report="$(
+    MODE="jandaia" \
+    LLM_CORE_URL="$LLM_CORE_URL" \
+    LLM_CORE_MODEL="$LLM_CORE_MODEL" \
+    LLM_TIMEOUT_MS="$LLM_TIMEOUT_MS" \
+    CASE_FILE="$CASE_FILE" \
+    FAILURES_JSON="$jandaia_failures_json" \
+    QUIET="1" \
+    bash "$script_path"
+  )"
+
+  motor_successes="$(extract_metric "sucessos" "$motor_report")"
+  motor_rate="$(extract_metric "taxa_sucesso_percent" "$motor_report")"
+  motor_elapsed="$(extract_metric "tempo_total_ms" "$motor_report")"
+
+  jandaia_successes="$(extract_metric "sucessos" "$jandaia_report")"
+  jandaia_rate="$(extract_metric "taxa_sucesso_percent" "$jandaia_report")"
+  jandaia_elapsed="$(extract_metric "tempo_total_ms" "$jandaia_report")"
+
+  total_count="$(extract_metric "total_casos" "$motor_report")"
+
+  winner="empate"
+  if [[ "${motor_successes:-0}" -gt "${jandaia_successes:-0}" ]]; then
+    winner="motor"
+  elif [[ "${jandaia_successes:-0}" -gt "${motor_successes:-0}" ]]; then
+    winner="jandaia"
+  fi
+
+  echo "=== COMPARATIVO MOTOR VS JANDAIA-1 ==="
+  echo "modo_comparacao=versus"
+  echo "case_file=$CASE_FILE"
+  echo "total_casos=$total_count"
+  echo "motor_sucessos=$motor_successes"
+  echo "motor_taxa_sucesso_percent=$motor_rate"
+  echo "motor_tempo_total_ms=$motor_elapsed"
+  echo "jandaia_sucessos=$jandaia_successes"
+  echo "jandaia_taxa_sucesso_percent=$jandaia_rate"
+  echo "jandaia_tempo_total_ms=$jandaia_elapsed"
+  echo "vencedor=$winner"
+  echo "motor_failures_json=$motor_failures_json"
+  echo "jandaia_failures_json=$jandaia_failures_json"
+  exit 0
+fi
 
 textsErro=()
 textsExpected=()
