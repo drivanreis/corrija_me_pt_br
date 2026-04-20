@@ -28056,20 +28056,6 @@
     "description": "Regra aprendida a partir da base know (tecn-01)."
   },
   {
-    "id": "PT_BR_CONTEXT_LEARNED_ctx-06-anexo_3",
-    "pattern": [
-      "seguem",
-      "anexo",
-      "ao"
-    ],
-    "targetIndex": 1,
-    "replacements": [
-      "anexas"
-    ],
-    "message": "A palavra pode não combinar com este contexto.",
-    "description": "Regra aprendida a partir da base know (ctx-06-anexo)."
-  },
-  {
     "id": "PT_BR_CONTEXT_LEARNED_con_5_1",
     "pattern": [
       "seguem",
@@ -29832,20 +29818,6 @@
     ],
     "message": "A palavra pode não combinar com este contexto.",
     "description": "Regra aprendida a partir da base know (ort-09)."
-  },
-  {
-    "id": "PT_BR_CONTEXT_LEARNED_ort-16_3",
-    "pattern": [
-      "tentou",
-      "descriminar",
-      "a"
-    ],
-    "targetIndex": 1,
-    "replacements": [
-      "descriminalizar"
-    ],
-    "message": "A palavra pode não combinar com este contexto.",
-    "description": "Regra aprendida a partir da base know (ort-16)."
   },
   {
     "id": "PT_BR_CONTEXT_LEARNED_acentuacao_12_3",

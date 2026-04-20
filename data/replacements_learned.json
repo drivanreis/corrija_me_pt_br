@@ -966,13 +966,6 @@
     "source": "learned_know:acentuacao_07"
   },
   {
-    "from": "cessão",
-    "replacements": [
-      "sessão"
-    ],
-    "source": "learned_know:ort-17"
-  },
-  {
     "from": "chapeu",
     "replacements": [
       "chapéu"
@@ -1239,20 +1232,6 @@
     "source": "learned_know:ort-15"
   },
   {
-    "from": "concertar",
-    "replacements": [
-      "consertar"
-    ],
-    "source": "learned_know:orto-07"
-  },
-  {
-    "from": "concerto",
-    "replacements": [
-      "conserto"
-    ],
-    "source": "learned_know:ort_14"
-  },
-  {
     "from": "concervação",
     "replacements": [
       "conservação"
@@ -1433,13 +1412,6 @@
       "conseguiu"
     ],
     "source": "learned_know:acentuacao_20"
-  },
-  {
-    "from": "conserto",
-    "replacements": [
-      "concerto"
-    ],
-    "source": "learned_know:ort_14"
   },
   {
     "from": "conservacao",
@@ -1720,13 +1692,6 @@
       "discriminação"
     ],
     "source": "learned_know:ortografia_08"
-  },
-  {
-    "from": "descriminar",
-    "replacements": [
-      "descriminalizar"
-    ],
-    "source": "learned_know:ort-16"
   },
   {
     "from": "descrisção",
@@ -4480,13 +4445,6 @@
     "source": "learned_know:acent-20"
   },
   {
-    "from": "pais",
-    "replacements": [
-      "país"
-    ],
-    "source": "learned_know:acent-08"
-  },
-  {
     "from": "páis",
     "replacements": [
       "pais"
@@ -5845,13 +5803,6 @@
     "source": "learned_know:ortografia_008"
   },
   {
-    "from": "seção",
-    "replacements": [
-      "sessão"
-    ],
-    "source": "learned_know:ort-9"
-  },
-  {
     "from": "segunda",
     "replacements": [
       "segundas"
@@ -5885,13 +5836,6 @@
       "sério"
     ],
     "source": "learned_know:ace-053"
-  },
-  {
-    "from": "sessão",
-    "replacements": [
-      "seção"
-    ],
-    "source": "learned_know:orto_03"
   },
   {
     "from": "significatívo",
@@ -5948,13 +5892,6 @@
       "sofá"
     ],
     "source": "learned_know:ace-050"
-  },
-  {
-    "from": "sofreu",
-    "replacements": [
-      "passou por"
-    ],
-    "source": "learned_surface:tec_16"
   },
   {
     "from": "solida",

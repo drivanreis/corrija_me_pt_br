@@ -10,7 +10,6 @@
 # Build artifacts
 build/
 dist/
-coverage/
 .flattened-pom.xml
 node_modules/
 target/
