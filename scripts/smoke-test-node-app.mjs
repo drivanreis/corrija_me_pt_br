@@ -66,24 +66,20 @@ async function main() {
   const healthResponse = await fetch(`http://127.0.0.1:${port}/health`);
   const healthPayload = await healthResponse.json();
 
-  if (architecturePayload?.runtime?.implementation?.phase !== "fase_3_orcamento_de_tempo_e_fallback_controlado") {
+  if (architecturePayload?.runtime?.implementation?.phase !== "fase_4_motor_only") {
     throw new Error("Smoke test falhou: a fase da arquitetura do runtime nao apareceu como esperado.");
   }
 
-  if (architecturePayload?.runtime?.production?.service_level_budget_ms !== 15000) {
-    throw new Error("Smoke test falhou: o teto de tempo da Jandaia-1 nao apareceu no contrato do runtime.");
+  if (architecturePayload?.runtime?.production?.service_level_budget_ms !== 0) {
+    throw new Error("Smoke test falhou: o runtime motor-only deveria expor orçamento zero para fallback.");
   }
 
-  if (architecturePayload?.jandaia?.primaryRole !== "fallback_qualificado_pt_br") {
-    throw new Error("Smoke test falhou: o perfil da Jandaia-1 nao apareceu como esperado.");
+  if (architecturePayload?.runtime?.production?.runtime_mode !== "motor_only") {
+    throw new Error("Smoke test falhou: a arquitetura deveria operar em modo motor-only.");
   }
 
-  if (typeof architecturePayload?.jandaiaRuntime?.readyForActivation !== "boolean") {
-    throw new Error("Smoke test falhou: a arquitetura nao expôs a readiness da Jandaia-1.");
-  }
-
-  if (typeof healthPayload?.jandaiaRuntime?.readyForActivation !== "boolean") {
-    throw new Error("Smoke test falhou: o health nao expôs a readiness da Jandaia-1.");
+  if (healthPayload?.llmCore?.enabled !== false) {
+    throw new Error("Smoke test falhou: o health deveria marcar llmCore como desabilitado.");
   }
 
   const phraseResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {
@@ -371,8 +367,8 @@ async function main() {
   });
 
   const shortSmartPayload = await shortSmartResponse.json();
-  if (shortSmartPayload?.core?.routing?.reason !== "texto_curto_ou_pouco_informativo" || shortSmartPayload?.core?.routing?.routeTarget !== "motor") {
-    throw new Error("Smoke test falhou: texto curto deveria permanecer no motor.");
+  if (shortSmartPayload?.core?.routing?.reason !== "motor_only_runtime" || shortSmartPayload?.core?.routing?.routeTarget !== "motor") {
+    throw new Error("Smoke test falhou: texto curto deveria permanecer no motor em runtime motor-only.");
   }
 
   const ambiguousSmartResponse = await fetch(`http://127.0.0.1:${port}/v2/check-smart`, {
@@ -388,12 +384,12 @@ async function main() {
 
   const ambiguousSmartPayload = await ambiguousSmartResponse.json();
   const ambiguousSmartReason = ambiguousSmartPayload?.core?.routing?.reason;
-  if (!["homofono_ou_contexto_ambiguo", "motor_sem_saida"].includes(ambiguousSmartReason) || ambiguousSmartPayload?.core?.routing?.routeTarget !== "jandaia_1") {
-    throw new Error("Smoke test falhou: caso ambiguo deveria sinalizar fallback para a Jandaia-1.");
+  if (ambiguousSmartReason !== "motor_only_runtime" || ambiguousSmartPayload?.core?.routing?.routeTarget !== "motor") {
+    throw new Error("Smoke test falhou: caso ambiguo deveria continuar no motor em modo motor-only.");
   }
 
-  if (!["motor", "jandaia_1"].includes(String(ambiguousSmartPayload?.core?.targetLayer || ""))) {
-    throw new Error("Smoke test falhou: o fluxo smart nao expôs a camada final de resposta.");
+  if (String(ambiguousSmartPayload?.core?.targetLayer || "") !== "motor") {
+    throw new Error("Smoke test falhou: o fluxo smart deveria expor somente a camada do motor.");
   }
 
   const syntaxResponse = await fetch(`http://127.0.0.1:${port}/v2/check`, {

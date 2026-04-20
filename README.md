@@ -23,7 +23,7 @@ Depois de baixar, faca assim:
 - possui pacote portatil para Windows e Linux
 - escolhe automaticamente uma porta livre a partir de `18081`
 - instala primeiro o produto base
-- deixa a `Jandaia` local como recurso opcional
+- deixa a `Jandaia` local apenas para bancada de testes (fora da esteira de produção)
 
 ## Instalacao rapida
 
@@ -44,8 +44,8 @@ O instalador escolhe automaticamente uma porta livre.
 
 Opcional:
 
-- se quiser testar a `Jandaia` local depois, execute `install-jandaia.bat`
-- o produto base continua funcionando sem a LLM
+- se quiser usar a `Jandaia` local para benchmark/laboratório, execute `install-jandaia.bat`
+- a esteira de produção roda somente com o `motor`
 
 Para desinstalar:
 
@@ -75,8 +75,8 @@ O instalador escolhe automaticamente uma porta livre.
 
 Opcional:
 
-- se quiser testar a `Jandaia` local depois, execute `./install-jandaia.sh`
-- o produto base continua funcionando sem a LLM
+- se quiser usar a `Jandaia` local para benchmark/laboratório, execute `./install-jandaia.sh`
+- a esteira de produção roda somente com o `motor`
 
 Para desinstalar:
 
@@ -105,8 +105,8 @@ Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em `chrome
 - extensao pronta para carregar no Chrome
 - instalador
 - desinstalador
-- arquivos de configuracao da `Jandaia`
-- ativacao opcional da `Jandaia`, sem vir ligada por padrao
+- arquivos de configuracao da `Jandaia` para bancada de testes
+- ativacao opcional da `Jandaia` apenas para laboratório, sem uso em produção
 
 ## Para desenvolvimento
 
