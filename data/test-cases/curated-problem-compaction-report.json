@@ -1,0 +1,7033 @@
+{
+  "generated_at": "2026-04-20T00:44:04.224Z",
+  "input": "data/test-cases/curated.json",
+  "output": "data/test-cases/curated.json",
+  "keep_per_signature": 1,
+  "total_before": 5622,
+  "total_after": 2894,
+  "removed_count": 2728,
+  "apply": true,
+  "signatures": [
+    {
+      "signature": "no_diff",
+      "total_cases": 1055,
+      "kept_ids": [
+        "anun-16"
+      ],
+      "removed_ids": [
+        "pont-27",
+        "pont-29",
+        "pont-32",
+        "pont-33",
+        "pont-41",
+        "tecn-53",
+        "anun-23",
+        "hife-13",
+        "hife-22",
+        "hife-24",
+        "hife-25",
+        "hife-35",
+        "hife-36",
+        "hife-38",
+        "hife-40",
+        "pont-01",
+        "pont-09",
+        "pont-10",
+        "pont-15",
+        "pont-18",
+        "pont-20",
+        "pont-34",
+        "pont-38",
+        "pont-39",
+        "pont-48",
+        "pont-49",
+        "pont-56",
+        "pont-saudacao",
+        "tecn-32",
+        "hife-02",
+        "hife-12",
+        "hife-23",
+        "hife-27",
+        "pont-03",
+        "pont-05",
+        "pont-06",
+        "pont-08",
+        "pont-13",
+        "pont-21",
+        "pont-22",
+        "pont-23",
+        "pont-28",
+        "pont-37",
+        "pont-44",
+        "pont-46",
+        "pont-47",
+        "pontuacao-sujeito",
+        "pontuacao_12",
+        "hife-01",
+        "hife-10",
+        "hife-11",
+        "hife-15",
+        "hife-16",
+        "hife-28",
+        "pont-04",
+        "pont-12",
+        "pont-19",
+        "pont-31",
+        "pont-adjunto",
+        "pontuacao-condicional",
+        "pontuacao_07",
+        "hife-09",
+        "hife-30",
+        "hifen-bemvindo",
+        "pont-16",
+        "pont-25",
+        "pont-43",
+        "pontuacao-conjuncao",
+        "pontuacao_01",
+        "pontuacao_05",
+        "pont-onde",
+        "pont-sujeito-verbo",
+        "pontuacao_02",
+        "hifen_03",
+        "hifen_10",
+        "pont-mas",
+        "pontuacao_08",
+        "hifen_12",
+        "pont-pedido",
+        "pontuacao_03",
+        "pontuacao_10",
+        "pont-45",
+        "pont-54",
+        "pont_03",
+        "pont-02",
+        "pont_05",
+        "pont-30",
+        "pont-35",
+        "pont-36",
+        "pont-chamamento",
+        "pont-vocativo",
+        "pontuacao_09",
+        "pont-01",
+        "pont-04",
+        "pont-conjuncao",
+        "pont_04",
+        "pontu_06",
+        "pontuacao_06",
+        "pont-02",
+        "pont-03",
+        "pont-05",
+        "pont-07",
+        "pont-08",
+        "pont-explicativa",
+        "pont_03",
+        "pont_06",
+        "pont_06",
+        "pontu-06",
+        "pontu_03",
+        "pontuacao_02",
+        "hifen_06",
+        "pont_02",
+        "pont_02",
+        "pontu_01",
+        "pontu_vocativo_porfavor",
+        "pontuacao_04",
+        "pontuacao_05",
+        "pontuacao_06",
+        "pont-lista",
+        "pont_04",
+        "pont_05",
+        "pont_06",
+        "pontu_02",
+        "pontuacao_03",
+        "anunc_05",
+        "hifen_04",
+        "pont-06",
+        "pont_01",
+        "pont_02",
+        "pont_02",
+        "pont_03",
+        "pontuacao_01",
+        "pontuacao_03",
+        "hifen_02",
+        "hifen_03",
+        "hifen_anti_sub",
+        "pont_03",
+        "pont_05",
+        "pont_06",
+        "pontu-05",
+        "pontu_adjunto_intercalado",
+        "pontu_aposto_explicativo",
+        "pontu_conjuncao_mas",
+        "pontu_enumeracao_lista",
+        "pontu_sujeito_verbo",
+        "pontuacao_02",
+        "pontuacao_02",
+        "pontuacao_05",
+        "pontuacao_11",
+        "pont-02",
+        "pont_06",
+        "pontuacao_05",
+        "hifen-04",
+        "hifen_03",
+        "hifen_05",
+        "hifen_05",
+        "pont-05",
+        "pont-2",
+        "pont_02",
+        "pont_03",
+        "pontua-02",
+        "pontuacao_03",
+        "anunc-05",
+        "hifen_06",
+        "pont_05",
+        "pontuacao_03",
+        "hifen-02",
+        "hifen-04",
+        "cont_05",
+        "hife_06",
+        "pont_01",
+        "pontuacao_01",
+        "pontuacao_05",
+        "pontuacao_06",
+        "pont_03",
+        "pontuacao_04",
+        "pont_02",
+        "pont_05",
+        "pont_01",
+        "pont_04",
+        "pontu_04",
+        "pontua-01",
+        "hife_03",
+        "hifen_06",
+        "pont-3",
+        "pont_01",
+        "pont_01",
+        "pont_04",
+        "pont_04",
+        "pontu-04",
+        "pontuacao_06",
+        "hifen-06",
+        "pontu-02",
+        "hifen-4",
+        "pont_06",
+        "pontua-06",
+        "pontuacao_04",
+        "pontuacao_04",
+        "pontuacao_02",
+        "hifen_04",
+        "pont_06",
+        "anu_15",
+        "anu_19",
+        "pon-38",
+        "pon-43",
+        "pon-44",
+        "pon-45",
+        "pon-46",
+        "pon-47",
+        "pon-48",
+        "pon-49",
+        "pon-50",
+        "pon_14",
+        "pon_25",
+        "pon_30",
+        "pont-18",
+        "pont-25",
+        "pontuacao_03",
+        "pontuacao_04",
+        "anuncios_05",
+        "hifen_06",
+        "pon-29",
+        "pon-31",
+        "pon-36",
+        "pon-37",
+        "pon-41",
+        "pon-42",
+        "pon_17",
+        "pon_19",
+        "pon_21",
+        "pont-10",
+        "pont-20",
+        "pont-23",
+        "pont-33",
+        "pont-37",
+        "pont-38",
+        "pont-46",
+        "pont-49",
+        "anu_14",
+        "hif_23",
+        "hif_27",
+        "hifen_07",
+        "hifen_07",
+        "hifen_09",
+        "hifen_11",
+        "pon-19",
+        "pon-20",
+        "pon-26",
+        "pon-30",
+        "pon-33",
+        "pon-34",
+        "pon-40",
+        "pon_01",
+        "pon_08",
+        "pon_12",
+        "pon_13",
+        "pon_22",
+        "pont-03",
+        "pont-08",
+        "pont-24",
+        "pont-26",
+        "pont-28",
+        "pont-31",
+        "pont-50",
+        "pontu_01",
+        "pontuacao_12",
+        "anun-49",
+        "anunc_10",
+        "anuncios_02",
+        "hif_18",
+        "hif_20",
+        "hif_21",
+        "hif_22",
+        "hif_24",
+        "hife-07",
+        "hife-10",
+        "hifen_01",
+        "hifen_03",
+        "hifen_04",
+        "hifen_04",
+        "hifen_05",
+        "hifen_06",
+        "hifen_10",
+        "pon-22",
+        "pon-24",
+        "pon_10",
+        "pont-04",
+        "pont-09",
+        "pont-10",
+        "pont-11",
+        "pont-12",
+        "pont-16",
+        "pont-17",
+        "pont-19",
+        "pont-30",
+        "pont-34",
+        "pont-41",
+        "pont-43",
+        "pont-47",
+        "pontu_07",
+        "pontu_08",
+        "pontuacao_02",
+        "pontuacao_03",
+        "pontuacao_04",
+        "pontuacao_08",
+        "pontuacao_08",
+        "pontuacao_09",
+        "tec_04",
+        "anuncios_03",
+        "contexto_11",
+        "hif-47",
+        "hif_17",
+        "hif_19",
+        "hife-13",
+        "hife-25",
+        "hife-29",
+        "hifen-13",
+        "hifen-14",
+        "hifen-16",
+        "hifen-17",
+        "hifen-agenda-semanal",
+        "hifen_01",
+        "hifen_12",
+        "homo-13",
+        "pon-10",
+        "pon-14",
+        "pon-16",
+        "pon-18",
+        "pon-23",
+        "pon_04",
+        "pon_15",
+        "pon_23",
+        "pon_28",
+        "pon_29",
+        "pont-03",
+        "pont-09",
+        "pont-14",
+        "pont-16",
+        "pont-17",
+        "pont-27",
+        "pont-32",
+        "pont-40",
+        "pont-exclamacao-excesso",
+        "pontu_03",
+        "pontu_05",
+        "pontu_09",
+        "pontu_11",
+        "pontuacao_01",
+        "pontuacao_01",
+        "pontuacao_05",
+        "pontuacao_06",
+        "tec_23",
+        "tecnico_05",
+        "tecnico_09",
+        "texto_tecnico_11",
+        "anun-atendimento",
+        "anun-seguranca",
+        "anuncios_12",
+        "hif-40",
+        "hif-45",
+        "hif-46",
+        "hif-50",
+        "hif_26",
+        "hife-42",
+        "hifen-05",
+        "pon-1",
+        "pon-25",
+        "pon_20",
+        "pon_26",
+        "pont-06",
+        "pont-08",
+        "pont-12",
+        "pont-21",
+        "pont-35",
+        "pont-adjunto-deslocado",
+        "pont-concessiva",
+        "pont-conjuncao-conformativa",
+        "pont-final-ausente",
+        "tecn-17",
+        "tecn-23",
+        "tecn-34",
+        "anu-48",
+        "hifen-segunda-feira",
+        "pon-4",
+        "pon-6",
+        "pon-7",
+        "pon-9",
+        "pont-01",
+        "pont-20",
+        "pont-aspas-estrangeirismo",
+        "pont-complemento-verbal",
+        "pont-dois-pontos",
+        "pont-explicativa-final",
+        "pont-gerundio",
+        "pont-ponto-e-virgula",
+        "pont-sujeito-verbo",
+        "pontu_04",
+        "tecn-20",
+        "hif-42",
+        "hifen-bem-vindo",
+        "hifen-copo-de-leite",
+        "hifen-fim-de-semana",
+        "pon-8",
+        "pont-conjuncao-adversativa",
+        "pont-reticencias",
+        "pontu_12",
+        "tech-bug",
+        "tech-firewall",
+        "tech-frontend",
+        "tech-protocolo",
+        "hif-27",
+        "hifen-dia-a-dia",
+        "hifen-mao-de-obra",
+        "pont-parenteses",
+        "pont-travessao",
+        "tech-backend",
+        "tech-backup",
+        "tech-hardware",
+        "tech-log",
+        "pont-antes-de-e",
+        "texto_tecnico_12",
+        "pon-39",
+        "pont-05",
+        "pont-07",
+        "pon-12",
+        "pon-21",
+        "pon-27",
+        "pon_02",
+        "pon_16",
+        "pont-15",
+        "pont-endereco",
+        "pontuacao_07",
+        "anunc_04",
+        "pon-32",
+        "pont-06",
+        "pont-11",
+        "pontu_10",
+        "pontuacao_07",
+        "pontuacao_11",
+        "anunc_06",
+        "anunc_12",
+        "pon-15",
+        "pon-2",
+        "pon_11",
+        "pon_24",
+        "pont-18",
+        "pontu_06",
+        "pontuacao_02",
+        "pontuacao_05",
+        "pon-13",
+        "pon-28",
+        "pon-3",
+        "pon-5",
+        "pon_05",
+        "pont-05",
+        "pont-42",
+        "pont-conclusiva",
+        "pont-proclise-intercalada",
+        "pont-vocativo",
+        "pontu_02",
+        "pontuacao_06",
+        "pontuacao_10",
+        "anunc_03",
+        "pont-15",
+        "pont-19",
+        "pont-enumeração",
+        "pont-explicativa",
+        "pontuacao_11",
+        "pont-aspas-ironia",
+        "pontuacao_12",
+        "pontuacao_09",
+        "pon-51",
+        "pont-polissindeto",
+        "pontuacao-mensagem-rapida",
+        "pon_18",
+        "pon-07",
+        "pon_02",
+        "pon_15",
+        "hif_15",
+        "pon-21-data-local",
+        "pon_10",
+        "pon_20",
+        "pon_25",
+        "pon_29",
+        "pon_38",
+        "pon_41",
+        "pon_8",
+        "pont-data-07",
+        "anu-18",
+        "anu_16",
+        "anu_30",
+        "anu_43",
+        "pon-04",
+        "pon-06",
+        "pon-08",
+        "pon-12",
+        "pon-14",
+        "pon-22",
+        "pon-22",
+        "pon-23",
+        "pon-26",
+        "pon-27",
+        "pon_15",
+        "pon_17",
+        "pon_22",
+        "pon_28",
+        "pon_31",
+        "pon_32",
+        "pon_46",
+        "pon_47",
+        "pon_49",
+        "pon_50",
+        "tec_24",
+        "ace_10",
+        "ace_14",
+        "anu-08",
+        "anu-19",
+        "anu-24",
+        "anu-25",
+        "anu_03",
+        "anu_04",
+        "anu_06",
+        "anu_12",
+        "anu_15",
+        "anu_18",
+        "anu_20",
+        "anu_20",
+        "anu_25",
+        "anu_29",
+        "anu_29",
+        "anu_38",
+        "anu_42",
+        "anu_44",
+        "anun-pont-05",
+        "pon-01",
+        "pon-05",
+        "pon-07",
+        "pon-11",
+        "pon-14",
+        "pon-15",
+        "pon-18",
+        "pon-19",
+        "pon-20",
+        "pon-24",
+        "pon-26",
+        "pon-28",
+        "pon-32",
+        "pon_05",
+        "pon_07",
+        "pon_12",
+        "pon_14",
+        "pon_19",
+        "pon_20",
+        "pon_21",
+        "pon_23",
+        "pon_26",
+        "pon_3",
+        "pon_36",
+        "pon_37",
+        "pon_43",
+        "pon_45",
+        "pont-elipse-09",
+        "tec_12",
+        "tec_23",
+        "anu-04",
+        "anu-05",
+        "anu-21",
+        "anu_17",
+        "anu_31",
+        "con_33",
+        "hif-25",
+        "hifen-semterra-09",
+        "pon-01",
+        "pon-03",
+        "pon-05-ponto-virgula",
+        "pon-09",
+        "pon-10",
+        "pon-11-travessao",
+        "pon-15",
+        "pon-17",
+        "pon-18",
+        "pon-29",
+        "pon-30",
+        "pon_03",
+        "pon_06",
+        "pon_9",
+        "tec-18",
+        "tec-19",
+        "tec-21",
+        "tec-anexo-03",
+        "ace-25",
+        "an-25-viagens",
+        "anu-10",
+        "anu-27",
+        "anu-32",
+        "pon-01-sujeito-verbo",
+        "pon-09",
+        "pon-12",
+        "pon-23",
+        "pon-24-concessiva",
+        "pon_02",
+        "pont-adversativa-04",
+        "pont-sujeito-verbo-01",
+        "tec_3",
+        "tec_9",
+        "anu-20",
+        "anu-22",
+        "anun-dezvezes-06",
+        "hif-18-mal-estar",
+        "hifen-bemvindo-08",
+        "ort-23-mastro",
+        "ort-28",
+        "pon-04-enumeracao",
+        "pon-08-dois-pontos",
+        "pon-10",
+        "pon-10-exclamativa",
+        "pon-14-aspas",
+        "pon-16",
+        "pon-25-comparativa",
+        "pon-27",
+        "pon-30",
+        "pon-31",
+        "pon_01",
+        "pon_05",
+        "pont-adjunto-03",
+        "pont-endereco-06",
+        "pont-parentetica-05",
+        "tec_15",
+        "tec_4",
+        "anu-23",
+        "hif_12",
+        "pon-06-adjunto-deslocado",
+        "pon-18-mesmo-sujeito",
+        "pon-19",
+        "pon_11",
+        "tec_31",
+        "pon_11",
+        "pontuacao_06",
+        "pon-23-ora-ora",
+        "pontuacao_12",
+        "anuncios_18",
+        "homofonos_07",
+        "pontuacao_16",
+        "homofonos_10",
+        "pontuacao_08",
+        "pontuacao_14",
+        "pontuacao_20",
+        "anuncios_16",
+        "pontuacao_04",
+        "anuncios_05",
+        "pon_13",
+        "pon_24",
+        "pon_26",
+        "anu_11",
+        "anu_22",
+        "anu_6",
+        "pon_06",
+        "pon_08",
+        "pon_1",
+        "pon_10",
+        "pon_2",
+        "pon_21",
+        "pon_25",
+        "pon_30",
+        "pon_33",
+        "pon_44",
+        "pon_6",
+        "anu_26",
+        "anuncios_03",
+        "hifen_20",
+        "pon-02",
+        "pon-05",
+        "pon-11",
+        "pon-20",
+        "pon-24",
+        "pon_03",
+        "pon_04",
+        "pon_27",
+        "pon_35",
+        "pon_4",
+        "pon_40",
+        "pon_42",
+        "pon_7",
+        "pont-citacao-10",
+        "pontuacao_03",
+        "anu_26",
+        "pon-02",
+        "pon-04",
+        "pon-08",
+        "pon-21",
+        "pon_04",
+        "pon_07",
+        "pon_17",
+        "pont-vocativo-02",
+        "pontuacao_08",
+        "pontuacao_11",
+        "pontuacao_13",
+        "pontuacao_13",
+        "pontuacao_18",
+        "an-09-black-friday",
+        "anu-28",
+        "pon-03",
+        "pon-15-virgula-conclusiva",
+        "pon-26-citacao-direta",
+        "pon-28",
+        "pon_5",
+        "pontuacao_01",
+        "pontuacao_02",
+        "pontuacao_05",
+        "pontuacao_07",
+        "pontuacao_07",
+        "pontuacao_08",
+        "pontuacao_17",
+        "hifen_08",
+        "pon-02-vocativo",
+        "pon-03-aposto",
+        "pon-06",
+        "pon-17-porque-explicativo",
+        "pon-25",
+        "pon-27-paralelismo-virgula",
+        "pon_09",
+        "pont-explicativa-08",
+        "pontuacao_08",
+        "pontuacao_09",
+        "pontuacao_17",
+        "pontuacao_18",
+        "pontuacao_20",
+        "hifen_15",
+        "hifen_16",
+        "pon-09-conjuncao-adversativa",
+        "pon-13",
+        "pontuacao_01",
+        "pontuacao_09",
+        "pontuacao_10",
+        "pontuacao_14",
+        "pontuacao_15",
+        "pontuacao_20",
+        "texto_tecnico_07",
+        "texto_tecnico_20",
+        "anuncios_10",
+        "anuncios_12",
+        "hifen_09",
+        "pontuacao_02",
+        "pontuacao_03",
+        "pontuacao_07",
+        "pontuacao_12",
+        "pontuacao_17",
+        "texto_tecnico_09",
+        "anuncios_08",
+        "pon-22-expressao-explicativa",
+        "pon_10",
+        "pontuacao_04",
+        "pontuacao_19",
+        "pontuacao_20",
+        "contexto_19",
+        "hifen_04",
+        "pontuacao_03",
+        "pontuacao_10",
+        "pon-20-polissindeto",
+        "pontuacao_13",
+        "pontuacao_15",
+        "pontuacao_17",
+        "texto_tecnico_10",
+        "homofonos_11",
+        "texto_tecnico_13",
+        "texto_tecnico_18",
+        "texto_tecnico_05",
+        "texto_tecnico_12",
+        "hifen_07",
+        "texto_tecnico_17",
+        "pontuacao_10",
+        "pontuacao_15",
+        "pontuacao_13",
+        "pontuacao_05",
+        "pontuacao_07",
+        "pontuacao_12",
+        "pon_01",
+        "pontuacao_03",
+        "pontuacao_11",
+        "pontuacao_19",
+        "pontuacao_15",
+        "anuncios_4",
+        "pontuacao_06",
+        "pontuacao_2",
+        "pontuacao_3",
+        "anuncios_09",
+        "pontuacao_02",
+        "texto_tecnico_19",
+        "pontuacao_1",
+        "hifen_02",
+        "pon_12",
+        "pontuacao_4",
+        "pontuacao_5",
+        "pontuacao_01",
+        "pon-040",
+        "pon-041",
+        "pon_exclamacao_01",
+        "anu-020",
+        "anu-liquidacao",
+        "anu_instala_01",
+        "pon-043",
+        "pon-051",
+        "pon-duplo-sentido",
+        "pon-exclamativa-interrogativa",
+        "pon-vocativo-fim",
+        "pon_conjuncao_conclusiva_01",
+        "pon_endereco_01",
+        "pon_porém_01",
+        "anu-atencao",
+        "pon-004",
+        "pon-015",
+        "pon-033",
+        "pon-044",
+        "pon-046",
+        "pon-endereco",
+        "pon-exclamacao",
+        "pon_aspas_01",
+        "pon_conectivo_inicial_01",
+        "pon_ellipsis_01",
+        "pon_virgula_errada_01",
+        "anu_parcelas_02",
+        "hif-024",
+        "hif-mal-humorado",
+        "hif-vice-presidente",
+        "hom_mal_mau_01",
+        "pon-002",
+        "pon-010",
+        "pon-011",
+        "pon-013",
+        "pon-018",
+        "pon-021",
+        "pon-022",
+        "pon-023",
+        "pon-024",
+        "pon-026",
+        "pon-029",
+        "pon-034",
+        "pon-038",
+        "pon-14",
+        "pon-26",
+        "pon-conjuncao-adversativa",
+        "pon_complemento_01",
+        "hif-019",
+        "hif-020",
+        "hif-bem-vindo",
+        "hif-ex-marido",
+        "hif-super-homem",
+        "ort-025",
+        "ort-24",
+        "pon-003",
+        "pon-006",
+        "pon-008",
+        "pon-020",
+        "pon-027",
+        "pon-036",
+        "pon-08",
+        "pon-13",
+        "pon-21",
+        "pon-22",
+        "pon-29",
+        "pon-30",
+        "pon-antes-de-e",
+        "pon-dois-pontos",
+        "pon-omissao-verbo",
+        "pon-ponto-virgula",
+        "pon-sujeito-verbo",
+        "pon_conjuncao_adversativa_01",
+        "pon_parenteses_01",
+        "pon_ponto_e_virgula_01",
+        "pontu_elipse_verbo",
+        "tec_estatistica_01",
+        "anu-11",
+        "anu-24",
+        "cont-mal-mau-uso",
+        "hif-028",
+        "pon-005",
+        "pon-007",
+        "pon-01",
+        "pon-012",
+        "pon-017",
+        "pon-04",
+        "pon-06",
+        "pon-17",
+        "pon-18",
+        "pon-23",
+        "pon-adjunto-longo",
+        "pon_adjunto_adverbial_01",
+        "pon_intercalada_01",
+        "pon_pos_verbo_01",
+        "pont-comparativa-como",
+        "pont-concessiva-embora",
+        "pont-condicional-se",
+        "pontu_interrogativa_indireta",
+        "tec-14",
+        "ace-027",
+        "anun-melhor-custo-beneficio",
+        "anun-na-compra-de",
+        "hif-30",
+        "hifen-segunda-feira-aula",
+        "hifen-vice-presidente-eleito",
+        "pon-001",
+        "pon-02",
+        "pon-03",
+        "pon-05",
+        "pon-07",
+        "pon-27",
+        "pon_antes_de_e_01",
+        "pon_sujeito_verbo_01",
+        "pont-consecutiva-que",
+        "pont-expletiva-que",
+        "pont-interrogacao-direta",
+        "pont-interrogativa-indireta",
+        "pont-parenteses-explicacao",
+        "pont-sujeito-verbo",
+        "pontu_conectivos_inicio",
+        "pontu_enumeração_ponto_virgula",
+        "pontu_sujeito_predicado",
+        "anun-atendimento-24h",
+        "hif-21",
+        "hifen-fim-de-semana",
+        "pon-025",
+        "pon-028",
+        "pon-12",
+        "pon_dois_pontos_01",
+        "pont-adjunto-longo",
+        "pont-exclamacao-emocao",
+        "pontu_conjunção_adversativa",
+        "pontu_objeto_direto",
+        "pontu_restritiva_explicativa",
+        "tec-backup-nuvem",
+        "tec-largura-banda",
+        "hifen-dia-a-dia-rotina",
+        "pont-aspas-estrangeirismo",
+        "pont-conclusiva-logo",
+        "pont-conjuncao-e-inicial",
+        "pont-reticencias-pausa",
+        "pont-vocativo-inicio",
+        "pontu_adjunto_adverbial",
+        "pontu_parenteses_citacao",
+        "hifen-cor-de-rosa-sonho",
+        "texto_tecnico_1",
+        "anuncios_2",
+        "pontuacao_18",
+        "anuncios_8",
+        "texto_tecnico_14",
+        "texto_tecnico_16",
+        "texto_tecnico_18",
+        "anuncios_20",
+        "contexto_010",
+        "texto_tecnico_17",
+        "contexto_018",
+        "texto_tecnico_007",
+        "texto_tecnico_10",
+        "texto_tecnico_15",
+        "contexto_009",
+        "contexto_014",
+        "texto_tecnico_19",
+        "texto_tecnico_20",
+        "anu-promocao-relampago",
+        "pon-aspas",
+        "pon-conclusiva",
+        "pon-corretiva",
+        "pon-reticencias",
+        "pont-virgula-etc",
+        "anu-melhor-preco",
+        "pon-032",
+        "pon-restritiva",
+        "pon-vocativo",
+        "pon_alias_01",
+        "pon_vocativo_01",
+        "pon-035",
+        "pon-intercalada",
+        "pon_aposto_01",
+        "pon-11",
+        "pon-inciso",
+        "pon-polissindeto",
+        "pon_isto_é_01",
+        "pont-endereco-numero",
+        "anun-presente-ideal",
+        "pon-014",
+        "pon-20",
+        "pon_explicativa_01",
+        "pont-adversativa-mas",
+        "pont-corretiva-digo",
+        "pon-16",
+        "pon-citacao-direta",
+        "pon-explicativa",
+        "pon-travessao",
+        "pont-ponto-virgula-complexo",
+        "pont-travessao-fala",
+        "pontu_apostos",
+        "pontu_vocativo",
+        "pont-dois-pontos-lista",
+        "pont-enumeracao-simples",
+        "pont-explicativa-oração",
+        "pontuacao_9",
+        "contexto_3",
+        "pontuacao_14",
+        "pontuacao_16",
+        "hifen_diaadia_mao_de_obra",
+        "pontuacao_015",
+        "pontuacao_018",
+        "pontuacao_12",
+        "pontuacao_17",
+        "pontuacao_19",
+        "pontuacao_20",
+        "pontuacao_013",
+        "pontuacao_08",
+        "pontuacao_10",
+        "pontuacao_14",
+        "texto_tecnico_008",
+        "hifen_19",
+        "pont-02",
+        "pontuacao_12",
+        "pontuacao_3",
+        "anuncios_14",
+        "pontuacao_003",
+        "pontuacao_02",
+        "pontuacao_09",
+        "pontuacao_10",
+        "pontuacao_7",
+        "texto_tecnico_002",
+        "pontuacao_005",
+        "pontuacao_20",
+        "pontuacao_007",
+        "pontuacao_04",
+        "pontuacao_8",
+        "pontuacao_1",
+        "pontuacao_011",
+        "pon-lista-vertical",
+        "pont-citacao-direta",
+        "pont-polissindeto-e",
+        "pont-06",
+        "pont-ola-joao-vocativo",
+        "pontuacao_07",
+        "pontuacao_13",
+        "pont-gerente-virgula",
+        "pont-04",
+        "pontuacao_5",
+        "hifen_05",
+        "pontuacao_2",
+        "pontuacao_4",
+        "pont-07",
+        "pontuacao_01",
+        "pont-08",
+        "pont-01",
+        "pon-07-direto-aspas",
+        "hif-03-mao-fim",
+        "pon-01-suj-pred",
+        "pon-05-expl-rest",
+        "pon-08-parent-pt",
+        "pon-04-enum-ponto",
+        "pon-03-voc-apos",
+        "pon-06-porem-cont"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"à=>a\"],\"groupCount\":1}",
+      "total_cases": 64,
+      "kept_ids": [
+        "anun-08"
+      ],
+      "removed_ids": [
+        "contexto_12",
+        "a-partir-crase-tv",
+        "anun_03",
+        "anu_10",
+        "anun-domicilio-03",
+        "hom_04",
+        "anu-07",
+        "tec_49",
+        "ace-21",
+        "anu-02",
+        "anun-apartir-01",
+        "an-17-pronta-entrega",
+        "an-01-a-partir-de",
+        "acentuacao_20",
+        "texto_tecnico_07",
+        "texto_tecnico_17",
+        "anu-entrega-domicilio",
+        "ctx_crase_lugar_01",
+        "ctx_crase_distancia_01",
+        "ctx_crase_pronomes_01",
+        "ctx_crase_verbos_01",
+        "anu-004",
+        "anu-qualidade",
+        "ctx_crase_01",
+        "anu-01",
+        "anu-a-partir",
+        "anu_a_partir_01",
+        "acen-entregue-as",
+        "acen-proibido-as",
+        "cont-ha-cerca-de",
+        "acen-cara-a-cara",
+        "anun-a-partir-de",
+        "texto_tecnico_014",
+        "anuncios_018",
+        "anuncios_15",
+        "anuncios_7",
+        "anuncios_019",
+        "contexto_19",
+        "contexto_003",
+        "contexto_011",
+        "contexto_020",
+        "anuncios_9",
+        "homofonos_6",
+        "texto_tecnico_003",
+        "texto_tecnico_012",
+        "acentuacao_020",
+        "anuncios_006",
+        "contexto_005",
+        "pontuacao_004",
+        "pontuacao_014",
+        "pontuacao_017",
+        "acentuacao_13",
+        "homofonos_007",
+        "pontuacao_001",
+        "acentuacao_006",
+        "anuncios_005",
+        "pontuacao_008",
+        "texto_tecnico_6",
+        "acentuacao_009",
+        "texto_tecnico_010",
+        "pontuacao_019",
+        "anu-aberto-domingo",
+        "anu_atendimento_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"o=>ao\"],\"groupCount\":1}",
+      "total_cases": 33,
+      "kept_ids": [
+        "cont-15"
+      ],
+      "removed_ids": [
+        "cont-14",
+        "texto_tecnico_07",
+        "contexto_07",
+        "cont-42",
+        "ctx_18",
+        "cont-14",
+        "cont-29",
+        "contx_06",
+        "tec_01",
+        "tec_03",
+        "con-28",
+        "con-4",
+        "ctx-12",
+        "cont-regencia-assistir",
+        "cont-regencia-visar",
+        "cont-43",
+        "ctx_05",
+        "con_13",
+        "ctx-22",
+        "ctx-03",
+        "cont-regencia-03",
+        "ctx-03-assistir-filme",
+        "ctx-14-visar-ao",
+        "con-040",
+        "con-020",
+        "ctx_assisti_o_01",
+        "con-010",
+        "ctx-assistir-filme",
+        "ctx_visar_01",
+        "cont-assistir-filme",
+        "cont-visar-lucro",
+        "cont_assistir_direto"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"houveram=>houve\"],\"groupCount\":1}",
+      "total_cases": 29,
+      "kept_ids": [
+        "cont-11"
+      ],
+      "removed_ids": [
+        "cont-08",
+        "cont-03",
+        "ctx_01",
+        "cont-32",
+        "con-34",
+        "ctx-01",
+        "ctx-19",
+        "cont-haver-existir",
+        "ctx_17",
+        "ctx_02",
+        "con_24",
+        "ctx-02",
+        "cont-houveram-02",
+        "ctx-02",
+        "ctx-24",
+        "ctx-32",
+        "ctx-02-houveram-problemas",
+        "contexto_15",
+        "con-043",
+        "con-034",
+        "con-004",
+        "con-038",
+        "ctx-haver-existir",
+        "con-07",
+        "con-17",
+        "cont-houveram-problemas",
+        "cont_verbo_haver_plural",
+        "contexto_4"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mau=>mal\"],\"groupCount\":1}",
+      "total_cases": 24,
+      "kept_ids": [
+        "homo-04"
+      ],
+      "removed_ids": [
+        "mal-chegou-adv",
+        "homo_mau_mal_estar",
+        "homo-03",
+        "homof_04",
+        "homof_05",
+        "con-45",
+        "homo-mal-mau",
+        "ctx_29",
+        "ort-17",
+        "hom-05",
+        "hom-05",
+        "ort-26",
+        "hom_01",
+        "hom_6",
+        "homo-mau-mal-03",
+        "hom-02-mau-mal",
+        "homofonos_19",
+        "tec_5",
+        "homofonos_02",
+        "hom-mau-mal",
+        "hom_mal_mau_02",
+        "ort-25",
+        "contexto_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vende=>vendem\"],\"groupCount\":1}",
+      "total_cases": 24,
+      "kept_ids": [
+        "cont-36"
+      ],
+      "removed_ids": [
+        "anu_03",
+        "anun-02",
+        "cont-10",
+        "contx_09",
+        "ctx-17",
+        "anun-05",
+        "anun-35",
+        "anun-18",
+        "anu-45",
+        "anu-01",
+        "ctx_08",
+        "anu-21",
+        "anun-vende-se-04",
+        "anu_4",
+        "ctx-21-vende-se-casas",
+        "con-049",
+        "anu-008",
+        "anu-032",
+        "con-039",
+        "anu-vende-se-casas",
+        "ctx-vende-se",
+        "cont-vende-se-apartamentos",
+        "anun_vende_se_casas"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"infra estrutura=>infraestrutura\"],\"groupCount\":1}",
+      "total_cases": 23,
+      "kept_ids": [
+        "hife-42"
+      ],
+      "removed_ids": [
+        "hife-59",
+        "hife-17",
+        "hifen-infraestrutura",
+        "hifen-infraestrutura",
+        "hif-41",
+        "tec_21",
+        "hifen-04",
+        "hif-4",
+        "hif-08",
+        "hifen-infraestrutura-10",
+        "hif-05",
+        "tec-03",
+        "tec-25-infraestrutura-tec",
+        "hif-06-infra-estrutura",
+        "hifen_17",
+        "hifen_09",
+        "anu-17",
+        "tec-005",
+        "tec_infraestrutura_01",
+        "hifen-infraestrutura-cidade",
+        "tec-infraestrutura-ti",
+        "tec_infraestrutura_redes"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a=>à\"],\"groupCount\":1}",
+      "total_cases": 23,
+      "kept_ids": [
+        "anuncios_11"
+      ],
+      "removed_ids": [
+        "pontuacao_06",
+        "anunc_03",
+        "tec_04",
+        "homofonos_04",
+        "homo-03",
+        "pont-01",
+        "pontuacao_01",
+        "acentuacao_04",
+        "texto_tecnico_04",
+        "cont-venda-a-vista",
+        "anun-pronta-entrega",
+        "anun-avista-02",
+        "anuncios_03",
+        "pontuacao_19",
+        "texto_tecnico_16",
+        "acentuacao_13",
+        "homofonos_17",
+        "anu-desconto-avista",
+        "acen-estava-a-toa",
+        "homof-03",
+        "pont-05",
+        "pon-02-adj-desl"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"concerto=>conserto\"],\"groupCount\":1}",
+      "total_cases": 20,
+      "kept_ids": [
+        "homo-47"
+      ],
+      "removed_ids": [
+        "homofonos-conserto",
+        "conserto-homofonia-pc",
+        "contexto_03",
+        "homo-conserto",
+        "homofonos_04",
+        "hom_02",
+        "homo-10",
+        "homo-41",
+        "homof_10",
+        "homo-06",
+        "hom-4",
+        "homo-concerto-conserto",
+        "hom-13",
+        "homo-conserto-09",
+        "hom-10-concerto-conserto",
+        "hom_3",
+        "hom-conserto",
+        "hom_conserto_01",
+        "homo-conserto-carro"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"aluga=>alugam\"],\"groupCount\":1}",
+      "total_cases": 20,
+      "kept_ids": [
+        "anun-05"
+      ],
+      "removed_ids": [
+        "anun-alugam-se",
+        "anuncios-aluga-se",
+        "anu_04",
+        "anun-17",
+        "cont-02",
+        "cont-aluga-se",
+        "anu-03",
+        "anu_14",
+        "con_2",
+        "anu_32",
+        "cont-aluga-se-06",
+        "anu_2",
+        "ctx-10-alugam-se",
+        "ctx_aluga_se_01",
+        "anu-015",
+        "con-002",
+        "con-08",
+        "cont-aluga-se-casas",
+        "anun-alugase-salas"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"meia=>meio\"],\"groupCount\":1}",
+      "total_cases": 20,
+      "kept_ids": [
+        "cont-09"
+      ],
+      "removed_ids": [
+        "cont-40",
+        "contexto_04",
+        "cont-06",
+        "cont-35",
+        "contx_07",
+        "con-13",
+        "cont-meio-meia",
+        "ctx_12",
+        "con_4",
+        "ctx-18",
+        "ctx-07-meio-meia",
+        "con-012",
+        "ctx-meio-meia",
+        "con-11",
+        "ctx_meio_meia_01",
+        "cont-meio-meia",
+        "cont_meio_meia",
+        "tec-concordancia-meio",
+        "context-04"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"fazem=>faz\"],\"groupCount\":1}",
+      "total_cases": 19,
+      "kept_ids": [
+        "cont-53"
+      ],
+      "removed_ids": [
+        "cont-01",
+        "cont-32",
+        "contexto_10",
+        "ctx_02",
+        "con-23",
+        "contx_04",
+        "con_3",
+        "ctx_01",
+        "ctx-01",
+        "ctx-01-faz-fazem-tempo",
+        "cont-fazem-01",
+        "contexto_01",
+        "contexto_01",
+        "con-054",
+        "con-037",
+        "con-001",
+        "ctx_fazem_anos_01",
+        "con-02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"excessão=>exceção\"],\"groupCount\":1}",
+      "total_cases": 18,
+      "kept_ids": [
+        "ortografia-excecao"
+      ],
+      "removed_ids": [
+        "orto-excessao",
+        "tecn_06",
+        "ort_01",
+        "orto-02",
+        "orto_01",
+        "tec-10",
+        "tec-05",
+        "tec_01",
+        "ort-01",
+        "tec_2",
+        "orto-excecao-01",
+        "ort-047",
+        "ort-001",
+        "ort-excecao",
+        "ort_excecao_01",
+        "tec-excecao-protocolo",
+        "orto-excecao-regra"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"microondas=>micro ondas\"],\"groupCount\":1}",
+      "total_cases": 17,
+      "kept_ids": [
+        "hife-03"
+      ],
+      "removed_ids": [
+        "hifen-microondas",
+        "hifen_01",
+        "hifen_02",
+        "hif_01",
+        "hifen_01",
+        "hifen-01",
+        "hifen-microondas",
+        "hif-1",
+        "hife-01",
+        "hif-01",
+        "hif-01-err",
+        "hifen-microondas-01",
+        "hif-01-micro-ondas",
+        "hif_micro_ondas_01",
+        "hif-001",
+        "hifen-microondas-novo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"seção=>sessão\"],\"groupCount\":1}",
+      "total_cases": 15,
+      "kept_ids": [
+        "contexto_02"
+      ],
+      "removed_ids": [
+        "homo-13",
+        "homo-sessao",
+        "homo_02",
+        "homofonos_03",
+        "homofonos_01",
+        "homo-08",
+        "homof_03",
+        "hom-2",
+        "homo-sessao-secao",
+        "ortografia_01",
+        "homo-sessao-06",
+        "hom-008",
+        "hom-sessao",
+        "homo-sessao-cinema"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"aonde=>onde\"],\"groupCount\":1}",
+      "total_cases": 15,
+      "kept_ids": [
+        "cont-onde-aonde"
+      ],
+      "removed_ids": [
+        "cont-03",
+        "homofonos_11",
+        "homo-04",
+        "hom-7",
+        "homo-onde-aonde",
+        "hom_09",
+        "hom_5",
+        "homo-onde-aonde-04",
+        "homofonos_03",
+        "homofonos_12",
+        "homofonos_17",
+        "contexto_3",
+        "hom_onde_aonde_01",
+        "cont-onde-aonde"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"co autor=>coautor\"],\"groupCount\":1}",
+      "total_cases": 14,
+      "kept_ids": [
+        "hife-19"
+      ],
+      "removed_ids": [
+        "hifen_06",
+        "hifen_11",
+        "hifen_12",
+        "hifen-11",
+        "hifen-coautor",
+        "hif_8",
+        "hif-18",
+        "hif_04",
+        "hif-05-co-autor",
+        "hifen_03",
+        "hif-006",
+        "hif_co_autor_01",
+        "hifen-co-autor-livro"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mim=>eu\"],\"groupCount\":1}",
+      "total_cases": 14,
+      "kept_ids": [
+        "cont-05"
+      ],
+      "removed_ids": [
+        "contexto_06",
+        "contexto_03",
+        "con-3",
+        "ctx_27",
+        "cont-mim-fazer-05",
+        "ctx-20",
+        "ctx-23-para-eu-fazer",
+        "ortografia_02",
+        "contexto_05",
+        "con-026",
+        "con-015",
+        "cont-para-mim-fazer",
+        "contexto_11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"onde=>aonde\"],\"groupCount\":1}",
+      "total_cases": 14,
+      "kept_ids": [
+        "cont_05"
+      ],
+      "removed_ids": [
+        "contexto_08",
+        "homofonos_01",
+        "cont-24",
+        "homo-46",
+        "homof_07",
+        "con-19",
+        "hom_08",
+        "ctx-09",
+        "con_07",
+        "ctx-17-onde-aonde",
+        "pon_27",
+        "contexto_03",
+        "con-05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a=>há\"],\"groupCount\":1}",
+      "total_cases": 14,
+      "kept_ids": [
+        "homo-57"
+      ],
+      "removed_ids": [
+        "cont-ha-a",
+        "cont_04",
+        "homo_05",
+        "homofonos_08",
+        "homof_06",
+        "ctx-09",
+        "homo-a-ha",
+        "homo-a-ha-02",
+        "hom-04-a-ha-tempo",
+        "homofonos_18",
+        "ctx-haver-a",
+        "hom-031",
+        "tec-ha-muito-tempo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"contra regra=>contrarregra\"],\"groupCount\":1}",
+      "total_cases": 14,
+      "kept_ids": [
+        "hife-44"
+      ],
+      "removed_ids": [
+        "hifen-contrarregra",
+        "hifen-02",
+        "hifen_contra_regra_porta",
+        "hif-3",
+        "hifen-contrarregra",
+        "hifen_05",
+        "hif-10",
+        "hif-09",
+        "hif_06",
+        "hif-032",
+        "hif-contrarregra",
+        "hif_contra_regra_01",
+        "hifen-contra-regra-teatro"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"saude=>saúde\"],\"groupCount\":1}",
+      "total_cases": 13,
+      "kept_ids": [
+        "acen-16"
+      ],
+      "removed_ids": [
+        "acent-saude",
+        "acentuacao_07",
+        "ace_05",
+        "ace-31",
+        "ace-05",
+        "ace_8",
+        "anu-20",
+        "ace-21-saude",
+        "ace_12",
+        "ace_saude_01",
+        "ace-saude",
+        "acen-saude-primeiro"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"beringela=>berinjela\"],\"groupCount\":1}",
+      "total_cases": 13,
+      "kept_ids": [
+        "orto-52"
+      ],
+      "removed_ids": [
+        "orto-41",
+        "orto-04",
+        "orto-36",
+        "ort-48",
+        "ort-13",
+        "ort-09",
+        "ort_04",
+        "ort-049",
+        "ort-031",
+        "ort-022",
+        "ort-18",
+        "ort_berinjela_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mal=>mau\"],\"groupCount\":1}",
+      "total_cases": 12,
+      "kept_ids": [
+        "contexto_01"
+      ],
+      "removed_ids": [
+        "cont-mal-mau",
+        "homofonos_11",
+        "ctx_03",
+        "ctx_04",
+        "homofonos-mau-humor",
+        "hom-6",
+        "homo-03",
+        "hom-06",
+        "homofonos_01",
+        "hom-mal-mau",
+        "homo_mal_mau"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vamos=>vai\"],\"groupCount\":1}",
+      "total_cases": 12,
+      "kept_ids": [
+        "cont-04"
+      ],
+      "removed_ids": [
+        "contexto_11",
+        "cont-05",
+        "ctx_15",
+        "ctx-03",
+        "cont-concordancia-siléptica",
+        "ctx_19",
+        "con_36",
+        "ctx-21",
+        "ortografia_20",
+        "con-006",
+        "con-10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vôo=>voo\"],\"groupCount\":1}",
+      "total_cases": 12,
+      "kept_ids": [
+        "acent-voo"
+      ],
+      "removed_ids": [
+        "ace_02",
+        "ace-3",
+        "acen-voo",
+        "ace-02",
+        "ace-01",
+        "acen-voo-03",
+        "acentuacao_16",
+        "ace-003",
+        "ace-voo",
+        "ace_voo_01",
+        "acen-voo-direto"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"extra oficial=>extraoficial\"],\"groupCount\":1}",
+      "total_cases": 12,
+      "kept_ids": [
+        "hifen-extraoficial"
+      ],
+      "removed_ids": [
+        "hif_08",
+        "hif-8",
+        "hifen-21",
+        "hifen-extraoficial",
+        "hifen_10",
+        "hif-10",
+        "hif_22",
+        "hifen-extraoficial-06",
+        "hif-025",
+        "hif-08",
+        "hifen-extraoficial-nota"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ascenção=>ascensão\"],\"groupCount\":1}",
+      "total_cases": 12,
+      "kept_ids": [
+        "orto-25"
+      ],
+      "removed_ids": [
+        "ort_18",
+        "ortografia_09",
+        "ort-6",
+        "ort-07",
+        "orto-ascensao-04",
+        "ort_07",
+        "ort-055",
+        "ort_ascensao_01",
+        "ort-ascensao",
+        "ort-007",
+        "orto-ascensao-carreira"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"auto estima=>autoestima\"],\"groupCount\":1}",
+      "total_cases": 12,
+      "kept_ids": [
+        "hife-53"
+      ],
+      "removed_ids": [
+        "hife-45",
+        "hifen_08",
+        "hif-22",
+        "hif-02",
+        "hif-03",
+        "hif-026",
+        "hif-05",
+        "ort-26",
+        "hifen-autoestima-baixa",
+        "hifen_11",
+        "hif-01-auto-micro"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"proibido=>proibida\"],\"groupCount\":1}",
+      "total_cases": 12,
+      "kept_ids": [
+        "contexto_09"
+      ],
+      "removed_ids": [
+        "ctx_13",
+        "con-14",
+        "contx_08",
+        "ctx-06",
+        "ctx-17",
+        "ctx_11",
+        "ctx-25-err",
+        "ctx-19-proibida-entrada",
+        "con-12",
+        "cont-proibido-entrada",
+        "contexto_17"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"eminente=>iminente\"],\"groupCount\":1}",
+      "total_cases": 11,
+      "kept_ids": [
+        "homofonos_08"
+      ],
+      "removed_ids": [
+        "context_02",
+        "cont_01",
+        "homofonos_11",
+        "homo-31",
+        "hom-35",
+        "homo-eminente-iminente",
+        "hom-09-eminente-iminente",
+        "ortografia_11",
+        "hom-iminente",
+        "contexto_012"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"haviam=>havia\"],\"groupCount\":1}",
+      "total_cases": 11,
+      "kept_ids": [
+        "cont-54"
+      ],
+      "removed_ids": [
+        "cont-02",
+        "cont-31",
+        "cont_03",
+        "cont_06",
+        "contexto_03",
+        "contx_03",
+        "con-12",
+        "con_35",
+        "ctx-11",
+        "con-031"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tachar=>taxar\"],\"groupCount\":1}",
+      "total_cases": 11,
+      "kept_ids": [
+        "homo-taxar"
+      ],
+      "removed_ids": [
+        "homof_11",
+        "homo-taxar-tachar",
+        "hom-3",
+        "hom_14",
+        "hom_21",
+        "hom-27-taxar-tachar",
+        "hom-041",
+        "hom-taxar",
+        "hom_taxar_01",
+        "homo-taxar-imposto"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"o=>a\"],\"groupCount\":1}",
+      "total_cases": 11,
+      "kept_ids": [
+        "cont_04"
+      ],
+      "removed_ids": [
+        "hife-30",
+        "hife-38",
+        "hife-45",
+        "hif_36",
+        "ort_16",
+        "tec-10",
+        "tec_46",
+        "hif-29",
+        "ort-016",
+        "ort-23"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mais=>mas\"],\"groupCount\":1}",
+      "total_cases": 11,
+      "kept_ids": [
+        "homo-01"
+      ],
+      "removed_ids": [
+        "homo_01",
+        "ortografia_02",
+        "homo-mas-mais",
+        "homo-02",
+        "hom-10",
+        "homo-mas-mais-01",
+        "hom-01-mas-mais",
+        "hom-mas-mais",
+        "hom_mas_mais_01",
+        "homo_mas_mais"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"conserto=>concerto\"],\"groupCount\":1}",
+      "total_cases": 11,
+      "kept_ids": [
+        "homofonos_03"
+      ],
+      "removed_ids": [
+        "homo-05",
+        "homo-11",
+        "hom-24",
+        "hom-12",
+        "hom_17",
+        "ort-14",
+        "hom-005",
+        "hom-concerto",
+        "hom_concerto_02",
+        "homo-concerto-musica"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"em=>a\"],\"groupCount\":1}",
+      "total_cases": 11,
+      "kept_ids": [
+        "cont-30"
+      ],
+      "removed_ids": [
+        "con-36",
+        "con-6",
+        "cont-chegar-em",
+        "ctx_07",
+        "ctx-08-chegar-em",
+        "con-044",
+        "ctx_chegar_em_01",
+        "con-016",
+        "cont-chegar-em-casa",
+        "cont_chegar_em"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"auto ajuda=>autoajuda\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "hife-07"
+      ],
+      "removed_ids": [
+        "hifen-autoajuda",
+        "hife-40",
+        "hifen_08",
+        "hifen_02",
+        "hif-11",
+        "hif-10-auto-ajuda",
+        "hifen_01",
+        "hif_auto_ajuda_01",
+        "hif-06"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"imperdivel=>imperdível\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "anun-01"
+      ],
+      "removed_ids": [
+        "anun-imperdivel",
+        "anuncios_01",
+        "anu_02",
+        "anun-02",
+        "anunc_01",
+        "anu_27",
+        "an-07-imperdivel",
+        "anu_promo_01",
+        "anu-02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"previlégio=>privilégio\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "orto-06"
+      ],
+      "removed_ids": [
+        "orto-previlegio",
+        "orto_06",
+        "ort-06",
+        "ort_05",
+        "ort_02",
+        "ort-05-privilegio",
+        "ort-017",
+        "ort-privilegio",
+        "ort_privilegio_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"beneficiente=>beneficente\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "orto-08"
+      ],
+      "removed_ids": [
+        "orto-beneficiente",
+        "orto-beneficente",
+        "orto_03",
+        "ort_12",
+        "ort-10-err",
+        "orto-beneficente-05",
+        "ort-beneficente",
+        "ort-005",
+        "ort_beneficente_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mendingo=>mendigo\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "orto-09"
+      ],
+      "removed_ids": [
+        "orto-mendingo",
+        "orto_04",
+        "orto-19",
+        "orto-mendingo",
+        "ort-21",
+        "ort_21",
+        "ort-039",
+        "ort-mendingo",
+        "ort-03"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"idéia=>ideia\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "acent-ideia"
+      ],
+      "removed_ids": [
+        "ace_01",
+        "acen-ideia",
+        "ace-04",
+        "acen-ideia-02",
+        "ace-001",
+        "ace_ideia_01",
+        "ace-ideia",
+        "acen-ideia-brilhante",
+        "ace-01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"no=>ao\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "cont-18"
+      ],
+      "removed_ids": [
+        "cont-20",
+        "cont-13",
+        "contx_10",
+        "ctx-08",
+        "ctx_24",
+        "ctx-25",
+        "cont-ao-banheiro-10",
+        "ctx-chegar-em",
+        "con-19"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"trás=>traz\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "ctx-01"
+      ],
+      "removed_ids": [
+        "homofonos_02",
+        "homo-traz-tras",
+        "hom-06-traz-tras",
+        "homo-traz-tras-05",
+        "contexto_07",
+        "homofonos_13",
+        "ort_traz_01",
+        "hom-traz",
+        "homo-traz-tras"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"faziam=>fazia\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "cont-22"
+      ],
+      "removed_ids": [
+        "ctx-02",
+        "con_34",
+        "ctx-20",
+        "con-042",
+        "con-018",
+        "con-032",
+        "ctx-faz-tempo",
+        "cont-fazia-anos",
+        "cont_faz_tempo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"auto escola=>autoescola\"],\"groupCount\":1}",
+      "total_cases": 10,
+      "kept_ids": [
+        "hif_02"
+      ],
+      "removed_ids": [
+        "hifen-02",
+        "hifen-autoescola",
+        "hif-04",
+        "hifen-autoescola-07",
+        "hifen_01",
+        "hif-047",
+        "hif_auto_escola_01",
+        "hif-003",
+        "hifen-autoescola-direcao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"anti social=>antissocial\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "hife-43"
+      ],
+      "removed_ids": [
+        "hifen-antissocial",
+        "hife-18",
+        "hif_20",
+        "hif-08",
+        "hif-20-anti-social",
+        "hif-antissocial",
+        "hif-002",
+        "hif_antissocial_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ja=>já\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "anun_02"
+      ],
+      "removed_ids": [
+        "anuncios_05",
+        "anun-08",
+        "anun-28",
+        "anun-50",
+        "tecn-22",
+        "tecn-37",
+        "anunc_02",
+        "contexto_10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mas=>mais\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "cont-mais-mas"
+      ],
+      "removed_ids": [
+        "homofonos_02",
+        "homo-01",
+        "homof_01",
+        "hom-04",
+        "hom_02",
+        "homofonos_02",
+        "hom-mais-mas",
+        "anu-04"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"porem=>porém\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "pont_01"
+      ],
+      "removed_ids": [
+        "pont-04",
+        "pont_05",
+        "pontuacao_01",
+        "pontuacao_10",
+        "contexto_11",
+        "pontuacao_11",
+        "pontuacao_09",
+        "pontuacao_02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"heróico=>heroico\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "acent-heroico"
+      ],
+      "removed_ids": [
+        "acentu_11",
+        "ace-09",
+        "ace-02-heroico",
+        "acen-heroico-06",
+        "ace-heroico",
+        "ace-04",
+        "ace_heroico_01",
+        "acen-heroico-esforco"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"as=>às\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "tecn-crase-hora"
+      ],
+      "removed_ids": [
+        "tecn_05",
+        "hom-30",
+        "anun-as-07",
+        "texto_tecnico_15",
+        "homofonos_04",
+        "homofonos_06",
+        "contexto_13",
+        "contexto_13"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"bau=>baú\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "acen-15"
+      ],
+      "removed_ids": [
+        "ace_14",
+        "ace-19",
+        "ace_09",
+        "ace-052",
+        "ace-035",
+        "ace_bau_01",
+        "acen-bau-tesouro",
+        "ace-19"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"carater=>caráter\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "acen-12"
+      ],
+      "removed_ids": [
+        "texto_tecnico_03",
+        "ace-5",
+        "ace_17",
+        "ace-24",
+        "ace-023",
+        "ace-044",
+        "ace_carater_01",
+        "ace-25"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"viajem=>viagem\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "pont-1"
+      ],
+      "removed_ids": [
+        "homo-13",
+        "ort-19",
+        "ort-37",
+        "homo-viajem-subst",
+        "ort_23",
+        "hom-028",
+        "hom_viagem_02",
+        "homo-viagem-subst"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"antiinflamatório=>anti inflamatório\"],\"groupCount\":1}",
+      "total_cases": 9,
+      "kept_ids": [
+        "hifen_01"
+      ],
+      "removed_ids": [
+        "hife-03",
+        "hifen-antiinflamatorio",
+        "hifen-antiinflamatorio-02",
+        "hif-02-anti-inflamatorio",
+        "hif_anti_inflamatorio_01",
+        "hif-anti-inflamatorio",
+        "hif-008",
+        "hifen-antiinflamatorio-dor"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"por que=>porquê\"],\"groupCount\":1}",
+      "total_cases": 8,
+      "kept_ids": [
+        "homofonos_04"
+      ],
+      "removed_ids": [
+        "homof_02",
+        "homo-06",
+        "homo-por-que-substantivo",
+        "homo-porque-07",
+        "homofonos_13",
+        "homofonos_17",
+        "homof-08"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"unica=>única\"],\"groupCount\":1}",
+      "total_cases": 8,
+      "kept_ids": [
+        "anuncios_06"
+      ],
+      "removed_ids": [
+        "anunc_01",
+        "anuncios_05",
+        "anuncios_04",
+        "anuncios_08",
+        "anun-03",
+        "anun-14",
+        "contexto_09"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"apartir=>a partir\"],\"groupCount\":1}",
+      "total_cases": 8,
+      "kept_ids": [
+        "anuncios_09"
+      ],
+      "removed_ids": [
+        "anunc_04",
+        "tecn_01",
+        "anu_01",
+        "anun-liquidação",
+        "anun-15",
+        "anun-apartir-08",
+        "anu-035"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"menas=>menos\"],\"groupCount\":1}",
+      "total_cases": 8,
+      "kept_ids": [
+        "cont_03"
+      ],
+      "removed_ids": [
+        "contexto_02",
+        "contexto_07",
+        "ctx-24-menas-pessoas",
+        "contexto_08",
+        "ctx-menas",
+        "cont-menos-menas",
+        "contexto_7"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sinto=>cinto\"],\"groupCount\":1}",
+      "total_cases": 8,
+      "kept_ids": [
+        "homo-45"
+      ],
+      "removed_ids": [
+        "homofonos_09",
+        "homo-50",
+        "homo-16",
+        "hom-057",
+        "hom-050",
+        "hom-033",
+        "hom_028"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"paralizar=>paralisar\"],\"groupCount\":1}",
+      "total_cases": 8,
+      "kept_ids": [
+        "orto-paralizar"
+      ],
+      "removed_ids": [
+        "orto_02",
+        "orto-paralisar",
+        "orto-04",
+        "orto-paralisar-02",
+        "ort_paralisar_01",
+        "orto-paralisar-servico",
+        "ort-paralisar"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pretencioso=>pretensioso\"],\"groupCount\":1}",
+      "total_cases": 8,
+      "kept_ids": [
+        "orto-22"
+      ],
+      "removed_ids": [
+        "ort_17",
+        "orto-06",
+        "orto-pretensioso",
+        "ort-04",
+        "orto-pretensioso-03",
+        "ort_pretensioso_01",
+        "ort-003"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pára=>para\"],\"groupCount\":1}",
+      "total_cases": 8,
+      "kept_ids": [
+        "acen-para"
+      ],
+      "removed_ids": [
+        "hif_14",
+        "ace-03",
+        "ace-26",
+        "ace-para",
+        "ace_para_01",
+        "acen-para-verbo",
+        "acent_para_para"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"segue=>seguem\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "cont-03"
+      ],
+      "removed_ids": [
+        "anexo-seguem-relatorios",
+        "tecn-em-anexo",
+        "tec_02",
+        "contx_02",
+        "cont-segue-07",
+        "ctx-03-err"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"haver=>a ver\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "cont-22"
+      ],
+      "removed_ids": [
+        "nada-a-ver-atitude",
+        "homo-36",
+        "cont-26",
+        "homo-44",
+        "homo-01",
+        "hom-8"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"esta=>está\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "tecnico-hardware"
+      ],
+      "removed_ids": [
+        "acentuacao_07",
+        "acentuacao_03",
+        "tecnico_04",
+        "texto_tecnico_05",
+        "acent-06",
+        "hifen_05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"historia=>história\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "acen-47"
+      ],
+      "removed_ids": [
+        "acentuacao_04",
+        "hifen_ex_diretor_pre",
+        "acen-37",
+        "ace_08",
+        "acen-historia",
+        "ace-08"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"gratis=>grátis\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "anuncios_04"
+      ],
+      "removed_ids": [
+        "anunc_04",
+        "anunc-06",
+        "acentuacao_06",
+        "anuncios_11",
+        "anu_08",
+        "acen-gratis-promocao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"por=>pôr\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "acen-09"
+      ],
+      "removed_ids": [
+        "homo_05",
+        "homofonos_10",
+        "ace_10",
+        "ace-005",
+        "ace-por",
+        "acent_por_por"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ao invés=>em vez\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "cont-ao-inves-de"
+      ],
+      "removed_ids": [
+        "homofonos_02",
+        "homofonos_12",
+        "contexto_12",
+        "con_01",
+        "ctx-ao-invés-de",
+        "cont-ao-enves-de"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"subreitor=>sub reitor\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "hifen-subreitor"
+      ],
+      "removed_ids": [
+        "hifen-sub-reitor",
+        "hifen-subreitor-05",
+        "hif-04-sub-reitor",
+        "hif-sub-reitor",
+        "hif_sub_reitor_01",
+        "hif-02-anti-sub"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"se não=>senão\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "cont-seno-se-nao"
+      ],
+      "removed_ids": [
+        "contexto_01",
+        "homo-senão-se-não",
+        "hom-11-senão-se-não",
+        "hom_senão_01",
+        "homofonos_1",
+        "pontuacao_6"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"traz=>trás\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "cont-traz-tras"
+      ],
+      "removed_ids": [
+        "homof_02",
+        "homo-08",
+        "hom_06",
+        "hom_traz_tras_01",
+        "hom-tras",
+        "homo-parte-tras"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sela=>cela\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "homo-sela"
+      ],
+      "removed_ids": [
+        "homo-15",
+        "homo-38",
+        "hom-19",
+        "hom_23",
+        "hom-015",
+        "homo-cela-presidio"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"visto=>vista\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "tecn-haja-vista"
+      ],
+      "removed_ids": [
+        "cont-hajam-vista",
+        "ctx-04-haja-visto",
+        "ctx-haja-vista",
+        "con-13",
+        "tec-haja-vista-analise",
+        "cont-haja-vista"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"geito=>jeito\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "orto-42"
+      ],
+      "removed_ids": [
+        "orto-53",
+        "orto-03",
+        "orto-14",
+        "orto-jeito",
+        "ort_25",
+        "orto-jeito-ser"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"paralização=>paralisação\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "orto-05"
+      ],
+      "removed_ids": [
+        "ort_11",
+        "ort_05",
+        "ort-02",
+        "ort-036",
+        "ort-002",
+        "tec-paralizacao-servidor"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"asterístico=>asterisco\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "orto-12"
+      ],
+      "removed_ids": [
+        "ort_13",
+        "orto-asterisco",
+        "ort-04",
+        "ort-asterisco",
+        "ort_asterisco_01",
+        "orto-asterisco-nota"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"auto serviço=>autosserviço\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "hifen_01"
+      ],
+      "removed_ids": [
+        "hifen_bem_auto",
+        "hife-16",
+        "hifen-autosservico",
+        "hif_02",
+        "hif_01",
+        "hif-033"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"semi aberto=>semiaberto\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "hif_10"
+      ],
+      "removed_ids": [
+        "hifen-12",
+        "hif_3",
+        "hif-09",
+        "hif_05",
+        "hif-04",
+        "hif-semiaberto"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"em=>\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "cont-implicar"
+      ],
+      "removed_ids": [
+        "ctx-15",
+        "ctx-30",
+        "ctx-13-implicar-em",
+        "ctx_implicar_01",
+        "ctx-implicar-com",
+        "cont-implicar-em"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"eu=>mim\"],\"groupCount\":1}",
+      "total_cases": 7,
+      "kept_ids": [
+        "ctx_07"
+      ],
+      "removed_ids": [
+        "ctx_04",
+        "ctx-14",
+        "ctx-22-entre-mim-e-ti",
+        "con-025",
+        "con-045",
+        "cont-entre-mim-e-ti"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"derrepente=>de repente\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "ortografia_02"
+      ],
+      "removed_ids": [
+        "orto-41",
+        "tecn-07",
+        "ort-12",
+        "ace-016",
+        "ortografia_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"dificil=>difícil\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "acent-dificil"
+      ],
+      "removed_ids": [
+        "acentuacao_05",
+        "ace_26",
+        "pontuacao_14",
+        "acentuacao_11",
+        "acentuacao_005"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"heroi=>herói\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "acen-48"
+      ],
+      "removed_ids": [
+        "acent-heroi",
+        "acentuacao_11",
+        "ace_03",
+        "acen-heroi",
+        "ace-17"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mini saia=>minissaia\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "hifen_04"
+      ],
+      "removed_ids": [
+        "hifen-07",
+        "hifen-minissaia",
+        "hifen_11",
+        "hifen-mini-saia-moda",
+        "hifen_mini_saia_super_resistente"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"taxar=>tachar\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "homofonos_06"
+      ],
+      "removed_ids": [
+        "homo-tachar-rotular",
+        "hom_15",
+        "homo-taxar-10",
+        "hom-tachar",
+        "homo-tachar-apelido"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"anexo=>anexos\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "cont-43"
+      ],
+      "removed_ids": [
+        "contexto_05",
+        "ctx-04",
+        "ctx_10",
+        "tec-16-concordancia-nominal",
+        "con-09"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"semi novo=>seminovo\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "hife-04"
+      ],
+      "removed_ids": [
+        "hife-56",
+        "hifen-seminovo",
+        "hifen-06",
+        "hife-27",
+        "hif_02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tem=>têm\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "acen-11"
+      ],
+      "removed_ids": [
+        "ace-08-tem-plural",
+        "acen-tem-04",
+        "acentuacao_02",
+        "ace-tem",
+        "ace_tem_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"do que=>a\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "cont-17"
+      ],
+      "removed_ids": [
+        "contexto_05",
+        "ctx_19",
+        "con_14",
+        "ctx_prefiro_do_que_01",
+        "con-013"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"com=>\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "cont-19"
+      ],
+      "removed_ids": [
+        "texto_tecnico_02",
+        "cont-namorar",
+        "ctx-07",
+        "ctx_namorar_01",
+        "ctx-namorar-com"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"devem=>deve\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "cont-30"
+      ],
+      "removed_ids": [
+        "con-21",
+        "cont-verbo-impessoal-2",
+        "ctx_23",
+        "ctx-23",
+        "cont-faz-frio"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sessão=>seção\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "homo-14"
+      ],
+      "removed_ids": [
+        "hom-27",
+        "homo-09",
+        "hom_03",
+        "hom-secao",
+        "homo-secao-compras"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"onibus=>ônibus\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "acen-44"
+      ],
+      "removed_ids": [
+        "acen-55",
+        "hifen_03",
+        "ace-14",
+        "ace_19",
+        "ace-045"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"cafe=>café\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "acen-52"
+      ],
+      "removed_ids": [
+        "acen-01",
+        "acentuacao_01",
+        "acen-01",
+        "ace-16",
+        "ace-036"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"=>o\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "anu_08"
+      ],
+      "removed_ids": [
+        "homofonos_03",
+        "anu-frete",
+        "anu-aniversariante",
+        "anu_frete_01",
+        "anun-entrega-gratis"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ítem=>item\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "acen-item"
+      ],
+      "removed_ids": [
+        "anun-combo",
+        "ace-018",
+        "ace-08",
+        "acen-item-lista",
+        "acent_item_polem"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"reinvindicar=>reivindicar\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "orto-07"
+      ],
+      "removed_ids": [
+        "orto-reivindicar",
+        "ort-08",
+        "ort_reivindicar_01",
+        "ort-reivindicar",
+        "ort-05-reiv-pix"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ultra som=>ultrassom\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "hife_05"
+      ],
+      "removed_ids": [
+        "hif_16",
+        "hifen_05",
+        "hif-034",
+        "hif_ultra_som_01",
+        "hif-22"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"açucar=>açúcar\"],\"groupCount\":1}",
+      "total_cases": 6,
+      "kept_ids": [
+        "acen-16"
+      ],
+      "removed_ids": [
+        "ace-22",
+        "ort-35",
+        "ace_12",
+        "ace-047",
+        "texto_tecnico_9"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"à=>a\",\"à=>a\"],\"groupCount\":2}",
+      "total_cases": 6,
+      "kept_ids": [
+        "acentuacao_007"
+      ],
+      "removed_ids": [
+        "acentuacao_018",
+        "anuncios_013",
+        "homofonos_020",
+        "texto_tecnico_020",
+        "texto_tecnico_015"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"segue anexo=>seguem anexas\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "tecn-relatorio-anexo"
+      ],
+      "removed_ids": [
+        "notas-anexas-concordancia",
+        "ctx-16",
+        "cont-anexo-adj",
+        "cont_anexo_concordancia"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"aonde=>onde\",\"onde=>aonde\"],\"groupCount\":2}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homo-05"
+      ],
+      "removed_ids": [
+        "homofonos_06",
+        "ctx-02",
+        "homo_onde_aonde",
+        "ctx-01-onde-aonde"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"superhomem=>super homem\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "hifen_05"
+      ],
+      "removed_ids": [
+        "hifen_06",
+        "hifen-super-homem",
+        "hif-13-super-homem",
+        "hif_super_homem_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"porque=>por que\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homofonos_03"
+      ],
+      "removed_ids": [
+        "homofonos_02",
+        "pont_05",
+        "homo-por-que-pergunta",
+        "pontuacao_010"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"descriminar=>discriminar\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homofonos_09"
+      ],
+      "removed_ids": [
+        "cont_06",
+        "homofonos_10",
+        "tec-descriminar-10",
+        "con_09"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"afim=>a fim\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homo-22"
+      ],
+      "removed_ids": [
+        "homofonos_10",
+        "ortografia_09",
+        "texto_tecnico_07",
+        "hom_afim_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"por que=>porque\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "pont-42"
+      ],
+      "removed_ids": [
+        "homof_03",
+        "homofonos_02",
+        "homo-porque-resposta",
+        "hom_2"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a cerca=>acerca\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "cont-acerca-a-cerca"
+      ],
+      "removed_ids": [
+        "homo_06",
+        "hom-22",
+        "hom_acerca_01",
+        "homo_acerca_a_cerca"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"caçar=>cassar\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homo-cassar"
+      ],
+      "removed_ids": [
+        "hom_29",
+        "hom-16-caçar-cassar",
+        "hom-cassar",
+        "homo-cassar-mandato"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"censo=>senso\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homo-censo"
+      ],
+      "removed_ids": [
+        "homofonos_08",
+        "hom-15-censo-senso",
+        "hom-senso",
+        "homo-bom-senso"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a=>em\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "tecn-nivel-de"
+      ],
+      "removed_ids": [
+        "anu-12",
+        "con_04",
+        "anu-033",
+        "tec-em-nivel-de"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"=>a\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "tecn-vossa-senhoria"
+      ],
+      "removed_ids": [
+        "contexto_11",
+        "con-21",
+        "anun_gratis_entrega",
+        "homofonos_14"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"que=>quê\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homo-09"
+      ],
+      "removed_ids": [
+        "homo-07",
+        "homo-por-que-final",
+        "hom_porque_03",
+        "pont-porque-final"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ver ele=>o vir\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "cont-17"
+      ],
+      "removed_ids": [
+        "ctx_15",
+        "contexto_02",
+        "ctx_se_eu_ver_01",
+        "cont-se-eu-ver"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"analizar=>analisar\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "orto-02"
+      ],
+      "removed_ids": [
+        "orto-analisar",
+        "ort-006",
+        "ort-analisar",
+        "orto-analisar-dados"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mecher=>mexer\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "orto-46"
+      ],
+      "removed_ids": [
+        "orto-54",
+        "orto-07",
+        "ort_09",
+        "orto-mexer"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"taxi=>táxi\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "acen-13"
+      ],
+      "removed_ids": [
+        "acen-18",
+        "ace_12",
+        "ace-29",
+        "ace-28"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"estuda=>estudam\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "cont-41"
+      ],
+      "removed_ids": [
+        "cont-23",
+        "cont-34",
+        "cont-50",
+        "con-14"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"anexo=>anexas\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "cont-39"
+      ],
+      "removed_ids": [
+        "con_5",
+        "ctx-06-anexo",
+        "ctx-anexo",
+        "tec-concordancia-anexo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"rapida=>rápida\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "anun-35"
+      ],
+      "removed_ids": [
+        "hifen_04",
+        "anunc_04",
+        "anun-25",
+        "anuncios_14"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ver=>vir\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "cont-50"
+      ],
+      "removed_ids": [
+        "ctx_21",
+        "con_21",
+        "ctx-25-se-eu-ver",
+        "con-25"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"na=>à\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "contx_05"
+      ],
+      "removed_ids": [
+        "con-42",
+        "anu_23",
+        "cont-cheguei-na-08",
+        "anun-venha-conferir"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"porque=>porquê\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "ortografia_12"
+      ],
+      "removed_ids": [
+        "hom_11",
+        "homofonos_13",
+        "homofonos_20",
+        "homofonos_4"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vir=>vier\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "contexto_02"
+      ],
+      "removed_ids": [
+        "ctx_22",
+        "cont-18",
+        "con-26",
+        "cont-quando-eu-vir"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ratificar=>retificar\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homo-retificar-corrigir"
+      ],
+      "removed_ids": [
+        "con_03",
+        "hom-12-ratificar-retificar",
+        "hom-retificar",
+        "tec-retificar-documento"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"cela=>sela\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homo-37"
+      ],
+      "removed_ids": [
+        "hom-18",
+        "homo-14",
+        "hom_28",
+        "homo-sela-cavalo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pólo=>polo\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "ace-14"
+      ],
+      "removed_ids": [
+        "ace-21",
+        "ace-polo",
+        "ace-11",
+        "acen-polo-norte"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"assembléia=>assembleia\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "ace-16"
+      ],
+      "removed_ids": [
+        "acen-assembleia-01",
+        "ace-006",
+        "acen-assembleia-geral",
+        "acentuacao_5"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"comprimento=>cumprimento\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "hom-28"
+      ],
+      "removed_ids": [
+        "hom_17",
+        "hom_26",
+        "hom-14-comprimento-cumprimento",
+        "hom-07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"=>me\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "cont-esquecer-se"
+      ],
+      "removed_ids": [
+        "ctx-05",
+        "ctx-esquecer-de",
+        "cont-esquecer-se-de",
+        "cont-lembrar-algo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"saíram=>saiu\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "ctx_10"
+      ],
+      "removed_ids": [
+        "cont-31",
+        "con-30",
+        "ctx_09",
+        "con-008"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"é=>são\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "anun-04"
+      ],
+      "removed_ids": [
+        "cont-09",
+        "con-15",
+        "con_9",
+        "con-022"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"iminente=>eminente\"],\"groupCount\":1}",
+      "total_cases": 5,
+      "kept_ids": [
+        "homo-32"
+      ],
+      "removed_ids": [
+        "hom-36",
+        "homo-eminente-notavel",
+        "hom-eminente",
+        "hom_eminente_02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"haverão=>haverá\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "haverao-mudancas-tempo"
+      ],
+      "removed_ids": [
+        "tec_25",
+        "ctx-24",
+        "con-01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"concerto=>conserto\",\"conserto=>concerto\"],\"groupCount\":2}",
+      "total_cases": 4,
+      "kept_ids": [
+        "homof_03"
+      ],
+      "removed_ids": [
+        "homo_conserto_concerto",
+        "ort_14",
+        "homo_conserto_concerto"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"discrição=>descrição\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ortografia_07"
+      ],
+      "removed_ids": [
+        "homofonos_07",
+        "orto-37",
+        "hom-descricao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"auto retrato=>autorretrato\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hifen_02"
+      ],
+      "removed_ids": [
+        "hife-05",
+        "hifen-19",
+        "hif-11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"extra curricular=>extracurricular\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hifen_07"
+      ],
+      "removed_ids": [
+        "hifen_04",
+        "hifen_04",
+        "hifen_06"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"através=>por meio\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "tecn-atraves"
+      ],
+      "removed_ids": [
+        "texto_tecnico_09",
+        "cont-23",
+        "tec-através-de"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pra=>para\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "anun_04"
+      ],
+      "removed_ids": [
+        "anuncios_05",
+        "ortografia_03",
+        "anu-012"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pode=>pôde\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "acent-pode"
+      ],
+      "removed_ids": [
+        "acen-pode",
+        "ctx_16",
+        "ace_pode_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"viagem=>viajem\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "homo-19"
+      ],
+      "removed_ids": [
+        "cont-viagem-viajem",
+        "hom_25",
+        "homo-viajem-verbo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"acento=>assento\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "homo-43"
+      ],
+      "removed_ids": [
+        "homo-acento",
+        "homo-acento-assento",
+        "hom-16"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"beneficio=>benefício\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "anun-custo-beneficio"
+      ],
+      "removed_ids": [
+        "anun_06",
+        "anunc_03",
+        "anunc_08"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"gratuíto=>gratuito\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "anu-06"
+      ],
+      "removed_ids": [
+        "anu-gratis",
+        "ace-06",
+        "ace_gratuito_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"online=>on line\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "anun-12"
+      ],
+      "removed_ids": [
+        "anu_39",
+        "anu_10",
+        "anu-15"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"=>e\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "pont-02"
+      ],
+      "removed_ids": [
+        "tec-13",
+        "pontuacao_16",
+        "anun-compre-um-leve-dois"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"o mini saia=>a minissaia\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hif_17"
+      ],
+      "removed_ids": [
+        "hif_21",
+        "hif-031",
+        "ort-28"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"compania=>companhia\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "orto-15"
+      ],
+      "removed_ids": [
+        "ort_28",
+        "orto-companhia",
+        "ort-companhia"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"album=>álbum\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "acen-17"
+      ],
+      "removed_ids": [
+        "ace-27",
+        "ace-26",
+        "ace-22"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"panamericanos=>pan americanos\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hife-14"
+      ],
+      "removed_ids": [
+        "hif-16-pan-americano",
+        "hifen-panamericano-04",
+        "hifen-pan-americano-jogos"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"iris=>íris\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hife-26"
+      ],
+      "removed_ids": [
+        "hife-19",
+        "hif_5",
+        "hif-28"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vi ele=>o vi\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "cont-06"
+      ],
+      "removed_ids": [
+        "con-20",
+        "con_15",
+        "con-011"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"faltaram=>faltou\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "cont-24"
+      ],
+      "removed_ids": [
+        "cont-mais-de-um",
+        "con_10",
+        "ctx_concordancia_verbal_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"chegaram=>chegou\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "cont-33"
+      ],
+      "removed_ids": [
+        "cont-11",
+        "con-32",
+        "ctx_22"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"agua=>água\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "acen-59"
+      ],
+      "removed_ids": [
+        "acen-49",
+        "pontu_05",
+        "acen-23"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mesmo=>mesma\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "cont-42"
+      ],
+      "removed_ids": [
+        "ctx-05",
+        "ctx-12",
+        "con-007"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"de=>\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "cont-28"
+      ],
+      "removed_ids": [
+        "con-37",
+        "hif-31",
+        "tec_14"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a=>as\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "con-019"
+      ],
+      "removed_ids": [
+        "ace-raiz",
+        "acen-raiz-planta",
+        "ace_raiz_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"prazeiroso=>prazeroso\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ort_23"
+      ],
+      "removed_ids": [
+        "orto-08",
+        "orto-prazeroso",
+        "ort-prazeroso"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"conciência=>consciência\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ort-32"
+      ],
+      "removed_ids": [
+        "orto-17",
+        "ort-053",
+        "ort-013"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"contra indicação=>contraindicação\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hifen-10"
+      ],
+      "removed_ids": [
+        "hif-28",
+        "hifen_06",
+        "hif-07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"juíz=>juiz\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ace-04"
+      ],
+      "removed_ids": [
+        "ace-05",
+        "ace_juiz_01",
+        "acen-juiz-sentenca"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"feiúra=>feiura\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ace-11-err"
+      ],
+      "removed_ids": [
+        "acen-feiura-07",
+        "ace-feiura",
+        "acen-feiura-extrema"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ultra sonografia=>ultrassonografia\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hif-13"
+      ],
+      "removed_ids": [
+        "hif_14",
+        "hif-18",
+        "hif-27"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"auto estrada=>autoestrada\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hife-22"
+      ],
+      "removed_ids": [
+        "hif_13",
+        "hif-30",
+        "hif-autoestrada"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vicisitudes=>vicissitudes\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "orto-vicissitude-09"
+      ],
+      "removed_ids": [
+        "ort-vicissitude",
+        "ort_vicissitude_01",
+        "orto-vicissitude-vida"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pêra=>pera\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ace-8"
+      ],
+      "removed_ids": [
+        "ace-pera",
+        "ace-15",
+        "acen-pera-fruta"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sessão=>cessão\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "homo-42"
+      ],
+      "removed_ids": [
+        "hom-007",
+        "hom-cessao",
+        "homo-cessao-direitos"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tinha=>havia\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "cont-12"
+      ],
+      "removed_ids": [
+        "cont-48",
+        "ctx_13",
+        "con-014"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"juri=>júri\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ace_11"
+      ],
+      "removed_ids": [
+        "ace-7",
+        "ace_20",
+        "ace-049"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"quiz=>quis\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ort_05"
+      ],
+      "removed_ids": [
+        "orto-50",
+        "ort-33",
+        "ort-30"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"hifen=>hífen\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ace_15"
+      ],
+      "removed_ids": [
+        "ace-17",
+        "hifen_06",
+        "ace_hifen_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"dispensa=>despensa\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "homo-29"
+      ],
+      "removed_ids": [
+        "homo-dispensa-despensa",
+        "hom-06",
+        "homofonos_018"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"lhe=>o\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "con-7"
+      ],
+      "removed_ids": [
+        "ctx-28",
+        "ctx_26",
+        "cont-pronome-04"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"seção=>cessão\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hom-26"
+      ],
+      "removed_ids": [
+        "hom-51",
+        "hom_02",
+        "hom-01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"proxima=>próxima\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "ace-15"
+      ],
+      "removed_ids": [
+        "ace-46",
+        "acentuacao_14",
+        "anuncios_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"micro computador=>microcomputador\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "hife-35"
+      ],
+      "removed_ids": [
+        "hif-43",
+        "hif_18",
+        "hifen_19"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"porquê=>porque\"],\"groupCount\":1}",
+      "total_cases": 4,
+      "kept_ids": [
+        "cont_06"
+      ],
+      "removed_ids": [
+        "pontuacao_04",
+        "contexto_15",
+        "homofonos_10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sessão=>seção\",\"seção=>sessão\"],\"groupCount\":2}",
+      "total_cases": 4,
+      "kept_ids": [
+        "homofonos_02"
+      ],
+      "removed_ids": [
+        "homo_04",
+        "homofonos_04",
+        "homofonos_1"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mal=>mau\",\"mau=>mal\"],\"groupCount\":2}",
+      "total_cases": 4,
+      "kept_ids": [
+        "homof_04"
+      ],
+      "removed_ids": [
+        "homofonos_01",
+        "homo-01",
+        "hom-01-mau-mal"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"agente=>a gente\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "homo-21"
+      ],
+      "removed_ids": [
+        "agente-amanha-reuniao",
+        "anu-17"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"á=>a\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun-sabado"
+      ],
+      "removed_ids": [
+        "anun-a-vista",
+        "alugo-casa-crase-distancia"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"fasso=>faço\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "faco-questao-ortografia"
+      ],
+      "removed_ids": [
+        "orto-17",
+        "orto-45"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"oferta=>ofertas\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun-oferta-pl"
+      ],
+      "removed_ids": [
+        "oferta-plural-fim-ano",
+        "anu-6"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a=>há\",\"atrás=>\"],\"groupCount\":2}",
+      "total_cases": 3,
+      "kept_ids": [
+        "cont-25"
+      ],
+      "removed_ids": [
+        "con-26",
+        "hom_12"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"proibido=>proibida a\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "contexto_09"
+      ],
+      "removed_ids": [
+        "anu_proibido_01",
+        "anun_proibido_estacionar"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"espectativa=>expectativa\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ortografia_09"
+      ],
+      "removed_ids": [
+        "ortografia_11",
+        "tec_11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"fabrica=>fábrica\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun-32"
+      ],
+      "removed_ids": [
+        "acentuacao_08",
+        "an-13-qualidade"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"atrás=>\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "contexto_05"
+      ],
+      "removed_ids": [
+        "ctx-12-ha-dez-anos-atras",
+        "ctx_ha_faz_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"de mais=>demais\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "homofonos_01"
+      ],
+      "removed_ids": [
+        "homof_05",
+        "hom-29"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"coser=>cozer\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "homofonos_07"
+      ],
+      "removed_ids": [
+        "hom-18-coser-cozer",
+        "hom-043"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"facil=>fácil\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anuncios_12"
+      ],
+      "removed_ids": [
+        "ad-5",
+        "ace-27-facil"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"bastantes=>bastante\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "contexto_08"
+      ],
+      "removed_ids": [
+        "ctx-bastante-adv",
+        "cont_bastante_adjetivo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"senso=>censo\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "homofonos_05"
+      ],
+      "removed_ids": [
+        "hom-censo",
+        "homo-censo-demografico"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"imperdiveis=>imperdíveis\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun_02"
+      ],
+      "removed_ids": [
+        "anuncios_01",
+        "anuncios_06"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"valida=>válida\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anuncios_03"
+      ],
+      "removed_ids": [
+        "anun-19",
+        "anuncios_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"analise=>análise\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acentuacao_05"
+      ],
+      "removed_ids": [
+        "tecn-33",
+        "texto_tecnico_10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"analize=>análise\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-analize"
+      ],
+      "removed_ids": [
+        "tecn-analize",
+        "orto-01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"atrazado=>atrasado\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-atrazado"
+      ],
+      "removed_ids": [
+        "tec_12",
+        "orto_11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"anciedade=>ansiedade\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-anciedade"
+      ],
+      "removed_ids": [
+        "orto-09",
+        "orto-ansiedade"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"metereologia=>meteorologia\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-metereologia"
+      ],
+      "removed_ids": [
+        "orto-meteorologia",
+        "ort-meteorologia"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pretenção=>pretensão\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-pretencao"
+      ],
+      "removed_ids": [
+        "ort-pretensao",
+        "orto-pretensao-salarial"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"praseroso=>prazeroso\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-praseroso"
+      ],
+      "removed_ids": [
+        "ort_prazeroso_01",
+        "orto-prazeroso-viagem"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"extender=>estender\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-estender"
+      ],
+      "removed_ids": [
+        "orto-15",
+        "orto_09"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tambem=>também\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acent-tambem"
+      ],
+      "removed_ids": [
+        "acento-2",
+        "ace_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"aniversario=>aniversário\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-50"
+      ],
+      "removed_ids": [
+        "acent-aniversario",
+        "anu-046"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"concertar=>consertar\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "contexto-conserto-casa"
+      ],
+      "removed_ids": [
+        "hom-25",
+        "hom-006"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"conserta=>consertam\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anu-13"
+      ],
+      "removed_ids": [
+        "anu_21",
+        "anu-17"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"durar o estoque=>durarem os estoques\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anu_16"
+      ],
+      "removed_ids": [
+        "anu-limite-estoque",
+        "anun-enquanto-durar"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"entertenimento=>entretenimento\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-11"
+      ],
+      "removed_ids": [
+        "orto-entretenimento",
+        "orto-entretenimento-10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vultuoso=>vultoso\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-21"
+      ],
+      "removed_ids": [
+        "ort-13",
+        "ort-07-vultuoso"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"obcessão=>obsessão\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-23"
+      ],
+      "removed_ids": [
+        "ort_obsessao_01",
+        "orto-obsessao-limpeza"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"alguem=>alguém\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-02"
+      ],
+      "removed_ids": [
+        "acen-alguem",
+        "ace-07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"manda chuva=>mandachuva\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hife-60"
+      ],
+      "removed_ids": [
+        "hife-21",
+        "hifen-manda-chuva-chefe"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"heroi=>herói\",\"historia=>história\"],\"groupCount\":2}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-35"
+      ],
+      "removed_ids": [
+        "ace-17",
+        "acen-49"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ceu=>céu\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-38"
+      ],
+      "removed_ids": [
+        "acen-34",
+        "ace-32"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"robo=>robô\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-42"
+      ],
+      "removed_ids": [
+        "ace-30",
+        "ace-20"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"lampada=>lâmpada\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-43"
+      ],
+      "removed_ids": [
+        "acen-54",
+        "ace-13"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"maquina=>máquina\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-45"
+      ],
+      "removed_ids": [
+        "acen-56",
+        "tecn-32"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"interviu=>interveio\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "cont-49"
+      ],
+      "removed_ids": [
+        "con-27",
+        "con-27"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"assento=>acento\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "homo-44"
+      ],
+      "removed_ids": [
+        "hom-17",
+        "hom-17-assento-acento"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"essa=>esta\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anu_08"
+      ],
+      "removed_ids": [
+        "anun-edicao-limitada",
+        "anun-chamada-acao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"rítmo=>ritmo\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ace-32"
+      ],
+      "removed_ids": [
+        "ort-16",
+        "ort-12"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"recem=>recém\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hifen_05"
+      ],
+      "removed_ids": [
+        "hif-recem-nascido",
+        "hifen-04"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"concenso=>consenso\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "orto-10"
+      ],
+      "removed_ids": [
+        "orto_07",
+        "orto-consenso"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"voce=>você\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-02"
+      ],
+      "removed_ids": [
+        "anun_06",
+        "acentuacao_02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"incriveis=>incríveis\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anuncios_04"
+      ],
+      "removed_ids": [
+        "ace-11",
+        "anuncios_16"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"aos=>dos\",\"de=>ao\"],\"groupCount\":2}",
+      "total_cases": 3,
+      "kept_ids": [
+        "tecn_04"
+      ],
+      "removed_ids": [
+        "con_02",
+        "ctx-ao-encontro-de"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"maiores=>mais\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun-maiores-09"
+      ],
+      "removed_ids": [
+        "anun_contato_anunciante",
+        "anu-03-maiores-info"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"duvidas=>dúvidas\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acent-19"
+      ],
+      "removed_ids": [
+        "acentuacao_15",
+        "homofonos_15"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"há=>a\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ctx-10"
+      ],
+      "removed_ids": [
+        "ctx-haver-distancia",
+        "homofonos_13"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"micro serviços=>microsserviços\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "tec-07"
+      ],
+      "removed_ids": [
+        "tec-25",
+        "tec-26"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"manter=>mantiver\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "con_20"
+      ],
+      "removed_ids": [
+        "ctx-15",
+        "con-24"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"buffet=>bufê\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anu-26"
+      ],
+      "removed_ids": [
+        "anu_buffet_01",
+        "anu-018"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"subzídio=>subsídio\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "tec-22-subsidio-tec"
+      ],
+      "removed_ids": [
+        "ort-20-subsidio",
+        "orto-subsidio-governo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"benção=>bênção\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ace_18"
+      ],
+      "removed_ids": [
+        "ace-30",
+        "ace-24-bençao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"amigavel=>amigável\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ace_23"
+      ],
+      "removed_ids": [
+        "tec-12",
+        "ace-26-amigavel"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a nível=>em termos\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "con-8"
+      ],
+      "removed_ids": [
+        "ctx-16-a-nivel-de",
+        "con-03"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"porquê=>por que\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hom-05-por-que-por-que"
+      ],
+      "removed_ids": [
+        "pontuacao_020",
+        "acentuacao_016"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"descrição=>discrição\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hom-08-descricao-discricao"
+      ],
+      "removed_ids": [
+        "hom-discrecao",
+        "ort-020"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"infligir=>infringir\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hom-46"
+      ],
+      "removed_ids": [
+        "hom-22-infligir-infringir",
+        "hom-infringir"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"imbativeis=>imbatíveis\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun-45"
+      ],
+      "removed_ids": [
+        "anu-04",
+        "an-03-precos-imbativeis"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"inalguração=>inauguração\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun_inalguracao_sabado"
+      ],
+      "removed_ids": [
+        "anun-inauguracao",
+        "an-15-convite"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"crêem=>creem\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ace-4"
+      ],
+      "removed_ids": [
+        "ace-creem",
+        "acen-creem-vontade"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"disconto=>desconto\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun-baixe-nosso-app"
+      ],
+      "removed_ids": [
+        "anun-liquidacao-estoque",
+        "anu-02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tijela=>tigela\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ort_21"
+      ],
+      "removed_ids": [
+        "ort-22",
+        "ort-028"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"acender=>ascender\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hom-11"
+      ],
+      "removed_ids": [
+        "homo-acender-08",
+        "hom-012"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"anti corpo=>anticorpo\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hifen-1"
+      ],
+      "removed_ids": [
+        "hif-051",
+        "hif-035"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sombrancelha=>sobrancelha\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ort_08"
+      ],
+      "removed_ids": [
+        "ort-sobrancelha",
+        "ort_sobrancelha_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"grátis=>\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ctx_29"
+      ],
+      "removed_ids": [
+        "anu-06",
+        "con_44"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"fez=>fiz\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "cont-07"
+      ],
+      "removed_ids": [
+        "cont-sujeito-composto",
+        "ctx-10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a=>o\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hifen-04"
+      ],
+      "removed_ids": [
+        "tech-banco-dados",
+        "ace_21"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"super interessante=>superinteressante\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hife-12"
+      ],
+      "removed_ids": [
+        "hif_03",
+        "hif-02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"micro sistema=>microssistema\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hif-26"
+      ],
+      "removed_ids": [
+        "hif_41",
+        "hif_micro_sistema_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"contra senso=>contrassenso\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hif-49"
+      ],
+      "removed_ids": [
+        "hif_19",
+        "ort-27"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"hífens=>hifens\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "ace-hifens"
+      ],
+      "removed_ids": [
+        "ace_hifens_01",
+        "ace-26"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"=>os\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anun-07"
+      ],
+      "removed_ids": [
+        "anu-cartao",
+        "anu-precos-baixos"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"para quedas=>paraquedas\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "hife-43"
+      ],
+      "removed_ids": [
+        "hif-48",
+        "hif_12"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"familia=>família\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "acen-27"
+      ],
+      "removed_ids": [
+        "anun-10",
+        "acentuacao_18"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ultimas=>últimas\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "anuncios_13"
+      ],
+      "removed_ids": [
+        "anuncios_20",
+        "texto_tecnico_06"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"preciza=>precisa\"],\"groupCount\":1}",
+      "total_cases": 3,
+      "kept_ids": [
+        "tecnico-06"
+      ],
+      "removed_ids": [
+        "pontuacao_19",
+        "texto_tecnico_16"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"as=>às\",\"seção=>sessão\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "reuniao-corporativa-sessao"
+      ],
+      "removed_ids": [
+        "homofonos_06"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"paralizia=>paralisia\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ortografia-paralisia"
+      ],
+      "removed_ids": [
+        "ort_41"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"relatorio=>relatório\",\"voce ja=>você já\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acentuacao-relatorio"
+      ],
+      "removed_ids": [
+        "acent-01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"antiinflamatorio=>anti inflamatório\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen-anti-inflamatorio"
+      ],
+      "removed_ids": [
+        "hifen_03"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"imperdivel=>imperdível\",\"incriveis=>incríveis\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anuncios_01"
+      ],
+      "removed_ids": [
+        "anu_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ascenção=>ascensão\",\"pretenção=>pretensão\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_02"
+      ],
+      "removed_ids": [
+        "orto_pretensao_ascensao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"heróico=>heroico\",\"idéia=>ideia\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acent_ideia_heroico"
+      ],
+      "removed_ids": [
+        "ace-01-ideia-heroi"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pode=>pôde\",\"pôde=>pode\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-po-09"
+      ],
+      "removed_ids": [
+        "acent_pode_pode"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"enjôo=>enjoo\",\"vôo=>voo\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acent_voo_enjoo"
+      ],
+      "removed_ids": [
+        "ace-02-enjoo-voo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"juizes=>juízes\",\"juíz=>juiz\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-17-juiz-juizes"
+      ],
+      "removed_ids": [
+        "acent_juiz_juizes"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"panamericano=>pan americanos\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen_panamericano_circumadjacente"
+      ],
+      "removed_ids": [
+        "hif-04-super-pan"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"o mesmo=>ele se\",\"se=>\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx-18-mesmo-pronome"
+      ],
+      "removed_ids": [
+        "cont_pronome_mesmo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"esceção=>exceção\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ortografia_03"
+      ],
+      "removed_ids": [
+        "ortografia_03"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"exelente=>excelente\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ortografia_04"
+      ],
+      "removed_ids": [
+        "ortografia_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"prazeirosa=>prazerosa\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-18"
+      ],
+      "removed_ids": [
+        "ortografia_05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"exito=>êxito\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acentuacao_10"
+      ],
+      "removed_ids": [
+        "tecn-35"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"o=>\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "contexto_09"
+      ],
+      "removed_ids": [
+        "pont-39"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"senão=>se não\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "contexto_10"
+      ],
+      "removed_ids": [
+        "hom_se_não_02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"propria=>própria\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anuncios_10"
+      ],
+      "removed_ids": [
+        "acen-propria"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"necessita=>necessitam\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "texto_tecnico_01"
+      ],
+      "removed_ids": [
+        "contexto_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"serem=>ser\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "texto_tecnico_04"
+      ],
+      "removed_ids": [
+        "con-31"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sobre=>\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "texto_tecnico_12"
+      ],
+      "removed_ids": [
+        "con_11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"anciosso=>ansioso\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto_02"
+      ],
+      "removed_ids": [
+        "ortografia_04"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"reuniao=>reunião\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acentuacao_11"
+      ],
+      "removed_ids": [
+        "acen-reuniao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"email=>e mail\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "pont-4"
+      ],
+      "removed_ids": [
+        "hifen_02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"auto serviço=>autoatendimento\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen-03"
+      ],
+      "removed_ids": [
+        "hifen_05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"varios=>vários\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anuncios_10"
+      ],
+      "removed_ids": [
+        "acen-varios"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"usuario=>usuário\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "texto_tecnico_03"
+      ],
+      "removed_ids": [
+        "tecnico-acesso-sistema"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"microserviços=>microsserviços\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "texto_tecnico_12"
+      ],
+      "removed_ids": [
+        "tecn-42"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"parabens=>parabéns\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acent-parabens"
+      ],
+      "removed_ids": [
+        "ace-22-parabens"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"microonibus=>micro ônibus\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen-microonibus"
+      ],
+      "removed_ids": [
+        "hif-micro-onibus"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"perca=>perda\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-perca-perda"
+      ],
+      "removed_ids": [
+        "ctx_perca_perda_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"cheque=>xeque\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo-xeque"
+      ],
+      "removed_ids": [
+        "homo-16"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"passo=>paço\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo-paco"
+      ],
+      "removed_ids": [
+        "hom-24-paço-passo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"domicilio=>domicílio\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun-domicilio"
+      ],
+      "removed_ids": [
+        "anun-06"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"curriculo=>currículo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun-curriculo"
+      ],
+      "removed_ids": [
+        "anu-007"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"proximo=>próximo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun-proximo"
+      ],
+      "removed_ids": [
+        "anun-18"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ao=>do\",\"de=>ao\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tecn-de-encontro"
+      ],
+      "removed_ids": [
+        "ctx-11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"deve se ezitar=>se deve hesitar\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_hesitar_01"
+      ],
+      "removed_ids": [
+        "orto-hesitar-decisao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"heroi=>herói\",\"patria=>pátria\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-60"
+      ],
+      "removed_ids": [
+        "ace-034"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"o auto ajuda=>a autoajuda\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif_23"
+      ],
+      "removed_ids": [
+        "hif-039"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"apartir=>a partir\",\"vende=>vendem\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun_vende_apartir"
+      ],
+      "removed_ids": [
+        "anun-vendese-apartir"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"concerteza=>com certeza\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-10"
+      ],
+      "removed_ids": [
+        "ort-13"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"iorgute=>iogurte\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-16"
+      ],
+      "removed_ids": [
+        "ort-10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"chícara=>xícara\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-29"
+      ],
+      "removed_ids": [
+        "ort-034"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"orgao=>órgão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-18"
+      ],
+      "removed_ids": [
+        "ace_orgao_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"orfão=>órfão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-19"
+      ],
+      "removed_ids": [
+        "ace_28"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"util=>útil\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-22"
+      ],
+      "removed_ids": [
+        "ace_25"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ingles=>inglês\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-24"
+      ],
+      "removed_ids": [
+        "anun-15"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vova=>vovó\",\"vovo=>vovô\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-25"
+      ],
+      "removed_ids": [
+        "acen-05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"musica=>música\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-27"
+      ],
+      "removed_ids": [
+        "ace-20"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"alugam=>aluga\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-07"
+      ],
+      "removed_ids": [
+        "con-033"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"meio=>meia\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-10"
+      ],
+      "removed_ids": [
+        "ctx-13-err"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"do=>o\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-16"
+      ],
+      "removed_ids": [
+        "cont-44"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"veio=>vieram\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-25"
+      ],
+      "removed_ids": [
+        "cont-05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"gostam=>gosta\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-26"
+      ],
+      "removed_ids": [
+        "con_23"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"estais=>está\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-27"
+      ],
+      "removed_ids": [
+        "con-041"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"enchada=>enxada\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-44"
+      ],
+      "removed_ids": [
+        "ort-50"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"semi árido=>semiárido\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hife-46"
+      ],
+      "removed_ids": [
+        "hif-005"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"quite=>quites\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-44"
+      ],
+      "removed_ids": [
+        "con_30"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vão=>vai\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-47"
+      ],
+      "removed_ids": [
+        "ctx_028"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"previlegiado=>privilegiado\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-51"
+      ],
+      "removed_ids": [
+        "orto-13"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"segue anexo=>seguem anexos\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx_11"
+      ],
+      "removed_ids": [
+        "con-11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"essa=>esta\",\"imperdivel=>imperdível\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anu_01"
+      ],
+      "removed_ids": [
+        "anuncios_10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pos=>pós\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen_01"
+      ],
+      "removed_ids": [
+        "hif-pos-graduacao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"limpesa=>limpeza\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "an-23-serviços-limpeza"
+      ],
+      "removed_ids": [
+        "anu-vaga-disponivel"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"exercicio fisico=>exercício físico\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-44"
+      ],
+      "removed_ids": [
+        "ace-45"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"auto escola=>autoescola\",\"microondas=>micro ondas\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif-51"
+      ],
+      "removed_ids": [
+        "hif_1"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"comprensão=>compreensão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto_08"
+      ],
+      "removed_ids": [
+        "orto-compreensao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ancioso=>ansioso\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_02"
+      ],
+      "removed_ids": [
+        "orto_10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"discursão=>discussão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto_12"
+      ],
+      "removed_ids": [
+        "orto-11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"bemvindo=>bem vindo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen_04"
+      ],
+      "removed_ids": [
+        "hif-03-bem-vindo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"bastante=>bastantes\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "contx_11"
+      ],
+      "removed_ids": [
+        "ctx-05-bastante-bastantes"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"porisso=>por isso\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo_04"
+      ],
+      "removed_ids": [
+        "ortografia_11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vem=>vêm\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acentuacao_09"
+      ],
+      "removed_ids": [
+        "ace-vem"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"contra proposta=>contraproposta\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen_04"
+      ],
+      "removed_ids": [
+        "hifen_09"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vultuosa=>vultosa\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_08"
+      ],
+      "removed_ids": [
+        "hom-vultoso"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sub gerente=>subgerente\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen-05"
+      ],
+      "removed_ids": [
+        "hif_08"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"altissima=>altíssima\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen-01"
+      ],
+      "removed_ids": [
+        "anu_05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ate=>até\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anu_06"
+      ],
+      "removed_ids": [
+        "anu_12"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tres=>três\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tec_03"
+      ],
+      "removed_ids": [
+        "anu-047"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"raíz=>raiz\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-16-raiz-raizes"
+      ],
+      "removed_ids": [
+        "acent_raiz_raizes"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"me empresta=>empresta me\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "con_16"
+      ],
+      "removed_ids": [
+        "cont_pronome_clitico_inicio"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"macro econômica=>macroeconômica\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tec-07"
+      ],
+      "removed_ids": [
+        "tec_analise_macroeconomica"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"fluído=>fluido\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace_fluido_01"
+      ],
+      "removed_ids": [
+        "tec_manutencao_preventiva"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"beneficience=>beneficente\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-03"
+      ],
+      "removed_ids": [
+        "orto-beneficente-evento"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vizualizar=>visualizar\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-12"
+      ],
+      "removed_ids": [
+        "orto-10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"neo liberalismo=>neoliberalismo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen-20"
+      ],
+      "removed_ids": [
+        "hif_18"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"esperiência=>experiência\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun-04"
+      ],
+      "removed_ids": [
+        "anun-estamos-contratando"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"parametro=>parâmetro\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tec-08"
+      ],
+      "removed_ids": [
+        "tec-07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mecheram=>mexeram\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_7"
+      ],
+      "removed_ids": [
+        "ort-11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"platéia=>plateia\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-14"
+      ],
+      "removed_ids": [
+        "ace-02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"averigúe=>averigue\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-07"
+      ],
+      "removed_ids": [
+        "ace-averigue"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vêem=>veem\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-12"
+      ],
+      "removed_ids": [
+        "ace-002"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"jóia=>joia\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-joia"
+      ],
+      "removed_ids": [
+        "ace-13"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"semi final=>semifinal\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif-12"
+      ],
+      "removed_ids": [
+        "hifen_10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"alertas=>alerta\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx-04-err"
+      ],
+      "removed_ids": [
+        "ctx-alerta"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"meios=>meio\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx-06"
+      ],
+      "removed_ids": [
+        "con-035"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"lhes=>os\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "con_31"
+      ],
+      "removed_ids": [
+        "ctx-14"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"query=>consulta\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tec-29"
+      ],
+      "removed_ids": [
+        "tec-032"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"obsecado=>obcecado\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort-11-obcecado"
+      ],
+      "removed_ids": [
+        "ort-obcecado"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"alibi=>álibi\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-12-alibi"
+      ],
+      "removed_ids": [
+        "acen-alibi-perfeito"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"interim=>ínterim\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-15-interim"
+      ],
+      "removed_ids": [
+        "ace_interim_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"concervação=>conservação\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anu_12"
+      ],
+      "removed_ids": [
+        "hif-08-semi-novo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"vicediretor=>vice diretor\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif-12-vice-diretor"
+      ],
+      "removed_ids": [
+        "hif_vice_diretor_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"exnamorado=>ex namorado\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif-21-ex-namorado"
+      ],
+      "removed_ids": [
+        "hifen-ex-namorado-encontro"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pósgraduação=>pós graduação\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif-22-pos-graduaçao"
+      ],
+      "removed_ids": [
+        "hifen-pos-graduacao-curso"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"precisam=>precisa\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-precisa-se"
+      ],
+      "removed_ids": [
+        "ctx-11-precisa-se"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"os=>aos\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx-15-obediencia-a"
+      ],
+      "removed_ids": [
+        "con-20"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"insipiente=>incipiente\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hom-21-incipiente-insipiente"
+      ],
+      "removed_ids": [
+        "homo-incipiente-inicio"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mandato=>mandado\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hom_10"
+      ],
+      "removed_ids": [
+        "hom-23-mandado-mandato"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"conceção=>concessão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-concessao-licenca"
+      ],
+      "removed_ids": [
+        "homofonos_008"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"extenção=>extensão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort-extensao"
+      ],
+      "removed_ids": [
+        "orto-extensao-arquivo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"compreenção=>compreensão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort-19"
+      ],
+      "removed_ids": [
+        "orto-compreensao-texto"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"xuxu=>chuchu\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-chuchu"
+      ],
+      "removed_ids": [
+        "orto-chuchu-legume"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ruido=>ruído\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-ruido"
+      ],
+      "removed_ids": [
+        "acen-ruido-estranho"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"guardachuva=>guarda chuva\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen-guarda-chuva"
+      ],
+      "removed_ids": [
+        "hifen-guarda-chuva-aberto"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mão=>mãos\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-em-mao-maos"
+      ],
+      "removed_ids": [
+        "tec-em-mao-oficio"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"obrigado=>obrigada\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx-obrigado"
+      ],
+      "removed_ids": [
+        "cont-obrigado-fem"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mantem=>mantêm\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-09"
+      ],
+      "removed_ids": [
+        "cont-manter-plural"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"cassar=>caçar\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hom-cacar"
+      ],
+      "removed_ids": [
+        "homo-caçar-animal"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"limitada=>limitadas\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun-vagas-limitadas"
+      ],
+      "removed_ids": [
+        "anuncios_3"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"rítimo=>ritmo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_26"
+      ],
+      "removed_ids": [
+        "ort-014"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"estenção=>extensão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort-019"
+      ],
+      "removed_ids": [
+        "ort-15"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"enjôo=>enjoo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-008"
+      ],
+      "removed_ids": [
+        "ace-enjoo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"em anexo=>anexas\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "con-003"
+      ],
+      "removed_ids": [
+        "ctx_anexo_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"chego=>chegado\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "con_22"
+      ],
+      "removed_ids": [
+        "con-024"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"acerca=>a cerca\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hom-004"
+      ],
+      "removed_ids": [
+        "hom_ha_cerca_02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"secção=>seção\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo_02"
+      ],
+      "removed_ids": [
+        "hom-009"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ascender=>acender\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo-25"
+      ],
+      "removed_ids": [
+        "hom-013"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sintáxe=>sintaxe\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tec_8"
+      ],
+      "removed_ids": [
+        "tec-001"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"nos=>nós\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anu-045"
+      ],
+      "removed_ids": [
+        "anu-031"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"conciencioso=>consciencioso\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-consciencioso-07"
+      ],
+      "removed_ids": [
+        "ort-043"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"otimo=>ótimo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun-22"
+      ],
+      "removed_ids": [
+        "ace-043"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sofa=>sofá\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-28"
+      ],
+      "removed_ids": [
+        "ace-050"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"cabelereiro=>cabeleireiro\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_04"
+      ],
+      "removed_ids": [
+        "orto-cabeleireiro"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"carangueijo=>caranguejo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_15"
+      ],
+      "removed_ids": [
+        "ort-caranguejo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"impecilho=>empecilho\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_24"
+      ],
+      "removed_ids": [
+        "ort_empecilho_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"chuchu=>xuxu\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_29"
+      ],
+      "removed_ids": [
+        "ort-31"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"frequencia=>frequência\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace_20"
+      ],
+      "removed_ids": [
+        "ace_24"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"lapis=>lápis\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace_27"
+      ],
+      "removed_ids": [
+        "ace-21"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"virus=>vírus\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace_28"
+      ],
+      "removed_ids": [
+        "ace_29"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"benvindo=>bem vindo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif_05"
+      ],
+      "removed_ids": [
+        "hif_bem_vindo_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"interracial=>inter racial\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif_15"
+      ],
+      "removed_ids": [
+        "hif-inter-racial"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tratam=>trata\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx_09"
+      ],
+      "removed_ids": [
+        "con_27"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sabado=>sábado\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anu_06"
+      ],
+      "removed_ids": [
+        "ace-48"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"extravazar=>extravasar\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-extravasar"
+      ],
+      "removed_ids": [
+        "ort_extravasar_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mortandela=>mortadela\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "orto-mortadela"
+      ],
+      "removed_ids": [
+        "ort_mortadela_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"estrategia=>estratégia\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-estrategia"
+      ],
+      "removed_ids": [
+        "acen-46"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"posgraduação=>pós graduação\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen-pos-graduacao"
+      ],
+      "removed_ids": [
+        "hifen_04"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"faz=>faça\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun-faca-ja"
+      ],
+      "removed_ids": [
+        "contexto_10"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"as=>ás\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_28"
+      ],
+      "removed_ids": [
+        "hom_35"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"conteudo=>conteúdo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace_07"
+      ],
+      "removed_ids": [
+        "ace-conteudo"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"biquini=>biquíni\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace_16"
+      ],
+      "removed_ids": [
+        "ace-18"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"fe=>fé\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace-22"
+      ],
+      "removed_ids": [
+        "ace_22"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sobre coxa=>sobrecoxa\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif-7"
+      ],
+      "removed_ids": [
+        "hif_09"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pseudo intelectual=>pseudointelectual\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif_20"
+      ],
+      "removed_ids": [
+        "hif-17"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"retro projetor=>retroprojetor\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hif_21"
+      ],
+      "removed_ids": [
+        "hif-18"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"anti corrosão=>anticorrosão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen_02"
+      ],
+      "removed_ids": [
+        "hif_30"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"cidadões=>cidadãos\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx_25"
+      ],
+      "removed_ids": [
+        "ctx-cidadaos"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"cessão=>sessão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hom_04"
+      ],
+      "removed_ids": [
+        "hom-02-sessao-secao"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tráfico=>tráfego\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hom_21"
+      ],
+      "removed_ids": [
+        "hom-08"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"necessário=>necessária\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "con_28"
+      ],
+      "removed_ids": [
+        "ctx-30"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"retificar=>ratificar\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tec-ratificar-07"
+      ],
+      "removed_ids": [
+        "hom-ratificar"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pretesto=>pretexto\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort_12"
+      ],
+      "removed_ids": [
+        "ort-14"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"rúbrica=>rubrica\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ace_rubrica_01"
+      ],
+      "removed_ids": [
+        "ace-07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"concientizar=>conscientizar\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ort-conscientizar"
+      ],
+      "removed_ids": [
+        "ortografia_8"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"infringir=>infligir\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hom-47"
+      ],
+      "removed_ids": [
+        "hom-infligir"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"10 x=>10x\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anu-parcelas"
+      ],
+      "removed_ids": [
+        "anu_parcela_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"o=>do\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "cont-45"
+      ],
+      "removed_ids": [
+        "ctx_esqueci_do_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tunel=>túnel\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-39"
+      ],
+      "removed_ids": [
+        "ace-25"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"armario=>armário\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-38"
+      ],
+      "removed_ids": [
+        "ace-42"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"relogio=>relógio\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-26"
+      ],
+      "removed_ids": [
+        "ace-43"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"passaro=>pássaro\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-14"
+      ],
+      "removed_ids": [
+        "ace-47"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"metodo=>método\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acen-47"
+      ],
+      "removed_ids": [
+        "ace-49"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"agro negócio=>agronegócio\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen_vice_agro"
+      ],
+      "removed_ids": [
+        "hif-19"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"semi nova=>seminova\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anu-29"
+      ],
+      "removed_ids": [
+        "anu_28"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"o infra estrutura=>a infraestrutura\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hife-09"
+      ],
+      "removed_ids": [
+        "hifen_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"denovo=>de novo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo-11"
+      ],
+      "removed_ids": [
+        "tecn-02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"demaziado=>demasiadamente\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo-21"
+      ],
+      "removed_ids": [
+        "tecn-48"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"despensa=>dispensa\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ctx-07"
+      ],
+      "removed_ids": [
+        "homo-30"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"maquinas=>máquinas\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anun-40"
+      ],
+      "removed_ids": [
+        "anu_9"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"horario=>horário\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen_02"
+      ],
+      "removed_ids": [
+        "tecn-19"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"inteligencia=>inteligência\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tecn-31"
+      ],
+      "removed_ids": [
+        "tec-05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"eficiencia=>eficiência\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "tecn-40"
+      ],
+      "removed_ids": [
+        "texto_tecnico_05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"pode=>pôde\",\"porquê=>porque\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homofonos_05"
+      ],
+      "removed_ids": [
+        "ortografia_05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"se nao=>senão\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homofonos_11"
+      ],
+      "removed_ids": [
+        "ortografia_08"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"=>em\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "ortografia_18"
+      ],
+      "removed_ids": [
+        "anuncios_16"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"quê=>que\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acentuacao_05"
+      ],
+      "removed_ids": [
+        "homofonos_3"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sub secretario=>subsecretário\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "hifen_06"
+      ],
+      "removed_ids": [
+        "hifen_05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"calculo=>cálculo\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acentuacao_17"
+      ],
+      "removed_ids": [
+        "hifen_11"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"amanha=>amanhã\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "pontuacao_04"
+      ],
+      "removed_ids": [
+        "pontuacao_06"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"relampago=>relâmpago\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anunc-01"
+      ],
+      "removed_ids": [
+        "anuncios_02"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ele=>o\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anuncios_06"
+      ],
+      "removed_ids": [
+        "pontuacao_05"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"matriculas=>matrículas\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anuncios_11"
+      ],
+      "removed_ids": [
+        "anuncios_14"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"ninguem=>ninguém\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "pontuacao_10"
+      ],
+      "removed_ids": [
+        "pontuacao_16"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"=>de\",\"aonde=>onde\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anuncios_02"
+      ],
+      "removed_ids": [
+        "contexto_20"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"traz=>trás\",\"trás=>traz\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homofonos_07"
+      ],
+      "removed_ids": [
+        "hom-03-traz-tras"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"porquê=>por que\",\"quê=>que\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homofonos_09"
+      ],
+      "removed_ids": [
+        "homofonos_18"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"sessão=>cessão\",\"seção=>sessão\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo-01"
+      ],
+      "removed_ids": [
+        "homofonos_15"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"didatico=>didático\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "acentuacao_07"
+      ],
+      "removed_ids": [
+        "anuncios_07"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"proficionais=>profissionais\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anuncios_12"
+      ],
+      "removed_ids": [
+        "ortografia_3"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"a=>à\",\"a=>à\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "texto_tecnico_11"
+      ],
+      "removed_ids": [
+        "ortografia_9"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"à=>a\",\"á=>a\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "pontuacao_002"
+      ],
+      "removed_ids": [
+        "ace-05-dist-crase"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"eminente=>iminente\",\"à=>a\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "contexto_007"
+      ],
+      "removed_ids": [
+        "homofonos_011"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"coser=>cozer\",\"cozer=>coser\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo-04"
+      ],
+      "removed_ids": [
+        "homofonos_005"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"unica=>única\",\"à=>a\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "anuncios_001"
+      ],
+      "removed_ids": [
+        "anuncios_004"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"por que=>porque\",\"porque=>porquê\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo_03"
+      ],
+      "removed_ids": [
+        "homofonos_9"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"tachar=>taxar\",\"taxar=>tachar\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homo-02"
+      ],
+      "removed_ids": [
+        "homo_tachar_taxar"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"mal=>mau\",\"mas=>mais\"],\"groupCount\":2}",
+      "total_cases": 2,
+      "kept_ids": [
+        "homof_01"
+      ],
+      "removed_ids": [
+        "homofonos_01"
+      ]
+    },
+    {
+      "signature": "{\"pairs\":[\"alem=>além\"],\"groupCount\":1}",
+      "total_cases": 2,
+      "kept_ids": [
+        "pont_04"
+      ],
+      "removed_ids": [
+        "hifen_06"
+      ]
+    }
+  ]
+}
