@@ -2,7 +2,18 @@
 
 Esta pasta concentra os testes que fazem parte oficial do sistema.
 
-## Arquivos
+## Camadas de teste
+
+- Unitario
+  - valida funcoes puras do motor em `test/unit/`
+- Integracao
+  - valida backend compilado, contrato HTTP e regressao externa
+- Cobertura
+  - mede cobertura dos testes unitarios com `c8`
+- Continuo
+  - valida o ciclo de aprendizado continuo sem alterar arquivos versionados
+
+## Arquivos principais
 
 - `index.html`
   - bateria manual e visual da extensao no navegador
@@ -11,12 +22,23 @@ Esta pasta concentra os testes que fazem parte oficial do sistema.
   - sobe o backend local em porta livre
   - roda frases erradas com saida esperada
   - roda frases corretas que nao devem ser alteradas
+- `unit/text.test.ts`
+  - suite unitaria da camada `src/core/text.ts`
 
 ## Comandos
 
+- `npm run test:unit`
+  - executa testes unitarios com `node:test` em TypeScript
+- `npm run test:integration`
+  - executa smoke test do backend e regressao externa
+- `npm run test:coverage`
+  - executa cobertura dos testes unitarios com `c8`
+- `npm run test:continuous`
+  - valida o pipeline de aprendizado continuo (geracao e merge de regras)
+- `npm test`
+  - executa unitario + integracao
 - `npm run test:backend`
-  - roda o smoke test do backend
-  - roda a bancada externa de regressao
+  - alias legado para `npm run test:integration`
 - `npm run test:external-regression`
   - roda apenas a bancada externa de regressao
 
