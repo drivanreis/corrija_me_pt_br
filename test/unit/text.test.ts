@@ -3,9 +3,11 @@ import test from "node:test";
 
 import {
   buildContext,
+  createWordTokenPattern,
   createWholeWordPattern,
   dedupeStrings,
   escapeRegExp,
+  isWordLike,
   normalizeDictionaryWord,
   preserveReplacementCase,
   stripDiacritics
@@ -21,10 +23,23 @@ test("createWholeWordPattern respeita fronteiras de palavra", () => {
   assert.equal("website corporativo".match(pattern), null);
 });
 
+test("isWordLike identifica letra ou numero no token", () => {
+  assert.equal(isWordLike("abc"), true);
+  assert.equal(isWordLike("123"), true);
+  assert.equal(isWordLike("---"), false);
+});
+
+test("createWordTokenPattern captura tokens de palavra compostos", () => {
+  const pattern = createWordTokenPattern();
+  const tokens = "acao rapida e anti-inflamatorio_2".match(pattern) ?? [];
+  assert.deepEqual(tokens, ["acao", "rapida", "e", "anti-inflamatorio_2"]);
+});
+
 test("preserveReplacementCase respeita caixa original", () => {
   assert.equal(preserveReplacementCase("SERVICO", "serviço"), "SERVIÇO");
   assert.equal(preserveReplacementCase("Servico", "serviço"), "Serviço");
   assert.equal(preserveReplacementCase("servico", "serviço"), "serviço");
+  assert.equal(preserveReplacementCase("servico", ""), "");
 });
 
 test("buildContext recorta contexto sem sair dos limites", () => {

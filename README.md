@@ -123,6 +123,11 @@ Se a extensao ainda estiver carregada no Chrome, remova-a manualmente em `chrome
 npm install
 ```
 
+### Extensoes recomendadas (VS Code)
+
+- o projeto inclui recomendacoes em `.vscode/extensions.json`
+- para aplicar padroes de qualidade no editor, use tambem `.vscode/settings.json`
+
 ### Gerar a aplicacao
 
 ```bash
