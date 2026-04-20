@@ -97087,5 +97087,327 @@
     "rejected_reasons": [
       "out_of_scope_for_curated_battery"
     ]
+  },
+  {
+    "id": "hifen-autoajuda-infraestrutura",
+    "category": "hífen",
+    "difficulty": 6,
+    "errado": "O livro de auto-ajuda critica a infra-estrutura precária das cidades modernas.",
+    "correto": "O livro de autoajuda critica a infraestrutura precária das cidades modernas.",
+    "error_count": 2,
+    "tags": [
+      "prefixos",
+      "vogais-diferentes"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "hifen-extraoficial-semiaberto",
+    "category": "hífen",
+    "difficulty": 6,
+    "errado": "Em nota extra-oficial, informaram que o réu cumprirá pena em regime semi-aberto.",
+    "correto": "Em nota extraoficial, informaram que o réu cumprirá pena em regime semiaberto.",
+    "error_count": 2,
+    "tags": [
+      "prefixos",
+      "vogais-diferentes"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "localizacao-data-moeda-us",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "O pagamento de $ 500.00 deve ser efetuado até 12/31/2023 no banco local.",
+    "correto": "O pagamento de R$ 500,00 deve ser efetuado até 31/12/2023 no banco local.",
+    "error_count": 2,
+    "tags": [
+      "formato-data",
+      "moeda-brasileira"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-decimal-medida",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "O motorista percorreu 150 Kms e gastou 12.5 litros de combustível.",
+    "correto": "O motorista percorreu 150 km e gastou 12,5 litros de combustível.",
+    "error_count": 2,
+    "tags": [
+      "abreviatura-unidade",
+      "separador-decimal"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-hora-periodo",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "A reunião começará as 2:00 PM e terminará às 16:30 hs da tarde.",
+    "correto": "A reunião começará às 14h e terminará às 16h30 da tarde.",
+    "error_count": 3,
+    "tags": [
+      "formato-hora",
+      "crase"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-telefone-cep",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "Ligue para (11) 98888-7777 ou envie carta para o CEP: 01234-5678.",
+    "correto": "Ligue para (11) 98888-7777 ou envie carta para o CEP 01234-567.",
+    "error_count": 2,
+    "tags": [
+      "cep-formato",
+      "pontuacao-localizada"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-endereco-abreviatura",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "Moro na St. das Flores, N. 10, apto 201 no Bairro Central.",
+    "correto": "Moro na Rua das Flores, nº 10, apto. 201, no Bairro Central.",
+    "error_count": 3,
+    "tags": [
+      "abreviatura-endereco",
+      "padrao-postal"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-porcentagem-espaco",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "A taxa de juros subiu 5% ao mês, totalizando 60 % ao ano.",
+    "correto": "A taxa de juros subiu 5% ao mês, totalizando 60% ao ano.",
+    "error_count": 1,
+    "tags": [
+      "porcentagem",
+      "espaçamento"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-cnpj-ponto",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "O CNPJ da empresa é 12345678/0001-99 e a I.E é isenta.",
+    "correto": "O CNPJ da empresa é 12.345.678/0001-99 e a I.E. é isenta.",
+    "error_count": 2,
+    "tags": [
+      "cnpj-formato",
+      "abreviaturas"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "localizacao-temperatura-escala",
+    "category": "localização",
+    "difficulty": 6,
+    "errado": "A temperatura hoje em SP atingiu 80° F, o que equivale a 26°C.",
+    "correto": "A temperatura hoje em SP atingiu 80 °F, o que equivale a 26 °C.",
+    "error_count": 2,
+    "tags": [
+      "temperatura",
+      "espaçamento-unidade"
+    ],
+    "rejected_reasons": [
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "contexto-bastante-livros",
+    "category": "contexto",
+    "difficulty": 6,
+    "errado": "Eles leram bastante livros, porém estão bastante cansados para discutir.",
+    "correto": "Eles leram bastantes livros, porém estão bastante cansados para discutir.",
+    "error_count": 1,
+    "tags": [
+      "concordancia-nominal",
+      "bastante-plural"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "homofonos-mal-mau",
+    "category": "homófonos",
+    "difficulty": 6,
+    "errado": "O mau desempenho do atleta deve-se ao fato de ele ter passado mal a noite.",
+    "correto": "O mau desempenho do atleta deve-se ao fato de ele ter passado mal à noite.",
+    "error_count": 1,
+    "tags": [
+      "mal-mau",
+      "crase"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "homofonos-senão-se-nao",
+    "category": "homófonos",
+    "difficulty": 6,
+    "errado": "Se não chover, iremos ao parque; senão você terá que estudar em casa.",
+    "correto": "Se não chover, iremos ao parque; caso contrário, você terá que estudar em casa.",
+    "error_count": 1,
+    "tags": [
+      "senão-se-não",
+      "conjuncao"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "anuncios-entregas-domicilio",
+    "category": "anúncios",
+    "difficulty": 6,
+    "errado": "Fazemos entregas à domicílio e aceitamos pagamentos via Pix.",
+    "correto": "Fazemos entregas em domicílio e aceitamos pagamentos via Pix.",
+    "error_count": 1,
+    "tags": [
+      "regencia-anuncio",
+      "localização"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors",
+      "out_of_scope_for_curated_battery"
+    ]
+  },
+  {
+    "id": "anuncios-repeticao-venda",
+    "category": "anúncios",
+    "difficulty": 6,
+    "errado": "Liquidação de estoque: tudo com 50% de de desconto desconto!",
+    "correto": "Liquidação de estoque: tudo com 50% de desconto!",
+    "error_count": 2,
+    "tags": [
+      "repeticao",
+      "limpeza-texto"
+    ],
+    "rejected_reasons": [
+      "token_jump_too_large"
+    ]
+  },
+  {
+    "id": "anuncios-horario-funcionamento",
+    "category": "anúncios",
+    "difficulty": 6,
+    "errado": "Aberto de segunda á sábado das 08:00 as 18:00hs.",
+    "correto": "Aberto de segunda a sábado, das 8h às 18h.",
+    "error_count": 4,
+    "tags": [
+      "crase",
+      "formato-hora",
+      "pontuação"
+    ],
+    "rejected_reasons": [
+      "formatting_or_numeric_conversion"
+    ]
+  },
+  {
+    "id": "anuncios-imperdivel-grafia",
+    "category": "anúncios",
+    "difficulty": 6,
+    "errado": "Oportunidade imperdivel: compre seu imóvel sem entrada e sem burocracia!",
+    "correto": "Oportunidade imperdível: compre seu imóvel sem entrada e sem burocracia!",
+    "error_count": 1,
+    "tags": [
+      "acentuação",
+      "marketing"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "texto_tecnico-haja-visto",
+    "category": "texto técnico",
+    "difficulty": 6,
+    "errado": "Haja visto a complexidade do projeto, os prazos devem ser revistos.",
+    "correto": "Haja vista a complexidade do projeto, os prazos devem ser revistos.",
+    "error_count": 1,
+    "tags": [
+      "expressao-idiomatica",
+      "texto-formal"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "texto_tecnico-concordancia-sujeito-longo",
+    "category": "texto técnico",
+    "difficulty": 6,
+    "errado": "A implementação de novas políticas de segurança interna e externa não surtiram efeito.",
+    "correto": "A implementação de novas políticas de segurança interna e externa não surtiu efeito.",
+    "error_count": 1,
+    "tags": [
+      "concordancia-verbal",
+      "sintaxe-complexa"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "texto_tecnico-uso-onde-abstrato",
+    "category": "texto técnico",
+    "difficulty": 6,
+    "errado": "O novo software apresenta falhas onde os dados são processados incorretamente.",
+    "correto": "O novo software apresenta falhas em que os dados são processados incorretamente.",
+    "error_count": 1,
+    "tags": [
+      "pronome-relativo",
+      "rigor-tecnico"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
+  },
+  {
+    "id": "texto_tecnico-estorno-financeiro",
+    "category": "texto técnico",
+    "difficulty": 6,
+    "errado": "O estorno do valor pago à maior será efetuado na próxima fatura mensal.",
+    "correto": "O estorno do valor pago a maior será efetuado na próxima fatura mensal.",
+    "error_count": 1,
+    "tags": [
+      "crase-indevida",
+      "financas"
+    ],
+    "rejected_reasons": [
+      "difficulty_requires_multiple_errors"
+    ]
   }
 ]

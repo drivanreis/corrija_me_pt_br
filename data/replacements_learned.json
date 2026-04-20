@@ -130,7 +130,7 @@
     "replacements": [
       "água"
     ],
-    "source": "learned_know:acen-49"
+    "source": "learned_know:acen-59"
   },
   {
     "from": "album",
@@ -186,7 +186,7 @@
     "replacements": [
       "amigável"
     ],
-    "source": "learned_know:ace-26-amigavel"
+    "source": "learned_know:ace_23"
   },
   {
     "from": "analise",
@@ -263,14 +263,14 @@
     "replacements": [
       "ansioso"
     ],
-    "source": "learned_know:orto_10"
+    "source": "learned_know:ort_02"
   },
   {
     "from": "anciosso",
     "replacements": [
       "ansioso"
     ],
-    "source": "learned_know:ortografia_04"
+    "source": "learned_know:orto_02"
   },
   {
     "from": "anciozo",
@@ -284,7 +284,7 @@
     "replacements": [
       "aniversário"
     ],
-    "source": "learned_know:acent-aniversario"
+    "source": "learned_know:acen-50"
   },
   {
     "from": "aniverssário",
@@ -313,6 +313,13 @@
       "aplicação"
     ],
     "source": "learned_know:acentuacao_03"
+  },
+  {
+    "from": "apóia",
+    "replacements": [
+      "apoia"
+    ],
+    "source": "learned_know:acentuacao-para-apoia"
   },
   {
     "from": "apóio",
@@ -411,6 +418,13 @@
       "argui"
     ],
     "source": "learned_know:acent_argui_averigue"
+  },
+  {
+    "from": "argüi",
+    "replacements": [
+      "argui"
+    ],
+    "source": "learned_know:acentuacao-argui-enjoo"
   },
   {
     "from": "argüição",
@@ -690,7 +704,7 @@
     "replacements": [
       "bênção"
     ],
-    "source": "learned_know:ace-24-bençao"
+    "source": "learned_know:ace_18"
   },
   {
     "from": "beneficience",
@@ -739,7 +753,7 @@
     "replacements": [
       "berinjela"
     ],
-    "source": "learned_know:orto-04"
+    "source": "learned_know:orto-52"
   },
   {
     "from": "berinjela",
@@ -830,7 +844,7 @@
     "replacements": [
       "cálculo"
     ],
-    "source": "learned_know:hifen_11"
+    "source": "learned_know:acentuacao_17"
   },
   {
     "from": "camera",
@@ -964,6 +978,13 @@
       "cerimônia"
     ],
     "source": "learned_know:acentuacao_07"
+  },
+  {
+    "from": "cessão",
+    "replacements": [
+      "sessão"
+    ],
+    "source": "learned_know:ort-17"
   },
   {
     "from": "chapeu",
@@ -1232,11 +1253,18 @@
     "source": "learned_know:ort-15"
   },
   {
-    "from": "concervação",
+    "from": "concertar",
     "replacements": [
-      "conservação"
+      "consertar"
     ],
-    "source": "learned_know:hif-08-semi-novo"
+    "source": "learned_know:orto-07"
+  },
+  {
+    "from": "concerto",
+    "replacements": [
+      "conserto"
+    ],
+    "source": "learned_know:ort_10"
   },
   {
     "from": "concetração",
@@ -1271,14 +1299,14 @@
     "replacements": [
       "consciência"
     ],
-    "source": "learned_know:orto-17"
+    "source": "learned_know:ort-32"
   },
   {
     "from": "conciencioso",
     "replacements": [
       "consciencioso"
     ],
-    "source": "learned_know:ort-043"
+    "source": "learned_know:orto-consciencioso-07"
   },
   {
     "from": "conciente",
@@ -1544,7 +1572,7 @@
     "replacements": [
       "creem"
     ],
-    "source": "learned_know:acen-creem-vontade"
+    "source": "learned_know:ace-4"
   },
   {
     "from": "crêm",
@@ -1680,18 +1708,18 @@
     "source": "learned_know:ort-discrecionário"
   },
   {
-    "from": "descrição",
-    "replacements": [
-      "discrição"
-    ],
-    "source": "learned_know:ort-020"
-  },
-  {
     "from": "descriminação",
     "replacements": [
       "discriminação"
     ],
     "source": "learned_know:ortografia_08"
+  },
+  {
+    "from": "descriminar",
+    "replacements": [
+      "descriminalizar"
+    ],
+    "source": "learned_know:ort-16"
   },
   {
     "from": "descrisção",
@@ -2100,13 +2128,6 @@
     "source": "learned_know:acentuacao_11"
   },
   {
-    "from": "eminente",
-    "replacements": [
-      "iminente"
-    ],
-    "source": "learned_know:ortografia_11"
-  },
-  {
     "from": "emprenho",
     "replacements": [
       "empenho"
@@ -2399,6 +2420,13 @@
       "essencial"
     ],
     "source": "learned_know:orto-21"
+  },
+  {
+    "from": "esta",
+    "replacements": [
+      "está"
+    ],
+    "source": "learned_know:acen_facil_agua"
   },
   {
     "from": "estatisticas",
@@ -2818,7 +2846,7 @@
     "replacements": [
       "fácil"
     ],
-    "source": "learned_know:ace-27-facil"
+    "source": "learned_know:acentuacao_11"
   },
   {
     "from": "facinante",
@@ -3021,7 +3049,7 @@
     "replacements": [
       "jeito"
     ],
-    "source": "learned_know:orto-53"
+    "source": "learned_know:ort-27"
   },
   {
     "from": "geléia",
@@ -3052,18 +3080,11 @@
     "source": "learned_know:ortografia_05"
   },
   {
-    "from": "gratis",
-    "replacements": [
-      "grátis"
-    ],
-    "source": "learned_know:acentuacao_06"
-  },
-  {
-    "from": "gratuíto",
+    "from": "gratúito",
     "replacements": [
       "gratuito"
     ],
-    "source": "learned_know:ace-06"
+    "source": "learned_know:acentuacao-rubrica-gratuito"
   },
   {
     "from": "gráu",
@@ -3091,7 +3112,7 @@
     "replacements": [
       "herói"
     ],
-    "source": "learned_know:acentuacao_11"
+    "source": "learned_know:acen-48"
   },
   {
     "from": "heróica",
@@ -3211,6 +3232,13 @@
       "ideia"
     ],
     "source": "learned_know:acent_ideia_heroico"
+  },
+  {
+    "from": "idisincrasia",
+    "replacements": [
+      "idiossincrasia"
+    ],
+    "source": "learned_know:ortografia-vicissitude-idiosincrasia"
   },
   {
     "from": "imenço",
@@ -3399,7 +3427,7 @@
     "replacements": [
       "incríveis"
     ],
-    "source": "learned_know:ace-11"
+    "source": "learned_know:acentuacao_10"
   },
   {
     "from": "incrivel",
@@ -3707,14 +3735,7 @@
     "replacements": [
       "item"
     ],
-    "source": "learned_know:acent_item_polem"
-  },
-  {
-    "from": "ítens",
-    "replacements": [
-      "itens"
-    ],
-    "source": "learned_know:ace-04-itens-hifens"
+    "source": "learned_know:acen-item"
   },
   {
     "from": "jacare",
@@ -3735,14 +3756,14 @@
     "replacements": [
       "joia"
     ],
-    "source": "learned_know:ace-13"
+    "source": "learned_know:acen-joia"
   },
   {
     "from": "juíz",
     "replacements": [
       "juiz"
     ],
-    "source": "learned_know:acent_juiz_juizes"
+    "source": "learned_know:ace-17-juiz-juizes"
   },
   {
     "from": "juiza",
@@ -3756,7 +3777,7 @@
     "replacements": [
       "juízes"
     ],
-    "source": "learned_know:acent_juiz_juizes"
+    "source": "learned_know:ace-17-juiz-juizes"
   },
   {
     "from": "juizo",
@@ -3777,7 +3798,7 @@
     "replacements": [
       "júri"
     ],
-    "source": "learned_know:ace-049"
+    "source": "learned_know:ace_11"
   },
   {
     "from": "laboratorio",
@@ -3917,14 +3938,14 @@
     "replacements": [
       "mexer"
     ],
-    "source": "learned_know:orto-07"
+    "source": "learned_know:orto-46"
   },
   {
     "from": "mecheram",
     "replacements": [
       "mexeram"
     ],
-    "source": "learned_know:ort-11"
+    "source": "learned_know:ort_7"
   },
   {
     "from": "mechericos",
@@ -3980,7 +4001,7 @@
     "replacements": [
       "mendigo"
     ],
-    "source": "learned_know:orto-mendingo"
+    "source": "learned_know:orto-09"
   },
   {
     "from": "menis",
@@ -4036,7 +4057,7 @@
     "replacements": [
       "método"
     ],
-    "source": "learned_know:ace-49"
+    "source": "learned_know:acen-47"
   },
   {
     "from": "metropoles",
@@ -4058,6 +4079,13 @@
       "mico"
     ],
     "source": "learned_know:hif-037"
+  },
+  {
+    "from": "microsistema",
+    "replacements": [
+      "microssistema"
+    ],
+    "source": "learned_know:hifen-antihigienico-microsistema"
   },
   {
     "from": "minunciosa",
@@ -4407,7 +4435,7 @@
     "replacements": [
       "ótimo"
     ],
-    "source": "learned_know:ace-043"
+    "source": "learned_know:acent_01"
   },
   {
     "from": "paciencia",
@@ -4443,6 +4471,13 @@
       "página"
     ],
     "source": "learned_know:acent-20"
+  },
+  {
+    "from": "pais",
+    "replacements": [
+      "país"
+    ],
+    "source": "learned_know:acent-08"
   },
   {
     "from": "páis",
@@ -4547,7 +4582,7 @@
     "replacements": [
       "pássaro"
     ],
-    "source": "learned_know:ace-47"
+    "source": "learned_know:acen-14"
   },
   {
     "from": "patio",
@@ -4561,7 +4596,7 @@
     "replacements": [
       "pera"
     ],
-    "source": "learned_know:acen-pera-fruta"
+    "source": "learned_know:ace-8"
   },
   {
     "from": "périodicamente",
@@ -4576,6 +4611,13 @@
       "período"
     ],
     "source": "learned_know:ace_periodo_01"
+  },
+  {
+    "from": "periodos",
+    "replacements": [
+      "períodos"
+    ],
+    "source": "learned_know:hifen_07"
   },
   {
     "from": "persistencia",
@@ -4687,7 +4729,7 @@
     "replacements": [
       "plateia"
     ],
-    "source": "learned_know:ace-02"
+    "source": "learned_know:ace-14"
   },
   {
     "from": "pobulação",
@@ -4785,7 +4827,7 @@
     "replacements": [
       "prazerosa"
     ],
-    "source": "learned_know:ortografia_05"
+    "source": "learned_know:orto-18"
   },
   {
     "from": "prazeiroso",
@@ -4925,7 +4967,7 @@
     "replacements": [
       "pretensão"
     ],
-    "source": "learned_know:orto_pretensao_ascensao"
+    "source": "learned_know:ort_02"
   },
   {
     "from": "pretenciosa",
@@ -4953,7 +4995,7 @@
     "replacements": [
       "pretexto"
     ],
-    "source": "learned_know:ort-14"
+    "source": "learned_know:ort_12"
   },
   {
     "from": "preucupados",
@@ -5061,13 +5103,6 @@
     "source": "learned_know:orto-06"
   },
   {
-    "from": "proficionais",
-    "replacements": [
-      "profissionais"
-    ],
-    "source": "learned_know:ortografia_3"
-  },
-  {
     "from": "progama",
     "replacements": [
       "programa"
@@ -5143,13 +5178,6 @@
       "proposta"
     ],
     "source": "learned_know:ortografia_02"
-  },
-  {
-    "from": "propria",
-    "replacements": [
-      "própria"
-    ],
-    "source": "learned_know:acen-propria"
   },
   {
     "from": "proprio",
@@ -5317,7 +5345,7 @@
     "replacements": [
       "raiz"
     ],
-    "source": "learned_know:acent_raiz_raizes"
+    "source": "learned_know:ace-16-raiz-raizes"
   },
   {
     "from": "raizes",
@@ -5695,14 +5723,14 @@
     "replacements": [
       "rubrica"
     ],
-    "source": "learned_know:ace-07"
+    "source": "learned_know:ace_rubrica_01"
   },
   {
     "from": "ruido",
     "replacements": [
       "ruído"
     ],
-    "source": "learned_know:acen-ruido-estranho"
+    "source": "learned_know:ace-ruido"
   },
   {
     "from": "ruidó",
@@ -5803,6 +5831,13 @@
     "source": "learned_know:ortografia_008"
   },
   {
+    "from": "seção",
+    "replacements": [
+      "sessão"
+    ],
+    "source": "learned_know:ort-9"
+  },
+  {
     "from": "segunda",
     "replacements": [
       "segundas"
@@ -5836,6 +5871,13 @@
       "sério"
     ],
     "source": "learned_know:ace-053"
+  },
+  {
+    "from": "sessão",
+    "replacements": [
+      "seção"
+    ],
+    "source": "learned_know:orto_03"
   },
   {
     "from": "significatívo",
@@ -5891,7 +5933,14 @@
     "replacements": [
       "sofá"
     ],
-    "source": "learned_know:ace-050"
+    "source": "learned_know:ace-28"
+  },
+  {
+    "from": "sofreu",
+    "replacements": [
+      "passou por"
+    ],
+    "source": "learned_surface:tec_16"
   },
   {
     "from": "solida",
@@ -5934,13 +5983,6 @@
       "subsidiário"
     ],
     "source": "learned_know:ort-subsidiario"
-  },
-  {
-    "from": "subzídio",
-    "replacements": [
-      "subsídio"
-    ],
-    "source": "learned_know:ort-20-subsidio"
   },
   {
     "from": "sucecido",
@@ -6108,7 +6150,7 @@
     "replacements": [
       "tigela"
     ],
-    "source": "learned_know:ort-028"
+    "source": "learned_know:ort_21"
   },
   {
     "from": "tinhamos",
@@ -6321,13 +6363,6 @@
     "source": "learned_know:acen-22"
   },
   {
-    "from": "Varios",
-    "replacements": [
-      "Vários"
-    ],
-    "source": "learned_know:acen-varios"
-  },
-  {
     "from": "vazo",
     "replacements": [
       "vaza"
@@ -6486,6 +6521,6 @@
     "replacements": [
       "chuchu"
     ],
-    "source": "learned_know:orto-chuchu-legume"
+    "source": "learned_know:orto-chuchu"
   }
 ]

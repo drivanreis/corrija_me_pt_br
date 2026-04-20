@@ -1463,5 +1463,18 @@
     ],
     "message": "Ajuste seeded (BRAVO) para 'virgula_antes_e'.",
     "description": "Regra seeded gerada a partir de falha BRAVO para fechar a bateria e servir de base para generalização."
+  },
+  {
+    "id": "PT_BR_PHRASE_SEEDED_EU_VI_ELE",
+    "pattern": [
+      "eu",
+      "vi",
+      "ele"
+    ],
+    "replacements": [
+      "eu o vi"
+    ],
+    "message": "Neste contexto, prefira pronome obliquo antes de 'vi'.",
+    "description": "Corrige o padrao recorrente 'eu vi ele' para 'eu o vi'."
   }
 ]

@@ -5,6 +5,7 @@ import { spawn } from "node:child_process";
 const GENERATED_PATH = "data/test-cases/generated.json";
 const CURATED_PATH = "data/test-cases/curated.json";
 const REJECTED_PATH = "data/test-cases/rejected.json";
+const MAX_PER_PROBLEM_SIGNATURE = 1;
 
 const CATEGORY_MAP = new Map([
   ["acentuacao", "acentuação"],
@@ -34,6 +35,10 @@ function normalizeWhitespace(value) {
 function normalizeLabel(value) {
   const normalized = normalizeWhitespace(value).toLowerCase();
   return CATEGORY_MAP.get(normalized) || normalized;
+}
+
+function normalizeToken(value) {
+  return normalizeWhitespace(value).toLocaleLowerCase("pt-BR");
 }
 
 function uniqueBy(items, keyBuilder) {
@@ -174,6 +179,163 @@ function dedupePairKey(testCase) {
   return `${testCase.errado}|||${testCase.correto}`;
 }
 
+function tokenizeWords(text) {
+  return (normalizeWhitespace(text).match(/[\p{L}\p{N}]+/gu) || []).map((token) => normalizeToken(token));
+}
+
+function buildWordDiffGroups(sourceTokens, targetTokens) {
+  const rows = sourceTokens.length + 1;
+  const cols = targetTokens.length + 1;
+  const dp = Array.from({ length: rows }, () => new Array(cols).fill(0));
+
+  for (let row = 0; row < rows; row += 1) dp[row][0] = row;
+  for (let col = 0; col < cols; col += 1) dp[0][col] = col;
+
+  for (let row = 1; row < rows; row += 1) {
+    for (let col = 1; col < cols; col += 1) {
+      if (sourceTokens[row - 1] === targetTokens[col - 1]) {
+        dp[row][col] = dp[row - 1][col - 1];
+      } else {
+        dp[row][col] = Math.min(
+          dp[row - 1][col] + 1,
+          dp[row][col - 1] + 1,
+          dp[row - 1][col - 1] + 1
+        );
+      }
+    }
+  }
+
+  const operations = [];
+  let row = sourceTokens.length;
+  let col = targetTokens.length;
+
+  while (row > 0 || col > 0) {
+    if (row > 0 && col > 0 && sourceTokens[row - 1] === targetTokens[col - 1]) {
+      operations.push({ type: "equal", srcIndex: row - 1, tgtIndex: col - 1 });
+      row -= 1;
+      col -= 1;
+      continue;
+    }
+
+    const replaceCost = row > 0 && col > 0 ? dp[row - 1][col - 1] : Number.POSITIVE_INFINITY;
+    const deleteCost = row > 0 ? dp[row - 1][col] : Number.POSITIVE_INFINITY;
+    const currentCost = dp[row][col];
+
+    if (row > 0 && col > 0 && currentCost === replaceCost + 1) {
+      operations.push({ type: "replace", srcIndex: row - 1, tgtIndex: col - 1 });
+      row -= 1;
+      col -= 1;
+    } else if (row > 0 && currentCost === deleteCost + 1) {
+      operations.push({ type: "delete", srcIndex: row - 1 });
+      row -= 1;
+    } else {
+      operations.push({ type: "insert", tgtIndex: col - 1 });
+      col -= 1;
+    }
+  }
+
+  operations.reverse();
+
+  const groups = [];
+  let current = null;
+
+  function closeGroup() {
+    if (!current) {
+      return;
+    }
+    groups.push({
+      srcTokens: [...current.srcTokens],
+      tgtTokens: [...current.tgtTokens]
+    });
+    current = null;
+  }
+
+  for (const operation of operations) {
+    if (operation.type === "equal") {
+      closeGroup();
+      continue;
+    }
+
+    if (!current) {
+      current = { srcTokens: [], tgtTokens: [] };
+    }
+
+    if (operation.type === "replace") {
+      current.srcTokens.push(sourceTokens[operation.srcIndex]);
+      current.tgtTokens.push(targetTokens[operation.tgtIndex]);
+    } else if (operation.type === "delete") {
+      current.srcTokens.push(sourceTokens[operation.srcIndex]);
+    } else {
+      current.tgtTokens.push(targetTokens[operation.tgtIndex]);
+    }
+  }
+
+  closeGroup();
+  return groups.filter((group) => group.srcTokens.length || group.tgtTokens.length);
+}
+
+function buildProblemSignature(testCase) {
+  const sourceTokens = tokenizeWords(testCase.errado);
+  const targetTokens = tokenizeWords(testCase.correto);
+  const groups = buildWordDiffGroups(sourceTokens, targetTokens);
+
+  if (!groups.length) {
+    return "no_diff";
+  }
+
+  const pairs = groups
+    .map((group) => `${group.srcTokens.join(" ")}=>${group.tgtTokens.join(" ")}`)
+    .filter((entry) => entry !== "=>")
+    .sort();
+
+  return JSON.stringify({
+    pairs,
+    groupCount: groups.length
+  });
+}
+
+function scoreRepresentative(testCase) {
+  const difficulty = Number(testCase.difficulty) || 3;
+  const errorCount = Number(testCase.error_count) || 1;
+  const balanceScore = Math.abs(difficulty - 2);
+  const lengthScore = countWordTokens(testCase.errado) + countWordTokens(testCase.correto);
+  return [
+    balanceScore,
+    errorCount,
+    lengthScore,
+    normalizeToken(testCase.id || "")
+  ];
+}
+
+function compareScore(left, right) {
+  for (let index = 0; index < Math.max(left.length, right.length); index += 1) {
+    if (left[index] < right[index]) return -1;
+    if (left[index] > right[index]) return 1;
+  }
+  return 0;
+}
+
+function dedupeByProblemSignature(testCases, maxPerSignature = MAX_PER_PROBLEM_SIGNATURE) {
+  const buckets = new Map();
+
+  for (const testCase of testCases) {
+    const signature = buildProblemSignature(testCase);
+    const bucket = buckets.get(signature) || [];
+    bucket.push(testCase);
+    buckets.set(signature, bucket);
+  }
+
+  const deduped = [];
+  for (const bucket of buckets.values()) {
+    const selected = [...bucket]
+      .sort((left, right) => compareScore(scoreRepresentative(left), scoreRepresentative(right)))
+      .slice(0, maxPerSignature);
+    deduped.push(...selected);
+  }
+
+  return deduped;
+}
+
 function runCommand(command, args, label = `${command} ${args.join(" ")}`) {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
@@ -221,13 +383,16 @@ async function main() {
   }
 
   const nextCurated = uniqueBy(accepted, dedupePairKey);
-  await fs.writeFile(curatedPath, `${JSON.stringify(nextCurated, null, 2)}\n`, "utf8");
+  const nextCuratedByProblem = dedupeByProblemSignature(nextCurated, MAX_PER_PROBLEM_SIGNATURE);
+  await fs.writeFile(curatedPath, `${JSON.stringify(nextCuratedByProblem, null, 2)}\n`, "utf8");
   await fs.writeFile(rejectedPath, `${JSON.stringify(rejected, null, 2)}\n`, "utf8");
 
   console.log(`Curated preservado: ${preservedCurated.length}`);
   console.log(`Generated avaliado: ${generatedSourceItems.length}`);
   console.log(`Itens fonte avaliados: ${preservedCurated.length + generatedSourceItems.length}`);
-  console.log(`Curated total: ${nextCurated.length}`);
+  console.log(`Curated após dedupe por par: ${nextCurated.length}`);
+  console.log(`Curated total (1 por problema): ${nextCuratedByProblem.length}`);
+  console.log(`Removidos por problema repetido: ${nextCurated.length - nextCuratedByProblem.length}`);
   console.log(`Rejeitados nesta execução: ${rejected.length}`);
   console.log(`Arquivo curated: ${curatedPath}`);
   console.log(`Arquivo rejected: ${rejectedPath}`);

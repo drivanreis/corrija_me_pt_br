@@ -547,20 +547,6 @@
     "description": "Regra aprendida a partir da base know (acentu_09)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_ctx-18-mesmo-pronome_7",
-    "pattern": [
-      "o",
-      "mesmo",
-      "encontra",
-      "se"
-    ],
-    "replacements": [
-      "ele se encontra"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (ctx-18-mesmo-pronome)."
-  },
-  {
     "id": "PT_BR_PHRASE_LEARNED_con-030_2",
     "pattern": [
       "pode",
@@ -989,19 +975,6 @@
     "description": "Regra aprendida a partir da base know (acentu_08)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_anu-vaga-disponivel_2",
-    "pattern": [
-      "auxiliar",
-      "de",
-      "limpesa"
-    ],
-    "replacements": [
-      "auxiliar de limpeza"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (anu-vaga-disponivel)."
-  },
-  {
     "id": "PT_BR_PHRASE_LEARNED_anuncios_03_9",
     "pattern": [
       "brindes",
@@ -1158,7 +1131,7 @@
     "description": "Regra aprendida a partir da base know (tecn-de-encontro)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_con_02_5",
+    "id": "PT_BR_PHRASE_LEARNED_tecn_04_4",
     "pattern": [
       "de",
       "encontro",
@@ -1168,7 +1141,7 @@
       "ao encontro dos"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (con_02)."
+    "description": "Regra aprendida a partir da base know (tecn_04)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_ctx-02-encont-de_3",
@@ -1236,7 +1209,7 @@
     "description": "Regra aprendida a partir da base know (ort-12-hesitar)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_orto-hesitar-decisao_1",
+    "id": "PT_BR_PHRASE_LEARNED_ort_hesitar_01_1",
     "pattern": [
       "deve",
       "se",
@@ -1246,7 +1219,7 @@
       "se deve hesitar"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (orto-hesitar-decisao)."
+    "description": "Regra aprendida a partir da base know (ort_hesitar_01)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_tec_02_6",
@@ -1262,7 +1235,7 @@
     "description": "Regra aprendida a partir da base know (tec_02)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_anun-enquanto-durar_3",
+    "id": "PT_BR_PHRASE_LEARNED_anu_16_3",
     "pattern": [
       "durar",
       "o",
@@ -1272,7 +1245,7 @@
       "durarem os estoques"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (anun-enquanto-durar)."
+    "description": "Regra aprendida a partir da base know (anu_16)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_acentuacao_03_1",
@@ -1561,7 +1534,7 @@
     "description": "Regra aprendida a partir da base know (acentu_12)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_ace-034_1",
+    "id": "PT_BR_PHRASE_LEARNED_acen-60_1",
     "pattern": [
       "heroi",
       "da",
@@ -1571,7 +1544,7 @@
       "herói da pátria"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (ace-034)."
+    "description": "Regra aprendida a partir da base know (acen-60)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_acentuacao_11_1",
@@ -1689,19 +1662,6 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (anu-02)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_anu_01_1",
-    "pattern": [
-      "imperdivel",
-      "descontos",
-      "incriveis"
-    ],
-    "replacements": [
-      "Imperdível Descontos incríveis"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (anu_01)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_anuncios_01_1",
@@ -1832,19 +1792,6 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (tecn_02)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_acen-54_1",
-    "pattern": [
-      "lampada",
-      "de",
-      "led"
-    ],
-    "replacements": [
-      "lâmpada de LED"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (acen-54)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_tecn_leiaute_saite_1",
@@ -2042,19 +1989,6 @@
     "description": "Regra aprendida a partir da base know (acentuacao_09)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif_23_0",
-    "pattern": [
-      "o",
-      "auto",
-      "ajuda"
-    ],
-    "replacements": [
-      "A autoajuda"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif_23)."
-  },
-  {
     "id": "PT_BR_PHRASE_LEARNED_hife-44_0",
     "pattern": [
       "o",
@@ -2066,32 +2000,6 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (hife-44)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_hife-09_0",
-    "pattern": [
-      "o",
-      "infra",
-      "estrutura"
-    ],
-    "replacements": [
-      "A infraestrutura"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hife-09)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_ort-28_0",
-    "pattern": [
-      "o",
-      "mini",
-      "saia"
-    ],
-    "replacements": [
-      "A minissaia"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (ort-28)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_ort-01_14",
@@ -2209,19 +2117,6 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (contexto-01)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_ortografia_05_2",
-    "pattern": [
-      "pode",
-      "ir",
-      "porquê"
-    ],
-    "replacements": [
-      "pôde ir porque"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (ortografia_05)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_acentuacao_05_3",
@@ -2666,32 +2561,6 @@
     "description": "Regra aprendida a partir da base know (acent_03)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_anu-aberto-domingo_2",
-    "pattern": [
-      "segunda",
-      "à",
-      "domingo"
-    ],
-    "replacements": [
-      "segunda a domingo"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (anu-aberto-domingo)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_anu_10_2",
-    "pattern": [
-      "segunda",
-      "à",
-      "sexta"
-    ],
-    "replacements": [
-      "segunda a sexta"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (anu_10)."
-  },
-  {
     "id": "PT_BR_PHRASE_LEARNED_acentu_05_2",
     "pattern": [
       "sera",
@@ -2833,19 +2702,6 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (acento-05)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_anunc_03_4",
-    "pattern": [
-      "ti",
-      "especialistas",
-      "a"
-    ],
-    "replacements": [
-      "TI Especialistas à"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (anunc_03)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_acentuacao_03_5",
@@ -3115,6 +2971,18 @@
     "description": "Regra aprendida a partir da base know (texto_tecnico_02)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_orto-01_6",
+    "pattern": [
+      "a",
+      "concerta"
+    ],
+    "replacements": [
+      "o conserto"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (orto-01)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_anuncios_11_1",
     "pattern": [
       "à",
@@ -3139,6 +3007,18 @@
     "description": "Regra aprendida a partir da base know (orto_excecao_previlegio)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_hom_afim_02_3",
+    "pattern": [
+      "a",
+      "fim"
+    ],
+    "replacements": [
+      "afins"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hom_afim_02)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_hifen_01_5",
     "pattern": [
       "a",
@@ -3161,6 +3041,18 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (acen_publico_musica)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec-nivel-02_0",
+    "pattern": [
+      "a",
+      "nível"
+    ],
+    "replacements": [
+      "Em âmbito"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec-nivel-02)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hom-09_4",
@@ -3403,7 +3295,7 @@
     "description": "Regra aprendida a partir da base know (hif_6)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif-035_1",
+    "id": "PT_BR_PHRASE_LEARNED_hifen-1_1",
     "pattern": [
       "anti",
       "corpo"
@@ -3412,10 +3304,10 @@
       "anticorpo"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif-035)."
+    "description": "Regra aprendida a partir da base know (hifen-1)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif_30_1",
+    "id": "PT_BR_PHRASE_LEARNED_hifen_02_5",
     "pattern": [
       "anti",
       "corrosão"
@@ -3424,7 +3316,7 @@
       "anticorrosão"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif_30)."
+    "description": "Regra aprendida a partir da base know (hifen_02)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_13_4",
@@ -3583,7 +3475,7 @@
     "description": "Regra aprendida a partir da base know (hifen-anti-semita-discurso)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen-antissocial_6",
+    "id": "PT_BR_PHRASE_LEARNED_hife-43_3",
     "pattern": [
       "anti",
       "social"
@@ -3592,7 +3484,7 @@
       "antissocial"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen-antissocial)."
+    "description": "Regra aprendida a partir da base know (hife-43)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_05_13",
@@ -3727,7 +3619,7 @@
     "description": "Regra aprendida a partir da base know (anuncio-01)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen-autoajuda_5",
+    "id": "PT_BR_PHRASE_LEARNED_hife-07_4",
     "pattern": [
       "auto",
       "ajuda"
@@ -3736,7 +3628,7 @@
       "autoajuda"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen-autoajuda)."
+    "description": "Regra aprendida a partir da base know (hife-07)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_9_3",
@@ -3871,7 +3763,7 @@
     "description": "Regra aprendida a partir da base know (hifen_1)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen-02_4",
+    "id": "PT_BR_PHRASE_LEARNED_hif_02_4",
     "pattern": [
       "auto",
       "escola"
@@ -3880,10 +3772,10 @@
       "autoescola"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen-02)."
+    "description": "Regra aprendida a partir da base know (hif_02)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hife-45_1",
+    "id": "PT_BR_PHRASE_LEARNED_hife-53_1",
     "pattern": [
       "auto",
       "estima"
@@ -3892,10 +3784,10 @@
       "autoestima"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hife-45)."
+    "description": "Regra aprendida a partir da base know (hife-53)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif-30_3",
+    "id": "PT_BR_PHRASE_LEARNED_hife-22_1",
     "pattern": [
       "auto",
       "estrada"
@@ -3904,7 +3796,7 @@
       "autoestrada"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif-30)."
+    "description": "Regra aprendida a partir da base know (hife-22)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_20_3",
@@ -4147,7 +4039,7 @@
     "description": "Regra aprendida a partir da base know (anu-05-clickbait-err)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen_06_3",
+    "id": "PT_BR_PHRASE_LEARNED_hife-19_1",
     "pattern": [
       "co",
       "autor"
@@ -4156,7 +4048,7 @@
       "coautor"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen_06)."
+    "description": "Regra aprendida a partir da base know (hife-19)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_18_1",
@@ -4279,6 +4171,18 @@
     "description": "Regra aprendida a partir da base know (orto_02)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_acentuacao-argui-enjoo_7",
+    "pattern": [
+      "constante",
+      "enjôo"
+    ],
+    "replacements": [
+      "enjoo"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (acentuacao-argui-enjoo)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_texto_tecnico_01_4",
     "pattern": [
       "contem",
@@ -4339,7 +4243,7 @@
     "description": "Regra aprendida a partir da base know (hif-04)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen_09_3",
+    "id": "PT_BR_PHRASE_LEARNED_hifen_04_3",
     "pattern": [
       "contra",
       "proposta"
@@ -4348,10 +4252,10 @@
       "contraproposta"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen_09)."
+    "description": "Regra aprendida a partir da base know (hifen_04)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen-contrarregra_1",
+    "id": "PT_BR_PHRASE_LEARNED_hife-44_1",
     "pattern": [
       "contra",
       "regra"
@@ -4360,10 +4264,10 @@
       "contrarregra"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen-contrarregra)."
+    "description": "Regra aprendida a partir da base know (hife-44)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_ort-27_1",
+    "id": "PT_BR_PHRASE_LEARNED_hif-49_1",
     "pattern": [
       "contra",
       "senso"
@@ -4372,7 +4276,7 @@
       "contrassenso"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (ort-27)."
+    "description": "Regra aprendida a partir da base know (hif-49)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_tec-04-acad-atraves_2",
@@ -4435,7 +4339,7 @@
     "description": "Regra aprendida a partir da base know (tec-01-deferido)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hom-29_1",
+    "id": "PT_BR_PHRASE_LEARNED_orto_06_2",
     "pattern": [
       "de",
       "mais"
@@ -4444,19 +4348,7 @@
       "demais"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hom-29)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_tec_14_2",
-    "pattern": [
-      "de",
-      "selic"
-    ],
-    "replacements": [
-      "Selic"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (tec_14)."
+    "description": "Regra aprendida a partir da base know (orto_06)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_tec_07_6",
@@ -4759,7 +4651,7 @@
     "description": "Regra aprendida a partir da base know (orto_01)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_ace-45_1",
+    "id": "PT_BR_PHRASE_LEARNED_acen-44_1",
     "pattern": [
       "exercicio",
       "fisico"
@@ -4768,7 +4660,7 @@
       "exercício físico"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (ace-45)."
+    "description": "Regra aprendida a partir da base know (acen-44)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_ortografia_01_3",
@@ -4807,7 +4699,7 @@
     "description": "Regra aprendida a partir da base know (hife-24)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen_06_2",
+    "id": "PT_BR_PHRASE_LEARNED_hifen_07_4",
     "pattern": [
       "extra",
       "curricular"
@@ -4816,7 +4708,7 @@
       "extracurricular"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen_06)."
+    "description": "Regra aprendida a partir da base know (hifen_07)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_02_10",
@@ -5107,7 +4999,7 @@
     "description": "Regra aprendida a partir da base know (anun-30)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen-infraestrutura_1",
+    "id": "PT_BR_PHRASE_LEARNED_hife-42_1",
     "pattern": [
       "infra",
       "estrutura"
@@ -5116,7 +5008,7 @@
       "infraestrutura"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen-infraestrutura)."
+    "description": "Regra aprendida a partir da base know (hife-42)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hife-32_2",
@@ -5287,7 +5179,7 @@
     "description": "Regra aprendida a partir da base know (tec-logar-password)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_tec_analise_macroeconomica_2",
+    "id": "PT_BR_PHRASE_LEARNED_tec-07_2",
     "pattern": [
       "macro",
       "econômica"
@@ -5296,7 +5188,7 @@
       "macroeconômica"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (tec_analise_macroeconomica)."
+    "description": "Regra aprendida a partir da base know (tec-07)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_orto_01_8",
@@ -5311,7 +5203,7 @@
     "description": "Regra aprendida a partir da base know (orto_01)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hife-21_3",
+    "id": "PT_BR_PHRASE_LEARNED_hife-60_1",
     "pattern": [
       "manda",
       "chuva"
@@ -5320,7 +5212,7 @@
       "mandachuva"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hife-21)."
+    "description": "Regra aprendida a partir da base know (hife-60)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif_mangas_rosa_01_1",
@@ -5395,7 +5287,7 @@
     "description": "Regra aprendida a partir da base know (ace_11)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif-43_1",
+    "id": "PT_BR_PHRASE_LEARNED_hife-35_1",
     "pattern": [
       "micro",
       "computador"
@@ -5404,7 +5296,7 @@
       "microcomputador"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif-43)."
+    "description": "Regra aprendida a partir da base know (hife-35)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_05_3",
@@ -5525,6 +5417,18 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (hifen_06)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_hifen_07_9",
+    "pattern": [
+      "multi",
+      "setorial"
+    ],
+    "replacements": [
+      "multissetorial"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hifen_07)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_orto-08_2",
@@ -5779,7 +5683,7 @@
     "description": "Regra aprendida a partir da base know (acen-41)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif-48_1",
+    "id": "PT_BR_PHRASE_LEARNED_hife-43_1",
     "pattern": [
       "para",
       "quedas"
@@ -5788,7 +5692,7 @@
       "paraquedas"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif-48)."
+    "description": "Regra aprendida a partir da base know (hife-43)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif-017_1",
@@ -6367,16 +6271,16 @@
     "description": "Regra aprendida a partir da base know (tec_05)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_ortografia_08_7",
+    "id": "PT_BR_PHRASE_LEARNED_tecn-relatorio-anexo_0",
     "pattern": [
-      "se",
-      "nao"
+      "segue",
+      "anexo"
     ],
     "replacements": [
-      "Senão"
+      "Seguem anexas"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (ortografia_08)."
+    "description": "Regra aprendida a partir da base know (tecn-relatorio-anexo)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_tec_03_8",
@@ -6403,7 +6307,7 @@
     "description": "Regra aprendida a partir da base know (tecn_05)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen-12_2",
+    "id": "PT_BR_PHRASE_LEARNED_hif_10_3",
     "pattern": [
       "semi",
       "aberto"
@@ -6412,7 +6316,7 @@
       "semiaberto"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen-12)."
+    "description": "Regra aprendida a partir da base know (hif_10)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_013_1",
@@ -6535,7 +6439,7 @@
     "description": "Regra aprendida a partir da base know (anu-29)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen-seminovo_3",
+    "id": "PT_BR_PHRASE_LEARNED_hife-04_3",
     "pattern": [
       "semi",
       "novo"
@@ -6544,7 +6448,7 @@
       "seminovo"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen-seminovo)."
+    "description": "Regra aprendida a partir da base know (hife-04)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_05_12",
@@ -6655,7 +6559,7 @@
     "description": "Regra aprendida a partir da base know (ctx-ponto-de-vista)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif_09_1",
+    "id": "PT_BR_PHRASE_LEARNED_hif-7_1",
     "pattern": [
       "sobre",
       "coxa"
@@ -6664,7 +6568,7 @@
       "sobrecoxa"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif_09)."
+    "description": "Regra aprendida a partir da base know (hif-7)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif_sobredito_01_2",
@@ -6727,7 +6631,7 @@
     "description": "Regra aprendida a partir da base know (tec-015)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif_08_1",
+    "id": "PT_BR_PHRASE_LEARNED_hifen-05_10",
     "pattern": [
       "sub",
       "gerente"
@@ -6736,7 +6640,7 @@
       "subgerente"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif_08)."
+    "description": "Regra aprendida a partir da base know (hifen-05)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_subhumano_subreitor_2",
@@ -6763,7 +6667,7 @@
     "description": "Regra aprendida a partir da base know (texto_tecnico_12)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen_05_1",
+    "id": "PT_BR_PHRASE_LEARNED_hifen_06_7",
     "pattern": [
       "sub",
       "secretario"
@@ -6772,7 +6676,7 @@
       "subsecretário"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen_05)."
+    "description": "Regra aprendida a partir da base know (hifen_06)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_11_10",
@@ -6881,6 +6785,18 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (hifen_20)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_hife-12_1",
+    "pattern": [
+      "super",
+      "interessante"
+    ],
+    "replacements": [
+      "Superinteressante"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hife-12)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen-supermercado_2",
@@ -7147,7 +7063,7 @@
     "description": "Regra aprendida a partir da base know (hifen_13)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif-034_1",
+    "id": "PT_BR_PHRASE_LEARNED_hife_05_2",
     "pattern": [
       "ultra",
       "som"
@@ -7156,10 +7072,10 @@
       "ultrassom"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif-034)."
+    "description": "Regra aprendida a partir da base know (hife_05)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hif-27_6",
+    "id": "PT_BR_PHRASE_LEARNED_hif-13_1",
     "pattern": [
       "ultra",
       "sonografia"
@@ -7168,7 +7084,7 @@
       "ultrassonografia"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hif-27)."
+    "description": "Regra aprendida a partir da base know (hif-13)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_orto_03_8",
@@ -7291,30 +7207,6 @@
     "description": "Regra aprendida a partir da base know (anu-027)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_ctx_15_2",
-    "pattern": [
-      "ver",
-      "ele"
-    ],
-    "replacements": [
-      "o vir"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (ctx_15)."
-  },
-  {
-    "id": "PT_BR_PHRASE_LEARNED_con-20_2",
-    "pattern": [
-      "vi",
-      "ele"
-    ],
-    "replacements": [
-      "o vi"
-    ],
-    "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (con-20)."
-  },
-  {
     "id": "PT_BR_PHRASE_LEARNED_hifen_11_4",
     "pattern": [
       "vídeo",
@@ -7399,6 +7291,18 @@
     "description": "Regra aprendida a partir da base know (acent_02)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_tecn-vossa-senhoria_1",
+    "pattern": [
+      "vossa",
+      "senhoria"
+    ],
+    "replacements": [
+      "a Vossa Senhoria"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tecn-vossa-senhoria)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_anu_24_4",
     "pattern": [
       "whats",
@@ -7422,6 +7326,17 @@
     "description": "Regra aprendida a partir da base know (hif-ab-rogar)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_hom-004_1",
+    "pattern": [
+      "acerca"
+    ],
+    "replacements": [
+      "a cerca"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hom-004)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_hifen-antihigienico_3",
     "pattern": [
       "antihigienico"
@@ -7433,7 +7348,7 @@
     "description": "Regra aprendida a partir da base know (hifen-antihigienico)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen_03_4",
+    "id": "PT_BR_PHRASE_LEARNED_hifen-anti-inflamatorio_4",
     "pattern": [
       "antiinflamatorio"
     ],
@@ -7441,7 +7356,7 @@
       "anti inflamatório"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen_03)."
+    "description": "Regra aprendida a partir da base know (hifen-anti-inflamatorio)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif_01_4",
@@ -7477,6 +7392,17 @@
     "description": "Regra aprendida a partir da base know (anun-04)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_hif-arqui-inimigo_3",
+    "pattern": [
+      "arquiinimigo"
+    ],
+    "replacements": [
+      "arqui inimigo"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hif-arqui-inimigo)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_ace-atrai-lo_1",
     "pattern": [
       "atrailo"
@@ -7497,6 +7423,17 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (tecn-01)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_anu_desconto_01_3",
+    "pattern": [
+      "avista"
+    ],
+    "replacements": [
+      "à vista"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (anu_desconto_01)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif_4_9",
@@ -7620,6 +7557,28 @@
     "description": "Regra aprendida a partir da base know (ort-03)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_ortografia_02_7",
+    "pattern": [
+      "derrepente"
+    ],
+    "replacements": [
+      "de repente"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (ortografia_02)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_anun-qualidade-garantida_5",
+    "pattern": [
+      "devolvido"
+    ],
+    "replacements": [
+      "de volta"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (anun-qualidade-garantida)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_tec_05_1",
     "pattern": [
       "disclaimer"
@@ -7708,7 +7667,7 @@
     "description": "Regra aprendida a partir da base know (orto_03)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_hifen-guarda-chuva-aberto_2",
+    "id": "PT_BR_PHRASE_LEARNED_hifen-guarda-chuva_3",
     "pattern": [
       "guardachuva"
     ],
@@ -7716,7 +7675,7 @@
       "guarda chuva"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (hifen-guarda-chuva-aberto)."
+    "description": "Regra aprendida a partir da base know (hifen-guarda-chuva)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif-hiper-requintado_3",
@@ -7818,6 +7777,17 @@
     "description": "Regra aprendida a partir da base know (anuncios_10)."
   },
   {
+    "id": "PT_BR_PHRASE_LEARNED_hife-03_4",
+    "pattern": [
+      "microondas"
+    ],
+    "replacements": [
+      "micro ondas"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hife-03)."
+  },
+  {
     "id": "PT_BR_PHRASE_LEARNED_hifen-microonibus_1",
     "pattern": [
       "microonibus"
@@ -7840,7 +7810,7 @@
     "description": "Regra aprendida a partir da base know (tecn-35)."
   },
   {
-    "id": "PT_BR_PHRASE_LEARNED_anu-15_3",
+    "id": "PT_BR_PHRASE_LEARNED_anun-12_1",
     "pattern": [
       "online"
     ],
@@ -7848,7 +7818,7 @@
       "on line"
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
-    "description": "Regra aprendida a partir da base know (anu-15)."
+    "description": "Regra aprendida a partir da base know (anun-12)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hife-14_2",
@@ -7871,6 +7841,17 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (hif-para-choque)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_hifen_04_8",
+    "pattern": [
+      "porisso"
+    ],
+    "replacements": [
+      "por isso"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (hifen_04)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif_porta_malas_01_1",
@@ -7904,6 +7885,17 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (hif-22-pos-graduaçao)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_anuncios_13_0",
+    "pattern": [
+      "precisasse"
+    ],
+    "replacements": [
+      "Precisam se"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (anuncios_13)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hif_pre_escolar_01_2",
@@ -7948,6 +7940,17 @@
     ],
     "message": "Essa combinação costuma ser escrita de outra forma.",
     "description": "Regra aprendida a partir da base know (hif-sob-roda)."
+  },
+  {
+    "id": "PT_BR_PHRASE_LEARNED_tec_16_4",
+    "pattern": [
+      "sofreu"
+    ],
+    "replacements": [
+      "passou por"
+    ],
+    "message": "Essa combinação costuma ser escrita de outra forma.",
+    "description": "Regra aprendida a partir da base know (tec_16)."
   },
   {
     "id": "PT_BR_PHRASE_LEARNED_hifen_subhumano_subreitor_7",
