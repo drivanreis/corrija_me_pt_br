@@ -4,6 +4,8 @@ import { createPhraseRuleMatches } from "./phrase-rules.js";
 import { createPunctuationHeuristicMatches } from "./punctuation-rules.js";
 import { createSimpleSyntaxPatternMatches } from "./syntax-patterns.js";
 import { createSimpleVerbalAgreementMatches } from "./verbal-agreement.js";
+import { createAmbiguityResolutionMatches } from "./ambiguity-resolution.js";
+import { createEnhancedContextRuleMatches } from "./enhanced-context-rules.js";
 import { buildContext, createWholeWordPattern, createWordTokenPattern, dedupeStrings, isWordLike, normalizeDictionaryWord, preserveReplacementCase, stripDiacritics } from "./text.js";
 import type { CheckResult, DictionaryData, MatchConfidence, ReplacementEntry, RuleMatch } from "./types.js";
 
@@ -1183,6 +1185,22 @@ function deriveMatchConfidence(match: RuleMatch, text: string, dictionary: Dicti
     return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
   }
 
+  // Casos de ambiguidade morfológica - confiança reduzida
+  if (match.rule.id.startsWith("PT_BR_AMBIGUITY_") || match.rule.id.startsWith("PT_BR_ENHANCED_")) {
+    let score = 0.72; // Base mais baixa para casos ambíguos
+    if (hasMultipleSuggestions) {
+      score -= 0.12; // Penalidade maior para múltiplas sugestões
+    }
+    if (match.length <= 3) {
+      score -= 0.08;
+    }
+    // Ambiguidade específica tem confiança ainda menor
+    if (match.rule.id.includes("MEIO_") || match.rule.id.includes("BASTANTE_") || match.rule.id.includes("MUITO_")) {
+      score -= 0.06;
+    }
+    return createConfidence(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "caso ambiguo - revisao recomendada");
+  }
+
   if (match.rule.id.startsWith("PT_BR_PHRASE_")) {
     let score = 0.97;
     if (hasMultipleSuggestions) {
@@ -1342,6 +1360,14 @@ function createInferenceStages(replacements: ReplacementEntry[], dictionary: Dic
         ...createCraseHeuristicMatches(text),
         ...createLocalizationDateMatches(text),
         ...createAnnouncementAgreementMatches(text)
+      ]
+    },
+    {
+      id: "ambiguity_resolution",
+      description: "Resolve casos de ambiguidade morfológica e contextual.",
+      collectMatches: (text) => [
+        ...createAmbiguityResolutionMatches(text, dictionary),
+        ...createEnhancedContextRuleMatches(text, dictionary)
       ]
     },
     {

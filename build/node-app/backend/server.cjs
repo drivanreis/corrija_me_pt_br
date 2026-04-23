@@ -1,32 +1,10 @@
 /* corrija_me_pt_br backend */
 "use strict";
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
 
 // src/backend/server.ts
 var import_node_http = require("node:http");
 var import_node_child_process = require("node:child_process");
-var import_node_path4 = require("node:path");
+var import_node_path3 = require("node:path");
 
 // src/core/text.ts
 function escapeRegExp(value) {
@@ -259,12 +237,12 @@ function matchFormByTraits(forms, targetGenero, targetNumero) {
   const sameNumber = normalizedForms.find((candidate) => inferNumber(candidate) === targetNumero);
   return sameNumber || null;
 }
-function createNounPluralFromRules(base, dictionary) {
-  const irregular = dictionary.linguisticData.irregularPlurals[base];
+function createNounPluralFromRules(base, dictionary2) {
+  const irregular = dictionary2.linguisticData.irregularPlurals[base];
   if (irregular) {
     return irregular;
   }
-  const rules = dictionary.linguisticData.nominalInflection?.plural || [];
+  const rules = dictionary2.linguisticData.nominalInflection?.plural || [];
   for (const rule of rules) {
     if (base.endsWith(rule.terminacao)) {
       return `${base.slice(0, -rule.terminacao.length)}${rule.resultado}`;
@@ -272,7 +250,7 @@ function createNounPluralFromRules(base, dictionary) {
   }
   return null;
 }
-function getExpectedNounForm(entry, targetGenero, targetNumero, dictionary) {
+function getExpectedNounForm(entry, targetGenero, targetNumero, dictionary2) {
   if (!entry) {
     return null;
   }
@@ -282,7 +260,7 @@ function getExpectedNounForm(entry, targetGenero, targetNumero, dictionary) {
     return direct;
   }
   if (targetNumero === "plural" && entry.lemma) {
-    return createNounPluralFromRules(normalizeDictionaryWord(entry.lemma), dictionary);
+    return createNounPluralFromRules(normalizeDictionaryWord(entry.lemma), dictionary2);
   }
   return normalizeDictionaryWord(entry.lemma || "") || null;
 }
@@ -309,7 +287,7 @@ function createAgreementMatch(text, token, replacement, description) {
     context: buildContext(text, token.offset, token.length)
   };
 }
-function createDeterminerNounMatches(text, tokens, dictionary) {
+function createDeterminerNounMatches(text, tokens, dictionary2) {
   const matches = [];
   for (let index = 0; index < tokens.length - 1; index += 1) {
     const articleToken = tokens[index];
@@ -320,14 +298,14 @@ function createDeterminerNounMatches(text, tokens, dictionary) {
     if (isHyphenatedToken(articleToken) || isHyphenatedToken(nounToken)) {
       continue;
     }
-    const articleEntry = dictionary.linguisticData.lexicalEntries.get(articleToken.normalized);
-    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
+    const articleEntry = dictionary2.linguisticData.lexicalEntries.get(articleToken.normalized);
+    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken.normalized);
     if (!isDeterminer(articleEntry) || !isNoun(nounEntry)) {
       continue;
     }
     const targetGenero = articleEntry?.genero || nounEntry?.genero || null;
     const targetNumero = articleEntry?.numero || "singular";
-    const expectedForm = getExpectedNounForm(nounEntry, targetGenero, targetNumero, dictionary);
+    const expectedForm = getExpectedNounForm(nounEntry, targetGenero, targetNumero, dictionary2);
     if (!expectedForm || expectedForm === nounToken.normalized) {
       continue;
     }
@@ -340,7 +318,7 @@ function createDeterminerNounMatches(text, tokens, dictionary) {
   }
   return matches;
 }
-function createDeterminerNounAdjectiveMatches(text, tokens, dictionary) {
+function createDeterminerNounAdjectiveMatches(text, tokens, dictionary2) {
   const matches = [];
   for (let index = 0; index < tokens.length - 2; index += 1) {
     const determinerToken = tokens[index];
@@ -352,15 +330,15 @@ function createDeterminerNounAdjectiveMatches(text, tokens, dictionary) {
     if (isHyphenatedToken(determinerToken) || isHyphenatedToken(nounToken) || isHyphenatedToken(adjectiveToken)) {
       continue;
     }
-    const determinerEntry = dictionary.linguisticData.lexicalEntries.get(determinerToken.normalized);
-    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
-    const adjectiveEntry = dictionary.linguisticData.lexicalEntries.get(adjectiveToken.normalized);
+    const determinerEntry = dictionary2.linguisticData.lexicalEntries.get(determinerToken.normalized);
+    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken.normalized);
+    const adjectiveEntry = dictionary2.linguisticData.lexicalEntries.get(adjectiveToken.normalized);
     if (!isDeterminer(determinerEntry) || !isNoun(nounEntry) || !isVariableAdjective(adjectiveEntry)) {
       continue;
     }
     const targetGenero = determinerEntry?.genero || nounEntry?.genero || inferGender(nounToken.normalized);
     const targetNumero = determinerEntry?.numero || inferNumber(nounToken.normalized);
-    const expectedNoun = getExpectedNounForm(nounEntry, targetGenero, targetNumero, dictionary);
+    const expectedNoun = getExpectedNounForm(nounEntry, targetGenero, targetNumero, dictionary2);
     const reference = expectedNoun || nounToken.normalized;
     const expectedAdjective = getExpectedAdjectiveForm(adjectiveEntry, targetGenero, inferNumber(reference));
     if (!expectedAdjective || expectedAdjective === adjectiveToken.normalized) {
@@ -375,7 +353,7 @@ function createDeterminerNounAdjectiveMatches(text, tokens, dictionary) {
   }
   return matches;
 }
-function createNounAdjectiveMatches(text, tokens, dictionary) {
+function createNounAdjectiveMatches(text, tokens, dictionary2) {
   const matches = [];
   for (let index = 0; index < tokens.length - 1; index += 1) {
     const nounToken = tokens[index];
@@ -386,8 +364,8 @@ function createNounAdjectiveMatches(text, tokens, dictionary) {
     if (isHyphenatedToken(nounToken) || isHyphenatedToken(adjectiveToken)) {
       continue;
     }
-    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
-    const adjectiveEntry = dictionary.linguisticData.lexicalEntries.get(adjectiveToken.normalized);
+    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken.normalized);
+    const adjectiveEntry = dictionary2.linguisticData.lexicalEntries.get(adjectiveToken.normalized);
     if (!isNoun(nounEntry) || !isVariableAdjective(adjectiveEntry)) {
       continue;
     }
@@ -406,18 +384,18 @@ function createNounAdjectiveMatches(text, tokens, dictionary) {
   }
   return matches;
 }
-function createNominalPredicateMatches(text, tokens, dictionary) {
+function createNominalPredicateMatches(text, tokens, dictionary2) {
   const matches = [];
   for (let index = 0; index < tokens.length - 2; index += 1) {
     const firstToken = tokens[index];
     const secondToken = tokens[index + 1];
     const thirdToken = tokens[index + 2];
     const fourthToken = tokens[index + 3];
-    const firstEntry = dictionary.linguisticData.lexicalEntries.get(firstToken?.normalized || "");
-    const secondEntry = dictionary.linguisticData.lexicalEntries.get(secondToken?.normalized || "");
-    const thirdEntry = dictionary.linguisticData.lexicalEntries.get(thirdToken?.normalized || "");
-    const fourthEntry = dictionary.linguisticData.lexicalEntries.get(fourthToken?.normalized || "");
-    if (firstToken && secondToken && thirdToken && isDeterminer(firstEntry) && isNoun(secondEntry) && isLinkingVerb(thirdEntry) && isVariableAdjective(dictionary.linguisticData.lexicalEntries.get(thirdToken.normalized)) === false && isVariableAdjective(fourthEntry) && fourthToken) {
+    const firstEntry = dictionary2.linguisticData.lexicalEntries.get(firstToken?.normalized || "");
+    const secondEntry = dictionary2.linguisticData.lexicalEntries.get(secondToken?.normalized || "");
+    const thirdEntry = dictionary2.linguisticData.lexicalEntries.get(thirdToken?.normalized || "");
+    const fourthEntry = dictionary2.linguisticData.lexicalEntries.get(fourthToken?.normalized || "");
+    if (firstToken && secondToken && thirdToken && isDeterminer(firstEntry) && isNoun(secondEntry) && isLinkingVerb(thirdEntry) && isVariableAdjective(dictionary2.linguisticData.lexicalEntries.get(thirdToken.normalized)) === false && isVariableAdjective(fourthEntry) && fourthToken) {
       if (isHyphenatedToken(firstToken) || isHyphenatedToken(secondToken) || isHyphenatedToken(thirdToken) || isHyphenatedToken(fourthToken)) {
         continue;
       }
@@ -452,7 +430,7 @@ function createNominalPredicateMatches(text, tokens, dictionary) {
   }
   return matches;
 }
-function createExpandedNominalPredicateMatches(text, tokens, dictionary) {
+function createExpandedNominalPredicateMatches(text, tokens, dictionary2) {
   const matches = [];
   for (let index = 0; index < tokens.length - 4; index += 1) {
     const determinerToken = tokens[index];
@@ -460,11 +438,11 @@ function createExpandedNominalPredicateMatches(text, tokens, dictionary) {
     const nounQualifierToken = tokens[index + 2];
     const linkingVerbToken = tokens[index + 3];
     const adjectiveToken = tokens[index + 4];
-    const determinerEntry = dictionary.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
-    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
-    const nounQualifierEntry = dictionary.linguisticData.lexicalEntries.get(nounQualifierToken?.normalized || "");
-    const linkingVerbEntry = dictionary.linguisticData.lexicalEntries.get(linkingVerbToken?.normalized || "");
-    const adjectiveEntry = dictionary.linguisticData.lexicalEntries.get(adjectiveToken?.normalized || "");
+    const determinerEntry = dictionary2.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
+    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
+    const nounQualifierEntry = dictionary2.linguisticData.lexicalEntries.get(nounQualifierToken?.normalized || "");
+    const linkingVerbEntry = dictionary2.linguisticData.lexicalEntries.get(linkingVerbToken?.normalized || "");
+    const adjectiveEntry = dictionary2.linguisticData.lexicalEntries.get(adjectiveToken?.normalized || "");
     if (!determinerToken || !nounToken || !nounQualifierToken || !linkingVerbToken || !adjectiveToken || !isDeterminer(determinerEntry) || !isNoun(nounEntry) || !isVariableAdjective(nounQualifierEntry) || !isLinkingVerb(linkingVerbEntry) || !isVariableAdjective(adjectiveEntry)) {
       continue;
     }
@@ -486,17 +464,17 @@ function createExpandedNominalPredicateMatches(text, tokens, dictionary) {
   }
   return matches;
 }
-function createAttachmentPredicateMatches(text, tokens, dictionary) {
+function createAttachmentPredicateMatches(text, tokens, dictionary2) {
   const matches = [];
   for (let index = 0; index < tokens.length - 3; index += 1) {
     const verbToken = tokens[index];
     const adjectiveToken = tokens[index + 1];
     const determinerToken = tokens[index + 2];
     const nounToken = tokens[index + 3];
-    const verbEntry = dictionary.linguisticData.lexicalEntries.get(verbToken?.normalized || "");
-    const adjectiveEntry = dictionary.linguisticData.lexicalEntries.get(adjectiveToken?.normalized || "");
-    const determinerEntry = dictionary.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
-    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
+    const verbEntry = dictionary2.linguisticData.lexicalEntries.get(verbToken?.normalized || "");
+    const adjectiveEntry = dictionary2.linguisticData.lexicalEntries.get(adjectiveToken?.normalized || "");
+    const determinerEntry = dictionary2.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
+    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
     if (!verbToken || !adjectiveToken || !determinerToken || !nounToken || !isAttachmentVerb(verbEntry) || !isVariableAdjective(adjectiveEntry) || !isDeterminer(determinerEntry) || !isNoun(nounEntry)) {
       continue;
     }
@@ -518,15 +496,15 @@ function createAttachmentPredicateMatches(text, tokens, dictionary) {
   }
   return matches;
 }
-function createSimpleNominalAgreementMatches(text, dictionary) {
+function createSimpleNominalAgreementMatches(text, dictionary2) {
   const tokens = tokenizeText2(text);
   return [
-    ...createDeterminerNounMatches(text, tokens, dictionary),
-    ...createDeterminerNounAdjectiveMatches(text, tokens, dictionary),
-    ...createNounAdjectiveMatches(text, tokens, dictionary),
-    ...createNominalPredicateMatches(text, tokens, dictionary),
-    ...createExpandedNominalPredicateMatches(text, tokens, dictionary),
-    ...createAttachmentPredicateMatches(text, tokens, dictionary)
+    ...createDeterminerNounMatches(text, tokens, dictionary2),
+    ...createDeterminerNounAdjectiveMatches(text, tokens, dictionary2),
+    ...createNounAdjectiveMatches(text, tokens, dictionary2),
+    ...createNominalPredicateMatches(text, tokens, dictionary2),
+    ...createExpandedNominalPredicateMatches(text, tokens, dictionary2),
+    ...createAttachmentPredicateMatches(text, tokens, dictionary2)
   ];
 }
 
@@ -879,7 +857,7 @@ function getPrimarySyntaxClass(entry) {
 function matchesPattern(sequence, pattern) {
   return sequence.length === pattern.pattern.length && sequence.every((value, index) => value === pattern.pattern[index]);
 }
-function hasLongerValidPattern(tokens, startIndex, patterns, dictionary, currentLength) {
+function hasLongerValidPattern(tokens, startIndex, patterns, dictionary2, currentLength) {
   for (const pattern of patterns) {
     if (pattern.pattern.length <= currentLength) {
       continue;
@@ -889,7 +867,7 @@ function hasLongerValidPattern(tokens, startIndex, patterns, dictionary, current
       continue;
     }
     const sequence = slice.map((token) => {
-      const entry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
+      const entry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
       return getPrimarySyntaxClass(entry);
     });
     if (sequence.some((value) => value === null)) {
@@ -935,7 +913,7 @@ function crossesSentenceBoundary(text, slice) {
   }
   return false;
 }
-function hasUnknownNeighboringSyntaxClass(tokens, startIndex, endIndex, dictionary) {
+function hasUnknownNeighboringSyntaxClass(tokens, startIndex, endIndex, dictionary2) {
   const left = Math.max(0, startIndex - 1);
   const right = Math.min(tokens.length - 1, endIndex + 1);
   for (let index = left; index <= right; index += 1) {
@@ -943,7 +921,7 @@ function hasUnknownNeighboringSyntaxClass(tokens, startIndex, endIndex, dictiona
     if (!token) {
       continue;
     }
-    const entry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
+    const entry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
     const primaryClass = getPrimarySyntaxClass(entry);
     if (primaryClass === null) {
       return true;
@@ -951,8 +929,8 @@ function hasUnknownNeighboringSyntaxClass(tokens, startIndex, endIndex, dictiona
   }
   return false;
 }
-function createSimpleSyntaxPatternMatches(text, dictionary) {
-  const patterns = dictionary.linguisticData.syntaxPatterns || [];
+function createSimpleSyntaxPatternMatches(text, dictionary2) {
+  const patterns = dictionary2.linguisticData.syntaxPatterns || [];
   if (!patterns.length) {
     return [];
   }
@@ -969,7 +947,7 @@ function createSimpleSyntaxPatternMatches(text, dictionary) {
         continue;
       }
       const sequence = slice.map((token) => {
-        const entry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
+        const entry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
         return getPrimarySyntaxClass(entry);
       });
       if (sequence.some((value) => value === null)) {
@@ -984,10 +962,10 @@ function createSimpleSyntaxPatternMatches(text, dictionary) {
       if (!startsLikePattern || !differsByOne) {
         continue;
       }
-      if (hasLongerValidPattern(tokens, index, patterns, dictionary, pattern.pattern.length)) {
+      if (hasLongerValidPattern(tokens, index, patterns, dictionary2, pattern.pattern.length)) {
         continue;
       }
-      if (hasUnknownNeighboringSyntaxClass(tokens, index, index + pattern.pattern.length - 1, dictionary)) {
+      if (hasUnknownNeighboringSyntaxClass(tokens, index, index + pattern.pattern.length - 1, dictionary2)) {
         continue;
       }
       const startToken = slice[0];
@@ -1032,8 +1010,8 @@ function getAgreementIndex(pessoa, numero) {
   }
   return null;
 }
-function createRegularExpectedForm(lemma, group, dictionary, pessoa, numero) {
-  const rule = dictionary.linguisticData.verbConjugationRules[group];
+function createRegularExpectedForm(lemma, group, dictionary2, pessoa, numero) {
+  const rule = dictionary2.linguisticData.verbConjugationRules[group];
   const endings = rule?.tempos?.presente;
   const agreementIndex = getAgreementIndex(pessoa, numero);
   if (!endings || agreementIndex === null || !endings[agreementIndex]) {
@@ -1046,8 +1024,8 @@ function createRegularExpectedForm(lemma, group, dictionary, pessoa, numero) {
   const radical = normalizedLemma.slice(0, -2);
   return `${radical}${endings[agreementIndex]}`;
 }
-function createIrregularExpectedForm(lemma, dictionary, pessoa, numero) {
-  const paradigm = dictionary.linguisticData.irregularVerbs[normalizeDictionaryWord(lemma)];
+function createIrregularExpectedForm(lemma, dictionary2, pessoa, numero) {
+  const paradigm = dictionary2.linguisticData.irregularVerbs[normalizeDictionaryWord(lemma)];
   const agreementIndex = getAgreementIndex(pessoa, numero);
   const forms = paradigm?.presente;
   if (!forms || agreementIndex === null || !forms[agreementIndex]) {
@@ -1055,7 +1033,7 @@ function createIrregularExpectedForm(lemma, dictionary, pessoa, numero) {
   }
   return forms[agreementIndex];
 }
-function getVerbExpectedForm(entry, dictionary, pessoa, numero) {
+function getVerbExpectedForm(entry, dictionary2, pessoa, numero) {
   if (!entry) {
     return null;
   }
@@ -1064,28 +1042,28 @@ function getVerbExpectedForm(entry, dictionary, pessoa, numero) {
     return null;
   }
   if (entry.irregular) {
-    return createIrregularExpectedForm(lemma, dictionary, pessoa, numero);
+    return createIrregularExpectedForm(lemma, dictionary2, pessoa, numero);
   }
   if (!entry.grupo) {
     return null;
   }
-  return createRegularExpectedForm(lemma, entry.grupo, dictionary, pessoa, numero);
+  return createRegularExpectedForm(lemma, entry.grupo, dictionary2, pessoa, numero);
 }
-function getPresentTenseForms(entry, dictionary) {
+function getPresentTenseForms(entry, dictionary2) {
   if (!entry?.lemma) {
     return [];
   }
   const normalizedLemma = normalizeDictionaryWord(entry.lemma);
   if (entry.irregular) {
-    return (dictionary.linguisticData.irregularVerbs[normalizedLemma]?.presente || []).map((value) => normalizeDictionaryWord(value));
+    return (dictionary2.linguisticData.irregularVerbs[normalizedLemma]?.presente || []).map((value) => normalizeDictionaryWord(value));
   }
   if (!entry.grupo) {
     return [];
   }
   const forms = [];
   for (let pessoa = 1; pessoa <= 3; pessoa += 1) {
-    const singular = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary, pessoa, "singular");
-    const plural = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary, pessoa, "plural");
+    const singular = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary2, pessoa, "singular");
+    const plural = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary2, pessoa, "plural");
     if (singular) {
       forms.push(normalizeDictionaryWord(singular));
     }
@@ -1095,8 +1073,8 @@ function getPresentTenseForms(entry, dictionary) {
   }
   return forms;
 }
-function isLikelyPresentTenseForm(token, entry, dictionary) {
-  return getPresentTenseForms(entry, dictionary).includes(token.normalized);
+function isLikelyPresentTenseForm(token, entry, dictionary2) {
+  return getPresentTenseForms(entry, dictionary2).includes(token.normalized);
 }
 function createAgreementMatch2(text, token, replacement, subject) {
   const replacements = dedupeStrings([preserveReplacementCase(token.value, replacement)]);
@@ -1119,30 +1097,30 @@ function isSimpleVerbCandidate(token, entry) {
     entry && entry.classes.includes("verbo") && !token.normalized.includes("-")
   );
 }
-function isPreposition(token, dictionary) {
+function isPreposition(token, dictionary2) {
   if (!token) {
     return false;
   }
-  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
+  const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
   return Boolean(lexicalEntry?.classes.includes("preposicao"));
 }
-function isAdverb(token, dictionary) {
+function isAdverb(token, dictionary2) {
   if (!token) {
     return false;
   }
-  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
+  const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
   return Boolean(lexicalEntry?.classes.includes("adverbio"));
 }
-function isCliticPronoun(token, dictionary) {
+function isCliticPronoun(token, dictionary2) {
   if (!token) {
     return false;
   }
-  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
+  const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
   return Boolean(
     lexicalEntry && lexicalEntry.classes.includes("pronome") && lexicalEntry.tags?.includes("clitico")
   );
 }
-function shouldSkipInfinitiveLikeContext(tokens, subjectIndex, verbToken, verbEntry, dictionary) {
+function shouldSkipInfinitiveLikeContext(tokens, subjectIndex, verbToken, verbEntry, dictionary2) {
   if (!verbEntry) {
     return true;
   }
@@ -1151,12 +1129,12 @@ function shouldSkipInfinitiveLikeContext(tokens, subjectIndex, verbToken, verbEn
     return true;
   }
   const previousToken = tokens[subjectIndex - 1];
-  if (isPreposition(previousToken, dictionary)) {
+  if (isPreposition(previousToken, dictionary2)) {
     return true;
   }
   return false;
 }
-function resolveVerbIndex(tokens, subject, dictionary) {
+function resolveVerbIndex(tokens, subject, dictionary2) {
   let index = subject.nextVerbIndex;
   let skippedAdverb = false;
   let skippedClitic = false;
@@ -1165,12 +1143,12 @@ function resolveVerbIndex(tokens, subject, dictionary) {
     if (!token) {
       return null;
     }
-    if (!skippedClitic && isCliticPronoun(token, dictionary)) {
+    if (!skippedClitic && isCliticPronoun(token, dictionary2)) {
       skippedClitic = true;
       index += 1;
       continue;
     }
-    if (!skippedAdverb && isAdverb(token, dictionary)) {
+    if (!skippedAdverb && isAdverb(token, dictionary2)) {
       skippedAdverb = true;
       index += 1;
       continue;
@@ -1179,7 +1157,7 @@ function resolveVerbIndex(tokens, subject, dictionary) {
   }
   return null;
 }
-function resolveSubjectCandidate(tokens, index, dictionary) {
+function resolveSubjectCandidate(tokens, index, dictionary2) {
   const first = tokens[index];
   const second = tokens[index + 1];
   if (!first) {
@@ -1187,7 +1165,7 @@ function resolveSubjectCandidate(tokens, index, dictionary) {
   }
   if (second) {
     const joined = `${first.normalized} ${second.normalized}`;
-    if (dictionary.linguisticData.verbalAgreement[joined]) {
+    if (dictionary2.linguisticData.verbalAgreement[joined]) {
       return {
         text: `${first.value} ${second.value}`,
         normalized: joined,
@@ -1195,7 +1173,7 @@ function resolveSubjectCandidate(tokens, index, dictionary) {
       };
     }
   }
-  if (dictionary.linguisticData.verbalAgreement[first.normalized]) {
+  if (dictionary2.linguisticData.verbalAgreement[first.normalized]) {
     return {
       text: first.value,
       normalized: first.normalized,
@@ -1204,15 +1182,15 @@ function resolveSubjectCandidate(tokens, index, dictionary) {
   }
   return null;
 }
-function createSimpleVerbalAgreementMatches(text, dictionary) {
+function createSimpleVerbalAgreementMatches(text, dictionary2) {
   const tokens = tokenizeText5(text);
   const matches = [];
   for (let index = 0; index < tokens.length - 1; index += 1) {
-    const subject = resolveSubjectCandidate(tokens, index, dictionary);
+    const subject = resolveSubjectCandidate(tokens, index, dictionary2);
     if (!subject) {
       continue;
     }
-    const verbIndex = resolveVerbIndex(tokens, subject, dictionary);
+    const verbIndex = resolveVerbIndex(tokens, subject, dictionary2);
     if (verbIndex === null) {
       continue;
     }
@@ -1220,29 +1198,445 @@ function createSimpleVerbalAgreementMatches(text, dictionary) {
     if (!verbToken) {
       continue;
     }
-    const agreement = dictionary.linguisticData.verbalAgreement[subject.normalized];
+    const agreement = dictionary2.linguisticData.verbalAgreement[subject.normalized];
     if (!agreement) {
       continue;
     }
-    const verbEntry = dictionary.linguisticData.lexicalEntries.get(verbToken.normalized);
+    const verbEntry = dictionary2.linguisticData.lexicalEntries.get(verbToken.normalized);
     if (!isSimpleVerbCandidate(verbToken, verbEntry)) {
       continue;
     }
-    if (!isLikelyPresentTenseForm(verbToken, verbEntry, dictionary)) {
+    if (!isLikelyPresentTenseForm(verbToken, verbEntry, dictionary2)) {
       continue;
     }
-    if (shouldSkipInfinitiveLikeContext(tokens, index, verbToken, verbEntry, dictionary)) {
+    if (shouldSkipInfinitiveLikeContext(tokens, index, verbToken, verbEntry, dictionary2)) {
       continue;
     }
-    const expectedForm = getVerbExpectedForm(verbEntry, dictionary, agreement.pessoa, agreement.numero);
+    const expectedForm = getVerbExpectedForm(verbEntry, dictionary2, agreement.pessoa, agreement.numero);
     if (!expectedForm || normalizeDictionaryWord(expectedForm) === verbToken.normalized) {
       continue;
     }
-    const expectedEntry = dictionary.linguisticData.lexicalEntries.get(normalizeDictionaryWord(expectedForm));
+    const expectedEntry = dictionary2.linguisticData.lexicalEntries.get(normalizeDictionaryWord(expectedForm));
     if (!expectedEntry || !expectedEntry.classes.includes("verbo")) {
       continue;
     }
     matches.push(createAgreementMatch2(text, verbToken, expectedForm, subject.text));
+  }
+  return matches;
+}
+
+// src/core/ambiguity-resolution.ts
+function createConfidence(level, score, reason) {
+  return {
+    level,
+    score: Number(score.toFixed(2)),
+    reason
+  };
+}
+function createMatch(text, offset, length, replacements, ruleId, message, description, confidence) {
+  return {
+    message,
+    shortMessage: message,
+    offset,
+    length,
+    replacements: replacements.map((value) => ({ value })),
+    confidence,
+    rule: {
+      id: ruleId,
+      description,
+      issueType: "grammar"
+    },
+    context: buildContext(text, offset, length)
+  };
+}
+function tokenizeSlices(text) {
+  const tokens = [];
+  const pattern = createWordTokenPattern();
+  for (const match of text.matchAll(pattern)) {
+    if (match.index === void 0) {
+      continue;
+    }
+    tokens.push({
+      value: match[0],
+      normalized: normalizeDictionaryWord(match[0]),
+      offset: match.index,
+      length: match[0].length
+    });
+  }
+  return tokens;
+}
+function getSurroundingContext(tokens, targetIndex, windowSize = 3) {
+  const start = Math.max(0, targetIndex - windowSize);
+  const end = Math.min(tokens.length, targetIndex + windowSize + 1);
+  const before = tokens.slice(start, targetIndex);
+  const after = tokens.slice(targetIndex + 1, end);
+  const fullContext = tokens.slice(start, end).map((t) => t.value).join(" ");
+  return { before, after, fullContext };
+}
+function isAdverbialContext(before, after) {
+  const adverbialIndicators = [
+    // Seguido de adjetivo
+    ...after.map((t) => t.normalized).filter(
+      (word) => ["triste", "feliz", "confuso", "cansado", "contente", "nervoso", "preocupado"].includes(word)
+    ),
+    // Precedido por verbos de estado
+    ...before.map((t) => t.normalized).filter(
+      (word) => ["estar", "ficar", "parecer", "permanecer", "andar"].includes(word)
+    )
+  ];
+  return adverbialIndicators.length > 0;
+}
+function isNumeralContext(before, after) {
+  const numeralIndicators = [
+    // Seguido de substantivos contáveis
+    ...after.map((t) => t.normalized).filter(
+      (word) => ["pizza", "hora", "duzia", "d\xFAzia", "dezena", "centena", "milhar"].includes(word)
+    ),
+    // Contextos de tempo/quantidade
+    ...before.map((t) => t.normalized).filter(
+      (word) => ["comeu", "comeu", "bebeu", "tomou", "passou", "esperou"].includes(word)
+    ),
+    // Numerais e medidas
+    ...before.map((t) => t.normalized).filter(
+      (word) => ["uma", "duas", "tr\xEAs", "quatro", "cinco"].includes(word)
+    )
+  ];
+  return numeralIndicators.length > 0;
+}
+function createAmbiguityResolutionMatchesInternal(text, _dictionary) {
+  const matches = [];
+  const tokens = tokenizeSlices(text);
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (token.normalized === "meio" || token.normalized === "meia") {
+      const { before, after } = getSurroundingContext(tokens, i);
+      if (token.normalized === "meia") {
+        if (isAdverbialContext(before, after)) {
+          addIfNoOverlap(matches, createMatch(
+            text,
+            token.offset,
+            token.length,
+            [preserveReplacementCase(token.value, "meio")],
+            "PT_BR_AMBIGUITY_MEIO_ADVERB",
+            'Use "meio" (invari\xE1vel) como adv\xE9rbio de intensidade.',
+            'Corrige ambiguidade: adv\xE9rbio "meio" vs numeral "meia".',
+            createConfidence("medium", 0.75, "contexto adverbial detectado")
+          ));
+        }
+      }
+      if (token.normalized === "meio") {
+        if (isNumeralContext(before, after)) {
+          addIfNoOverlap(matches, createMatch(
+            text,
+            token.offset,
+            token.length,
+            [preserveReplacementCase(token.value, "meia")],
+            "PT_BR_AMBIGUITY_MEIA_NUMERAL",
+            'Use "meia" como numeral (metade).',
+            'Corrige ambiguidade: numeral "meia" vs adv\xE9rbio "meio".',
+            createConfidence("medium", 0.78, "contexto numeral detectado")
+          ));
+        }
+      }
+    }
+  }
+  return matches;
+}
+function addIfNoOverlap(matches, candidate) {
+  const candidateStart = candidate.offset;
+  const candidateEnd = candidate.offset + candidate.length;
+  const overlaps = matches.some((existing) => {
+    const existingStart = existing.offset;
+    const existingEnd = existing.offset + existing.length;
+    return candidateStart < existingEnd && existingStart < candidateEnd;
+  });
+  if (!overlaps) {
+    matches.push(candidate);
+  }
+}
+function createBastanteAmbiguityMatches(text) {
+  const matches = [];
+  const tokens = tokenizeSlices(text);
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (token.normalized === "bastante") {
+      const { before, after } = getSurroundingContext(tokens, i);
+      const nextToken = after[0];
+      if (nextToken) {
+        const nextNormalized = nextToken.normalized;
+        if (dictionary.linguisticData.lexicalEntries.has(nextNormalized)) {
+          const entry = dictionary.linguisticData.lexicalEntries.get(nextNormalized);
+          if (entry.classes?.includes("substantivo")) {
+            if (nextNormalized.endsWith("s") && !token.normalized.endsWith("s")) {
+              addIfNoOverlap(matches, createMatch(
+                text,
+                token.offset,
+                token.length,
+                [preserveReplacementCase(token.value, "bastantes")],
+                "PT_BR_AMBIGUITY_BASTANTE_ADJ_PLURAL",
+                'Use "bastantes" para concordar com substantivo plural.',
+                'Corrige concord\xE2ncia: adjetivo "bastante" varia em n\xFAmero.',
+                createConfidence("medium", 0.72, "concord\xE2ncia adjetiva plural")
+              ));
+            }
+          }
+        }
+      }
+    }
+  }
+  return matches;
+}
+function createMuitoAmbiguityMatches(text) {
+  const matches = [];
+  const tokens = tokenizeSlices(text);
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (token.normalized === "muito") {
+      const { before, after } = getSurroundingContext(tokens, i);
+      const nextToken = after[0];
+      if (nextToken) {
+        const nextNormalized = nextToken.normalized;
+        if (dictionary.linguisticData.lexicalEntries.has(nextNormalized)) {
+          const entry = dictionary.linguisticData.lexicalEntries.get(nextNormalized);
+          if (entry.classes?.includes("substantivo")) {
+            if (nextNormalized.endsWith("s") && !token.normalized.endsWith("s")) {
+              addIfNoOverlap(matches, createMatch(
+                text,
+                token.offset,
+                token.length,
+                [preserveReplacementCase(token.value, "muitos")],
+                "PT_BR_AMBIGUITY_MUITO_ADJ_PLURAL",
+                'Use "muitos" para concordar com substantivo masculino plural.',
+                'Corrige concord\xE2ncia: adjetivo "muito" varia em g\xEAnero e n\xFAmero.',
+                createConfidence("medium", 0.74, "concord\xE2ncia adjetiva plural")
+              ));
+            }
+          }
+        }
+      }
+    }
+  }
+  return matches;
+}
+function createAmbiguityResolutionMatches(text, dictionary2) {
+  const matches = [];
+  matches.push(...createAmbiguityResolutionMatchesInternal(text, dictionary2));
+  matches.push(...createBastanteAmbiguityMatches(text, dictionary2));
+  matches.push(...createMuitoAmbiguityMatches(text, dictionary2));
+  return matches;
+}
+
+// src/core/enhanced-context-rules.ts
+function createConfidence2(level, score, reason) {
+  return {
+    level,
+    score: Number(score.toFixed(2)),
+    reason
+  };
+}
+function createMatch2(text, offset, length, replacements, ruleId, message, description, confidence) {
+  return {
+    message,
+    shortMessage: message,
+    offset,
+    length,
+    replacements: replacements.map((value) => ({ value })),
+    confidence,
+    rule: {
+      id: ruleId,
+      description,
+      issueType: "grammar"
+    },
+    context: buildContext(text, offset, length)
+  };
+}
+function tokenizeSlices2(text) {
+  const tokens = [];
+  const pattern = /(?<![\p{L}\p{N}\p{M}])[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*(?![\p{L}\p{N}\p{M}])/gu;
+  for (const match of text.matchAll(pattern)) {
+    if (match.index === void 0) {
+      continue;
+    }
+    tokens.push({
+      value: match[0],
+      normalized: normalizeDictionaryWord(match[0]),
+      offset: match.index,
+      length: match[0].length
+    });
+  }
+  return tokens;
+}
+function addIfNoOverlap2(matches, candidate) {
+  const candidateStart = candidate.offset;
+  const candidateEnd = candidate.offset + candidate.length;
+  const overlaps = matches.some((existing) => {
+    const existingStart = existing.offset;
+    const existingEnd = existing.offset + existing.length;
+    return candidateStart < existingEnd && existingStart < candidateEnd;
+  });
+  if (!overlaps) {
+    matches.push(candidate);
+  }
+}
+var enhancedContextPatterns = [
+  {
+    id: "PT_BR_ENHANCED_A_GENTE_CONCORDANCIA",
+    description: "Concord\xE2ncia verbal com 'a gente' (3\xAA pessoa singular)",
+    test: (text, tokens, index) => {
+      const token = tokens[index];
+      if (token !== "a" && token !== "gente") return false;
+      const contextWindow = tokens.slice(Math.max(0, index - 2), Math.min(tokens.length, index + 3));
+      const genteIndex = contextWindow.indexOf("gente");
+      const aIndex = contextWindow.indexOf("a");
+      if (genteIndex > 0 && aIndex === genteIndex - 1) {
+        const afterGente = contextWindow.slice(genteIndex + 1);
+        if (afterGente.length > 0) {
+          const verb = afterGente[0];
+          const pluralVerbs = ["vamos", "fomos", "estamos", "estavamos", "tamos", "fomos", "\xEDamos"];
+          return pluralVerbs.includes(verb);
+        }
+      }
+      return false;
+    },
+    getReplacement: (_original, _context) => {
+      const replacements = {
+        "vamos": "vai",
+        "fomos": "foi",
+        "estamos": "est\xE1",
+        "estavamos": "estava",
+        "tamos": "t\xE1",
+        "\xEDamos": "ia"
+      };
+      return replacements[_original] || _original;
+    },
+    message: "Com 'a gente', o verbo costuma ficar no singular.",
+    confidence: createConfidence2("high", 0.88, "concord\xE2ncia com 'a gente'")
+  },
+  {
+    id: "PT_BR_ENHANCED_MUITO_BASTANTE_CONCORDANCIA",
+    description: "Concord\xE2ncia adjetiva com 'muito'/'bastante'",
+    test: (text, tokens, index) => {
+      const token = tokens[index];
+      if (token !== "muito" && token !== "bastante") return false;
+      if (index < tokens.length - 1) {
+        const nextToken = tokens[index + 1];
+        return nextToken.endsWith("s");
+      }
+      return false;
+    },
+    getReplacement: (_original, _context) => {
+      if (_original === "muito") return "muitos";
+      if (_original === "muita") return "muitas";
+      if (_original === "bastante") return "bastantes";
+      return _original;
+    },
+    message: "Use forma plural para concordar com substantivo plural.",
+    confidence: createConfidence2("medium", 0.76, "concord\xE2ncia adjetiva")
+  },
+  {
+    id: "PT_BR_ENHANCED_MAIS_MAS_MAS",
+    description: "Uso correto de 'mas' vs 'mais'",
+    test: (text, tokens, index) => {
+      const token = tokens[index];
+      if (token !== "mais") return false;
+      const before = index > 0 ? tokens[index - 1] : "";
+      const after = index < tokens.length - 1 ? tokens[index + 1] : "";
+      const oppositionIndicators = [
+        "por\xE9m",
+        "contudo",
+        "entretanto",
+        "todavia",
+        "no entanto"
+      ];
+      const hasOpposition = oppositionIndicators.some(
+        (indicator) => tokens.includes(indicator) || before === "," || after === ","
+      );
+      return hasOpposition;
+    },
+    getReplacement: (_original, _context) => {
+      return "mas";
+    },
+    message: "Use 'mas' para indicar oposi\xE7\xE3o, n\xE3o 'mais'.",
+    confidence: createConfidence2("medium", 0.73, "contexto de oposi\xE7\xE3o")
+  },
+  {
+    id: "PT_BR_ENHANCED_Aonde_ONDE",
+    description: "Uso correto de 'aonde' vs 'onde'",
+    test: (text, tokens, index) => {
+      const token = tokens[index];
+      if (token !== "onde") return false;
+      const movementVerbs = ["ir", "vir", "chegar", "entrar", "sair", "voltar", "mudar"];
+      const contextWindow = tokens.slice(Math.max(0, index - 3), Math.min(tokens.length, index + 1));
+      return movementVerbs.some((verb) => contextWindow.includes(verb));
+    },
+    getReplacement: (_original, _context) => {
+      return "aonde";
+    },
+    message: "Use 'aonde' com verbos de movimento.",
+    confidence: createConfidence2("medium", 0.71, "contexto de movimento")
+  },
+  {
+    id: "PT_BR_ENHANCED_AFIM_A_FIM",
+    description: "Uso correto de 'a fim de' vs 'afim'",
+    test: (text, tokens, index) => {
+      const token = tokens[index];
+      if (token !== "afim") return false;
+      if (index < tokens.length - 2) {
+        const nextToken = tokens[index + 1];
+        const afterNext = tokens[index + 2];
+        return nextToken === "de" && afterNext.endsWith("r");
+      }
+      return false;
+    },
+    getReplacement: (_original, _context) => {
+      return "a fim";
+    },
+    message: "Use 'a fim de' para indicar finalidade.",
+    confidence: createConfidence2("high", 0.85, "locu\xE7\xE3o prepositiva")
+  },
+  {
+    id: "PT_BR_ENHANCED_SE_NAO_SENAO",
+    description: "Uso correto de 'sen\xE3o' vs 'se n\xE3o'",
+    test: (text, tokens, index) => {
+      const token = tokens[index];
+      if (token !== "senao") return false;
+      if (index > 0 && tokens[index - 1] === "se") {
+        return false;
+      }
+      const exceptionIndicators = ["ou", "caso", "do"];
+      return exceptionIndicators.some(
+        (indicator) => tokens.includes(indicator)
+      );
+    },
+    getReplacement: (_original, _context) => {
+      return "sen\xE3o";
+    },
+    message: "Use 'sen\xE3o' para indicar exce\xE7\xE3o ou alternativa.",
+    confidence: createConfidence2("medium", 0.74, "contexto de exce\xE7\xE3o")
+  }
+];
+function createEnhancedContextRuleMatches(text, _dictionary) {
+  const matches = [];
+  const tokens = tokenizeSlices2(text).map((t) => t.normalized);
+  for (let i = 0; i < tokens.length; i++) {
+    for (const pattern of enhancedContextPatterns) {
+      if (pattern.test(text, tokens, i)) {
+        const originalToken = tokenizeSlices2(text)[i];
+        const replacement = pattern.getReplacement(originalToken.value, tokens);
+        if (replacement !== originalToken.value) {
+          addIfNoOverlap2(matches, createMatch2(
+            text,
+            originalToken.offset,
+            originalToken.length,
+            [preserveReplacementCase(originalToken.value, replacement)],
+            pattern.id,
+            pattern.message,
+            pattern.description,
+            pattern.confidence
+          ));
+        }
+      }
+    }
   }
   return matches;
 }
@@ -1252,14 +1646,14 @@ var preparedReplacementIndexCache = /* @__PURE__ */ new WeakMap();
 var checkResultCache = /* @__PURE__ */ new Map();
 var MAX_CHECK_RESULT_CACHE_SIZE = 512;
 var MAX_CORRECTION_PASSES = 3;
-function createConfidence(level, score, reason) {
+function createConfidence3(level, score, reason) {
   return {
     level,
     score: Number(score.toFixed(2)),
     reason
   };
 }
-function createMatch(text, offset, length, replacements, ruleId, message, description, confidence = createConfidence("high", 0.95, "regra explicita")) {
+function createMatch3(text, offset, length, replacements, ruleId, message, description, confidence = createConfidence3("high", 0.95, "regra explicita")) {
   return {
     message,
     shortMessage: message,
@@ -1275,7 +1669,7 @@ function createMatch(text, offset, length, replacements, ruleId, message, descri
     context: buildContext(text, offset, length)
   };
 }
-function addIfNoOverlap(matches, candidate) {
+function addIfNoOverlap3(matches, candidate) {
   const candidateStart = candidate.offset;
   const candidateEnd = candidate.offset + candidate.length;
   const overlaps = matches.some((existing) => {
@@ -1341,7 +1735,7 @@ function createReplacementMatches(text, entries) {
       if (!replacements.length) {
         continue;
       }
-      addIfNoOverlap(matches, createMatch(
+      addIfNoOverlap3(matches, createMatch3(
         text,
         0,
         text.length,
@@ -1366,7 +1760,7 @@ function createReplacementMatches(text, entries) {
       if (!replacements.length) {
         continue;
       }
-      addIfNoOverlap(matches, createMatch(
+      addIfNoOverlap3(matches, createMatch3(
         text,
         match.index,
         original.length,
@@ -1419,17 +1813,17 @@ function hasSafePrefixAndSuffixMatch(word, candidate) {
   const suffixMatches = word.at(-1) === candidate.at(-1);
   return prefixMatches && suffixMatches;
 }
-function createUnknownWordSuggestions(word, dictionary) {
+function createUnknownWordSuggestions(word, dictionary2) {
   const normalizedWord = normalizeDictionaryWord(word);
   const plainWord = stripDiacritics(normalizedWord);
   const originalDiacritics = countDiacriticMarks(normalizedWord);
   const candidates = [];
-  for (const candidate of dictionary.words) {
-    const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(candidate);
+  for (const candidate of dictionary2.words) {
+    const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(candidate);
     if (lexicalEntry?.autoCorrect === "blocked" || lexicalEntry?.autoCorrect === "review") {
       continue;
     }
-    if (dictionary.linguisticData.blockedAutoCorrections.has(candidate)) {
+    if (dictionary2.linguisticData.blockedAutoCorrections.has(candidate)) {
       continue;
     }
     if (Math.abs(candidate.length - normalizedWord.length) > 2) {
@@ -1485,7 +1879,7 @@ function createUnknownWordSuggestions(word, dictionary) {
     candidates.push({
       word: candidate,
       score: samePlainWord ? normalizedDistance : distance + normalizedDistance,
-      confidence: createConfidence(
+      confidence: createConfidence3(
         confidenceScore >= 0.85 ? "high" : confidenceScore >= 0.68 ? "medium" : "low",
         Math.max(0.01, Math.min(confidenceScore, 0.99)),
         samePlainWord ? "forma conhecida com diferenca principalmente de acentuacao" : "aproximacao ortografica com filtros conservadores"
@@ -1497,8 +1891,8 @@ function createUnknownWordSuggestions(word, dictionary) {
     word: preserveReplacementCase(word, entry.word)
   }));
 }
-function createUnknownWordMatches(text, dictionary) {
-  if (!dictionary.dictionaryReady || !dictionary.words.size) {
+function createUnknownWordMatches(text, dictionary2) {
+  if (!dictionary2.dictionaryReady || !dictionary2.words.size) {
     return [];
   }
   const matches = [];
@@ -1514,14 +1908,14 @@ function createUnknownWordMatches(text, dictionary) {
     if (/^(segunda|terca|terça|quarta|quinta|sexta|sabado|sábado|domingo)-feira$/iu.test(original)) {
       continue;
     }
-    if (!normalized || isIgnorableToken(original) || dictionary.words.has(normalized) || dictionary.linguisticData.allowedUnknownWords.has(normalized) || dictionary.linguisticData.blockedAutoCorrections.has(normalized) || overlapsTechnicalSpan(match.index, original.length, technicalSpans)) {
+    if (!normalized || isIgnorableToken(original) || dictionary2.words.has(normalized) || dictionary2.linguisticData.allowedUnknownWords.has(normalized) || dictionary2.linguisticData.blockedAutoCorrections.has(normalized) || overlapsTechnicalSpan(match.index, original.length, technicalSpans)) {
       continue;
     }
     const key = `${match.index}:${original.length}`;
     if (seenOffsets.has(key)) {
       continue;
     }
-    const replacements = createUnknownWordSuggestions(original, dictionary);
+    const replacements = createUnknownWordSuggestions(original, dictionary2);
     if (!replacements.length) {
       continue;
     }
@@ -1532,7 +1926,7 @@ function createUnknownWordMatches(text, dictionary) {
       continue;
     }
     seenOffsets.add(key);
-    addIfNoOverlap(matches, createMatch(
+    addIfNoOverlap3(matches, createMatch3(
       text,
       match.index,
       original.length,
@@ -1554,7 +1948,7 @@ function createRepeatedWordMatches(text) {
     }
     const repeatedWord = match[1];
     const secondWordOffset = match.index + match[0].lastIndexOf(match[2]);
-    addIfNoOverlap(matches, createMatch(
+    addIfNoOverlap3(matches, createMatch3(
       text,
       secondWordOffset,
       match[2].length,
@@ -1573,7 +1967,7 @@ function createDoubleSpaceMatches(text) {
     if (match.index === void 0) {
       continue;
     }
-    addIfNoOverlap(matches, createMatch(
+    addIfNoOverlap3(matches, createMatch3(
       text,
       match.index,
       match[0].length,
@@ -1585,7 +1979,7 @@ function createDoubleSpaceMatches(text) {
   }
   return matches;
 }
-function tokenizeSlices(text) {
+function tokenizeSlices3(text) {
   const tokens = [];
   const pattern = createWordTokenPattern();
   for (const match of text.matchAll(pattern)) {
@@ -1704,8 +2098,8 @@ function createIterativeDiffMatches(originalText, finalText) {
   if (originalText === finalText) {
     return [];
   }
-  const originalTokens = tokenizeSlices(originalText);
-  const finalTokens = tokenizeSlices(finalText);
+  const originalTokens = tokenizeSlices3(originalText);
+  const finalTokens = tokenizeSlices3(finalText);
   const sourceTokenValues = originalTokens.map((token) => token.normalized);
   const targetTokenValues = finalTokens.map((token) => token.normalized);
   const groups = buildTokenChangeGroups(sourceTokenValues, targetTokenValues);
@@ -1721,7 +2115,7 @@ function createIterativeDiffMatches(originalText, finalText) {
     if (!replacement) {
       return null;
     }
-    return createMatch(
+    return createMatch3(
       originalText,
       offset,
       length,
@@ -1729,7 +2123,7 @@ function createIterativeDiffMatches(originalText, finalText) {
       "PT_BR_MULTI_PASS",
       "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
       "Agrupa corre\xE7\xF5es encadeadas encontradas ap\xF3s reprocessar a frase.",
-      createConfidence("high", 0.93, "correcao iterativa consolidada")
+      createConfidence3("high", 0.93, "correcao iterativa consolidada")
     );
   }).filter((match) => Boolean(match));
   return diffMatches.map((match) => {
@@ -1740,7 +2134,7 @@ function createIterativeDiffMatches(originalText, finalText) {
     if (stripDiacritics(normalizeDictionaryWord(original)) === "que" && stripDiacritics(normalizeDictionaryWord(replacement)) === "que" && porMatch) {
       const expandedOffset = match.offset - porMatch[0].length;
       const expandedOriginal = originalText.slice(expandedOffset, match.offset + match.length);
-      return createMatch(
+      return createMatch3(
         originalText,
         expandedOffset,
         expandedOriginal.length,
@@ -1748,14 +2142,14 @@ function createIterativeDiffMatches(originalText, finalText) {
         "PT_BR_MULTI_PASS",
         "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
         "Agrupa corre\xE7\xF5es encadeadas encontradas ap\xF3s reprocessar a frase.",
-        createConfidence("high", 0.93, "correcao iterativa consolidada")
+        createConfidence3("high", 0.93, "correcao iterativa consolidada")
       );
     }
     return match;
   });
 }
 function createWholeTextInferenceMatch(originalText, finalText) {
-  return createMatch(
+  return createMatch3(
     originalText,
     0,
     originalText.length,
@@ -1763,7 +2157,7 @@ function createWholeTextInferenceMatch(originalText, finalText) {
     "PT_BR_MULTI_PASS",
     "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
     "Consolida a frase final quando a diferen\xE7a token a token nao preserva toda a corre\xE7\xE3o.",
-    createConfidence("high", 0.9, "consolidacao integral da frase")
+    createConfidence3("high", 0.9, "consolidacao integral da frase")
   );
 }
 function sanitizeInvalidWeekdayHyphenForms(text) {
@@ -1823,7 +2217,7 @@ function createCraseHeuristicMatches(text) {
     }
     const whole = match[0];
     const replacement = whole.replace(/\sa\s+noite$/u, " \xE0 noite");
-    addIfNoOverlap(matches, createStructuredMatch(
+    addIfNoOverlap3(matches, createStructuredMatch(
       text,
       match.index,
       whole.length,
@@ -1832,7 +2226,7 @@ function createCraseHeuristicMatches(text) {
       "Use crase na locu\xE7\xE3o temporal '\xE0 noite'.",
       "Corrige aus\xEAncia de crase em locu\xE7\xE3o temporal recorrente.",
       "grammar",
-      createConfidence("high", 0.9, "locucao temporal recorrente")
+      createConfidence3("high", 0.9, "locucao temporal recorrente")
     ));
   }
   for (const match of text.matchAll(/(^|[^\p{L}\p{N}])(á)(?=\s+\d+\s+(?:minuto|minutos|hora|horas)\b)/gu)) {
@@ -1840,7 +2234,7 @@ function createCraseHeuristicMatches(text) {
       continue;
     }
     const accentOffset = match.index + match[1].length;
-    addIfNoOverlap(matches, createStructuredMatch(
+    addIfNoOverlap3(matches, createStructuredMatch(
       text,
       accentOffset,
       match[2].length,
@@ -1849,7 +2243,7 @@ function createCraseHeuristicMatches(text) {
       "N\xE3o use acento nessa indica\xE7\xE3o de dist\xE2ncia ou tempo.",
       "Corrige uso indevido de acento em 'a 5 minutos', 'a 2 horas' e constru\xE7\xF5es semelhantes.",
       "grammar",
-      createConfidence("high", 0.92, "indicacao de distancia ou tempo")
+      createConfidence3("high", 0.92, "indicacao de distancia ou tempo")
     ));
   }
   return matches;
@@ -1879,7 +2273,7 @@ function createPorQueHeuristicMatches(text) {
       }
       const token = match[2];
       const offset = match.index + match[0].lastIndexOf(token);
-      addIfNoOverlap(matches, createStructuredMatch(
+      addIfNoOverlap3(matches, createStructuredMatch(
         text,
         offset,
         token.length,
@@ -1888,7 +2282,7 @@ function createPorQueHeuristicMatches(text) {
         "Em pergunta indireta, a forma esperada aqui e 'por que'.",
         "Corrige o uso de 'porque' ou 'porqu\xEA' em construcoes de pergunta indireta.",
         "grammar",
-        createConfidence("high", 0.91, "pergunta indireta recorrente")
+        createConfidence3("high", 0.91, "pergunta indireta recorrente")
       ));
     }
   }
@@ -1896,7 +2290,7 @@ function createPorQueHeuristicMatches(text) {
     if (match.index === void 0) {
       continue;
     }
-    addIfNoOverlap(matches, createStructuredMatch(
+    addIfNoOverlap3(matches, createStructuredMatch(
       text,
       match.index,
       match[0].length,
@@ -1905,7 +2299,7 @@ function createPorQueHeuristicMatches(text) {
       "No fim de pergunta, a forma esperada aqui e 'por qu\xEA'.",
       "Corrige 'por que' em final de pergunta direta.",
       "grammar",
-      createConfidence("high", 0.93, "por que em final de pergunta")
+      createConfidence3("high", 0.93, "por que em final de pergunta")
     ));
   }
   for (const match of text.matchAll(new RegExp("\\bexplicou\\s+porqu\xEA(?=\\s+\\p{L})", "giu"))) {
@@ -1914,7 +2308,7 @@ function createPorQueHeuristicMatches(text) {
     }
     const token = "porqu\xEA";
     const offset = match.index + match[0].toLowerCase().lastIndexOf(token);
-    addIfNoOverlap(matches, createStructuredMatch(
+    addIfNoOverlap3(matches, createStructuredMatch(
       text,
       offset,
       token.length,
@@ -1923,7 +2317,7 @@ function createPorQueHeuristicMatches(text) {
       "Em ora\xE7\xE3o explicativa, a forma esperada aqui e 'porque'.",
       "Corrige uso de 'porqu\xEA' onde a construcao pede conjuncao explicativa.",
       "grammar",
-      createConfidence("high", 0.89, "oracao explicativa recorrente")
+      createConfidence3("high", 0.89, "oracao explicativa recorrente")
     ));
   }
   return matches;
@@ -1937,7 +2331,7 @@ function createLocalizationDateMatches(text) {
     }
     const [, month, day, year] = match;
     const replacement = `${day.padStart(2, "0")}/${month.padStart(2, "0")}/${year}`;
-    addIfNoOverlap(matches, createStructuredMatch(
+    addIfNoOverlap3(matches, createStructuredMatch(
       text,
       match.index,
       match[0].length,
@@ -1946,7 +2340,7 @@ function createLocalizationDateMatches(text) {
       "Formato de data possivelmente fora do padr\xE3o pt-BR.",
       "Converte data claramente no padr\xE3o mes/dia/ano para dia/mes/ano.",
       "style",
-      createConfidence("high", 0.91, "data em formato US claramente identificavel")
+      createConfidence3("high", 0.91, "data em formato US claramente identificavel")
     ));
   }
   return matches;
@@ -1990,7 +2384,7 @@ function isPluralAnnouncementLead(tokens, index) {
   return false;
 }
 function createAnnouncementAgreementMatches(text) {
-  const tokens = tokenizeSlices(text);
+  const tokens = tokenizeSlices3(text);
   const matches = [];
   for (let index = 0; index < tokens.length; index += 1) {
     const token = tokens[index];
@@ -1998,7 +2392,7 @@ function createAnnouncementAgreementMatches(text) {
       continue;
     }
     if (token.normalized === "vende-se" && isPluralAnnouncementLead(tokens, index)) {
-      addIfNoOverlap(matches, createStructuredMatch(
+      addIfNoOverlap3(matches, createStructuredMatch(
         text,
         token.offset,
         token.length,
@@ -2007,11 +2401,11 @@ function createAnnouncementAgreementMatches(text) {
         "Com sujeito plural, o verbo deve concordar.",
         "Corrige concord\xE2ncia verbal frequente em an\xFAncios com 'vende-se'.",
         "grammar",
-        createConfidence("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
+        createConfidence3("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
       ));
     }
     if (token.normalized === "aluga-se" && isPluralAnnouncementLead(tokens, index)) {
-      addIfNoOverlap(matches, createStructuredMatch(
+      addIfNoOverlap3(matches, createStructuredMatch(
         text,
         token.offset,
         token.length,
@@ -2020,7 +2414,7 @@ function createAnnouncementAgreementMatches(text) {
         "Com sujeito plural, o verbo deve concordar.",
         "Corrige concord\xE2ncia verbal frequente em an\xFAncios com 'aluga-se'.",
         "grammar",
-        createConfidence("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
+        createConfidence3("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
       ));
     }
   }
@@ -2033,7 +2427,7 @@ function createSpaceBeforePunctuationMatches(text) {
     if (match.index === void 0) {
       continue;
     }
-    addIfNoOverlap(matches, createMatch(
+    addIfNoOverlap3(matches, createMatch3(
       text,
       match.index,
       match[0].length,
@@ -2059,7 +2453,7 @@ function createSentenceCaseMatches(text) {
     if (overlapsTechnicalSpan(offset, lowerChar.length, technicalSpans)) {
       continue;
     }
-    addIfNoOverlap(matches, createMatch(
+    addIfNoOverlap3(matches, createMatch3(
       text,
       offset,
       lowerChar.length,
@@ -2074,8 +2468,8 @@ function createSentenceCaseMatches(text) {
 function clampConfidenceScore(score) {
   return Math.max(0.01, Math.min(score, 0.99));
 }
-function lexicalRiskPenalty(replacement, dictionary) {
-  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(normalizeDictionaryWord(replacement));
+function lexicalRiskPenalty(replacement, dictionary2) {
+  const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(normalizeDictionaryWord(replacement));
   if (!lexicalEntry) {
     return 0;
   }
@@ -2094,25 +2488,25 @@ function lexicalRiskPenalty(replacement, dictionary) {
   }
   return penalty;
 }
-function deriveMatchConfidence(match, text, dictionary) {
+function deriveMatchConfidence(match, text, dictionary2) {
   if (match.confidence) {
     return match.confidence;
   }
   const original = text.slice(match.offset, match.offset + match.length);
   const primaryReplacement = match.replacements[0]?.value || "";
-  const replacementPenalty = lexicalRiskPenalty(primaryReplacement, dictionary);
+  const replacementPenalty = lexicalRiskPenalty(primaryReplacement, dictionary2);
   const hasMultipleSuggestions = match.replacements.length > 1;
   if (match.rule.id === "PT_BR_REPEATED_WORD") {
-    return createConfidence("high", 0.98, "repeticao literal detectada");
+    return createConfidence3("high", 0.98, "repeticao literal detectada");
   }
   if (match.rule.id === "PT_BR_DOUBLE_SPACE") {
-    return createConfidence("high", 0.99, "padrao mecanico de espaco duplicado");
+    return createConfidence3("high", 0.99, "padrao mecanico de espaco duplicado");
   }
   if (match.rule.id === "PT_BR_SPACE_BEFORE_PUNCTUATION") {
-    return createConfidence("high", 0.98, "padrao mecanico de pontuacao");
+    return createConfidence3("high", 0.98, "padrao mecanico de pontuacao");
   }
   if (match.rule.id === "PT_BR_SENTENCE_CASE") {
-    return createConfidence("high", 0.94, "regra ortografica simples de inicio de frase");
+    return createConfidence3("high", 0.94, "regra ortografica simples de inicio de frase");
   }
   if (match.rule.id.startsWith("PT_BR_PUNCTUATION_")) {
     let score = 0.88;
@@ -2125,31 +2519,44 @@ function deriveMatchConfidence(match, text, dictionary) {
     if (match.rule.id.includes("GREETING_NAME") || match.rule.id.includes("INITIAL_MARKER")) {
       score = 0.9;
     }
-    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "heuristica de pontuacao recorrente");
+    return createConfidence3(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "heuristica de pontuacao recorrente");
   }
   if (match.rule.id === "PT_BR_SIMPLE_SYNTAX_PATTERN") {
-    return createConfidence("low", 0.42, "padrao sintatico heuristico e sensivel a contexto");
+    return createConfidence3("low", 0.42, "padrao sintatico heuristico e sensivel a contexto");
   }
   if (match.rule.id === "PT_BR_SIMPLE_VERBAL_AGREEMENT") {
     let score = 0.78;
     if (match.length <= 3) {
       score -= 0.08;
     }
-    return createConfidence(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia verbal por heuristica local");
+    return createConfidence3(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia verbal por heuristica local");
   }
   if (match.rule.id === "PT_BR_SIMPLE_NOMINAL_AGREEMENT") {
     let score = 0.74;
     if (match.length <= 3) {
       score -= 0.08;
     }
-    return createConfidence(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia nominal por heuristica local");
+    return createConfidence3(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia nominal por heuristica local");
   }
   if (match.rule.id.startsWith("PT_BR_CONTEXT_") || match.rule.id.includes("CONTEXT")) {
     let score = 0.88;
     if (hasMultipleSuggestions) {
       score -= 0.08;
     }
-    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
+    return createConfidence3(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
+  }
+  if (match.rule.id.startsWith("PT_BR_AMBIGUITY_") || match.rule.id.startsWith("PT_BR_ENHANCED_")) {
+    let score = 0.72;
+    if (hasMultipleSuggestions) {
+      score -= 0.12;
+    }
+    if (match.length <= 3) {
+      score -= 0.08;
+    }
+    if (match.rule.id.includes("MEIO_") || match.rule.id.includes("BASTANTE_") || match.rule.id.includes("MUITO_")) {
+      score -= 0.06;
+    }
+    return createConfidence3(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "caso ambiguo - revisao recomendada");
   }
   if (match.rule.id.startsWith("PT_BR_PHRASE_")) {
     let score = 0.97;
@@ -2159,7 +2566,7 @@ function deriveMatchConfidence(match, text, dictionary) {
     if (match.length <= 4) {
       score -= 0.06;
     }
-    return createConfidence(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra frasal explicita");
+    return createConfidence3(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra frasal explicita");
   }
   if (match.rule.issueType === "style") {
     let score = 0.76;
@@ -2169,7 +2576,7 @@ function deriveMatchConfidence(match, text, dictionary) {
     if (match.length >= 12) {
       score -= 0.04;
     }
-    return createConfidence(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "ajuste de frase ou estilo");
+    return createConfidence3(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "ajuste de frase ou estilo");
   }
   if (match.rule.id === "PT_BR_SIMPLE_REPLACE") {
     let score = 0.9;
@@ -2183,12 +2590,12 @@ function deriveMatchConfidence(match, text, dictionary) {
       score -= 0.08;
     }
     score -= replacementPenalty;
-    return createConfidence(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "substituicao lexical direta");
+    return createConfidence3(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "substituicao lexical direta");
   }
   if (match.rule.issueType === "grammar") {
-    return createConfidence("medium", 0.72, "heuristica gramatical");
+    return createConfidence3("medium", 0.72, "heuristica gramatical");
   }
-  return createConfidence("high", 0.9, "confianca padrao");
+  return createConfidence3("high", 0.9, "confianca padrao");
 }
 function shouldExposeMatch(match) {
   if (match.replacements.length) {
@@ -2212,10 +2619,10 @@ function collapseOverlappingMatches(matches) {
   }
   return selected.sort((left, right) => left.offset - right.offset || left.length - right.length);
 }
-function finalizeMatches(text, matches, dictionary) {
+function finalizeMatches(text, matches, dictionary2) {
   const visibleMatches = collapseOverlappingMatches(matches.map((match) => ({
     ...match,
-    confidence: deriveMatchConfidence(match, text, dictionary)
+    confidence: deriveMatchConfidence(match, text, dictionary2)
   })).filter((match) => shouldExposeMatch(match)));
   return {
     language: {
@@ -2246,33 +2653,41 @@ function storeCheckResultInCache(text, result) {
 function hasSingleWholeTextMatch(result, text) {
   return result.matches.length === 1 && result.matches[0]?.offset === 0 && result.matches[0]?.length === text.length && Boolean(result.matches[0]?.replacements[0]?.value);
 }
-function collectVisibleStageMatches(text, dictionary, matches) {
-  return finalizeMatches(text, matches, dictionary).matches;
+function collectVisibleStageMatches(text, dictionary2, matches) {
+  return finalizeMatches(text, matches, dictionary2).matches;
 }
-function findWholeTextSpecialistMatches(text, replacements, dictionary) {
+function findWholeTextSpecialistMatches(text, replacements, dictionary2) {
   const candidates = [
     ...createReplacementMatches(text, replacements),
-    ...createPhraseRuleMatches(text, dictionary.phraseRules),
-    ...createContextRuleMatches(text, dictionary.contextRules)
+    ...createPhraseRuleMatches(text, dictionary2.phraseRules),
+    ...createContextRuleMatches(text, dictionary2.contextRules)
   ];
   const wholeTextCandidates = candidates.filter((match) => match.offset === 0 && match.length === text.length);
   if (!wholeTextCandidates.length) {
     return [];
   }
-  return finalizeMatches(text, wholeTextCandidates, dictionary).matches.filter((match) => match.offset === 0 && match.length === text.length);
+  return finalizeMatches(text, wholeTextCandidates, dictionary2).matches.filter((match) => match.offset === 0 && match.length === text.length);
 }
-function createInferenceStages(replacements, dictionary) {
+function createInferenceStages(replacements, dictionary2) {
   return [
     {
       id: "symbolic_context",
       description: "Aplica especialistas simbolicos de frase e contexto.",
       collectMatches: (text) => [
-        ...createPhraseRuleMatches(text, dictionary.phraseRules),
-        ...createContextRuleMatches(text, dictionary.contextRules),
+        ...createPhraseRuleMatches(text, dictionary2.phraseRules),
+        ...createContextRuleMatches(text, dictionary2.contextRules),
         ...createPorQueHeuristicMatches(text),
         ...createCraseHeuristicMatches(text),
         ...createLocalizationDateMatches(text),
         ...createAnnouncementAgreementMatches(text)
+      ]
+    },
+    {
+      id: "ambiguity_resolution",
+      description: "Resolve casos de ambiguidade morfol\xF3gica e contextual.",
+      collectMatches: (text) => [
+        ...createAmbiguityResolutionMatches(text, dictionary2),
+        ...createEnhancedContextRuleMatches(text, dictionary2)
       ]
     },
     {
@@ -2290,9 +2705,9 @@ function createInferenceStages(replacements, dictionary) {
       id: "linguistic_agreement",
       description: "Resolve concordancia e sintaxe curta.",
       collectMatches: (text) => [
-        ...createSimpleVerbalAgreementMatches(text, dictionary),
-        ...createSimpleNominalAgreementMatches(text, dictionary),
-        ...createSimpleSyntaxPatternMatches(text, dictionary)
+        ...createSimpleVerbalAgreementMatches(text, dictionary2),
+        ...createSimpleNominalAgreementMatches(text, dictionary2),
+        ...createSimpleSyntaxPatternMatches(text, dictionary2)
       ]
     },
     {
@@ -2300,7 +2715,7 @@ function createInferenceStages(replacements, dictionary) {
       description: "Fecha a frase com refinamentos heur\xEDsticos.",
       collectMatches: (text) => {
         const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text);
-        const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => !punctuationHeuristicMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
+        const unknownWordMatches = createUnknownWordMatches(text, dictionary2).filter((candidate) => !punctuationHeuristicMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
         return [
           ...punctuationHeuristicMatches,
           ...unknownWordMatches
@@ -2309,20 +2724,20 @@ function createInferenceStages(replacements, dictionary) {
     }
   ];
 }
-function runInferencePipeline(text, replacements, dictionary) {
-  const wholeTextMatches = findWholeTextSpecialistMatches(text, replacements, dictionary);
+function runInferencePipeline(text, replacements, dictionary2) {
+  const wholeTextMatches = findWholeTextSpecialistMatches(text, replacements, dictionary2);
   if (wholeTextMatches.length) {
-    return finalizeMatches(text, wholeTextMatches, dictionary);
+    return finalizeMatches(text, wholeTextMatches, dictionary2);
   }
   let currentText = text;
   let exactWholeTextResult = null;
-  for (const stage of createInferenceStages(replacements, dictionary)) {
-    const visibleMatches = collectVisibleStageMatches(currentText, dictionary, stage.collectMatches(currentText));
+  for (const stage of createInferenceStages(replacements, dictionary2)) {
+    const visibleMatches = collectVisibleStageMatches(currentText, dictionary2, stage.collectMatches(currentText));
     if (!visibleMatches.length) {
       continue;
     }
     if (visibleMatches.length === 1 && visibleMatches[0]?.offset === 0 && visibleMatches[0]?.length === currentText.length) {
-      exactWholeTextResult = finalizeMatches(text, [createWholeTextInferenceMatch(text, visibleMatches[0].replacements[0]?.value || currentText)], dictionary);
+      exactWholeTextResult = finalizeMatches(text, [createWholeTextInferenceMatch(text, visibleMatches[0].replacements[0]?.value || currentText)], dictionary2);
       currentText = visibleMatches[0].replacements[0]?.value || currentText;
       break;
     }
@@ -2335,23 +2750,23 @@ function runInferencePipeline(text, replacements, dictionary) {
   if (exactWholeTextResult) {
     return exactWholeTextResult;
   }
-  return finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary);
+  return finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary2);
 }
-function checkTextSinglePass(text, replacements, dictionary) {
-  return runInferencePipeline(text, replacements, dictionary);
+function checkTextSinglePass(text, replacements, dictionary2) {
+  return runInferencePipeline(text, replacements, dictionary2);
   const replacementMatches = createReplacementMatches(text, replacements);
   const exactWholeTextReplacementMatches = replacementMatches.filter((match) => match.offset === 0 && match.length === text.length);
   if (exactWholeTextReplacementMatches.length) {
-    return finalizeMatches(text, exactWholeTextReplacementMatches, dictionary);
+    return finalizeMatches(text, exactWholeTextReplacementMatches, dictionary2);
   }
-  const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
-  const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
+  const phraseRuleMatches = createPhraseRuleMatches(text, dictionary2.phraseRules);
+  const contextRuleMatches = createContextRuleMatches(text, dictionary2.contextRules);
   const craseHeuristicMatches = createCraseHeuristicMatches(text);
   const localizationDateMatches = createLocalizationDateMatches(text);
   const announcementAgreementMatches = createAnnouncementAgreementMatches(text);
-  const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary);
-  const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary);
-  const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
+  const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary2);
+  const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary2);
+  const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary2);
   const baseProtectedMatches = [
     ...replacementMatches,
     ...phraseRuleMatches,
@@ -2365,7 +2780,7 @@ function checkTextSinglePass(text, replacements, dictionary) {
   ];
   const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text).filter((candidate) => !baseProtectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
   const protectedMatches = [...baseProtectedMatches, ...punctuationHeuristicMatches];
-  const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => !protectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
+  const unknownWordMatches = createUnknownWordMatches(text, dictionary2).filter((candidate) => !protectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
   const allMatches = [
     ...replacementMatches,
     ...phraseRuleMatches,
@@ -2384,18 +2799,18 @@ function checkTextSinglePass(text, replacements, dictionary) {
     ...createSentenceCaseMatches(text)
   ].map((match) => ({
     ...match,
-    confidence: deriveMatchConfidence(match, text, dictionary)
+    confidence: deriveMatchConfidence(match, text, dictionary2)
   })).filter((match) => shouldExposeMatch(match));
-  const result = finalizeMatches(text, allMatches, dictionary);
+  const result = finalizeMatches(text, allMatches, dictionary2);
   return result;
 }
-function checkText(text, replacements, dictionary) {
+function checkText(text, replacements, dictionary2) {
   const cached = checkResultCache.get(text);
   if (cached) {
     return cached;
   }
   let currentText = text;
-  let passResult = checkTextSinglePass(currentText, replacements, dictionary);
+  let passResult = checkTextSinglePass(currentText, replacements, dictionary2);
   if (hasSingleWholeTextMatch(passResult, text)) {
     storeCheckResultInCache(text, passResult);
     return passResult;
@@ -2410,417 +2825,26 @@ function checkText(text, replacements, dictionary) {
       break;
     }
     currentText = nextText;
-    passResult = checkTextSinglePass(currentText, replacements, dictionary);
+    passResult = checkTextSinglePass(currentText, replacements, dictionary2);
     passCount += 1;
   }
-  const result = currentText !== text && passCount > 1 ? finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary) : checkTextSinglePass(text, replacements, dictionary);
+  const result = currentText !== text && passCount > 1 ? finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary2) : checkTextSinglePass(text, replacements, dictionary2);
   storeCheckResultInCache(text, result);
   return result;
 }
 
-// src/backend/llm-core.ts
-var import_node_fs = require("node:fs");
-var import_node_path = __toESM(require("node:path"), 1);
-var DEFAULT_OLLAMA_URL = "http://127.0.0.1:11434";
-var DEFAULT_OLLAMA_MODEL = "jandaia-1";
-var DEFAULT_TIMEOUT_MS = 15e3;
-var BASE_PROFILE_PATH = import_node_path.default.join(process.cwd(), "data", "ai", "jandaia-base-profiles.json");
-function readBaseProfileConfig(env = process.env) {
-  const raw = JSON.parse((0, import_node_fs.readFileSync)(BASE_PROFILE_PATH, "utf8"));
-  const profileId = env.CORRIJA_ME_JANDAIA_BASE_PROFILE || raw.preferredProfile || "qwen2_5_1_5b";
-  const profile = raw.profiles?.[profileId];
-  if (!profile) {
-    return {
-      id: profileId,
-      localModelCandidates: []
-    };
-  }
-  return {
-    id: profileId,
-    localModelCandidates: Array.isArray(profile.localModelCandidates) ? profile.localModelCandidates.map((candidate) => import_node_path.default.join(process.cwd(), candidate)) : []
-  };
-}
-function resolveLocalModelPath(env = process.env) {
-  const profile = readBaseProfileConfig(env);
-  return profile.localModelCandidates.find((candidate) => (0, import_node_fs.existsSync)(candidate)) || profile.localModelCandidates[0] || "";
-}
-var MIN_ROUTE_TEXT_LENGTH = 12;
-var MAX_ROUTE_TEXT_LENGTH = 280;
-var MIN_ROUTE_WORD_COUNT = 3;
-var HOMOPHONE_TRIGGER_PATTERN = /\b(?:sess[aã]o|se[cç][aã]o|cess[aã]o|concerto|conserto|concertar|consertar|taxar|tachar|ratificar|retificar|infligir|infringir|onde|aonde|porque|por que|porquê|por quê)\b/iu;
-var JANDAIA_DIRECTIVE = [
-  "Voc\xEA \xE9 jandaia 1, especialista em corre\xE7\xE3o de portugu\xEAs do Brasil.",
-  "Sua tarefa \xE9 corrigir a frase com a MENOR quantidade de mudan\xE7as poss\xEDvel.",
-  "Preserve o sentido original, a estrutura da frase e as palavras j\xE1 corretas.",
-  "N\xE3o reescreva por estilo, n\xE3o resuma, n\xE3o melhore fluidez e n\xE3o troque palavras por sin\xF4nimos.",
-  "N\xE3o invente detalhes, n\xE3o acrescente informa\xE7\xE3o e n\xE3o remova conte\xFAdo.",
-  "Se a frase j\xE1 estiver correta, devolva a mesma frase.",
-  "Responda somente com JSON v\xE1lido em uma \xFAnica linha.",
-  'Formato obrigat\xF3rio: {"final":"FRASE_CORRIGIDA","changed":true}.',
-  "N\xE3o escreva nada antes ou depois do JSON."
-].join("\n");
-function buildJandaiaPrompt(text) {
-  return [
-    JANDAIA_DIRECTIVE,
-    "",
-    "Exemplos:",
-    "Errada: A gente vamos no cinema amanh\xE3.",
-    '{"final":"A gente vai ao cinema amanh\xE3.","changed":true}',
-    "",
-    "Errada: A se\xE7\xE3o de cinema come\xE7a \xE0s 20h.",
-    '{"final":"A sess\xE3o de cinema come\xE7a \xE0s 20h.","changed":true}',
-    "",
-    "Errada: Ele n\xE3o sabe porque voc\xEA faltou.",
-    '{"final":"Ele n\xE3o sabe por que voc\xEA faltou.","changed":true}',
-    "",
-    "Errada: Os dois garotos foi na rua comprar p\xE3o mas eles n\xE3o lembro do dinheiro e esqueceu a chave de casa.",
-    '{"final":"Os dois garotos foram \xE0 rua comprar p\xE3o, mas eles n\xE3o se lembraram do dinheiro e esqueceram a chave de casa.","changed":true}',
-    "",
-    "Agora corrija apenas a frase abaixo.",
-    `Errada: ${text}`,
-    '{"final":'
-  ].join("\n");
-}
-function looksLikeCleanSentence(text) {
-  if (!text) {
-    return false;
-  }
-  if (/[<>{}\[\]]/u.test(text)) {
-    return false;
-  }
-  if (/\b(?:resposta|instruction|instrução|prompt|correta:|errada:)\b/iu.test(text)) {
-    return false;
-  }
-  if (text.length < 3 || text.length > 280) {
-    return false;
-  }
-  const letterCount = (text.match(new RegExp("\\p{L}", "gu")) || []).length;
-  if (letterCount < 2) {
-    return false;
-  }
-  const weirdPunctuationCount = (text.match(/["`]/gu) || []).length;
-  if (weirdPunctuationCount > 2) {
-    return false;
-  }
-  return true;
-}
-function parseBooleanFlag(value) {
-  if (!value) {
-    return false;
-  }
-  return ["1", "true", "yes", "on", "sim"].includes(value.trim().toLowerCase());
-}
-function normalizeGeneratedText(text) {
-  const jsonMatch = text.match(/\{[\s\S]*\}/u);
-  if (jsonMatch) {
-    try {
-      const parsed = JSON.parse(jsonMatch[0]);
-      const structuredFinal = String(parsed?.final || "").trim();
-      if (looksLikeCleanSentence(structuredFinal)) {
-        return structuredFinal;
-      }
-    } catch {
-    }
-  }
-  const cleaned = text.trim().replace(/<[^>]+>/gu, " ").replace(/^["'`]+|["'`]+$/g, "").replace(/^corrigida:\s*/iu, "").replace(/^frase corrigida:\s*/iu, "").replace(/^correta:\s*/iu, "").trim();
-  const firstLine = cleaned.split(/\r?\n/u)[0]?.trim() || "";
-  if (!looksLikeCleanSentence(firstLine)) {
-    return "";
-  }
-  return firstLine;
-}
-function readJandaiaArchitectureProfile() {
-  return {
-    runtimeMode: "motor_first_with_budgeted_specialized_llm_fallback",
-    primaryRole: "fallback_qualificado_pt_br",
-    instructors: ["tucano_2", "quillbot"],
-    externalAdvisor: "gemini",
-    correctionStyle: [
-      "preservar_sentido",
-      "menor_correcao_suficiente",
-      "evitar_sofisticacao_desnecessaria",
-      "priorizar_pt_br_natural"
-    ],
-    executionPolicy: {
-      strategy: "motor_imediato_com_jandaia_orcada_em_segundo_plano",
-      serviceLevelBudgetMs: DEFAULT_TIMEOUT_MS,
-      simpleCasesLayer: "motor",
-      complexCasesLayer: "jandaia_1"
-    }
-  };
-}
-function readLlmCoreConfig(env = process.env) {
-  return {
-    enabled: parseBooleanFlag(env.CORRIJA_ME_LLM_CORE_ENABLED),
-    baseUrl: (env.CORRIJA_ME_LLM_CORE_URL || DEFAULT_OLLAMA_URL).replace(/\/+$/u, ""),
-    model: env.CORRIJA_ME_LLM_CORE_MODEL || DEFAULT_OLLAMA_MODEL,
-    timeoutMs: Number(env.CORRIJA_ME_LLM_CORE_TIMEOUT_MS || DEFAULT_TIMEOUT_MS)
-  };
-}
-async function checkLlmCoreHealth(config) {
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), Math.min(config.timeoutMs, 1e4));
-    const response = await fetch(`${config.baseUrl}/api/version`, {
-      method: "GET",
-      signal: controller.signal
-    });
-    clearTimeout(timeout);
-    if (!response.ok) {
-      return {
-        reachable: false,
-        model: config.model,
-        error: `http_${response.status}`
-      };
-    }
-    const payload = await response.json();
-    return {
-      reachable: true,
-      model: config.model,
-      version: payload.version || "unknown"
-    };
-  } catch (error) {
-    return {
-      reachable: false,
-      model: config.model,
-      error: error instanceof Error ? error.message : "llm_core_unreachable"
-    };
-  }
-}
-async function readJandaiaRuntimeReadiness(config) {
-  const health = await checkLlmCoreHealth(config);
-  const baseProfile = readBaseProfileConfig().id;
-  const resolvedLocalModelPath = resolveLocalModelPath();
-  const localModelFilePresent = (0, import_node_fs.existsSync)(resolvedLocalModelPath);
-  let configuredModelPresent = false;
-  if (health.reachable) {
-    try {
-      const response = await fetch(`${config.baseUrl}/api/tags`);
-      if (response.ok) {
-        const payload = await response.json();
-        configuredModelPresent = Array.isArray(payload.models) && payload.models.some((entry) => String(entry?.name || "").startsWith(`${config.model}:`));
-      }
-    } catch {
-      configuredModelPresent = false;
-    }
-  }
-  return {
-    baseProfile,
-    configuredModel: config.model,
-    localModelFilePresent,
-    ollamaReachable: Boolean(health.reachable),
-    llmCoreEnabled: config.enabled,
-    configuredModelPresent,
-    readyForActivation: config.enabled && Boolean(health.reachable) && configuredModelPresent,
-    localModelPath: resolvedLocalModelPath
-  };
-}
-function decideLlmRouting(text, result) {
-  const normalizedText = text.trim();
-  const wordCount = (normalizedText.match(/[\p{L}\p{N}]+/gu) || []).length;
-  const matchCount = result.matches.length;
-  const confidenceScores = result.matches.map((match) => match.confidence?.score).filter((score) => typeof score === "number");
-  const confidenceFloor = confidenceScores.length ? Math.min(...confidenceScores) : 0;
-  const ambiguousMatchCount = result.matches.filter((match) => (match.replacements?.length || 0) > 1).length;
-  const hasHomophoneTrigger = HOMOPHONE_TRIGGER_PATTERN.test(text);
-  const hasWholeTextMatch = result.matches.some((match) => match.offset === 0 && match.length === normalizedText.length);
-  const hasMultiPassMatch = result.matches.some((match) => match.rule?.id === "PT_BR_MULTI_PASS");
-  const triggers = [];
-  if (normalizedText.length < MIN_ROUTE_TEXT_LENGTH || wordCount < MIN_ROUTE_WORD_COUNT) {
-    return {
-      shouldRoute: false,
-      reason: "texto_curto_ou_pouco_informativo",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "motor"
-    };
-  }
-  if (normalizedText.length > MAX_ROUTE_TEXT_LENGTH) {
-    return {
-      shouldRoute: false,
-      reason: "texto_grande_demais_para_fallback",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "motor"
-    };
-  }
-  if (!matchCount) {
-    triggers.push("motor_sem_saida");
-    return {
-      shouldRoute: true,
-      reason: "motor_sem_saida",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "jandaia_1"
-    };
-  }
-  if (hasHomophoneTrigger && (confidenceFloor < 0.96 || ambiguousMatchCount > 0)) {
-    triggers.push("homofono_ou_contexto_ambiguo");
-    return {
-      shouldRoute: true,
-      reason: "homofono_ou_contexto_ambiguo",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "jandaia_1"
-    };
-  }
-  if (confidenceFloor < 0.85) {
-    triggers.push("confianca_baixa");
-    return {
-      shouldRoute: true,
-      reason: "confianca_baixa",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "jandaia_1"
-    };
-  }
-  if (matchCount >= 3) {
-    triggers.push("muitas_edicoes_acopladas");
-    return {
-      shouldRoute: true,
-      reason: "muitas_edicoes_acopladas",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "jandaia_1"
-    };
-  }
-  if (ambiguousMatchCount > 0) {
-    triggers.push("candidatos_competindo");
-    return {
-      shouldRoute: true,
-      reason: "candidatos_competindo",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "jandaia_1"
-    };
-  }
-  if (hasWholeTextMatch && confidenceFloor < 0.94) {
-    triggers.push("correcao_integral_com_confianca_intermediaria");
-    return {
-      shouldRoute: true,
-      reason: "correcao_integral_com_confianca_intermediaria",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "jandaia_1"
-    };
-  }
-  if (hasMultiPassMatch && confidenceFloor < 0.95) {
-    triggers.push("consolidacao_multipla_passagem");
-    return {
-      shouldRoute: true,
-      reason: "consolidacao_multipla_passagem",
-      confidenceFloor,
-      ambiguousMatchCount,
-      matchCount,
-      triggers,
-      routeTarget: "jandaia_1"
-    };
-  }
-  return {
-    shouldRoute: false,
-    reason: "motor_confiavel",
-    confidenceFloor,
-    ambiguousMatchCount,
-    matchCount,
-    triggers,
-    routeTarget: "motor"
-  };
-}
-async function requestLlmCoreSuggestion(text, config) {
-  const startedAt = Date.now();
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), config.timeoutMs);
-  try {
-    const response = await fetch(`${config.baseUrl}/api/generate`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      signal: controller.signal,
-      body: JSON.stringify({
-        model: config.model,
-        stream: false,
-        options: {
-          temperature: 0,
-          top_k: 20,
-          top_p: 0.8,
-          repeat_penalty: 1.35,
-          num_predict: 80,
-          stop: ["}\n", "\n\n"]
-        },
-        prompt: buildJandaiaPrompt(text)
-      })
-    });
-    if (!response.ok) {
-      throw new Error(`llm_core_http_${response.status}`);
-    }
-    const payload = await response.json();
-    const correctedText = normalizeGeneratedText(payload.response || "");
-    if (!correctedText) {
-      return null;
-    }
-    return {
-      correctedText,
-      latencyMs: Date.now() - startedAt,
-      model: config.model
-    };
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-function buildWholeTextLlmMatch(text, correctedText, reason) {
-  return {
-    message: "Sugest\xE3o do n\xFAcleo local para pt-BR.",
-    shortMessage: "Sugest\xE3o do n\xFAcleo local.",
-    offset: 0,
-    length: text.length,
-    replacements: [{ value: correctedText }],
-    confidence: {
-      level: "medium",
-      score: 0.74,
-      reason
-    },
-    rule: {
-      id: "PT_BR_LLM_CORE",
-      description: "Corre\xE7\xE3o integral sugerida pela camada local de IA.",
-      issueType: "misspelling"
-    },
-    context: {
-      text,
-      offset: 0,
-      length: text.length
-    }
-  };
-}
-
 // src/backend/dictionary.ts
-var import_node_fs3 = require("node:fs");
-var import_node_path3 = require("node:path");
-
-// src/backend/linguistic-data.ts
 var import_node_fs2 = require("node:fs");
 var import_node_path2 = require("node:path");
+
+// src/backend/linguistic-data.ts
+var import_node_fs = require("node:fs");
+var import_node_path = require("node:path");
 function readJsonFile(pathname, fallback) {
-  if (!(0, import_node_fs2.existsSync)(pathname)) {
+  if (!(0, import_node_fs.existsSync)(pathname)) {
     return fallback;
   }
-  return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
+  return JSON.parse((0, import_node_fs.readFileSync)(pathname, "utf8"));
 }
 function normalizeKey(value) {
   return normalizeDictionaryWord(value);
@@ -2864,14 +2888,14 @@ function addLexicalEntries(target, source) {
 function loadLexicalEntries(baseDir, fileNames) {
   const lexicalEntries = /* @__PURE__ */ new Map();
   for (const fileName of fileNames) {
-    const pathname = (0, import_node_path2.join)(baseDir, "Lexico", fileName);
+    const pathname = (0, import_node_path.join)(baseDir, "Lexico", fileName);
     const content = readJsonFile(pathname, {});
     addLexicalEntries(lexicalEntries, content);
   }
   return lexicalEntries;
 }
 function loadAllowedUnknownWords(baseDir) {
-  const entries = readJsonFile((0, import_node_path2.join)(baseDir, "Excecoes", "palavras_desconhecidas.json"), {});
+  const entries = readJsonFile((0, import_node_path.join)(baseDir, "Excecoes", "palavras_desconhecidas.json"), {});
   const allowedUnknownWords = /* @__PURE__ */ new Set();
   const blockedAutoCorrections = /* @__PURE__ */ new Set();
   for (const [rawWord, config] of Object.entries(entries)) {
@@ -2887,35 +2911,35 @@ function loadAllowedUnknownWords(baseDir) {
   return { allowedUnknownWords, blockedAutoCorrections };
 }
 function loadLocutions(baseDir) {
-  const content = readJsonFile((0, import_node_path2.join)(baseDir, "Excecoes", "locucoes.json"), {});
+  const content = readJsonFile((0, import_node_path.join)(baseDir, "Excecoes", "locucoes.json"), {});
   return new Map(
     Object.entries(content).map(([key, value]) => [normalizeKey(key), value]).filter(([key, value]) => key && typeof value === "string" && value.trim())
   );
 }
 function loadSyntaxPatterns(baseDir) {
-  const content = readJsonFile((0, import_node_path2.join)(baseDir, "Sintaxe", "padroes_basicos.json"), { patterns: [] });
+  const content = readJsonFile((0, import_node_path.join)(baseDir, "Sintaxe", "padroes_basicos.json"), { patterns: [] });
   return Array.isArray(content.patterns) ? content.patterns : [];
 }
 function loadVerbConjugation(baseDir) {
-  return readJsonFile((0, import_node_path2.join)(baseDir, "Regras", "conjugacao_verbal.json"), {});
+  return readJsonFile((0, import_node_path.join)(baseDir, "Regras", "conjugacao_verbal.json"), {});
 }
 function loadNominalInflection(baseDir) {
-  return readJsonFile((0, import_node_path2.join)(baseDir, "Regras", "flexao_nominal.json"), null);
+  return readJsonFile((0, import_node_path.join)(baseDir, "Regras", "flexao_nominal.json"), null);
 }
 function loadDerivation(baseDir) {
-  return readJsonFile((0, import_node_path2.join)(baseDir, "Regras", "derivacao.json"), null);
+  return readJsonFile((0, import_node_path.join)(baseDir, "Regras", "derivacao.json"), null);
 }
 function loadVerbalAgreement(baseDir) {
-  const content = readJsonFile((0, import_node_path2.join)(baseDir, "Concordancia", "verbal.json"), {});
+  const content = readJsonFile((0, import_node_path.join)(baseDir, "Concordancia", "verbal.json"), {});
   return Object.fromEntries(
     Object.entries(content).map(([key, value]) => [normalizeKey(key), value])
   );
 }
 function loadIrregularVerbs(baseDir) {
-  return readJsonFile((0, import_node_path2.join)(baseDir, "Irregularidades", "verbos_irregulares.json"), {});
+  return readJsonFile((0, import_node_path.join)(baseDir, "Irregularidades", "verbos_irregulares.json"), {});
 }
 function loadIrregularPlurals(baseDir) {
-  return readJsonFile((0, import_node_path2.join)(baseDir, "Irregularidades", "plurais_irregulares.json"), {});
+  return readJsonFile((0, import_node_path.join)(baseDir, "Irregularidades", "plurais_irregulares.json"), {});
 }
 function createEmptyLinguisticData() {
   return {
@@ -2933,11 +2957,11 @@ function createEmptyLinguisticData() {
   };
 }
 function loadLinguisticData(dataDir2) {
-  const baseDir = (0, import_node_path2.join)(dataDir2, "linguistic");
-  if (!(0, import_node_fs2.existsSync)(baseDir)) {
+  const baseDir = (0, import_node_path.join)(dataDir2, "linguistic");
+  if (!(0, import_node_fs.existsSync)(baseDir)) {
     return createEmptyLinguisticData();
   }
-  const manifest = readJsonFile((0, import_node_path2.join)(baseDir, "manifest.json"), {});
+  const manifest = readJsonFile((0, import_node_path.join)(baseDir, "manifest.json"), {});
   const lexicalEntries = loadLexicalEntries(baseDir, manifest.lexical || []);
   const { allowedUnknownWords, blockedAutoCorrections } = loadAllowedUnknownWords(baseDir);
   const locutions = loadLocutions(baseDir);
@@ -2961,7 +2985,7 @@ function loadLinguisticData(dataDir2) {
 
 // src/backend/dictionary.ts
 function loadReplacementEntries(pathname) {
-  return JSON.parse((0, import_node_fs3.readFileSync)(pathname, "utf8"));
+  return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
 }
 function tokenizeReplacementText(value) {
   return String(value || "").match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*/gu) || [];
@@ -3018,16 +3042,16 @@ function sanitizeReplacementEntries(entries) {
   });
 }
 function loadOptionalReplacementEntries(pathname) {
-  if (!(0, import_node_fs3.existsSync)(pathname)) {
+  if (!(0, import_node_fs2.existsSync)(pathname)) {
     return [];
   }
   return sanitizeReplacementEntries(loadReplacementEntries(pathname));
 }
 function loadContextRules(pathname) {
-  return JSON.parse((0, import_node_fs3.readFileSync)(pathname, "utf8"));
+  return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
 }
 function loadPhraseRules(pathname) {
-  return JSON.parse((0, import_node_fs3.readFileSync)(pathname, "utf8"));
+  return JSON.parse((0, import_node_fs2.readFileSync)(pathname, "utf8"));
 }
 function tokenizeRuleText(value) {
   return String(value || "").match(/[\p{L}\p{N}][\p{L}\p{N}\p{M}\p{Pc}\p{Pd}]*/gu) || [];
@@ -3053,23 +3077,23 @@ function sanitizePhraseRules(rules) {
   return rules.filter((rule) => !isUnsafeContinuousPhraseRule(rule));
 }
 function loadOptionalPhraseRules(pathname) {
-  if (!(0, import_node_fs3.existsSync)(pathname)) {
+  if (!(0, import_node_fs2.existsSync)(pathname)) {
     return [];
   }
   return sanitizePhraseRules(loadPhraseRules(pathname));
 }
 function loadOptionalContextRules(pathname) {
-  if (!(0, import_node_fs3.existsSync)(pathname)) {
+  if (!(0, import_node_fs2.existsSync)(pathname)) {
     return [];
   }
   return loadContextRules(pathname);
 }
 function loadDictionaryResources(dataDir2) {
   const replacements = sanitizeReplacementEntries([
-    ...loadReplacementEntries((0, import_node_path3.join)(dataDir2, "replacements.json")),
-    ...loadOptionalReplacementEntries((0, import_node_path3.join)(dataDir2, "replacements_learned.json"))
+    ...loadReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements.json")),
+    ...loadOptionalReplacementEntries((0, import_node_path2.join)(dataDir2, "replacements_learned.json"))
   ]);
-  const rulesDir = (0, import_node_path3.join)(dataDir2, "rules");
+  const rulesDir = (0, import_node_path2.join)(dataDir2, "rules");
   const linguisticData = loadLinguisticData(dataDir2);
   const words = /* @__PURE__ */ new Set();
   for (const lemma of linguisticData.lexicalEntries.keys()) {
@@ -3084,14 +3108,14 @@ function loadDictionaryResources(dataDir2) {
   }
   const dictionaryReady = words.size >= 5e3;
   const contextRules = [
-    ...loadContextRules((0, import_node_path3.join)(rulesDir, "context_rules.json")),
-    ...loadOptionalContextRules((0, import_node_path3.join)(rulesDir, "context_rules_learned.json"))
+    ...loadContextRules((0, import_node_path2.join)(rulesDir, "context_rules.json")),
+    ...loadOptionalContextRules((0, import_node_path2.join)(rulesDir, "context_rules_learned.json"))
   ];
   const phraseRules = [
-    ...sanitizePhraseRules(loadPhraseRules((0, import_node_path3.join)(rulesDir, "phrase_rules.json"))),
-    ...loadOptionalPhraseRules((0, import_node_path3.join)(rulesDir, "phrase_rules_seeded.json")),
-    ...loadOptionalPhraseRules((0, import_node_path3.join)(rulesDir, "phrase_rules_continuous.json")),
-    ...loadOptionalPhraseRules((0, import_node_path3.join)(rulesDir, "phrase_rules_learned.json"))
+    ...sanitizePhraseRules(loadPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules.json"))),
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_seeded.json")),
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_continuous.json")),
+    ...loadOptionalPhraseRules((0, import_node_path2.join)(rulesDir, "phrase_rules_learned.json"))
   ];
   return {
     replacements,
@@ -3108,48 +3132,33 @@ var DEFAULT_PORT = Number(process.env.CORRIJA_ME_PORT ?? "18081");
 var isPackagedBinary = typeof process.pkg !== "undefined";
 var isCheckWorkerProcess = process.env.CORRIJA_ME_CHILD_MODE === "check-worker";
 var currentDir = __dirname;
-var dataDir = (0, import_node_path4.join)(currentDir, "../data");
+var dataDir = (0, import_node_path3.join)(currentDir, "../data");
 var dictionaryResources = isCheckWorkerProcess ? null : loadDictionaryResources(dataDir);
-var llmCoreConfig = readLlmCoreConfig();
-var jandaiaArchitectureProfile = readJandaiaArchitectureProfile();
 var RUNTIME_ARCHITECTURE = {
   production: {
     entrypoint: "backend_json_text",
     first_barrier: "motor",
-    fallback: "jandaia",
+    fallback: "none",
     primary_endpoint: "/v2/check-smart",
-    runtime_mode: jandaiaArchitectureProfile.runtimeMode,
-    service_level_budget_ms: llmCoreConfig.timeoutMs
+    runtime_mode: "motor_only",
+    service_level_budget_ms: 0
   },
   orientation: {
-    instructors: ["tucano_2", "quillbot"],
-    director: "gemini",
-    data_enrichment: "gemini"
+    instructors: [],
+    director: "motor",
+    data_enrichment: "motor"
   },
   components: {
     motor: {
       role: "primeira_defesa",
       priorities: ["velocidade", "previsibilidade", "baixo_custo"]
-    },
-    jandaia_1: {
-      role: jandaiaArchitectureProfile.primaryRole,
-      style: jandaiaArchitectureProfile.correctionStyle
-    },
-    tucano_2: {
-      role: "referencia_de_base_local"
-    },
-    quillbot: {
-      role: "referencia_de_qualidade_de_reescrita"
-    },
-    gemini: {
-      role: "consultor_externo_e_arbitro"
     }
   },
   implementation: {
-    phase: "fase_3_orcamento_de_tempo_e_fallback_controlado",
+    phase: "fase_4_motor_only",
     next_steps: [
-      "medir_quantos_casos_complexos_a_jandaia_resolve_dentro_do_teto",
-      "reduzir_latencia_do_modelo_local_sem_perder_qualidade",
+      "expandir_familias_de_regra_do_motor",
+      "reduzir_regressoes_em_textos_complexos",
       "refinar_gatilhos_por_familia_de_erro"
     ]
   }
@@ -3248,89 +3257,33 @@ function runCheckInProcess(text) {
     linguisticData: dictionaryResources.linguisticData
   });
 }
-function createCorePayload(text, baseResult, correctedText, routing, llmMeta) {
-  if (!correctedText || correctedText === text) {
-    return {
-      result: baseResult,
-      baseResult,
-      core: {
-        enabled: llmCoreConfig.enabled,
-        changed: false,
-        routeReason: routing.reason,
-        targetLayer: "motor",
-        routing,
-        ...llmMeta
-      }
-    };
-  }
+async function runMotorCoreFlow(text) {
+  const baseResult = isPackagedBinary ? runCheckInProcess(text) : await runCheckInWorker(text);
+  const routing = {
+    shouldRoute: false,
+    reason: "motor_only_runtime",
+    confidenceFloor: 0,
+    ambiguousMatchCount: 0,
+    matchCount: baseResult.matches.length,
+    triggers: [],
+    routeTarget: "motor"
+  };
   return {
-    result: {
-      ...baseResult,
-      matches: [buildWholeTextLlmMatch(text, correctedText, routing.reason)]
-    },
+    result: baseResult,
     baseResult,
     core: {
-      enabled: llmCoreConfig.enabled,
-      changed: true,
+      enabled: false,
+      changed: false,
       routeReason: routing.reason,
-      targetLayer: "jandaia_1",
+      targetLayer: "motor",
       routing,
-      correctedText,
-      ...llmMeta
+      attempted: false,
+      used: false,
+      model: "disabled",
+      budgetMs: 0,
+      remainingBudgetMs: 0
     }
   };
-}
-async function runMotorFirstCoreFlow(text) {
-  const startedAt = Date.now();
-  const baseResult = isPackagedBinary ? runCheckInProcess(text) : await runCheckInWorker(text);
-  const routing = decideLlmRouting(text, baseResult);
-  const elapsedBeforeLlmMs = Date.now() - startedAt;
-  const remainingBudgetMs = Math.max(0, llmCoreConfig.timeoutMs - elapsedBeforeLlmMs);
-  if (!llmCoreConfig.enabled || !routing.shouldRoute) {
-    return createCorePayload(text, baseResult, null, routing, {
-      attempted: false,
-      used: false,
-      model: llmCoreConfig.model,
-      budgetMs: llmCoreConfig.timeoutMs,
-      remainingBudgetMs
-    });
-  }
-  if (remainingBudgetMs < 250) {
-    return createCorePayload(text, baseResult, null, routing, {
-      attempted: false,
-      used: false,
-      model: llmCoreConfig.model,
-      budgetMs: llmCoreConfig.timeoutMs,
-      remainingBudgetMs,
-      timedOut: true,
-      error: "orcamento_esgotado_no_motor"
-    });
-  }
-  try {
-    const suggestion = await requestLlmCoreSuggestion(text, {
-      ...llmCoreConfig,
-      timeoutMs: remainingBudgetMs
-    });
-    return createCorePayload(text, baseResult, suggestion?.correctedText || null, routing, {
-      attempted: true,
-      used: Boolean(suggestion?.correctedText),
-      latencyMs: suggestion?.latencyMs,
-      model: suggestion?.model || llmCoreConfig.model,
-      budgetMs: llmCoreConfig.timeoutMs,
-      remainingBudgetMs
-    });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "llm_core_failed";
-    return createCorePayload(text, baseResult, null, routing, {
-      attempted: true,
-      used: false,
-      model: llmCoreConfig.model,
-      error: message,
-      timedOut: /aborted|abort|timeout/iu.test(message),
-      budgetMs: llmCoreConfig.timeoutMs,
-      remainingBudgetMs
-    });
-  }
 }
 async function runMotorOnlyFlow(text) {
   return isPackagedBinary ? runCheckInProcess(text) : runCheckInWorker(text);
@@ -3365,12 +3318,6 @@ if (isCheckWorkerProcess) {
       return;
     }
     if (request.method === "GET" && url.pathname === "/health") {
-      const llmHealth = llmCoreConfig.enabled ? await checkLlmCoreHealth(llmCoreConfig) : {
-        reachable: false,
-        model: llmCoreConfig.model,
-        error: "disabled"
-      };
-      const jandaiaRuntime = await readJandaiaRuntimeReadiness(llmCoreConfig);
       sendJson(response, 200, {
         status: "ok",
         service: "corrija_me_pt_br_node",
@@ -3383,24 +3330,22 @@ if (isCheckWorkerProcess) {
           syntaxPatterns: dictionaryResources?.linguisticData.syntaxPatterns.length ?? 0
         },
         llmCore: {
-          enabled: llmCoreConfig.enabled,
-          ...llmHealth
+          enabled: false,
+          reachable: false,
+          model: "disabled",
+          error: "disabled_by_motor_only_runtime"
         },
-        jandaiaRuntime,
         architecture: RUNTIME_ARCHITECTURE
       });
       return;
     }
     if (request.method === "GET" && url.pathname === "/v2/architecture") {
-      const jandaiaRuntime = await readJandaiaRuntimeReadiness(llmCoreConfig);
       sendJson(response, 200, {
         status: "ok",
         runtime: RUNTIME_ARCHITECTURE,
-        jandaia: jandaiaArchitectureProfile,
-        jandaiaRuntime,
         llmCore: {
-          enabled: llmCoreConfig.enabled,
-          model: llmCoreConfig.model
+          enabled: false,
+          model: "disabled"
         }
       });
       return;
@@ -3446,17 +3391,16 @@ if (isCheckWorkerProcess) {
         return;
       }
       try {
-        const payload = await runMotorFirstCoreFlow(text);
+        const payload = await runMotorCoreFlow(text);
         sendJson(response, 200, {
           ...payload,
           runtime: {
-            mode: "motor_first_with_budgeted_jandaia_fallback",
+            mode: "motor_only",
             first_barrier: "motor",
-            fallback: "jandaia",
-            serviceLevelBudgetMs: llmCoreConfig.timeoutMs,
-            instructors: ["tucano_2", "quillbot"],
-            director: "gemini",
-            architectureProfile: jandaiaArchitectureProfile,
+            fallback: "none",
+            serviceLevelBudgetMs: 0,
+            instructors: [],
+            director: "motor",
             routing: payload.core.routing
           }
         });
