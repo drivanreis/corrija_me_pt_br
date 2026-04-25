@@ -237,12 +237,12 @@ function matchFormByTraits(forms, targetGenero, targetNumero) {
   const sameNumber = normalizedForms.find((candidate) => inferNumber(candidate) === targetNumero);
   return sameNumber || null;
 }
-function createNounPluralFromRules(base, dictionary2) {
-  const irregular = dictionary2.linguisticData.irregularPlurals[base];
+function createNounPluralFromRules(base, dictionary) {
+  const irregular = dictionary.linguisticData.irregularPlurals[base];
   if (irregular) {
     return irregular;
   }
-  const rules = dictionary2.linguisticData.nominalInflection?.plural || [];
+  const rules = dictionary.linguisticData.nominalInflection?.plural || [];
   for (const rule of rules) {
     if (base.endsWith(rule.terminacao)) {
       return `${base.slice(0, -rule.terminacao.length)}${rule.resultado}`;
@@ -250,7 +250,7 @@ function createNounPluralFromRules(base, dictionary2) {
   }
   return null;
 }
-function getExpectedNounForm(entry, targetGenero, targetNumero, dictionary2) {
+function getExpectedNounForm(entry, targetGenero, targetNumero, dictionary) {
   if (!entry) {
     return null;
   }
@@ -260,7 +260,7 @@ function getExpectedNounForm(entry, targetGenero, targetNumero, dictionary2) {
     return direct;
   }
   if (targetNumero === "plural" && entry.lemma) {
-    return createNounPluralFromRules(normalizeDictionaryWord(entry.lemma), dictionary2);
+    return createNounPluralFromRules(normalizeDictionaryWord(entry.lemma), dictionary);
   }
   return normalizeDictionaryWord(entry.lemma || "") || null;
 }
@@ -287,7 +287,7 @@ function createAgreementMatch(text, token, replacement, description) {
     context: buildContext(text, token.offset, token.length)
   };
 }
-function createDeterminerNounMatches(text, tokens, dictionary2) {
+function createDeterminerNounMatches(text, tokens, dictionary) {
   const matches = [];
   for (let index = 0; index < tokens.length - 1; index += 1) {
     const articleToken = tokens[index];
@@ -298,14 +298,14 @@ function createDeterminerNounMatches(text, tokens, dictionary2) {
     if (isHyphenatedToken(articleToken) || isHyphenatedToken(nounToken)) {
       continue;
     }
-    const articleEntry = dictionary2.linguisticData.lexicalEntries.get(articleToken.normalized);
-    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken.normalized);
+    const articleEntry = dictionary.linguisticData.lexicalEntries.get(articleToken.normalized);
+    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
     if (!isDeterminer(articleEntry) || !isNoun(nounEntry)) {
       continue;
     }
     const targetGenero = articleEntry?.genero || nounEntry?.genero || null;
     const targetNumero = articleEntry?.numero || "singular";
-    const expectedForm = getExpectedNounForm(nounEntry, targetGenero, targetNumero, dictionary2);
+    const expectedForm = getExpectedNounForm(nounEntry, targetGenero, targetNumero, dictionary);
     if (!expectedForm || expectedForm === nounToken.normalized) {
       continue;
     }
@@ -318,7 +318,7 @@ function createDeterminerNounMatches(text, tokens, dictionary2) {
   }
   return matches;
 }
-function createDeterminerNounAdjectiveMatches(text, tokens, dictionary2) {
+function createDeterminerNounAdjectiveMatches(text, tokens, dictionary) {
   const matches = [];
   for (let index = 0; index < tokens.length - 2; index += 1) {
     const determinerToken = tokens[index];
@@ -330,15 +330,15 @@ function createDeterminerNounAdjectiveMatches(text, tokens, dictionary2) {
     if (isHyphenatedToken(determinerToken) || isHyphenatedToken(nounToken) || isHyphenatedToken(adjectiveToken)) {
       continue;
     }
-    const determinerEntry = dictionary2.linguisticData.lexicalEntries.get(determinerToken.normalized);
-    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken.normalized);
-    const adjectiveEntry = dictionary2.linguisticData.lexicalEntries.get(adjectiveToken.normalized);
+    const determinerEntry = dictionary.linguisticData.lexicalEntries.get(determinerToken.normalized);
+    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
+    const adjectiveEntry = dictionary.linguisticData.lexicalEntries.get(adjectiveToken.normalized);
     if (!isDeterminer(determinerEntry) || !isNoun(nounEntry) || !isVariableAdjective(adjectiveEntry)) {
       continue;
     }
     const targetGenero = determinerEntry?.genero || nounEntry?.genero || inferGender(nounToken.normalized);
     const targetNumero = determinerEntry?.numero || inferNumber(nounToken.normalized);
-    const expectedNoun = getExpectedNounForm(nounEntry, targetGenero, targetNumero, dictionary2);
+    const expectedNoun = getExpectedNounForm(nounEntry, targetGenero, targetNumero, dictionary);
     const reference = expectedNoun || nounToken.normalized;
     const expectedAdjective = getExpectedAdjectiveForm(adjectiveEntry, targetGenero, inferNumber(reference));
     if (!expectedAdjective || expectedAdjective === adjectiveToken.normalized) {
@@ -353,7 +353,7 @@ function createDeterminerNounAdjectiveMatches(text, tokens, dictionary2) {
   }
   return matches;
 }
-function createNounAdjectiveMatches(text, tokens, dictionary2) {
+function createNounAdjectiveMatches(text, tokens, dictionary) {
   const matches = [];
   for (let index = 0; index < tokens.length - 1; index += 1) {
     const nounToken = tokens[index];
@@ -364,8 +364,8 @@ function createNounAdjectiveMatches(text, tokens, dictionary2) {
     if (isHyphenatedToken(nounToken) || isHyphenatedToken(adjectiveToken)) {
       continue;
     }
-    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken.normalized);
-    const adjectiveEntry = dictionary2.linguisticData.lexicalEntries.get(adjectiveToken.normalized);
+    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken.normalized);
+    const adjectiveEntry = dictionary.linguisticData.lexicalEntries.get(adjectiveToken.normalized);
     if (!isNoun(nounEntry) || !isVariableAdjective(adjectiveEntry)) {
       continue;
     }
@@ -384,18 +384,18 @@ function createNounAdjectiveMatches(text, tokens, dictionary2) {
   }
   return matches;
 }
-function createNominalPredicateMatches(text, tokens, dictionary2) {
+function createNominalPredicateMatches(text, tokens, dictionary) {
   const matches = [];
   for (let index = 0; index < tokens.length - 2; index += 1) {
     const firstToken = tokens[index];
     const secondToken = tokens[index + 1];
     const thirdToken = tokens[index + 2];
     const fourthToken = tokens[index + 3];
-    const firstEntry = dictionary2.linguisticData.lexicalEntries.get(firstToken?.normalized || "");
-    const secondEntry = dictionary2.linguisticData.lexicalEntries.get(secondToken?.normalized || "");
-    const thirdEntry = dictionary2.linguisticData.lexicalEntries.get(thirdToken?.normalized || "");
-    const fourthEntry = dictionary2.linguisticData.lexicalEntries.get(fourthToken?.normalized || "");
-    if (firstToken && secondToken && thirdToken && isDeterminer(firstEntry) && isNoun(secondEntry) && isLinkingVerb(thirdEntry) && isVariableAdjective(dictionary2.linguisticData.lexicalEntries.get(thirdToken.normalized)) === false && isVariableAdjective(fourthEntry) && fourthToken) {
+    const firstEntry = dictionary.linguisticData.lexicalEntries.get(firstToken?.normalized || "");
+    const secondEntry = dictionary.linguisticData.lexicalEntries.get(secondToken?.normalized || "");
+    const thirdEntry = dictionary.linguisticData.lexicalEntries.get(thirdToken?.normalized || "");
+    const fourthEntry = dictionary.linguisticData.lexicalEntries.get(fourthToken?.normalized || "");
+    if (firstToken && secondToken && thirdToken && isDeterminer(firstEntry) && isNoun(secondEntry) && isLinkingVerb(thirdEntry) && isVariableAdjective(dictionary.linguisticData.lexicalEntries.get(thirdToken.normalized)) === false && isVariableAdjective(fourthEntry) && fourthToken) {
       if (isHyphenatedToken(firstToken) || isHyphenatedToken(secondToken) || isHyphenatedToken(thirdToken) || isHyphenatedToken(fourthToken)) {
         continue;
       }
@@ -430,7 +430,7 @@ function createNominalPredicateMatches(text, tokens, dictionary2) {
   }
   return matches;
 }
-function createExpandedNominalPredicateMatches(text, tokens, dictionary2) {
+function createExpandedNominalPredicateMatches(text, tokens, dictionary) {
   const matches = [];
   for (let index = 0; index < tokens.length - 4; index += 1) {
     const determinerToken = tokens[index];
@@ -438,11 +438,11 @@ function createExpandedNominalPredicateMatches(text, tokens, dictionary2) {
     const nounQualifierToken = tokens[index + 2];
     const linkingVerbToken = tokens[index + 3];
     const adjectiveToken = tokens[index + 4];
-    const determinerEntry = dictionary2.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
-    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
-    const nounQualifierEntry = dictionary2.linguisticData.lexicalEntries.get(nounQualifierToken?.normalized || "");
-    const linkingVerbEntry = dictionary2.linguisticData.lexicalEntries.get(linkingVerbToken?.normalized || "");
-    const adjectiveEntry = dictionary2.linguisticData.lexicalEntries.get(adjectiveToken?.normalized || "");
+    const determinerEntry = dictionary.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
+    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
+    const nounQualifierEntry = dictionary.linguisticData.lexicalEntries.get(nounQualifierToken?.normalized || "");
+    const linkingVerbEntry = dictionary.linguisticData.lexicalEntries.get(linkingVerbToken?.normalized || "");
+    const adjectiveEntry = dictionary.linguisticData.lexicalEntries.get(adjectiveToken?.normalized || "");
     if (!determinerToken || !nounToken || !nounQualifierToken || !linkingVerbToken || !adjectiveToken || !isDeterminer(determinerEntry) || !isNoun(nounEntry) || !isVariableAdjective(nounQualifierEntry) || !isLinkingVerb(linkingVerbEntry) || !isVariableAdjective(adjectiveEntry)) {
       continue;
     }
@@ -464,17 +464,17 @@ function createExpandedNominalPredicateMatches(text, tokens, dictionary2) {
   }
   return matches;
 }
-function createAttachmentPredicateMatches(text, tokens, dictionary2) {
+function createAttachmentPredicateMatches(text, tokens, dictionary) {
   const matches = [];
   for (let index = 0; index < tokens.length - 3; index += 1) {
     const verbToken = tokens[index];
     const adjectiveToken = tokens[index + 1];
     const determinerToken = tokens[index + 2];
     const nounToken = tokens[index + 3];
-    const verbEntry = dictionary2.linguisticData.lexicalEntries.get(verbToken?.normalized || "");
-    const adjectiveEntry = dictionary2.linguisticData.lexicalEntries.get(adjectiveToken?.normalized || "");
-    const determinerEntry = dictionary2.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
-    const nounEntry = dictionary2.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
+    const verbEntry = dictionary.linguisticData.lexicalEntries.get(verbToken?.normalized || "");
+    const adjectiveEntry = dictionary.linguisticData.lexicalEntries.get(adjectiveToken?.normalized || "");
+    const determinerEntry = dictionary.linguisticData.lexicalEntries.get(determinerToken?.normalized || "");
+    const nounEntry = dictionary.linguisticData.lexicalEntries.get(nounToken?.normalized || "");
     if (!verbToken || !adjectiveToken || !determinerToken || !nounToken || !isAttachmentVerb(verbEntry) || !isVariableAdjective(adjectiveEntry) || !isDeterminer(determinerEntry) || !isNoun(nounEntry)) {
       continue;
     }
@@ -496,15 +496,15 @@ function createAttachmentPredicateMatches(text, tokens, dictionary2) {
   }
   return matches;
 }
-function createSimpleNominalAgreementMatches(text, dictionary2) {
+function createSimpleNominalAgreementMatches(text, dictionary) {
   const tokens = tokenizeText2(text);
   return [
-    ...createDeterminerNounMatches(text, tokens, dictionary2),
-    ...createDeterminerNounAdjectiveMatches(text, tokens, dictionary2),
-    ...createNounAdjectiveMatches(text, tokens, dictionary2),
-    ...createNominalPredicateMatches(text, tokens, dictionary2),
-    ...createExpandedNominalPredicateMatches(text, tokens, dictionary2),
-    ...createAttachmentPredicateMatches(text, tokens, dictionary2)
+    ...createDeterminerNounMatches(text, tokens, dictionary),
+    ...createDeterminerNounAdjectiveMatches(text, tokens, dictionary),
+    ...createNounAdjectiveMatches(text, tokens, dictionary),
+    ...createNominalPredicateMatches(text, tokens, dictionary),
+    ...createExpandedNominalPredicateMatches(text, tokens, dictionary),
+    ...createAttachmentPredicateMatches(text, tokens, dictionary)
   ];
 }
 
@@ -857,7 +857,7 @@ function getPrimarySyntaxClass(entry) {
 function matchesPattern(sequence, pattern) {
   return sequence.length === pattern.pattern.length && sequence.every((value, index) => value === pattern.pattern[index]);
 }
-function hasLongerValidPattern(tokens, startIndex, patterns, dictionary2, currentLength) {
+function hasLongerValidPattern(tokens, startIndex, patterns, dictionary, currentLength) {
   for (const pattern of patterns) {
     if (pattern.pattern.length <= currentLength) {
       continue;
@@ -867,7 +867,7 @@ function hasLongerValidPattern(tokens, startIndex, patterns, dictionary2, curren
       continue;
     }
     const sequence = slice.map((token) => {
-      const entry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
+      const entry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
       return getPrimarySyntaxClass(entry);
     });
     if (sequence.some((value) => value === null)) {
@@ -913,7 +913,7 @@ function crossesSentenceBoundary(text, slice) {
   }
   return false;
 }
-function hasUnknownNeighboringSyntaxClass(tokens, startIndex, endIndex, dictionary2) {
+function hasUnknownNeighboringSyntaxClass(tokens, startIndex, endIndex, dictionary) {
   const left = Math.max(0, startIndex - 1);
   const right = Math.min(tokens.length - 1, endIndex + 1);
   for (let index = left; index <= right; index += 1) {
@@ -921,7 +921,7 @@ function hasUnknownNeighboringSyntaxClass(tokens, startIndex, endIndex, dictiona
     if (!token) {
       continue;
     }
-    const entry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
+    const entry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
     const primaryClass = getPrimarySyntaxClass(entry);
     if (primaryClass === null) {
       return true;
@@ -929,8 +929,8 @@ function hasUnknownNeighboringSyntaxClass(tokens, startIndex, endIndex, dictiona
   }
   return false;
 }
-function createSimpleSyntaxPatternMatches(text, dictionary2) {
-  const patterns = dictionary2.linguisticData.syntaxPatterns || [];
+function createSimpleSyntaxPatternMatches(text, dictionary) {
+  const patterns = dictionary.linguisticData.syntaxPatterns || [];
   if (!patterns.length) {
     return [];
   }
@@ -947,7 +947,7 @@ function createSimpleSyntaxPatternMatches(text, dictionary2) {
         continue;
       }
       const sequence = slice.map((token) => {
-        const entry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
+        const entry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
         return getPrimarySyntaxClass(entry);
       });
       if (sequence.some((value) => value === null)) {
@@ -962,10 +962,10 @@ function createSimpleSyntaxPatternMatches(text, dictionary2) {
       if (!startsLikePattern || !differsByOne) {
         continue;
       }
-      if (hasLongerValidPattern(tokens, index, patterns, dictionary2, pattern.pattern.length)) {
+      if (hasLongerValidPattern(tokens, index, patterns, dictionary, pattern.pattern.length)) {
         continue;
       }
-      if (hasUnknownNeighboringSyntaxClass(tokens, index, index + pattern.pattern.length - 1, dictionary2)) {
+      if (hasUnknownNeighboringSyntaxClass(tokens, index, index + pattern.pattern.length - 1, dictionary)) {
         continue;
       }
       const startToken = slice[0];
@@ -1010,8 +1010,8 @@ function getAgreementIndex(pessoa, numero) {
   }
   return null;
 }
-function createRegularExpectedForm(lemma, group, dictionary2, pessoa, numero) {
-  const rule = dictionary2.linguisticData.verbConjugationRules[group];
+function createRegularExpectedForm(lemma, group, dictionary, pessoa, numero) {
+  const rule = dictionary.linguisticData.verbConjugationRules[group];
   const endings = rule?.tempos?.presente;
   const agreementIndex = getAgreementIndex(pessoa, numero);
   if (!endings || agreementIndex === null || !endings[agreementIndex]) {
@@ -1024,8 +1024,8 @@ function createRegularExpectedForm(lemma, group, dictionary2, pessoa, numero) {
   const radical = normalizedLemma.slice(0, -2);
   return `${radical}${endings[agreementIndex]}`;
 }
-function createIrregularExpectedForm(lemma, dictionary2, pessoa, numero) {
-  const paradigm = dictionary2.linguisticData.irregularVerbs[normalizeDictionaryWord(lemma)];
+function createIrregularExpectedForm(lemma, dictionary, pessoa, numero) {
+  const paradigm = dictionary.linguisticData.irregularVerbs[normalizeDictionaryWord(lemma)];
   const agreementIndex = getAgreementIndex(pessoa, numero);
   const forms = paradigm?.presente;
   if (!forms || agreementIndex === null || !forms[agreementIndex]) {
@@ -1033,7 +1033,7 @@ function createIrregularExpectedForm(lemma, dictionary2, pessoa, numero) {
   }
   return forms[agreementIndex];
 }
-function getVerbExpectedForm(entry, dictionary2, pessoa, numero) {
+function getVerbExpectedForm(entry, dictionary, pessoa, numero) {
   if (!entry) {
     return null;
   }
@@ -1042,28 +1042,28 @@ function getVerbExpectedForm(entry, dictionary2, pessoa, numero) {
     return null;
   }
   if (entry.irregular) {
-    return createIrregularExpectedForm(lemma, dictionary2, pessoa, numero);
+    return createIrregularExpectedForm(lemma, dictionary, pessoa, numero);
   }
   if (!entry.grupo) {
     return null;
   }
-  return createRegularExpectedForm(lemma, entry.grupo, dictionary2, pessoa, numero);
+  return createRegularExpectedForm(lemma, entry.grupo, dictionary, pessoa, numero);
 }
-function getPresentTenseForms(entry, dictionary2) {
+function getPresentTenseForms(entry, dictionary) {
   if (!entry?.lemma) {
     return [];
   }
   const normalizedLemma = normalizeDictionaryWord(entry.lemma);
   if (entry.irregular) {
-    return (dictionary2.linguisticData.irregularVerbs[normalizedLemma]?.presente || []).map((value) => normalizeDictionaryWord(value));
+    return (dictionary.linguisticData.irregularVerbs[normalizedLemma]?.presente || []).map((value) => normalizeDictionaryWord(value));
   }
   if (!entry.grupo) {
     return [];
   }
   const forms = [];
   for (let pessoa = 1; pessoa <= 3; pessoa += 1) {
-    const singular = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary2, pessoa, "singular");
-    const plural = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary2, pessoa, "plural");
+    const singular = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary, pessoa, "singular");
+    const plural = createRegularExpectedForm(normalizedLemma, entry.grupo, dictionary, pessoa, "plural");
     if (singular) {
       forms.push(normalizeDictionaryWord(singular));
     }
@@ -1073,8 +1073,8 @@ function getPresentTenseForms(entry, dictionary2) {
   }
   return forms;
 }
-function isLikelyPresentTenseForm(token, entry, dictionary2) {
-  return getPresentTenseForms(entry, dictionary2).includes(token.normalized);
+function isLikelyPresentTenseForm(token, entry, dictionary) {
+  return getPresentTenseForms(entry, dictionary).includes(token.normalized);
 }
 function createAgreementMatch2(text, token, replacement, subject) {
   const replacements = dedupeStrings([preserveReplacementCase(token.value, replacement)]);
@@ -1097,30 +1097,30 @@ function isSimpleVerbCandidate(token, entry) {
     entry && entry.classes.includes("verbo") && !token.normalized.includes("-")
   );
 }
-function isPreposition(token, dictionary2) {
+function isPreposition(token, dictionary) {
   if (!token) {
     return false;
   }
-  const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
+  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
   return Boolean(lexicalEntry?.classes.includes("preposicao"));
 }
-function isAdverb(token, dictionary2) {
+function isAdverb(token, dictionary) {
   if (!token) {
     return false;
   }
-  const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
+  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
   return Boolean(lexicalEntry?.classes.includes("adverbio"));
 }
-function isCliticPronoun(token, dictionary2) {
+function isCliticPronoun(token, dictionary) {
   if (!token) {
     return false;
   }
-  const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(token.normalized);
+  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(token.normalized);
   return Boolean(
     lexicalEntry && lexicalEntry.classes.includes("pronome") && lexicalEntry.tags?.includes("clitico")
   );
 }
-function shouldSkipInfinitiveLikeContext(tokens, subjectIndex, verbToken, verbEntry, dictionary2) {
+function shouldSkipInfinitiveLikeContext(tokens, subjectIndex, verbToken, verbEntry, dictionary) {
   if (!verbEntry) {
     return true;
   }
@@ -1129,12 +1129,12 @@ function shouldSkipInfinitiveLikeContext(tokens, subjectIndex, verbToken, verbEn
     return true;
   }
   const previousToken = tokens[subjectIndex - 1];
-  if (isPreposition(previousToken, dictionary2)) {
+  if (isPreposition(previousToken, dictionary)) {
     return true;
   }
   return false;
 }
-function resolveVerbIndex(tokens, subject, dictionary2) {
+function resolveVerbIndex(tokens, subject, dictionary) {
   let index = subject.nextVerbIndex;
   let skippedAdverb = false;
   let skippedClitic = false;
@@ -1143,12 +1143,12 @@ function resolveVerbIndex(tokens, subject, dictionary2) {
     if (!token) {
       return null;
     }
-    if (!skippedClitic && isCliticPronoun(token, dictionary2)) {
+    if (!skippedClitic && isCliticPronoun(token, dictionary)) {
       skippedClitic = true;
       index += 1;
       continue;
     }
-    if (!skippedAdverb && isAdverb(token, dictionary2)) {
+    if (!skippedAdverb && isAdverb(token, dictionary)) {
       skippedAdverb = true;
       index += 1;
       continue;
@@ -1157,7 +1157,7 @@ function resolveVerbIndex(tokens, subject, dictionary2) {
   }
   return null;
 }
-function resolveSubjectCandidate(tokens, index, dictionary2) {
+function resolveSubjectCandidate(tokens, index, dictionary) {
   const first = tokens[index];
   const second = tokens[index + 1];
   if (!first) {
@@ -1165,7 +1165,7 @@ function resolveSubjectCandidate(tokens, index, dictionary2) {
   }
   if (second) {
     const joined = `${first.normalized} ${second.normalized}`;
-    if (dictionary2.linguisticData.verbalAgreement[joined]) {
+    if (dictionary.linguisticData.verbalAgreement[joined]) {
       return {
         text: `${first.value} ${second.value}`,
         normalized: joined,
@@ -1173,7 +1173,7 @@ function resolveSubjectCandidate(tokens, index, dictionary2) {
       };
     }
   }
-  if (dictionary2.linguisticData.verbalAgreement[first.normalized]) {
+  if (dictionary.linguisticData.verbalAgreement[first.normalized]) {
     return {
       text: first.value,
       normalized: first.normalized,
@@ -1182,15 +1182,15 @@ function resolveSubjectCandidate(tokens, index, dictionary2) {
   }
   return null;
 }
-function createSimpleVerbalAgreementMatches(text, dictionary2) {
+function createSimpleVerbalAgreementMatches(text, dictionary) {
   const tokens = tokenizeText5(text);
   const matches = [];
   for (let index = 0; index < tokens.length - 1; index += 1) {
-    const subject = resolveSubjectCandidate(tokens, index, dictionary2);
+    const subject = resolveSubjectCandidate(tokens, index, dictionary);
     if (!subject) {
       continue;
     }
-    const verbIndex = resolveVerbIndex(tokens, subject, dictionary2);
+    const verbIndex = resolveVerbIndex(tokens, subject, dictionary);
     if (verbIndex === null) {
       continue;
     }
@@ -1198,25 +1198,25 @@ function createSimpleVerbalAgreementMatches(text, dictionary2) {
     if (!verbToken) {
       continue;
     }
-    const agreement = dictionary2.linguisticData.verbalAgreement[subject.normalized];
+    const agreement = dictionary.linguisticData.verbalAgreement[subject.normalized];
     if (!agreement) {
       continue;
     }
-    const verbEntry = dictionary2.linguisticData.lexicalEntries.get(verbToken.normalized);
+    const verbEntry = dictionary.linguisticData.lexicalEntries.get(verbToken.normalized);
     if (!isSimpleVerbCandidate(verbToken, verbEntry)) {
       continue;
     }
-    if (!isLikelyPresentTenseForm(verbToken, verbEntry, dictionary2)) {
+    if (!isLikelyPresentTenseForm(verbToken, verbEntry, dictionary)) {
       continue;
     }
-    if (shouldSkipInfinitiveLikeContext(tokens, index, verbToken, verbEntry, dictionary2)) {
+    if (shouldSkipInfinitiveLikeContext(tokens, index, verbToken, verbEntry, dictionary)) {
       continue;
     }
-    const expectedForm = getVerbExpectedForm(verbEntry, dictionary2, agreement.pessoa, agreement.numero);
+    const expectedForm = getVerbExpectedForm(verbEntry, dictionary, agreement.pessoa, agreement.numero);
     if (!expectedForm || normalizeDictionaryWord(expectedForm) === verbToken.normalized) {
       continue;
     }
-    const expectedEntry = dictionary2.linguisticData.lexicalEntries.get(normalizeDictionaryWord(expectedForm));
+    const expectedEntry = dictionary.linguisticData.lexicalEntries.get(normalizeDictionaryWord(expectedForm));
     if (!expectedEntry || !expectedEntry.classes.includes("verbo")) {
       continue;
     }
@@ -1354,7 +1354,7 @@ function addIfNoOverlap(matches, candidate) {
     matches.push(candidate);
   }
 }
-function createBastanteAmbiguityMatches(text) {
+function createBastanteAmbiguityMatches(text, dictionary) {
   const matches = [];
   const tokens = tokenizeSlices(text);
   for (let i = 0; i < tokens.length; i++) {
@@ -1386,7 +1386,7 @@ function createBastanteAmbiguityMatches(text) {
   }
   return matches;
 }
-function createMuitoAmbiguityMatches(text) {
+function createMuitoAmbiguityMatches(text, dictionary) {
   const matches = [];
   const tokens = tokenizeSlices(text);
   for (let i = 0; i < tokens.length; i++) {
@@ -1418,11 +1418,11 @@ function createMuitoAmbiguityMatches(text) {
   }
   return matches;
 }
-function createAmbiguityResolutionMatches(text, dictionary2) {
+function createAmbiguityResolutionMatches(text, dictionary) {
   const matches = [];
-  matches.push(...createAmbiguityResolutionMatchesInternal(text, dictionary2));
-  matches.push(...createBastanteAmbiguityMatches(text, dictionary2));
-  matches.push(...createMuitoAmbiguityMatches(text, dictionary2));
+  matches.push(...createAmbiguityResolutionMatchesInternal(text, dictionary));
+  matches.push(...createBastanteAmbiguityMatches(text, dictionary));
+  matches.push(...createMuitoAmbiguityMatches(text, dictionary));
   return matches;
 }
 
@@ -1478,7 +1478,8 @@ function addIfNoOverlap2(matches, candidate) {
     matches.push(candidate);
   }
 }
-var enhancedContextPatterns = [
+var VERBOS_PLURAL_A_GENTE = ["vamos", "fomos", "estamos", "estavamos", "tamos", "\xEDamos"];
+var ENHANCED_CONTEXT_PATTERNS = [
   {
     id: "PT_BR_ENHANCED_A_GENTE_CONCORDANCIA",
     description: "Concord\xE2ncia verbal com 'a gente' (3\xAA pessoa singular)",
@@ -1492,8 +1493,7 @@ var enhancedContextPatterns = [
         const afterGente = contextWindow.slice(genteIndex + 1);
         if (afterGente.length > 0) {
           const verb = afterGente[0];
-          const pluralVerbs = ["vamos", "fomos", "estamos", "estavamos", "tamos", "fomos", "\xEDamos"];
-          return pluralVerbs.includes(verb);
+          return VERBOS_PLURAL_A_GENTE.includes(verb);
         }
       }
       return false;
@@ -1619,7 +1619,7 @@ function createEnhancedContextRuleMatches(text, _dictionary) {
   const matches = [];
   const tokens = tokenizeSlices2(text).map((t) => t.normalized);
   for (let i = 0; i < tokens.length; i++) {
-    for (const pattern of enhancedContextPatterns) {
+    for (const pattern of ENHANCED_CONTEXT_PATTERNS) {
       if (pattern.test(text, tokens, i)) {
         const originalToken = tokenizeSlices2(text)[i];
         const replacement = pattern.getReplacement(originalToken.value, tokens);
@@ -1813,17 +1813,17 @@ function hasSafePrefixAndSuffixMatch(word, candidate) {
   const suffixMatches = word.at(-1) === candidate.at(-1);
   return prefixMatches && suffixMatches;
 }
-function createUnknownWordSuggestions(word, dictionary2) {
+function createUnknownWordSuggestions(word, dictionary) {
   const normalizedWord = normalizeDictionaryWord(word);
   const plainWord = stripDiacritics(normalizedWord);
   const originalDiacritics = countDiacriticMarks(normalizedWord);
   const candidates = [];
-  for (const candidate of dictionary2.words) {
-    const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(candidate);
+  for (const candidate of dictionary.words) {
+    const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(candidate);
     if (lexicalEntry?.autoCorrect === "blocked" || lexicalEntry?.autoCorrect === "review") {
       continue;
     }
-    if (dictionary2.linguisticData.blockedAutoCorrections.has(candidate)) {
+    if (dictionary.linguisticData.blockedAutoCorrections.has(candidate)) {
       continue;
     }
     if (Math.abs(candidate.length - normalizedWord.length) > 2) {
@@ -1891,8 +1891,8 @@ function createUnknownWordSuggestions(word, dictionary2) {
     word: preserveReplacementCase(word, entry.word)
   }));
 }
-function createUnknownWordMatches(text, dictionary2) {
-  if (!dictionary2.dictionaryReady || !dictionary2.words.size) {
+function createUnknownWordMatches(text, dictionary) {
+  if (!dictionary.dictionaryReady || !dictionary.words.size) {
     return [];
   }
   const matches = [];
@@ -1908,14 +1908,14 @@ function createUnknownWordMatches(text, dictionary2) {
     if (/^(segunda|terca|terça|quarta|quinta|sexta|sabado|sábado|domingo)-feira$/iu.test(original)) {
       continue;
     }
-    if (!normalized || isIgnorableToken(original) || dictionary2.words.has(normalized) || dictionary2.linguisticData.allowedUnknownWords.has(normalized) || dictionary2.linguisticData.blockedAutoCorrections.has(normalized) || overlapsTechnicalSpan(match.index, original.length, technicalSpans)) {
+    if (!normalized || isIgnorableToken(original) || dictionary.words.has(normalized) || dictionary.linguisticData.allowedUnknownWords.has(normalized) || dictionary.linguisticData.blockedAutoCorrections.has(normalized) || overlapsTechnicalSpan(match.index, original.length, technicalSpans)) {
       continue;
     }
     const key = `${match.index}:${original.length}`;
     if (seenOffsets.has(key)) {
       continue;
     }
-    const replacements = createUnknownWordSuggestions(original, dictionary2);
+    const replacements = createUnknownWordSuggestions(original, dictionary);
     if (!replacements.length) {
       continue;
     }
@@ -2468,8 +2468,8 @@ function createSentenceCaseMatches(text) {
 function clampConfidenceScore(score) {
   return Math.max(0.01, Math.min(score, 0.99));
 }
-function lexicalRiskPenalty(replacement, dictionary2) {
-  const lexicalEntry = dictionary2.linguisticData.lexicalEntries.get(normalizeDictionaryWord(replacement));
+function lexicalRiskPenalty(replacement, dictionary) {
+  const lexicalEntry = dictionary.linguisticData.lexicalEntries.get(normalizeDictionaryWord(replacement));
   if (!lexicalEntry) {
     return 0;
   }
@@ -2488,13 +2488,13 @@ function lexicalRiskPenalty(replacement, dictionary2) {
   }
   return penalty;
 }
-function deriveMatchConfidence(match, text, dictionary2) {
+function deriveMatchConfidence(match, text, dictionary) {
   if (match.confidence) {
     return match.confidence;
   }
   const original = text.slice(match.offset, match.offset + match.length);
   const primaryReplacement = match.replacements[0]?.value || "";
-  const replacementPenalty = lexicalRiskPenalty(primaryReplacement, dictionary2);
+  const replacementPenalty = lexicalRiskPenalty(primaryReplacement, dictionary);
   const hasMultipleSuggestions = match.replacements.length > 1;
   if (match.rule.id === "PT_BR_REPEATED_WORD") {
     return createConfidence3("high", 0.98, "repeticao literal detectada");
@@ -2619,10 +2619,10 @@ function collapseOverlappingMatches(matches) {
   }
   return selected.sort((left, right) => left.offset - right.offset || left.length - right.length);
 }
-function finalizeMatches(text, matches, dictionary2) {
+function finalizeMatches(text, matches, dictionary) {
   const visibleMatches = collapseOverlappingMatches(matches.map((match) => ({
     ...match,
-    confidence: deriveMatchConfidence(match, text, dictionary2)
+    confidence: deriveMatchConfidence(match, text, dictionary)
   })).filter((match) => shouldExposeMatch(match)));
   return {
     language: {
@@ -2653,29 +2653,29 @@ function storeCheckResultInCache(text, result) {
 function hasSingleWholeTextMatch(result, text) {
   return result.matches.length === 1 && result.matches[0]?.offset === 0 && result.matches[0]?.length === text.length && Boolean(result.matches[0]?.replacements[0]?.value);
 }
-function collectVisibleStageMatches(text, dictionary2, matches) {
-  return finalizeMatches(text, matches, dictionary2).matches;
+function collectVisibleStageMatches(text, dictionary, matches) {
+  return finalizeMatches(text, matches, dictionary).matches;
 }
-function findWholeTextSpecialistMatches(text, replacements, dictionary2) {
+function findWholeTextSpecialistMatches(text, replacements, dictionary) {
   const candidates = [
     ...createReplacementMatches(text, replacements),
-    ...createPhraseRuleMatches(text, dictionary2.phraseRules),
-    ...createContextRuleMatches(text, dictionary2.contextRules)
+    ...createPhraseRuleMatches(text, dictionary.phraseRules),
+    ...createContextRuleMatches(text, dictionary.contextRules)
   ];
   const wholeTextCandidates = candidates.filter((match) => match.offset === 0 && match.length === text.length);
   if (!wholeTextCandidates.length) {
     return [];
   }
-  return finalizeMatches(text, wholeTextCandidates, dictionary2).matches.filter((match) => match.offset === 0 && match.length === text.length);
+  return finalizeMatches(text, wholeTextCandidates, dictionary).matches.filter((match) => match.offset === 0 && match.length === text.length);
 }
-function createInferenceStages(replacements, dictionary2) {
+function createInferenceStages(replacements, dictionary) {
   return [
     {
       id: "symbolic_context",
       description: "Aplica especialistas simbolicos de frase e contexto.",
       collectMatches: (text) => [
-        ...createPhraseRuleMatches(text, dictionary2.phraseRules),
-        ...createContextRuleMatches(text, dictionary2.contextRules),
+        ...createPhraseRuleMatches(text, dictionary.phraseRules),
+        ...createContextRuleMatches(text, dictionary.contextRules),
         ...createPorQueHeuristicMatches(text),
         ...createCraseHeuristicMatches(text),
         ...createLocalizationDateMatches(text),
@@ -2686,8 +2686,8 @@ function createInferenceStages(replacements, dictionary2) {
       id: "ambiguity_resolution",
       description: "Resolve casos de ambiguidade morfol\xF3gica e contextual.",
       collectMatches: (text) => [
-        ...createAmbiguityResolutionMatches(text, dictionary2),
-        ...createEnhancedContextRuleMatches(text, dictionary2)
+        ...createAmbiguityResolutionMatches(text, dictionary),
+        ...createEnhancedContextRuleMatches(text, dictionary)
       ]
     },
     {
@@ -2705,9 +2705,9 @@ function createInferenceStages(replacements, dictionary2) {
       id: "linguistic_agreement",
       description: "Resolve concordancia e sintaxe curta.",
       collectMatches: (text) => [
-        ...createSimpleVerbalAgreementMatches(text, dictionary2),
-        ...createSimpleNominalAgreementMatches(text, dictionary2),
-        ...createSimpleSyntaxPatternMatches(text, dictionary2)
+        ...createSimpleVerbalAgreementMatches(text, dictionary),
+        ...createSimpleNominalAgreementMatches(text, dictionary),
+        ...createSimpleSyntaxPatternMatches(text, dictionary)
       ]
     },
     {
@@ -2715,7 +2715,7 @@ function createInferenceStages(replacements, dictionary2) {
       description: "Fecha a frase com refinamentos heur\xEDsticos.",
       collectMatches: (text) => {
         const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text);
-        const unknownWordMatches = createUnknownWordMatches(text, dictionary2).filter((candidate) => !punctuationHeuristicMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
+        const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => !punctuationHeuristicMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
         return [
           ...punctuationHeuristicMatches,
           ...unknownWordMatches
@@ -2724,20 +2724,20 @@ function createInferenceStages(replacements, dictionary2) {
     }
   ];
 }
-function runInferencePipeline(text, replacements, dictionary2) {
-  const wholeTextMatches = findWholeTextSpecialistMatches(text, replacements, dictionary2);
+function runInferencePipeline(text, replacements, dictionary) {
+  const wholeTextMatches = findWholeTextSpecialistMatches(text, replacements, dictionary);
   if (wholeTextMatches.length) {
-    return finalizeMatches(text, wholeTextMatches, dictionary2);
+    return finalizeMatches(text, wholeTextMatches, dictionary);
   }
   let currentText = text;
   let exactWholeTextResult = null;
-  for (const stage of createInferenceStages(replacements, dictionary2)) {
-    const visibleMatches = collectVisibleStageMatches(currentText, dictionary2, stage.collectMatches(currentText));
+  for (const stage of createInferenceStages(replacements, dictionary)) {
+    const visibleMatches = collectVisibleStageMatches(currentText, dictionary, stage.collectMatches(currentText));
     if (!visibleMatches.length) {
       continue;
     }
     if (visibleMatches.length === 1 && visibleMatches[0]?.offset === 0 && visibleMatches[0]?.length === currentText.length) {
-      exactWholeTextResult = finalizeMatches(text, [createWholeTextInferenceMatch(text, visibleMatches[0].replacements[0]?.value || currentText)], dictionary2);
+      exactWholeTextResult = finalizeMatches(text, [createWholeTextInferenceMatch(text, visibleMatches[0].replacements[0]?.value || currentText)], dictionary);
       currentText = visibleMatches[0].replacements[0]?.value || currentText;
       break;
     }
@@ -2750,23 +2750,23 @@ function runInferencePipeline(text, replacements, dictionary2) {
   if (exactWholeTextResult) {
     return exactWholeTextResult;
   }
-  return finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary2);
+  return finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary);
 }
-function checkTextSinglePass(text, replacements, dictionary2) {
-  return runInferencePipeline(text, replacements, dictionary2);
+function checkTextSinglePass(text, replacements, dictionary) {
+  return runInferencePipeline(text, replacements, dictionary);
   const replacementMatches = createReplacementMatches(text, replacements);
   const exactWholeTextReplacementMatches = replacementMatches.filter((match) => match.offset === 0 && match.length === text.length);
   if (exactWholeTextReplacementMatches.length) {
-    return finalizeMatches(text, exactWholeTextReplacementMatches, dictionary2);
+    return finalizeMatches(text, exactWholeTextReplacementMatches, dictionary);
   }
-  const phraseRuleMatches = createPhraseRuleMatches(text, dictionary2.phraseRules);
-  const contextRuleMatches = createContextRuleMatches(text, dictionary2.contextRules);
+  const phraseRuleMatches = createPhraseRuleMatches(text, dictionary.phraseRules);
+  const contextRuleMatches = createContextRuleMatches(text, dictionary.contextRules);
   const craseHeuristicMatches = createCraseHeuristicMatches(text);
   const localizationDateMatches = createLocalizationDateMatches(text);
   const announcementAgreementMatches = createAnnouncementAgreementMatches(text);
-  const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary2);
-  const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary2);
-  const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary2);
+  const verbalAgreementMatches = createSimpleVerbalAgreementMatches(text, dictionary);
+  const nominalAgreementMatches = createSimpleNominalAgreementMatches(text, dictionary);
+  const syntaxPatternMatches = createSimpleSyntaxPatternMatches(text, dictionary);
   const baseProtectedMatches = [
     ...replacementMatches,
     ...phraseRuleMatches,
@@ -2780,7 +2780,7 @@ function checkTextSinglePass(text, replacements, dictionary2) {
   ];
   const punctuationHeuristicMatches = createPunctuationHeuristicMatches(text).filter((candidate) => !baseProtectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
   const protectedMatches = [...baseProtectedMatches, ...punctuationHeuristicMatches];
-  const unknownWordMatches = createUnknownWordMatches(text, dictionary2).filter((candidate) => !protectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
+  const unknownWordMatches = createUnknownWordMatches(text, dictionary).filter((candidate) => !protectedMatches.some((existing) => candidate.offset < existing.offset + existing.length && existing.offset < candidate.offset + candidate.length));
   const allMatches = [
     ...replacementMatches,
     ...phraseRuleMatches,
@@ -2799,18 +2799,18 @@ function checkTextSinglePass(text, replacements, dictionary2) {
     ...createSentenceCaseMatches(text)
   ].map((match) => ({
     ...match,
-    confidence: deriveMatchConfidence(match, text, dictionary2)
+    confidence: deriveMatchConfidence(match, text, dictionary)
   })).filter((match) => shouldExposeMatch(match));
-  const result = finalizeMatches(text, allMatches, dictionary2);
+  const result = finalizeMatches(text, allMatches, dictionary);
   return result;
 }
-function checkText(text, replacements, dictionary2) {
+function checkText(text, replacements, dictionary) {
   const cached = checkResultCache.get(text);
   if (cached) {
     return cached;
   }
   let currentText = text;
-  let passResult = checkTextSinglePass(currentText, replacements, dictionary2);
+  let passResult = checkTextSinglePass(currentText, replacements, dictionary);
   if (hasSingleWholeTextMatch(passResult, text)) {
     storeCheckResultInCache(text, passResult);
     return passResult;
@@ -2825,10 +2825,10 @@ function checkText(text, replacements, dictionary2) {
       break;
     }
     currentText = nextText;
-    passResult = checkTextSinglePass(currentText, replacements, dictionary2);
+    passResult = checkTextSinglePass(currentText, replacements, dictionary);
     passCount += 1;
   }
-  const result = currentText !== text && passCount > 1 ? finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary2) : checkTextSinglePass(text, replacements, dictionary2);
+  const result = currentText !== text && passCount > 1 ? finalizeMatches(text, createConsolidatedInferenceMatches(text, currentText), dictionary) : checkTextSinglePass(text, replacements, dictionary);
   storeCheckResultInCache(text, result);
   return result;
 }

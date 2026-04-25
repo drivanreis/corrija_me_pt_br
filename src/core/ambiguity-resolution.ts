@@ -177,7 +177,7 @@ function addIfNoOverlap(matches: RuleMatch[], candidate: RuleMatch): void {
 }
 
 // Casos adicionais de ambiguidade podem ser adicionados aqui
-function createBastanteAmbiguityMatches(text: string): RuleMatch[] {
+function createBastanteAmbiguityMatches(text: string, dictionary: DictionaryData): RuleMatch[] {
   const matches: RuleMatch[] = [];
   const tokens = tokenizeSlices(text);
 
@@ -218,7 +218,7 @@ function createBastanteAmbiguityMatches(text: string): RuleMatch[] {
   return matches;
 }
 
-function createMuitoAmbiguityMatches(text: string): RuleMatch[] {
+function createMuitoAmbiguityMatches(text: string, dictionary: DictionaryData): RuleMatch[] {
   const matches: RuleMatch[] = [];
   const tokens = tokenizeSlices(text);
 

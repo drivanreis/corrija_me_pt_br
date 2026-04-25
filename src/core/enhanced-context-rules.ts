@@ -2,19 +2,19 @@ import { buildContext, normalizeDictionaryWord, preserveReplacementCase } from "
 import type { DictionaryData, MatchConfidence, RuleMatch } from "./types.js";
 
 interface ContextPattern {
-  id: string;
-  description: string;
-  test: (text: string, tokens: string[], index: number) => boolean;
-  getReplacement: (_original: string, _context: string[]) => string;
-  message: string;
-  confidence: MatchConfidence;
+  readonly id: string;
+  readonly description: string;
+  readonly test: (text: string, tokens: string[], index: number) => boolean;
+  readonly getReplacement: (_original: string, _context: string[]) => string;
+  readonly message: string;
+  readonly confidence: MatchConfidence;
 }
 
 interface TokenSlice {
-  value: string;
-  normalized: string;
-  offset: number;
-  length: number;
+  readonly value: string;
+  readonly normalized: string;
+  readonly offset: number;
+  readonly length: number;
 }
 
 function createConfidence(level: MatchConfidence["level"], score: number, reason?: string): MatchConfidence {
@@ -86,8 +86,10 @@ function addIfNoOverlap(matches: RuleMatch[], candidate: RuleMatch): void {
   }
 }
 
-// Regras contextuais generalizadas
-const enhancedContextPatterns: ContextPattern[] = [
+const VERBOS_PLURAL_A_GENTE = ['vamos', 'fomos', 'estamos', 'estavamos', 'tamos', 'íamos'] as const;
+
+// Context patterns para regras generalizadas
+const ENHANCED_CONTEXT_PATTERNS: ContextPattern[] = [
   {
     id: "PT_BR_ENHANCED_A_GENTE_CONCORDANCIA",
     description: "Concordância verbal com 'a gente' (3ª pessoa singular)",
@@ -106,8 +108,7 @@ const enhancedContextPatterns: ContextPattern[] = [
         if (afterGente.length > 0) {
           const verb = afterGente[0];
           // Verbos que devem estar no singular com 'a gente'
-          const pluralVerbs = ["vamos", "fomos", "estamos", "estavamos", "tamos", "fomos", "íamos"];
-          return pluralVerbs.includes(verb);
+          return VERBOS_PLURAL_A_GENTE.includes(verb as typeof VERBOS_PLURAL_A_GENTE[number]);
         }
       }
 
@@ -260,7 +261,7 @@ export function createEnhancedContextRuleMatches(text: string, _dictionary: Dict
   const tokens = tokenizeSlices(text).map(t => t.normalized);
 
   for (let i = 0; i < tokens.length; i++) {
-    for (const pattern of enhancedContextPatterns) {
+    for (const pattern of ENHANCED_CONTEXT_PATTERNS) {
       if (pattern.test(text, tokens, i)) {
         const originalToken = tokenizeSlices(text)[i];
         const replacement = pattern.getReplacement(originalToken.value, tokens);
