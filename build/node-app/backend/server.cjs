@@ -1641,11 +1641,7 @@ function createEnhancedContextRuleMatches(text, _dictionary) {
   return matches;
 }
 
-// src/core/engine.ts
-var preparedReplacementIndexCache = /* @__PURE__ */ new WeakMap();
-var checkResultCache = /* @__PURE__ */ new Map();
-var MAX_CHECK_RESULT_CACHE_SIZE = 512;
-var MAX_CORRECTION_PASSES = 3;
+// src/core/semantic-analysis.ts
 function createConfidence3(level, score, reason) {
   return {
     level,
@@ -1653,7 +1649,237 @@ function createConfidence3(level, score, reason) {
     reason
   };
 }
-function createMatch3(text, offset, length, replacements, ruleId, message, description, confidence = createConfidence3("high", 0.95, "regra explicita")) {
+function createMatch3(text, offset, length, replacements, ruleId, message, description, confidence, explanation) {
+  return {
+    message,
+    shortMessage: message,
+    offset,
+    length,
+    replacements: replacements.map((value) => ({ value })),
+    confidence,
+    rule: {
+      id: ruleId,
+      description,
+      issueType: "grammar"
+    },
+    context: buildContext(text, offset, length),
+    explanation
+  };
+}
+function createSemanticAnalysisMatches(text, _dictionary) {
+  const matches = [];
+  const semanticPatterns = [
+    {
+      pattern: "p\xE3o, fresco",
+      corrected: "p\xE3o fresco",
+      explanation: 'V\xEDrgula transforma "fresco" em vocativo (g\xEDria pejorativa), n\xE3o adjetivo do p\xE3o.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Vamos comer crian\xE7as!",
+      corrected: "Vamos comer, crian\xE7as!",
+      explanation: "Sem v\xEDrgula, a frase sugere canibalismo. Com v\xEDrgula, \xE9 um chamado para as crian\xE7as comerem.",
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "N\xE3o espere.",
+      corrected: "N\xE3o, espere.",
+      explanation: "Sem v\xEDrgula, \xE9 uma ordem para n\xE3o esperar. Com v\xEDrgula, \xE9 um pedido para esperar.",
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Bora comer gente?",
+      corrected: "Bora comer, gente?",
+      explanation: 'Sem v\xEDrgula, "gente" pode soar como objeto (suspeito). Com v\xEDrgula, "gente" se torna vocativo.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "N\xE3o quero sair com voc\xEA.",
+      corrected: "N\xE3o, quero sair com voc\xEA.",
+      explanation: 'Sem v\xEDrgula, "n\xE3o" se aplica a "quero". Com v\xEDrgula, "n\xE3o" se aplica \xE0 frase inteira, mudando de recusa para confirma\xE7\xE3o.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Pode esperar.",
+      corrected: "Pode, esperar.",
+      explanation: "Sem v\xEDrgula, \xE9 uma permiss\xE3o \xFAnica. Com v\xEDrgula, soa como duas ideias separadas.",
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Se quiser terminar comigo tudo bem.",
+      corrected: "Se quiser terminar comigo, tudo bem.",
+      explanation: 'Sem v\xEDrgula, "tudo bem" modifica "terminar". Com v\xEDrgula, "tudo bem" se torna uma resposta separada.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Vamos produzir pessoal.",
+      corrected: "Vamos produzir, pessoal.",
+      explanation: 'Sem v\xEDrgula, "pessoal" se torna adjetivo de "produzir". Com v\xEDrgula, "pessoal" se torna vocativo.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Me v\xEA um caf\xE9, grande?",
+      corrected: "Me v\xEA um caf\xE9 grande?",
+      explanation: 'Com v\xEDrgula, "grande" n\xE3o modifica "caf\xE9". Sem v\xEDrgula, "grande" modifica "caf\xE9" corretamente.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Calma cara.",
+      corrected: "Calma, cara.",
+      explanation: 'Sem v\xEDrgula, "cara" se torna adjetivo de "calma" (estranho). Com v\xEDrgula, "cara" se torna vocativo.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Voc\xEA \xE9 incr\xEDvel s\xE9rio.",
+      corrected: "Voc\xEA \xE9 incr\xEDvel, s\xE9rio.",
+      explanation: 'Sem v\xEDrgula, "s\xE9rio" modifica "incr\xEDvel" (elogio embolado). Com v\xEDrgula, "s\xE9rio" refor\xE7a o elogio.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Vamos sair hoje?",
+      corrected: "Vamos sair hoje?",
+      explanation: 'Com v\xEDrgula, "hoje" fica separado, criando pausa estranha. Sem v\xEDrgula, a frase \xE9 mais natural.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "J\xE1 resolvi seu problema cliente.",
+      corrected: "J\xE1 resolvi seu problema, cliente.",
+      explanation: 'Sem v\xEDrgula, "cliente" se torna adjetivo de "problema" (rob\xF3tico). Com v\xEDrgula, "cliente" se torna vocativo.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "N\xE3o podemos atender seu pedido.",
+      corrected: "N\xE3o, podemos atender seu pedido.",
+      explanation: 'Sem v\xEDrgula, \xE9 uma recusa seca. Com v\xEDrgula, "n\xE3o" se aplica \xE0 frase inteira, mudando de recusa para confirma\xE7\xE3o.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Resolva isso agora cliente.",
+      corrected: "Resolva isso agora, cliente.",
+      explanation: 'Sem v\xEDrgula, soa mand\xE3o. Com v\xEDrgula, "cliente" se torna vocativo, tornando o tom mais adequado.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "O erro foi do sistema interno.",
+      corrected: "O erro foi do sistema, interno.",
+      explanation: 'Sem v\xEDrgula, "interno" se torna adjetivo de "sistema" (assume responsabilidade). Com v\xEDrgula, "interno" se torna especifica\xE7\xE3o.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Se n\xE3o pagar ser\xE1 negativado.",
+      corrected: "Se n\xE3o pagar, ser\xE1 negativado.",
+      explanation: 'Sem v\xEDrgula, soa como amea\xE7a direta. Com v\xEDrgula, "se n\xE3o pagar" se torna condi\xE7\xE3o separada, tornando o tom mais formal.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Vamos cancelar o pedido do cliente inadimplente.",
+      corrected: "Vamos cancelar o pedido do cliente, inadimplente.",
+      explanation: 'Sem v\xEDrgula, "inadimplente" se torna adjetivo de "cliente" (ofensivo). Com v\xEDrgula, "inadimplente" se torna especifica\xE7\xE3o separada.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Prezados clientes informamos que houve instabilidade.",
+      corrected: "Prezados clientes, informamos que houve instabilidade.",
+      explanation: 'Sem v\xEDrgula, "informamos" se torna adjetivo de "clientes" (desorganizado). Com v\xEDrgula, "informamos" se torna a\xE7\xE3o principal.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Pode liberar o acesso n\xE3o bloqueie.",
+      corrected: "Pode liberar o acesso, n\xE3o bloqueie.",
+      explanation: 'Sem v\xEDrgula, "n\xE3o bloqueie" se torna parte da instru\xE7\xE3o (confuso). Com v\xEDrgula, "n\xE3o bloqueie" se torna comando separado.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    },
+    {
+      pattern: "Entendo sua frustra\xE7\xE3o senhor.",
+      corrected: "Entendo sua frustra\xE7\xE3o, senhor.",
+      explanation: 'Sem v\xEDrgula, "senhor" se torna adjetivo de "frustra\xE7\xE3o" (frio/robotizado). Com v\xEDrgula, "senhor" se torna vocativo, tornando o tom mais humano.',
+      rule: "PT_BR_SEMANTIC_AMBIGUITY",
+      message: "Ambiguidade sem\xE2ntica detectada - revise a inten\xE7\xE3o",
+      confidence: "medium"
+    }
+  ];
+  for (const pattern of semanticPatterns) {
+    if (text.includes(pattern.pattern)) {
+      const startIndex = text.indexOf(pattern.pattern);
+      if (startIndex !== -1) {
+        matches.push(createMatch3(
+          text,
+          startIndex,
+          pattern.pattern.length,
+          [pattern.corrected],
+          pattern.rule,
+          pattern.message,
+          "Corrige ambiguidades sem\xE2nticas causadas por pontua\xE7\xE3o",
+          createConfidence3(pattern.confidence, 0.65, "ambiguidade sem\xE2ntica detectada"),
+          {
+            original: pattern.pattern,
+            corrected: pattern.corrected,
+            explanation: pattern.explanation,
+            ambiguity: "medium",
+            context: "formal",
+            examples: [],
+            warning: ""
+          }
+        ));
+      }
+    }
+  }
+  return matches;
+}
+
+// src/core/engine.ts
+var preparedReplacementIndexCache = /* @__PURE__ */ new WeakMap();
+var checkResultCache = /* @__PURE__ */ new Map();
+var MAX_CHECK_RESULT_CACHE_SIZE = 512;
+var MAX_CORRECTION_PASSES = 3;
+function createConfidence4(level, score, reason) {
+  return {
+    level,
+    score: Number(score.toFixed(2)),
+    reason
+  };
+}
+function createMatch4(text, offset, length, replacements, ruleId, message, description, confidence = createConfidence4("high", 0.95, "regra explicita")) {
   return {
     message,
     shortMessage: message,
@@ -1735,7 +1961,7 @@ function createReplacementMatches(text, entries) {
       if (!replacements.length) {
         continue;
       }
-      addIfNoOverlap3(matches, createMatch3(
+      addIfNoOverlap3(matches, createMatch4(
         text,
         0,
         text.length,
@@ -1760,7 +1986,7 @@ function createReplacementMatches(text, entries) {
       if (!replacements.length) {
         continue;
       }
-      addIfNoOverlap3(matches, createMatch3(
+      addIfNoOverlap3(matches, createMatch4(
         text,
         match.index,
         original.length,
@@ -1879,7 +2105,7 @@ function createUnknownWordSuggestions(word, dictionary) {
     candidates.push({
       word: candidate,
       score: samePlainWord ? normalizedDistance : distance + normalizedDistance,
-      confidence: createConfidence3(
+      confidence: createConfidence4(
         confidenceScore >= 0.85 ? "high" : confidenceScore >= 0.68 ? "medium" : "low",
         Math.max(0.01, Math.min(confidenceScore, 0.99)),
         samePlainWord ? "forma conhecida com diferenca principalmente de acentuacao" : "aproximacao ortografica com filtros conservadores"
@@ -1926,7 +2152,7 @@ function createUnknownWordMatches(text, dictionary) {
       continue;
     }
     seenOffsets.add(key);
-    addIfNoOverlap3(matches, createMatch3(
+    addIfNoOverlap3(matches, createMatch4(
       text,
       match.index,
       original.length,
@@ -1948,7 +2174,7 @@ function createRepeatedWordMatches(text) {
     }
     const repeatedWord = match[1];
     const secondWordOffset = match.index + match[0].lastIndexOf(match[2]);
-    addIfNoOverlap3(matches, createMatch3(
+    addIfNoOverlap3(matches, createMatch4(
       text,
       secondWordOffset,
       match[2].length,
@@ -1967,7 +2193,7 @@ function createDoubleSpaceMatches(text) {
     if (match.index === void 0) {
       continue;
     }
-    addIfNoOverlap3(matches, createMatch3(
+    addIfNoOverlap3(matches, createMatch4(
       text,
       match.index,
       match[0].length,
@@ -2115,7 +2341,7 @@ function createIterativeDiffMatches(originalText, finalText) {
     if (!replacement) {
       return null;
     }
-    return createMatch3(
+    return createMatch4(
       originalText,
       offset,
       length,
@@ -2123,7 +2349,7 @@ function createIterativeDiffMatches(originalText, finalText) {
       "PT_BR_MULTI_PASS",
       "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
       "Agrupa corre\xE7\xF5es encadeadas encontradas ap\xF3s reprocessar a frase.",
-      createConfidence3("high", 0.93, "correcao iterativa consolidada")
+      createConfidence4("high", 0.93, "correcao iterativa consolidada")
     );
   }).filter((match) => Boolean(match));
   return diffMatches.map((match) => {
@@ -2134,7 +2360,7 @@ function createIterativeDiffMatches(originalText, finalText) {
     if (stripDiacritics(normalizeDictionaryWord(original)) === "que" && stripDiacritics(normalizeDictionaryWord(replacement)) === "que" && porMatch) {
       const expandedOffset = match.offset - porMatch[0].length;
       const expandedOriginal = originalText.slice(expandedOffset, match.offset + match.length);
-      return createMatch3(
+      return createMatch4(
         originalText,
         expandedOffset,
         expandedOriginal.length,
@@ -2142,14 +2368,14 @@ function createIterativeDiffMatches(originalText, finalText) {
         "PT_BR_MULTI_PASS",
         "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
         "Agrupa corre\xE7\xF5es encadeadas encontradas ap\xF3s reprocessar a frase.",
-        createConfidence3("high", 0.93, "correcao iterativa consolidada")
+        createConfidence4("high", 0.93, "correcao iterativa consolidada")
       );
     }
     return match;
   });
 }
 function createWholeTextInferenceMatch(originalText, finalText) {
-  return createMatch3(
+  return createMatch4(
     originalText,
     0,
     originalText.length,
@@ -2157,7 +2383,7 @@ function createWholeTextInferenceMatch(originalText, finalText) {
     "PT_BR_MULTI_PASS",
     "Corre\xE7\xE3o composta inferida a partir de m\xFAltiplas passagens.",
     "Consolida a frase final quando a diferen\xE7a token a token nao preserva toda a corre\xE7\xE3o.",
-    createConfidence3("high", 0.9, "consolidacao integral da frase")
+    createConfidence4("high", 0.9, "consolidacao integral da frase")
   );
 }
 function sanitizeInvalidWeekdayHyphenForms(text) {
@@ -2171,6 +2397,25 @@ function createConsolidatedInferenceMatches(originalText, finalText) {
   if (originalText === finalText) {
     return [];
   }
+  
+  // Verificar se temos matches semânticos que foram aplicados
+  // Se sim, preservar os matches originais em vez de criar PT_BR_MULTI_PASS
+  try {
+    // Tentar obter os matches semânticos originais
+    const semanticMatches = createSemanticAnalysisMatches(originalText, {});
+    const appliedText = applyVisibleMatches(originalText, semanticMatches);
+    
+    // Se o texto aplicado corresponde ao texto final, preservar os matches semânticos
+    if (appliedText === sanitizedFinalText && semanticMatches.length > 0) {
+      console.log("Preservando matches semânticos originais");
+      return semanticMatches;
+    }
+  } catch (error) {
+    // Se falhar, continuar com o comportamento original
+    console.log("Erro ao preservar matches semânticos, usando comportamento original:", error.message);
+  }
+  
+  // Comportamento original para outros casos
   const diffMatches = createIterativeDiffMatches(originalText, sanitizedFinalText);
   if (!diffMatches.length) {
     return [createWholeTextInferenceMatch(originalText, sanitizedFinalText)];
@@ -2180,8 +2425,7 @@ function createConsolidatedInferenceMatches(originalText, finalText) {
     return [createWholeTextInferenceMatch(originalText, sanitizedFinalText)];
   }
   return diffMatches;
-}
-function applyVisibleMatches(text, matches) {
+}function applyVisibleMatches(text, matches) {
   const ordered = collapseOverlappingMatches(matches).filter((match) => Array.isArray(match.replacements) && Boolean(match.replacements[0]?.value)).sort((left, right) => right.offset - left.offset || right.length - left.length);
   let updatedText = text;
   for (const match of ordered) {
@@ -2226,7 +2470,7 @@ function createCraseHeuristicMatches(text) {
       "Use crase na locu\xE7\xE3o temporal '\xE0 noite'.",
       "Corrige aus\xEAncia de crase em locu\xE7\xE3o temporal recorrente.",
       "grammar",
-      createConfidence3("high", 0.9, "locucao temporal recorrente")
+      createConfidence4("high", 0.9, "locucao temporal recorrente")
     ));
   }
   for (const match of text.matchAll(/(^|[^\p{L}\p{N}])(á)(?=\s+\d+\s+(?:minuto|minutos|hora|horas)\b)/gu)) {
@@ -2243,7 +2487,7 @@ function createCraseHeuristicMatches(text) {
       "N\xE3o use acento nessa indica\xE7\xE3o de dist\xE2ncia ou tempo.",
       "Corrige uso indevido de acento em 'a 5 minutos', 'a 2 horas' e constru\xE7\xF5es semelhantes.",
       "grammar",
-      createConfidence3("high", 0.92, "indicacao de distancia ou tempo")
+      createConfidence4("high", 0.92, "indicacao de distancia ou tempo")
     ));
   }
   return matches;
@@ -2282,7 +2526,7 @@ function createPorQueHeuristicMatches(text) {
         "Em pergunta indireta, a forma esperada aqui e 'por que'.",
         "Corrige o uso de 'porque' ou 'porqu\xEA' em construcoes de pergunta indireta.",
         "grammar",
-        createConfidence3("high", 0.91, "pergunta indireta recorrente")
+        createConfidence4("high", 0.91, "pergunta indireta recorrente")
       ));
     }
   }
@@ -2299,7 +2543,7 @@ function createPorQueHeuristicMatches(text) {
       "No fim de pergunta, a forma esperada aqui e 'por qu\xEA'.",
       "Corrige 'por que' em final de pergunta direta.",
       "grammar",
-      createConfidence3("high", 0.93, "por que em final de pergunta")
+      createConfidence4("high", 0.93, "por que em final de pergunta")
     ));
   }
   for (const match of text.matchAll(new RegExp("\\bexplicou\\s+porqu\xEA(?=\\s+\\p{L})", "giu"))) {
@@ -2317,7 +2561,7 @@ function createPorQueHeuristicMatches(text) {
       "Em ora\xE7\xE3o explicativa, a forma esperada aqui e 'porque'.",
       "Corrige uso de 'porqu\xEA' onde a construcao pede conjuncao explicativa.",
       "grammar",
-      createConfidence3("high", 0.89, "oracao explicativa recorrente")
+      createConfidence4("high", 0.89, "oracao explicativa recorrente")
     ));
   }
   return matches;
@@ -2340,7 +2584,7 @@ function createLocalizationDateMatches(text) {
       "Formato de data possivelmente fora do padr\xE3o pt-BR.",
       "Converte data claramente no padr\xE3o mes/dia/ano para dia/mes/ano.",
       "style",
-      createConfidence3("high", 0.91, "data em formato US claramente identificavel")
+      createConfidence4("high", 0.91, "data em formato US claramente identificavel")
     ));
   }
   return matches;
@@ -2401,7 +2645,7 @@ function createAnnouncementAgreementMatches(text) {
         "Com sujeito plural, o verbo deve concordar.",
         "Corrige concord\xE2ncia verbal frequente em an\xFAncios com 'vende-se'.",
         "grammar",
-        createConfidence3("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
+        createConfidence4("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
       ));
     }
     if (token.normalized === "aluga-se" && isPluralAnnouncementLead(tokens, index)) {
@@ -2414,7 +2658,7 @@ function createAnnouncementAgreementMatches(text) {
         "Com sujeito plural, o verbo deve concordar.",
         "Corrige concord\xE2ncia verbal frequente em an\xFAncios com 'aluga-se'.",
         "grammar",
-        createConfidence3("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
+        createConfidence4("high", 0.87, "padrao recorrente de anuncio com sujeito plural")
       ));
     }
   }
@@ -2427,7 +2671,7 @@ function createSpaceBeforePunctuationMatches(text) {
     if (match.index === void 0) {
       continue;
     }
-    addIfNoOverlap3(matches, createMatch3(
+    addIfNoOverlap3(matches, createMatch4(
       text,
       match.index,
       match[0].length,
@@ -2453,7 +2697,7 @@ function createSentenceCaseMatches(text) {
     if (overlapsTechnicalSpan(offset, lowerChar.length, technicalSpans)) {
       continue;
     }
-    addIfNoOverlap3(matches, createMatch3(
+    addIfNoOverlap3(matches, createMatch4(
       text,
       offset,
       lowerChar.length,
@@ -2497,16 +2741,16 @@ function deriveMatchConfidence(match, text, dictionary) {
   const replacementPenalty = lexicalRiskPenalty(primaryReplacement, dictionary);
   const hasMultipleSuggestions = match.replacements.length > 1;
   if (match.rule.id === "PT_BR_REPEATED_WORD") {
-    return createConfidence3("high", 0.98, "repeticao literal detectada");
+    return createConfidence4("high", 0.98, "repeticao literal detectada");
   }
   if (match.rule.id === "PT_BR_DOUBLE_SPACE") {
-    return createConfidence3("high", 0.99, "padrao mecanico de espaco duplicado");
+    return createConfidence4("high", 0.99, "padrao mecanico de espaco duplicado");
   }
   if (match.rule.id === "PT_BR_SPACE_BEFORE_PUNCTUATION") {
-    return createConfidence3("high", 0.98, "padrao mecanico de pontuacao");
+    return createConfidence4("high", 0.98, "padrao mecanico de pontuacao");
   }
   if (match.rule.id === "PT_BR_SENTENCE_CASE") {
-    return createConfidence3("high", 0.94, "regra ortografica simples de inicio de frase");
+    return createConfidence4("high", 0.94, "regra ortografica simples de inicio de frase");
   }
   if (match.rule.id.startsWith("PT_BR_PUNCTUATION_")) {
     let score = 0.88;
@@ -2519,31 +2763,31 @@ function deriveMatchConfidence(match, text, dictionary) {
     if (match.rule.id.includes("GREETING_NAME") || match.rule.id.includes("INITIAL_MARKER")) {
       score = 0.9;
     }
-    return createConfidence3(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "heuristica de pontuacao recorrente");
+    return createConfidence4(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "heuristica de pontuacao recorrente");
   }
   if (match.rule.id === "PT_BR_SIMPLE_SYNTAX_PATTERN") {
-    return createConfidence3("low", 0.42, "padrao sintatico heuristico e sensivel a contexto");
+    return createConfidence4("low", 0.42, "padrao sintatico heuristico e sensivel a contexto");
   }
   if (match.rule.id === "PT_BR_SIMPLE_VERBAL_AGREEMENT") {
     let score = 0.78;
     if (match.length <= 3) {
       score -= 0.08;
     }
-    return createConfidence3(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia verbal por heuristica local");
+    return createConfidence4(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia verbal por heuristica local");
   }
   if (match.rule.id === "PT_BR_SIMPLE_NOMINAL_AGREEMENT") {
     let score = 0.74;
     if (match.length <= 3) {
       score -= 0.08;
     }
-    return createConfidence3(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia nominal por heuristica local");
+    return createConfidence4(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "concordancia nominal por heuristica local");
   }
   if (match.rule.id.startsWith("PT_BR_CONTEXT_") || match.rule.id.includes("CONTEXT")) {
     let score = 0.88;
     if (hasMultipleSuggestions) {
       score -= 0.08;
     }
-    return createConfidence3(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
+    return createConfidence4(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra contextual explicita");
   }
   if (match.rule.id.startsWith("PT_BR_AMBIGUITY_") || match.rule.id.startsWith("PT_BR_ENHANCED_")) {
     let score = 0.72;
@@ -2556,7 +2800,20 @@ function deriveMatchConfidence(match, text, dictionary) {
     if (match.rule.id.includes("MEIO_") || match.rule.id.includes("BASTANTE_") || match.rule.id.includes("MUITO_")) {
       score -= 0.06;
     }
-    return createConfidence3(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "caso ambiguo - revisao recomendada");
+    return createConfidence4(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "caso ambiguo - revisao recomendada");
+  }
+  if (match.rule.id.startsWith("PT_BR_SEMANTIC_")) {
+    let score = 0.65;
+    if (hasMultipleSuggestions) {
+      score -= 0.15;
+    }
+    if (match.length <= 3) {
+      score -= 0.1;
+    }
+    if (match.rule.id.includes("AMBIGUITY")) {
+      score -= 0.08;
+    }
+    return createConfidence4(score >= 0.6 ? "medium" : "low", clampConfidenceScore(score), "ambiguidade sem\xE2ntica - interven\xE7\xE3o do usu\xE1rio necess\xE1ria");
   }
   if (match.rule.id.startsWith("PT_BR_PHRASE_")) {
     let score = 0.97;
@@ -2566,7 +2823,7 @@ function deriveMatchConfidence(match, text, dictionary) {
     if (match.length <= 4) {
       score -= 0.06;
     }
-    return createConfidence3(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra frasal explicita");
+    return createConfidence4(score >= 0.85 ? "high" : "medium", clampConfidenceScore(score), "regra frasal explicita");
   }
   if (match.rule.issueType === "style") {
     let score = 0.76;
@@ -2576,7 +2833,7 @@ function deriveMatchConfidence(match, text, dictionary) {
     if (match.length >= 12) {
       score -= 0.04;
     }
-    return createConfidence3(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "ajuste de frase ou estilo");
+    return createConfidence4(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "ajuste de frase ou estilo");
   }
   if (match.rule.id === "PT_BR_SIMPLE_REPLACE") {
     let score = 0.9;
@@ -2590,12 +2847,12 @@ function deriveMatchConfidence(match, text, dictionary) {
       score -= 0.08;
     }
     score -= replacementPenalty;
-    return createConfidence3(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "substituicao lexical direta");
+    return createConfidence4(score >= 0.85 ? "high" : score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "substituicao lexical direta");
   }
   if (match.rule.issueType === "grammar") {
-    return createConfidence3("medium", 0.72, "heuristica gramatical");
+    return createConfidence4("medium", 0.72, "heuristica gramatical");
   }
-  return createConfidence3("high", 0.9, "confianca padrao");
+  return createConfidence4("high", 0.9, "confianca padrao");
 }
 function shouldExposeMatch(match) {
   if (match.replacements.length) {
@@ -2688,6 +2945,13 @@ function createInferenceStages(replacements, dictionary) {
       collectMatches: (text) => [
         ...createAmbiguityResolutionMatches(text, dictionary),
         ...createEnhancedContextRuleMatches(text, dictionary)
+      ]
+    },
+    {
+      id: "semantic_analysis",
+      description: "Analisa ambiguidades sem\xE2nticas e contextos regionais.",
+      collectMatches: (text) => [
+        ...createSemanticAnalysisMatches(text, dictionary)
       ]
     },
     {
@@ -3417,3 +3681,15 @@ if (isCheckWorkerProcess) {
     console.log(`corrija_me_pt_br backend local ativo em http://127.0.0.1:${DEFAULT_PORT}`);
   });
 }
+module.exports.createSemanticAnalysisMatches = createSemanticAnalysisMatches;
+module.exports.createInferenceStages = createInferenceStages;
+module.exports.runInferencePipeline = runInferencePipeline;
+module.exports.shouldExposeMatch = shouldExposeMatch;
+module.exports.deriveMatchConfidence = deriveMatchConfidence;
+module.exports.finalizeMatches = finalizeMatches;
+module.exports.collectVisibleStageMatches = collectVisibleStageMatches;
+module.exports.createPhraseRuleMatches = createPhraseRuleMatches;
+module.exports.createSimpleVerbalAgreementMatches = createSimpleVerbalAgreementMatches;
+module.exports.checkText = checkText;
+module.exports.createConsolidatedInferenceMatches = createConsolidatedInferenceMatches;
+module.exports.applyVisibleMatches = applyVisibleMatches;

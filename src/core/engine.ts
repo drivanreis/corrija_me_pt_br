@@ -6,6 +6,7 @@ import { createSimpleSyntaxPatternMatches } from "./syntax-patterns.js";
 import { createSimpleVerbalAgreementMatches } from "./verbal-agreement.js";
 import { createAmbiguityResolutionMatches } from "./ambiguity-resolution.js";
 import { createEnhancedContextRuleMatches } from "./enhanced-context-rules.js";
+import { createSemanticAnalysisMatches } from "./semantic-analysis.js";
 import { buildContext, createWholeWordPattern, createWordTokenPattern, dedupeStrings, isWordLike, normalizeDictionaryWord, preserveReplacementCase, stripDiacritics } from "./text.js";
 import type { CheckResult, DictionaryData, MatchConfidence, ReplacementEntry, RuleMatch } from "./types.js";
 
@@ -1201,6 +1202,22 @@ function deriveMatchConfidence(match: RuleMatch, text: string, dictionary: Dicti
     return createConfidence(score >= 0.68 ? "medium" : "low", clampConfidenceScore(score), "caso ambiguo - revisao recomendada");
   }
 
+  // Casos de ambiguidade semântica - confiança muito baixa, requer intervenção do usuário
+  if (match.rule.id.startsWith("PT_BR_SEMANTIC_")) {
+    let score = 0.65; // Base muito baixa para ambiguidades semânticas
+    if (hasMultipleSuggestions) {
+      score -= 0.15; // Penalidade máxima para múltiplas sugestões
+    }
+    if (match.length <= 3) {
+      score -= 0.10;
+    }
+    // Ambiguidade semântica grave tem confiança ainda menor
+    if (match.rule.id.includes("AMBIGUITY")) {
+      score -= 0.08;
+    }
+    return createConfidence(score >= 0.60 ? "medium" : "low", clampConfidenceScore(score), "ambiguidade semântica - intervenção do usuário necessária");
+  }
+
   if (match.rule.id.startsWith("PT_BR_PHRASE_")) {
     let score = 0.97;
     if (hasMultipleSuggestions) {
@@ -1368,6 +1385,13 @@ function createInferenceStages(replacements: ReplacementEntry[], dictionary: Dic
       collectMatches: (text) => [
         ...createAmbiguityResolutionMatches(text, dictionary),
         ...createEnhancedContextRuleMatches(text, dictionary)
+      ]
+    },
+    {
+      id: "semantic_analysis",
+      description: "Analisa ambiguidades semânticas e contextos regionais.",
+      collectMatches: (text) => [
+        ...createSemanticAnalysisMatches(text, dictionary)
       ]
     },
     {
